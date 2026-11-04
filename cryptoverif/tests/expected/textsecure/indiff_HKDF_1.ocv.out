@@ -1,0 +1,2221 @@
+Doing expand get, insert and prove unique annotations... No change.
+Doing simplify (non-expanded game)... No change.
+Doing expand... No change.
+Doing remove assignments of findcond... No change.
+Doing simplify... Doing global dependency analysis on r inside simplify... At 23, returned message r depends on r.
+No change
+Run simplify 1 time(s). Fixpoint reached.
+No change.
+Doing move all binders... No change.
+Doing SA rename new without array accesses and remove assignments of findcond... No change.
+Doing merge branches... No change.
+Doing expand get, insert and prove unique annotations... No change.
+Doing simplify (non-expanded game)... No change.
+Doing expand... No change.
+Doing remove assignments of findcond... No change.
+Doing simplify... Run simplify 1 time(s). Fixpoint reached.
+No change.
+Doing move all binders... No change.
+Doing SA rename new without array accesses and remove assignments of findcond... No change.
+Doing merge branches... No change.
+At 9 in this process and at 8 on the other end, could not find a matching if, let, or find.
+Trying equivalence rom(H3)... Transf. OK Proba. computed Transf. done Succeeded.
+Doing simplify (non-expanded game)... No change.
+Doing expand... Done.
+Doing remove assignments of findcond... Done.
+Doing simplify... Doing global dependency analysis on r inside simplify... At 22, returned message r depends on r.
+No change
+Doing global dependency analysis on r inside simplify... At 22, returned message r depends on r.
+No change
+Run simplify 2 time(s). Fixpoint reached.
+Done.
+Doing move all binders... Done.
+Doing SA rename new without array accesses and remove assignments of findcond... No change.
+Doing merge branches... No change.
+     Ostart() :=
+     return();
+     ((
+       foreach i_3 <= qH1 do
+       OH1(x_1: input1) :=
+       find j_1 = j <= qH1 suchthat defined(x_1[j], r[j]) && (x_1 = x_1[j]) then
+         return(r[j_1])
+       else
+         r <-R output1;
+         return(r)
+     ) | (
+       foreach i_4 <= qH2 do
+       OH2(x2_1: output1, y2_1: input2) :=
+       find k_1 = k <= qH1 suchthat defined(x_1[k], r[k]) && (r[k] = x2_1) then
+         find [unique] u_3 = ri_3 <= qH2 suchthat defined(r_1[ri_3], y2_1[ri_3], x_1[k_1[ri_3]]) && (x_1[k_1] = x_1[k_1[ri_3]]) && (y2_1 = y2_1[ri_3]) then
+           return(r_1[u_3])
+         orfind u_2 = ri_2 <= qH3 suchthat defined(r_2[ri_2], y3_1[ri_2], x3_1[ri_2]) && (x_1[k_1] = x3_1[ri_2]) && (y2_1 = y3_1[ri_2]) then
+           return(r_2[u_2])
+         else
+           r_1 <-R output2;
+           return(r_1)
+       else
+         find l_1 = l <= qH2 suchthat defined(x2_1[l], y2_1[l], r2[l]) && (x2_1 = x2_1[l]) && (y2_1 = y2_1[l]) then
+           return(r2[l_1])
+         else
+           r2 <-R output2;
+           return(r2)
+     ) | (
+       foreach i_5 <= qH3 do
+       HComb(x3_1: input1, y3_1: input2) :=
+       find [unique] u_1 = ri_1 <= qH2 suchthat defined(r_1[ri_1], y2_1[ri_1], x_1[k_1[ri_1]]) && (x3_1 = x_1[k_1[ri_1]]) && (y3_1 = y2_1[ri_1]) then
+         return(r_1[u_1])
+       orfind u = ri <= qH3 suchthat defined(r_2[ri], y3_1[ri], x3_1[ri]) && (x3_1 = x3_1[ri]) && (y3_1 = y3_1[ri]) then
+         return(r_2[u])
+       else
+         r_2 <-R output2;
+         return(r_2)
+     ))
+
+Trying equivalence rom(H2)... Transf. OK Proba. computed Transf. done Succeeded.
+Doing simplify (non-expanded game)... No change.
+Doing expand... Done.
+Doing remove assignments of findcond... Done.
+Doing simplify... Run simplify 2 time(s). Fixpoint reached.
+Done.
+Doing move all binders... Done.
+Doing SA rename new without array accesses and remove assignments of findcond... No change.
+Doing merge branches... No change.
+     Ostart() :=
+     hk1 <-R hashkey1;
+     return();
+     ((
+       foreach i <= qH1 do
+       OH1(x: input1) :=
+       return(H1(hk1, x))
+     ) | (
+       foreach i_1 <= qH2 do
+       OH2(x2: output1, y2: input2) :=
+       find [unique] u_7 = ri_7 <= qH2 suchthat defined(r_3[ri_7], y2[ri_7], x2[ri_7]) && (x2 = x2[ri_7]) && (y2 = y2[ri_7]) then
+         return(r_3[u_7])
+       orfind u_6 = ri_6 <= qH3 suchthat defined(y3[ri_6], x_O_7[ri_6], r_4[ri_6]) && (x2 = x_O_7[ri_6]) && (y2 = y3[ri_6]) then
+         return(r_4[u_6])
+       else
+         r_3 <-R output2;
+         return(r_3)
+     ) | (
+       foreach i_2 <= qH3 do
+       HComb(x3: input1, y3: input2) :=
+       x_O_7: output1 <- H1(hk1, x3);
+       find [unique] u_5 = ri_5 <= qH2 suchthat defined(r_3[ri_5], y2[ri_5], x2[ri_5]) && (x_O_7 = x2[ri_5]) && (y3 = y2[ri_5]) then
+         return(r_3[u_5])
+       orfind u_4 = ri_4 <= qH3 suchthat defined(y3[ri_4], x_O_7[ri_4], r_4[ri_4]) && (x_O_7 = x_O_7[ri_4]) && (y3 = y3[ri_4]) then
+         return(r_4[u_4])
+       else
+         r_4 <-R output2;
+         return(r_4)
+     ))
+
+Doing remove assignments of binder x_O_7... Done.
+Trying equivalence rom(H1)... Transf. OK Proba. computed Transf. done Succeeded.
+Doing simplify (non-expanded game)... No change.
+Doing expand... Done.
+Doing remove assignments of findcond... Done.
+Doing simplify... Doing global dependency analysis on r_5 inside simplify... At 24, returned message r_5 depends on r_5.
+No change
+Run simplify 2 time(s). Maximum reached.
+Done.
+Doing move all binders... Done.
+Doing SA rename new without array accesses and remove assignments of findcond... No change.
+Doing merge branches... No change.
+  {1}Ostart() :=
+  {2}return();
+  {3}((
+  {5}  foreach i <= qH1 do
+  {6}  OH1(x: input1) :=
+  {7}  find [unique] u_10 = ri_10 <= qH1 suchthat defined(r_5[{8}ri_10], x[{9}ri_10]) && {10}({11}x = {13}x[{14}ri_10]) then
+ {15}    return({16}r_5[{17}u_10])
+       else
+ {20}    r_5 <-R output1;
+ {21}    return({22}r_5)
+     ) | (
+ {25}  foreach i_1 <= qH2 do
+ {26}  OH2(x2: output1, y2: input2) :=
+ {27}  find [unique] u_7 = ri_7 <= qH2 suchthat defined(r_3[{28}ri_7], y2[{29}ri_7], x2[{30}ri_7]) && {31}({32}({33}x2 = {35}x2[{36}ri_7]) && {37}({38}y2 = {40}y2[{41}ri_7])) then
+ {42}    return({43}r_3[{44}u_7])
+       orfind u_6 = ri_6 <= qH3, u_12 = ri_9 <= qH1 suchthat defined(r_4[{47}ri_6], y3[{48}ri_6], r_5[{49}ri_9], x[{50}ri_9], x3[{51}ri_6]) && {52}({53}({54}x3[{55}ri_6] = {56}x[{57}ri_9]) && {58}({59}({60}x2 = {62}r_5[{63}ri_9]) && {64}({65}y2 = {67}y3[{68}ri_6]))) then
+ {69}    return({70}r_4[{71}u_6])
+       else
+ {74}    r_3 <-R output2;
+ {75}    return({76}r_3)
+     ) | (
+ {79}  foreach i_2 <= qH3 do
+ {80}  HComb(x3: input1, y3: input2) :=
+ {81}  find [unique] u_5 = ri_5 <= qH2, u_11 = ri_8 <= qH1 suchthat defined(r_3[{82}ri_5], y2[{83}ri_5], r_5[{84}ri_8], x2[{85}ri_5], x[{86}ri_8]) && {87}({88}({89}x3 = {91}x[{92}ri_8]) && {93}({94}({95}x2[{96}ri_5] = {97}r_5[{98}ri_8]) && {99}({100}y3 = {102}y2[{103}ri_5]))) then
+{104}    return({105}r_3[{106}u_5])
+       orfind u_4 = ri_4 <= qH3 suchthat defined(r_4[{109}ri_4], y3[{110}ri_4], x3[{111}ri_4]) && {112}({113}({114}x3 = {116}x3[{117}ri_4]) && {118}({119}y3 = {121}y3[{122}ri_4])) then
+{123}    return({124}r_4[{125}u_4])
+       else
+{128}    r_4 <-R output2;
+{129}    return({130}r_4)
+     ))
+
+Doing insert instruction find k <= qH1 suchthat defined(x[k], r_5[k]) && (r_5[k] = x2) then at occurrence 27... Done.
+Doing simplify... Doing global dependency analysis on r_5 inside simplify... At 22, returned message r_5 depends on r_5.
+No change
+Eliminated collisions between r_5[ri_9] and x2 Probability: qH2 * qH1 / |output1|
+(r_5[ri_9] collides with a value independent of r_5[ri_9] with probability at most 1 / |output1|;
+ x2 does not depend on r_5[ri_9])
+Eliminated collisions between r_5 and r_5 Probability: 0.5 / |output1| * qH1 * qH1
+Doing global dependency analysis on r_5 inside simplify... At 22, returned message r_5 depends on r_5.
+No change
+Run simplify 2 time(s). Maximum reached.
+Done.
+     Ostart() :=
+     return();
+     ((
+       foreach i <= qH1 do
+       OH1(x: input1) :=
+       find [unique] u_10 = ri_10 <= qH1 suchthat defined(r_5[ri_10], x[ri_10]) && (x = x[ri_10]) then
+         return(r_5[u_10])
+       else
+         r_5 <-R output1;
+         return(r_5)
+     ) | (
+       foreach i_1 <= qH2 do
+       OH2(x2: output1, y2: input2) :=
+       find k_2 = k_3 <= qH1 suchthat defined(x[k_3], r_5[k_3]) && (r_5[k_3] = x2) then
+         find [unique] u_7 = ri_7 <= qH2 suchthat defined(r_3[ri_7], y2[ri_7], x2[ri_7]) && (x2 = x2[ri_7]) && (y2 = y2[ri_7]) then
+           return(r_3[u_7])
+         orfind u_6 = ri_6 <= qH3 suchthat defined(r_4[ri_6], y3[ri_6], x3[ri_6]) && (x3[ri_6] = x[k_2]) && (y2 = y3[ri_6]) then
+           u_12 <= qH1 <- k_2;
+           return(r_4[u_6])
+         else
+           r_3 <-R output2;
+           return(r_3)
+       else
+         find [unique] u_7 = ri_7 <= qH2 suchthat defined(r_3[ri_7], y2[ri_7], x2[ri_7]) && (x2 = x2[ri_7]) && (y2 = y2[ri_7]) then
+           return(r_3[u_7])
+         else
+           r_3 <-R output2;
+           return(r_3)
+     ) | (
+       foreach i_2 <= qH3 do
+       HComb(x3: input1, y3: input2) :=
+       find [unique] u_5 = ri_5 <= qH2, u_11 = ri_8 <= qH1 suchthat defined(r_3[ri_5], y2[ri_5], r_5[ri_8], x2[ri_5], x[ri_8]) && (x3 = x[ri_8]) && (x2[ri_5] = r_5[ri_8]) && (y3 = y2[ri_5]) then
+         return(r_3[u_5])
+       orfind u_4 = ri_4 <= qH3 suchthat defined(r_4[ri_4], y3[ri_4], x3[ri_4]) && (x3 = x3[ri_4]) && (y3 = y3[ri_4]) then
+         return(r_4[u_4])
+       else
+         r_4 <-R output2;
+         return(r_4)
+     ))
+
+Doing SA rename r_3... Done.
+Doing SA rename new without array accesses and remove assignments of findcond... Done.
+Doing simplify... Doing global dependency analysis on r_5 inside simplify... At 22, returned message r_5 depends on r_5.
+No change
+Eliminated collisions between r_5[ri_8] and x2[ri_5] Probability: qH2 * qH1 / |output1|
+(r_5[ri_8] collides with a value independent of r_5[ri_8] with probability at most 1 / |output1|;
+ x2[ri_5] does not depend on r_5[ri_8])
+Eliminated collisions between r_5 and r_5 Probability: 0.5 / |output1| * qH1 * qH1
+Doing global dependency analysis on r_5 inside simplify... At 22, returned message r_5 depends on r_5.
+No change
+Run simplify 2 time(s). Maximum reached.
+Done.
+  {1}Ostart() :=
+  {2}return();
+  {3}((
+  {5}  foreach i <= qH1 do
+  {6}  OH1(x: input1) :=
+  {7}  find [unique] u_10 = ri_10 <= qH1 suchthat defined(r_5[{8}ri_10], x[{9}ri_10]) && {10}({11}x = {13}x[{14}ri_10]) then
+ {15}    return({16}r_5[{17}u_10])
+       else
+ {20}    r_5 <-R output1;
+ {21}    return({22}r_5)
+     ) | (
+ {25}  foreach i_1 <= qH2 do
+ {26}  OH2(x2: output1, y2: input2) :=
+ {27}  find k_2 = k_3 <= qH1 suchthat defined(x[{28}k_3], r_5[{29}k_3]) && {30}({31}r_5[{32}k_3] = {33}x2) then
+ {35}    find [unique] u_7 = ri_7 <= qH2 suchthat defined(r_8[{36}ri_7], y2[{37}ri_7], k_2[{38}ri_7]) && {39}({40}({41}k_2 = {43}k_2[{44}ri_7]) && {45}({46}y2 = {48}y2[{49}ri_7])) then
+ {50}      return({51}r_8[{52}u_7])
+         orfind u_6 = ri_6 <= qH3 suchthat defined(r_4[{55}ri_6], y3[{56}ri_6], x3[{57}ri_6]) && {58}({59}({60}x3[{61}ri_6] = {62}x[{63}k_2]) && {65}({66}y2 = {68}y3[{69}ri_6])) then
+ {70}      return({71}r_4[{72}u_6])
+         else
+ {75}      r_8 <-R output2;
+ {76}      return({77}r_8)
+       else
+ {80}    find [unique] u_7 = ri_7 <= qH2 suchthat defined(r_9[{81}ri_7], y2[{82}ri_7], x2[{83}ri_7]) && {84}({85}({86}x2 = {88}x2[{89}ri_7]) && {90}({91}y2 = {93}y2[{94}ri_7])) then
+ {95}      return({96}r_9[{97}u_7])
+         else
+{100}      r_9 <-R output2;
+{101}      return({102}r_9)
+     ) | (
+{105}  foreach i_2 <= qH3 do
+{106}  HComb(x3: input1, y3: input2) :=
+{107}  find [unique] u_5 = ri_5 <= qH2 suchthat defined(r_8[{108}ri_5], y2[{109}ri_5], x[{110}k_2[{111}ri_5]]) && {112}({113}({114}x3 = {116}x[{117}k_2[{118}ri_5]]) && {119}({120}y3 = {122}y2[{123}ri_5])) then
+{124}    u_11 <= qH1 <- {125}k_2[{126}u_5];
+{128}    return({129}r_8[{130}u_5])
+       orfind u_4 = ri_4 <= qH3 suchthat defined(r_4[{134}ri_4], y3[{135}ri_4], x3[{136}ri_4]) && {137}({138}({139}x3 = {141}x3[{142}ri_4]) && {143}({144}y3 = {146}y3[{147}ri_4])) then
+{148}    return({149}r_4[{150}u_4])
+       else
+{153}    r_4 <-R output2;
+{154}    return({155}r_4)
+     ))
+
+Doing insert instruction find u10 = ri10 <= qH1 suchthat defined(r_5[ri10], x[ri10]) && (x = x[ri10]) then at occurrence 7... Done.
+Doing simplify... Doing global dependency analysis on r_5 inside simplify... At 48, returned message r_5 depends on r_5.
+No change
+Doing global dependency analysis on r_5 inside simplify... At 26, returned message r_5 depends on r_5.
+No change
+Run simplify 2 time(s). Fixpoint reached.
+Done.
+Doing remove assignments of useless... Done.
+  {1}Ostart() :=
+  {2}return();
+  {3}((
+  {5}  foreach i <= qH1 do
+  {6}  OH1(x: input1) :=
+  {7}  find u10 = ri10 <= qH1 suchthat defined(r_5[{8}ri10], x[{9}ri10]) && {10}({11}x = {13}x[{14}ri10]) then
+ {15}    return({16}r_5[{17}u10])
+       else
+ {20}    r_5 <-R output1;
+ {21}    return({22}r_5)
+     ) | (
+ {25}  foreach i_1 <= qH2 do
+ {26}  OH2(x2: output1, y2: input2) :=
+ {27}  find k_2 = k_3 <= qH1 suchthat defined(x[{28}k_3], r_5[{29}k_3]) && {30}({31}r_5[{32}k_3] = {33}x2) then
+ {35}    find [unique] u_7 = ri_7 <= qH2 suchthat defined(r_8[{36}ri_7], y2[{37}ri_7], k_2[{38}ri_7]) && {39}({40}({41}k_2 = {43}k_2[{44}ri_7]) && {45}({46}y2 = {48}y2[{49}ri_7])) then
+ {50}      return({51}r_8[{52}u_7])
+         orfind u_6 = ri_6 <= qH3 suchthat defined(r_4[{55}ri_6], y3[{56}ri_6], x3[{57}ri_6]) && {58}({59}({60}x3[{61}ri_6] = {62}x[{63}k_2]) && {65}({66}y2 = {68}y3[{69}ri_6])) then
+ {70}      return({71}r_4[{72}u_6])
+         else
+ {75}      r_8 <-R output2;
+ {76}      return({77}r_8)
+       else
+ {80}    find [unique] u_7 = ri_7 <= qH2 suchthat defined(r_9[{81}ri_7], y2[{82}ri_7], x2[{83}ri_7]) && {84}({85}({86}x2 = {88}x2[{89}ri_7]) && {90}({91}y2 = {93}y2[{94}ri_7])) then
+ {95}      return({96}r_9[{97}u_7])
+         else
+{100}      r_9 <-R output2;
+{101}      return({102}r_9)
+     ) | (
+{105}  foreach i_2 <= qH3 do
+{106}  HComb(x3: input1, y3: input2) :=
+{107}  find [unique] u_5 = ri_5 <= qH2 suchthat defined(r_8[{108}ri_5], y2[{109}ri_5], x[{110}k_2[{111}ri_5]]) && {112}({113}({114}x3 = {116}x[{117}k_2[{118}ri_5]]) && {119}({120}y3 = {122}y2[{123}ri_5])) then
+{124}    return({125}r_8[{126}u_5])
+       orfind u_4 = ri_4 <= qH3 suchthat defined(r_4[{129}ri_4], y3[{130}ri_4], x3[{131}ri_4]) && {132}({133}({134}x3 = {136}x3[{137}ri_4]) && {138}({139}y3 = {141}y3[{142}ri_4])) then
+{143}    return({144}r_4[{145}u_4])
+       else
+{148}    r_4 <-R output2;
+{149}    return({150}r_4)
+     ))
+
+Doing insert instruction find u7 = ri7 <= qH2 suchthat defined(r_9[ri7], y2[ri7], x2[ri7]) && (x2 = x2[ri7]) && (y2 = y2[ri7]) then at occurrence 80... Done.
+Doing simplify... Doing global dependency analysis on r_5 inside simplify... At 22, returned message r_5 depends on r_5.
+No change
+Doing global dependency analysis on r_5 inside simplify... At 22, returned message r_5 depends on r_5.
+No change
+Run simplify 2 time(s). Fixpoint reached.
+Done.
+Doing remove assignments of useless... Done.
+  {1}Ostart() :=
+  {2}return();
+  {3}((
+  {5}  foreach i_3 <= qH1 do
+  {6}  OH1(x_1: input1) :=
+  {7}  find j_1 = j <= qH1 suchthat defined(x_1[{8}j], r[{9}j]) && {10}({11}x_1 = {13}x_1[{14}j]) then
+ {15}    return({16}r[{17}j_1])
+       else
+ {20}    r <-R output1;
+ {21}    return({22}r)
+     ) | (
+ {25}  foreach i_4 <= qH2 do
+ {26}  OH2(x2_1: output1, y2_1: input2) :=
+ {27}  find k_1 = k <= qH1 suchthat defined(x_1[{28}k], r[{29}k]) && {30}({31}r[{32}k] = {33}x2_1) then
+ {35}    find [unique] u_3 = ri_3 <= qH2 suchthat defined(r_1[{36}ri_3], y2_1[{37}ri_3], x_1[{38}k_1[{39}ri_3]]) && {40}({41}({42}x_1[{43}k_1] = {45}x_1[{46}k_1[{47}ri_3]]) && {48}({49}y2_1 = {51}y2_1[{52}ri_3])) then
+ {53}      return({54}r_1[{55}u_3])
+         orfind u_2 = ri_2 <= qH3 suchthat defined(r_2[{58}ri_2], y3_1[{59}ri_2], x3_1[{60}ri_2]) && {61}({62}({63}x_1[{64}k_1] = {66}x3_1[{67}ri_2]) && {68}({69}y2_1 = {71}y3_1[{72}ri_2])) then
+ {73}      return({74}r_2[{75}u_2])
+         else
+ {78}      r_1 <-R output2;
+ {79}      return({80}r_1)
+       else
+ {83}    find l_1 = l <= qH2 suchthat defined(x2_1[{84}l], y2_1[{85}l], r2[{86}l]) && {87}({88}({89}x2_1 = {91}x2_1[{92}l]) && {93}({94}y2_1 = {96}y2_1[{97}l])) then
+ {98}      return({99}r2[{100}l_1])
+         else
+{103}      r2 <-R output2;
+{104}      return({105}r2)
+     ) | (
+{108}  foreach i_5 <= qH3 do
+{109}  HComb(x3_1: input1, y3_1: input2) :=
+{110}  find [unique] u_1 = ri_1 <= qH2 suchthat defined(r_1[{111}ri_1], y2_1[{112}ri_1], x_1[{113}k_1[{114}ri_1]]) && {115}({116}({117}x3_1 = {119}x_1[{120}k_1[{121}ri_1]]) && {122}({123}y3_1 = {125}y2_1[{126}ri_1])) then
+{127}    return({128}r_1[{129}u_1])
+       orfind u = ri <= qH3 suchthat defined(r_2[{132}ri], y3_1[{133}ri], x3_1[{134}ri]) && {135}({136}({137}x3_1 = {139}x3_1[{140}ri]) && {141}({142}y3_1 = {144}y3_1[{145}ri])) then
+{146}    return({147}r_2[{148}u])
+       else
+{151}    r_2 <-R output2;
+{152}    return({153}r_2)
+     ))
+
+Doing insert instruction find[unique] ri3 <= qH2 suchthat defined(r_1[ri3], y2_1[ri3], x_1[k_1[ri3]]) && (k_1 = k_1[ri3]) && (y2_1 = y2_1[ri3]) then orfind ri2 <= qH3 suchthat defined(r_2[ri2], y3_1[ri2], x3_1[ri2]) && (x_1[k_1] = x3_1[ri2]) && (y2_1 = y3_1[ri2]) then  at occurrence 35... Done.
+Doing simplify... Doing global dependency analysis on r inside simplify... At 22, returned message r depends on r.
+No change
+Doing global dependency analysis on r inside simplify... At 22, returned message r depends on r.
+No change
+Run simplify 2 time(s). Maximum reached.
+Done.
+Doing SA rename ri2... Done.
+Doing SA rename new without array accesses and remove assignments of findcond... No change.
+Doing simplify... Doing global dependency analysis on r inside simplify... At 22, returned message r depends on r.
+No change
+Doing global dependency analysis on r inside simplify... At 22, returned message r depends on r.
+No change
+Run simplify 2 time(s). Maximum reached.
+Done.
+Doing SA rename ri3... No change.
+Doing simplify... Doing global dependency analysis on r inside simplify... At 22, returned message r depends on r.
+No change
+Run simplify 1 time(s). Fixpoint reached.
+No change.
+Doing remove assignments of useless... Done.
+     Ostart() :=
+     return();
+     ((
+       foreach i_3 <= qH1 do
+       OH1(x_1: input1) :=
+       find j_1 = j <= qH1 suchthat defined(x_1[j], r[j]) && (x_1 = x_1[j]) then
+         return(r[j_1])
+       else
+         r <-R output1;
+         return(r)
+     ) | (
+       foreach i_4 <= qH2 do
+       OH2(x2_1: output1, y2_1: input2) :=
+       find k_1 = k <= qH1 suchthat defined(x_1[k], r[k]) && (r[k] = x2_1) then
+         find [unique] ri3 = ri3_1 <= qH2 suchthat defined(r_1[ri3_1], y2_1[ri3_1], k_1[ri3_1]) && (k_1 = k_1[ri3_1]) && (y2_1 = y2_1[ri3_1]) then
+           return(r_1[ri3])
+         orfind ri2_5 = ri2_1 <= qH3 suchthat defined(r_2[ri2_1], y3_1[ri2_1], x3_1[ri2_1]) && (x_1[k_1] = x3_1[ri2_1]) && (y2_1 = y3_1[ri2_1]) then
+           return(r_2[ri2_5])
+         else
+           r_1 <-R output2;
+           return(r_1)
+       else
+         find l_1 = l <= qH2 suchthat defined(x2_1[l], y2_1[l], r2[l]) && (x2_1 = x2_1[l]) && (y2_1 = y2_1[l]) then
+           return(r2[l_1])
+         else
+           r2 <-R output2;
+           return(r2)
+     ) | (
+       foreach i_5 <= qH3 do
+       HComb(x3_1: input1, y3_1: input2) :=
+       find [unique] u_1 = ri_1 <= qH2 suchthat defined(r_1[ri_1], y2_1[ri_1], x_1[k_1[ri_1]]) && (x3_1 = x_1[k_1[ri_1]]) && (y3_1 = y2_1[ri_1]) then
+         return(r_1[u_1])
+       orfind u = ri <= qH3 suchthat defined(r_2[ri], y3_1[ri], x3_1[ri]) && (x3_1 = x3_1[ri]) && (y3_1 = y3_1[ri]) then
+         return(r_2[u])
+       else
+         r_2 <-R output2;
+         return(r_2)
+     ))
+
+Proved query event(non_unique) ==> false
+Proved query indistinguishability from game 1
+===================== Proof starts =======================
+Initial state
+Game 1 is
+     Ostart() :=
+     hk1 <-R hashkey1;
+     hk2 <-R hashkey2;
+     return();
+     ((
+       foreach i <= qH1 do
+       OH1(x: input1) :=
+       return(H1(hk1, x))
+     ) | (
+       foreach i_1 <= qH2 do
+       OH2(x2: output1, y2: input2) :=
+       return(H2(hk2, x2, y2))
+     ) | (
+       foreach i_2 <= qH3 do
+       HComb(x3: input1, y3: input2) :=
+       return(H2(hk2, H1(hk1, x3), y3))
+     ))
+
+
+Applying equivalence rom(H2)
+  - Equivalence rom(H2) with variables: hk2 -> hk
+yields
+
+Game 2 is
+     Ostart() :=
+     hk1 <-R hashkey1;
+     return();
+     ((
+       foreach i <= qH1 do
+       OH1(x: input1) :=
+       return(H1(hk1, x))
+     ) | (
+       foreach i_1 <= qH2 do
+       OH2(x2: output1, y2: input2) :=
+       return((x_O_5: output1 <- x2; x_O_4: input2 <- y2; find [unique] u_7 = ri_7 <= qH2 suchthat defined(x_O_5[ri_7], x_O_4[ri_7], r_3[ri_7]) && (x_O_5 = x_O_5[ri_7]) && (x_O_4 = x_O_4[ri_7]) then r_3[u_7] orfind u_6 = ri_6 <= qH3 suchthat defined(x_O_7[ri_6], x_O_6[ri_6], r_4[ri_6]) && (x_O_5 = x_O_7[ri_6]) && (x_O_4 = x_O_6[ri_6]) then r_4[u_6] else r_3 <-R output2; r_3))
+     ) | (
+       foreach i_2 <= qH3 do
+       HComb(x3: input1, y3: input2) :=
+       return((x_O_7: output1 <- H1(hk1, x3); x_O_6: input2 <- y3; find [unique] u_5 = ri_5 <= qH2 suchthat defined(x_O_5[ri_5], x_O_4[ri_5], r_3[ri_5]) && (x_O_7 = x_O_5[ri_5]) && (x_O_6 = x_O_4[ri_5]) then r_3[u_5] orfind u_4 = ri_4 <= qH3 suchthat defined(x_O_7[ri_4], x_O_6[ri_4], r_4[ri_4]) && (x_O_7 = x_O_7[ri_4]) && (x_O_6 = x_O_6[ri_4]) then r_4[u_4] else r_4 <-R output2; r_4))
+     ))
+
+
+Applying expand
+  - Expand if/find/let
+yields
+
+Game 3 is
+     Ostart() :=
+     hk1 <-R hashkey1;
+     return();
+     ((
+       foreach i <= qH1 do
+       OH1(x: input1) :=
+       return(H1(hk1, x))
+     ) | (
+       foreach i_1 <= qH2 do
+       OH2(x2: output1, y2: input2) :=
+       x_O_5: output1 <- x2;
+       x_O_4: input2 <- y2;
+       find [unique] u_7 = ri_7 <= qH2 suchthat defined(x_O_5[ri_7], x_O_4[ri_7], r_3[ri_7]) && (x_O_5 = x_O_5[ri_7]) && (x_O_4 = x_O_4[ri_7]) then
+         return(r_3[u_7])
+       orfind u_6 = ri_6 <= qH3 suchthat defined(x_O_7[ri_6], x_O_6[ri_6], r_4[ri_6]) && (x_O_5 = x_O_7[ri_6]) && (x_O_4 = x_O_6[ri_6]) then
+         return(r_4[u_6])
+       else
+         r_3 <-R output2;
+         return(r_3)
+     ) | (
+       foreach i_2 <= qH3 do
+       HComb(x3: input1, y3: input2) :=
+       x_O_7: output1 <- H1(hk1, x3);
+       x_O_6: input2 <- y3;
+       find [unique] u_5 = ri_5 <= qH2 suchthat defined(x_O_5[ri_5], x_O_4[ri_5], r_3[ri_5]) && (x_O_7 = x_O_5[ri_5]) && (x_O_6 = x_O_4[ri_5]) then
+         return(r_3[u_5])
+       orfind u_4 = ri_4 <= qH3 suchthat defined(x_O_7[ri_4], x_O_6[ri_4], r_4[ri_4]) && (x_O_7 = x_O_7[ri_4]) && (x_O_6 = x_O_6[ri_4]) then
+         return(r_4[u_4])
+       else
+         r_4 <-R output2;
+         return(r_4)
+     ))
+
+
+Applying remove assignments of findcond
+  - Remove assignments on x_O_6 (definition removed, all usages removed)
+  - Remove assignments on x_O_5 (definition point kept, all usages removed)
+  - Remove assignments on x_O_4 (definition removed, all usages removed)
+yields
+
+Game 4 is
+     Ostart() :=
+     hk1 <-R hashkey1;
+     return();
+     ((
+       foreach i <= qH1 do
+       OH1(x: input1) :=
+       return(H1(hk1, x))
+     ) | (
+       foreach i_1 <= qH2 do
+       OH2(x2: output1, y2: input2) :=
+       x_O_5: output1 <- cst_output1;
+ {18}  find [unique] u_7 = ri_7 <= qH2 suchthat defined(x2[ri_7], y2[ri_7], x_O_5[ri_7], r_3[ri_7]) && (x2 = x2[ri_7]) && (y2 = y2[ri_7]) then
+         return(r_3[u_7])
+       orfind u_6 = ri_6 <= qH3 suchthat defined(y3[ri_6], x_O_7[ri_6], r_4[ri_6]) && (x2 = x_O_7[ri_6]) && (y2 = y3[ri_6]) then
+         return(r_4[u_6])
+       else
+         r_3 <-R output2;
+         return(r_3)
+     ) | (
+       foreach i_2 <= qH3 do
+       HComb(x3: input1, y3: input2) :=
+       x_O_7: output1 <- H1(hk1, x3);
+ {71}  find [unique] u_5 = ri_5 <= qH2 suchthat defined(x2[ri_5], y2[ri_5], x_O_5[ri_5], r_3[ri_5]) && (x_O_7 = x2[ri_5]) && (y3 = y2[ri_5]) then
+         return(r_3[u_5])
+       orfind u_4 = ri_4 <= qH3 suchthat defined(y3[ri_4], x_O_7[ri_4], r_4[ri_4]) && (x_O_7 = x_O_7[ri_4]) && (y3 = y3[ri_4]) then
+         return(r_4[u_4])
+       else
+         r_4 <-R output2;
+         return(r_4)
+     ))
+
+
+Applying simplify
+  - Simplification pass
+    - Replaced defined condition x2[ri_5], y2[ri_5], x_O_5[ri_5], r_3[ri_5] with r_3[ri_5], y2[ri_5], x2[ri_5] in find at 71
+    - Replaced defined condition x2[ri_7], y2[ri_7], x_O_5[ri_7], r_3[ri_7] with r_3[ri_7], y2[ri_7], x2[ri_7] in find at 18
+yields
+
+Game 5 is
+     Ostart() :=
+     hk1 <-R hashkey1;
+     return();
+     ((
+       foreach i <= qH1 do
+       OH1(x: input1) :=
+       return(H1(hk1, x))
+     ) | (
+       foreach i_1 <= qH2 do
+       OH2(x2: output1, y2: input2) :=
+       x_O_5: output1 <- cst_output1;
+       find [unique] u_7 = ri_7 <= qH2 suchthat defined(r_3[ri_7], y2[ri_7], x2[ri_7]) && (x2 = x2[ri_7]) && (y2 = y2[ri_7]) then
+         return(r_3[u_7])
+       orfind u_6 = ri_6 <= qH3 suchthat defined(y3[ri_6], x_O_7[ri_6], r_4[ri_6]) && (x2 = x_O_7[ri_6]) && (y2 = y3[ri_6]) then
+         return(r_4[u_6])
+       else
+         r_3 <-R output2;
+         return(r_3)
+     ) | (
+       foreach i_2 <= qH3 do
+       HComb(x3: input1, y3: input2) :=
+       x_O_7: output1 <- H1(hk1, x3);
+       find [unique] u_5 = ri_5 <= qH2 suchthat defined(r_3[ri_5], y2[ri_5], x2[ri_5]) && (x_O_7 = x2[ri_5]) && (y3 = y2[ri_5]) then
+         return(r_3[u_5])
+       orfind u_4 = ri_4 <= qH3 suchthat defined(y3[ri_4], x_O_7[ri_4], r_4[ri_4]) && (x_O_7 = x_O_7[ri_4]) && (y3 = y3[ri_4]) then
+         return(r_4[u_4])
+       else
+         r_4 <-R output2;
+         return(r_4)
+     ))
+
+
+Applying move all binders
+  - Move assignment to x_O_5
+yields
+
+Game 6 is
+     Ostart() :=
+     hk1 <-R hashkey1;
+     return();
+     ((
+       foreach i <= qH1 do
+       OH1(x: input1) :=
+       return(H1(hk1, x))
+     ) | (
+       foreach i_1 <= qH2 do
+       OH2(x2: output1, y2: input2) :=
+       find [unique] u_7 = ri_7 <= qH2 suchthat defined(r_3[ri_7], y2[ri_7], x2[ri_7]) && (x2 = x2[ri_7]) && (y2 = y2[ri_7]) then
+         return(r_3[u_7])
+       orfind u_6 = ri_6 <= qH3 suchthat defined(y3[ri_6], x_O_7[ri_6], r_4[ri_6]) && (x2 = x_O_7[ri_6]) && (y2 = y3[ri_6]) then
+         return(r_4[u_6])
+       else
+         r_3 <-R output2;
+         return(r_3)
+     ) | (
+       foreach i_2 <= qH3 do
+       HComb(x3: input1, y3: input2) :=
+       x_O_7: output1 <- H1(hk1, x3);
+       find [unique] u_5 = ri_5 <= qH2 suchthat defined(r_3[ri_5], y2[ri_5], x2[ri_5]) && (x_O_7 = x2[ri_5]) && (y3 = y2[ri_5]) then
+         return(r_3[u_5])
+       orfind u_4 = ri_4 <= qH3 suchthat defined(y3[ri_4], x_O_7[ri_4], r_4[ri_4]) && (x_O_7 = x_O_7[ri_4]) && (y3 = y3[ri_4]) then
+         return(r_4[u_4])
+       else
+         r_4 <-R output2;
+         return(r_4)
+     ))
+
+
+Applying remove assignments of binder x_O_7
+  - Remove assignments on x_O_7 (definition point kept, all usages removed)
+yields
+
+Game 7 is
+     Ostart() :=
+     hk1 <-R hashkey1;
+     return();
+     ((
+       foreach i <= qH1 do
+       OH1(x: input1) :=
+       return(H1(hk1, x))
+     ) | (
+       foreach i_1 <= qH2 do
+       OH2(x2: output1, y2: input2) :=
+       find [unique] u_7 = ri_7 <= qH2 suchthat defined(r_3[ri_7], y2[ri_7], x2[ri_7]) && (x2 = x2[ri_7]) && (y2 = y2[ri_7]) then
+         return(r_3[u_7])
+       orfind u_6 = ri_6 <= qH3 suchthat defined(x3[ri_6], hk1, x_O_7[ri_6], y3[ri_6], r_4[ri_6]) && (x2 = H1(hk1, x3[ri_6])) && (y2 = y3[ri_6]) then
+         return(r_4[u_6])
+       else
+         r_3 <-R output2;
+         return(r_3)
+     ) | (
+       foreach i_2 <= qH3 do
+       HComb(x3: input1, y3: input2) :=
+       x_O_7: output1 <- cst_output1;
+       find [unique] u_5 = ri_5 <= qH2 suchthat defined(r_3[ri_5], y2[ri_5], x2[ri_5]) && (H1(hk1, x3) = x2[ri_5]) && (y3 = y2[ri_5]) then
+         return(r_3[u_5])
+       orfind u_4 = ri_4 <= qH3 suchthat defined(x3[ri_4], hk1, x_O_7[ri_4], y3[ri_4], r_4[ri_4]) && (H1(hk1, x3) = H1(hk1, x3[ri_4])) && (y3 = y3[ri_4]) then
+         return(r_4[u_4])
+       else
+         r_4 <-R output2;
+         return(r_4)
+     ))
+
+
+Applying equivalence rom(H1) [probability (qH3 * qH2 + qH3^2) / |output1|]
+  - Equivalence rom(H1) with variables: hk1 -> hk
+yields
+
+Game 8 is
+     Ostart() :=
+     hk1: hashkey1 <- cst_hashkey1;
+     return();
+     ((
+       foreach i <= qH1 do
+       OH1(x: input1) :=
+       return((x_O_8: input1 <- x; find [unique] u_10 = ri_10 <= qH1 suchthat defined(x_O_8[ri_10], r_5[ri_10]) && (x_O_8 = x_O_8[ri_10]) then r_5[u_10] else r_5 <-R output1; r_5))
+     ) | (
+       foreach i_1 <= qH2 do
+       OH2(x2: output1, y2: input2) :=
+       find [unique] u_7 = ri_7 <= qH2 suchthat defined(r_3[ri_7], y2[ri_7], x2[ri_7]) && (x2 = x2[ri_7]) && (y2 = y2[ri_7]) then
+         return(r_3[u_7])
+       orfind u_6 = ri_6 <= qH3 suchthat defined(r_4[ri_6], y3[ri_6], x3[ri_6]) && (x_Oeq: input1 <- x3[ri_6]; X_Oeq: output1 <- x2; find [unique] u_9 = ri_9 <= qH1 suchthat defined(x_O_8[ri_9], r_5[ri_9]) && (x_Oeq = x_O_8[ri_9]) then (X_Oeq = r_5[u_9]) else false) && (y2 = y3[ri_6]) then
+         return(r_4[u_6])
+       else
+         r_3 <-R output2;
+         return(r_3)
+     ) | (
+       foreach i_2 <= qH3 do
+       HComb(x3: input1, y3: input2) :=
+       x_O_7: output1 <- cst_output1;
+       find [unique] u_5 = ri_5 <= qH2 suchthat defined(r_3[ri_5], y2[ri_5], x2[ri_5]) && (x_Oeq_1: input1 <- x3; X_Oeq_1: output1 <- x2[ri_5]; find [unique] u_8 = ri_8 <= qH1 suchthat defined(x_O_8[ri_8], r_5[ri_8]) && (x_Oeq_1 = x_O_8[ri_8]) then (X_Oeq_1 = r_5[u_8]) else false) && (y3 = y2[ri_5]) then
+         return(r_3[u_5])
+       orfind u_4 = ri_4 <= qH3 suchthat defined(r_4[ri_4], y3[ri_4], x3[ri_4]) && (y_Ocoll: input1 <- x3; z_Ocoll: input1 <- x3[ri_4]; (y_Ocoll = z_Ocoll)) && (y3 = y3[ri_4]) then
+         return(r_4[u_4])
+       else
+         r_4 <-R output2;
+         return(r_4)
+     ))
+
+
+Applying expand
+  - Expand if/find/let
+yields
+
+Game 9 is
+     Ostart() :=
+     hk1: hashkey1 <- cst_hashkey1;
+     return();
+     ((
+       foreach i <= qH1 do
+       OH1(x: input1) :=
+       x_O_8: input1 <- x;
+       find [unique] u_10 = ri_10 <= qH1 suchthat defined(x_O_8[ri_10], r_5[ri_10]) && (x_O_8 = x_O_8[ri_10]) then
+         return(r_5[u_10])
+       else
+         r_5 <-R output1;
+         return(r_5)
+     ) | (
+       foreach i_1 <= qH2 do
+       OH2(x2: output1, y2: input2) :=
+       find [unique] u_7 = ri_7 <= qH2 suchthat defined(r_3[ri_7], y2[ri_7], x2[ri_7]) && (x2 = x2[ri_7]) && (y2 = y2[ri_7]) then
+         return(r_3[u_7])
+       orfind u_6 = ri_6 <= qH3 suchthat defined(r_4[ri_6], y3[ri_6], x3[ri_6]) && (x_Oeq: input1 <- x3[ri_6]; X_Oeq: output1 <- x2; find [unique] u_9 = ri_9 <= qH1 suchthat defined(x_O_8[ri_9], r_5[ri_9]) && (x_Oeq = x_O_8[ri_9]) then ((X_Oeq = r_5[u_9]) && (y2 = y3[ri_6])) else false) then
+         return(r_4[u_6])
+       else
+         r_3 <-R output2;
+         return(r_3)
+     ) | (
+       foreach i_2 <= qH3 do
+       HComb(x3: input1, y3: input2) :=
+       x_O_7: output1 <- cst_output1;
+       find [unique] u_5 = ri_5 <= qH2 suchthat defined(r_3[ri_5], y2[ri_5], x2[ri_5]) && (x_Oeq_1: input1 <- x3; X_Oeq_1: output1 <- x2[ri_5]; find [unique] u_8 = ri_8 <= qH1 suchthat defined(x_O_8[ri_8], r_5[ri_8]) && (x_Oeq_1 = x_O_8[ri_8]) then ((X_Oeq_1 = r_5[u_8]) && (y3 = y2[ri_5])) else false) then
+         return(r_3[u_5])
+       orfind u_4 = ri_4 <= qH3 suchthat defined(r_4[ri_4], y3[ri_4], x3[ri_4]) && (y_Ocoll: input1 <- x3; z_Ocoll: input1 <- x3[ri_4]; ((y_Ocoll = z_Ocoll) && (y3 = y3[ri_4]))) then
+         return(r_4[u_4])
+       else
+         r_4 <-R output2;
+         return(r_4)
+     ))
+
+
+Applying remove assignments of findcond
+  - Remove assignments on hk1 (definition removed, all usages removed)
+  - Remove assignments on x_O_7 (definition removed, all usages removed)
+  - Remove assignments on x_Oeq_1 (definition removed, all usages removed)
+  - Remove assignments on X_Oeq_1 (definition removed, all usages removed)
+  - Remove assignments on y_Ocoll (definition removed, all usages removed)
+  - Remove assignments on z_Ocoll (definition removed, all usages removed)
+  - Remove assignments on x_Oeq (definition removed, all usages removed)
+  - Remove assignments on X_Oeq (definition removed, all usages removed)
+  - Remove assignments on x_O_8 (definition point kept, all usages removed)
+yields
+
+Game 10 is
+     Ostart() :=
+     return();
+     ((
+       foreach i <= qH1 do
+       OH1(x: input1) :=
+       x_O_8: input1 <- cst_input1;
+  {9}  find [unique] u_10 = ri_10 <= qH1 suchthat defined(x[ri_10], x_O_8[ri_10], r_5[ri_10]) && (x = x[ri_10]) then
+         return(r_5[u_10])
+       else
+         r_5 <-R output1;
+         return(r_5)
+     ) | (
+       foreach i_1 <= qH2 do
+       OH2(x2: output1, y2: input2) :=
+ {31}  find [unique] u_7 = ri_7 <= qH2 suchthat defined(r_3[ri_7], y2[ri_7], x2[ri_7]) && (x2 = x2[ri_7]) && (y2 = y2[ri_7]) then
+         return(r_3[u_7])
+       orfind u_6 = ri_6 <= qH3 suchthat defined(r_4[ri_6], y3[ri_6], x3[ri_6]) && {54}(find [unique] u_9 = ri_9 <= qH1 suchthat defined(x[ri_9], x_O_8[ri_9], r_5[ri_9]) && (x3[ri_6] = x[ri_9]) then ((x2 = r_5[u_9]) && (y2 = y3[ri_6])) else false) then
+         return(r_4[u_6])
+       else
+         r_3 <-R output2;
+         return(r_3)
+     ) | (
+       foreach i_2 <= qH3 do
+       HComb(x3: input1, y3: input2) :=
+ {89}  find [unique] u_5 = ri_5 <= qH2 suchthat defined(r_3[ri_5], y2[ri_5], x2[ri_5]) && {93}(find [unique] u_8 = ri_8 <= qH1 suchthat defined(x[ri_8], x_O_8[ri_8], r_5[ri_8]) && (x3 = x[ri_8]) then ((x2[ri_5] = r_5[u_8]) && (y3 = y2[ri_5])) else false) then
+         return(r_3[u_5])
+       orfind u_4 = ri_4 <= qH3 suchthat defined(r_4[ri_4], y3[ri_4], x3[ri_4]) && (x3 = x3[ri_4]) && (y3 = y3[ri_4]) then
+         return(r_4[u_4])
+       else
+         r_4 <-R output2;
+         return(r_4)
+     ))
+
+
+Applying simplify
+  - Simplification pass
+    - Simplified find at 93 in condition of find at 89
+    - Simplified find at 54 in condition of find at 31
+    - Replaced defined condition x[ri_10], x_O_8[ri_10], r_5[ri_10] with r_5[ri_10], x[ri_10] in find at 9
+yields
+
+Game 11 is
+     Ostart() :=
+     return();
+     ((
+       foreach i <= qH1 do
+       OH1(x: input1) :=
+       x_O_8: input1 <- cst_input1;
+       find [unique] u_10 = ri_10 <= qH1 suchthat defined(r_5[ri_10], x[ri_10]) && (x = x[ri_10]) then
+         return(r_5[u_10])
+       else
+         r_5 <-R output1;
+         return(r_5)
+     ) | (
+       foreach i_1 <= qH2 do
+       OH2(x2: output1, y2: input2) :=
+ {30}  find [unique] u_7 = ri_7 <= qH2 suchthat defined(r_3[ri_7], y2[ri_7], x2[ri_7]) && (x2 = x2[ri_7]) && (y2 = y2[ri_7]) then
+         return(r_3[u_7])
+       orfind u_6 = ri_6 <= qH3, u_12 = ri_9 <= qH1 suchthat defined(r_4[ri_6], y3[ri_6], x3[ri_6], x[ri_9], x_O_8[ri_9], r_5[ri_9]) && (x3[ri_6] = x[ri_9]) && (x2 = r_5[ri_9]) && (y2 = y3[ri_6]) then
+         return(r_4[u_6])
+       else
+         r_3 <-R output2;
+         return(r_3)
+     ) | (
+       foreach i_2 <= qH3 do
+       HComb(x3: input1, y3: input2) :=
+ {85}  find [unique] u_5 = ri_5 <= qH2, u_11 = ri_8 <= qH1 suchthat defined(r_3[ri_5], y2[ri_5], x2[ri_5], x[ri_8], x_O_8[ri_8], r_5[ri_8]) && (x3 = x[ri_8]) && (x2[ri_5] = r_5[ri_8]) && (y3 = y2[ri_5]) then
+         return(r_3[u_5])
+       orfind u_4 = ri_4 <= qH3 suchthat defined(r_4[ri_4], y3[ri_4], x3[ri_4]) && (x3 = x3[ri_4]) && (y3 = y3[ri_4]) then
+         return(r_4[u_4])
+       else
+         r_4 <-R output2;
+         return(r_4)
+     ))
+
+
+Applying simplify
+  - Simplification pass
+    - Replaced defined condition r_3[ri_5], y2[ri_5], x2[ri_5], x[ri_8], x_O_8[ri_8], r_5[ri_8] with r_3[ri_5], y2[ri_5], r_5[ri_8], x2[ri_5], x[ri_8] in find at 85
+    - Replaced defined condition r_4[ri_6], y3[ri_6], x3[ri_6], x[ri_9], x_O_8[ri_9], r_5[ri_9] with r_4[ri_6], y3[ri_6], r_5[ri_9], x[ri_9], x3[ri_6] in find at 30
+yields
+
+Game 12 is
+     Ostart() :=
+     return();
+     ((
+       foreach i <= qH1 do
+       OH1(x: input1) :=
+       x_O_8: input1 <- cst_input1;
+       find [unique] u_10 = ri_10 <= qH1 suchthat defined(r_5[ri_10], x[ri_10]) && (x = x[ri_10]) then
+         return(r_5[u_10])
+       else
+         r_5 <-R output1;
+         return(r_5)
+     ) | (
+       foreach i_1 <= qH2 do
+       OH2(x2: output1, y2: input2) :=
+       find [unique] u_7 = ri_7 <= qH2 suchthat defined(r_3[ri_7], y2[ri_7], x2[ri_7]) && (x2 = x2[ri_7]) && (y2 = y2[ri_7]) then
+         return(r_3[u_7])
+       orfind u_6 = ri_6 <= qH3, u_12 = ri_9 <= qH1 suchthat defined(r_4[ri_6], y3[ri_6], r_5[ri_9], x[ri_9], x3[ri_6]) && (x3[ri_6] = x[ri_9]) && (x2 = r_5[ri_9]) && (y2 = y3[ri_6]) then
+         return(r_4[u_6])
+       else
+         r_3 <-R output2;
+         return(r_3)
+     ) | (
+       foreach i_2 <= qH3 do
+       HComb(x3: input1, y3: input2) :=
+       find [unique] u_5 = ri_5 <= qH2, u_11 = ri_8 <= qH1 suchthat defined(r_3[ri_5], y2[ri_5], r_5[ri_8], x2[ri_5], x[ri_8]) && (x3 = x[ri_8]) && (x2[ri_5] = r_5[ri_8]) && (y3 = y2[ri_5]) then
+         return(r_3[u_5])
+       orfind u_4 = ri_4 <= qH3 suchthat defined(r_4[ri_4], y3[ri_4], x3[ri_4]) && (x3 = x3[ri_4]) && (y3 = y3[ri_4]) then
+         return(r_4[u_4])
+       else
+         r_4 <-R output2;
+         return(r_4)
+     ))
+
+
+Applying move all binders
+  - Move assignment to x_O_8
+yields
+
+Game 13 is
+     Ostart() :=
+     return();
+     ((
+       foreach i <= qH1 do
+       OH1(x: input1) :=
+       find [unique] u_10 = ri_10 <= qH1 suchthat defined(r_5[ri_10], x[ri_10]) && (x = x[ri_10]) then
+         return(r_5[u_10])
+       else
+         r_5 <-R output1;
+         return(r_5)
+     ) | (
+       foreach i_1 <= qH2 do
+       OH2(x2: output1, y2: input2) :=
+ {27}  find [unique] u_7 = ri_7 <= qH2 suchthat defined(r_3[ri_7], y2[ri_7], x2[ri_7]) && (x2 = x2[ri_7]) && (y2 = y2[ri_7]) then
+         return(r_3[u_7])
+       orfind u_6 = ri_6 <= qH3, u_12 = ri_9 <= qH1 suchthat defined(r_4[ri_6], y3[ri_6], r_5[ri_9], x[ri_9], x3[ri_6]) && (x3[ri_6] = x[ri_9]) && (x2 = r_5[ri_9]) && (y2 = y3[ri_6]) then
+         return(r_4[u_6])
+       else
+         r_3 <-R output2;
+         return(r_3)
+     ) | (
+       foreach i_2 <= qH3 do
+       HComb(x3: input1, y3: input2) :=
+       find [unique] u_5 = ri_5 <= qH2, u_11 = ri_8 <= qH1 suchthat defined(r_3[ri_5], y2[ri_5], r_5[ri_8], x2[ri_5], x[ri_8]) && (x3 = x[ri_8]) && (x2[ri_5] = r_5[ri_8]) && (y3 = y2[ri_5]) then
+         return(r_3[u_5])
+       orfind u_4 = ri_4 <= qH3 suchthat defined(r_4[ri_4], y3[ri_4], x3[ri_4]) && (x3 = x3[ri_4]) && (y3 = y3[ri_4]) then
+         return(r_4[u_4])
+       else
+         r_4 <-R output2;
+         return(r_4)
+     ))
+
+
+Applying insert instruction find k <= qH1 suchthat defined(x[k], r_5[k]) && (r_5[k] = x2) then at occurrence 27
+yields
+
+Game 14 is
+     Ostart() :=
+     return();
+     ((
+       foreach i <= qH1 do
+       OH1(x: input1) :=
+       find [unique] u_10 = ri_10 <= qH1 suchthat defined(r_5[ri_10], x[ri_10]) && (x = x[ri_10]) then
+         return(r_5[u_10])
+       else
+         r_5 <-R output1;
+         return(r_5)
+     ) | (
+       foreach i_1 <= qH2 do
+       OH2(x2: output1, y2: input2) :=
+       find k_2 = k_3 <= qH1 suchthat defined(x[k_3], r_5[k_3]) && (r_5[k_3] = x2) then
+ {35}    find [unique] u_7 = ri_7 <= qH2 suchthat defined(r_3[ri_7], y2[ri_7], x2[ri_7]) && (x2 = x2[ri_7]) && (y2 = y2[ri_7]) then
+           return(r_3[u_7])
+         orfind u_6 = ri_6 <= qH3, u_12 = ri_9 <= qH1 suchthat defined(r_4[ri_6], y3[ri_6], r_5[ri_9], x[ri_9], x3[ri_6]) && {60}((x3[ri_6] = x[ri_9]) && (x2 = r_5[ri_9]) && (y2 = y3[ri_6])) then
+           return(r_4[u_6])
+         else
+           r_3 <-R output2;
+           return(r_3)
+       else
+ {87}    find [unique] u_7 = ri_7 <= qH2 suchthat defined(r_3[ri_7], y2[ri_7], x2[ri_7]) && (x2 = x2[ri_7]) && (y2 = y2[ri_7]) then
+           return(r_3[u_7])
+         orfind u_6 = ri_6 <= qH3, u_12 = ri_9 <= qH1 suchthat defined(r_4[ri_6], y3[ri_6], r_5[ri_9], x[ri_9], x3[ri_6]) && {112}((x3[ri_6] = x[ri_9]) && (x2 = r_5[ri_9]) && (y2 = y3[ri_6])) then
+           return(r_4[u_6])
+         else
+           r_3 <-R output2;
+           return(r_3)
+     ) | (
+       foreach i_2 <= qH3 do
+       HComb(x3: input1, y3: input2) :=
+       find [unique] u_5 = ri_5 <= qH2, u_11 = ri_8 <= qH1 suchthat defined(r_3[ri_5], y2[ri_5], r_5[ri_8], x2[ri_5], x[ri_8]) && (x3 = x[ri_8]) && (x2[ri_5] = r_5[ri_8]) && (y3 = y2[ri_5]) then
+         return(r_3[u_5])
+       orfind u_4 = ri_4 <= qH3 suchthat defined(r_4[ri_4], y3[ri_4], x3[ri_4]) && (x3 = x3[ri_4]) && (y3 = y3[ri_4]) then
+         return(r_4[u_4])
+       else
+         r_4 <-R output2;
+         return(r_4)
+     ))
+
+
+Applying simplify [probability (0.5 * qH1^2 + qH2 * qH1) / |output1|]
+  - Simplification pass
+    - Replaced ((x3[ri_6] = x[ri_9]) && (x2 = r_5[ri_9]) && (y2 = y3[ri_6])) with false at 112
+    - Remove branch 2 in find at 87
+    - Replaced ((x3[ri_6] = x[ri_9]) && (x2 = r_5[ri_9]) && (y2 = y3[ri_6])) with ((x3[ri_6] = x[ri_9]) && (k_2 = ri_9) && (y2 = y3[ri_6])) at 60
+    - In branch 2 of find at 35, substituting u_12 with k_2
+    - Replaced defined condition r_4[ri_6], y3[ri_6], r_5[ri_9], x[ri_9], x3[ri_6] with r_4[ri_6], y3[ri_6], x3[ri_6] in find at 35
+yields
+
+Game 15 is
+     Ostart() :=
+     return();
+     ((
+       foreach i <= qH1 do
+       OH1(x: input1) :=
+       find [unique] u_10 = ri_10 <= qH1 suchthat defined(r_5[ri_10], x[ri_10]) && (x = x[ri_10]) then
+         return(r_5[u_10])
+       else
+         r_5 <-R output1;
+         return(r_5)
+     ) | (
+       foreach i_1 <= qH2 do
+       OH2(x2: output1, y2: input2) :=
+       find k_2 = k_3 <= qH1 suchthat defined(x[k_3], r_5[k_3]) && (r_5[k_3] = x2) then
+         find [unique] u_7 = ri_7 <= qH2 suchthat defined(r_3[ri_7], y2[ri_7], x2[ri_7]) && (x2 = x2[ri_7]) && (y2 = y2[ri_7]) then
+           return(r_3[u_7])
+         orfind u_6 = ri_6 <= qH3 suchthat defined(r_4[ri_6], y3[ri_6], x3[ri_6]) && {58}((x3[ri_6] = x[k_2]) && (k_2 = k_2) && (y2 = y3[ri_6])) then
+           u_12 <= qH1 <- k_2;
+           return(r_4[u_6])
+         else
+           r_3 <-R output2;
+           return(r_3)
+       else
+         find [unique] u_7 = ri_7 <= qH2 suchthat defined(r_3[ri_7], y2[ri_7], x2[ri_7]) && (x2 = x2[ri_7]) && (y2 = y2[ri_7]) then
+           return(r_3[u_7])
+         else
+           r_3 <-R output2;
+           return(r_3)
+     ) | (
+       foreach i_2 <= qH3 do
+       HComb(x3: input1, y3: input2) :=
+       find [unique] u_5 = ri_5 <= qH2, u_11 = ri_8 <= qH1 suchthat defined(r_3[ri_5], y2[ri_5], r_5[ri_8], x2[ri_5], x[ri_8]) && (x3 = x[ri_8]) && (x2[ri_5] = r_5[ri_8]) && (y3 = y2[ri_5]) then
+         return(r_3[u_5])
+       orfind u_4 = ri_4 <= qH3 suchthat defined(r_4[ri_4], y3[ri_4], x3[ri_4]) && (x3 = x3[ri_4]) && (y3 = y3[ri_4]) then
+         return(r_4[u_4])
+       else
+         r_4 <-R output2;
+         return(r_4)
+     ))
+
+
+Applying simplify
+  - Simplification pass
+    - Replaced ((x3[ri_6] = x[k_2]) && (k_2 = k_2) && (y2 = y3[ri_6])) with ((x3[ri_6] = x[k_2]) && (y2 = y3[ri_6])) at 58
+yields
+
+Game 16 is
+     Ostart() :=
+     return();
+     ((
+       foreach i <= qH1 do
+       OH1(x: input1) :=
+       find [unique] u_10 = ri_10 <= qH1 suchthat defined(r_5[ri_10], x[ri_10]) && (x = x[ri_10]) then
+         return(r_5[u_10])
+       else
+         r_5 <-R output1;
+         return(r_5)
+     ) | (
+       foreach i_1 <= qH2 do
+       OH2(x2: output1, y2: input2) :=
+       find k_2 = k_3 <= qH1 suchthat defined(x[k_3], r_5[k_3]) && (r_5[k_3] = x2) then
+         find [unique] u_7 = ri_7 <= qH2 suchthat defined(r_3[ri_7], y2[ri_7], x2[ri_7]) && (x2 = x2[ri_7]) && (y2 = y2[ri_7]) then
+           return(r_3[u_7])
+         orfind u_6 = ri_6 <= qH3 suchthat defined(r_4[ri_6], y3[ri_6], x3[ri_6]) && (x3[ri_6] = x[k_2]) && (y2 = y3[ri_6]) then
+           u_12 <= qH1 <- k_2;
+           return(r_4[u_6])
+         else
+           r_3 <-R output2;
+           return(r_3)
+       else
+         find [unique] u_7 = ri_7 <= qH2 suchthat defined(r_3[ri_7], y2[ri_7], x2[ri_7]) && (x2 = x2[ri_7]) && (y2 = y2[ri_7]) then
+           return(r_3[u_7])
+         else
+           r_3 <-R output2;
+           return(r_3)
+     ) | (
+       foreach i_2 <= qH3 do
+       HComb(x3: input1, y3: input2) :=
+       find [unique] u_5 = ri_5 <= qH2, u_11 = ri_8 <= qH1 suchthat defined(r_3[ri_5], y2[ri_5], r_5[ri_8], x2[ri_5], x[ri_8]) && (x3 = x[ri_8]) && (x2[ri_5] = r_5[ri_8]) && (y3 = y2[ri_5]) then
+         return(r_3[u_5])
+       orfind u_4 = ri_4 <= qH3 suchthat defined(r_4[ri_4], y3[ri_4], x3[ri_4]) && (x3 = x3[ri_4]) && (y3 = y3[ri_4]) then
+         return(r_4[u_4])
+       else
+         r_4 <-R output2;
+         return(r_4)
+     ))
+
+
+Applying SA rename r_3
+  - Rename variable r_3 into r_9, r_8
+yields
+
+Game 17 is
+     Ostart() :=
+     return();
+     ((
+       foreach i <= qH1 do
+       OH1(x: input1) :=
+       find [unique] u_10 = ri_10 <= qH1 suchthat defined(r_5[ri_10], x[ri_10]) && (x = x[ri_10]) then
+         return(r_5[u_10])
+       else
+         r_5 <-R output1;
+         return(r_5)
+     ) | (
+       foreach i_1 <= qH2 do
+       OH2(x2: output1, y2: input2) :=
+       find k_2 = k_3 <= qH1 suchthat defined(x[k_3], r_5[k_3]) && (r_5[k_3] = x2) then
+         find [unique] u_7 = ri_7 <= qH2 suchthat defined(r_8[ri_7], y2[ri_7], x2[ri_7]) && (x2 = x2[ri_7]) && (y2 = y2[ri_7]) then
+           return(r_8[u_7])
+         orfind u_7 = ri_7 <= qH2 suchthat defined(r_9[ri_7], y2[ri_7], x2[ri_7]) && (x2 = x2[ri_7]) && (y2 = y2[ri_7]) then
+           return(r_9[u_7])
+         orfind u_6 = ri_6 <= qH3 suchthat defined(r_4[ri_6], y3[ri_6], x3[ri_6]) && (x3[ri_6] = x[k_2]) && (y2 = y3[ri_6]) then
+           u_12 <= qH1 <- k_2;
+           return(r_4[u_6])
+         else
+           r_8 <-R output2;
+           return(r_8)
+       else
+         find [unique] u_7 = ri_7 <= qH2 suchthat defined(r_8[ri_7], y2[ri_7], x2[ri_7]) && (x2 = x2[ri_7]) && (y2 = y2[ri_7]) then
+           return(r_8[u_7])
+         orfind u_7 = ri_7 <= qH2 suchthat defined(r_9[ri_7], y2[ri_7], x2[ri_7]) && (x2 = x2[ri_7]) && (y2 = y2[ri_7]) then
+           return(r_9[u_7])
+         else
+           r_9 <-R output2;
+           return(r_9)
+     ) | (
+       foreach i_2 <= qH3 do
+       HComb(x3: input1, y3: input2) :=
+       find [unique] u_5 = ri_5 <= qH2, u_11 = ri_8 <= qH1 suchthat defined(r_8[ri_5], y2[ri_5], r_5[ri_8], x2[ri_5], x[ri_8]) && (x3 = x[ri_8]) && (x2[ri_5] = r_5[ri_8]) && (y3 = y2[ri_5]) then
+         return(r_8[u_5])
+       orfind u_5 = ri_5 <= qH2, u_11 = ri_8 <= qH1 suchthat defined(r_9[ri_5], y2[ri_5], r_5[ri_8], x2[ri_5], x[ri_8]) && (x3 = x[ri_8]) && (x2[ri_5] = r_5[ri_8]) && (y3 = y2[ri_5]) then
+         return(r_9[u_5])
+       orfind u_4 = ri_4 <= qH3 suchthat defined(r_4[ri_4], y3[ri_4], x3[ri_4]) && (x3 = x3[ri_4]) && (y3 = y3[ri_4]) then
+         return(r_4[u_4])
+       else
+         r_4 <-R output2;
+         return(r_4)
+     ))
+
+
+Applying SA rename new without array accesses and remove assignments of findcond
+  - Remove assignments on u_12 (definition removed, all usages removed)
+yields
+
+Game 18 is
+     Ostart() :=
+     return();
+     ((
+       foreach i <= qH1 do
+       OH1(x: input1) :=
+       find [unique] u_10 = ri_10 <= qH1 suchthat defined(r_5[ri_10], x[ri_10]) && (x = x[ri_10]) then
+         return(r_5[u_10])
+       else
+         r_5 <-R output1;
+         return(r_5)
+     ) | (
+       foreach i_1 <= qH2 do
+       OH2(x2: output1, y2: input2) :=
+       find k_2 = k_3 <= qH1 suchthat defined(x[k_3], r_5[k_3]) && (r_5[k_3] = x2) then
+ {35}    find [unique] u_7 = ri_7 <= qH2 suchthat defined(r_8[ri_7], y2[ri_7], x2[ri_7]) && {39}((x2 = x2[ri_7]) && (y2 = y2[ri_7])) then
+           return(r_8[u_7])
+         orfind u_7 = ri_7 <= qH2 suchthat defined(r_9[ri_7], y2[ri_7], x2[ri_7]) && {58}((x2 = x2[ri_7]) && (y2 = y2[ri_7])) then
+           return(r_9[u_7])
+         orfind u_6 = ri_6 <= qH3 suchthat defined(r_4[ri_6], y3[ri_6], x3[ri_6]) && (x3[ri_6] = x[k_2]) && (y2 = y3[ri_6]) then
+           return(r_4[u_6])
+         else
+           r_8 <-R output2;
+           return(r_8)
+       else
+ {99}    find [unique] u_7 = ri_7 <= qH2 suchthat defined(r_8[ri_7], y2[ri_7], x2[ri_7]) && {103}((x2 = x2[ri_7]) && (y2 = y2[ri_7])) then
+           return(r_8[u_7])
+         orfind u_7 = ri_7 <= qH2 suchthat defined(r_9[ri_7], y2[ri_7], x2[ri_7]) && (x2 = x2[ri_7]) && (y2 = y2[ri_7]) then
+           return(r_9[u_7])
+         else
+           r_9 <-R output2;
+           return(r_9)
+     ) | (
+       foreach i_2 <= qH3 do
+       HComb(x3: input1, y3: input2) :=
+{145}  find [unique] u_5 = ri_5 <= qH2, u_11 = ri_8 <= qH1 suchthat defined(r_8[ri_5], y2[ri_5], r_5[ri_8], x2[ri_5], x[ri_8]) && {151}((x3 = x[ri_8]) && (x2[ri_5] = r_5[ri_8]) && (y3 = y2[ri_5])) then
+         return(r_8[u_5])
+       orfind u_5 = ri_5 <= qH2, u_11 = ri_8 <= qH1 suchthat defined(r_9[ri_5], y2[ri_5], r_5[ri_8], x2[ri_5], x[ri_8]) && {178}((x3 = x[ri_8]) && (x2[ri_5] = r_5[ri_8]) && (y3 = y2[ri_5])) then
+         return(r_9[u_5])
+       orfind u_4 = ri_4 <= qH3 suchthat defined(r_4[ri_4], y3[ri_4], x3[ri_4]) && (x3 = x3[ri_4]) && (y3 = y3[ri_4]) then
+         return(r_4[u_4])
+       else
+         r_4 <-R output2;
+         return(r_4)
+     ))
+
+
+Applying simplify [probability (0.5 * qH1^2 + qH2 * qH1) / |output1|]
+  - Simplification pass
+    - Replaced ((x3 = x[ri_8]) && (x2[ri_5] = r_5[ri_8]) && (y3 = y2[ri_5])) with false at 178
+    - Remove branch 2 in find at 145
+    - Replaced ((x3 = x[ri_8]) && (x2[ri_5] = r_5[ri_8]) && (y3 = y2[ri_5])) with ((x3 = x[ri_8]) && (k_2[ri_5] = ri_8) && (y3 = y2[ri_5])) at 151
+    - In branch 1 of find at 145, substituting u_11 with k_2[u_5]
+    - Replaced defined condition r_8[ri_5], y2[ri_5], r_5[ri_8], x2[ri_5], x[ri_8] with r_8[ri_5], y2[ri_5], x[k_2[ri_5]] in find at 145
+    - Replaced ((x2 = x2[ri_7]) && (y2 = y2[ri_7])) with false at 103
+    - Remove branch 1 in find at 99
+    - Replaced ((x2 = x2[ri_7]) && (y2 = y2[ri_7])) with false at 58
+    - Remove branch 2 in find at 35
+    - Replaced ((x2 = x2[ri_7]) && (y2 = y2[ri_7])) with ((k_2 = k_2[ri_7]) && (y2 = y2[ri_7])) at 39
+    - Replaced defined condition r_8[ri_7], y2[ri_7], x2[ri_7] with r_8[ri_7], y2[ri_7], k_2[ri_7] in find at 35
+yields
+
+Game 19 is
+     Ostart() :=
+     return();
+     ((
+       foreach i <= qH1 do
+       OH1(x: input1) :=
+       find [unique] u_10 = ri_10 <= qH1 suchthat defined(r_5[ri_10], x[ri_10]) && (x = x[ri_10]) then
+         return(r_5[u_10])
+       else
+         r_5 <-R output1;
+         return(r_5)
+     ) | (
+       foreach i_1 <= qH2 do
+       OH2(x2: output1, y2: input2) :=
+       find k_2 = k_3 <= qH1 suchthat defined(x[k_3], r_5[k_3]) && (r_5[k_3] = x2) then
+         find [unique] u_7 = ri_7 <= qH2 suchthat defined(r_8[ri_7], y2[ri_7], k_2[ri_7]) && (k_2 = k_2[ri_7]) && (y2 = y2[ri_7]) then
+           return(r_8[u_7])
+         orfind u_6 = ri_6 <= qH3 suchthat defined(r_4[ri_6], y3[ri_6], x3[ri_6]) && (x3[ri_6] = x[k_2]) && (y2 = y3[ri_6]) then
+           return(r_4[u_6])
+         else
+           r_8 <-R output2;
+           return(r_8)
+       else
+         find [unique] u_7 = ri_7 <= qH2 suchthat defined(r_9[ri_7], y2[ri_7], x2[ri_7]) && (x2 = x2[ri_7]) && (y2 = y2[ri_7]) then
+           return(r_9[u_7])
+         else
+           r_9 <-R output2;
+           return(r_9)
+     ) | (
+       foreach i_2 <= qH3 do
+       HComb(x3: input1, y3: input2) :=
+       find [unique] u_5 = ri_5 <= qH2 suchthat defined(r_8[ri_5], y2[ri_5], x[k_2[ri_5]]) && {112}((x3 = x[k_2[ri_5]]) && (k_2[ri_5] = k_2[ri_5]) && (y3 = y2[ri_5])) then
+         u_11 <= qH1 <- k_2[u_5];
+         return(r_8[u_5])
+       orfind u_4 = ri_4 <= qH3 suchthat defined(r_4[ri_4], y3[ri_4], x3[ri_4]) && (x3 = x3[ri_4]) && (y3 = y3[ri_4]) then
+         return(r_4[u_4])
+       else
+         r_4 <-R output2;
+         return(r_4)
+     ))
+
+
+Applying simplify
+  - Simplification pass
+    - Replaced ((x3 = x[k_2[ri_5]]) && (k_2[ri_5] = k_2[ri_5]) && (y3 = y2[ri_5])) with ((x3 = x[k_2[ri_5]]) && (y3 = y2[ri_5])) at 112
+yields
+
+Game 20 is
+     Ostart() :=
+     return();
+     ((
+       foreach i <= qH1 do
+       OH1(x: input1) :=
+  {7}  find [unique] u_10 = ri_10 <= qH1 suchthat defined(r_5[ri_10], x[ri_10]) && (x = x[ri_10]) then
+         return(r_5[u_10])
+       else
+         r_5 <-R output1;
+         return(r_5)
+     ) | (
+       foreach i_1 <= qH2 do
+       OH2(x2: output1, y2: input2) :=
+       find k_2 = k_3 <= qH1 suchthat defined(x[k_3], r_5[k_3]) && (r_5[k_3] = x2) then
+         find [unique] u_7 = ri_7 <= qH2 suchthat defined(r_8[ri_7], y2[ri_7], k_2[ri_7]) && (k_2 = k_2[ri_7]) && (y2 = y2[ri_7]) then
+           return(r_8[u_7])
+         orfind u_6 = ri_6 <= qH3 suchthat defined(r_4[ri_6], y3[ri_6], x3[ri_6]) && (x3[ri_6] = x[k_2]) && (y2 = y3[ri_6]) then
+           return(r_4[u_6])
+         else
+           r_8 <-R output2;
+           return(r_8)
+       else
+         find [unique] u_7 = ri_7 <= qH2 suchthat defined(r_9[ri_7], y2[ri_7], x2[ri_7]) && (x2 = x2[ri_7]) && (y2 = y2[ri_7]) then
+           return(r_9[u_7])
+         else
+           r_9 <-R output2;
+           return(r_9)
+     ) | (
+       foreach i_2 <= qH3 do
+       HComb(x3: input1, y3: input2) :=
+       find [unique] u_5 = ri_5 <= qH2 suchthat defined(r_8[ri_5], y2[ri_5], x[k_2[ri_5]]) && (x3 = x[k_2[ri_5]]) && (y3 = y2[ri_5]) then
+         u_11 <= qH1 <- k_2[u_5];
+         return(r_8[u_5])
+       orfind u_4 = ri_4 <= qH3 suchthat defined(r_4[ri_4], y3[ri_4], x3[ri_4]) && (x3 = x3[ri_4]) && (y3 = y3[ri_4]) then
+         return(r_4[u_4])
+       else
+         r_4 <-R output2;
+         return(r_4)
+     ))
+
+
+Applying insert instruction find u10 = ri10 <= qH1 suchthat defined(r_5[ri10], x[ri10]) && (x = x[ri10]) then at occurrence 7
+yields
+
+Game 21 is
+     Ostart() :=
+     return();
+     ((
+       foreach i <= qH1 do
+       OH1(x: input1) :=
+       find u10 = ri10 <= qH1 suchthat defined(r_5[ri10], x[ri10]) && (x = x[ri10]) then
+ {15}    find [unique] u_10 = ri_10 <= qH1 suchthat defined(r_5[ri_10], x[ri_10]) && (x = x[ri_10]) then
+           return(r_5[u_10])
+         else
+           r_5 <-R output1;
+           return(r_5)
+       else
+ {33}    find [unique] u_10 = ri_10 <= qH1 suchthat defined(r_5[ri_10], x[ri_10]) && (x = x[ri_10]) then
+           return(r_5[u_10])
+         else
+           r_5 <-R output1;
+           return(r_5)
+     ) | (
+       foreach i_1 <= qH2 do
+       OH2(x2: output1, y2: input2) :=
+       find k_2 = k_3 <= qH1 suchthat defined(x[k_3], r_5[k_3]) && (r_5[k_3] = x2) then
+         find [unique] u_7 = ri_7 <= qH2 suchthat defined(r_8[ri_7], y2[ri_7], k_2[ri_7]) && (k_2 = k_2[ri_7]) && (y2 = y2[ri_7]) then
+           return(r_8[u_7])
+         orfind u_6 = ri_6 <= qH3 suchthat defined(r_4[ri_6], y3[ri_6], x3[ri_6]) && (x3[ri_6] = x[k_2]) && (y2 = y3[ri_6]) then
+           return(r_4[u_6])
+         else
+           r_8 <-R output2;
+           return(r_8)
+       else
+         find [unique] u_7 = ri_7 <= qH2 suchthat defined(r_9[ri_7], y2[ri_7], x2[ri_7]) && (x2 = x2[ri_7]) && (y2 = y2[ri_7]) then
+           return(r_9[u_7])
+         else
+           r_9 <-R output2;
+           return(r_9)
+     ) | (
+       foreach i_2 <= qH3 do
+       HComb(x3: input1, y3: input2) :=
+       find [unique] u_5 = ri_5 <= qH2 suchthat defined(r_8[ri_5], y2[ri_5], x[k_2[ri_5]]) && (x3 = x[k_2[ri_5]]) && (y3 = y2[ri_5]) then
+         u_11 <= qH1 <- k_2[u_5];
+         return(r_8[u_5])
+       orfind u_4 = ri_4 <= qH3 suchthat defined(r_4[ri_4], y3[ri_4], x3[ri_4]) && (x3 = x3[ri_4]) && (y3 = y3[ri_4]) then
+         return(r_4[u_4])
+       else
+         r_4 <-R output2;
+         return(r_4)
+     ))
+
+
+Applying simplify
+  - Simplification pass
+    - Remove branch 1 in find at 33
+    - Find at 33 removed (else branch kept if any)
+    - Remove else branch of find at 15
+    - In branch 1 of find at 15, substituting u_10 with u10
+    - Replaced defined condition r_5[ri_10], x[ri_10] with an empty condition in find at 15
+    - A single branch always succeeds in find at 15
+yields
+
+Game 22 is
+     Ostart() :=
+     return();
+     ((
+       foreach i <= qH1 do
+       OH1(x: input1) :=
+       find u10 = ri10 <= qH1 suchthat defined(r_5[ri10], x[ri10]) && (x = x[ri10]) then
+         u_10 <= qH1 <- u10;
+         return(r_5[u10])
+       else
+         r_5 <-R output1;
+         return(r_5)
+     ) | (
+       foreach i_1 <= qH2 do
+       OH2(x2: output1, y2: input2) :=
+       find k_2 = k_3 <= qH1 suchthat defined(x[k_3], r_5[k_3]) && (r_5[k_3] = x2) then
+         find [unique] u_7 = ri_7 <= qH2 suchthat defined(r_8[ri_7], y2[ri_7], k_2[ri_7]) && (k_2 = k_2[ri_7]) && (y2 = y2[ri_7]) then
+           return(r_8[u_7])
+         orfind u_6 = ri_6 <= qH3 suchthat defined(r_4[ri_6], y3[ri_6], x3[ri_6]) && (x3[ri_6] = x[k_2]) && (y2 = y3[ri_6]) then
+           return(r_4[u_6])
+         else
+           r_8 <-R output2;
+           return(r_8)
+       else
+         find [unique] u_7 = ri_7 <= qH2 suchthat defined(r_9[ri_7], y2[ri_7], x2[ri_7]) && (x2 = x2[ri_7]) && (y2 = y2[ri_7]) then
+           return(r_9[u_7])
+         else
+           r_9 <-R output2;
+           return(r_9)
+     ) | (
+       foreach i_2 <= qH3 do
+       HComb(x3: input1, y3: input2) :=
+       find [unique] u_5 = ri_5 <= qH2 suchthat defined(r_8[ri_5], y2[ri_5], x[k_2[ri_5]]) && (x3 = x[k_2[ri_5]]) && (y3 = y2[ri_5]) then
+         u_11 <= qH1 <- k_2[u_5];
+         return(r_8[u_5])
+       orfind u_4 = ri_4 <= qH3 suchthat defined(r_4[ri_4], y3[ri_4], x3[ri_4]) && (x3 = x3[ri_4]) && (y3 = y3[ri_4]) then
+         return(r_4[u_4])
+       else
+         r_4 <-R output2;
+         return(r_4)
+     ))
+
+
+Applying remove assignments of useless
+  - Remove assignments on u_11 (definition removed, all usages removed)
+  - Remove assignments on u_10 (definition removed, all usages removed)
+yields
+
+Game 23 is
+     Ostart() :=
+     return();
+     ((
+       foreach i <= qH1 do
+       OH1(x: input1) :=
+       find u10 = ri10 <= qH1 suchthat defined(r_5[ri10], x[ri10]) && (x = x[ri10]) then
+         return(r_5[u10])
+       else
+         r_5 <-R output1;
+         return(r_5)
+     ) | (
+       foreach i_1 <= qH2 do
+       OH2(x2: output1, y2: input2) :=
+       find k_2 = k_3 <= qH1 suchthat defined(x[k_3], r_5[k_3]) && (r_5[k_3] = x2) then
+         find [unique] u_7 = ri_7 <= qH2 suchthat defined(r_8[ri_7], y2[ri_7], k_2[ri_7]) && (k_2 = k_2[ri_7]) && (y2 = y2[ri_7]) then
+           return(r_8[u_7])
+         orfind u_6 = ri_6 <= qH3 suchthat defined(r_4[ri_6], y3[ri_6], x3[ri_6]) && (x3[ri_6] = x[k_2]) && (y2 = y3[ri_6]) then
+           return(r_4[u_6])
+         else
+           r_8 <-R output2;
+           return(r_8)
+       else
+ {80}    find [unique] u_7 = ri_7 <= qH2 suchthat defined(r_9[ri_7], y2[ri_7], x2[ri_7]) && (x2 = x2[ri_7]) && (y2 = y2[ri_7]) then
+           return(r_9[u_7])
+         else
+           r_9 <-R output2;
+           return(r_9)
+     ) | (
+       foreach i_2 <= qH3 do
+       HComb(x3: input1, y3: input2) :=
+       find [unique] u_5 = ri_5 <= qH2 suchthat defined(r_8[ri_5], y2[ri_5], x[k_2[ri_5]]) && (x3 = x[k_2[ri_5]]) && (y3 = y2[ri_5]) then
+         return(r_8[u_5])
+       orfind u_4 = ri_4 <= qH3 suchthat defined(r_4[ri_4], y3[ri_4], x3[ri_4]) && (x3 = x3[ri_4]) && (y3 = y3[ri_4]) then
+         return(r_4[u_4])
+       else
+         r_4 <-R output2;
+         return(r_4)
+     ))
+
+
+Applying insert instruction find u7 = ri7 <= qH2 suchthat defined(r_9[ri7], y2[ri7], x2[ri7]) && (x2 = x2[ri7]) && (y2 = y2[ri7]) then at occurrence 80
+yields
+
+Game 24 is
+     Ostart() :=
+     return();
+     ((
+       foreach i <= qH1 do
+       OH1(x: input1) :=
+       find u10 = ri10 <= qH1 suchthat defined(r_5[ri10], x[ri10]) && (x = x[ri10]) then
+         return(r_5[u10])
+       else
+         r_5 <-R output1;
+         return(r_5)
+     ) | (
+       foreach i_1 <= qH2 do
+       OH2(x2: output1, y2: input2) :=
+       find k_2 = k_3 <= qH1 suchthat defined(x[k_3], r_5[k_3]) && (r_5[k_3] = x2) then
+         find [unique] u_7 = ri_7 <= qH2 suchthat defined(r_8[ri_7], y2[ri_7], k_2[ri_7]) && (k_2 = k_2[ri_7]) && (y2 = y2[ri_7]) then
+           return(r_8[u_7])
+         orfind u_6 = ri_6 <= qH3 suchthat defined(r_4[ri_6], y3[ri_6], x3[ri_6]) && (x3[ri_6] = x[k_2]) && (y2 = y3[ri_6]) then
+           return(r_4[u_6])
+         else
+           r_8 <-R output2;
+           return(r_8)
+       else
+         find u7 = ri7 <= qH2 suchthat defined(r_9[ri7], y2[ri7], x2[ri7]) && (x2 = x2[ri7]) && (y2 = y2[ri7]) then
+ {95}      find [unique] u_7 = ri_7 <= qH2 suchthat defined(r_9[ri_7], y2[ri_7], x2[ri_7]) && (x2 = x2[ri_7]) && (y2 = y2[ri_7]) then
+             return(r_9[u_7])
+           else
+             r_9 <-R output2;
+             return(r_9)
+         else
+{120}      find [unique] u_7 = ri_7 <= qH2 suchthat defined(r_9[ri_7], y2[ri_7], x2[ri_7]) && (x2 = x2[ri_7]) && (y2 = y2[ri_7]) then
+             return(r_9[u_7])
+           else
+             r_9 <-R output2;
+             return(r_9)
+     ) | (
+       foreach i_2 <= qH3 do
+       HComb(x3: input1, y3: input2) :=
+       find [unique] u_5 = ri_5 <= qH2 suchthat defined(r_8[ri_5], y2[ri_5], x[k_2[ri_5]]) && (x3 = x[k_2[ri_5]]) && (y3 = y2[ri_5]) then
+         return(r_8[u_5])
+       orfind u_4 = ri_4 <= qH3 suchthat defined(r_4[ri_4], y3[ri_4], x3[ri_4]) && (x3 = x3[ri_4]) && (y3 = y3[ri_4]) then
+         return(r_4[u_4])
+       else
+         r_4 <-R output2;
+         return(r_4)
+     ))
+
+
+Applying simplify
+  - Simplification pass
+    - Remove branch 1 in find at 120
+    - Find at 120 removed (else branch kept if any)
+    - Remove else branch of find at 95
+    - In branch 1 of find at 95, substituting u_7 with u7
+    - Replaced defined condition r_9[ri_7], y2[ri_7], x2[ri_7] with an empty condition in find at 95
+    - A single branch always succeeds in find at 95
+yields
+
+Game 25 is
+     Ostart() :=
+     return();
+     ((
+       foreach i <= qH1 do
+       OH1(x: input1) :=
+       find u10 = ri10 <= qH1 suchthat defined(r_5[ri10], x[ri10]) && (x = x[ri10]) then
+         return(r_5[u10])
+       else
+         r_5 <-R output1;
+         return(r_5)
+     ) | (
+       foreach i_1 <= qH2 do
+       OH2(x2: output1, y2: input2) :=
+       find k_2 = k_3 <= qH1 suchthat defined(x[k_3], r_5[k_3]) && (r_5[k_3] = x2) then
+         find [unique] u_7 = ri_7 <= qH2 suchthat defined(r_8[ri_7], y2[ri_7], k_2[ri_7]) && (k_2 = k_2[ri_7]) && (y2 = y2[ri_7]) then
+           return(r_8[u_7])
+         orfind u_6 = ri_6 <= qH3 suchthat defined(r_4[ri_6], y3[ri_6], x3[ri_6]) && (x3[ri_6] = x[k_2]) && (y2 = y3[ri_6]) then
+           return(r_4[u_6])
+         else
+           r_8 <-R output2;
+           return(r_8)
+       else
+         find u7 = ri7 <= qH2 suchthat defined(r_9[ri7], y2[ri7], x2[ri7]) && (x2 = x2[ri7]) && (y2 = y2[ri7]) then
+           u_7 <= qH2 <- u7;
+           return(r_9[u7])
+         else
+           r_9 <-R output2;
+           return(r_9)
+     ) | (
+       foreach i_2 <= qH3 do
+       HComb(x3: input1, y3: input2) :=
+       find [unique] u_5 = ri_5 <= qH2 suchthat defined(r_8[ri_5], y2[ri_5], x[k_2[ri_5]]) && (x3 = x[k_2[ri_5]]) && (y3 = y2[ri_5]) then
+         return(r_8[u_5])
+       orfind u_4 = ri_4 <= qH3 suchthat defined(r_4[ri_4], y3[ri_4], x3[ri_4]) && (x3 = x3[ri_4]) && (y3 = y3[ri_4]) then
+         return(r_4[u_4])
+       else
+         r_4 <-R output2;
+         return(r_4)
+     ))
+
+
+Applying remove assignments of useless
+  - Remove assignments on u_7 (definition removed, all usages removed)
+yields
+
+Game 26 is
+     Ostart() :=
+     return();
+     ((
+       foreach i <= qH1 do
+       OH1(x: input1) :=
+       find u10 = ri10 <= qH1 suchthat defined(r_5[ri10], x[ri10]) && (x = x[ri10]) then
+         return(r_5[u10])
+       else
+         r_5 <-R output1;
+         return(r_5)
+     ) | (
+       foreach i_1 <= qH2 do
+       OH2(x2: output1, y2: input2) :=
+       find k_2 = k_3 <= qH1 suchthat defined(x[k_3], r_5[k_3]) && (r_5[k_3] = x2) then
+         find [unique] u_7 = ri_7 <= qH2 suchthat defined(r_8[ri_7], y2[ri_7], k_2[ri_7]) && (k_2 = k_2[ri_7]) && (y2 = y2[ri_7]) then
+           return(r_8[u_7])
+         orfind u_6 = ri_6 <= qH3 suchthat defined(r_4[ri_6], y3[ri_6], x3[ri_6]) && (x3[ri_6] = x[k_2]) && (y2 = y3[ri_6]) then
+           return(r_4[u_6])
+         else
+           r_8 <-R output2;
+           return(r_8)
+       else
+         find u7 = ri7 <= qH2 suchthat defined(r_9[ri7], y2[ri7], x2[ri7]) && (x2 = x2[ri7]) && (y2 = y2[ri7]) then
+           return(r_9[u7])
+         else
+           r_9 <-R output2;
+           return(r_9)
+     ) | (
+       foreach i_2 <= qH3 do
+       HComb(x3: input1, y3: input2) :=
+       find [unique] u_5 = ri_5 <= qH2 suchthat defined(r_8[ri_5], y2[ri_5], x[k_2[ri_5]]) && (x3 = x[k_2[ri_5]]) && (y3 = y2[ri_5]) then
+         return(r_8[u_5])
+       orfind u_4 = ri_4 <= qH3 suchthat defined(r_4[ri_4], y3[ri_4], x3[ri_4]) && (x3 = x3[ri_4]) && (y3 = y3[ri_4]) then
+         return(r_4[u_4])
+       else
+         r_4 <-R output2;
+         return(r_4)
+     ))
+
+Initial state
+Game 27 is
+     Ostart() :=
+     hk3 <-R hashkey3;
+     return();
+     ((
+       foreach i_3 <= qH1 do
+       OH1(x_1: input1) :=
+       find j_1 = j <= qH1 suchthat defined(x_1[j], r[j]) && (x_1 = x_1[j]) then
+         return(r[j_1])
+       else
+         r <-R output1;
+         return(r)
+     ) | (
+       foreach i_4 <= qH2 do
+       OH2(x2_1: output1, y2_1: input2) :=
+       find k_1 = k <= qH1 suchthat defined(x_1[k], r[k]) && (r[k] = x2_1) then
+         return(H3(hk3, x_1[k_1], y2_1))
+       else
+         find l_1 = l <= qH2 suchthat defined(x2_1[l], y2_1[l], r2[l]) && (x2_1 = x2_1[l]) && (y2_1 = y2_1[l]) then
+           return(r2[l_1])
+         else
+           r2 <-R output2;
+           return(r2)
+     ) | (
+       foreach i_5 <= qH3 do
+       HComb(x3_1: input1, y3_1: input2) :=
+       return(H3(hk3, x3_1, y3_1))
+     ))
+
+
+Applying equivalence rom(H3)
+  - Equivalence rom(H3) with variables: hk3 -> hk
+yields
+
+Game 28 is
+     Ostart() :=
+     return();
+     ((
+       foreach i_3 <= qH1 do
+       OH1(x_1: input1) :=
+       find j_1 = j <= qH1 suchthat defined(x_1[j], r[j]) && (x_1 = x_1[j]) then
+         return(r[j_1])
+       else
+         r <-R output1;
+         return(r)
+     ) | (
+       foreach i_4 <= qH2 do
+       OH2(x2_1: output1, y2_1: input2) :=
+       find k_1 = k <= qH1 suchthat defined(x_1[k], r[k]) && (r[k] = x2_1) then
+         return((x_O_1: input1 <- x_1[k_1]; x_O: input2 <- y2_1; find [unique] u_3 = ri_3 <= qH2 suchthat defined(x_O_1[ri_3], x_O[ri_3], r_1[ri_3]) && (x_O_1 = x_O_1[ri_3]) && (x_O = x_O[ri_3]) then r_1[u_3] orfind u_2 = ri_2 <= qH3 suchthat defined(x_O_3[ri_2], x_O_2[ri_2], r_2[ri_2]) && (x_O_1 = x_O_3[ri_2]) && (x_O = x_O_2[ri_2]) then r_2[u_2] else r_1 <-R output2; r_1))
+       else
+         find l_1 = l <= qH2 suchthat defined(x2_1[l], y2_1[l], r2[l]) && (x2_1 = x2_1[l]) && (y2_1 = y2_1[l]) then
+           return(r2[l_1])
+         else
+           r2 <-R output2;
+           return(r2)
+     ) | (
+       foreach i_5 <= qH3 do
+       HComb(x3_1: input1, y3_1: input2) :=
+       return((x_O_3: input1 <- x3_1; x_O_2: input2 <- y3_1; find [unique] u_1 = ri_1 <= qH2 suchthat defined(x_O_1[ri_1], x_O[ri_1], r_1[ri_1]) && (x_O_3 = x_O_1[ri_1]) && (x_O_2 = x_O[ri_1]) then r_1[u_1] orfind u = ri <= qH3 suchthat defined(x_O_3[ri], x_O_2[ri], r_2[ri]) && (x_O_3 = x_O_3[ri]) && (x_O_2 = x_O_2[ri]) then r_2[u] else r_2 <-R output2; r_2))
+     ))
+
+
+Applying expand
+  - Expand if/find/let
+yields
+
+Game 29 is
+     Ostart() :=
+     return();
+     ((
+       foreach i_3 <= qH1 do
+       OH1(x_1: input1) :=
+       find j_1 = j <= qH1 suchthat defined(x_1[j], r[j]) && (x_1 = x_1[j]) then
+         return(r[j_1])
+       else
+         r <-R output1;
+         return(r)
+     ) | (
+       foreach i_4 <= qH2 do
+       OH2(x2_1: output1, y2_1: input2) :=
+       find k_1 = k <= qH1 suchthat defined(x_1[k], r[k]) && (r[k] = x2_1) then
+         x_O_1: input1 <- x_1[k_1];
+         x_O: input2 <- y2_1;
+         find [unique] u_3 = ri_3 <= qH2 suchthat defined(x_O_1[ri_3], x_O[ri_3], r_1[ri_3]) && (x_O_1 = x_O_1[ri_3]) && (x_O = x_O[ri_3]) then
+           return(r_1[u_3])
+         orfind u_2 = ri_2 <= qH3 suchthat defined(x_O_3[ri_2], x_O_2[ri_2], r_2[ri_2]) && (x_O_1 = x_O_3[ri_2]) && (x_O = x_O_2[ri_2]) then
+           return(r_2[u_2])
+         else
+           r_1 <-R output2;
+           return(r_1)
+       else
+         find l_1 = l <= qH2 suchthat defined(x2_1[l], y2_1[l], r2[l]) && (x2_1 = x2_1[l]) && (y2_1 = y2_1[l]) then
+           return(r2[l_1])
+         else
+           r2 <-R output2;
+           return(r2)
+     ) | (
+       foreach i_5 <= qH3 do
+       HComb(x3_1: input1, y3_1: input2) :=
+       x_O_3: input1 <- x3_1;
+       x_O_2: input2 <- y3_1;
+       find [unique] u_1 = ri_1 <= qH2 suchthat defined(x_O_1[ri_1], x_O[ri_1], r_1[ri_1]) && (x_O_3 = x_O_1[ri_1]) && (x_O_2 = x_O[ri_1]) then
+         return(r_1[u_1])
+       orfind u = ri <= qH3 suchthat defined(x_O_3[ri], x_O_2[ri], r_2[ri]) && (x_O_3 = x_O_3[ri]) && (x_O_2 = x_O_2[ri]) then
+         return(r_2[u])
+       else
+         r_2 <-R output2;
+         return(r_2)
+     ))
+
+
+Applying remove assignments of findcond
+  - Remove assignments on x_O_3 (definition point kept, all usages removed)
+  - Remove assignments on x_O_2 (definition removed, all usages removed)
+  - Remove assignments on x_O_1 (definition point kept, all usages removed)
+  - Remove assignments on x_O (definition removed, all usages removed)
+yields
+
+Game 30 is
+     Ostart() :=
+     return();
+     ((
+       foreach i_3 <= qH1 do
+       OH1(x_1: input1) :=
+       find j_1 = j <= qH1 suchthat defined(x_1[j], r[j]) && (x_1 = x_1[j]) then
+         return(r[j_1])
+       else
+         r <-R output1;
+         return(r)
+     ) | (
+       foreach i_4 <= qH2 do
+       OH2(x2_1: output1, y2_1: input2) :=
+       find k_1 = k <= qH1 suchthat defined(x_1[k], r[k]) && (r[k] = x2_1) then
+         x_O_1: input1 <- cst_input1;
+ {37}    find [unique] u_3 = ri_3 <= qH2 suchthat defined(x_1[k_1[ri_3]], y2_1[ri_3], x_O_1[ri_3], r_1[ri_3]) && (x_1[k_1] = x_1[k_1[ri_3]]) && (y2_1 = y2_1[ri_3]) then
+           return(r_1[u_3])
+         orfind u_2 = ri_2 <= qH3 suchthat defined(x3_1[ri_2], y3_1[ri_2], x_O_3[ri_2], r_2[ri_2]) && (x_1[k_1] = x3_1[ri_2]) && (y2_1 = y3_1[ri_2]) then
+           return(r_2[u_2])
+         else
+           r_1 <-R output2;
+           return(r_1)
+       else
+         find l_1 = l <= qH2 suchthat defined(x2_1[l], y2_1[l], r2[l]) && (x2_1 = x2_1[l]) && (y2_1 = y2_1[l]) then
+           return(r2[l_1])
+         else
+           r2 <-R output2;
+           return(r2)
+     ) | (
+       foreach i_5 <= qH3 do
+       HComb(x3_1: input1, y3_1: input2) :=
+       x_O_3: input1 <- cst_input1;
+{117}  find [unique] u_1 = ri_1 <= qH2 suchthat defined(x_1[k_1[ri_1]], y2_1[ri_1], x_O_1[ri_1], r_1[ri_1]) && (x3_1 = x_1[k_1[ri_1]]) && (y3_1 = y2_1[ri_1]) then
+         return(r_1[u_1])
+       orfind u = ri <= qH3 suchthat defined(x3_1[ri], y3_1[ri], x_O_3[ri], r_2[ri]) && (x3_1 = x3_1[ri]) && (y3_1 = y3_1[ri]) then
+         return(r_2[u])
+       else
+         r_2 <-R output2;
+         return(r_2)
+     ))
+
+
+Applying simplify
+  - Simplification pass
+    - Replaced defined condition x3_1[ri], y3_1[ri], x_O_3[ri], r_2[ri] with r_2[ri], y3_1[ri], x3_1[ri] in find at 117
+    - Replaced defined condition x_1[k_1[ri_1]], y2_1[ri_1], x_O_1[ri_1], r_1[ri_1] with r_1[ri_1], y2_1[ri_1], x_1[k_1[ri_1]] in find at 117
+    - Replaced defined condition x3_1[ri_2], y3_1[ri_2], x_O_3[ri_2], r_2[ri_2] with r_2[ri_2], y3_1[ri_2], x3_1[ri_2] in find at 37
+    - Replaced defined condition x_1[k_1[ri_3]], y2_1[ri_3], x_O_1[ri_3], r_1[ri_3] with r_1[ri_3], y2_1[ri_3], x_1[k_1[ri_3]] in find at 37
+yields
+
+Game 31 is
+     Ostart() :=
+     return();
+     ((
+       foreach i_3 <= qH1 do
+       OH1(x_1: input1) :=
+       find j_1 = j <= qH1 suchthat defined(x_1[j], r[j]) && (x_1 = x_1[j]) then
+         return(r[j_1])
+       else
+         r <-R output1;
+         return(r)
+     ) | (
+       foreach i_4 <= qH2 do
+       OH2(x2_1: output1, y2_1: input2) :=
+       find k_1 = k <= qH1 suchthat defined(x_1[k], r[k]) && (r[k] = x2_1) then
+         x_O_1: input1 <- cst_input1;
+         find [unique] u_3 = ri_3 <= qH2 suchthat defined(r_1[ri_3], y2_1[ri_3], x_1[k_1[ri_3]]) && (x_1[k_1] = x_1[k_1[ri_3]]) && (y2_1 = y2_1[ri_3]) then
+           return(r_1[u_3])
+         orfind u_2 = ri_2 <= qH3 suchthat defined(r_2[ri_2], y3_1[ri_2], x3_1[ri_2]) && (x_1[k_1] = x3_1[ri_2]) && (y2_1 = y3_1[ri_2]) then
+           return(r_2[u_2])
+         else
+           r_1 <-R output2;
+           return(r_1)
+       else
+         find l_1 = l <= qH2 suchthat defined(x2_1[l], y2_1[l], r2[l]) && (x2_1 = x2_1[l]) && (y2_1 = y2_1[l]) then
+           return(r2[l_1])
+         else
+           r2 <-R output2;
+           return(r2)
+     ) | (
+       foreach i_5 <= qH3 do
+       HComb(x3_1: input1, y3_1: input2) :=
+       x_O_3: input1 <- cst_input1;
+       find [unique] u_1 = ri_1 <= qH2 suchthat defined(r_1[ri_1], y2_1[ri_1], x_1[k_1[ri_1]]) && (x3_1 = x_1[k_1[ri_1]]) && (y3_1 = y2_1[ri_1]) then
+         return(r_1[u_1])
+       orfind u = ri <= qH3 suchthat defined(r_2[ri], y3_1[ri], x3_1[ri]) && (x3_1 = x3_1[ri]) && (y3_1 = y3_1[ri]) then
+         return(r_2[u])
+       else
+         r_2 <-R output2;
+         return(r_2)
+     ))
+
+
+Applying move all binders
+  - Move assignment to x_O_3
+  - Move assignment to x_O_1
+yields
+
+Game 32 is
+     Ostart() :=
+     return();
+     ((
+       foreach i_3 <= qH1 do
+       OH1(x_1: input1) :=
+       find j_1 = j <= qH1 suchthat defined(x_1[j], r[j]) && (x_1 = x_1[j]) then
+         return(r[j_1])
+       else
+         r <-R output1;
+         return(r)
+     ) | (
+       foreach i_4 <= qH2 do
+       OH2(x2_1: output1, y2_1: input2) :=
+       find k_1 = k <= qH1 suchthat defined(x_1[k], r[k]) && (r[k] = x2_1) then
+ {35}    find [unique] u_3 = ri_3 <= qH2 suchthat defined(r_1[ri_3], y2_1[ri_3], x_1[k_1[ri_3]]) && (x_1[k_1] = x_1[k_1[ri_3]]) && (y2_1 = y2_1[ri_3]) then
+           return(r_1[u_3])
+         orfind u_2 = ri_2 <= qH3 suchthat defined(r_2[ri_2], y3_1[ri_2], x3_1[ri_2]) && (x_1[k_1] = x3_1[ri_2]) && (y2_1 = y3_1[ri_2]) then
+           return(r_2[u_2])
+         else
+           r_1 <-R output2;
+           return(r_1)
+       else
+         find l_1 = l <= qH2 suchthat defined(x2_1[l], y2_1[l], r2[l]) && (x2_1 = x2_1[l]) && (y2_1 = y2_1[l]) then
+           return(r2[l_1])
+         else
+           r2 <-R output2;
+           return(r2)
+     ) | (
+       foreach i_5 <= qH3 do
+       HComb(x3_1: input1, y3_1: input2) :=
+       find [unique] u_1 = ri_1 <= qH2 suchthat defined(r_1[ri_1], y2_1[ri_1], x_1[k_1[ri_1]]) && (x3_1 = x_1[k_1[ri_1]]) && (y3_1 = y2_1[ri_1]) then
+         return(r_1[u_1])
+       orfind u = ri <= qH3 suchthat defined(r_2[ri], y3_1[ri], x3_1[ri]) && (x3_1 = x3_1[ri]) && (y3_1 = y3_1[ri]) then
+         return(r_2[u])
+       else
+         r_2 <-R output2;
+         return(r_2)
+     ))
+
+
+Applying insert instruction find[unique] ri3 <= qH2 suchthat defined(r_1[ri3], y2_1[ri3], x_1[k_1[ri3]]) && (k_1 = k_1[ri3]) && (y2_1 = y2_1[ri3]) then orfind ri2 <= qH3 suchthat defined(r_2[ri2], y3_1[ri2], x3_1[ri2]) && (x_1[k_1] = x3_1[ri2]) && (y2_1 = y3_1[ri2]) then  at occurrence 35 [probability Pr[event non_unique in game 33]]
+  - Proved that [unique] annotation at 35 is correct
+yields
+
+Game 33 is
+     Ostart() :=
+     return();
+     ((
+       foreach i_3 <= qH1 do
+       OH1(x_1: input1) :=
+       find j_1 = j <= qH1 suchthat defined(x_1[j], r[j]) && (x_1 = x_1[j]) then
+         return(r[j_1])
+       else
+         r <-R output1;
+         return(r)
+     ) | (
+       foreach i_4 <= qH2 do
+       OH2(x2_1: output1, y2_1: input2) :=
+       find k_1 = k <= qH1 suchthat defined(x_1[k], r[k]) && (r[k] = x2_1) then
+ {35}    find [unique] ri3 = ri3_1 <= qH2 suchthat defined(r_1[ri3_1], y2_1[ri3_1], x_1[k_1[ri3_1]]) && (k_1 = k_1[ri3_1]) && (y2_1 = y2_1[ri3_1]) then
+ {51}      find [unique] u_3 = ri_3 <= qH2 suchthat defined(r_1[ri_3], y2_1[ri_3], x_1[k_1[ri_3]]) && (x_1[k_1] = x_1[k_1[ri_3]]) && (y2_1 = y2_1[ri_3]) then
+             return(r_1[u_3])
+           orfind u_2 = ri_2 <= qH3 suchthat defined(r_2[ri_2], y3_1[ri_2], x3_1[ri_2]) && (x_1[k_1] = x3_1[ri_2]) && (y2_1 = y3_1[ri_2]) then
+             return(r_2[u_2])
+           else
+             r_1 <-R output2;
+             return(r_1)
+         orfind ri2 = ri2_1 <= qH3 suchthat defined(r_2[ri2_1], y3_1[ri2_1], x3_1[ri2_1]) && (x_1[k_1] = x3_1[ri2_1]) && (y2_1 = y3_1[ri2_1]) then
+           find [unique] u_3 = ri_3 <= qH2 suchthat defined(r_1[ri_3], y2_1[ri_3], x_1[k_1[ri_3]]) && (x_1[k_1] = x_1[k_1[ri_3]]) && (y2_1 = y2_1[ri_3]) then
+             return(r_1[u_3])
+           orfind u_2 = ri_2 <= qH3 suchthat defined(r_2[ri_2], y3_1[ri_2], x3_1[ri_2]) && (x_1[k_1] = x3_1[ri_2]) && (y2_1 = y3_1[ri_2]) then
+             return(r_2[u_2])
+           else
+             r_1 <-R output2;
+             return(r_1)
+         else
+           find [unique] u_3 = ri_3 <= qH2 suchthat defined(r_1[ri_3], y2_1[ri_3], x_1[k_1[ri_3]]) && (x_1[k_1] = x_1[k_1[ri_3]]) && (y2_1 = y2_1[ri_3]) then
+             return(r_1[u_3])
+           orfind u_2 = ri_2 <= qH3 suchthat defined(r_2[ri_2], y3_1[ri_2], x3_1[ri_2]) && (x_1[k_1] = x3_1[ri_2]) && (y2_1 = y3_1[ri_2]) then
+             return(r_2[u_2])
+           else
+             r_1 <-R output2;
+             return(r_1)
+       else
+         find l_1 = l <= qH2 suchthat defined(x2_1[l], y2_1[l], r2[l]) && (x2_1 = x2_1[l]) && (y2_1 = y2_1[l]) then
+           return(r2[l_1])
+         else
+           r2 <-R output2;
+           return(r2)
+     ) | (
+       foreach i_5 <= qH3 do
+       HComb(x3_1: input1, y3_1: input2) :=
+       find [unique] u_1 = ri_1 <= qH2 suchthat defined(r_1[ri_1], y2_1[ri_1], x_1[k_1[ri_1]]) && (x3_1 = x_1[k_1[ri_1]]) && (y3_1 = y2_1[ri_1]) then
+         return(r_1[u_1])
+       orfind u = ri <= qH3 suchthat defined(r_2[ri], y3_1[ri], x3_1[ri]) && (x3_1 = x3_1[ri]) && (y3_1 = y3_1[ri]) then
+         return(r_2[u])
+       else
+         r_2 <-R output2;
+         return(r_2)
+     ))
+
+
+Applying simplify
+  - Simplification pass
+    - Simplified find at 51 in branch of find at 35
+yields
+
+Game 34 is
+     Ostart() :=
+     return();
+     ((
+       foreach i_3 <= qH1 do
+       OH1(x_1: input1) :=
+       find j_1 = j <= qH1 suchthat defined(x_1[j], r[j]) && (x_1 = x_1[j]) then
+         return(r[j_1])
+       else
+         r <-R output1;
+         return(r)
+     ) | (
+       foreach i_4 <= qH2 do
+       OH2(x2_1: output1, y2_1: input2) :=
+       find k_1 = k <= qH1 suchthat defined(x_1[k], r[k]) && (r[k] = x2_1) then
+ {35}    find [unique] ri3 = ri3_1 <= qH2, u_3 = ri_3 <= qH2 suchthat defined(r_1[ri3_1], y2_1[ri3_1], x_1[k_1[ri3_1]], r_1[ri_3], y2_1[ri_3], x_1[k_1[ri_3]]) && (k_1 = k_1[ri3_1]) && (y2_1 = y2_1[ri3_1]) && (x_1[k_1] = x_1[k_1[ri_3]]) && (y2_1 = y2_1[ri_3]) then
+           return(r_1[u_3])
+         orfind ri3 = ri3_1 <= qH2, u_2 = ri_2 <= qH3 suchthat defined(r_1[ri3_1], y2_1[ri3_1], x_1[k_1[ri3_1]], r_2[ri_2], y3_1[ri_2], x3_1[ri_2]) && (k_1 = k_1[ri3_1]) && (y2_1 = y2_1[ri3_1]) && (x_1[k_1] = x3_1[ri_2]) && (y2_1 = y3_1[ri_2]) then
+           return(r_2[u_2])
+         orfind ri2 = ri2_1 <= qH3 suchthat defined(r_2[ri2_1], y3_1[ri2_1], x3_1[ri2_1]) && (x_1[k_1] = x3_1[ri2_1]) && (y2_1 = y3_1[ri2_1]) then
+{125}      find [unique] u_3 = ri_3 <= qH2 suchthat defined(r_1[ri_3], y2_1[ri_3], x_1[k_1[ri_3]]) && (x_1[k_1] = x_1[k_1[ri_3]]) && (y2_1 = y2_1[ri_3]) then
+             return(r_1[u_3])
+           orfind u_2 = ri_2 <= qH3 suchthat defined(r_2[ri_2], y3_1[ri_2], x3_1[ri_2]) && (x_1[k_1] = x3_1[ri_2]) && (y2_1 = y3_1[ri_2]) then
+             return(r_2[u_2])
+           else
+             r_1 <-R output2;
+             return(r_1)
+         else
+           find [unique] ri3 = ri3_1 <= qH2 suchthat defined(r_1[ri3_1], y2_1[ri3_1], x_1[k_1[ri3_1]]) && (k_1 = k_1[ri3_1]) && (y2_1 = y2_1[ri3_1]) then
+             r_1 <-R output2;
+             return(r_1)
+           else
+             find [unique] u_3 = ri_3 <= qH2 suchthat defined(r_1[ri_3], y2_1[ri_3], x_1[k_1[ri_3]]) && (x_1[k_1] = x_1[k_1[ri_3]]) && (y2_1 = y2_1[ri_3]) then
+               return(r_1[u_3])
+             orfind u_2 = ri_2 <= qH3 suchthat defined(r_2[ri_2], y3_1[ri_2], x3_1[ri_2]) && (x_1[k_1] = x3_1[ri_2]) && (y2_1 = y3_1[ri_2]) then
+               return(r_2[u_2])
+             else
+               r_1 <-R output2;
+               return(r_1)
+       else
+         find l_1 = l <= qH2 suchthat defined(x2_1[l], y2_1[l], r2[l]) && (x2_1 = x2_1[l]) && (y2_1 = y2_1[l]) then
+           return(r2[l_1])
+         else
+           r2 <-R output2;
+           return(r2)
+     ) | (
+       foreach i_5 <= qH3 do
+       HComb(x3_1: input1, y3_1: input2) :=
+       find [unique] u_1 = ri_1 <= qH2 suchthat defined(r_1[ri_1], y2_1[ri_1], x_1[k_1[ri_1]]) && (x3_1 = x_1[k_1[ri_1]]) && (y3_1 = y2_1[ri_1]) then
+         return(r_1[u_1])
+       orfind u = ri <= qH3 suchthat defined(r_2[ri], y3_1[ri], x3_1[ri]) && (x3_1 = x3_1[ri]) && (y3_1 = y3_1[ri]) then
+         return(r_2[u])
+       else
+         r_2 <-R output2;
+         return(r_2)
+     ))
+
+
+Applying simplify
+  - Simplification pass
+    - Simplified find at 125 in branch of find at 35
+yields
+
+Game 35 is
+     Ostart() :=
+     return();
+     ((
+       foreach i_3 <= qH1 do
+       OH1(x_1: input1) :=
+       find j_1 = j <= qH1 suchthat defined(x_1[j], r[j]) && (x_1 = x_1[j]) then
+         return(r[j_1])
+       else
+         r <-R output1;
+         return(r)
+     ) | (
+       foreach i_4 <= qH2 do
+       OH2(x2_1: output1, y2_1: input2) :=
+       find k_1 = k <= qH1 suchthat defined(x_1[k], r[k]) && (r[k] = x2_1) then
+         find [unique] ri3 = ri3_1 <= qH2, u_3 = ri_3 <= qH2 suchthat defined(r_1[ri3_1], y2_1[ri3_1], x_1[k_1[ri3_1]], r_1[ri_3], y2_1[ri_3], x_1[k_1[ri_3]]) && (k_1 = k_1[ri3_1]) && (y2_1 = y2_1[ri3_1]) && (x_1[k_1] = x_1[k_1[ri_3]]) && (y2_1 = y2_1[ri_3]) then
+           return(r_1[u_3])
+         orfind ri3 = ri3_1 <= qH2, u_2 = ri_2 <= qH3 suchthat defined(r_1[ri3_1], y2_1[ri3_1], x_1[k_1[ri3_1]], r_2[ri_2], y3_1[ri_2], x3_1[ri_2]) && (k_1 = k_1[ri3_1]) && (y2_1 = y2_1[ri3_1]) && (x_1[k_1] = x3_1[ri_2]) && (y2_1 = y3_1[ri_2]) then
+           return(r_2[u_2])
+         orfind ri2 = ri2_1 <= qH3, u_3 = ri_3 <= qH2 suchthat defined(r_2[ri2_1], y3_1[ri2_1], x3_1[ri2_1], r_1[ri_3], y2_1[ri_3], x_1[k_1[ri_3]]) && (x_1[k_1] = x3_1[ri2_1]) && (y2_1 = y3_1[ri2_1]) && (x_1[k_1] = x_1[k_1[ri_3]]) && (y2_1 = y2_1[ri_3]) then
+           return(r_1[u_3])
+         orfind ri2 = ri2_1 <= qH3, u_2 = ri_2 <= qH3 suchthat defined(r_2[ri2_1], y3_1[ri2_1], x3_1[ri2_1], r_2[ri_2], y3_1[ri_2], x3_1[ri_2]) && (x_1[k_1] = x3_1[ri2_1]) && (y2_1 = y3_1[ri2_1]) && (x_1[k_1] = x3_1[ri_2]) && (y2_1 = y3_1[ri_2]) then
+           return(r_2[u_2])
+         else
+           find [unique] ri2 = ri2_1 <= qH3 suchthat defined(r_2[ri2_1], y3_1[ri2_1], x3_1[ri2_1]) && (x_1[k_1] = x3_1[ri2_1]) && (y2_1 = y3_1[ri2_1]) then
+             r_1 <-R output2;
+             return(r_1)
+           else
+             find [unique] ri3 = ri3_1 <= qH2 suchthat defined(r_1[ri3_1], y2_1[ri3_1], x_1[k_1[ri3_1]]) && (k_1 = k_1[ri3_1]) && (y2_1 = y2_1[ri3_1]) then
+               r_1 <-R output2;
+               return(r_1)
+             else
+               find [unique] u_3 = ri_3 <= qH2 suchthat defined(r_1[ri_3], y2_1[ri_3], x_1[k_1[ri_3]]) && (x_1[k_1] = x_1[k_1[ri_3]]) && (y2_1 = y2_1[ri_3]) then
+                 return(r_1[u_3])
+               orfind u_2 = ri_2 <= qH3 suchthat defined(r_2[ri_2], y3_1[ri_2], x3_1[ri_2]) && (x_1[k_1] = x3_1[ri_2]) && (y2_1 = y3_1[ri_2]) then
+                 return(r_2[u_2])
+               else
+                 r_1 <-R output2;
+                 return(r_1)
+       else
+         find l_1 = l <= qH2 suchthat defined(x2_1[l], y2_1[l], r2[l]) && (x2_1 = x2_1[l]) && (y2_1 = y2_1[l]) then
+           return(r2[l_1])
+         else
+           r2 <-R output2;
+           return(r2)
+     ) | (
+       foreach i_5 <= qH3 do
+       HComb(x3_1: input1, y3_1: input2) :=
+       find [unique] u_1 = ri_1 <= qH2 suchthat defined(r_1[ri_1], y2_1[ri_1], x_1[k_1[ri_1]]) && (x3_1 = x_1[k_1[ri_1]]) && (y3_1 = y2_1[ri_1]) then
+         return(r_1[u_1])
+       orfind u = ri <= qH3 suchthat defined(r_2[ri], y3_1[ri], x3_1[ri]) && (x3_1 = x3_1[ri]) && (y3_1 = y3_1[ri]) then
+         return(r_2[u])
+       else
+         r_2 <-R output2;
+         return(r_2)
+     ))
+
+
+Applying SA rename ri2
+  - Rename variable ri2 into ri2_6, ri2_5, ri2_4
+yields
+
+Game 36 is
+     Ostart() :=
+     return();
+     ((
+       foreach i_3 <= qH1 do
+       OH1(x_1: input1) :=
+       find j_1 = j <= qH1 suchthat defined(x_1[j], r[j]) && (x_1 = x_1[j]) then
+         return(r[j_1])
+       else
+         r <-R output1;
+         return(r)
+     ) | (
+       foreach i_4 <= qH2 do
+       OH2(x2_1: output1, y2_1: input2) :=
+       find k_1 = k <= qH1 suchthat defined(x_1[k], r[k]) && (r[k] = x2_1) then
+ {35}    find [unique] ri3 = ri3_1 <= qH2, u_3 = ri_3 <= qH2 suchthat defined(r_1[ri3_1], y2_1[ri3_1], x_1[k_1[ri3_1]], r_1[ri_3], y2_1[ri_3], x_1[k_1[ri_3]]) && (k_1 = k_1[ri3_1]) && (y2_1 = y2_1[ri3_1]) && (x_1[k_1] = x_1[k_1[ri_3]]) && (y2_1 = y2_1[ri_3]) then
+           return(r_1[u_3])
+         orfind ri3 = ri3_1 <= qH2, u_2 = ri_2 <= qH3 suchthat defined(r_1[ri3_1], y2_1[ri3_1], x_1[k_1[ri3_1]], r_2[ri_2], y3_1[ri_2], x3_1[ri_2]) && {81}((k_1 = k_1[ri3_1]) && (y2_1 = y2_1[ri3_1]) && (x_1[k_1] = x3_1[ri_2]) && (y2_1 = y3_1[ri_2])) then
+           return(r_2[u_2])
+         orfind ri2_4 = ri2_1 <= qH3, u_3 = ri_3 <= qH2 suchthat defined(r_2[ri2_1], y3_1[ri2_1], x3_1[ri2_1], r_1[ri_3], y2_1[ri_3], x_1[k_1[ri_3]]) && {117}((x_1[k_1] = x3_1[ri2_1]) && (y2_1 = y3_1[ri2_1]) && (x_1[k_1] = x_1[k_1[ri_3]]) && (y2_1 = y2_1[ri_3])) then
+           return(r_1[u_3])
+         orfind ri2_5 = ri2_1 <= qH3, u_2 = ri_2 <= qH3 suchthat defined(r_2[ri2_1], y3_1[ri2_1], x3_1[ri2_1], r_2[ri_2], y3_1[ri_2], x3_1[ri_2]) && (x_1[k_1] = x3_1[ri2_1]) && (y2_1 = y3_1[ri2_1]) && (x_1[k_1] = x3_1[ri_2]) && (y2_1 = y3_1[ri_2]) then
+           return(r_2[u_2])
+         else
+{184}      find [unique] ri2_6 = ri2_1 <= qH3 suchthat defined(r_2[ri2_1], y3_1[ri2_1], x3_1[ri2_1]) && (x_1[k_1] = x3_1[ri2_1]) && (y2_1 = y3_1[ri2_1]) then
+             r_1 <-R output2;
+             return(r_1)
+           else
+{205}        find [unique] ri3 = ri3_1 <= qH2 suchthat defined(r_1[ri3_1], y2_1[ri3_1], x_1[k_1[ri3_1]]) && (k_1 = k_1[ri3_1]) && (y2_1 = y2_1[ri3_1]) then
+               r_1 <-R output2;
+               return(r_1)
+             else
+{226}          find [unique] u_3 = ri_3 <= qH2 suchthat defined(r_1[ri_3], y2_1[ri_3], x_1[k_1[ri_3]]) && (x_1[k_1] = x_1[k_1[ri_3]]) && (y2_1 = y2_1[ri_3]) then
+                 return(r_1[u_3])
+               orfind u_2 = ri_2 <= qH3 suchthat defined(r_2[ri_2], y3_1[ri_2], x3_1[ri_2]) && (x_1[k_1] = x3_1[ri_2]) && (y2_1 = y3_1[ri_2]) then
+                 return(r_2[u_2])
+               else
+                 r_1 <-R output2;
+                 return(r_1)
+       else
+         find l_1 = l <= qH2 suchthat defined(x2_1[l], y2_1[l], r2[l]) && (x2_1 = x2_1[l]) && (y2_1 = y2_1[l]) then
+           return(r2[l_1])
+         else
+           r2 <-R output2;
+           return(r2)
+     ) | (
+       foreach i_5 <= qH3 do
+       HComb(x3_1: input1, y3_1: input2) :=
+       find [unique] u_1 = ri_1 <= qH2 suchthat defined(r_1[ri_1], y2_1[ri_1], x_1[k_1[ri_1]]) && (x3_1 = x_1[k_1[ri_1]]) && (y3_1 = y2_1[ri_1]) then
+         return(r_1[u_1])
+       orfind u = ri <= qH3 suchthat defined(r_2[ri], y3_1[ri], x3_1[ri]) && (x3_1 = x3_1[ri]) && (y3_1 = y3_1[ri]) then
+         return(r_2[u])
+       else
+         r_2 <-R output2;
+         return(r_2)
+     ))
+
+
+Applying simplify
+  - Simplification pass
+    - Remove branch 2 in find at 226
+    - Remove branch 1 in find at 226
+    - Find at 226 removed (else branch kept if any)
+    - Remove branch 1 in find at 205
+    - Find at 205 removed (else branch kept if any)
+    - Remove branch 1 in find at 184
+    - Find at 184 removed (else branch kept if any)
+    - In branch 4 of find at 35, substituting u_2 with ri2_5
+    - Replaced defined condition r_2[ri2_1], y3_1[ri2_1], x3_1[ri2_1], r_2[ri_2], y3_1[ri_2], x3_1[ri_2] with r_2[ri2_1], y3_1[ri2_1], x3_1[ri2_1] in find at 35
+    - Replaced ((x_1[k_1] = x3_1[ri2_1]) && (y2_1 = y3_1[ri2_1]) && (x_1[k_1] = x_1[k_1[ri_3]]) && (y2_1 = y2_1[ri_3])) with false at 117
+    - Remove branch 3 in find at 35
+    - Replaced ((k_1 = k_1[ri3_1]) && (y2_1 = y2_1[ri3_1]) && (x_1[k_1] = x3_1[ri_2]) && (y2_1 = y3_1[ri_2])) with false at 81
+    - Remove branch 2 in find at 35
+    - In branch 1 of find at 35, substituting u_3 with ri3
+    - Replaced defined condition r_1[ri3_1], y2_1[ri3_1], x_1[k_1[ri3_1]], r_1[ri_3], y2_1[ri_3], x_1[k_1[ri_3]] with r_1[ri3_1], x_1[k_1[ri3_1]], y2_1[ri3_1] in find at 35
+yields
+
+Game 37 is
+     Ostart() :=
+     return();
+     ((
+       foreach i_3 <= qH1 do
+       OH1(x_1: input1) :=
+       find j_1 = j <= qH1 suchthat defined(x_1[j], r[j]) && (x_1 = x_1[j]) then
+         return(r[j_1])
+       else
+         r <-R output1;
+         return(r)
+     ) | (
+       foreach i_4 <= qH2 do
+       OH2(x2_1: output1, y2_1: input2) :=
+       find k_1 = k <= qH1 suchthat defined(x_1[k], r[k]) && (r[k] = x2_1) then
+ {35}    find [unique] ri3 = ri3_1 <= qH2 suchthat defined(r_1[ri3_1], x_1[k_1[ri3_1]], y2_1[ri3_1]) && {40}((k_1 = k_1[ri3_1]) && (y2_1 = y2_1[ri3_1]) && (x_1[k_1] = x_1[k_1[ri3_1]]) && (y2_1 = y2_1[ri3_1])) then
+           u_3 <= qH2 <- ri3;
+           return(r_1[ri3])
+         orfind ri2_5 = ri2_1 <= qH3 suchthat defined(r_2[ri2_1], y3_1[ri2_1], x3_1[ri2_1]) && {77}((x_1[k_1] = x3_1[ri2_1]) && (y2_1 = y3_1[ri2_1]) && (x_1[k_1] = x3_1[ri2_1]) && (y2_1 = y3_1[ri2_1])) then
+           u_2 <= qH3 <- ri2_5;
+           return(r_2[ri2_5])
+         else
+           r_1 <-R output2;
+           return(r_1)
+       else
+         find l_1 = l <= qH2 suchthat defined(x2_1[l], y2_1[l], r2[l]) && (x2_1 = x2_1[l]) && (y2_1 = y2_1[l]) then
+           return(r2[l_1])
+         else
+           r2 <-R output2;
+           return(r2)
+     ) | (
+       foreach i_5 <= qH3 do
+       HComb(x3_1: input1, y3_1: input2) :=
+       find [unique] u_1 = ri_1 <= qH2 suchthat defined(r_1[ri_1], y2_1[ri_1], x_1[k_1[ri_1]]) && (x3_1 = x_1[k_1[ri_1]]) && (y3_1 = y2_1[ri_1]) then
+         return(r_1[u_1])
+       orfind u = ri <= qH3 suchthat defined(r_2[ri], y3_1[ri], x3_1[ri]) && (x3_1 = x3_1[ri]) && (y3_1 = y3_1[ri]) then
+         return(r_2[u])
+       else
+         r_2 <-R output2;
+         return(r_2)
+     ))
+
+
+Applying simplify
+  - Simplification pass
+    - Replaced ((x_1[k_1] = x3_1[ri2_1]) && (y2_1 = y3_1[ri2_1]) && (x_1[k_1] = x3_1[ri2_1]) && (y2_1 = y3_1[ri2_1])) with ((x_1[k_1] = x3_1[ri2_1]) && (y2_1 = y3_1[ri2_1])) at 77
+    - Replaced ((k_1 = k_1[ri3_1]) && (y2_1 = y2_1[ri3_1]) && (x_1[k_1] = x_1[k_1[ri3_1]]) && (y2_1 = y2_1[ri3_1])) with ((k_1 = k_1[ri3_1]) && (y2_1 = y2_1[ri3_1])) at 40
+    - Replaced defined condition r_1[ri3_1], x_1[k_1[ri3_1]], y2_1[ri3_1] with r_1[ri3_1], y2_1[ri3_1], k_1[ri3_1] in find at 35
+yields
+
+Game 38 is
+     Ostart() :=
+     return();
+     ((
+       foreach i_3 <= qH1 do
+       OH1(x_1: input1) :=
+       find j_1 = j <= qH1 suchthat defined(x_1[j], r[j]) && (x_1 = x_1[j]) then
+         return(r[j_1])
+       else
+         r <-R output1;
+         return(r)
+     ) | (
+       foreach i_4 <= qH2 do
+       OH2(x2_1: output1, y2_1: input2) :=
+       find k_1 = k <= qH1 suchthat defined(x_1[k], r[k]) && (r[k] = x2_1) then
+         find [unique] ri3 = ri3_1 <= qH2 suchthat defined(r_1[ri3_1], y2_1[ri3_1], k_1[ri3_1]) && (k_1 = k_1[ri3_1]) && (y2_1 = y2_1[ri3_1]) then
+           u_3 <= qH2 <- ri3;
+           return(r_1[ri3])
+         orfind ri2_5 = ri2_1 <= qH3 suchthat defined(r_2[ri2_1], y3_1[ri2_1], x3_1[ri2_1]) && (x_1[k_1] = x3_1[ri2_1]) && (y2_1 = y3_1[ri2_1]) then
+           u_2 <= qH3 <- ri2_5;
+           return(r_2[ri2_5])
+         else
+           r_1 <-R output2;
+           return(r_1)
+       else
+         find l_1 = l <= qH2 suchthat defined(x2_1[l], y2_1[l], r2[l]) && (x2_1 = x2_1[l]) && (y2_1 = y2_1[l]) then
+           return(r2[l_1])
+         else
+           r2 <-R output2;
+           return(r2)
+     ) | (
+       foreach i_5 <= qH3 do
+       HComb(x3_1: input1, y3_1: input2) :=
+       find [unique] u_1 = ri_1 <= qH2 suchthat defined(r_1[ri_1], y2_1[ri_1], x_1[k_1[ri_1]]) && (x3_1 = x_1[k_1[ri_1]]) && (y3_1 = y2_1[ri_1]) then
+         return(r_1[u_1])
+       orfind u = ri <= qH3 suchthat defined(r_2[ri], y3_1[ri], x3_1[ri]) && (x3_1 = x3_1[ri]) && (y3_1 = y3_1[ri]) then
+         return(r_2[u])
+       else
+         r_2 <-R output2;
+         return(r_2)
+     ))
+
+
+Applying remove assignments of useless
+  - Remove assignments on u_3 (definition removed, all usages removed)
+  - Remove assignments on u_2 (definition removed, all usages removed)
+yields
+
+Game 39 is
+     Ostart() :=
+     return();
+     ((
+       foreach i_3 <= qH1 do
+       OH1(x_1: input1) :=
+       find j_1 = j <= qH1 suchthat defined(x_1[j], r[j]) && (x_1 = x_1[j]) then
+         return(r[j_1])
+       else
+         r <-R output1;
+         return(r)
+     ) | (
+       foreach i_4 <= qH2 do
+       OH2(x2_1: output1, y2_1: input2) :=
+       find k_1 = k <= qH1 suchthat defined(x_1[k], r[k]) && (r[k] = x2_1) then
+         find [unique] ri3 = ri3_1 <= qH2 suchthat defined(r_1[ri3_1], y2_1[ri3_1], k_1[ri3_1]) && (k_1 = k_1[ri3_1]) && (y2_1 = y2_1[ri3_1]) then
+           return(r_1[ri3])
+         orfind ri2_5 = ri2_1 <= qH3 suchthat defined(r_2[ri2_1], y3_1[ri2_1], x3_1[ri2_1]) && (x_1[k_1] = x3_1[ri2_1]) && (y2_1 = y3_1[ri2_1]) then
+           return(r_2[ri2_5])
+         else
+           r_1 <-R output2;
+           return(r_1)
+       else
+         find l_1 = l <= qH2 suchthat defined(x2_1[l], y2_1[l], r2[l]) && (x2_1 = x2_1[l]) && (y2_1 = y2_1[l]) then
+           return(r2[l_1])
+         else
+           r2 <-R output2;
+           return(r2)
+     ) | (
+       foreach i_5 <= qH3 do
+       HComb(x3_1: input1, y3_1: input2) :=
+       find [unique] u_1 = ri_1 <= qH2 suchthat defined(r_1[ri_1], y2_1[ri_1], x_1[k_1[ri_1]]) && (x3_1 = x_1[k_1[ri_1]]) && (y3_1 = y2_1[ri_1]) then
+         return(r_1[u_1])
+       orfind u = ri <= qH3 suchthat defined(r_2[ri], y3_1[ri], x3_1[ri]) && (x3_1 = x3_1[ri]) && (y3_1 = y3_1[ri]) then
+         return(r_2[u])
+       else
+         r_2 <-R output2;
+         return(r_2)
+     ))
+
+
+Proved indistinguishability between game 39 and game 1
+Proved event(non_unique) ==> false in game 39
+Game 39 is the same as game 26.
+Adv[Game 1: indistinguishability from game 26] <= (2 * qH2 * qH1 + qH1^2 + qH3^2 + qH3 * qH2) / |output1| + Adv[Game 26: indistinguishability from game 26]
+Adv[Game 27: indistinguishability from game 39] <= Adv[Game 32: indistinguishability from game 39]
+Adv[Game 32: indistinguishability from game 39] <= Adv[Game 33: indistinguishability from game 39, non_unique]
+Adv[Game 33: indistinguishability from game 39, non_unique] <= Adv[Game 39: indistinguishability from game 39, non_unique]
+Pr[Game 39: non_unique] <= 0
+RESULT Proved indistinguishability between game 27 and game 1 up to probability (qH3 * qH2 + qH3^2 + qH1^2 + 2 * qH2 * qH1) / |output1|
+All queries proved.

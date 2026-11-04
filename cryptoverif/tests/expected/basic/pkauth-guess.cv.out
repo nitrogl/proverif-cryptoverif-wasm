@@ -1,0 +1,790 @@
+Doing expand get, insert and prove unique annotations... No change.
+Doing simplify (non-expanded game)... No change.
+Doing expand... Done.
+Doing remove assignments of findcond... Done.
+Doing simplify... Run simplify 1 time(s). Fixpoint reached.
+No change.
+Doing move all binders... No change.
+Doing SA rename new without array accesses and remove assignments of findcond... No change.
+Doing merge branches... No change.
+Proof of forall x: nonce; event(eB(x)) ==> event(eA(x)) failed:
+  Found eB(na_1) at 49
+  but could not prove event(eA(x))
+Proof of forall x: nonce; inj-event(eB(x)) ==> inj-event(eA(x)) failed:
+  Found eB(na_1) at 49
+  but could not prove inj-event(eA(x))
+Doing guess the tested session for replication index iB... Eliminated collisions between na_1 and na_1 Probability: 0.5 / |nonce| * NB * NB
+Done.
+Doing SA rename na_1... Done.
+Doing SA rename new without array accesses and remove assignments of findcond... Done.
+Doing simplify... Run simplify 2 time(s). Fixpoint reached.
+Done.
+Trying equivalence ind_cca2_partial(enc) with r_2, rkA.... Failed.
+Doing remove assignments of binder skA... Done.
+Trying equivalence ind_cca2_partial(enc) with r_2, rkA.... Transf. OK Proba. computed Transf. done Succeeded.
+Doing simplify (non-expanded game)... No change.
+Doing expand... Done.
+Doing remove assignments of findcond... Done.
+Doing simplify... Run simplify 2 time(s). Fixpoint reached.
+Done.
+Doing move all binders... No change.
+Doing SA rename new without array accesses and remove assignments of findcond... Done.
+Doing merge branches... No change.
+Doing insert instruction eAex <- true at occurrence 25... Done.
+Doing insert instruction find j <= NA suchthat defined(eAex[j]) then else event_abort bad at occurrence 70... Done.
+Doing replace term at occurrence 77 with na_3[iB_tested]... Done.
+Proved query forall x: nonce; event(eB_1(x)) ==> event(eA(x))
+Proved query forall x: nonce; event(eB_1(x)) ==> event(eA(x))
+Proof of event(bad) ==> false failed:
+  Found bad at 81
+  but could not prove false
+Sorry, the following queries remain unproved:
+- event(bad) ==> false
+Proof of event(bad) ==> false failed:
+  Found bad at 81
+  but could not prove false
+Sorry, the following queries remain unproved:
+- event(bad) ==> false
+Doing simplify eliminating code unreachable when queries fail... Run simplify 2 time(s). Maximum reached.
+Done.
+Doing global dependency analysis on na_3... Eliminated collisions between (na_3) and dummy_input_2 Probability: NB / |nonce|
+((na_3) collides with a value independent of na_3[...] with probability at most 1 / |nonce|;
+ dummy_input_2 does not depend on na_3[...])
+Done.
+Proved query event(bad) ==> false
+===================== Proof starts =======================
+Initial state
+Game 1 is
+     start() :=
+     rkA <-R keyseed;
+     pkA: pkey <- pkgen(rkA);
+     skA: skey <- skgen(rkA);
+     return(pkA);
+     ((
+       foreach iA <= NA do
+       c1(m: bitstring) :=
+       let injbot(pad(na: nonce)) = dec(m, skA) in
+       event eA(na);
+       return(na)
+     ) | (
+       foreach iB <= NB do
+       c3() :=
+       na_1 <-R nonce;
+       return((m_1: blocksize <- pad(na_1); pk: pkey <- pkA; r <-R enc_seed; enc_r(m_1, pk, r)));
+       c5(=na_1) :=
+       event eB(na_1)
+     ))
+
+
+Applying expand
+  - Expand if/find/let
+yields
+
+Game 2 is
+     start() :=
+     rkA <-R keyseed;
+     pkA: pkey <- pkgen(rkA);
+     skA: skey <- skgen(rkA);
+     return(pkA);
+     ((
+       foreach iA <= NA do
+       c1(m: bitstring) :=
+       let injbot(pad(na: nonce)) = dec(m, skA) in
+       event eA(na);
+       return(na)
+     ) | (
+       foreach iB <= NB do
+       c3() :=
+       na_1 <-R nonce;
+       m_1: blocksize <- pad(na_1);
+       pk: pkey <- pkA;
+       r <-R enc_seed;
+       return(enc_r(m_1, pk, r));
+       c5(=na_1) :=
+       event eB(na_1)
+     ))
+
+
+Applying remove assignments of findcond
+  - Remove assignments on pk (definition removed, all usages removed)
+yields
+
+Game 3 is
+     start() :=
+     rkA <-R keyseed;
+     pkA: pkey <- pkgen(rkA);
+     skA: skey <- skgen(rkA);
+     return(pkA);
+     ((
+       foreach iA <= NA do
+       c1(m: bitstring) :=
+       let injbot(pad(na: nonce)) = dec(m, skA) in
+       event eA(na);
+       return(na)
+     ) | (
+       foreach iB <= NB do
+       c3() :=
+       na_1 <-R nonce;
+       m_1: blocksize <- pad(na_1);
+       r <-R enc_seed;
+       return(enc_r(m_1, pkA, r));
+       c5(=na_1) :=
+       event eB(na_1)
+     ))
+
+
+Applying guess the tested session for replication index iB
+yields
+
+Game 4 is
+     start() :=
+     rkA <-R keyseed;
+     pkA: pkey <- pkgen(rkA);
+     skA: skey <- skgen(rkA);
+     return(pkA);
+     ((
+       foreach iA <= NA do
+       c1(m: bitstring) :=
+       let injbot(pad(na: nonce)) = dec(m, skA) in
+       event eA(na);
+       return(na)
+     ) | (
+       foreach iB <= NB do
+       c3() :=
+       if iB = iB_tested then
+         na_1 <-R nonce;
+         m_1: blocksize <- pad(na_1);
+         r <-R enc_seed;
+         return(enc_r(m_1, pkA, r));
+         c5(=na_1) :=
+         event eB_1(na_1)
+       else
+         na_1 <-R nonce;
+         m_1: blocksize <- pad(na_1);
+         r <-R enc_seed;
+         return(enc_r(m_1, pkA, r));
+         c5(=na_1) :=
+         event eB(na_1)
+     ))
+
+
+Applying SA rename na_1
+  - Rename variable na_1 into na_3, na_2
+yields
+
+Game 5 is
+     start() :=
+     rkA <-R keyseed;
+     pkA: pkey <- pkgen(rkA);
+     skA: skey <- skgen(rkA);
+     return(pkA);
+     ((
+       foreach iA <= NA do
+       c1(m: bitstring) :=
+       let injbot(pad(na: nonce)) = dec(m, skA) in
+       event eA(na);
+       return(na)
+     ) | (
+       foreach iB <= NB do
+       c3() :=
+       if iB = iB_tested then
+         na_3 <-R nonce;
+         m_1: blocksize <- pad(na_3);
+         r <-R enc_seed;
+         return(enc_r(m_1, pkA, r));
+         c5(=na_3) :=
+         event eB_1(na_3)
+       else
+         na_2 <-R nonce;
+         m_1: blocksize <- pad(na_2);
+         r <-R enc_seed;
+         return(enc_r(m_1, pkA, r));
+         c5(=na_2) :=
+         event eB(na_2)
+     ))
+
+
+Applying SA rename new without array accesses and remove assignments of findcond
+  - Rename variable r into r_2, r_1
+yields
+
+Game 6 is
+     start() :=
+     rkA <-R keyseed;
+     pkA: pkey <- pkgen(rkA);
+     skA: skey <- skgen(rkA);
+     return(pkA);
+     ((
+       foreach iA <= NA do
+       c1(m: bitstring) :=
+       let injbot(pad(na: nonce)) = dec(m, skA) in
+       event eA(na);
+       return(na)
+     ) | (
+       foreach iB <= NB do
+       c3() :=
+       if iB = iB_tested then
+         na_3 <-R nonce;
+         m_1: blocksize <- pad(na_3);
+         r_2 <-R enc_seed;
+         return(enc_r(m_1, pkA, r_2));
+         c5(=na_3) :=
+         event eB_1(na_3)
+       else
+         na_2 <-R nonce;
+         m_1: blocksize <- pad(na_2);
+         r_1 <-R enc_seed;
+         return(enc_r(m_1, pkA, r_1));
+         c5(=na_2) :=
+ {76}    event eB(na_2)
+     ))
+
+
+Applying simplify
+  - Simplification pass
+    - Removed event at 76 (no longer used in queries)
+yields
+
+Game 7 is
+     start() :=
+     rkA <-R keyseed;
+     pkA: pkey <- pkgen(rkA);
+     skA: skey <- skgen(rkA);
+     return(pkA);
+     ((
+       foreach iA <= NA do
+       c1(m: bitstring) :=
+       let injbot(pad(na: nonce)) = dec(m, skA) in
+       event eA(na);
+       return(na)
+     ) | (
+       foreach iB <= NB do
+       c3() :=
+       if iB = iB_tested then
+         na_3 <-R nonce;
+         m_1: blocksize <- pad(na_3);
+         r_2 <-R enc_seed;
+         return(enc_r(m_1, pkA, r_2));
+         c5(=na_3) :=
+         event eB_1(na_3)
+       else
+         na_2 <-R nonce;
+         m_1: blocksize <- pad(na_2);
+         r_1 <-R enc_seed;
+         return(enc_r(m_1, pkA, r_1));
+         c5(=na_2) :=
+         yield
+     ))
+
+
+Applying remove assignments of binder skA
+  - Remove assignments on skA (definition removed, all usages removed)
+yields
+
+Game 8 is
+     start() :=
+     rkA <-R keyseed;
+     pkA: pkey <- pkgen(rkA);
+     return(pkA);
+     ((
+       foreach iA <= NA do
+       c1(m: bitstring) :=
+       let injbot(pad(na: nonce)) = dec(m, skgen(rkA)) in
+       event eA(na);
+       return(na)
+     ) | (
+       foreach iB <= NB do
+       c3() :=
+       if iB = iB_tested then
+         na_3 <-R nonce;
+         m_1: blocksize <- pad(na_3);
+         r_2 <-R enc_seed;
+         return(enc_r(m_1, pkA, r_2));
+         c5(=na_3) :=
+         event eB_1(na_3)
+       else
+         na_2 <-R nonce;
+         m_1: blocksize <- pad(na_2);
+         r_1 <-R enc_seed;
+         return(enc_r(m_1, pkA, r_1));
+         c5(=na_2) :=
+         yield
+     ))
+
+
+Applying equivalence ind_cca2_partial(enc) with r_2, rkA. [probability Penc(time_1, NA)]
+  - Equivalence ind_cca2_partial(enc) with variables: rkA -> r_1, r_2 -> r1.
+yields
+
+Game 9 is
+     start() :=
+     rkA_1 <-R keyseed;
+     pkA: pkey <- pkgen(rkA_1);
+     return(pkA);
+     ((
+       foreach iA <= NA do
+       c1(m: bitstring) :=
+ {11}  let injbot(pad(na: nonce)) = (m_2: bitstring <- m; {15}find u = ri <= NB suchthat defined(x1[ri], m1[ri]) && (m1[ri] = m_2) then injbot(x1[u]) else dec(m_2, skgen(rkA_1))) in
+       event eA(na);
+       return(na)
+     ) | (
+       foreach iB <= NB do
+       c3() :=
+       if iB = iB_tested then
+         na_3 <-R nonce;
+         m_1: blocksize <- pad(na_3);
+         r_3 <-R enc_seed;
+         return((x1: blocksize <- m_1; m1: bitstring <- enc_r2(Z(x1), pkgen(rkA_1), r_3); m1));
+         c5(=na_3) :=
+         event eB_1(na_3)
+       else
+         na_2 <-R nonce;
+         m_1: blocksize <- pad(na_2);
+         r_1 <-R enc_seed;
+         return(enc_r(m_1, pkA, r_1));
+         c5(=na_2) :=
+         yield
+     ))
+
+
+Applying expand
+  - Expand if/find/let
+    - Simplify pattern pad(na: nonce) (tuple expanded), pattern injbot(pad(na: nonce)) (tuple expanded) at 11
+    - Replaced defined condition x1[ri], m1[ri] with na_3[ri], m1[ri] in find at 15
+yields
+
+Game 10 is
+     start() :=
+     rkA_1 <-R keyseed;
+     pkA: pkey <- pkgen(rkA_1);
+     return(pkA);
+     ((
+       foreach iA <= NA do
+       c1(m: bitstring) :=
+       m_2: bitstring <- m;
+       find u = ri <= NB suchthat defined(na_3[ri], m1[ri]) && (m1[ri] = m_2) then
+         na: nonce <- na_3[u];
+         event eA(na);
+         return(na)
+       else
+         let injbot(pad(na: nonce)) = dec(m_2, skgen(rkA_1)) in
+         event eA(na);
+         return(na)
+     ) | (
+       foreach iB <= NB do
+       c3() :=
+       if iB = iB_tested then
+         na_3 <-R nonce;
+         m_1: blocksize <- pad(na_3);
+         r_3 <-R enc_seed;
+         x1: blocksize <- m_1;
+         m1: bitstring <- enc_r2(Z(x1), pkgen(rkA_1), r_3);
+         return(m1);
+         c5(=na_3) :=
+         event eB_1(na_3)
+       else
+         na_2 <-R nonce;
+         m_1: blocksize <- pad(na_2);
+         r_1 <-R enc_seed;
+         return(enc_r(m_1, pkA, r_1));
+         c5(=na_2) :=
+         yield
+     ))
+
+
+Applying remove assignments of findcond
+  - Remove assignments on x1 (definition removed, all usages removed)
+  - Remove assignments on m_2 (definition removed, all usages removed)
+  - Remove assignments on na (definition removed, all usages removed)
+yields
+
+Game 11 is
+     start() :=
+     rkA_1 <-R keyseed;
+     pkA: pkey <- pkgen(rkA_1);
+     return(pkA);
+     ((
+       foreach iA <= NA do
+       c1(m: bitstring) :=
+ {11}  find u = ri <= NB suchthat defined(na_3[ri], m1[ri]) && (m1[ri] = m) then
+         event eA(na_3[u]);
+         return(na_3[u])
+       else
+         let injbot(pad(na: nonce)) = dec(m, skgen(rkA_1)) in
+         event eA(na);
+         return(na)
+     ) | (
+       foreach iB <= NB do
+       c3() :=
+       if iB = iB_tested then
+         na_3 <-R nonce;
+         m_1: blocksize <- pad(na_3);
+         r_3 <-R enc_seed;
+         m1: bitstring <- {61}enc_r2(Z(m_1), pkgen(rkA_1), r_3);
+         return(m1);
+         c5(=na_3) :=
+         event eB_1(na_3)
+       else
+         na_2 <-R nonce;
+         m_1: blocksize <- pad(na_2);
+         r_1 <-R enc_seed;
+         return(enc_r(m_1, pkA, r_1));
+         c5(=na_2) :=
+         yield
+     ))
+
+
+Applying simplify
+  - Simplification pass
+    - Replaced enc_r2(Z(m_1), pkgen(rkA_1), r_3) with enc_r2(Zblocksize, pkgen(rkA_1), r_3) at 61
+    - In branch 1 of find at 11, substituting u with iB_tested
+    - Replaced defined condition na_3[ri], m1[ri] with na_3[iB_tested], m1[iB_tested] in find at 11
+yields
+
+Game 12 is
+     start() :=
+     rkA_1 <-R keyseed;
+     pkA: pkey <- pkgen(rkA_1);
+     return(pkA);
+     ((
+       foreach iA <= NA do
+       c1(m: bitstring) :=
+       if defined(na_3[iB_tested], m1[iB_tested]) && (m1[iB_tested] = m) then
+         u <= NB <- iB_tested;
+         event eA(na_3[iB_tested]);
+         return(na_3[iB_tested])
+       else
+         let injbot(pad(na: nonce)) = dec(m, skgen(rkA_1)) in
+         event eA(na);
+         return(na)
+     ) | (
+       foreach iB <= NB do
+       c3() :=
+       if iB = iB_tested then
+         na_3 <-R nonce;
+         m_1: blocksize <- pad(na_3);
+         r_3 <-R enc_seed;
+         m1: bitstring <- enc_r2(Zblocksize, pkgen(rkA_1), r_3);
+         return(m1);
+         c5(=na_3) :=
+         event eB_1(na_3)
+       else
+         na_2 <-R nonce;
+         m_1: blocksize <- pad(na_2);
+         r_1 <-R enc_seed;
+         return(enc_r(m_1, pkA, r_1));
+         c5(=na_2) :=
+         yield
+     ))
+
+
+Applying SA rename new without array accesses and remove assignments of findcond
+  - Remove assignments on m_1 (definition removed, all usages removed)
+  - Remove assignments on u (definition removed, all usages removed)
+yields
+
+Game 13 is
+     start() :=
+     rkA_1 <-R keyseed;
+     pkA: pkey <- pkgen(rkA_1);
+     return(pkA);
+     ((
+       foreach iA <= NA do
+       c1(m: bitstring) :=
+       if defined(na_3[iB_tested], m1[iB_tested]) && (m1[iB_tested] = m) then
+         event eA(na_3[iB_tested]);
+ {25}    return(na_3[iB_tested])
+       else
+         let injbot(pad(na: nonce)) = dec(m, skgen(rkA_1)) in
+         event eA(na);
+         return(na)
+     ) | (
+       foreach iB <= NB do
+       c3() :=
+       if iB = iB_tested then
+         na_3 <-R nonce;
+         r_3 <-R enc_seed;
+         m1: bitstring <- enc_r2(Zblocksize, pkgen(rkA_1), r_3);
+         return(m1);
+         c5(=na_3) :=
+         event eB_1(na_3)
+       else
+         na_2 <-R nonce;
+         m_1: blocksize <- pad(na_2);
+         r_1 <-R enc_seed;
+         return(enc_r(m_1, pkA, r_1));
+         c5(=na_2) :=
+         yield
+     ))
+
+
+Applying insert instruction eAex <- true at occurrence 25
+yields
+
+Game 14 is
+     start() :=
+     rkA_1 <-R keyseed;
+     pkA: pkey <- pkgen(rkA_1);
+     return(pkA);
+     ((
+       foreach iA <= NA do
+       c1(m: bitstring) :=
+       if defined(na_3[iB_tested], m1[iB_tested]) && (m1[iB_tested] = m) then
+         event eA(na_3[iB_tested]);
+         eAex: bool <- true;
+         return(na_3[iB_tested])
+       else
+         let injbot(pad(na: nonce)) = dec(m, skgen(rkA_1)) in
+         event eA(na);
+         return(na)
+     ) | (
+       foreach iB <= NB do
+       c3() :=
+       if iB = iB_tested then
+         na_3 <-R nonce;
+         r_3 <-R enc_seed;
+         m1: bitstring <- enc_r2(Zblocksize, pkgen(rkA_1), r_3);
+         return(m1);
+         c5(=na_3) :=
+ {70}    event eB_1(na_3)
+       else
+         na_2 <-R nonce;
+         m_1: blocksize <- pad(na_2);
+         r_1 <-R enc_seed;
+         return(enc_r(m_1, pkA, r_1));
+         c5(=na_2) :=
+         yield
+     ))
+
+
+Applying insert instruction find j <= NA suchthat defined(eAex[j]) then else event_abort bad at occurrence 70 [probability Pr[event bad in game 15]]
+yields
+
+Game 15 is
+     start() :=
+     rkA_1 <-R keyseed;
+     pkA: pkey <- pkgen(rkA_1);
+     return(pkA);
+     ((
+       foreach iA <= NA do
+       c1(m: bitstring) :=
+       if defined(na_3[iB_tested], m1[iB_tested]) && (m1[iB_tested] = m) then
+         event eA(na_3[iB_tested]);
+         eAex: bool <- true;
+         return(na_3[iB_tested])
+       else
+         let injbot(pad(na: nonce)) = dec(m, skgen(rkA_1)) in
+         event eA(na);
+         return(na)
+     ) | (
+       foreach iB <= NB do
+       c3() :=
+       if iB = iB_tested then
+         na_3 <-R nonce;
+         r_3 <-R enc_seed;
+         m1: bitstring <- enc_r2(Zblocksize, pkgen(rkA_1), r_3);
+         return(m1);
+         c5(=na_3) :=
+         find j = j_1 <= NA suchthat defined(eAex[j_1]) then
+           event eB_1({77}na_3)
+         else
+           event_abort bad
+       else
+         na_2 <-R nonce;
+         m_1: blocksize <- pad(na_2);
+         r_1 <-R enc_seed;
+         return(enc_r(m_1, pkA, r_1));
+         c5(=na_2) :=
+         yield
+     ))
+
+
+Applying replace term at occurrence 77 with na_3[iB_tested]
+yields
+
+Game 16 is
+     start() :=
+     rkA_1 <-R keyseed;
+     pkA: pkey <- pkgen(rkA_1);
+     return(pkA);
+     ((
+       foreach iA <= NA do
+       c1(m: bitstring) :=
+ {11}  if defined(na_3[iB_tested], m1[iB_tested]) && (m1[iB_tested] = m) then
+ {19}    event eA(na_3[iB_tested]);
+         eAex: bool <- true;
+ {27}    return(na_3[iB_tested])
+       else
+         let injbot(pad(na: nonce)) = dec(m, skgen(rkA_1)) in
+ {38}    event eA(na);
+         return(na)
+     ) | (
+       foreach iB <= NB do
+       c3() :=
+       if iB = iB_tested then
+         na_3 <-R nonce;
+         r_3 <-R enc_seed;
+         m1: bitstring <- enc_r2(Zblocksize, pkgen(rkA_1), r_3);
+         return(m1);
+         c5(=na_3) :=
+ {70}    find j = j_1 <= NA suchthat defined(eAex[j_1], na_3[iB_tested]) then
+ {74}      event eB_1(na_3[iB_tested])
+         else
+           event_abort bad
+       else
+         na_2 <-R nonce;
+         m_1: blocksize <- pad(na_2);
+         r_1 <-R enc_seed;
+         return(enc_r(m_1, pkA, r_1));
+         c5(=na_2) :=
+         yield
+     ))
+
+
+Proved forall x: nonce; event(eB_1(x)) ==> event(eA(x)) in game 16
+Proved forall x: nonce; event(eB_1(x)) ==> event(eA(x)) in game 16
+
+Applying simplify eliminating code unreachable when queries fail
+  - Simplification pass
+    - Adversary always loses at 74
+    - Replaced defined condition eAex[j_1], na_3[iB_tested] with eAex[j_1] in find at 70
+    - Removed event at 38 (no longer used in queries)
+    - Removed event at 19 (no longer used in queries)
+    - Adversary always loses at 27
+    - Replaced defined condition na_3[iB_tested], m1[iB_tested] with m1[iB_tested] in find at 11
+yields
+
+Game 17 is
+     start() :=
+     rkA_1 <-R keyseed;
+     pkA: pkey <- pkgen(rkA_1);
+     return(pkA);
+     ((
+       foreach iA <= NA do
+       c1(m: bitstring) :=
+       if defined(m1[iB_tested]) && (m1[iB_tested] = m) then
+         eAex: bool <- true;
+         event_abort adv_loses
+       else
+         let injbot(pad(na: nonce)) = dec(m, skgen(rkA_1)) in
+         return(na)
+     ) | (
+       foreach iB <= NB do
+       c3() :=
+       if iB = iB_tested then
+         na_3 <-R nonce;
+         r_3 <-R enc_seed;
+         m1: bitstring <- enc_r2(Zblocksize, pkgen(rkA_1), r_3);
+         return(m1);
+         c5(=na_3) :=
+ {54}    find j = j_1 <= NA suchthat defined(eAex[j_1]) then
+           event_abort adv_loses
+         else
+           event_abort bad
+       else
+         na_2 <-R nonce;
+         m_1: blocksize <- pad(na_2);
+         r_1 <-R enc_seed;
+         return(enc_r(m_1, pkA, r_1));
+         c5(=na_2) :=
+         yield
+     ))
+
+
+Applying simplify
+  - Simplification pass
+    - Remove branch 1 in find at 54
+    - Find at 54 removed (else branch kept if any)
+yields
+
+Game 18 is
+     start() :=
+     rkA_1 <-R keyseed;
+     pkA: pkey <- pkgen(rkA_1);
+     return(pkA);
+     ((
+       foreach iA <= NA do
+       c1(m: bitstring) :=
+       if defined(m1[iB_tested]) && (m1[iB_tested] = m) then
+         event_abort adv_loses
+       else
+         let injbot(pad(na: nonce)) = dec(m, skgen(rkA_1)) in
+         return(na)
+     ) | (
+       foreach iB <= NB do
+       c3() :=
+       if iB = iB_tested then
+         na_3 <-R nonce;
+         r_3 <-R enc_seed;
+         m1: bitstring <- enc_r2(Zblocksize, pkgen(rkA_1), r_3);
+         return(m1);
+         c5(=na_3) :=
+         event_abort bad
+       else
+         na_2 <-R nonce;
+         m_1: blocksize <- pad(na_2);
+         r_1 <-R enc_seed;
+         return(enc_r(m_1, pkA, r_1));
+         c5(=na_2) :=
+         yield
+     ))
+
+
+Applying global dependency analysis on na_3 [probability NB / |nonce|]
+  - Global dependency analysis on na_3
+yields
+
+Game 19 is
+     start() :=
+     rkA_1 <-R keyseed;
+     pkA: pkey <- pkgen(rkA_1);
+     return(pkA);
+     ((
+       foreach iA <= NA do
+       c1(m: bitstring) :=
+       if defined(m1[iB_tested]) && (m1[iB_tested] = m) then
+         event_abort adv_loses
+       else
+         let injbot(pad(na: nonce)) = dec(m, skgen(rkA_1)) in
+         return(na)
+     ) | (
+       foreach iB <= NB do
+       c3() :=
+       if iB = iB_tested then
+         na_3 <-R nonce;
+         r_3 <-R enc_seed;
+         m1: bitstring <- enc_r2(Zblocksize, pkgen(rkA_1), r_3);
+         return(m1);
+         c5(dummy_input_3: nonce) :=
+         yield
+       else
+         na_2 <-R nonce;
+         m_1: blocksize <- pad(na_2);
+         r_1 <-R enc_seed;
+         return(enc_r(m_1, pkA, r_1));
+         c5(=na_2) :=
+         yield
+     ))
+
+
+Proved event(bad) ==> false in game 19
+Adv[Game 1: forall x: nonce; inj-event(eB(x)) ==> inj-event(eA(x))] <= Adv[Game 3: forall x: nonce; inj-event(eB(x)) ==> inj-event(eA(x))]
+Adv[Game 3: forall x: nonce; inj-event(eB(x)) ==> inj-event(eA(x))] <= NB * Adv[Game 4: forall x: nonce; event(eB_1(x)) ==> event(eA(x))] + 0.5 * NB^2 / |nonce|
+Adv[Game 4: forall x: nonce; event(eB_1(x)) ==> event(eA(x))] <= Penc(time_1, NA) + Adv[Game 14: forall x: nonce; event(eB_1(x)) ==> event(eA(x))]
+Adv[Game 14: forall x: nonce; event(eB_1(x)) ==> event(eA(x))] <= Adv[Game 15: forall x: nonce; event(eB_1(x)) ==> event(eA(x)), bad]
+Adv[Game 15: forall x: nonce; event(eB_1(x)) ==> event(eA(x)), bad] <= Pr[Game 16: bad] + Adv[Game 16: forall x: nonce; event(eB_1(x)) ==> event(eA(x))]
+Pr[Game 16: bad] <= NB / |nonce| + Pr[Game 19: bad]
+Pr[Game 19: bad] <= 0
+Adv[Game 16: forall x: nonce; event(eB_1(x)) ==> event(eA(x))] <= 0
+RESULT Proved forall x: nonce; inj-event(eB(x)) ==> inj-event(eA(x)) up to probability NB * Penc(time_1, NA) + 1.5 * NB^2 / |nonce|
+Adv[Game 1: forall x: nonce; event(eB(x)) ==> event(eA(x))] <= Adv[Game 3: forall x: nonce; event(eB(x)) ==> event(eA(x))]
+Adv[Game 3: forall x: nonce; event(eB(x)) ==> event(eA(x))] <= NB * Adv[Game 4: forall x: nonce; event(eB_1(x)) ==> event(eA(x))]
+Adv[Game 4: forall x: nonce; event(eB_1(x)) ==> event(eA(x))] <= Penc(time_1, NA) + Adv[Game 14: forall x: nonce; event(eB_1(x)) ==> event(eA(x))]
+Adv[Game 14: forall x: nonce; event(eB_1(x)) ==> event(eA(x))] <= Adv[Game 15: forall x: nonce; event(eB_1(x)) ==> event(eA(x)), bad]
+Adv[Game 15: forall x: nonce; event(eB_1(x)) ==> event(eA(x)), bad] <= Pr[Game 16: bad] + Adv[Game 16: forall x: nonce; event(eB_1(x)) ==> event(eA(x))]
+Pr[Game 16: bad] <= NB / |nonce| + Pr[Game 19: bad]
+Pr[Game 19: bad] <= 0
+Adv[Game 16: forall x: nonce; event(eB_1(x)) ==> event(eA(x))] <= 0
+RESULT Proved forall x: nonce; event(eB(x)) ==> event(eA(x)) up to probability NB^2 / |nonce| + NB * Penc(time_1, NA)
+RESULT time_1 = NA * time(let injbot) + NA * time(let pad) + NA * time(([1,NA])) + NB * time(([1,NB])) + NB * time(pad) + NB * time(enc_r) + time
+All queries proved.

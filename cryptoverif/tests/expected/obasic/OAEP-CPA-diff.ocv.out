@@ -1,0 +1,1305 @@
+Doing expand get, insert and prove unique annotations... No change.
+Doing simplify (non-expanded game)... No change.
+Doing expand... No change.
+Doing remove assignments of findcond... Done.
+Doing simplify... Run simplify 1 time(s). Fixpoint reached.
+No change.
+Doing move all binders... No change.
+Doing SA rename new without array accesses and remove assignments of findcond... No change.
+Doing merge branches... No change.
+Proof of (one-session) secrecy of diff_bit failed:
+  at 57, bad usage(s) of t, which may depend on diff_bit.
+Trying equivalence rom(H)... Transf. OK Proba. computed Transf. done Succeeded.
+Doing simplify (non-expanded game)... No change.
+Doing expand... Done.
+Doing remove assignments of findcond... Done.
+Doing simplify... Run simplify 2 time(s). Fixpoint reached.
+Done.
+Doing move all binders... Done.
+Doing SA rename new without array accesses and remove assignments of findcond... No change.
+Doing merge branches... No change.
+Trying equivalence rom(G)... Transf. OK Proba. computed Transf. done Succeeded.
+Doing simplify (non-expanded game)... No change.
+Doing expand... Done.
+Doing remove assignments of findcond... Done.
+Doing simplify... Doing global dependency analysis on r_3 inside simplify... At 147, returned message f(pk, concat(s, t)) depends on r_3.
+No change
+Eliminated collisions between xorDow(concatm(menc, zero), r_7) and x1_1[ri] Probability: qH / |Dow|
+(xorDow(concatm(menc, zero), r_7) collides with a value independent of r_7 with probability at most 1 / |Dow|;
+ x1_1[ri] does not depend on r_7)
+Eliminated collisions between r_3 and x1[ri_2] Probability: qG / |Dr|
+(r_3 collides with a value independent of r_3 with probability at most 1 / |Dr|;
+ x1[ri_2] does not depend on r_3)
+Doing global dependency analysis on r_7 inside simplify... At 90, returned message f(pk, concat(s, t)) depends on r_7.
+No change
+Doing global dependency analysis on r_3 inside simplify... At 90, returned message f(pk, concat(s, t)) depends on r_3.
+No change
+Run simplify 2 time(s). Fixpoint reached.
+Done.
+Doing move all binders... Done.
+Doing SA rename new without array accesses and remove assignments of findcond... No change.
+Doing merge branches... No change.
+  {1}diff_o() :=
+  {2}diff_bit <-R bool;
+  {3}return();
+  {4}Ogen() :=
+  {5}r_2 <-R seed;
+  {6}pk: pkey <- {7}pkgen({8}r_2);
+  {9}return({10}pk);
+ {11}((
+ {13}  foreach iH <= qG do
+ {14}  OH(x1: Dr) :=
+ {15}  find [unique] u_3 = ri_3 <= qG suchthat defined(r_6[{16}ri_3], x1[{17}ri_3]) && {18}({19}x1 = {21}x1[{22}ri_3]) then
+ {23}    return({24}r_6[{25}u_3])
+       orfind  suchthat defined(r_3, r_7) && {28}({29}x1 = {31}r_3) then
+ {32}    return({33}r_7)
+       else
+ {35}    r_6 <-R Dow;
+ {36}    return({37}r_6)
+     ) | (
+ {40}  foreach iH_1 <= qH do
+ {41}  OH_1(x1_1: Dow) :=
+ {42}  find [unique] u_1 = ri_1 <= qH suchthat defined(r_4[{43}ri_1], x1_1[{44}ri_1]) && {45}({46}x1_1 = {48}x1_1[{49}ri_1]) then
+ {50}    return({51}r_4[{52}u_1])
+       orfind  suchthat defined(s, r_5) && {55}({56}x1_1 = {58}s) then
+ {59}    return({60}r_5)
+       else
+ {62}    r_4 <-R Dr;
+ {63}    return({64}r_4)
+     ) | (
+ {67}  OT(m1: Dm, m2: Dm) :=
+ {68}  menc: Dm <- {69}if_fun({70}diff_bit, {71}m1, {72}m2);
+ {73}  r_3 <-R Dr;
+ {74}  r_7 <-R Dow;
+ {75}  s: Dow <- {76}xorDow({77}concatm({78}menc, {79}zero), {80}r_7);
+ {81}  r_5 <-R Dr;
+ {82}  t: Dr <- {83}xorDr({84}r_3, {85}r_5);
+ {86}  return({87}f({88}pk, {89}concat({90}s, {91}t)))
+     ))
+
+Doing insert event bad1 at occurrence 32... Done.
+  {1}diff_o() :=
+  {2}diff_bit <-R bool;
+  {3}return();
+  {4}Ogen() :=
+  {5}r_2 <-R seed;
+  {6}pk: pkey <- {7}pkgen({8}r_2);
+  {9}return({10}pk);
+ {11}((
+ {13}  foreach iH <= qG do
+ {14}  OH(x1: Dr) :=
+ {15}  find [unique] u_3 = ri_3 <= qG suchthat defined(r_6[{16}ri_3], x1[{17}ri_3]) && {18}({19}x1 = {21}x1[{22}ri_3]) then
+ {23}    return({24}r_6[{25}u_3])
+       orfind  suchthat defined(r_3, r_7) && {28}({29}x1 = {31}r_3) then
+ {32}    event_abort bad1
+       else
+ {33}    r_6 <-R Dow;
+ {34}    return({35}r_6)
+     ) | (
+ {38}  foreach iH_1 <= qH do
+ {39}  OH_1(x1_1: Dow) :=
+ {40}  find [unique] u_1 = ri_1 <= qH suchthat defined(r_4[{41}ri_1], x1_1[{42}ri_1]) && {43}({44}x1_1 = {46}x1_1[{47}ri_1]) then
+ {48}    return({49}r_4[{50}u_1])
+       orfind  suchthat defined(s, r_5) && {53}({54}x1_1 = {56}s) then
+ {57}    return({58}r_5)
+       else
+ {60}    r_4 <-R Dr;
+ {61}    return({62}r_4)
+     ) | (
+ {65}  OT(m1: Dm, m2: Dm) :=
+ {66}  menc: Dm <- {67}if_fun({68}diff_bit, {69}m1, {70}m2);
+ {71}  r_3 <-R Dr;
+ {72}  r_7 <-R Dow;
+ {73}  s: Dow <- {74}xorDow({75}concatm({76}menc, {77}zero), {78}r_7);
+ {79}  r_5 <-R Dr;
+ {80}  t: Dr <- {81}xorDr({82}r_3, {83}r_5);
+ {84}  return({85}f({86}pk, {87}concat({88}s, {89}t)))
+     ))
+
+Doing insert event bad2 at occurrence 57... Done.
+Proof of (one-session) secrecy of diff_bit failed:
+  at 56, bad usage(s) of s, which may depend on diff_bit.
+Proof of event(bad1) ==> false with public variables diff_bit failed:
+  Found bad1 at 32
+  but could not prove false
+Proof of event(bad2) ==> false with public variables diff_bit failed:
+  Found bad2 at 57
+  but could not prove false
+Trying equivalence remove_xor(xorDr)... Transf. OK Proba. computed Transf. done Succeeded.
+Doing simplify (non-expanded game)... No change.
+Doing expand... Done.
+Doing remove assignments of findcond... Done.
+Doing simplify... Doing global dependency analysis on r_7 inside simplify... At 79, returned message f(pk, concat(s, r_8)) depends on r_7.
+No change
+Doing global dependency analysis on r_3 inside simplify... Done. Restarting simplify
+Eliminated collisions between r_3 and x1 Probability: qG / |Dr|
+(r_3 collides with a value independent of r_3[...] with probability at most 1 / |Dr|;
+ x1 does not depend on r_3[...])
+Doing global dependency analysis on r_7 inside simplify... At 74, returned message f(pk, concat(s, r_8)) depends on r_7.
+No change
+Doing global dependency analysis on r_7 inside simplify... At 73, returned message f(pk, concat(s, r_8)) depends on r_7.
+No change
+Run simplify 2 time(s). Fixpoint reached.
+Done.
+Doing move all binders... No change.
+Doing SA rename new without array accesses and remove assignments of findcond... No change.
+Doing merge branches... No change.
+Proof of (one-session) secrecy of diff_bit failed:
+  at 51, bad usage(s) of s, which may depend on diff_bit.
+Proved query event(bad1) ==> false with public variables diff_bit
+Proof of event(bad2) ==> false with public variables diff_bit failed:
+  Found bad2 at 52
+  but could not prove false
+Trying equivalence remove_xor(xorDr)... Failed.
+Trying equivalence remove_xor(xorDow)... Transf. OK Proba. computed Transf. done Succeeded.
+Doing simplify (non-expanded game)... No change.
+Doing expand... Done.
+Doing remove assignments of findcond... Done.
+Doing simplify... Doing global dependency analysis on r_9 inside simplify... At 62, returned message f(pk, concat(r_9, r_8)) depends on r_9.
+No change
+Run simplify 1 time(s). Fixpoint reached.
+No change.
+Doing move all binders... No change.
+Doing SA rename new without array accesses and remove assignments of findcond... No change.
+Doing merge branches... No change.
+Proved one-session secrecy of diff_bit
+Proof of event(bad2) ==> false with public variables diff_bit failed:
+  Found bad2 at 52
+  but could not prove false
+Trying equivalence remove_xor(xorDr)... Failed.
+Trying equivalence remove_xor(xorDow)... Failed.
+Trying equivalence rom(H)... Failed.
+Trying equivalence rom(G)... Failed.
+Trying equivalence pd_ow(f)... Failed.
+Trying equivalence remove_invf(f)... Failed:
+Random variables: r_2 -> r_1
+The transformation did not use the useful_change oracles, or oracles deemed useful by default.
+Doing remove assignments of binder pk... Done.
+Trying equivalence pd_ow(f) with r_8, r_9, r_2... Transf. OK Proba. computed Transf. done Succeeded.
+Doing simplify (non-expanded game)... Done.
+Doing expand... Done.
+Doing remove assignments of findcond... No change.
+Doing simplify... Run simplify 1 time(s). Fixpoint reached.
+No change.
+Doing move all binders... No change.
+Doing SA rename new without array accesses and remove assignments of findcond... No change.
+Doing merge branches... No change.
+Proved query event(bad2) ==> false with public variables diff_bit
+===================== Proof starts =======================
+Initial state
+Game 1 is
+     diff_o() :=
+     diff_bit <-R bool;
+     return();
+     Ogen() :=
+     hkh_1 <-R hashkey;
+     hkg_1 <-R hashkey;
+     r_2 <-R seed;
+     pk: pkey <- pkgen(r_2);
+     sk: skey <- skgen(r_2);
+     return(pk);
+     ((
+       foreach iH <= qG do
+       OH(x1: Dr) :=
+       return(G(hkg_1, x1))
+     ) | (
+       foreach iH_1 <= qH do
+       OH_1(x1_1: Dow) :=
+       return(H(hkh_1, x1_1))
+     ) | (
+       OT(m1: Dm, m2: Dm) :=
+       menc: Dm <- if_fun(diff_bit, m1, m2);
+       r_3 <-R Dr;
+       s: Dow <- xorDow(concatm(menc, zero), G(hkg_1, r_3));
+       t: Dr <- xorDr(r_3, H(hkh_1, s));
+       return(f(pk, concat(s, t)))
+     ))
+
+
+Applying remove assignments of findcond
+  - Remove assignments on sk (definition removed, all usages removed)
+yields
+
+Game 2 is
+     diff_o() :=
+     diff_bit <-R bool;
+     return();
+     Ogen() :=
+     hkh_1 <-R hashkey;
+     hkg_1 <-R hashkey;
+     r_2 <-R seed;
+     pk: pkey <- pkgen(r_2);
+     return(pk);
+     ((
+       foreach iH <= qG do
+       OH(x1: Dr) :=
+       return(G(hkg_1, x1))
+     ) | (
+       foreach iH_1 <= qH do
+       OH_1(x1_1: Dow) :=
+       return(H(hkh_1, x1_1))
+     ) | (
+       OT(m1: Dm, m2: Dm) :=
+       menc: Dm <- if_fun(diff_bit, m1, m2);
+       r_3 <-R Dr;
+       s: Dow <- xorDow(concatm(menc, zero), G(hkg_1, r_3));
+       t: Dr <- xorDr(r_3, H(hkh_1, s));
+       return(f(pk, concat(s, t)))
+     ))
+
+
+Applying equivalence rom(H)
+  - Equivalence rom(H) with variables: hkh_1 -> hk
+yields
+
+Game 3 is
+     diff_o() :=
+     diff_bit <-R bool;
+     return();
+     Ogen() :=
+     hkg_1 <-R hashkey;
+     r_2 <-R seed;
+     pk: pkey <- pkgen(r_2);
+     return(pk);
+     ((
+       foreach iH <= qG do
+       OH(x1: Dr) :=
+       return(G(hkg_1, x1))
+     ) | (
+       foreach iH_1 <= qH do
+       OH_1(x1_1: Dow) :=
+       return((x_O: Dow <- x1_1; find [unique] u_1 = ri_1 <= qH suchthat defined(x_O[ri_1], r_4[ri_1]) && (x_O = x_O[ri_1]) then r_4[u_1] orfind  suchthat defined(x_O_1, r_5) && (x_O = x_O_1) then r_5 else r_4 <-R Dr; r_4))
+     ) | (
+       OT(m1: Dm, m2: Dm) :=
+       menc: Dm <- if_fun(diff_bit, m1, m2);
+       r_3 <-R Dr;
+       s: Dow <- xorDow(concatm(menc, zero), G(hkg_1, r_3));
+       t: Dr <- xorDr(r_3, (x_O_1: Dow <- s; find [unique] u = ri <= qH suchthat defined(x_O[ri], r_4[ri]) && (x_O_1 = x_O[ri]) then r_4[u] else r_5 <-R Dr; r_5));
+       return(f(pk, concat(s, t)))
+     ))
+
+
+Applying expand
+  - Expand if/find/let
+yields
+
+Game 4 is
+     diff_o() :=
+     diff_bit <-R bool;
+     return();
+     Ogen() :=
+     hkg_1 <-R hashkey;
+     r_2 <-R seed;
+     pk: pkey <- pkgen(r_2);
+     return(pk);
+     ((
+       foreach iH <= qG do
+       OH(x1: Dr) :=
+       return(G(hkg_1, x1))
+     ) | (
+       foreach iH_1 <= qH do
+       OH_1(x1_1: Dow) :=
+       x_O: Dow <- x1_1;
+       find [unique] u_1 = ri_1 <= qH suchthat defined(x_O[ri_1], r_4[ri_1]) && (x_O = x_O[ri_1]) then
+         return(r_4[u_1])
+       orfind  suchthat defined(x_O_1, r_5) && (x_O = x_O_1) then
+         return(r_5)
+       else
+         r_4 <-R Dr;
+         return(r_4)
+     ) | (
+       OT(m1: Dm, m2: Dm) :=
+       menc: Dm <- if_fun(diff_bit, m1, m2);
+       r_3 <-R Dr;
+       s: Dow <- xorDow(concatm(menc, zero), G(hkg_1, r_3));
+       x_O_1: Dow <- s;
+       find [unique] u = ri <= qH suchthat defined(x_O[ri], r_4[ri]) && (x_O_1 = x_O[ri]) then
+         t: Dr <- xorDr(r_3, r_4[u]);
+         return(f(pk, concat(s, t)))
+       else
+         r_5 <-R Dr;
+         t: Dr <- xorDr(r_3, r_5);
+         return(f(pk, concat(s, t)))
+     ))
+
+
+Applying remove assignments of findcond
+  - Remove assignments on x_O_1 (definition removed, all usages removed)
+  - Remove assignments on x_O (definition point kept, all usages removed)
+yields
+
+Game 5 is
+     diff_o() :=
+     diff_bit <-R bool;
+     return();
+     Ogen() :=
+     hkg_1 <-R hashkey;
+     r_2 <-R seed;
+     pk: pkey <- pkgen(r_2);
+     return(pk);
+     ((
+       foreach iH <= qG do
+       OH(x1: Dr) :=
+       return(G(hkg_1, x1))
+     ) | (
+       foreach iH_1 <= qH do
+       OH_1(x1_1: Dow) :=
+       x_O: Dow <- cst_Dow;
+ {26}  find [unique] u_1 = ri_1 <= qH suchthat defined(x1_1[ri_1], x_O[ri_1], r_4[ri_1]) && (x1_1 = x1_1[ri_1]) then
+         return(r_4[u_1])
+       orfind  suchthat defined(s, r_5) && (x1_1 = s) then
+         return(r_5)
+       else
+         r_4 <-R Dr;
+         return(r_4)
+     ) | (
+       OT(m1: Dm, m2: Dm) :=
+       menc: Dm <- if_fun(diff_bit, m1, m2);
+       r_3 <-R Dr;
+       s: Dow <- xorDow(concatm(menc, zero), G(hkg_1, r_3));
+ {68}  find [unique] u = ri <= qH suchthat defined(x1_1[ri], x_O[ri], r_4[ri]) && (s = x1_1[ri]) then
+         t: Dr <- xorDr(r_3, r_4[u]);
+         return(f(pk, concat(s, t)))
+       else
+         r_5 <-R Dr;
+         t: Dr <- xorDr(r_3, r_5);
+         return(f(pk, concat(s, t)))
+     ))
+
+
+Applying simplify
+  - Simplification pass
+    - Replaced defined condition x1_1[ri], x_O[ri], r_4[ri] with r_4[ri], x1_1[ri] in find at 68
+    - Replaced defined condition x1_1[ri_1], x_O[ri_1], r_4[ri_1] with r_4[ri_1], x1_1[ri_1] in find at 26
+yields
+
+Game 6 is
+     diff_o() :=
+     diff_bit <-R bool;
+     return();
+     Ogen() :=
+     hkg_1 <-R hashkey;
+     r_2 <-R seed;
+     pk: pkey <- pkgen(r_2);
+     return(pk);
+     ((
+       foreach iH <= qG do
+       OH(x1: Dr) :=
+       return(G(hkg_1, x1))
+     ) | (
+       foreach iH_1 <= qH do
+       OH_1(x1_1: Dow) :=
+       x_O: Dow <- cst_Dow;
+       find [unique] u_1 = ri_1 <= qH suchthat defined(r_4[ri_1], x1_1[ri_1]) && (x1_1 = x1_1[ri_1]) then
+         return(r_4[u_1])
+       orfind  suchthat defined(s, r_5) && (x1_1 = s) then
+         return(r_5)
+       else
+         r_4 <-R Dr;
+         return(r_4)
+     ) | (
+       OT(m1: Dm, m2: Dm) :=
+       menc: Dm <- if_fun(diff_bit, m1, m2);
+       r_3 <-R Dr;
+       s: Dow <- xorDow(concatm(menc, zero), G(hkg_1, r_3));
+       find [unique] u = ri <= qH suchthat defined(r_4[ri], x1_1[ri]) && (s = x1_1[ri]) then
+         t: Dr <- xorDr(r_3, r_4[u]);
+         return(f(pk, concat(s, t)))
+       else
+         r_5 <-R Dr;
+         t: Dr <- xorDr(r_3, r_5);
+         return(f(pk, concat(s, t)))
+     ))
+
+
+Applying move all binders
+  - Move assignment to x_O
+yields
+
+Game 7 is
+     diff_o() :=
+     diff_bit <-R bool;
+     return();
+     Ogen() :=
+     hkg_1 <-R hashkey;
+     r_2 <-R seed;
+     pk: pkey <- pkgen(r_2);
+     return(pk);
+     ((
+       foreach iH <= qG do
+       OH(x1: Dr) :=
+       return(G(hkg_1, x1))
+     ) | (
+       foreach iH_1 <= qH do
+       OH_1(x1_1: Dow) :=
+       find [unique] u_1 = ri_1 <= qH suchthat defined(r_4[ri_1], x1_1[ri_1]) && (x1_1 = x1_1[ri_1]) then
+         return(r_4[u_1])
+       orfind  suchthat defined(s, r_5) && (x1_1 = s) then
+         return(r_5)
+       else
+         r_4 <-R Dr;
+         return(r_4)
+     ) | (
+       OT(m1: Dm, m2: Dm) :=
+       menc: Dm <- if_fun(diff_bit, m1, m2);
+       r_3 <-R Dr;
+       s: Dow <- xorDow(concatm(menc, zero), G(hkg_1, r_3));
+       find [unique] u = ri <= qH suchthat defined(r_4[ri], x1_1[ri]) && (s = x1_1[ri]) then
+         t: Dr <- xorDr(r_3, r_4[u]);
+         return(f(pk, concat(s, t)))
+       else
+         r_5 <-R Dr;
+         t: Dr <- xorDr(r_3, r_5);
+         return(f(pk, concat(s, t)))
+     ))
+
+
+Applying equivalence rom(G)
+  - Equivalence rom(G) with variables: hkg_1 -> hk
+yields
+
+Game 8 is
+     diff_o() :=
+     diff_bit <-R bool;
+     return();
+     Ogen() :=
+     r_2 <-R seed;
+     pk: pkey <- pkgen(r_2);
+     return(pk);
+     ((
+       foreach iH <= qG do
+       OH(x1: Dr) :=
+       return((x_O_2: Dr <- x1; find [unique] u_3 = ri_3 <= qG suchthat defined(x_O_2[ri_3], r_6[ri_3]) && (x_O_2 = x_O_2[ri_3]) then r_6[u_3] orfind  suchthat defined(x_O_3, r_7) && (x_O_2 = x_O_3) then r_7 else r_6 <-R Dow; r_6))
+     ) | (
+       foreach iH_1 <= qH do
+       OH_1(x1_1: Dow) :=
+       find [unique] u_1 = ri_1 <= qH suchthat defined(r_4[ri_1], x1_1[ri_1]) && (x1_1 = x1_1[ri_1]) then
+         return(r_4[u_1])
+       orfind  suchthat defined(s, r_5) && (x1_1 = s) then
+         return(r_5)
+       else
+         r_4 <-R Dr;
+         return(r_4)
+     ) | (
+       OT(m1: Dm, m2: Dm) :=
+       menc: Dm <- if_fun(diff_bit, m1, m2);
+       r_3 <-R Dr;
+       s: Dow <- xorDow(concatm(menc, zero), (x_O_3: Dr <- r_3; find [unique] u_2 = ri_2 <= qG suchthat defined(x_O_2[ri_2], r_6[ri_2]) && (x_O_3 = x_O_2[ri_2]) then r_6[u_2] else r_7 <-R Dow; r_7));
+       find [unique] u = ri <= qH suchthat defined(r_4[ri], x1_1[ri]) && (s = x1_1[ri]) then
+         t: Dr <- xorDr(r_3, r_4[u]);
+         return(f(pk, concat(s, t)))
+       else
+         r_5 <-R Dr;
+         t: Dr <- xorDr(r_3, r_5);
+         return(f(pk, concat(s, t)))
+     ))
+
+
+Applying expand
+  - Expand if/find/let
+yields
+
+Game 9 is
+     diff_o() :=
+     diff_bit <-R bool;
+     return();
+     Ogen() :=
+     r_2 <-R seed;
+     pk: pkey <- pkgen(r_2);
+     return(pk);
+     ((
+       foreach iH <= qG do
+       OH(x1: Dr) :=
+       x_O_2: Dr <- x1;
+       find [unique] u_3 = ri_3 <= qG suchthat defined(x_O_2[ri_3], r_6[ri_3]) && (x_O_2 = x_O_2[ri_3]) then
+         return(r_6[u_3])
+       orfind  suchthat defined(x_O_3, r_7) && (x_O_2 = x_O_3) then
+         return(r_7)
+       else
+         r_6 <-R Dow;
+         return(r_6)
+     ) | (
+       foreach iH_1 <= qH do
+       OH_1(x1_1: Dow) :=
+       find [unique] u_1 = ri_1 <= qH suchthat defined(r_4[ri_1], x1_1[ri_1]) && (x1_1 = x1_1[ri_1]) then
+         return(r_4[u_1])
+       orfind  suchthat defined(s, r_5) && (x1_1 = s) then
+         return(r_5)
+       else
+         r_4 <-R Dr;
+         return(r_4)
+     ) | (
+       OT(m1: Dm, m2: Dm) :=
+       menc: Dm <- if_fun(diff_bit, m1, m2);
+       r_3 <-R Dr;
+       x_O_3: Dr <- r_3;
+       find [unique] u_2 = ri_2 <= qG suchthat defined(x_O_2[ri_2], r_6[ri_2]) && (x_O_3 = x_O_2[ri_2]) then
+         s: Dow <- xorDow(concatm(menc, zero), r_6[u_2]);
+         find [unique] u = ri <= qH suchthat defined(r_4[ri], x1_1[ri]) && (s = x1_1[ri]) then
+           t: Dr <- xorDr(r_3, r_4[u]);
+           return(f(pk, concat(s, t)))
+         else
+           r_5 <-R Dr;
+           t: Dr <- xorDr(r_3, r_5);
+           return(f(pk, concat(s, t)))
+       else
+         r_7 <-R Dow;
+         s: Dow <- xorDow(concatm(menc, zero), r_7);
+         find [unique] u = ri <= qH suchthat defined(r_4[ri], x1_1[ri]) && (s = x1_1[ri]) then
+           t: Dr <- xorDr(r_3, r_4[u]);
+           return(f(pk, concat(s, t)))
+         else
+           r_5 <-R Dr;
+           t: Dr <- xorDr(r_3, r_5);
+           return(f(pk, concat(s, t)))
+     ))
+
+
+Applying remove assignments of findcond
+  - Remove assignments on x_O_3 (definition removed, all usages removed)
+  - Remove assignments on x_O_2 (definition point kept, all usages removed)
+yields
+
+Game 10 is
+     diff_o() :=
+     diff_bit <-R bool;
+     return();
+     Ogen() :=
+     r_2 <-R seed;
+     pk: pkey <- pkgen(r_2);
+     return(pk);
+     ((
+       foreach iH <= qG do
+       OH(x1: Dr) :=
+       x_O_2: Dr <- cst_Dr;
+ {17}  find [unique] u_3 = ri_3 <= qG suchthat defined(x1[ri_3], x_O_2[ri_3], r_6[ri_3]) && (x1 = x1[ri_3]) then
+         return(r_6[u_3])
+       orfind  suchthat defined(r_3, r_7) && (x1 = r_3) then
+         return(r_7)
+       else
+         r_6 <-R Dow;
+         return(r_6)
+     ) | (
+       foreach iH_1 <= qH do
+       OH_1(x1_1: Dow) :=
+       find [unique] u_1 = ri_1 <= qH suchthat defined(r_4[ri_1], x1_1[ri_1]) && (x1_1 = x1_1[ri_1]) then
+         return(r_4[u_1])
+       orfind  suchthat defined(s, r_5) && (x1_1 = s) then
+         return(r_5)
+       else
+         r_4 <-R Dr;
+         return(r_4)
+     ) | (
+       OT(m1: Dm, m2: Dm) :=
+       menc: Dm <- if_fun(diff_bit, m1, m2);
+       r_3 <-R Dr;
+ {78}  find [unique] u_2 = ri_2 <= qG suchthat defined(x1[ri_2], x_O_2[ri_2], r_6[ri_2]) && {82}(r_3 = x1[ri_2]) then
+         s: Dow <- xorDow(concatm(menc, zero), r_6[u_2]);
+         find [unique] u = ri <= qH suchthat defined(r_4[ri], x1_1[ri]) && (s = x1_1[ri]) then
+           t: Dr <- xorDr(r_3, r_4[u]);
+           return(f(pk, concat(s, t)))
+         else
+           r_5 <-R Dr;
+           t: Dr <- xorDr(r_3, r_5);
+           return(f(pk, concat(s, t)))
+       else
+         r_7 <-R Dow;
+         s: Dow <- xorDow(concatm(menc, zero), r_7);
+{134}    find [unique] u = ri <= qH suchthat defined(r_4[ri], x1_1[ri]) && {137}(s = x1_1[ri]) then
+           t: Dr <- xorDr(r_3, r_4[u]);
+           return(f(pk, concat(s, t)))
+         else
+           r_5 <-R Dr;
+           t: Dr <- xorDr(r_3, r_5);
+           return(f(pk, concat(s, t)))
+     ))
+
+
+Applying simplify [probability qH / |Dow| + qG / |Dr|]
+  - Simplification pass
+    - Replaced (r_3 = x1[ri_2]) with false at 82
+    - Remove branch 1 in find at 78
+    - Find at 78 removed (else branch kept if any)
+    - Replaced (s = x1_1[ri]) with false at 137
+    - Remove branch 1 in find at 134
+    - Find at 134 removed (else branch kept if any)
+    - Replaced defined condition x1[ri_3], x_O_2[ri_3], r_6[ri_3] with r_6[ri_3], x1[ri_3] in find at 17
+yields
+
+Game 11 is
+     diff_o() :=
+     diff_bit <-R bool;
+     return();
+     Ogen() :=
+     r_2 <-R seed;
+     pk: pkey <- pkgen(r_2);
+     return(pk);
+     ((
+       foreach iH <= qG do
+       OH(x1: Dr) :=
+       x_O_2: Dr <- cst_Dr;
+       find [unique] u_3 = ri_3 <= qG suchthat defined(r_6[ri_3], x1[ri_3]) && (x1 = x1[ri_3]) then
+         return(r_6[u_3])
+       orfind  suchthat defined(r_3, r_7) && (x1 = r_3) then
+         return(r_7)
+       else
+         r_6 <-R Dow;
+         return(r_6)
+     ) | (
+       foreach iH_1 <= qH do
+       OH_1(x1_1: Dow) :=
+       find [unique] u_1 = ri_1 <= qH suchthat defined(r_4[ri_1], x1_1[ri_1]) && (x1_1 = x1_1[ri_1]) then
+         return(r_4[u_1])
+       orfind  suchthat defined(s, r_5) && (x1_1 = s) then
+         return(r_5)
+       else
+         r_4 <-R Dr;
+         return(r_4)
+     ) | (
+       OT(m1: Dm, m2: Dm) :=
+       menc: Dm <- if_fun(diff_bit, m1, m2);
+       r_3 <-R Dr;
+       r_7 <-R Dow;
+       s: Dow <- xorDow(concatm(menc, zero), r_7);
+       r_5 <-R Dr;
+       t: Dr <- xorDr(r_3, r_5);
+       return(f(pk, concat(s, t)))
+     ))
+
+
+Applying move all binders
+  - Move assignment to x_O_2
+yields
+
+Game 12 is
+     diff_o() :=
+     diff_bit <-R bool;
+     return();
+     Ogen() :=
+     r_2 <-R seed;
+     pk: pkey <- pkgen(r_2);
+     return(pk);
+     ((
+       foreach iH <= qG do
+       OH(x1: Dr) :=
+       find [unique] u_3 = ri_3 <= qG suchthat defined(r_6[ri_3], x1[ri_3]) && (x1 = x1[ri_3]) then
+         return(r_6[u_3])
+       orfind  suchthat defined(r_3, r_7) && (x1 = r_3) then
+ {32}    return(r_7)
+       else
+         r_6 <-R Dow;
+         return(r_6)
+     ) | (
+       foreach iH_1 <= qH do
+       OH_1(x1_1: Dow) :=
+       find [unique] u_1 = ri_1 <= qH suchthat defined(r_4[ri_1], x1_1[ri_1]) && (x1_1 = x1_1[ri_1]) then
+         return(r_4[u_1])
+       orfind  suchthat defined(s, r_5) && (x1_1 = s) then
+         return(r_5)
+       else
+         r_4 <-R Dr;
+         return(r_4)
+     ) | (
+       OT(m1: Dm, m2: Dm) :=
+       menc: Dm <- if_fun(diff_bit, m1, m2);
+       r_3 <-R Dr;
+       r_7 <-R Dow;
+       s: Dow <- xorDow(concatm(menc, zero), r_7);
+       r_5 <-R Dr;
+       t: Dr <- xorDr(r_3, r_5);
+       return(f(pk, concat(s, t)))
+     ))
+
+
+Applying insert event bad1 at occurrence 32 [probability Pr[event bad1 in game 13 with public variables diff_bit]]
+yields
+
+Game 13 is
+     diff_o() :=
+     diff_bit <-R bool;
+     return();
+     Ogen() :=
+     r_2 <-R seed;
+     pk: pkey <- pkgen(r_2);
+     return(pk);
+     ((
+       foreach iH <= qG do
+       OH(x1: Dr) :=
+       find [unique] u_3 = ri_3 <= qG suchthat defined(r_6[ri_3], x1[ri_3]) && (x1 = x1[ri_3]) then
+         return(r_6[u_3])
+       orfind  suchthat defined(r_3, r_7) && (x1 = r_3) then
+         event_abort bad1
+       else
+         r_6 <-R Dow;
+         return(r_6)
+     ) | (
+       foreach iH_1 <= qH do
+       OH_1(x1_1: Dow) :=
+       find [unique] u_1 = ri_1 <= qH suchthat defined(r_4[ri_1], x1_1[ri_1]) && (x1_1 = x1_1[ri_1]) then
+         return(r_4[u_1])
+       orfind  suchthat defined(s, r_5) && (x1_1 = s) then
+ {57}    return(r_5)
+       else
+         r_4 <-R Dr;
+         return(r_4)
+     ) | (
+       OT(m1: Dm, m2: Dm) :=
+       menc: Dm <- if_fun(diff_bit, m1, m2);
+       r_3 <-R Dr;
+       r_7 <-R Dow;
+       s: Dow <- xorDow(concatm(menc, zero), r_7);
+       r_5 <-R Dr;
+       t: Dr <- xorDr(r_3, r_5);
+       return(f(pk, concat(s, t)))
+     ))
+
+
+Applying insert event bad2 at occurrence 57 [probability Pr[event bad2 in game 14 with public variables diff_bit]]
+yields
+
+Game 14 is
+     diff_o() :=
+     diff_bit <-R bool;
+     return();
+     Ogen() :=
+     r_2 <-R seed;
+     pk: pkey <- pkgen(r_2);
+     return(pk);
+     ((
+       foreach iH <= qG do
+       OH(x1: Dr) :=
+       find [unique] u_3 = ri_3 <= qG suchthat defined(r_6[ri_3], x1[ri_3]) && (x1 = x1[ri_3]) then
+         return(r_6[u_3])
+       orfind  suchthat defined(r_3, r_7) && (x1 = r_3) then
+         event_abort bad1
+       else
+         r_6 <-R Dow;
+         return(r_6)
+     ) | (
+       foreach iH_1 <= qH do
+       OH_1(x1_1: Dow) :=
+       find [unique] u_1 = ri_1 <= qH suchthat defined(r_4[ri_1], x1_1[ri_1]) && (x1_1 = x1_1[ri_1]) then
+         return(r_4[u_1])
+       orfind  suchthat defined(s, r_5) && (x1_1 = s) then
+         event_abort bad2
+       else
+         r_4 <-R Dr;
+         return(r_4)
+     ) | (
+       OT(m1: Dm, m2: Dm) :=
+       menc: Dm <- if_fun(diff_bit, m1, m2);
+       r_3 <-R Dr;
+       r_7 <-R Dow;
+       s: Dow <- xorDow(concatm(menc, zero), r_7);
+       r_5 <-R Dr;
+       t: Dr <- xorDr(r_3, r_5);
+       return(f(pk, concat(s, t)))
+     ))
+
+
+Applying equivalence remove_xor(xorDr)
+  - Equivalence remove_xor(xorDr) with variables: r_5 -> a
+yields
+
+Game 15 is
+     diff_o() :=
+     diff_bit <-R bool;
+     return();
+     Ogen() :=
+     r_2 <-R seed;
+     pk: pkey <- pkgen(r_2);
+     return(pk);
+     ((
+       foreach iH <= qG do
+       OH(x1: Dr) :=
+       find [unique] u_3 = ri_3 <= qG suchthat defined(r_6[ri_3], x1[ri_3]) && (x1 = x1[ri_3]) then
+         return(r_6[u_3])
+       orfind  suchthat defined(r_3) && (x1 = r_3) then
+         event_abort bad1
+       else
+         r_6 <-R Dow;
+         return(r_6)
+     ) | (
+       foreach iH_1 <= qH do
+       OH_1(x1_1: Dow) :=
+       find [unique] u_1 = ri_1 <= qH suchthat defined(r_4[ri_1], x1_1[ri_1]) && (x1_1 = x1_1[ri_1]) then
+         return(r_4[u_1])
+       orfind  suchthat defined(s) && (x1_1 = s) then
+         event_abort bad2
+       else
+         r_4 <-R Dr;
+         return(r_4)
+     ) | (
+       OT(m1: Dm, m2: Dm) :=
+       menc: Dm <- if_fun(diff_bit, m1, m2);
+       r_3 <-R Dr;
+       r_7 <-R Dow;
+       s: Dow <- xorDow(concatm(menc, zero), r_7);
+       r_8 <-R Dr;
+       r_5: Dr <- cst_Dr;
+       t: Dr <- (x: Dr <- r_3; r_8);
+       return(f(pk, concat(s, t)))
+     ))
+
+
+Applying expand
+  - Expand if/find/let
+yields
+
+Game 16 is
+     diff_o() :=
+     diff_bit <-R bool;
+     return();
+     Ogen() :=
+     r_2 <-R seed;
+     pk: pkey <- pkgen(r_2);
+     return(pk);
+     ((
+       foreach iH <= qG do
+       OH(x1: Dr) :=
+       find [unique] u_3 = ri_3 <= qG suchthat defined(r_6[ri_3], x1[ri_3]) && (x1 = x1[ri_3]) then
+         return(r_6[u_3])
+       orfind  suchthat defined(r_3) && (x1 = r_3) then
+         event_abort bad1
+       else
+         r_6 <-R Dow;
+         return(r_6)
+     ) | (
+       foreach iH_1 <= qH do
+       OH_1(x1_1: Dow) :=
+       find [unique] u_1 = ri_1 <= qH suchthat defined(r_4[ri_1], x1_1[ri_1]) && (x1_1 = x1_1[ri_1]) then
+         return(r_4[u_1])
+       orfind  suchthat defined(s) && (x1_1 = s) then
+         event_abort bad2
+       else
+         r_4 <-R Dr;
+         return(r_4)
+     ) | (
+       OT(m1: Dm, m2: Dm) :=
+       menc: Dm <- if_fun(diff_bit, m1, m2);
+       r_3 <-R Dr;
+       r_7 <-R Dow;
+       s: Dow <- xorDow(concatm(menc, zero), r_7);
+       r_8 <-R Dr;
+       r_5: Dr <- cst_Dr;
+       x: Dr <- r_3;
+       t: Dr <- r_8;
+       return(f(pk, concat(s, t)))
+     ))
+
+
+Applying remove assignments of findcond
+  - Remove assignments on r_5 (definition removed, all usages removed)
+  - Remove assignments on x (definition removed, all usages removed)
+  - Remove assignments on t (definition removed, all usages removed)
+yields
+
+Game 17 is
+     diff_o() :=
+     diff_bit <-R bool;
+     return();
+     Ogen() :=
+     r_2 <-R seed;
+     pk: pkey <- pkgen(r_2);
+     return(pk);
+     ((
+       foreach iH <= qG do
+       OH(x1: Dr) :=
+       find [unique] u_3 = ri_3 <= qG suchthat defined(r_6[ri_3], x1[ri_3]) && (x1 = x1[ri_3]) then
+         return(r_6[u_3])
+       orfind  suchthat defined(r_3) && (x1 = r_3) then
+         event_abort bad1
+       else
+         r_6 <-R Dow;
+         return(r_6)
+     ) | (
+       foreach iH_1 <= qH do
+       OH_1(x1_1: Dow) :=
+       find [unique] u_1 = ri_1 <= qH suchthat defined(r_4[ri_1], x1_1[ri_1]) && (x1_1 = x1_1[ri_1]) then
+         return(r_4[u_1])
+       orfind  suchthat defined(s) && (x1_1 = s) then
+         event_abort bad2
+       else
+         r_4 <-R Dr;
+         return(r_4)
+     ) | (
+       OT(m1: Dm, m2: Dm) :=
+       menc: Dm <- if_fun(diff_bit, m1, m2);
+       r_3 <-R Dr;
+       r_7 <-R Dow;
+       s: Dow <- xorDow(concatm(menc, zero), r_7);
+       r_8 <-R Dr;
+       return(f(pk, concat(s, r_8)))
+     ))
+
+
+Applying simplify [probability qG / |Dr|]
+  - Global dependency analysis on r_3
+yields
+
+Game 18 is
+     diff_o() :=
+     diff_bit <-R bool;
+     return();
+     Ogen() :=
+     r_2 <-R seed;
+     pk: pkey <- pkgen(r_2);
+     return(pk);
+     ((
+       foreach iH <= qG do
+       OH(x1: Dr) :=
+       find [unique] u_3 = ri_3 <= qG suchthat defined(r_6[ri_3], x1[ri_3]) && (x1 = x1[ri_3]) then
+         return(r_6[u_3])
+       else
+         r_6 <-R Dow;
+         return(r_6)
+     ) | (
+       foreach iH_1 <= qH do
+       OH_1(x1_1: Dow) :=
+       find [unique] u_1 = ri_1 <= qH suchthat defined(r_4[ri_1], x1_1[ri_1]) && (x1_1 = x1_1[ri_1]) then
+         return(r_4[u_1])
+       orfind  suchthat defined(s) && (x1_1 = s) then
+         event_abort bad2
+       else
+         r_4 <-R Dr;
+         return(r_4)
+     ) | (
+       OT(m1: Dm, m2: Dm) :=
+       menc: Dm <- if_fun(diff_bit, m1, m2);
+ {64}  r_3 <-R Dr;
+       r_7 <-R Dow;
+       s: Dow <- xorDow(concatm(menc, zero), r_7);
+       r_8 <-R Dr;
+       return(f(pk, concat(s, r_8)))
+     ))
+
+
+Applying simplify
+  - Simplification pass
+    - Remove random number generation at 64
+yields
+
+Game 19 is
+     diff_o() :=
+     diff_bit <-R bool;
+     return();
+     Ogen() :=
+     r_2 <-R seed;
+     pk: pkey <- pkgen(r_2);
+     return(pk);
+     ((
+       foreach iH <= qG do
+       OH(x1: Dr) :=
+       find [unique] u_3 = ri_3 <= qG suchthat defined(r_6[ri_3], x1[ri_3]) && (x1 = x1[ri_3]) then
+         return(r_6[u_3])
+       else
+         r_6 <-R Dow;
+         return(r_6)
+     ) | (
+       foreach iH_1 <= qH do
+       OH_1(x1_1: Dow) :=
+       find [unique] u_1 = ri_1 <= qH suchthat defined(r_4[ri_1], x1_1[ri_1]) && (x1_1 = x1_1[ri_1]) then
+         return(r_4[u_1])
+       orfind  suchthat defined(s) && (x1_1 = s) then
+         event_abort bad2
+       else
+         r_4 <-R Dr;
+         return(r_4)
+     ) | (
+       OT(m1: Dm, m2: Dm) :=
+       menc: Dm <- if_fun(diff_bit, m1, m2);
+       r_7 <-R Dow;
+       s: Dow <- xorDow(concatm(menc, zero), r_7);
+       r_8 <-R Dr;
+       return(f(pk, concat(s, r_8)))
+     ))
+
+
+Proved event(bad1) ==> false with public variables diff_bit in game 19
+
+Applying equivalence remove_xor(xorDow)
+  - Equivalence remove_xor(xorDow) with variables: r_7 -> a
+yields
+
+Game 20 is
+     diff_o() :=
+     diff_bit <-R bool;
+     return();
+     Ogen() :=
+     r_2 <-R seed;
+     pk: pkey <- pkgen(r_2);
+     return(pk);
+     ((
+       foreach iH <= qG do
+       OH(x1: Dr) :=
+       find [unique] u_3 = ri_3 <= qG suchthat defined(r_6[ri_3], x1[ri_3]) && (x1 = x1[ri_3]) then
+         return(r_6[u_3])
+       else
+         r_6 <-R Dow;
+         return(r_6)
+     ) | (
+       foreach iH_1 <= qH do
+       OH_1(x1_1: Dow) :=
+       find [unique] u_1 = ri_1 <= qH suchthat defined(r_4[ri_1], x1_1[ri_1]) && (x1_1 = x1_1[ri_1]) then
+         return(r_4[u_1])
+       orfind  suchthat defined(s) && (x1_1 = s) then
+         event_abort bad2
+       else
+         r_4 <-R Dr;
+         return(r_4)
+     ) | (
+       OT(m1: Dm, m2: Dm) :=
+       menc: Dm <- if_fun(diff_bit, m1, m2);
+       r_9 <-R Dow;
+       s: Dow <- (x_1: Dow <- concatm(menc, zero); r_9);
+       r_8 <-R Dr;
+       return(f(pk, concat(s, r_8)))
+     ))
+
+
+Applying expand
+  - Expand if/find/let
+yields
+
+Game 21 is
+     diff_o() :=
+     diff_bit <-R bool;
+     return();
+     Ogen() :=
+     r_2 <-R seed;
+     pk: pkey <- pkgen(r_2);
+     return(pk);
+     ((
+       foreach iH <= qG do
+       OH(x1: Dr) :=
+       find [unique] u_3 = ri_3 <= qG suchthat defined(r_6[ri_3], x1[ri_3]) && (x1 = x1[ri_3]) then
+         return(r_6[u_3])
+       else
+         r_6 <-R Dow;
+         return(r_6)
+     ) | (
+       foreach iH_1 <= qH do
+       OH_1(x1_1: Dow) :=
+       find [unique] u_1 = ri_1 <= qH suchthat defined(r_4[ri_1], x1_1[ri_1]) && (x1_1 = x1_1[ri_1]) then
+         return(r_4[u_1])
+       orfind  suchthat defined(s) && (x1_1 = s) then
+         event_abort bad2
+       else
+         r_4 <-R Dr;
+         return(r_4)
+     ) | (
+       OT(m1: Dm, m2: Dm) :=
+       menc: Dm <- if_fun(diff_bit, m1, m2);
+       r_9 <-R Dow;
+       x_1: Dow <- concatm(menc, zero);
+       s: Dow <- r_9;
+       r_8 <-R Dr;
+       return(f(pk, concat(s, r_8)))
+     ))
+
+
+Applying remove assignments of findcond
+  - Remove assignments on x_1 (definition removed, all usages removed)
+  - Remove assignments on s (definition removed, all usages removed)
+  - Remove assignments on menc (definition removed, all usages removed)
+yields
+
+Game 22 is
+     diff_o() :=
+     diff_bit <-R bool;
+     return();
+     Ogen() :=
+     r_2 <-R seed;
+     pk: pkey <- pkgen(r_2);
+     return(pk);
+     ((
+       foreach iH <= qG do
+       OH(x1: Dr) :=
+       find [unique] u_3 = ri_3 <= qG suchthat defined(r_6[ri_3], x1[ri_3]) && (x1 = x1[ri_3]) then
+         return(r_6[u_3])
+       else
+         r_6 <-R Dow;
+         return(r_6)
+     ) | (
+       foreach iH_1 <= qH do
+       OH_1(x1_1: Dow) :=
+       find [unique] u_1 = ri_1 <= qH suchthat defined(r_4[ri_1], x1_1[ri_1]) && (x1_1 = x1_1[ri_1]) then
+         return(r_4[u_1])
+       orfind  suchthat defined(r_9) && (x1_1 = r_9) then
+         event_abort bad2
+       else
+         r_4 <-R Dr;
+         return(r_4)
+     ) | (
+       OT(m1: Dm, m2: Dm) :=
+       r_9 <-R Dow;
+       r_8 <-R Dr;
+       return(f(pk, concat(r_9, r_8)))
+     ))
+
+
+Proved bit secrecy of diff_bit in game 22
+
+Applying remove assignments of binder pk
+  - Remove assignments on pk (definition removed, all usages removed)
+yields
+
+Game 23 is
+     diff_o() :=
+     diff_bit <-R bool;
+     return();
+     Ogen() :=
+     r_2 <-R seed;
+     return(pkgen(r_2));
+     ((
+       foreach iH <= qG do
+       OH(x1: Dr) :=
+       find [unique] u_3 = ri_3 <= qG suchthat defined(r_6[ri_3], x1[ri_3]) && (x1 = x1[ri_3]) then
+         return(r_6[u_3])
+       else
+         r_6 <-R Dow;
+         return(r_6)
+     ) | (
+       foreach iH_1 <= qH do
+       OH_1(x1_1: Dow) :=
+       find [unique] u_1 = ri_1 <= qH suchthat defined(r_4[ri_1], x1_1[ri_1]) && (x1_1 = x1_1[ri_1]) then
+         return(r_4[u_1])
+       orfind  suchthat defined(r_9) && (x1_1 = r_9) then
+         event_abort bad2
+       else
+         r_4 <-R Dr;
+         return(r_4)
+     ) | (
+       OT(m1: Dm, m2: Dm) :=
+       r_9 <-R Dow;
+       r_8 <-R Dr;
+       return(f(pkgen(r_2), concat(r_9, r_8)))
+     ))
+
+
+Applying equivalence pd_ow(f) with r_8, r_9, r_2 [probability P_PD_OW(time_1, qH)]
+  - Equivalence pd_ow(f) with variables: r_2 -> r_1, r_9 -> xow, r_8 -> xr
+yields
+
+Game 24 is
+     diff_o() :=
+     diff_bit <-R bool;
+     return();
+     Ogen() :=
+     r_2 <-R seed;
+     return(pkgen'(r_2));
+     ((
+       foreach iH <= qG do
+       OH(x1: Dr) :=
+       find [unique] u_3 = ri_3 <= qG suchthat defined(r_6[ri_3], x1[ri_3]) && (x1 = x1[ri_3]) then
+         return(r_6[u_3])
+       else
+         r_6 <-R Dow;
+         return(r_6)
+     ) | (
+       foreach iH_1 <= qH do
+       OH_1(x1_1: Dow) :=
+       find [unique] u_1 = ri_1 <= qH suchthat defined(r_4[ri_1], x1_1[ri_1]) && (x1_1 = x1_1[ri_1]) then
+         return(r_4[u_1])
+       orfind  suchthat defined(r_9) && (xow': Dow <- x1_1; {49}find  else {50}find  else false) then
+         event_abort bad2
+       else
+         r_4 <-R Dr;
+         return(r_4)
+     ) | (
+       OT(m1: Dm, m2: Dm) :=
+       r_9 <-R Dow;
+       r_8 <-R Dr;
+       return(f'(pkgen'(r_2), concat(r_9, r_8)))
+     ))
+
+
+Applying simplify (non-expanded game)
+  - Simplification pass
+    - Find at 49 removed (else branch kept if any)
+    - Find at 50 removed (else branch kept if any)
+yields
+
+Game 25 is
+     diff_o() :=
+     diff_bit <-R bool;
+     return();
+     Ogen() :=
+     r_2 <-R seed;
+     return(pkgen'(r_2));
+     ((
+       foreach iH <= qG do
+       OH(x1: Dr) :=
+       find [unique] u_3 = ri_3 <= qG suchthat defined(r_6[ri_3], x1[ri_3]) && (x1 = x1[ri_3]) then
+         return(r_6[u_3])
+       else
+         r_6 <-R Dow;
+         return(r_6)
+     ) | (
+       foreach iH_1 <= qH do
+       OH_1(x1_1: Dow) :=
+ {33}  find [unique] u_1 = ri_1 <= qH suchthat defined(r_4[ri_1], x1_1[ri_1]) && (x1_1 = x1_1[ri_1]) then
+         return(r_4[u_1])
+       orfind  suchthat defined(r_9) && (xow': Dow <- x1_1; false) then
+         event_abort bad2
+       else
+         r_4 <-R Dr;
+         return(r_4)
+     ) | (
+       OT(m1: Dm, m2: Dm) :=
+       r_9 <-R Dow;
+       r_8 <-R Dr;
+       return(f'(pkgen'(r_2), concat(r_9, r_8)))
+     ))
+
+
+Applying expand
+  - Expand if/find/let
+    - Remove branch 2 in find at 33
+yields
+
+Game 26 is
+     diff_o() :=
+     diff_bit <-R bool;
+     return();
+     Ogen() :=
+     r_2 <-R seed;
+     return(pkgen'(r_2));
+     ((
+       foreach iH <= qG do
+       OH(x1: Dr) :=
+       find [unique] u_3 = ri_3 <= qG suchthat defined(r_6[ri_3], x1[ri_3]) && (x1 = x1[ri_3]) then
+         return(r_6[u_3])
+       else
+         r_6 <-R Dow;
+         return(r_6)
+     ) | (
+       foreach iH_1 <= qH do
+       OH_1(x1_1: Dow) :=
+       find [unique] u_1 = ri_1 <= qH suchthat defined(r_4[ri_1], x1_1[ri_1]) && (x1_1 = x1_1[ri_1]) then
+         return(r_4[u_1])
+       else
+         r_4 <-R Dr;
+         return(r_4)
+     ) | (
+       OT(m1: Dm, m2: Dm) :=
+       r_9 <-R Dow;
+       r_8 <-R Dr;
+       return(f'(pkgen'(r_2), concat(r_9, r_8)))
+     ))
+
+
+Proved event(bad2) ==> false with public variables diff_bit in game 26
+Adv[Game 1: bit secrecy of diff_bit] <= 2 * qG / |Dr| + 2 * qH / |Dow| + Adv[Game 12: bit secrecy of diff_bit]
+Adv[Game 12: bit secrecy of diff_bit] <= Adv[Game 13: bit secrecy of diff_bit, bad1]
+Adv[Game 13: bit secrecy of diff_bit, bad1] <= Adv[Game 13: bit secrecy of diff_bit, bad1]
+Adv[Game 13: bit secrecy of diff_bit, bad1] <= Adv[Game 14: bit secrecy of diff_bit, bad2 || bad1]
+Adv[Game 14: bit secrecy of diff_bit, bad2 || bad1] <= 2 * qG / |Dr| + Pr[Game 19: bad1] + Adv[Game 19: bit secrecy of diff_bit, bad2]
+Pr[Game 19: bad1] <= 0
+Adv[Game 19: bit secrecy of diff_bit, bad2] <= Pr[Game 22: bad2] + Adv[Game 22: bit secrecy of diff_bit]
+Pr[Game 22: bad2] <= P_PD_OW(time_1, qH) + Pr[Game 26: bad2]
+Pr[Game 26: bad2] <= 0
+Adv[Game 22: bit secrecy of diff_bit] <= 0
+RESULT Proved diff-indistinguishability encoded as bit secrecy of diff_bit up to probability 2 * qH / |Dow| + 4 * qG / |Dr| + P_PD_OW(time_1, qH)
+RESULT time_1 = time
+All queries proved.

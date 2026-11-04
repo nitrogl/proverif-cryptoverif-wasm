@@ -1,0 +1,2388 @@
+Doing expand get, insert and prove unique annotations... No change.
+Doing simplify (non-expanded game)... No change.
+Doing expand... Done.
+Doing remove assignments of findcond... No change.
+Doing simplify... Run simplify 2 time(s). Fixpoint reached.
+Done.
+Doing move all binders... No change.
+Doing SA rename new without array accesses and remove assignments of findcond... Done.
+Doing merge branches... No change.
+Trying equivalence SHA256_joint... Failed.
+Doing remove assignments of binder K0... Done.
+Trying equivalence SHA256_joint with k_1... Transf. OK Proba. computed Transf. done Succeeded.
+Doing simplify (non-expanded game)... Done.
+Doing expand... Done.
+Doing remove assignments of findcond... No change.
+Doing simplify... Run simplify 2 time(s). Fixpoint reached.
+Done.
+Doing move all binders... Done.
+Doing SA rename new without array accesses and remove assignments of findcond... No change.
+Doing merge branches... No change.
+Trying equivalence SHA256_comp_prf with r1... Transf. OK Proba. computed Transf. done Succeeded.
+Doing simplify (non-expanded game)... No change.
+Doing expand... Done.
+Doing remove assignments of findcond... No change.
+Doing simplify... Run simplify 2 time(s). Fixpoint reached.
+Done.
+Doing move all binders... Done.
+Doing SA rename new without array accesses and remove assignments of findcond... No change.
+Doing merge branches... No change.
+Trying equivalence SHA256_comp_star_cAU... Transf. OK Proba. computed Transf. done Succeeded.
+Doing simplify (non-expanded game)... No change.
+Doing expand... Done.
+Doing remove assignments of findcond... Done.
+Doing simplify... Run simplify 2 time(s). Fixpoint reached.
+Done.
+Doing move all binders... No change.
+Doing SA rename new without array accesses and remove assignments of findcond... No change.
+Doing merge branches... No change.
+Trying equivalence SHA256_comp_prf with r3_1... Transf. OK Proba. computed Transf. done Succeeded.
+Doing simplify (non-expanded game)... Done.
+Doing expand... Done.
+Doing remove assignments of findcond... Done.
+Doing simplify... Run simplify 2 time(s). Fixpoint reached.
+Done.
+Doing move all binders... Done.
+Doing SA rename new without array accesses and remove assignments of findcond... Done.
+Doing merge branches... No change.
+Doing simplify... Run simplify 2 time(s). Maximum reached.
+Done.
+Doing SA rename u... Done.
+Doing SA rename new without array accesses and remove assignments of findcond... No change.
+Doing simplify... Run simplify 2 time(s). Maximum reached.
+Done.
+Doing simplify... Run simplify 1 time(s). Fixpoint reached.
+No change.
+Doing remove assignments of useless... Done.
+  {1}Ogen() :=
+  {2}return();
+  {3}((
+  {5}  foreach i <= qMAC do
+  {6}  O_MAC(m: bitstring) :=
+  {7}  find [unique] u_4 = ri_4 <= qMAC suchthat defined(r2_1[{8}ri_4], m[{9}ri_4]) && {10}({11}m = {13}m[{14}ri_4]) then
+ {15}    return({16}r2_1[{17}u_4])
+       else
+ {20}    r2_1 <-R t_SHA256_out;
+ {21}    return({22}r2_1)
+     ) | (
+ {25}  foreach i_1 <= qKDF256 do
+ {26}  O_KDF256(X2: t_SHA256_out, U2: t_id, V2: t_id) :=
+ {27}  find [unique] u_3 = ri_3 <= qKDF256 suchthat defined(r3[{28}ri_3], X2[{29}ri_3]) && {30}({31}first_part({32}X2) = {34}first_part({35}X2[{36}ri_3])) then
+ {37}    Hash1: t_SHA256_out <- {38}SHA256_comp({39}r3[{40}u_3], {42}concatSHA256_pad({43}second_part({44}X2), {46}U2, {48}V2, {50}HMAC256keylength));
+ {51}    return({52}Hash1)
+       else
+ {56}    r3 <-R t_SHA256_out;
+ {57}    Hash1: t_SHA256_out <- {58}SHA256_comp({59}r3, {61}concatSHA256_pad({62}second_part({63}X2), {65}U2, {67}V2, {69}HMAC256keylength));
+ {70}    return({71}Hash1)
+     ) | (
+ {75}  foreach i_2 <= qKDF128 do
+ {76}  O_KDF128(X3: t_SHA256_out, U3: t_id, V3: t_id) :=
+ {77}  find [unique] u_7 = ri <= qKDF128 suchthat defined(r2_2[{78}ri], V3[{79}ri], U3[{80}ri], X3[{81}ri]) && {82}({83}({84}X3 = {86}X3[{87}ri]) && {88}({89}({90}U3 = {92}U3[{93}ri]) && {94}({95}V3 = {97}V3[{98}ri]))) then
+ {99}    return({100}truncate128({101}r2_2[{102}u_7]))
+       orfind u_6 = ri_7 <= qKDF128 suchthat defined(r2_3[{105}ri_7], V3[{106}ri_7], U3[{107}ri_7], X3[{108}ri_7], X3[{109}u_9[{110}ri_7]]) && {111}({112}({113}first_part({114}X3) = {116}first_part({117}X3[{118}u_9[{119}ri_7]])) && {120}({121}({122}({123}second_part({124}X3) = {126}second_part({127}X3[{128}ri_7])) && {129}({130}U3 = {132}U3[{133}ri_7])) && {134}({135}V3 = {137}V3[{138}ri_7]))) then
+{139}    return({140}truncate128({141}r2_3[{142}u_6]))
+       else
+{145}    find [unique] u_9 = ri <= qKDF128 suchthat defined(r2_2[{146}ri], X3[{147}ri]) && {148}({149}first_part({150}X3) = {152}first_part({153}X3[{154}ri])) then
+{155}      r2_3 <-R t_SHA256_out;
+{156}      return({157}truncate128({158}r2_3))
+         else
+{161}      r2_2 <-R t_SHA256_out;
+{162}      return({163}truncate128({164}r2_2))
+     ))
+
+Doing replace term at occurrence 116 with first_part(X3[ri_7])... Done.
+Doing simplify... Run simplify 2 time(s). Fixpoint reached.
+Done.
+Doing merge variables (r2_2, r2_3)... Done.
+Doing merge branches... Done.
+Trying equivalence equiv
+  foreach i <= N do h1 <-R t_SHA256_out; O_K128() := return(truncate128(h1))
+<=(0)=>
+  foreach i <= N do k <-R enc_key; O_K128() := return(k)
+... Transf. OK Proba. computed Transf. done Succeeded.
+Doing simplify (non-expanded game)... No change.
+Doing expand... No change.
+Doing remove assignments of findcond... Done.
+Doing simplify... Run simplify 1 time(s). Fixpoint reached.
+No change.
+Doing move all binders... No change.
+Doing SA rename new without array accesses and remove assignments of findcond... No change.
+Doing merge branches... No change.
+Trying equivalence SHA256_comp_prf with r3... Transf. OK Proba. computed Transf. done Succeeded.
+Doing simplify (non-expanded game)... Done.
+Doing expand... Done.
+Doing remove assignments of findcond... Done.
+Doing simplify... Run simplify 2 time(s). Fixpoint reached.
+Done.
+Doing move all binders... Done.
+Doing SA rename new without array accesses and remove assignments of findcond... Done.
+Doing merge branches... No change.
+Doing simplify... Run simplify 2 time(s). Maximum reached.
+Done.
+Doing SA rename u_3... Done.
+Doing SA rename new without array accesses and remove assignments of findcond... No change.
+Doing simplify... Run simplify 2 time(s). Maximum reached.
+Done.
+Doing simplify... Run simplify 1 time(s). Fixpoint reached.
+No change.
+Doing remove assignments of useless... Done.
+  {1}Ogen() :=
+  {2}return();
+  {3}((
+  {5}  foreach i <= qMAC do
+  {6}  O_MAC(m: bitstring) :=
+  {7}  find [unique] u_4 = ri_4 <= qMAC suchthat defined(r2_1[{8}ri_4], m[{9}ri_4]) && {10}({11}m = {13}m[{14}ri_4]) then
+ {15}    return({16}r2_1[{17}u_4])
+       else
+ {20}    r2_1 <-R t_SHA256_out;
+ {21}    return({22}r2_1)
+     ) | (
+ {25}  foreach i_1 <= qKDF256 do
+ {26}  O_KDF256(X2: t_SHA256_out, U2: t_id, V2: t_id) :=
+ {27}  find [unique] u_12 = ri_3 <= qKDF256 suchthat defined(r2_6[{28}ri_3], V2[{29}ri_3], U2[{30}ri_3], X2[{31}ri_3]) && {32}({33}({34}X2 = {36}X2[{37}ri_3]) && {38}({39}({40}U2 = {42}U2[{43}ri_3]) && {44}({45}V2 = {47}V2[{48}ri_3]))) then
+ {49}    return({50}r2_6[{51}u_12])
+       orfind u_11 = ri_11 <= qKDF256 suchthat defined(r2_7[{54}ri_11], V2[{55}ri_11], U2[{56}ri_11], X2[{57}ri_11], X2[{58}u_14[{59}ri_11]]) && {60}({61}({62}first_part({63}X2) = {65}first_part({66}X2[{67}u_14[{68}ri_11]])) && {69}({70}({71}({72}second_part({73}X2) = {75}second_part({76}X2[{77}ri_11])) && {78}({79}U2 = {81}U2[{82}ri_11])) && {83}({84}V2 = {86}V2[{87}ri_11]))) then
+ {88}    return({89}r2_7[{90}u_11])
+       else
+ {93}    find [unique] u_14 = ri_3 <= qKDF256 suchthat defined(r2_6[{94}ri_3], X2[{95}ri_3]) && {96}({97}first_part({98}X2) = {100}first_part({101}X2[{102}ri_3])) then
+{103}      r2_7 <-R t_SHA256_out;
+{104}      return({105}r2_7)
+         else
+{108}      r2_6 <-R t_SHA256_out;
+{109}      return({110}r2_6)
+     ) | (
+{113}  foreach i_2 <= qKDF128 do
+{114}  O_KDF128(X3: t_SHA256_out, U3: t_id, V3: t_id) :=
+{115}  find [unique] u_7 = ri <= qKDF128 suchthat defined(k_2[{116}ri], V3[{117}ri], U3[{118}ri], X3[{119}ri]) && {120}({121}({122}X3 = {124}X3[{125}ri]) && {126}({127}({128}U3 = {130}U3[{131}ri]) && {132}({133}V3 = {135}V3[{136}ri]))) then
+{137}    return({138}k_2[{139}u_7])
+       else
+{142}    k_2 <-R enc_key;
+{143}    return({144}k_2)
+     ))
+
+Doing replace term at occurrence 65 with first_part(X2[ri_11])... Done.
+Doing simplify... Run simplify 2 time(s). Fixpoint reached.
+Done.
+Doing merge variables (r2_6, r2_7)... Done.
+Doing merge branches... Done.
+Doing remove assignments of useless... Done.
+Trying equivalence SHA256_joint... Failed.
+Trying equivalence remove_xor(xor)... Failed.
+Trying equivalence equiv
+  foreach i <= N do h1 <-R t_SHA256_out; O_K128() := return(truncate128(h1))
+<=(0)=>
+  foreach i <= N do k <-R enc_key; O_K128() := return(k)
+... Failed.
+Trying equivalence SHA256_comp_star_cAU... Failed.
+Trying equivalence SHA256_comp_prf... Failed.
+===================== Proof starts =======================
+Initial state
+Game 1 is
+     Ogen() :=
+     k_1 <-R mac_key;
+     return();
+     ((
+       foreach i <= qMAC do
+       O_MAC(m: bitstring) :=
+       K0: t_SHA256_block <- padkey(k_1);
+       return(SHA256_comp(SHA256_comp(SHA256_init, xor(K0, opad)), padsha256_2(SHA256_comp_star(SHA256_comp(SHA256_init, xor(K0, ipad)), padsha256(m)))))
+     ) | (
+       foreach i_1 <= qKDF256 do
+       O_KDF256(X2: t_SHA256_out, U2: t_id, V2: t_id) :=
+       SharedInfoMAC: t_shared_info <- concatSI(MACcst, HMAC_SHA256num, X2, U2, V2, HMAC256keylength);
+       Hash1: t_SHA256_out <- (x_2: t_SHA256_KDF_in <- concatKDF(k_1, count1, SharedInfoMAC); SHA256_comp(SHA256_comp(SHA256_init, first_block(x_2)), second_block(x_2)));
+       return(Hash1)
+     ) | (
+       foreach i_2 <= qKDF128 do
+       O_KDF128(X3: t_SHA256_out, U3: t_id, V3: t_id) :=
+       SharedInfoENC: t_shared_info <- concatSI(ENCcst, AES128num, X3, U3, V3, AES128keylength);
+       Hash1_1: t_SHA256_out <- (x_3: t_SHA256_KDF_in <- concatKDF(k_1, count1, SharedInfoENC); SHA256_comp(SHA256_comp(SHA256_init, first_block(x_3)), second_block(x_3)));
+       return(truncate128(Hash1_1))
+     ))
+
+
+Applying expand
+  - Expand if/find/let
+yields
+
+Game 2 is
+     Ogen() :=
+     k_1 <-R mac_key;
+     return();
+     ((
+       foreach i <= qMAC do
+       O_MAC(m: bitstring) :=
+       K0: t_SHA256_block <- padkey(k_1);
+       return(SHA256_comp(SHA256_comp(SHA256_init, xor(K0, opad)), padsha256_2(SHA256_comp_star(SHA256_comp(SHA256_init, xor(K0, ipad)), padsha256(m)))))
+     ) | (
+       foreach i_1 <= qKDF256 do
+       O_KDF256(X2: t_SHA256_out, U2: t_id, V2: t_id) :=
+       SharedInfoMAC: t_shared_info <- concatSI(MACcst, HMAC_SHA256num, X2, U2, V2, HMAC256keylength);
+       x_2: t_SHA256_KDF_in <- concatKDF(k_1, count1, SharedInfoMAC);
+       Hash1: t_SHA256_out <- {52}SHA256_comp(SHA256_comp(SHA256_init, first_block(x_2)), second_block(x_2));
+       return(Hash1)
+     ) | (
+       foreach i_2 <= qKDF128 do
+       O_KDF128(X3: t_SHA256_out, U3: t_id, V3: t_id) :=
+       SharedInfoENC: t_shared_info <- concatSI(ENCcst, AES128num, X3, U3, V3, AES128keylength);
+       x_3: t_SHA256_KDF_in <- concatKDF(k_1, count1, SharedInfoENC);
+       Hash1_1: t_SHA256_out <- {88}SHA256_comp(SHA256_comp(SHA256_init, first_block(x_3)), second_block(x_3));
+       return(truncate128(Hash1_1))
+     ))
+
+
+Applying simplify
+  - Simplification pass
+    - Replaced SHA256_comp(SHA256_comp(SHA256_init, first_block(x_3)), second_block(x_3)) with SHA256_comp(SHA256_comp(SHA256_init, concatSHA256(k_1, concatSHA256_2(count1, ENCcst, AES128num, first_part(X3)))), concatSHA256_pad(second_part(X3), U3, V3, AES128keylength)) at 88
+    - Replaced SHA256_comp(SHA256_comp(SHA256_init, first_block(x_2)), second_block(x_2)) with SHA256_comp(SHA256_comp(SHA256_init, concatSHA256(k_1, concatSHA256_2(count1, MACcst, HMAC_SHA256num, first_part(X2)))), concatSHA256_pad(second_part(X2), U2, V2, HMAC256keylength)) at 52
+yields
+
+Game 3 is
+     Ogen() :=
+     k_1 <-R mac_key;
+     return();
+     ((
+       foreach i <= qMAC do
+       O_MAC(m: bitstring) :=
+       K0: t_SHA256_block <- padkey(k_1);
+       return(SHA256_comp(SHA256_comp(SHA256_init, xor(K0, opad)), padsha256_2(SHA256_comp_star(SHA256_comp(SHA256_init, xor(K0, ipad)), padsha256(m)))))
+     ) | (
+       foreach i_1 <= qKDF256 do
+       O_KDF256(X2: t_SHA256_out, U2: t_id, V2: t_id) :=
+       SharedInfoMAC: t_shared_info <- concatSI(MACcst, HMAC_SHA256num, X2, U2, V2, HMAC256keylength);
+       x_2: t_SHA256_KDF_in <- concatKDF(k_1, count1, SharedInfoMAC);
+       Hash1: t_SHA256_out <- SHA256_comp(SHA256_comp(SHA256_init, concatSHA256(k_1, concatSHA256_2(count1, MACcst, HMAC_SHA256num, first_part(X2)))), concatSHA256_pad(second_part(X2), U2, V2, HMAC256keylength));
+       return(Hash1)
+     ) | (
+       foreach i_2 <= qKDF128 do
+       O_KDF128(X3: t_SHA256_out, U3: t_id, V3: t_id) :=
+       SharedInfoENC: t_shared_info <- concatSI(ENCcst, AES128num, X3, U3, V3, AES128keylength);
+       x_3: t_SHA256_KDF_in <- concatKDF(k_1, count1, SharedInfoENC);
+       Hash1_1: t_SHA256_out <- SHA256_comp(SHA256_comp(SHA256_init, concatSHA256(k_1, concatSHA256_2(count1, ENCcst, AES128num, first_part(X3)))), concatSHA256_pad(second_part(X3), U3, V3, AES128keylength));
+       return(truncate128(Hash1_1))
+     ))
+
+
+Applying SA rename new without array accesses and remove assignments of findcond
+  - Remove assignments on x_3 (definition removed, all usages removed)
+  - Remove assignments on x_2 (definition removed, all usages removed)
+  - Remove assignments on SharedInfoENC (definition removed, all usages removed)
+  - Remove assignments on SharedInfoMAC (definition removed, all usages removed)
+yields
+
+Game 4 is
+     Ogen() :=
+     k_1 <-R mac_key;
+     return();
+     ((
+       foreach i <= qMAC do
+       O_MAC(m: bitstring) :=
+       K0: t_SHA256_block <- padkey(k_1);
+       return(SHA256_comp(SHA256_comp(SHA256_init, xor(K0, opad)), padsha256_2(SHA256_comp_star(SHA256_comp(SHA256_init, xor(K0, ipad)), padsha256(m)))))
+     ) | (
+       foreach i_1 <= qKDF256 do
+       O_KDF256(X2: t_SHA256_out, U2: t_id, V2: t_id) :=
+       Hash1: t_SHA256_out <- SHA256_comp(SHA256_comp(SHA256_init, concatSHA256(k_1, concatSHA256_2(count1, MACcst, HMAC_SHA256num, first_part(X2)))), concatSHA256_pad(second_part(X2), U2, V2, HMAC256keylength));
+       return(Hash1)
+     ) | (
+       foreach i_2 <= qKDF128 do
+       O_KDF128(X3: t_SHA256_out, U3: t_id, V3: t_id) :=
+       Hash1_1: t_SHA256_out <- SHA256_comp(SHA256_comp(SHA256_init, concatSHA256(k_1, concatSHA256_2(count1, ENCcst, AES128num, first_part(X3)))), concatSHA256_pad(second_part(X3), U3, V3, AES128keylength));
+       return(truncate128(Hash1_1))
+     ))
+
+
+Applying remove assignments of binder K0
+  - Remove assignments on K0 (definition removed, all usages removed)
+yields
+
+Game 5 is
+     Ogen() :=
+     k_1 <-R mac_key;
+     return();
+     ((
+       foreach i <= qMAC do
+       O_MAC(m: bitstring) :=
+       return(SHA256_comp(SHA256_comp(SHA256_init, xor(padkey(k_1), opad)), padsha256_2(SHA256_comp_star(SHA256_comp(SHA256_init, xor(padkey(k_1), ipad)), padsha256(m)))))
+     ) | (
+       foreach i_1 <= qKDF256 do
+       O_KDF256(X2: t_SHA256_out, U2: t_id, V2: t_id) :=
+       Hash1: t_SHA256_out <- SHA256_comp(SHA256_comp(SHA256_init, concatSHA256(k_1, concatSHA256_2(count1, MACcst, HMAC_SHA256num, first_part(X2)))), concatSHA256_pad(second_part(X2), U2, V2, HMAC256keylength));
+       return(Hash1)
+     ) | (
+       foreach i_2 <= qKDF128 do
+       O_KDF128(X3: t_SHA256_out, U3: t_id, V3: t_id) :=
+       Hash1_1: t_SHA256_out <- SHA256_comp(SHA256_comp(SHA256_init, concatSHA256(k_1, concatSHA256_2(count1, ENCcst, AES128num, first_part(X3)))), concatSHA256_pad(second_part(X3), U3, V3, AES128keylength));
+       return(truncate128(Hash1_1))
+     ))
+
+
+Applying equivalence SHA256_joint with k_1 [probability P_SHA256_joint(time_1, 1, qKDF128 + qKDF256)]
+  - Equivalence SHA256_joint with variables: k_1 -> k
+yields
+
+Game 6 is
+     Ogen() :=
+     r2 <-R t_SHA256_out;
+     r1 <-R t_SHA256_out;
+     return();
+     ((
+       foreach i <= qMAC do
+       O_MAC(m: bitstring) :=
+       return(SHA256_comp(r1, padsha256_2(SHA256_comp_star(r2, padsha256(m)))))
+     ) | (
+       foreach i_1 <= qKDF256 do
+       O_KDF256(X2: t_SHA256_out, U2: t_id, V2: t_id) :=
+       Hash1: t_SHA256_out <- SHA256_comp((x_4: mac_key <- concatSHA256_2(count1, MACcst, HMAC_SHA256num, first_part(X2)); {31}find [unique] u_3 = ri_3 <= qKDF256 suchthat defined(x_4[ri_3], r3[ri_3]) && (x_4 = x_4[ri_3]) then r3[u_3] orfind u_2 = ri_2 <= qKDF128 suchthat defined(x_5[ri_2], r3_1[ri_2]) && {44}(x_4 = x_5[ri_2]) then r3_1[u_2] else r3 <-R t_SHA256_out; r3), concatSHA256_pad(second_part(X2), U2, V2, HMAC256keylength));
+       return(Hash1)
+     ) | (
+       foreach i_2 <= qKDF128 do
+       O_KDF128(X3: t_SHA256_out, U3: t_id, V3: t_id) :=
+       Hash1_1: t_SHA256_out <- SHA256_comp((x_5: mac_key <- concatSHA256_2(count1, ENCcst, AES128num, first_part(X3)); {81}find [unique] u_1 = ri_1 <= qKDF256 suchthat defined(x_4[ri_1], r3[ri_1]) && {84}(x_5 = x_4[ri_1]) then r3[u_1] orfind u = ri <= qKDF128 suchthat defined(x_5[ri], r3_1[ri]) && (x_5 = x_5[ri]) then r3_1[u] else r3_1 <-R t_SHA256_out; r3_1), concatSHA256_pad(second_part(X3), U3, V3, AES128keylength));
+       return(truncate128(Hash1_1))
+     ))
+
+
+Applying simplify (non-expanded game)
+  - Simplification pass
+    - Replaced (x_4 = x_5[ri_2]) with false at 44
+    - Remove branch 2 in find at 31
+    - Replaced (x_5 = x_4[ri_1]) with false at 84
+    - Remove branch 1 in find at 81
+yields
+
+Game 7 is
+     Ogen() :=
+     r2 <-R t_SHA256_out;
+     r1 <-R t_SHA256_out;
+     return();
+     ((
+       foreach i <= qMAC do
+       O_MAC(m: bitstring) :=
+       return(SHA256_comp(r1, padsha256_2(SHA256_comp_star(r2, padsha256(m)))))
+     ) | (
+       foreach i_1 <= qKDF256 do
+       O_KDF256(X2: t_SHA256_out, U2: t_id, V2: t_id) :=
+       Hash1: t_SHA256_out <- SHA256_comp((x_4: mac_key <- concatSHA256_2(count1, MACcst, HMAC_SHA256num, first_part(X2)); find [unique] u_3 = ri_3 <= qKDF256 suchthat defined(x_4[ri_3], r3[ri_3]) && (x_4 = x_4[ri_3]) then r3[u_3] else r3 <-R t_SHA256_out; r3), concatSHA256_pad(second_part(X2), U2, V2, HMAC256keylength));
+       return(Hash1)
+     ) | (
+       foreach i_2 <= qKDF128 do
+       O_KDF128(X3: t_SHA256_out, U3: t_id, V3: t_id) :=
+       Hash1_1: t_SHA256_out <- SHA256_comp((x_5: mac_key <- concatSHA256_2(count1, ENCcst, AES128num, first_part(X3)); find [unique] u = ri <= qKDF128 suchthat defined(x_5[ri], r3_1[ri]) && (x_5 = x_5[ri]) then r3_1[u] else r3_1 <-R t_SHA256_out; r3_1), concatSHA256_pad(second_part(X3), U3, V3, AES128keylength));
+       return(truncate128(Hash1_1))
+     ))
+
+
+Applying expand
+  - Expand if/find/let
+yields
+
+Game 8 is
+     Ogen() :=
+     r2 <-R t_SHA256_out;
+     r1 <-R t_SHA256_out;
+     return();
+     ((
+       foreach i <= qMAC do
+       O_MAC(m: bitstring) :=
+       return(SHA256_comp(r1, padsha256_2(SHA256_comp_star(r2, padsha256(m)))))
+     ) | (
+       foreach i_1 <= qKDF256 do
+       O_KDF256(X2: t_SHA256_out, U2: t_id, V2: t_id) :=
+       x_4: mac_key <- concatSHA256_2(count1, MACcst, HMAC_SHA256num, first_part(X2));
+ {29}  find [unique] u_3 = ri_3 <= qKDF256 suchthat defined(x_4[ri_3], r3[ri_3]) && {32}(x_4 = x_4[ri_3]) then
+         Hash1: t_SHA256_out <- SHA256_comp(r3[u_3], concatSHA256_pad(second_part(X2), U2, V2, HMAC256keylength));
+         return(Hash1)
+       else
+         r3 <-R t_SHA256_out;
+         Hash1: t_SHA256_out <- SHA256_comp(r3, concatSHA256_pad(second_part(X2), U2, V2, HMAC256keylength));
+         return(Hash1)
+     ) | (
+       foreach i_2 <= qKDF128 do
+       O_KDF128(X3: t_SHA256_out, U3: t_id, V3: t_id) :=
+       x_5: mac_key <- concatSHA256_2(count1, ENCcst, AES128num, first_part(X3));
+ {86}  find [unique] u = ri <= qKDF128 suchthat defined(x_5[ri], r3_1[ri]) && {89}(x_5 = x_5[ri]) then
+         Hash1_1: t_SHA256_out <- SHA256_comp(r3_1[u], concatSHA256_pad(second_part(X3), U3, V3, AES128keylength));
+         return(truncate128(Hash1_1))
+       else
+         r3_1 <-R t_SHA256_out;
+         Hash1_1: t_SHA256_out <- SHA256_comp(r3_1, concatSHA256_pad(second_part(X3), U3, V3, AES128keylength));
+         return(truncate128(Hash1_1))
+     ))
+
+
+Applying simplify
+  - Simplification pass
+    - Replaced (x_5 = x_5[ri]) with (first_part(X3) = first_part(X3[ri])) at 89
+    - Replaced defined condition x_5[ri], r3_1[ri] with r3_1[ri], X3[ri] in find at 86
+    - Replaced (x_4 = x_4[ri_3]) with (first_part(X2) = first_part(X2[ri_3])) at 32
+    - Replaced defined condition x_4[ri_3], r3[ri_3] with r3[ri_3], X2[ri_3] in find at 29
+yields
+
+Game 9 is
+     Ogen() :=
+     r2 <-R t_SHA256_out;
+     r1 <-R t_SHA256_out;
+     return();
+     ((
+       foreach i <= qMAC do
+       O_MAC(m: bitstring) :=
+       return(SHA256_comp(r1, padsha256_2(SHA256_comp_star(r2, padsha256(m)))))
+     ) | (
+       foreach i_1 <= qKDF256 do
+       O_KDF256(X2: t_SHA256_out, U2: t_id, V2: t_id) :=
+       x_4: mac_key <- concatSHA256_2(count1, MACcst, HMAC_SHA256num, first_part(X2));
+       find [unique] u_3 = ri_3 <= qKDF256 suchthat defined(r3[ri_3], X2[ri_3]) && (first_part(X2) = first_part(X2[ri_3])) then
+         Hash1: t_SHA256_out <- SHA256_comp(r3[u_3], concatSHA256_pad(second_part(X2), U2, V2, HMAC256keylength));
+         return(Hash1)
+       else
+         r3 <-R t_SHA256_out;
+         Hash1: t_SHA256_out <- SHA256_comp(r3, concatSHA256_pad(second_part(X2), U2, V2, HMAC256keylength));
+         return(Hash1)
+     ) | (
+       foreach i_2 <= qKDF128 do
+       O_KDF128(X3: t_SHA256_out, U3: t_id, V3: t_id) :=
+       x_5: mac_key <- concatSHA256_2(count1, ENCcst, AES128num, first_part(X3));
+       find [unique] u = ri <= qKDF128 suchthat defined(r3_1[ri], X3[ri]) && (first_part(X3) = first_part(X3[ri])) then
+         Hash1_1: t_SHA256_out <- SHA256_comp(r3_1[u], concatSHA256_pad(second_part(X3), U3, V3, AES128keylength));
+         return(truncate128(Hash1_1))
+       else
+         r3_1 <-R t_SHA256_out;
+         Hash1_1: t_SHA256_out <- SHA256_comp(r3_1, concatSHA256_pad(second_part(X3), U3, V3, AES128keylength));
+         return(truncate128(Hash1_1))
+     ))
+
+
+Applying move all binders
+  - Move assignment to x_5
+  - Move assignment to x_4
+yields
+
+Game 10 is
+     Ogen() :=
+     r2 <-R t_SHA256_out;
+     r1 <-R t_SHA256_out;
+     return();
+     ((
+       foreach i <= qMAC do
+       O_MAC(m: bitstring) :=
+       return(SHA256_comp(r1, padsha256_2(SHA256_comp_star(r2, padsha256(m)))))
+     ) | (
+       foreach i_1 <= qKDF256 do
+       O_KDF256(X2: t_SHA256_out, U2: t_id, V2: t_id) :=
+       find [unique] u_3 = ri_3 <= qKDF256 suchthat defined(r3[ri_3], X2[ri_3]) && (first_part(X2) = first_part(X2[ri_3])) then
+         Hash1: t_SHA256_out <- SHA256_comp(r3[u_3], concatSHA256_pad(second_part(X2), U2, V2, HMAC256keylength));
+         return(Hash1)
+       else
+         r3 <-R t_SHA256_out;
+         Hash1: t_SHA256_out <- SHA256_comp(r3, concatSHA256_pad(second_part(X2), U2, V2, HMAC256keylength));
+         return(Hash1)
+     ) | (
+       foreach i_2 <= qKDF128 do
+       O_KDF128(X3: t_SHA256_out, U3: t_id, V3: t_id) :=
+       find [unique] u = ri <= qKDF128 suchthat defined(r3_1[ri], X3[ri]) && (first_part(X3) = first_part(X3[ri])) then
+         Hash1_1: t_SHA256_out <- SHA256_comp(r3_1[u], concatSHA256_pad(second_part(X3), U3, V3, AES128keylength));
+         return(truncate128(Hash1_1))
+       else
+         r3_1 <-R t_SHA256_out;
+         Hash1_1: t_SHA256_out <- SHA256_comp(r3_1, concatSHA256_pad(second_part(X3), U3, V3, AES128keylength));
+         return(truncate128(Hash1_1))
+     ))
+
+
+Applying equivalence SHA256_comp_prf with r1 [probability P_SHA256_comp_prf(time_2, qMAC)]
+  - Equivalence SHA256_comp_prf with variables: r1 -> k
+yields
+
+Game 11 is
+     Ogen() :=
+     r2 <-R t_SHA256_out;
+     r1_1 <-R t_SHA256_out;
+     return();
+     ((
+       foreach i <= qMAC do
+       O_MAC(m: bitstring) :=
+       return((x_6: t_SHA256_block <- padsha256_2(SHA256_comp_star(r2, padsha256(m))); find [unique] u_4 = ri_4 <= qMAC suchthat defined(x_6[ri_4], r2_1[ri_4]) && (x_6 = x_6[ri_4]) then r2_1[u_4] else r2_1 <-R t_SHA256_out; r2_1))
+     ) | (
+       foreach i_1 <= qKDF256 do
+       O_KDF256(X2: t_SHA256_out, U2: t_id, V2: t_id) :=
+       find [unique] u_3 = ri_3 <= qKDF256 suchthat defined(r3[ri_3], X2[ri_3]) && (first_part(X2) = first_part(X2[ri_3])) then
+         Hash1: t_SHA256_out <- SHA256_comp(r3[u_3], concatSHA256_pad(second_part(X2), U2, V2, HMAC256keylength));
+         return(Hash1)
+       else
+         r3 <-R t_SHA256_out;
+         Hash1: t_SHA256_out <- SHA256_comp(r3, concatSHA256_pad(second_part(X2), U2, V2, HMAC256keylength));
+         return(Hash1)
+     ) | (
+       foreach i_2 <= qKDF128 do
+       O_KDF128(X3: t_SHA256_out, U3: t_id, V3: t_id) :=
+       find [unique] u = ri <= qKDF128 suchthat defined(r3_1[ri], X3[ri]) && (first_part(X3) = first_part(X3[ri])) then
+         Hash1_1: t_SHA256_out <- SHA256_comp(r3_1[u], concatSHA256_pad(second_part(X3), U3, V3, AES128keylength));
+         return(truncate128(Hash1_1))
+       else
+         r3_1 <-R t_SHA256_out;
+         Hash1_1: t_SHA256_out <- SHA256_comp(r3_1, concatSHA256_pad(second_part(X3), U3, V3, AES128keylength));
+         return(truncate128(Hash1_1))
+     ))
+
+
+Applying expand
+  - Expand if/find/let
+yields
+
+Game 12 is
+     Ogen() :=
+     r2 <-R t_SHA256_out;
+  {3}r1_1 <-R t_SHA256_out;
+     return();
+     ((
+       foreach i <= qMAC do
+       O_MAC(m: bitstring) :=
+       x_6: t_SHA256_block <- padsha256_2(SHA256_comp_star(r2, padsha256(m)));
+ {16}  find [unique] u_4 = ri_4 <= qMAC suchthat defined(x_6[ri_4], r2_1[ri_4]) && {19}(x_6 = x_6[ri_4]) then
+         return(r2_1[u_4])
+       else
+         r2_1 <-R t_SHA256_out;
+         return(r2_1)
+     ) | (
+       foreach i_1 <= qKDF256 do
+       O_KDF256(X2: t_SHA256_out, U2: t_id, V2: t_id) :=
+       find [unique] u_3 = ri_3 <= qKDF256 suchthat defined(r3[ri_3], X2[ri_3]) && (first_part(X2) = first_part(X2[ri_3])) then
+         Hash1: t_SHA256_out <- SHA256_comp(r3[u_3], concatSHA256_pad(second_part(X2), U2, V2, HMAC256keylength));
+         return(Hash1)
+       else
+         r3 <-R t_SHA256_out;
+         Hash1: t_SHA256_out <- SHA256_comp(r3, concatSHA256_pad(second_part(X2), U2, V2, HMAC256keylength));
+         return(Hash1)
+     ) | (
+       foreach i_2 <= qKDF128 do
+       O_KDF128(X3: t_SHA256_out, U3: t_id, V3: t_id) :=
+       find [unique] u = ri <= qKDF128 suchthat defined(r3_1[ri], X3[ri]) && (first_part(X3) = first_part(X3[ri])) then
+         Hash1_1: t_SHA256_out <- SHA256_comp(r3_1[u], concatSHA256_pad(second_part(X3), U3, V3, AES128keylength));
+         return(truncate128(Hash1_1))
+       else
+         r3_1 <-R t_SHA256_out;
+         Hash1_1: t_SHA256_out <- SHA256_comp(r3_1, concatSHA256_pad(second_part(X3), U3, V3, AES128keylength));
+         return(truncate128(Hash1_1))
+     ))
+
+
+Applying simplify
+  - Simplification pass
+    - Replaced (x_6 = x_6[ri_4]) with (SHA256_comp_star(r2, padsha256(m)) = SHA256_comp_star(r2, padsha256(m[ri_4]))) at 19
+    - Replaced defined condition x_6[ri_4], r2_1[ri_4] with r2_1[ri_4], m[ri_4] in find at 16
+    - Remove random number generation at 3
+yields
+
+Game 13 is
+     Ogen() :=
+     r2 <-R t_SHA256_out;
+     return();
+     ((
+       foreach i <= qMAC do
+       O_MAC(m: bitstring) :=
+       x_6: t_SHA256_block <- padsha256_2(SHA256_comp_star(r2, padsha256(m)));
+       find [unique] u_4 = ri_4 <= qMAC suchthat defined(r2_1[ri_4], m[ri_4]) && (SHA256_comp_star(r2, padsha256(m)) = SHA256_comp_star(r2, padsha256(m[ri_4]))) then
+         return(r2_1[u_4])
+       else
+         r2_1 <-R t_SHA256_out;
+         return(r2_1)
+     ) | (
+       foreach i_1 <= qKDF256 do
+       O_KDF256(X2: t_SHA256_out, U2: t_id, V2: t_id) :=
+       find [unique] u_3 = ri_3 <= qKDF256 suchthat defined(r3[ri_3], X2[ri_3]) && (first_part(X2) = first_part(X2[ri_3])) then
+         Hash1: t_SHA256_out <- SHA256_comp(r3[u_3], concatSHA256_pad(second_part(X2), U2, V2, HMAC256keylength));
+         return(Hash1)
+       else
+         r3 <-R t_SHA256_out;
+         Hash1: t_SHA256_out <- SHA256_comp(r3, concatSHA256_pad(second_part(X2), U2, V2, HMAC256keylength));
+         return(Hash1)
+     ) | (
+       foreach i_2 <= qKDF128 do
+       O_KDF128(X3: t_SHA256_out, U3: t_id, V3: t_id) :=
+       find [unique] u = ri <= qKDF128 suchthat defined(r3_1[ri], X3[ri]) && (first_part(X3) = first_part(X3[ri])) then
+         Hash1_1: t_SHA256_out <- SHA256_comp(r3_1[u], concatSHA256_pad(second_part(X3), U3, V3, AES128keylength));
+         return(truncate128(Hash1_1))
+       else
+         r3_1 <-R t_SHA256_out;
+         Hash1_1: t_SHA256_out <- SHA256_comp(r3_1, concatSHA256_pad(second_part(X3), U3, V3, AES128keylength));
+         return(truncate128(Hash1_1))
+     ))
+
+
+Applying move all binders
+  - Move assignment to x_6
+yields
+
+Game 14 is
+     Ogen() :=
+     r2 <-R t_SHA256_out;
+     return();
+     ((
+       foreach i <= qMAC do
+       O_MAC(m: bitstring) :=
+       find [unique] u_4 = ri_4 <= qMAC suchthat defined(r2_1[ri_4], m[ri_4]) && (SHA256_comp_star(r2, padsha256(m)) = SHA256_comp_star(r2, padsha256(m[ri_4]))) then
+         return(r2_1[u_4])
+       else
+         r2_1 <-R t_SHA256_out;
+         return(r2_1)
+     ) | (
+       foreach i_1 <= qKDF256 do
+       O_KDF256(X2: t_SHA256_out, U2: t_id, V2: t_id) :=
+       find [unique] u_3 = ri_3 <= qKDF256 suchthat defined(r3[ri_3], X2[ri_3]) && (first_part(X2) = first_part(X2[ri_3])) then
+         Hash1: t_SHA256_out <- SHA256_comp(r3[u_3], concatSHA256_pad(second_part(X2), U2, V2, HMAC256keylength));
+         return(Hash1)
+       else
+         r3 <-R t_SHA256_out;
+         Hash1: t_SHA256_out <- SHA256_comp(r3, concatSHA256_pad(second_part(X2), U2, V2, HMAC256keylength));
+         return(Hash1)
+     ) | (
+       foreach i_2 <= qKDF128 do
+       O_KDF128(X3: t_SHA256_out, U3: t_id, V3: t_id) :=
+       find [unique] u = ri <= qKDF128 suchthat defined(r3_1[ri], X3[ri]) && (first_part(X3) = first_part(X3[ri])) then
+         Hash1_1: t_SHA256_out <- SHA256_comp(r3_1[u], concatSHA256_pad(second_part(X3), U3, V3, AES128keylength));
+         return(truncate128(Hash1_1))
+       else
+         r3_1 <-R t_SHA256_out;
+         Hash1_1: t_SHA256_out <- SHA256_comp(r3_1, concatSHA256_pad(second_part(X3), U3, V3, AES128keylength));
+         return(truncate128(Hash1_1))
+     ))
+
+
+Applying equivalence SHA256_comp_star_cAU [probability qMAC^2 / |t_SHA256_out| + 2 * qMAC^2 * length(padsha256, maxlength(game 14: m)) * P_SHA256_comp_prf(time_3, 2) / maxlength(t_SHA256_block) + -1 * qMAC^2 * P_SHA256_comp_prf(time_3, 2)]
+  - Equivalence SHA256_comp_star_cAU with variables: r2 -> k
+yields
+
+Game 15 is
+     Ogen() :=
+     return();
+     ((
+       foreach i <= qMAC do
+       O_MAC(m: bitstring) :=
+       find [unique] u_4 = ri_4 <= qMAC suchthat defined(r2_1[ri_4], m[ri_4]) && (m1: t_SHA256_blocks <- padsha256(m); m2: t_SHA256_blocks <- padsha256(m[ri_4]); (m1 = m2)) then
+         return(r2_1[u_4])
+       else
+         r2_1 <-R t_SHA256_out;
+         return(r2_1)
+     ) | (
+       foreach i_1 <= qKDF256 do
+       O_KDF256(X2: t_SHA256_out, U2: t_id, V2: t_id) :=
+       find [unique] u_3 = ri_3 <= qKDF256 suchthat defined(r3[ri_3], X2[ri_3]) && (first_part(X2) = first_part(X2[ri_3])) then
+         Hash1: t_SHA256_out <- SHA256_comp(r3[u_3], concatSHA256_pad(second_part(X2), U2, V2, HMAC256keylength));
+         return(Hash1)
+       else
+         r3 <-R t_SHA256_out;
+         Hash1: t_SHA256_out <- SHA256_comp(r3, concatSHA256_pad(second_part(X2), U2, V2, HMAC256keylength));
+         return(Hash1)
+     ) | (
+       foreach i_2 <= qKDF128 do
+       O_KDF128(X3: t_SHA256_out, U3: t_id, V3: t_id) :=
+       find [unique] u = ri <= qKDF128 suchthat defined(r3_1[ri], X3[ri]) && (first_part(X3) = first_part(X3[ri])) then
+         Hash1_1: t_SHA256_out <- SHA256_comp(r3_1[u], concatSHA256_pad(second_part(X3), U3, V3, AES128keylength));
+         return(truncate128(Hash1_1))
+       else
+         r3_1 <-R t_SHA256_out;
+         Hash1_1: t_SHA256_out <- SHA256_comp(r3_1, concatSHA256_pad(second_part(X3), U3, V3, AES128keylength));
+         return(truncate128(Hash1_1))
+     ))
+
+
+Applying expand
+  - Expand if/find/let
+yields
+
+Game 16 is
+     Ogen() :=
+     return();
+     ((
+       foreach i <= qMAC do
+       O_MAC(m: bitstring) :=
+       find [unique] u_4 = ri_4 <= qMAC suchthat defined(r2_1[ri_4], m[ri_4]) && (m1: t_SHA256_blocks <- padsha256(m); m2: t_SHA256_blocks <- padsha256(m[ri_4]); (m1 = m2)) then
+         return(r2_1[u_4])
+       else
+         r2_1 <-R t_SHA256_out;
+         return(r2_1)
+     ) | (
+       foreach i_1 <= qKDF256 do
+       O_KDF256(X2: t_SHA256_out, U2: t_id, V2: t_id) :=
+       find [unique] u_3 = ri_3 <= qKDF256 suchthat defined(r3[ri_3], X2[ri_3]) && (first_part(X2) = first_part(X2[ri_3])) then
+         Hash1: t_SHA256_out <- SHA256_comp(r3[u_3], concatSHA256_pad(second_part(X2), U2, V2, HMAC256keylength));
+         return(Hash1)
+       else
+         r3 <-R t_SHA256_out;
+         Hash1: t_SHA256_out <- SHA256_comp(r3, concatSHA256_pad(second_part(X2), U2, V2, HMAC256keylength));
+         return(Hash1)
+     ) | (
+       foreach i_2 <= qKDF128 do
+       O_KDF128(X3: t_SHA256_out, U3: t_id, V3: t_id) :=
+       find [unique] u = ri <= qKDF128 suchthat defined(r3_1[ri], X3[ri]) && (first_part(X3) = first_part(X3[ri])) then
+         Hash1_1: t_SHA256_out <- SHA256_comp(r3_1[u], concatSHA256_pad(second_part(X3), U3, V3, AES128keylength));
+         return(truncate128(Hash1_1))
+       else
+         r3_1 <-R t_SHA256_out;
+         Hash1_1: t_SHA256_out <- SHA256_comp(r3_1, concatSHA256_pad(second_part(X3), U3, V3, AES128keylength));
+         return(truncate128(Hash1_1))
+     ))
+
+
+Applying remove assignments of findcond
+  - Remove assignments on m1 (definition removed, all usages removed)
+  - Remove assignments on m2 (definition removed, all usages removed)
+yields
+
+Game 17 is
+     Ogen() :=
+     return();
+     ((
+       foreach i <= qMAC do
+       O_MAC(m: bitstring) :=
+       find [unique] u_4 = ri_4 <= qMAC suchthat defined(r2_1[ri_4], m[ri_4]) && {10}(padsha256(m) = padsha256(m[ri_4])) then
+         return(r2_1[u_4])
+       else
+         r2_1 <-R t_SHA256_out;
+         return(r2_1)
+     ) | (
+       foreach i_1 <= qKDF256 do
+       O_KDF256(X2: t_SHA256_out, U2: t_id, V2: t_id) :=
+       find [unique] u_3 = ri_3 <= qKDF256 suchthat defined(r3[ri_3], X2[ri_3]) && (first_part(X2) = first_part(X2[ri_3])) then
+         Hash1: t_SHA256_out <- SHA256_comp(r3[u_3], concatSHA256_pad(second_part(X2), U2, V2, HMAC256keylength));
+         return(Hash1)
+       else
+         r3 <-R t_SHA256_out;
+         Hash1: t_SHA256_out <- SHA256_comp(r3, concatSHA256_pad(second_part(X2), U2, V2, HMAC256keylength));
+         return(Hash1)
+     ) | (
+       foreach i_2 <= qKDF128 do
+       O_KDF128(X3: t_SHA256_out, U3: t_id, V3: t_id) :=
+       find [unique] u = ri <= qKDF128 suchthat defined(r3_1[ri], X3[ri]) && (first_part(X3) = first_part(X3[ri])) then
+         Hash1_1: t_SHA256_out <- SHA256_comp(r3_1[u], concatSHA256_pad(second_part(X3), U3, V3, AES128keylength));
+         return(truncate128(Hash1_1))
+       else
+         r3_1 <-R t_SHA256_out;
+         Hash1_1: t_SHA256_out <- SHA256_comp(r3_1, concatSHA256_pad(second_part(X3), U3, V3, AES128keylength));
+         return(truncate128(Hash1_1))
+     ))
+
+
+Applying simplify
+  - Simplification pass
+    - Replaced (padsha256(m) = padsha256(m[ri_4])) with (m = m[ri_4]) at 10
+yields
+
+Game 18 is
+     Ogen() :=
+     return();
+     ((
+       foreach i <= qMAC do
+       O_MAC(m: bitstring) :=
+       find [unique] u_4 = ri_4 <= qMAC suchthat defined(r2_1[ri_4], m[ri_4]) && (m = m[ri_4]) then
+         return(r2_1[u_4])
+       else
+         r2_1 <-R t_SHA256_out;
+         return(r2_1)
+     ) | (
+       foreach i_1 <= qKDF256 do
+       O_KDF256(X2: t_SHA256_out, U2: t_id, V2: t_id) :=
+       find [unique] u_3 = ri_3 <= qKDF256 suchthat defined(r3[ri_3], X2[ri_3]) && (first_part(X2) = first_part(X2[ri_3])) then
+         Hash1: t_SHA256_out <- SHA256_comp(r3[u_3], concatSHA256_pad(second_part(X2), U2, V2, HMAC256keylength));
+         return(Hash1)
+       else
+         r3 <-R t_SHA256_out;
+         Hash1: t_SHA256_out <- SHA256_comp(r3, concatSHA256_pad(second_part(X2), U2, V2, HMAC256keylength));
+         return(Hash1)
+     ) | (
+       foreach i_2 <= qKDF128 do
+       O_KDF128(X3: t_SHA256_out, U3: t_id, V3: t_id) :=
+       find [unique] u = ri <= qKDF128 suchthat defined(r3_1[ri], X3[ri]) && (first_part(X3) = first_part(X3[ri])) then
+         Hash1_1: t_SHA256_out <- SHA256_comp(r3_1[u], concatSHA256_pad(second_part(X3), U3, V3, AES128keylength));
+         return(truncate128(Hash1_1))
+       else
+         r3_1 <-R t_SHA256_out;
+         Hash1_1: t_SHA256_out <- SHA256_comp(r3_1, concatSHA256_pad(second_part(X3), U3, V3, AES128keylength));
+         return(truncate128(Hash1_1))
+     ))
+
+
+Applying equivalence SHA256_comp_prf with r3_1 [probability qKDF128 * P_SHA256_comp_prf(time_4, 1 + qKDF128)]
+  - Equivalence SHA256_comp_prf with variables: r3_1 -> k
+yields
+
+Game 19 is
+     Ogen() :=
+     return();
+     ((
+       foreach i <= qMAC do
+       O_MAC(m: bitstring) :=
+       find [unique] u_4 = ri_4 <= qMAC suchthat defined(r2_1[ri_4], m[ri_4]) && (m = m[ri_4]) then
+         return(r2_1[u_4])
+       else
+         r2_1 <-R t_SHA256_out;
+         return(r2_1)
+     ) | (
+       foreach i_1 <= qKDF256 do
+       O_KDF256(X2: t_SHA256_out, U2: t_id, V2: t_id) :=
+       find [unique] u_3 = ri_3 <= qKDF256 suchthat defined(r3[ri_3], X2[ri_3]) && (first_part(X2) = first_part(X2[ri_3])) then
+         Hash1: t_SHA256_out <- SHA256_comp(r3[u_3], concatSHA256_pad(second_part(X2), U2, V2, HMAC256keylength));
+         return(Hash1)
+       else
+         r3 <-R t_SHA256_out;
+         Hash1: t_SHA256_out <- SHA256_comp(r3, concatSHA256_pad(second_part(X2), U2, V2, HMAC256keylength));
+         return(Hash1)
+     ) | (
+       foreach i_2 <= qKDF128 do
+       O_KDF128(X3: t_SHA256_out, U3: t_id, V3: t_id) :=
+       find [unique] u = ri <= qKDF128 suchthat defined(r3_2[ri], X3[ri]) && (first_part(X3) = first_part(X3[ri])) then
+         Hash1_1: t_SHA256_out <- (x_8: t_SHA256_block <- concatSHA256_pad(second_part(X3), U3, V3, AES128keylength); find [unique]  suchthat defined(x_7[u], r2_2[u]) && (x_8 = x_7[u]) then r2_2[u] orfind u_6 = ri_7 <= qKDF128 suchthat defined(r2_3[ri_7], x_8[ri_7], u[ri_7]) && (u[ri_7] = u) && (x_8 = x_8[ri_7]) then r2_3[u_6] else r2_3 <-R t_SHA256_out; r2_3);
+         return(truncate128(Hash1_1))
+       else
+         r3_2 <-R t_SHA256_out;
+         r3_1: t_SHA256_out <- cst_t_SHA256_out;
+         Hash1_1: t_SHA256_out <- (x_7: t_SHA256_block <- concatSHA256_pad(second_part(X3), U3, V3, AES128keylength); {152}find [unique] u_5 = ri_5 <= qKDF128 suchthat defined(u[ri_5], x_8[ri_5], r2_3[ri_5]) && {156}((u[ri_5] = i_2) && (x_7 = x_8[ri_5])) then r2_3[u_5] else r2_2 <-R t_SHA256_out; r2_2);
+         return(truncate128(Hash1_1))
+     ))
+
+
+Applying simplify (non-expanded game)
+  - Simplification pass
+    - Replaced ((u[ri_5] = i_2) && (x_7 = x_8[ri_5])) with false at 156
+    - Remove branch 1 in find at 152
+    - Find at 152 removed (else branch kept if any)
+yields
+
+Game 20 is
+     Ogen() :=
+     return();
+     ((
+       foreach i <= qMAC do
+       O_MAC(m: bitstring) :=
+       find [unique] u_4 = ri_4 <= qMAC suchthat defined(r2_1[ri_4], m[ri_4]) && (m = m[ri_4]) then
+         return(r2_1[u_4])
+       else
+         r2_1 <-R t_SHA256_out;
+         return(r2_1)
+     ) | (
+       foreach i_1 <= qKDF256 do
+       O_KDF256(X2: t_SHA256_out, U2: t_id, V2: t_id) :=
+       find [unique] u_3 = ri_3 <= qKDF256 suchthat defined(r3[ri_3], X2[ri_3]) && (first_part(X2) = first_part(X2[ri_3])) then
+         Hash1: t_SHA256_out <- SHA256_comp(r3[u_3], concatSHA256_pad(second_part(X2), U2, V2, HMAC256keylength));
+         return(Hash1)
+       else
+         r3 <-R t_SHA256_out;
+         Hash1: t_SHA256_out <- SHA256_comp(r3, concatSHA256_pad(second_part(X2), U2, V2, HMAC256keylength));
+         return(Hash1)
+     ) | (
+       foreach i_2 <= qKDF128 do
+       O_KDF128(X3: t_SHA256_out, U3: t_id, V3: t_id) :=
+       find [unique] u = ri <= qKDF128 suchthat defined(r3_2[ri], X3[ri]) && (first_part(X3) = first_part(X3[ri])) then
+         Hash1_1: t_SHA256_out <- (x_8: t_SHA256_block <- concatSHA256_pad(second_part(X3), U3, V3, AES128keylength); find [unique]  suchthat defined(x_7[u], r2_2[u]) && (x_8 = x_7[u]) then r2_2[u] orfind u_6 = ri_7 <= qKDF128 suchthat defined(r2_3[ri_7], x_8[ri_7], u[ri_7]) && (u[ri_7] = u) && (x_8 = x_8[ri_7]) then r2_3[u_6] else r2_3 <-R t_SHA256_out; r2_3);
+         return(truncate128(Hash1_1))
+       else
+         r3_2 <-R t_SHA256_out;
+         r3_1: t_SHA256_out <- cst_t_SHA256_out;
+         Hash1_1: t_SHA256_out <- (x_7: t_SHA256_block <- concatSHA256_pad(second_part(X3), U3, V3, AES128keylength); r2_2 <-R t_SHA256_out; r2_2);
+         return(truncate128(Hash1_1))
+     ))
+
+
+Applying expand
+  - Expand if/find/let
+yields
+
+Game 21 is
+     Ogen() :=
+     return();
+     ((
+       foreach i <= qMAC do
+       O_MAC(m: bitstring) :=
+       find [unique] u_4 = ri_4 <= qMAC suchthat defined(r2_1[ri_4], m[ri_4]) && (m = m[ri_4]) then
+         return(r2_1[u_4])
+       else
+         r2_1 <-R t_SHA256_out;
+         return(r2_1)
+     ) | (
+       foreach i_1 <= qKDF256 do
+       O_KDF256(X2: t_SHA256_out, U2: t_id, V2: t_id) :=
+       find [unique] u_3 = ri_3 <= qKDF256 suchthat defined(r3[ri_3], X2[ri_3]) && (first_part(X2) = first_part(X2[ri_3])) then
+         Hash1: t_SHA256_out <- SHA256_comp(r3[u_3], concatSHA256_pad(second_part(X2), U2, V2, HMAC256keylength));
+         return(Hash1)
+       else
+         r3 <-R t_SHA256_out;
+         Hash1: t_SHA256_out <- SHA256_comp(r3, concatSHA256_pad(second_part(X2), U2, V2, HMAC256keylength));
+         return(Hash1)
+     ) | (
+       foreach i_2 <= qKDF128 do
+       O_KDF128(X3: t_SHA256_out, U3: t_id, V3: t_id) :=
+       find [unique] u = ri <= qKDF128 suchthat defined(r3_2[ri], X3[ri]) && (first_part(X3) = first_part(X3[ri])) then
+         x_8: t_SHA256_block <- concatSHA256_pad(second_part(X3), U3, V3, AES128keylength);
+         find [unique]  suchthat defined(x_7[u], r2_2[u]) && (x_8 = x_7[u]) then
+           Hash1_1: t_SHA256_out <- r2_2[u];
+           return(truncate128(Hash1_1))
+         orfind u_6 = ri_7 <= qKDF128 suchthat defined(r2_3[ri_7], x_8[ri_7], u[ri_7]) && (u[ri_7] = u) && (x_8 = x_8[ri_7]) then
+           Hash1_1: t_SHA256_out <- r2_3[u_6];
+           return(truncate128(Hash1_1))
+         else
+           r2_3 <-R t_SHA256_out;
+           Hash1_1: t_SHA256_out <- r2_3;
+           return(truncate128(Hash1_1))
+       else
+         r3_2 <-R t_SHA256_out;
+         r3_1: t_SHA256_out <- cst_t_SHA256_out;
+         x_7: t_SHA256_block <- concatSHA256_pad(second_part(X3), U3, V3, AES128keylength);
+         r2_2 <-R t_SHA256_out;
+         Hash1_1: t_SHA256_out <- r2_2;
+         return(truncate128(Hash1_1))
+     ))
+
+
+Applying remove assignments of findcond
+  - Remove assignments on r3_1 (definition removed, all usages removed)
+  - Remove assignments on Hash1_1 (definition removed, all usages removed)
+  - Remove assignments on Hash1_1 (definition removed, all usages removed)
+  - Remove assignments on Hash1_1 (definition removed, all usages removed)
+  - Remove assignments on Hash1_1 (definition removed, all usages removed)
+yields
+
+Game 22 is
+     Ogen() :=
+     return();
+     ((
+       foreach i <= qMAC do
+       O_MAC(m: bitstring) :=
+       find [unique] u_4 = ri_4 <= qMAC suchthat defined(r2_1[ri_4], m[ri_4]) && (m = m[ri_4]) then
+         return(r2_1[u_4])
+       else
+         r2_1 <-R t_SHA256_out;
+         return(r2_1)
+     ) | (
+       foreach i_1 <= qKDF256 do
+       O_KDF256(X2: t_SHA256_out, U2: t_id, V2: t_id) :=
+       find [unique] u_3 = ri_3 <= qKDF256 suchthat defined(r3[ri_3], X2[ri_3]) && (first_part(X2) = first_part(X2[ri_3])) then
+         Hash1: t_SHA256_out <- SHA256_comp(r3[u_3], concatSHA256_pad(second_part(X2), U2, V2, HMAC256keylength));
+         return(Hash1)
+       else
+         r3 <-R t_SHA256_out;
+         Hash1: t_SHA256_out <- SHA256_comp(r3, concatSHA256_pad(second_part(X2), U2, V2, HMAC256keylength));
+         return(Hash1)
+     ) | (
+       foreach i_2 <= qKDF128 do
+       O_KDF128(X3: t_SHA256_out, U3: t_id, V3: t_id) :=
+ {77}  find [unique] u = ri <= qKDF128 suchthat defined(r3_2[ri], X3[ri]) && (first_part(X3) = first_part(X3[ri])) then
+         x_8: t_SHA256_block <- concatSHA256_pad(second_part(X3), U3, V3, AES128keylength);
+ {97}    find [unique]  suchthat defined(x_7[u], r2_2[u]) && {102}(x_8 = x_7[u]) then
+           return(truncate128(r2_2[u]))
+         orfind u_6 = ri_7 <= qKDF128 suchthat defined(r2_3[ri_7], x_8[ri_7], u[ri_7]) && {117}((u[ri_7] = u) && (x_8 = x_8[ri_7])) then
+           return(truncate128(r2_3[u_6]))
+         else
+           r2_3 <-R t_SHA256_out;
+           return(truncate128(r2_3))
+       else
+{141}    r3_2 <-R t_SHA256_out;
+         x_7: t_SHA256_block <- concatSHA256_pad(second_part(X3), U3, V3, AES128keylength);
+         r2_2 <-R t_SHA256_out;
+         return(truncate128(r2_2))
+     ))
+
+
+Applying simplify
+  - Simplification pass
+    - Transform unused random number generation at 141 into constant assignment
+    - Replaced ((u[ri_7] = u) && (x_8 = x_8[ri_7])) with ((u[ri_7] = u) && (second_part(X3) = second_part(X3[ri_7])) && (U3 = U3[ri_7]) && (V3 = V3[ri_7])) at 117
+    - Replaced defined condition r2_3[ri_7], x_8[ri_7], u[ri_7] with r2_3[ri_7], V3[ri_7], U3[ri_7], X3[ri_7], u[ri_7] in find at 97
+    - Replaced (x_8 = x_7[u]) with ((second_part(X3) = second_part(X3[u])) && (U3 = U3[u]) && (V3 = V3[u])) at 102
+    - Replaced defined condition x_7[u], r2_2[u] with an empty condition in find at 97
+    - Replaced defined condition r3_2[ri], X3[ri] with r2_2[ri], V3[ri], U3[ri], X3[ri] in find at 77
+yields
+
+Game 23 is
+     Ogen() :=
+     return();
+     ((
+       foreach i <= qMAC do
+       O_MAC(m: bitstring) :=
+       find [unique] u_4 = ri_4 <= qMAC suchthat defined(r2_1[ri_4], m[ri_4]) && (m = m[ri_4]) then
+         return(r2_1[u_4])
+       else
+         r2_1 <-R t_SHA256_out;
+         return(r2_1)
+     ) | (
+       foreach i_1 <= qKDF256 do
+       O_KDF256(X2: t_SHA256_out, U2: t_id, V2: t_id) :=
+       find [unique] u_3 = ri_3 <= qKDF256 suchthat defined(r3[ri_3], X2[ri_3]) && (first_part(X2) = first_part(X2[ri_3])) then
+         Hash1: t_SHA256_out <- SHA256_comp(r3[u_3], concatSHA256_pad(second_part(X2), U2, V2, HMAC256keylength));
+         return(Hash1)
+       else
+         r3 <-R t_SHA256_out;
+         Hash1: t_SHA256_out <- SHA256_comp(r3, concatSHA256_pad(second_part(X2), U2, V2, HMAC256keylength));
+         return(Hash1)
+     ) | (
+       foreach i_2 <= qKDF128 do
+       O_KDF128(X3: t_SHA256_out, U3: t_id, V3: t_id) :=
+       find [unique] u = ri <= qKDF128 suchthat defined(r2_2[ri], V3[ri], U3[ri], X3[ri]) && (first_part(X3) = first_part(X3[ri])) then
+         x_8: t_SHA256_block <- concatSHA256_pad(second_part(X3), U3, V3, AES128keylength);
+         find [unique]  suchthat (second_part(X3) = second_part(X3[u])) && (U3 = U3[u]) && (V3 = V3[u]) then
+           return(truncate128(r2_2[u]))
+         orfind u_6 = ri_7 <= qKDF128 suchthat defined(r2_3[ri_7], V3[ri_7], U3[ri_7], X3[ri_7], u[ri_7]) && (u[ri_7] = u) && (second_part(X3) = second_part(X3[ri_7])) && (U3 = U3[ri_7]) && (V3 = V3[ri_7]) then
+           return(truncate128(r2_3[u_6]))
+         else
+           r2_3 <-R t_SHA256_out;
+           return(truncate128(r2_3))
+       else
+         r3_2: t_SHA256_out <- cst_t_SHA256_out;
+         x_7: t_SHA256_block <- concatSHA256_pad(second_part(X3), U3, V3, AES128keylength);
+         r2_2 <-R t_SHA256_out;
+         return(truncate128(r2_2))
+     ))
+
+
+Applying move all binders
+  - Move assignment to x_8
+yields
+
+Game 24 is
+     Ogen() :=
+     return();
+     ((
+       foreach i <= qMAC do
+       O_MAC(m: bitstring) :=
+       find [unique] u_4 = ri_4 <= qMAC suchthat defined(r2_1[ri_4], m[ri_4]) && (m = m[ri_4]) then
+         return(r2_1[u_4])
+       else
+         r2_1 <-R t_SHA256_out;
+         return(r2_1)
+     ) | (
+       foreach i_1 <= qKDF256 do
+       O_KDF256(X2: t_SHA256_out, U2: t_id, V2: t_id) :=
+       find [unique] u_3 = ri_3 <= qKDF256 suchthat defined(r3[ri_3], X2[ri_3]) && (first_part(X2) = first_part(X2[ri_3])) then
+         Hash1: t_SHA256_out <- SHA256_comp(r3[u_3], concatSHA256_pad(second_part(X2), U2, V2, HMAC256keylength));
+         return(Hash1)
+       else
+         r3 <-R t_SHA256_out;
+         Hash1: t_SHA256_out <- SHA256_comp(r3, concatSHA256_pad(second_part(X2), U2, V2, HMAC256keylength));
+         return(Hash1)
+     ) | (
+       foreach i_2 <= qKDF128 do
+       O_KDF128(X3: t_SHA256_out, U3: t_id, V3: t_id) :=
+       find [unique] u = ri <= qKDF128 suchthat defined(r2_2[ri], V3[ri], U3[ri], X3[ri]) && (first_part(X3) = first_part(X3[ri])) then
+         find [unique]  suchthat (second_part(X3) = second_part(X3[u])) && (U3 = U3[u]) && (V3 = V3[u]) then
+           return(truncate128(r2_2[u]))
+         orfind u_6 = ri_7 <= qKDF128 suchthat defined(r2_3[ri_7], V3[ri_7], U3[ri_7], X3[ri_7], u[ri_7]) && (u[ri_7] = u) && (second_part(X3) = second_part(X3[ri_7])) && (U3 = U3[ri_7]) && (V3 = V3[ri_7]) then
+           return(truncate128(r2_3[u_6]))
+         else
+           r2_3 <-R t_SHA256_out;
+           return(truncate128(r2_3))
+       else
+         r3_2: t_SHA256_out <- cst_t_SHA256_out;
+         x_7: t_SHA256_block <- concatSHA256_pad(second_part(X3), U3, V3, AES128keylength);
+         r2_2 <-R t_SHA256_out;
+         return(truncate128(r2_2))
+     ))
+
+
+Applying SA rename new without array accesses and remove assignments of findcond
+  - Remove assignments on r3_2 (definition removed, all usages removed)
+  - Remove assignments on x_7 (definition removed, all usages removed)
+yields
+
+Game 25 is
+     Ogen() :=
+     return();
+     ((
+       foreach i <= qMAC do
+       O_MAC(m: bitstring) :=
+       find [unique] u_4 = ri_4 <= qMAC suchthat defined(r2_1[ri_4], m[ri_4]) && (m = m[ri_4]) then
+         return(r2_1[u_4])
+       else
+         r2_1 <-R t_SHA256_out;
+         return(r2_1)
+     ) | (
+       foreach i_1 <= qKDF256 do
+       O_KDF256(X2: t_SHA256_out, U2: t_id, V2: t_id) :=
+       find [unique] u_3 = ri_3 <= qKDF256 suchthat defined(r3[ri_3], X2[ri_3]) && (first_part(X2) = first_part(X2[ri_3])) then
+         Hash1: t_SHA256_out <- SHA256_comp(r3[u_3], concatSHA256_pad(second_part(X2), U2, V2, HMAC256keylength));
+         return(Hash1)
+       else
+         r3 <-R t_SHA256_out;
+         Hash1: t_SHA256_out <- SHA256_comp(r3, concatSHA256_pad(second_part(X2), U2, V2, HMAC256keylength));
+         return(Hash1)
+     ) | (
+       foreach i_2 <= qKDF128 do
+       O_KDF128(X3: t_SHA256_out, U3: t_id, V3: t_id) :=
+ {77}  find [unique] u = ri <= qKDF128 suchthat defined(r2_2[ri], V3[ri], U3[ri], X3[ri]) && (first_part(X3) = first_part(X3[ri])) then
+ {89}    find [unique]  suchthat (second_part(X3) = second_part(X3[u])) && (U3 = U3[u]) && (V3 = V3[u]) then
+           return(truncate128(r2_2[u]))
+         orfind u_6 = ri_7 <= qKDF128 suchthat defined(r2_3[ri_7], V3[ri_7], U3[ri_7], X3[ri_7], u[ri_7]) && (u[ri_7] = u) && (second_part(X3) = second_part(X3[ri_7])) && (U3 = U3[ri_7]) && (V3 = V3[ri_7]) then
+           return(truncate128(r2_3[u_6]))
+         else
+           r2_3 <-R t_SHA256_out;
+           return(truncate128(r2_3))
+       else
+         r2_2 <-R t_SHA256_out;
+         return(truncate128(r2_2))
+     ))
+
+
+Applying simplify
+  - Simplification pass
+    - Simplified find at 89 in branch of find at 77
+yields
+
+Game 26 is
+     Ogen() :=
+     return();
+     ((
+       foreach i <= qMAC do
+       O_MAC(m: bitstring) :=
+       find [unique] u_4 = ri_4 <= qMAC suchthat defined(r2_1[ri_4], m[ri_4]) && (m = m[ri_4]) then
+         return(r2_1[u_4])
+       else
+         r2_1 <-R t_SHA256_out;
+         return(r2_1)
+     ) | (
+       foreach i_1 <= qKDF256 do
+       O_KDF256(X2: t_SHA256_out, U2: t_id, V2: t_id) :=
+       find [unique] u_3 = ri_3 <= qKDF256 suchthat defined(r3[ri_3], X2[ri_3]) && (first_part(X2) = first_part(X2[ri_3])) then
+         Hash1: t_SHA256_out <- SHA256_comp(r3[u_3], concatSHA256_pad(second_part(X2), U2, V2, HMAC256keylength));
+         return(Hash1)
+       else
+         r3 <-R t_SHA256_out;
+         Hash1: t_SHA256_out <- SHA256_comp(r3, concatSHA256_pad(second_part(X2), U2, V2, HMAC256keylength));
+         return(Hash1)
+     ) | (
+       foreach i_2 <= qKDF128 do
+       O_KDF128(X3: t_SHA256_out, U3: t_id, V3: t_id) :=
+ {77}  find [unique] u = ri <= qKDF128 suchthat defined(r2_2[ri], V3[ri], U3[ri], X3[ri]) && {82}((first_part(X3) = first_part(X3[ri])) && (second_part(X3) = second_part(X3[ri])) && (U3 = U3[ri]) && (V3 = V3[ri])) then
+         return(truncate128(r2_2[u]))
+       orfind u = ri <= qKDF128, u_6 = ri_7 <= qKDF128 suchthat defined(r2_2[ri], V3[ri], U3[ri], X3[ri], r2_3[ri_7], V3[ri_7], U3[ri_7], X3[ri_7]) && {123}((first_part(X3) = first_part(X3[ri])) && (ri = ri) && (second_part(X3) = second_part(X3[ri_7])) && (U3 = U3[ri_7]) && (V3 = V3[ri_7]) && (ri_7 = i_2)) then
+         return(truncate128(r2_3[u_6]))
+       orfind u = ri <= qKDF128, u_6 = ri_7 <= qKDF128 suchthat defined(r2_2[ri], V3[ri], U3[ri], X3[ri], r2_3[ri_7], V3[ri_7], U3[ri_7], X3[ri_7], u[ri_7]) && (first_part(X3) = first_part(X3[ri])) && (u[ri_7] = ri) && (second_part(X3) = second_part(X3[ri_7])) && (U3 = U3[ri_7]) && (V3 = V3[ri_7]) then
+         return(truncate128(r2_3[u_6]))
+       else
+{211}    find [unique] u = ri <= qKDF128 suchthat defined(r2_2[ri], V3[ri], U3[ri], X3[ri]) && (first_part(X3) = first_part(X3[ri])) then
+           r2_3 <-R t_SHA256_out;
+           return(truncate128(r2_3))
+         else
+           r2_2 <-R t_SHA256_out;
+           return(truncate128(r2_2))
+     ))
+
+
+Applying simplify
+  - Simplification pass
+    - Replaced defined condition r2_2[ri], V3[ri], U3[ri], X3[ri] with r2_2[ri], X3[ri] in find at 211
+    - Replaced defined condition r2_2[ri], V3[ri], U3[ri], X3[ri], r2_3[ri_7], V3[ri_7], U3[ri_7], X3[ri_7], u[ri_7] with r2_2[ri], r2_3[ri_7], V3[ri_7], U3[ri_7], X3[ri_7], u[ri_7], X3[ri] in find at 77
+    - Replaced ((first_part(X3) = first_part(X3[ri])) && (ri = ri) && (second_part(X3) = second_part(X3[ri_7])) && (U3 = U3[ri_7]) && (V3 = V3[ri_7]) && (ri_7 = i_2)) with false at 123
+    - Remove branch 2 in find at 77
+    - Replaced ((first_part(X3) = first_part(X3[ri])) && (second_part(X3) = second_part(X3[ri])) && (U3 = U3[ri]) && (V3 = V3[ri])) with ((X3 = X3[ri]) && (U3 = U3[ri]) && (V3 = V3[ri])) at 82
+yields
+
+Game 27 is
+     Ogen() :=
+     return();
+     ((
+       foreach i <= qMAC do
+       O_MAC(m: bitstring) :=
+       find [unique] u_4 = ri_4 <= qMAC suchthat defined(r2_1[ri_4], m[ri_4]) && (m = m[ri_4]) then
+         return(r2_1[u_4])
+       else
+         r2_1 <-R t_SHA256_out;
+         return(r2_1)
+     ) | (
+       foreach i_1 <= qKDF256 do
+       O_KDF256(X2: t_SHA256_out, U2: t_id, V2: t_id) :=
+       find [unique] u_3 = ri_3 <= qKDF256 suchthat defined(r3[ri_3], X2[ri_3]) && (first_part(X2) = first_part(X2[ri_3])) then
+         Hash1: t_SHA256_out <- SHA256_comp(r3[u_3], concatSHA256_pad(second_part(X2), U2, V2, HMAC256keylength));
+         return(Hash1)
+       else
+         r3 <-R t_SHA256_out;
+         Hash1: t_SHA256_out <- SHA256_comp(r3, concatSHA256_pad(second_part(X2), U2, V2, HMAC256keylength));
+         return(Hash1)
+     ) | (
+       foreach i_2 <= qKDF128 do
+       O_KDF128(X3: t_SHA256_out, U3: t_id, V3: t_id) :=
+       find [unique] u = ri <= qKDF128 suchthat defined(r2_2[ri], V3[ri], U3[ri], X3[ri]) && (X3 = X3[ri]) && (U3 = U3[ri]) && (V3 = V3[ri]) then
+         return(truncate128(r2_2[u]))
+       orfind u = ri <= qKDF128, u_6 = ri_7 <= qKDF128 suchthat defined(r2_2[ri], r2_3[ri_7], V3[ri_7], U3[ri_7], X3[ri_7], u[ri_7], X3[ri]) && (first_part(X3) = first_part(X3[ri])) && (u[ri_7] = ri) && (second_part(X3) = second_part(X3[ri_7])) && (U3 = U3[ri_7]) && (V3 = V3[ri_7]) then
+         return(truncate128(r2_3[u_6]))
+       else
+         find [unique] u = ri <= qKDF128 suchthat defined(r2_2[ri], X3[ri]) && (first_part(X3) = first_part(X3[ri])) then
+           r2_3 <-R t_SHA256_out;
+           return(truncate128(r2_3))
+         else
+           r2_2 <-R t_SHA256_out;
+           return(truncate128(r2_2))
+     ))
+
+
+Applying SA rename u
+  - Rename variable u into u_9, u_8, u_7
+yields
+
+Game 28 is
+     Ogen() :=
+     return();
+     ((
+       foreach i <= qMAC do
+       O_MAC(m: bitstring) :=
+       find [unique] u_4 = ri_4 <= qMAC suchthat defined(r2_1[ri_4], m[ri_4]) && (m = m[ri_4]) then
+         return(r2_1[u_4])
+       else
+         r2_1 <-R t_SHA256_out;
+         return(r2_1)
+     ) | (
+       foreach i_1 <= qKDF256 do
+       O_KDF256(X2: t_SHA256_out, U2: t_id, V2: t_id) :=
+       find [unique] u_3 = ri_3 <= qKDF256 suchthat defined(r3[ri_3], X2[ri_3]) && (first_part(X2) = first_part(X2[ri_3])) then
+         Hash1: t_SHA256_out <- SHA256_comp(r3[u_3], concatSHA256_pad(second_part(X2), U2, V2, HMAC256keylength));
+         return(Hash1)
+       else
+         r3 <-R t_SHA256_out;
+         Hash1: t_SHA256_out <- SHA256_comp(r3, concatSHA256_pad(second_part(X2), U2, V2, HMAC256keylength));
+         return(Hash1)
+     ) | (
+       foreach i_2 <= qKDF128 do
+       O_KDF128(X3: t_SHA256_out, U3: t_id, V3: t_id) :=
+ {77}  find [unique] u_7 = ri <= qKDF128 suchthat defined(r2_2[ri], V3[ri], U3[ri], X3[ri]) && (X3 = X3[ri]) && (U3 = U3[ri]) && (V3 = V3[ri]) then
+         return(truncate128(r2_2[u_7]))
+       orfind u_8 = ri <= qKDF128, u_6 = ri_7 <= qKDF128 suchthat defined(r2_2[ri], r2_3[ri_7], V3[ri_7], U3[ri_7], X3[ri_7], u_9[ri_7], X3[ri]) && (first_part(X3) = first_part(X3[ri])) && (u_9[ri_7] = ri) && (second_part(X3) = second_part(X3[ri_7])) && (U3 = U3[ri_7]) && (V3 = V3[ri_7]) then
+         return(truncate128(r2_3[u_6]))
+       else
+         find [unique] u_9 = ri <= qKDF128 suchthat defined(r2_2[ri], X3[ri]) && (first_part(X3) = first_part(X3[ri])) then
+           r2_3 <-R t_SHA256_out;
+           return(truncate128(r2_3))
+         else
+           r2_2 <-R t_SHA256_out;
+           return(truncate128(r2_2))
+     ))
+
+
+Applying simplify
+  - Simplification pass
+    - In branch 2 of find at 77, substituting u_8 with u_9[u_6]
+    - Replaced defined condition r2_2[ri], r2_3[ri_7], V3[ri_7], U3[ri_7], X3[ri_7], u_9[ri_7], X3[ri] with r2_3[ri_7], V3[ri_7], U3[ri_7], X3[ri_7], X3[u_9[ri_7]] in find at 77
+yields
+
+Game 29 is
+     Ogen() :=
+     return();
+     ((
+       foreach i <= qMAC do
+       O_MAC(m: bitstring) :=
+       find [unique] u_4 = ri_4 <= qMAC suchthat defined(r2_1[ri_4], m[ri_4]) && (m = m[ri_4]) then
+         return(r2_1[u_4])
+       else
+         r2_1 <-R t_SHA256_out;
+         return(r2_1)
+     ) | (
+       foreach i_1 <= qKDF256 do
+       O_KDF256(X2: t_SHA256_out, U2: t_id, V2: t_id) :=
+       find [unique] u_3 = ri_3 <= qKDF256 suchthat defined(r3[ri_3], X2[ri_3]) && (first_part(X2) = first_part(X2[ri_3])) then
+         Hash1: t_SHA256_out <- SHA256_comp(r3[u_3], concatSHA256_pad(second_part(X2), U2, V2, HMAC256keylength));
+         return(Hash1)
+       else
+         r3 <-R t_SHA256_out;
+         Hash1: t_SHA256_out <- SHA256_comp(r3, concatSHA256_pad(second_part(X2), U2, V2, HMAC256keylength));
+         return(Hash1)
+     ) | (
+       foreach i_2 <= qKDF128 do
+       O_KDF128(X3: t_SHA256_out, U3: t_id, V3: t_id) :=
+       find [unique] u_7 = ri <= qKDF128 suchthat defined(r2_2[ri], V3[ri], U3[ri], X3[ri]) && (X3 = X3[ri]) && (U3 = U3[ri]) && (V3 = V3[ri]) then
+         return(truncate128(r2_2[u_7]))
+       orfind u_6 = ri_7 <= qKDF128 suchthat defined(r2_3[ri_7], V3[ri_7], U3[ri_7], X3[ri_7], X3[u_9[ri_7]]) && {111}((first_part(X3) = first_part(X3[u_9[ri_7]])) && (u_9[ri_7] = u_9[ri_7]) && (second_part(X3) = second_part(X3[ri_7])) && (U3 = U3[ri_7]) && (V3 = V3[ri_7])) then
+         u_8 <= qKDF128 <- u_9[u_6];
+         return(truncate128(r2_3[u_6]))
+       else
+         find [unique] u_9 = ri <= qKDF128 suchthat defined(r2_2[ri], X3[ri]) && (first_part(X3) = first_part(X3[ri])) then
+           r2_3 <-R t_SHA256_out;
+           return(truncate128(r2_3))
+         else
+           r2_2 <-R t_SHA256_out;
+           return(truncate128(r2_2))
+     ))
+
+
+Applying simplify
+  - Simplification pass
+    - Replaced ((first_part(X3) = first_part(X3[u_9[ri_7]])) && (u_9[ri_7] = u_9[ri_7]) && (second_part(X3) = second_part(X3[ri_7])) && (U3 = U3[ri_7]) && (V3 = V3[ri_7])) with ((first_part(X3) = first_part(X3[u_9[ri_7]])) && (second_part(X3) = second_part(X3[ri_7])) && (U3 = U3[ri_7]) && (V3 = V3[ri_7])) at 111
+yields
+
+Game 30 is
+     Ogen() :=
+     return();
+     ((
+       foreach i <= qMAC do
+       O_MAC(m: bitstring) :=
+       find [unique] u_4 = ri_4 <= qMAC suchthat defined(r2_1[ri_4], m[ri_4]) && (m = m[ri_4]) then
+         return(r2_1[u_4])
+       else
+         r2_1 <-R t_SHA256_out;
+         return(r2_1)
+     ) | (
+       foreach i_1 <= qKDF256 do
+       O_KDF256(X2: t_SHA256_out, U2: t_id, V2: t_id) :=
+       find [unique] u_3 = ri_3 <= qKDF256 suchthat defined(r3[ri_3], X2[ri_3]) && (first_part(X2) = first_part(X2[ri_3])) then
+         Hash1: t_SHA256_out <- SHA256_comp(r3[u_3], concatSHA256_pad(second_part(X2), U2, V2, HMAC256keylength));
+         return(Hash1)
+       else
+         r3 <-R t_SHA256_out;
+         Hash1: t_SHA256_out <- SHA256_comp(r3, concatSHA256_pad(second_part(X2), U2, V2, HMAC256keylength));
+         return(Hash1)
+     ) | (
+       foreach i_2 <= qKDF128 do
+       O_KDF128(X3: t_SHA256_out, U3: t_id, V3: t_id) :=
+       find [unique] u_7 = ri <= qKDF128 suchthat defined(r2_2[ri], V3[ri], U3[ri], X3[ri]) && (X3 = X3[ri]) && (U3 = U3[ri]) && (V3 = V3[ri]) then
+         return(truncate128(r2_2[u_7]))
+       orfind u_6 = ri_7 <= qKDF128 suchthat defined(r2_3[ri_7], V3[ri_7], U3[ri_7], X3[ri_7], X3[u_9[ri_7]]) && (first_part(X3) = first_part(X3[u_9[ri_7]])) && (second_part(X3) = second_part(X3[ri_7])) && (U3 = U3[ri_7]) && (V3 = V3[ri_7]) then
+         u_8 <= qKDF128 <- u_9[u_6];
+         return(truncate128(r2_3[u_6]))
+       else
+         find [unique] u_9 = ri <= qKDF128 suchthat defined(r2_2[ri], X3[ri]) && (first_part(X3) = first_part(X3[ri])) then
+           r2_3 <-R t_SHA256_out;
+           return(truncate128(r2_3))
+         else
+           r2_2 <-R t_SHA256_out;
+           return(truncate128(r2_2))
+     ))
+
+
+Applying remove assignments of useless
+  - Remove assignments on u_8 (definition removed, all usages removed)
+yields
+
+Game 31 is
+     Ogen() :=
+     return();
+     ((
+       foreach i <= qMAC do
+       O_MAC(m: bitstring) :=
+       find [unique] u_4 = ri_4 <= qMAC suchthat defined(r2_1[ri_4], m[ri_4]) && (m = m[ri_4]) then
+         return(r2_1[u_4])
+       else
+         r2_1 <-R t_SHA256_out;
+         return(r2_1)
+     ) | (
+       foreach i_1 <= qKDF256 do
+       O_KDF256(X2: t_SHA256_out, U2: t_id, V2: t_id) :=
+       find [unique] u_3 = ri_3 <= qKDF256 suchthat defined(r3[ri_3], X2[ri_3]) && (first_part(X2) = first_part(X2[ri_3])) then
+         Hash1: t_SHA256_out <- SHA256_comp(r3[u_3], concatSHA256_pad(second_part(X2), U2, V2, HMAC256keylength));
+         return(Hash1)
+       else
+         r3 <-R t_SHA256_out;
+         Hash1: t_SHA256_out <- SHA256_comp(r3, concatSHA256_pad(second_part(X2), U2, V2, HMAC256keylength));
+         return(Hash1)
+     ) | (
+       foreach i_2 <= qKDF128 do
+       O_KDF128(X3: t_SHA256_out, U3: t_id, V3: t_id) :=
+       find [unique] u_7 = ri <= qKDF128 suchthat defined(r2_2[ri], V3[ri], U3[ri], X3[ri]) && (X3 = X3[ri]) && (U3 = U3[ri]) && (V3 = V3[ri]) then
+         return(truncate128(r2_2[u_7]))
+       orfind u_6 = ri_7 <= qKDF128 suchthat defined(r2_3[ri_7], V3[ri_7], U3[ri_7], X3[ri_7], X3[u_9[ri_7]]) && (first_part(X3) = {116}first_part(X3[u_9[ri_7]])) && (second_part(X3) = second_part(X3[ri_7])) && (U3 = U3[ri_7]) && (V3 = V3[ri_7]) then
+         return(truncate128(r2_3[u_6]))
+       else
+         find [unique] u_9 = ri <= qKDF128 suchthat defined(r2_2[ri], X3[ri]) && (first_part(X3) = first_part(X3[ri])) then
+           r2_3 <-R t_SHA256_out;
+           return(truncate128(r2_3))
+         else
+           r2_2 <-R t_SHA256_out;
+           return(truncate128(r2_2))
+     ))
+
+
+Applying replace term at occurrence 116 with first_part(X3[ri_7])
+yields
+
+Game 32 is
+     Ogen() :=
+     return();
+     ((
+       foreach i <= qMAC do
+       O_MAC(m: bitstring) :=
+       find [unique] u_4 = ri_4 <= qMAC suchthat defined(r2_1[ri_4], m[ri_4]) && (m = m[ri_4]) then
+         return(r2_1[u_4])
+       else
+         r2_1 <-R t_SHA256_out;
+         return(r2_1)
+     ) | (
+       foreach i_1 <= qKDF256 do
+       O_KDF256(X2: t_SHA256_out, U2: t_id, V2: t_id) :=
+       find [unique] u_3 = ri_3 <= qKDF256 suchthat defined(r3[ri_3], X2[ri_3]) && (first_part(X2) = first_part(X2[ri_3])) then
+         Hash1: t_SHA256_out <- SHA256_comp(r3[u_3], concatSHA256_pad(second_part(X2), U2, V2, HMAC256keylength));
+         return(Hash1)
+       else
+         r3 <-R t_SHA256_out;
+         Hash1: t_SHA256_out <- SHA256_comp(r3, concatSHA256_pad(second_part(X2), U2, V2, HMAC256keylength));
+         return(Hash1)
+     ) | (
+       foreach i_2 <= qKDF128 do
+       O_KDF128(X3: t_SHA256_out, U3: t_id, V3: t_id) :=
+       find [unique] u_7 = ri <= qKDF128 suchthat defined(r2_2[ri], V3[ri], U3[ri], X3[ri]) && (X3 = X3[ri]) && (U3 = U3[ri]) && (V3 = V3[ri]) then
+         return(truncate128(r2_2[u_7]))
+       orfind u_6 = ri_7 <= qKDF128 suchthat defined(r2_3[ri_7], V3[ri_7], U3[ri_7], X3[ri_7]) && {109}((first_part(X3) = first_part(X3[ri_7])) && (second_part(X3) = second_part(X3[ri_7])) && (U3 = U3[ri_7]) && (V3 = V3[ri_7])) then
+         return(truncate128(r2_3[u_6]))
+       else
+         find [unique] u_9 = ri <= qKDF128 suchthat defined(r2_2[ri], X3[ri]) && (first_part(X3) = first_part(X3[ri])) then
+           r2_3 <-R t_SHA256_out;
+           return(truncate128(r2_3))
+         else
+           r2_2 <-R t_SHA256_out;
+           return(truncate128(r2_2))
+     ))
+
+
+Applying simplify
+  - Simplification pass
+    - Replaced ((first_part(X3) = first_part(X3[ri_7])) && (second_part(X3) = second_part(X3[ri_7])) && (U3 = U3[ri_7]) && (V3 = V3[ri_7])) with ((X3 = X3[ri_7]) && (U3 = U3[ri_7]) && (V3 = V3[ri_7])) at 109
+yields
+
+Game 33 is
+     Ogen() :=
+     return();
+     ((
+       foreach i <= qMAC do
+       O_MAC(m: bitstring) :=
+       find [unique] u_4 = ri_4 <= qMAC suchthat defined(r2_1[ri_4], m[ri_4]) && (m = m[ri_4]) then
+         return(r2_1[u_4])
+       else
+         r2_1 <-R t_SHA256_out;
+         return(r2_1)
+     ) | (
+       foreach i_1 <= qKDF256 do
+       O_KDF256(X2: t_SHA256_out, U2: t_id, V2: t_id) :=
+       find [unique] u_3 = ri_3 <= qKDF256 suchthat defined(r3[ri_3], X2[ri_3]) && (first_part(X2) = first_part(X2[ri_3])) then
+         Hash1: t_SHA256_out <- SHA256_comp(r3[u_3], concatSHA256_pad(second_part(X2), U2, V2, HMAC256keylength));
+         return(Hash1)
+       else
+         r3 <-R t_SHA256_out;
+         Hash1: t_SHA256_out <- SHA256_comp(r3, concatSHA256_pad(second_part(X2), U2, V2, HMAC256keylength));
+         return(Hash1)
+     ) | (
+       foreach i_2 <= qKDF128 do
+       O_KDF128(X3: t_SHA256_out, U3: t_id, V3: t_id) :=
+       find [unique] u_7 = ri <= qKDF128 suchthat defined(r2_2[ri], V3[ri], U3[ri], X3[ri]) && (X3 = X3[ri]) && (U3 = U3[ri]) && (V3 = V3[ri]) then
+         return(truncate128(r2_2[u_7]))
+       orfind u_6 = ri_7 <= qKDF128 suchthat defined(r2_3[ri_7], V3[ri_7], U3[ri_7], X3[ri_7]) && (X3 = X3[ri_7]) && (U3 = U3[ri_7]) && (V3 = V3[ri_7]) then
+         return(truncate128(r2_3[u_6]))
+       else
+         find [unique] u_9 = ri <= qKDF128 suchthat defined(r2_2[ri], X3[ri]) && (first_part(X3) = first_part(X3[ri])) then
+           r2_3 <-R t_SHA256_out;
+           return(truncate128(r2_3))
+         else
+           r2_2 <-R t_SHA256_out;
+           return(truncate128(r2_2))
+     ))
+
+
+Applying merge variables (r2_2, r2_3)
+yields
+
+Game 34 is
+     Ogen() :=
+     return();
+     ((
+       foreach i <= qMAC do
+       O_MAC(m: bitstring) :=
+       find [unique] u_4 = ri_4 <= qMAC suchthat defined(r2_1[ri_4], m[ri_4]) && (m = m[ri_4]) then
+         return(r2_1[u_4])
+       else
+         r2_1 <-R t_SHA256_out;
+         return(r2_1)
+     ) | (
+       foreach i_1 <= qKDF256 do
+       O_KDF256(X2: t_SHA256_out, U2: t_id, V2: t_id) :=
+       find [unique] u_3 = ri_3 <= qKDF256 suchthat defined(r3[ri_3], X2[ri_3]) && (first_part(X2) = first_part(X2[ri_3])) then
+         Hash1: t_SHA256_out <- SHA256_comp(r3[u_3], concatSHA256_pad(second_part(X2), U2, V2, HMAC256keylength));
+         return(Hash1)
+       else
+         r3 <-R t_SHA256_out;
+         Hash1: t_SHA256_out <- SHA256_comp(r3, concatSHA256_pad(second_part(X2), U2, V2, HMAC256keylength));
+         return(Hash1)
+     ) | (
+       foreach i_2 <= qKDF128 do
+       O_KDF128(X3: t_SHA256_out, U3: t_id, V3: t_id) :=
+       find [unique] u_7 = ri <= qKDF128 suchthat defined(r2_2[ri], V3[ri], U3[ri], X3[ri]) && (X3 = X3[ri]) && (U3 = U3[ri]) && (V3 = V3[ri]) then
+         return(truncate128(r2_2[u_7]))
+       else
+{105}    find [unique] u_9 = ri <= qKDF128 suchthat defined(r2_4[ri], r2_2[ri], X3[ri]) && (first_part(X3) = first_part(X3[ri])) then
+           r2_2 <-R t_SHA256_out;
+           r2_5: t_SHA256_out <- cst_t_SHA256_out;
+           return(truncate128(r2_2))
+         else
+           r2_2 <-R t_SHA256_out;
+           r2_4: t_SHA256_out <- cst_t_SHA256_out;
+           return(truncate128(r2_2))
+     ))
+
+
+Applying merge branches
+  - Merge all branches of find at 105
+yields
+
+Game 35 is
+     Ogen() :=
+     return();
+     ((
+       foreach i <= qMAC do
+       O_MAC(m: bitstring) :=
+       find [unique] u_4 = ri_4 <= qMAC suchthat defined(r2_1[ri_4], m[ri_4]) && (m = m[ri_4]) then
+         return(r2_1[u_4])
+       else
+         r2_1 <-R t_SHA256_out;
+         return(r2_1)
+     ) | (
+       foreach i_1 <= qKDF256 do
+       O_KDF256(X2: t_SHA256_out, U2: t_id, V2: t_id) :=
+       find [unique] u_3 = ri_3 <= qKDF256 suchthat defined(r3[ri_3], X2[ri_3]) && (first_part(X2) = first_part(X2[ri_3])) then
+         Hash1: t_SHA256_out <- SHA256_comp(r3[u_3], concatSHA256_pad(second_part(X2), U2, V2, HMAC256keylength));
+         return(Hash1)
+       else
+         r3 <-R t_SHA256_out;
+         Hash1: t_SHA256_out <- SHA256_comp(r3, concatSHA256_pad(second_part(X2), U2, V2, HMAC256keylength));
+         return(Hash1)
+     ) | (
+       foreach i_2 <= qKDF128 do
+       O_KDF128(X3: t_SHA256_out, U3: t_id, V3: t_id) :=
+       find [unique] u_7 = ri <= qKDF128 suchthat defined(r2_2[ri], V3[ri], U3[ri], X3[ri]) && (X3 = X3[ri]) && (U3 = U3[ri]) && (V3 = V3[ri]) then
+         return(truncate128(r2_2[u_7]))
+       else
+         r2_2 <-R t_SHA256_out;
+         r2_4: t_SHA256_out <- cst_t_SHA256_out;
+         return(truncate128(r2_2))
+     ))
+
+
+Applying equivalence equiv
+  foreach i <= N do h1 <-R t_SHA256_out; O_K128() := return(truncate128(h1))
+<=(0)=>
+  foreach i <= N do k <-R enc_key; O_K128() := return(k)
+
+  - Equivalence equiv
+  foreach i <= N do h1 <-R t_SHA256_out; O_K128() := return(truncate128(h1))
+<=(0)=>
+  foreach i <= N do k <-R enc_key; O_K128() := return(k)
+ with variables: r2_2 -> h1
+yields
+
+Game 36 is
+     Ogen() :=
+     return();
+     ((
+       foreach i <= qMAC do
+       O_MAC(m: bitstring) :=
+       find [unique] u_4 = ri_4 <= qMAC suchthat defined(r2_1[ri_4], m[ri_4]) && (m = m[ri_4]) then
+         return(r2_1[u_4])
+       else
+         r2_1 <-R t_SHA256_out;
+         return(r2_1)
+     ) | (
+       foreach i_1 <= qKDF256 do
+       O_KDF256(X2: t_SHA256_out, U2: t_id, V2: t_id) :=
+       find [unique] u_3 = ri_3 <= qKDF256 suchthat defined(r3[ri_3], X2[ri_3]) && (first_part(X2) = first_part(X2[ri_3])) then
+         Hash1: t_SHA256_out <- SHA256_comp(r3[u_3], concatSHA256_pad(second_part(X2), U2, V2, HMAC256keylength));
+         return(Hash1)
+       else
+         r3 <-R t_SHA256_out;
+         Hash1: t_SHA256_out <- SHA256_comp(r3, concatSHA256_pad(second_part(X2), U2, V2, HMAC256keylength));
+         return(Hash1)
+     ) | (
+       foreach i_2 <= qKDF128 do
+       O_KDF128(X3: t_SHA256_out, U3: t_id, V3: t_id) :=
+       find [unique] u_7 = ri <= qKDF128 suchthat defined(k_2[ri], V3[ri], U3[ri], X3[ri]) && (X3 = X3[ri]) && (U3 = U3[ri]) && (V3 = V3[ri]) then
+         return(k_2[u_7])
+       else
+         k_2 <-R enc_key;
+         r2_2: t_SHA256_out <- cst_t_SHA256_out;
+         r2_4: t_SHA256_out <- cst_t_SHA256_out;
+         return(k_2)
+     ))
+
+
+Applying remove assignments of findcond
+  - Remove assignments on r2_2 (definition removed, all usages removed)
+  - Remove assignments on r2_4 (definition removed, all usages removed)
+yields
+
+Game 37 is
+     Ogen() :=
+     return();
+     ((
+       foreach i <= qMAC do
+       O_MAC(m: bitstring) :=
+       find [unique] u_4 = ri_4 <= qMAC suchthat defined(r2_1[ri_4], m[ri_4]) && (m = m[ri_4]) then
+         return(r2_1[u_4])
+       else
+         r2_1 <-R t_SHA256_out;
+         return(r2_1)
+     ) | (
+       foreach i_1 <= qKDF256 do
+       O_KDF256(X2: t_SHA256_out, U2: t_id, V2: t_id) :=
+       find [unique] u_3 = ri_3 <= qKDF256 suchthat defined(r3[ri_3], X2[ri_3]) && (first_part(X2) = first_part(X2[ri_3])) then
+         Hash1: t_SHA256_out <- SHA256_comp(r3[u_3], concatSHA256_pad(second_part(X2), U2, V2, HMAC256keylength));
+         return(Hash1)
+       else
+         r3 <-R t_SHA256_out;
+         Hash1: t_SHA256_out <- SHA256_comp(r3, concatSHA256_pad(second_part(X2), U2, V2, HMAC256keylength));
+         return(Hash1)
+     ) | (
+       foreach i_2 <= qKDF128 do
+       O_KDF128(X3: t_SHA256_out, U3: t_id, V3: t_id) :=
+       find [unique] u_7 = ri <= qKDF128 suchthat defined(k_2[ri], V3[ri], U3[ri], X3[ri]) && (X3 = X3[ri]) && (U3 = U3[ri]) && (V3 = V3[ri]) then
+         return(k_2[u_7])
+       else
+         k_2 <-R enc_key;
+         return(k_2)
+     ))
+
+
+Applying equivalence SHA256_comp_prf with r3 [probability qKDF256 * P_SHA256_comp_prf(time_5, 1 + qKDF256)]
+  - Equivalence SHA256_comp_prf with variables: r3 -> k
+yields
+
+Game 38 is
+     Ogen() :=
+     return();
+     ((
+       foreach i <= qMAC do
+       O_MAC(m: bitstring) :=
+       find [unique] u_4 = ri_4 <= qMAC suchthat defined(r2_1[ri_4], m[ri_4]) && (m = m[ri_4]) then
+         return(r2_1[u_4])
+       else
+         r2_1 <-R t_SHA256_out;
+         return(r2_1)
+     ) | (
+       foreach i_1 <= qKDF256 do
+       O_KDF256(X2: t_SHA256_out, U2: t_id, V2: t_id) :=
+       find [unique] u_3 = ri_3 <= qKDF256 suchthat defined(r3_3[ri_3], X2[ri_3]) && (first_part(X2) = first_part(X2[ri_3])) then
+         Hash1: t_SHA256_out <- (x_10: t_SHA256_block <- concatSHA256_pad(second_part(X2), U2, V2, HMAC256keylength); find [unique]  suchthat defined(x_9[u_3], r2_6[u_3]) && (x_10 = x_9[u_3]) then r2_6[u_3] orfind u_11 = ri_11 <= qKDF256 suchthat defined(r2_7[ri_11], x_10[ri_11], u_3[ri_11]) && (u_3[ri_11] = u_3) && (x_10 = x_10[ri_11]) then r2_7[u_11] else r2_7 <-R t_SHA256_out; r2_7);
+         return(Hash1)
+       else
+         r3_3 <-R t_SHA256_out;
+         r3: t_SHA256_out <- cst_t_SHA256_out;
+         Hash1: t_SHA256_out <- (x_9: t_SHA256_block <- concatSHA256_pad(second_part(X2), U2, V2, HMAC256keylength); {101}find [unique] u_10 = ri_9 <= qKDF256 suchthat defined(u_3[ri_9], x_10[ri_9], r2_7[ri_9]) && {105}((u_3[ri_9] = i_1) && (x_9 = x_10[ri_9])) then r2_7[u_10] else r2_6 <-R t_SHA256_out; r2_6);
+         return(Hash1)
+     ) | (
+       foreach i_2 <= qKDF128 do
+       O_KDF128(X3: t_SHA256_out, U3: t_id, V3: t_id) :=
+       find [unique] u_7 = ri <= qKDF128 suchthat defined(k_2[ri], V3[ri], U3[ri], X3[ri]) && (X3 = X3[ri]) && (U3 = U3[ri]) && (V3 = V3[ri]) then
+         return(k_2[u_7])
+       else
+         k_2 <-R enc_key;
+         return(k_2)
+     ))
+
+
+Applying simplify (non-expanded game)
+  - Simplification pass
+    - Replaced ((u_3[ri_9] = i_1) && (x_9 = x_10[ri_9])) with false at 105
+    - Remove branch 1 in find at 101
+    - Find at 101 removed (else branch kept if any)
+yields
+
+Game 39 is
+     Ogen() :=
+     return();
+     ((
+       foreach i <= qMAC do
+       O_MAC(m: bitstring) :=
+       find [unique] u_4 = ri_4 <= qMAC suchthat defined(r2_1[ri_4], m[ri_4]) && (m = m[ri_4]) then
+         return(r2_1[u_4])
+       else
+         r2_1 <-R t_SHA256_out;
+         return(r2_1)
+     ) | (
+       foreach i_1 <= qKDF256 do
+       O_KDF256(X2: t_SHA256_out, U2: t_id, V2: t_id) :=
+       find [unique] u_3 = ri_3 <= qKDF256 suchthat defined(r3_3[ri_3], X2[ri_3]) && (first_part(X2) = first_part(X2[ri_3])) then
+         Hash1: t_SHA256_out <- (x_10: t_SHA256_block <- concatSHA256_pad(second_part(X2), U2, V2, HMAC256keylength); find [unique]  suchthat defined(x_9[u_3], r2_6[u_3]) && (x_10 = x_9[u_3]) then r2_6[u_3] orfind u_11 = ri_11 <= qKDF256 suchthat defined(r2_7[ri_11], x_10[ri_11], u_3[ri_11]) && (u_3[ri_11] = u_3) && (x_10 = x_10[ri_11]) then r2_7[u_11] else r2_7 <-R t_SHA256_out; r2_7);
+         return(Hash1)
+       else
+         r3_3 <-R t_SHA256_out;
+         r3: t_SHA256_out <- cst_t_SHA256_out;
+         Hash1: t_SHA256_out <- (x_9: t_SHA256_block <- concatSHA256_pad(second_part(X2), U2, V2, HMAC256keylength); r2_6 <-R t_SHA256_out; r2_6);
+         return(Hash1)
+     ) | (
+       foreach i_2 <= qKDF128 do
+       O_KDF128(X3: t_SHA256_out, U3: t_id, V3: t_id) :=
+       find [unique] u_7 = ri <= qKDF128 suchthat defined(k_2[ri], V3[ri], U3[ri], X3[ri]) && (X3 = X3[ri]) && (U3 = U3[ri]) && (V3 = V3[ri]) then
+         return(k_2[u_7])
+       else
+         k_2 <-R enc_key;
+         return(k_2)
+     ))
+
+
+Applying expand
+  - Expand if/find/let
+yields
+
+Game 40 is
+     Ogen() :=
+     return();
+     ((
+       foreach i <= qMAC do
+       O_MAC(m: bitstring) :=
+       find [unique] u_4 = ri_4 <= qMAC suchthat defined(r2_1[ri_4], m[ri_4]) && (m = m[ri_4]) then
+         return(r2_1[u_4])
+       else
+         r2_1 <-R t_SHA256_out;
+         return(r2_1)
+     ) | (
+       foreach i_1 <= qKDF256 do
+       O_KDF256(X2: t_SHA256_out, U2: t_id, V2: t_id) :=
+       find [unique] u_3 = ri_3 <= qKDF256 suchthat defined(r3_3[ri_3], X2[ri_3]) && (first_part(X2) = first_part(X2[ri_3])) then
+         x_10: t_SHA256_block <- concatSHA256_pad(second_part(X2), U2, V2, HMAC256keylength);
+         find [unique]  suchthat defined(x_9[u_3], r2_6[u_3]) && (x_10 = x_9[u_3]) then
+           Hash1: t_SHA256_out <- r2_6[u_3];
+           return(Hash1)
+         orfind u_11 = ri_11 <= qKDF256 suchthat defined(r2_7[ri_11], x_10[ri_11], u_3[ri_11]) && (u_3[ri_11] = u_3) && (x_10 = x_10[ri_11]) then
+           Hash1: t_SHA256_out <- r2_7[u_11];
+           return(Hash1)
+         else
+           r2_7 <-R t_SHA256_out;
+           Hash1: t_SHA256_out <- r2_7;
+           return(Hash1)
+       else
+         r3_3 <-R t_SHA256_out;
+         r3: t_SHA256_out <- cst_t_SHA256_out;
+         x_9: t_SHA256_block <- concatSHA256_pad(second_part(X2), U2, V2, HMAC256keylength);
+         r2_6 <-R t_SHA256_out;
+         Hash1: t_SHA256_out <- r2_6;
+         return(Hash1)
+     ) | (
+       foreach i_2 <= qKDF128 do
+       O_KDF128(X3: t_SHA256_out, U3: t_id, V3: t_id) :=
+       find [unique] u_7 = ri <= qKDF128 suchthat defined(k_2[ri], V3[ri], U3[ri], X3[ri]) && (X3 = X3[ri]) && (U3 = U3[ri]) && (V3 = V3[ri]) then
+         return(k_2[u_7])
+       else
+         k_2 <-R enc_key;
+         return(k_2)
+     ))
+
+
+Applying remove assignments of findcond
+  - Remove assignments on r3 (definition removed, all usages removed)
+  - Remove assignments on Hash1 (definition removed, all usages removed)
+  - Remove assignments on Hash1 (definition removed, all usages removed)
+  - Remove assignments on Hash1 (definition removed, all usages removed)
+  - Remove assignments on Hash1 (definition removed, all usages removed)
+yields
+
+Game 41 is
+     Ogen() :=
+     return();
+     ((
+       foreach i <= qMAC do
+       O_MAC(m: bitstring) :=
+       find [unique] u_4 = ri_4 <= qMAC suchthat defined(r2_1[ri_4], m[ri_4]) && (m = m[ri_4]) then
+         return(r2_1[u_4])
+       else
+         r2_1 <-R t_SHA256_out;
+         return(r2_1)
+     ) | (
+       foreach i_1 <= qKDF256 do
+       O_KDF256(X2: t_SHA256_out, U2: t_id, V2: t_id) :=
+ {27}  find [unique] u_3 = ri_3 <= qKDF256 suchthat defined(r3_3[ri_3], X2[ri_3]) && (first_part(X2) = first_part(X2[ri_3])) then
+         x_10: t_SHA256_block <- concatSHA256_pad(second_part(X2), U2, V2, HMAC256keylength);
+ {47}    find [unique]  suchthat defined(x_9[u_3], r2_6[u_3]) && {52}(x_10 = x_9[u_3]) then
+           return(r2_6[u_3])
+         orfind u_11 = ri_11 <= qKDF256 suchthat defined(r2_7[ri_11], x_10[ri_11], u_3[ri_11]) && {66}((u_3[ri_11] = u_3) && (x_10 = x_10[ri_11])) then
+           return(r2_7[u_11])
+         else
+           r2_7 <-R t_SHA256_out;
+           return(r2_7)
+       else
+ {88}    r3_3 <-R t_SHA256_out;
+         x_9: t_SHA256_block <- concatSHA256_pad(second_part(X2), U2, V2, HMAC256keylength);
+         r2_6 <-R t_SHA256_out;
+         return(r2_6)
+     ) | (
+       foreach i_2 <= qKDF128 do
+       O_KDF128(X3: t_SHA256_out, U3: t_id, V3: t_id) :=
+       find [unique] u_7 = ri <= qKDF128 suchthat defined(k_2[ri], V3[ri], U3[ri], X3[ri]) && (X3 = X3[ri]) && (U3 = U3[ri]) && (V3 = V3[ri]) then
+         return(k_2[u_7])
+       else
+         k_2 <-R enc_key;
+         return(k_2)
+     ))
+
+
+Applying simplify
+  - Simplification pass
+    - Transform unused random number generation at 88 into constant assignment
+    - Replaced ((u_3[ri_11] = u_3) && (x_10 = x_10[ri_11])) with ((u_3[ri_11] = u_3) && (second_part(X2) = second_part(X2[ri_11])) && (U2 = U2[ri_11]) && (V2 = V2[ri_11])) at 66
+    - Replaced defined condition r2_7[ri_11], x_10[ri_11], u_3[ri_11] with r2_7[ri_11], V2[ri_11], U2[ri_11], X2[ri_11], u_3[ri_11] in find at 47
+    - Replaced (x_10 = x_9[u_3]) with ((second_part(X2) = second_part(X2[u_3])) && (U2 = U2[u_3]) && (V2 = V2[u_3])) at 52
+    - Replaced defined condition x_9[u_3], r2_6[u_3] with an empty condition in find at 47
+    - Replaced defined condition r3_3[ri_3], X2[ri_3] with r2_6[ri_3], V2[ri_3], U2[ri_3], X2[ri_3] in find at 27
+yields
+
+Game 42 is
+     Ogen() :=
+     return();
+     ((
+       foreach i <= qMAC do
+       O_MAC(m: bitstring) :=
+       find [unique] u_4 = ri_4 <= qMAC suchthat defined(r2_1[ri_4], m[ri_4]) && (m = m[ri_4]) then
+         return(r2_1[u_4])
+       else
+         r2_1 <-R t_SHA256_out;
+         return(r2_1)
+     ) | (
+       foreach i_1 <= qKDF256 do
+       O_KDF256(X2: t_SHA256_out, U2: t_id, V2: t_id) :=
+       find [unique] u_3 = ri_3 <= qKDF256 suchthat defined(r2_6[ri_3], V2[ri_3], U2[ri_3], X2[ri_3]) && (first_part(X2) = first_part(X2[ri_3])) then
+         x_10: t_SHA256_block <- concatSHA256_pad(second_part(X2), U2, V2, HMAC256keylength);
+         find [unique]  suchthat (second_part(X2) = second_part(X2[u_3])) && (U2 = U2[u_3]) && (V2 = V2[u_3]) then
+           return(r2_6[u_3])
+         orfind u_11 = ri_11 <= qKDF256 suchthat defined(r2_7[ri_11], V2[ri_11], U2[ri_11], X2[ri_11], u_3[ri_11]) && (u_3[ri_11] = u_3) && (second_part(X2) = second_part(X2[ri_11])) && (U2 = U2[ri_11]) && (V2 = V2[ri_11]) then
+           return(r2_7[u_11])
+         else
+           r2_7 <-R t_SHA256_out;
+           return(r2_7)
+       else
+         r3_3: t_SHA256_out <- cst_t_SHA256_out;
+         x_9: t_SHA256_block <- concatSHA256_pad(second_part(X2), U2, V2, HMAC256keylength);
+         r2_6 <-R t_SHA256_out;
+         return(r2_6)
+     ) | (
+       foreach i_2 <= qKDF128 do
+       O_KDF128(X3: t_SHA256_out, U3: t_id, V3: t_id) :=
+       find [unique] u_7 = ri <= qKDF128 suchthat defined(k_2[ri], V3[ri], U3[ri], X3[ri]) && (X3 = X3[ri]) && (U3 = U3[ri]) && (V3 = V3[ri]) then
+         return(k_2[u_7])
+       else
+         k_2 <-R enc_key;
+         return(k_2)
+     ))
+
+
+Applying move all binders
+  - Move assignment to x_10
+yields
+
+Game 43 is
+     Ogen() :=
+     return();
+     ((
+       foreach i <= qMAC do
+       O_MAC(m: bitstring) :=
+       find [unique] u_4 = ri_4 <= qMAC suchthat defined(r2_1[ri_4], m[ri_4]) && (m = m[ri_4]) then
+         return(r2_1[u_4])
+       else
+         r2_1 <-R t_SHA256_out;
+         return(r2_1)
+     ) | (
+       foreach i_1 <= qKDF256 do
+       O_KDF256(X2: t_SHA256_out, U2: t_id, V2: t_id) :=
+       find [unique] u_3 = ri_3 <= qKDF256 suchthat defined(r2_6[ri_3], V2[ri_3], U2[ri_3], X2[ri_3]) && (first_part(X2) = first_part(X2[ri_3])) then
+         find [unique]  suchthat (second_part(X2) = second_part(X2[u_3])) && (U2 = U2[u_3]) && (V2 = V2[u_3]) then
+           return(r2_6[u_3])
+         orfind u_11 = ri_11 <= qKDF256 suchthat defined(r2_7[ri_11], V2[ri_11], U2[ri_11], X2[ri_11], u_3[ri_11]) && (u_3[ri_11] = u_3) && (second_part(X2) = second_part(X2[ri_11])) && (U2 = U2[ri_11]) && (V2 = V2[ri_11]) then
+           return(r2_7[u_11])
+         else
+           r2_7 <-R t_SHA256_out;
+           return(r2_7)
+       else
+         r3_3: t_SHA256_out <- cst_t_SHA256_out;
+         x_9: t_SHA256_block <- concatSHA256_pad(second_part(X2), U2, V2, HMAC256keylength);
+         r2_6 <-R t_SHA256_out;
+         return(r2_6)
+     ) | (
+       foreach i_2 <= qKDF128 do
+       O_KDF128(X3: t_SHA256_out, U3: t_id, V3: t_id) :=
+       find [unique] u_7 = ri <= qKDF128 suchthat defined(k_2[ri], V3[ri], U3[ri], X3[ri]) && (X3 = X3[ri]) && (U3 = U3[ri]) && (V3 = V3[ri]) then
+         return(k_2[u_7])
+       else
+         k_2 <-R enc_key;
+         return(k_2)
+     ))
+
+
+Applying SA rename new without array accesses and remove assignments of findcond
+  - Remove assignments on r3_3 (definition removed, all usages removed)
+  - Remove assignments on x_9 (definition removed, all usages removed)
+yields
+
+Game 44 is
+     Ogen() :=
+     return();
+     ((
+       foreach i <= qMAC do
+       O_MAC(m: bitstring) :=
+       find [unique] u_4 = ri_4 <= qMAC suchthat defined(r2_1[ri_4], m[ri_4]) && (m = m[ri_4]) then
+         return(r2_1[u_4])
+       else
+         r2_1 <-R t_SHA256_out;
+         return(r2_1)
+     ) | (
+       foreach i_1 <= qKDF256 do
+       O_KDF256(X2: t_SHA256_out, U2: t_id, V2: t_id) :=
+ {27}  find [unique] u_3 = ri_3 <= qKDF256 suchthat defined(r2_6[ri_3], V2[ri_3], U2[ri_3], X2[ri_3]) && (first_part(X2) = first_part(X2[ri_3])) then
+ {39}    find [unique]  suchthat (second_part(X2) = second_part(X2[u_3])) && (U2 = U2[u_3]) && (V2 = V2[u_3]) then
+           return(r2_6[u_3])
+         orfind u_11 = ri_11 <= qKDF256 suchthat defined(r2_7[ri_11], V2[ri_11], U2[ri_11], X2[ri_11], u_3[ri_11]) && (u_3[ri_11] = u_3) && (second_part(X2) = second_part(X2[ri_11])) && (U2 = U2[ri_11]) && (V2 = V2[ri_11]) then
+           return(r2_7[u_11])
+         else
+           r2_7 <-R t_SHA256_out;
+           return(r2_7)
+       else
+         r2_6 <-R t_SHA256_out;
+         return(r2_6)
+     ) | (
+       foreach i_2 <= qKDF128 do
+       O_KDF128(X3: t_SHA256_out, U3: t_id, V3: t_id) :=
+       find [unique] u_7 = ri <= qKDF128 suchthat defined(k_2[ri], V3[ri], U3[ri], X3[ri]) && (X3 = X3[ri]) && (U3 = U3[ri]) && (V3 = V3[ri]) then
+         return(k_2[u_7])
+       else
+         k_2 <-R enc_key;
+         return(k_2)
+     ))
+
+
+Applying simplify
+  - Simplification pass
+    - Simplified find at 39 in branch of find at 27
+yields
+
+Game 45 is
+     Ogen() :=
+     return();
+     ((
+       foreach i <= qMAC do
+       O_MAC(m: bitstring) :=
+       find [unique] u_4 = ri_4 <= qMAC suchthat defined(r2_1[ri_4], m[ri_4]) && (m = m[ri_4]) then
+         return(r2_1[u_4])
+       else
+         r2_1 <-R t_SHA256_out;
+         return(r2_1)
+     ) | (
+       foreach i_1 <= qKDF256 do
+       O_KDF256(X2: t_SHA256_out, U2: t_id, V2: t_id) :=
+ {27}  find [unique] u_3 = ri_3 <= qKDF256 suchthat defined(r2_6[ri_3], V2[ri_3], U2[ri_3], X2[ri_3]) && {32}((first_part(X2) = first_part(X2[ri_3])) && (second_part(X2) = second_part(X2[ri_3])) && (U2 = U2[ri_3]) && (V2 = V2[ri_3])) then
+         return(r2_6[u_3])
+       orfind u_3 = ri_3 <= qKDF256, u_11 = ri_11 <= qKDF256 suchthat defined(r2_6[ri_3], V2[ri_3], U2[ri_3], X2[ri_3], r2_7[ri_11], V2[ri_11], U2[ri_11], X2[ri_11]) && {72}((first_part(X2) = first_part(X2[ri_3])) && (ri_3 = ri_3) && (second_part(X2) = second_part(X2[ri_11])) && (U2 = U2[ri_11]) && (V2 = V2[ri_11]) && (ri_11 = i_1)) then
+         return(r2_7[u_11])
+       orfind u_3 = ri_3 <= qKDF256, u_11 = ri_11 <= qKDF256 suchthat defined(r2_6[ri_3], V2[ri_3], U2[ri_3], X2[ri_3], r2_7[ri_11], V2[ri_11], U2[ri_11], X2[ri_11], u_3[ri_11]) && (first_part(X2) = first_part(X2[ri_3])) && (u_3[ri_11] = ri_3) && (second_part(X2) = second_part(X2[ri_11])) && (U2 = U2[ri_11]) && (V2 = V2[ri_11]) then
+         return(r2_7[u_11])
+       else
+{158}    find [unique] u_3 = ri_3 <= qKDF256 suchthat defined(r2_6[ri_3], V2[ri_3], U2[ri_3], X2[ri_3]) && (first_part(X2) = first_part(X2[ri_3])) then
+           r2_7 <-R t_SHA256_out;
+           return(r2_7)
+         else
+           r2_6 <-R t_SHA256_out;
+           return(r2_6)
+     ) | (
+       foreach i_2 <= qKDF128 do
+       O_KDF128(X3: t_SHA256_out, U3: t_id, V3: t_id) :=
+       find [unique] u_7 = ri <= qKDF128 suchthat defined(k_2[ri], V3[ri], U3[ri], X3[ri]) && (X3 = X3[ri]) && (U3 = U3[ri]) && (V3 = V3[ri]) then
+         return(k_2[u_7])
+       else
+         k_2 <-R enc_key;
+         return(k_2)
+     ))
+
+
+Applying simplify
+  - Simplification pass
+    - Replaced defined condition r2_6[ri_3], V2[ri_3], U2[ri_3], X2[ri_3] with r2_6[ri_3], X2[ri_3] in find at 158
+    - Replaced defined condition r2_6[ri_3], V2[ri_3], U2[ri_3], X2[ri_3], r2_7[ri_11], V2[ri_11], U2[ri_11], X2[ri_11], u_3[ri_11] with r2_6[ri_3], r2_7[ri_11], V2[ri_11], U2[ri_11], X2[ri_11], u_3[ri_11], X2[ri_3] in find at 27
+    - Replaced ((first_part(X2) = first_part(X2[ri_3])) && (ri_3 = ri_3) && (second_part(X2) = second_part(X2[ri_11])) && (U2 = U2[ri_11]) && (V2 = V2[ri_11]) && (ri_11 = i_1)) with false at 72
+    - Remove branch 2 in find at 27
+    - Replaced ((first_part(X2) = first_part(X2[ri_3])) && (second_part(X2) = second_part(X2[ri_3])) && (U2 = U2[ri_3]) && (V2 = V2[ri_3])) with ((X2 = X2[ri_3]) && (U2 = U2[ri_3]) && (V2 = V2[ri_3])) at 32
+yields
+
+Game 46 is
+     Ogen() :=
+     return();
+     ((
+       foreach i <= qMAC do
+       O_MAC(m: bitstring) :=
+       find [unique] u_4 = ri_4 <= qMAC suchthat defined(r2_1[ri_4], m[ri_4]) && (m = m[ri_4]) then
+         return(r2_1[u_4])
+       else
+         r2_1 <-R t_SHA256_out;
+         return(r2_1)
+     ) | (
+       foreach i_1 <= qKDF256 do
+       O_KDF256(X2: t_SHA256_out, U2: t_id, V2: t_id) :=
+       find [unique] u_3 = ri_3 <= qKDF256 suchthat defined(r2_6[ri_3], V2[ri_3], U2[ri_3], X2[ri_3]) && (X2 = X2[ri_3]) && (U2 = U2[ri_3]) && (V2 = V2[ri_3]) then
+         return(r2_6[u_3])
+       orfind u_3 = ri_3 <= qKDF256, u_11 = ri_11 <= qKDF256 suchthat defined(r2_6[ri_3], r2_7[ri_11], V2[ri_11], U2[ri_11], X2[ri_11], u_3[ri_11], X2[ri_3]) && (first_part(X2) = first_part(X2[ri_3])) && (u_3[ri_11] = ri_3) && (second_part(X2) = second_part(X2[ri_11])) && (U2 = U2[ri_11]) && (V2 = V2[ri_11]) then
+         return(r2_7[u_11])
+       else
+         find [unique] u_3 = ri_3 <= qKDF256 suchthat defined(r2_6[ri_3], X2[ri_3]) && (first_part(X2) = first_part(X2[ri_3])) then
+           r2_7 <-R t_SHA256_out;
+           return(r2_7)
+         else
+           r2_6 <-R t_SHA256_out;
+           return(r2_6)
+     ) | (
+       foreach i_2 <= qKDF128 do
+       O_KDF128(X3: t_SHA256_out, U3: t_id, V3: t_id) :=
+       find [unique] u_7 = ri <= qKDF128 suchthat defined(k_2[ri], V3[ri], U3[ri], X3[ri]) && (X3 = X3[ri]) && (U3 = U3[ri]) && (V3 = V3[ri]) then
+         return(k_2[u_7])
+       else
+         k_2 <-R enc_key;
+         return(k_2)
+     ))
+
+
+Applying SA rename u_3
+  - Rename variable u_3 into u_14, u_13, u_12
+yields
+
+Game 47 is
+     Ogen() :=
+     return();
+     ((
+       foreach i <= qMAC do
+       O_MAC(m: bitstring) :=
+       find [unique] u_4 = ri_4 <= qMAC suchthat defined(r2_1[ri_4], m[ri_4]) && (m = m[ri_4]) then
+         return(r2_1[u_4])
+       else
+         r2_1 <-R t_SHA256_out;
+         return(r2_1)
+     ) | (
+       foreach i_1 <= qKDF256 do
+       O_KDF256(X2: t_SHA256_out, U2: t_id, V2: t_id) :=
+ {27}  find [unique] u_12 = ri_3 <= qKDF256 suchthat defined(r2_6[ri_3], V2[ri_3], U2[ri_3], X2[ri_3]) && (X2 = X2[ri_3]) && (U2 = U2[ri_3]) && (V2 = V2[ri_3]) then
+         return(r2_6[u_12])
+       orfind u_13 = ri_3 <= qKDF256, u_11 = ri_11 <= qKDF256 suchthat defined(r2_6[ri_3], r2_7[ri_11], V2[ri_11], U2[ri_11], X2[ri_11], u_14[ri_11], X2[ri_3]) && (first_part(X2) = first_part(X2[ri_3])) && (u_14[ri_11] = ri_3) && (second_part(X2) = second_part(X2[ri_11])) && (U2 = U2[ri_11]) && (V2 = V2[ri_11]) then
+         return(r2_7[u_11])
+       else
+         find [unique] u_14 = ri_3 <= qKDF256 suchthat defined(r2_6[ri_3], X2[ri_3]) && (first_part(X2) = first_part(X2[ri_3])) then
+           r2_7 <-R t_SHA256_out;
+           return(r2_7)
+         else
+           r2_6 <-R t_SHA256_out;
+           return(r2_6)
+     ) | (
+       foreach i_2 <= qKDF128 do
+       O_KDF128(X3: t_SHA256_out, U3: t_id, V3: t_id) :=
+       find [unique] u_7 = ri <= qKDF128 suchthat defined(k_2[ri], V3[ri], U3[ri], X3[ri]) && (X3 = X3[ri]) && (U3 = U3[ri]) && (V3 = V3[ri]) then
+         return(k_2[u_7])
+       else
+         k_2 <-R enc_key;
+         return(k_2)
+     ))
+
+
+Applying simplify
+  - Simplification pass
+    - In branch 2 of find at 27, substituting u_13 with u_14[u_11]
+    - Replaced defined condition r2_6[ri_3], r2_7[ri_11], V2[ri_11], U2[ri_11], X2[ri_11], u_14[ri_11], X2[ri_3] with r2_7[ri_11], V2[ri_11], U2[ri_11], X2[ri_11], X2[u_14[ri_11]] in find at 27
+yields
+
+Game 48 is
+     Ogen() :=
+     return();
+     ((
+       foreach i <= qMAC do
+       O_MAC(m: bitstring) :=
+       find [unique] u_4 = ri_4 <= qMAC suchthat defined(r2_1[ri_4], m[ri_4]) && (m = m[ri_4]) then
+         return(r2_1[u_4])
+       else
+         r2_1 <-R t_SHA256_out;
+         return(r2_1)
+     ) | (
+       foreach i_1 <= qKDF256 do
+       O_KDF256(X2: t_SHA256_out, U2: t_id, V2: t_id) :=
+       find [unique] u_12 = ri_3 <= qKDF256 suchthat defined(r2_6[ri_3], V2[ri_3], U2[ri_3], X2[ri_3]) && (X2 = X2[ri_3]) && (U2 = U2[ri_3]) && (V2 = V2[ri_3]) then
+         return(r2_6[u_12])
+       orfind u_11 = ri_11 <= qKDF256 suchthat defined(r2_7[ri_11], V2[ri_11], U2[ri_11], X2[ri_11], X2[u_14[ri_11]]) && {60}((first_part(X2) = first_part(X2[u_14[ri_11]])) && (u_14[ri_11] = u_14[ri_11]) && (second_part(X2) = second_part(X2[ri_11])) && (U2 = U2[ri_11]) && (V2 = V2[ri_11])) then
+         u_13 <= qKDF256 <- u_14[u_11];
+         return(r2_7[u_11])
+       else
+         find [unique] u_14 = ri_3 <= qKDF256 suchthat defined(r2_6[ri_3], X2[ri_3]) && (first_part(X2) = first_part(X2[ri_3])) then
+           r2_7 <-R t_SHA256_out;
+           return(r2_7)
+         else
+           r2_6 <-R t_SHA256_out;
+           return(r2_6)
+     ) | (
+       foreach i_2 <= qKDF128 do
+       O_KDF128(X3: t_SHA256_out, U3: t_id, V3: t_id) :=
+       find [unique] u_7 = ri <= qKDF128 suchthat defined(k_2[ri], V3[ri], U3[ri], X3[ri]) && (X3 = X3[ri]) && (U3 = U3[ri]) && (V3 = V3[ri]) then
+         return(k_2[u_7])
+       else
+         k_2 <-R enc_key;
+         return(k_2)
+     ))
+
+
+Applying simplify
+  - Simplification pass
+    - Replaced ((first_part(X2) = first_part(X2[u_14[ri_11]])) && (u_14[ri_11] = u_14[ri_11]) && (second_part(X2) = second_part(X2[ri_11])) && (U2 = U2[ri_11]) && (V2 = V2[ri_11])) with ((first_part(X2) = first_part(X2[u_14[ri_11]])) && (second_part(X2) = second_part(X2[ri_11])) && (U2 = U2[ri_11]) && (V2 = V2[ri_11])) at 60
+yields
+
+Game 49 is
+     Ogen() :=
+     return();
+     ((
+       foreach i <= qMAC do
+       O_MAC(m: bitstring) :=
+       find [unique] u_4 = ri_4 <= qMAC suchthat defined(r2_1[ri_4], m[ri_4]) && (m = m[ri_4]) then
+         return(r2_1[u_4])
+       else
+         r2_1 <-R t_SHA256_out;
+         return(r2_1)
+     ) | (
+       foreach i_1 <= qKDF256 do
+       O_KDF256(X2: t_SHA256_out, U2: t_id, V2: t_id) :=
+       find [unique] u_12 = ri_3 <= qKDF256 suchthat defined(r2_6[ri_3], V2[ri_3], U2[ri_3], X2[ri_3]) && (X2 = X2[ri_3]) && (U2 = U2[ri_3]) && (V2 = V2[ri_3]) then
+         return(r2_6[u_12])
+       orfind u_11 = ri_11 <= qKDF256 suchthat defined(r2_7[ri_11], V2[ri_11], U2[ri_11], X2[ri_11], X2[u_14[ri_11]]) && (first_part(X2) = first_part(X2[u_14[ri_11]])) && (second_part(X2) = second_part(X2[ri_11])) && (U2 = U2[ri_11]) && (V2 = V2[ri_11]) then
+         u_13 <= qKDF256 <- u_14[u_11];
+         return(r2_7[u_11])
+       else
+         find [unique] u_14 = ri_3 <= qKDF256 suchthat defined(r2_6[ri_3], X2[ri_3]) && (first_part(X2) = first_part(X2[ri_3])) then
+           r2_7 <-R t_SHA256_out;
+           return(r2_7)
+         else
+           r2_6 <-R t_SHA256_out;
+           return(r2_6)
+     ) | (
+       foreach i_2 <= qKDF128 do
+       O_KDF128(X3: t_SHA256_out, U3: t_id, V3: t_id) :=
+       find [unique] u_7 = ri <= qKDF128 suchthat defined(k_2[ri], V3[ri], U3[ri], X3[ri]) && (X3 = X3[ri]) && (U3 = U3[ri]) && (V3 = V3[ri]) then
+         return(k_2[u_7])
+       else
+         k_2 <-R enc_key;
+         return(k_2)
+     ))
+
+
+Applying remove assignments of useless
+  - Remove assignments on u_13 (definition removed, all usages removed)
+yields
+
+Game 50 is
+     Ogen() :=
+     return();
+     ((
+       foreach i <= qMAC do
+       O_MAC(m: bitstring) :=
+       find [unique] u_4 = ri_4 <= qMAC suchthat defined(r2_1[ri_4], m[ri_4]) && (m = m[ri_4]) then
+         return(r2_1[u_4])
+       else
+         r2_1 <-R t_SHA256_out;
+         return(r2_1)
+     ) | (
+       foreach i_1 <= qKDF256 do
+       O_KDF256(X2: t_SHA256_out, U2: t_id, V2: t_id) :=
+       find [unique] u_12 = ri_3 <= qKDF256 suchthat defined(r2_6[ri_3], V2[ri_3], U2[ri_3], X2[ri_3]) && (X2 = X2[ri_3]) && (U2 = U2[ri_3]) && (V2 = V2[ri_3]) then
+         return(r2_6[u_12])
+       orfind u_11 = ri_11 <= qKDF256 suchthat defined(r2_7[ri_11], V2[ri_11], U2[ri_11], X2[ri_11], X2[u_14[ri_11]]) && (first_part(X2) = {65}first_part(X2[u_14[ri_11]])) && (second_part(X2) = second_part(X2[ri_11])) && (U2 = U2[ri_11]) && (V2 = V2[ri_11]) then
+         return(r2_7[u_11])
+       else
+         find [unique] u_14 = ri_3 <= qKDF256 suchthat defined(r2_6[ri_3], X2[ri_3]) && (first_part(X2) = first_part(X2[ri_3])) then
+           r2_7 <-R t_SHA256_out;
+           return(r2_7)
+         else
+           r2_6 <-R t_SHA256_out;
+           return(r2_6)
+     ) | (
+       foreach i_2 <= qKDF128 do
+       O_KDF128(X3: t_SHA256_out, U3: t_id, V3: t_id) :=
+       find [unique] u_7 = ri <= qKDF128 suchthat defined(k_2[ri], V3[ri], U3[ri], X3[ri]) && (X3 = X3[ri]) && (U3 = U3[ri]) && (V3 = V3[ri]) then
+         return(k_2[u_7])
+       else
+         k_2 <-R enc_key;
+         return(k_2)
+     ))
+
+
+Applying replace term at occurrence 65 with first_part(X2[ri_11])
+yields
+
+Game 51 is
+     Ogen() :=
+     return();
+     ((
+       foreach i <= qMAC do
+       O_MAC(m: bitstring) :=
+       find [unique] u_4 = ri_4 <= qMAC suchthat defined(r2_1[ri_4], m[ri_4]) && (m = m[ri_4]) then
+         return(r2_1[u_4])
+       else
+         r2_1 <-R t_SHA256_out;
+         return(r2_1)
+     ) | (
+       foreach i_1 <= qKDF256 do
+       O_KDF256(X2: t_SHA256_out, U2: t_id, V2: t_id) :=
+       find [unique] u_12 = ri_3 <= qKDF256 suchthat defined(r2_6[ri_3], V2[ri_3], U2[ri_3], X2[ri_3]) && (X2 = X2[ri_3]) && (U2 = U2[ri_3]) && (V2 = V2[ri_3]) then
+         return(r2_6[u_12])
+       orfind u_11 = ri_11 <= qKDF256 suchthat defined(r2_7[ri_11], V2[ri_11], U2[ri_11], X2[ri_11]) && {58}((first_part(X2) = first_part(X2[ri_11])) && (second_part(X2) = second_part(X2[ri_11])) && (U2 = U2[ri_11]) && (V2 = V2[ri_11])) then
+         return(r2_7[u_11])
+       else
+         find [unique] u_14 = ri_3 <= qKDF256 suchthat defined(r2_6[ri_3], X2[ri_3]) && (first_part(X2) = first_part(X2[ri_3])) then
+           r2_7 <-R t_SHA256_out;
+           return(r2_7)
+         else
+           r2_6 <-R t_SHA256_out;
+           return(r2_6)
+     ) | (
+       foreach i_2 <= qKDF128 do
+       O_KDF128(X3: t_SHA256_out, U3: t_id, V3: t_id) :=
+       find [unique] u_7 = ri <= qKDF128 suchthat defined(k_2[ri], V3[ri], U3[ri], X3[ri]) && (X3 = X3[ri]) && (U3 = U3[ri]) && (V3 = V3[ri]) then
+         return(k_2[u_7])
+       else
+         k_2 <-R enc_key;
+         return(k_2)
+     ))
+
+
+Applying simplify
+  - Simplification pass
+    - Replaced ((first_part(X2) = first_part(X2[ri_11])) && (second_part(X2) = second_part(X2[ri_11])) && (U2 = U2[ri_11]) && (V2 = V2[ri_11])) with ((X2 = X2[ri_11]) && (U2 = U2[ri_11]) && (V2 = V2[ri_11])) at 58
+yields
+
+Game 52 is
+     Ogen() :=
+     return();
+     ((
+       foreach i <= qMAC do
+       O_MAC(m: bitstring) :=
+       find [unique] u_4 = ri_4 <= qMAC suchthat defined(r2_1[ri_4], m[ri_4]) && (m = m[ri_4]) then
+         return(r2_1[u_4])
+       else
+         r2_1 <-R t_SHA256_out;
+         return(r2_1)
+     ) | (
+       foreach i_1 <= qKDF256 do
+       O_KDF256(X2: t_SHA256_out, U2: t_id, V2: t_id) :=
+       find [unique] u_12 = ri_3 <= qKDF256 suchthat defined(r2_6[ri_3], V2[ri_3], U2[ri_3], X2[ri_3]) && (X2 = X2[ri_3]) && (U2 = U2[ri_3]) && (V2 = V2[ri_3]) then
+         return(r2_6[u_12])
+       orfind u_11 = ri_11 <= qKDF256 suchthat defined(r2_7[ri_11], V2[ri_11], U2[ri_11], X2[ri_11]) && (X2 = X2[ri_11]) && (U2 = U2[ri_11]) && (V2 = V2[ri_11]) then
+         return(r2_7[u_11])
+       else
+         find [unique] u_14 = ri_3 <= qKDF256 suchthat defined(r2_6[ri_3], X2[ri_3]) && (first_part(X2) = first_part(X2[ri_3])) then
+           r2_7 <-R t_SHA256_out;
+           return(r2_7)
+         else
+           r2_6 <-R t_SHA256_out;
+           return(r2_6)
+     ) | (
+       foreach i_2 <= qKDF128 do
+       O_KDF128(X3: t_SHA256_out, U3: t_id, V3: t_id) :=
+       find [unique] u_7 = ri <= qKDF128 suchthat defined(k_2[ri], V3[ri], U3[ri], X3[ri]) && (X3 = X3[ri]) && (U3 = U3[ri]) && (V3 = V3[ri]) then
+         return(k_2[u_7])
+       else
+         k_2 <-R enc_key;
+         return(k_2)
+     ))
+
+
+Applying merge variables (r2_6, r2_7)
+yields
+
+Game 53 is
+     Ogen() :=
+     return();
+     ((
+       foreach i <= qMAC do
+       O_MAC(m: bitstring) :=
+       find [unique] u_4 = ri_4 <= qMAC suchthat defined(r2_1[ri_4], m[ri_4]) && (m = m[ri_4]) then
+         return(r2_1[u_4])
+       else
+         r2_1 <-R t_SHA256_out;
+         return(r2_1)
+     ) | (
+       foreach i_1 <= qKDF256 do
+       O_KDF256(X2: t_SHA256_out, U2: t_id, V2: t_id) :=
+       find [unique] u_12 = ri_3 <= qKDF256 suchthat defined(r2_6[ri_3], V2[ri_3], U2[ri_3], X2[ri_3]) && (X2 = X2[ri_3]) && (U2 = U2[ri_3]) && (V2 = V2[ri_3]) then
+         return(r2_6[u_12])
+       else
+ {54}    find [unique] u_14 = ri_3 <= qKDF256 suchthat defined(r2_8[ri_3], r2_6[ri_3], X2[ri_3]) && (first_part(X2) = first_part(X2[ri_3])) then
+           r2_6 <-R t_SHA256_out;
+           r2_9: t_SHA256_out <- cst_t_SHA256_out;
+           return(r2_6)
+         else
+           r2_6 <-R t_SHA256_out;
+           r2_8: t_SHA256_out <- cst_t_SHA256_out;
+           return(r2_6)
+     ) | (
+       foreach i_2 <= qKDF128 do
+       O_KDF128(X3: t_SHA256_out, U3: t_id, V3: t_id) :=
+       find [unique] u_7 = ri <= qKDF128 suchthat defined(k_2[ri], V3[ri], U3[ri], X3[ri]) && (X3 = X3[ri]) && (U3 = U3[ri]) && (V3 = V3[ri]) then
+         return(k_2[u_7])
+       else
+         k_2 <-R enc_key;
+         return(k_2)
+     ))
+
+
+Applying merge branches
+  - Merge all branches of find at 54
+yields
+
+Game 54 is
+     Ogen() :=
+     return();
+     ((
+       foreach i <= qMAC do
+       O_MAC(m: bitstring) :=
+       find [unique] u_4 = ri_4 <= qMAC suchthat defined(r2_1[ri_4], m[ri_4]) && (m = m[ri_4]) then
+         return(r2_1[u_4])
+       else
+         r2_1 <-R t_SHA256_out;
+         return(r2_1)
+     ) | (
+       foreach i_1 <= qKDF256 do
+       O_KDF256(X2: t_SHA256_out, U2: t_id, V2: t_id) :=
+       find [unique] u_12 = ri_3 <= qKDF256 suchthat defined(r2_6[ri_3], V2[ri_3], U2[ri_3], X2[ri_3]) && (X2 = X2[ri_3]) && (U2 = U2[ri_3]) && (V2 = V2[ri_3]) then
+         return(r2_6[u_12])
+       else
+         r2_6 <-R t_SHA256_out;
+         r2_8: t_SHA256_out <- cst_t_SHA256_out;
+         return(r2_6)
+     ) | (
+       foreach i_2 <= qKDF128 do
+       O_KDF128(X3: t_SHA256_out, U3: t_id, V3: t_id) :=
+       find [unique] u_7 = ri <= qKDF128 suchthat defined(k_2[ri], V3[ri], U3[ri], X3[ri]) && (X3 = X3[ri]) && (U3 = U3[ri]) && (V3 = V3[ri]) then
+         return(k_2[u_7])
+       else
+         k_2 <-R enc_key;
+         return(k_2)
+     ))
+
+
+Applying remove assignments of useless
+  - Remove assignments on r2_8 (definition removed, all usages removed)
+yields
+
+Game 55 is
+     Ogen() :=
+     return();
+     ((
+       foreach i <= qMAC do
+       O_MAC(m: bitstring) :=
+       find [unique] u_4 = ri_4 <= qMAC suchthat defined(r2_1[ri_4], m[ri_4]) && (m = m[ri_4]) then
+         return(r2_1[u_4])
+       else
+         r2_1 <-R t_SHA256_out;
+         return(r2_1)
+     ) | (
+       foreach i_1 <= qKDF256 do
+       O_KDF256(X2: t_SHA256_out, U2: t_id, V2: t_id) :=
+       find [unique] u_12 = ri_3 <= qKDF256 suchthat defined(r2_6[ri_3], V2[ri_3], U2[ri_3], X2[ri_3]) && (X2 = X2[ri_3]) && (U2 = U2[ri_3]) && (V2 = V2[ri_3]) then
+         return(r2_6[u_12])
+       else
+         r2_6 <-R t_SHA256_out;
+         return(r2_6)
+     ) | (
+       foreach i_2 <= qKDF128 do
+       O_KDF128(X3: t_SHA256_out, U3: t_id, V3: t_id) :=
+       find [unique] u_7 = ri <= qKDF128 suchthat defined(k_2[ri], V3[ri], U3[ri], X3[ri]) && (X3 = X3[ri]) && (U3 = U3[ri]) && (V3 = V3[ri]) then
+         return(k_2[u_7])
+       else
+         k_2 <-R enc_key;
+         return(k_2)
+     ))
+
+
+Proved indistinguishability between game 55 and the final game
+Adv[Game 1: indistinguishability from game 55] <= qKDF256 * P_SHA256_comp_prf(time_5, 1 + qKDF256) + qKDF128 * P_SHA256_comp_prf(time_4, 1 + qKDF128) + qMAC^2 / |t_SHA256_out| + 2 * qMAC^2 * length(padsha256, maxlength(game 14: m)) * P_SHA256_comp_prf(time_3, 2) / maxlength(t_SHA256_block) + P_SHA256_comp_prf(time_2, qMAC) + P_SHA256_joint(time_1, 1, qKDF128 + qKDF256) + -1 * qMAC^2 * P_SHA256_comp_prf(time_3, 2) + Adv[Game 55: indistinguishability from game 55]
+Adv[Game 55: indistinguishability from game 55] <= 0
+RESULT Proved indistinguishability between the input game and the final game up to probability qKDF256 * P_SHA256_comp_prf(time_5, 1 + qKDF256) + qKDF128 * P_SHA256_comp_prf(time_4, 1 + qKDF128) + qMAC^2 / |t_SHA256_out| + 2 * qMAC^2 * length(padsha256, maxlength(game 14: m)) * P_SHA256_comp_prf(time_3, 2) / maxlength(t_SHA256_block) + P_SHA256_comp_prf(time_2, qMAC) + P_SHA256_joint(time_1, 1, qKDF128 + qKDF256) + -1 * qMAC^2 * P_SHA256_comp_prf(time_3, 2)
+RESULT time_1 = (qMAC + qKDF256 + qKDF128) * time(SHA256_comp) + qMAC * time(padsha256_2) + qMAC * time(SHA256_comp_star, length(padsha256, maxlength(game 5: m))) + qMAC * time(padsha256, maxlength(game 5: m)) + (qKDF256 + qKDF128) * time(concatSHA256_pad) + (qKDF256 + qKDF128) * time(second_part) + (qKDF256 + qKDF128) * time(concatSHA256_2) + (qKDF256 + qKDF128) * time(first_part) + qKDF128 * time(truncate128) + time
+RESULT time_2 = qMAC * time(padsha256_2) + qMAC * time(SHA256_comp_star, length(padsha256, maxlength(game 10: m))) + qMAC * time(padsha256, maxlength(game 10: m)) + (2 * qKDF256^2 + 2 * qKDF128^2) * time(first_part) + (qKDF256 + qKDF128) * time(SHA256_comp) + (qKDF256 + qKDF128) * time(concatSHA256_pad) + (qKDF256 + qKDF128) * time(second_part) + qKDF128 * time(truncate128) + time
+RESULT time_3 = length(padsha256, maxlength(game 14: m)) * time(SHA256_comp) / maxlength(t_SHA256_block)
+RESULT time_4 = qMAC^2 * time(= bitstring, maxlength(game 18: m), maxlength(game 18: m)) + (2 * qKDF256^2 + 2 * qKDF128^2) * time(first_part) + (qKDF256 + qKDF128^2 - 1) * time(SHA256_comp) + (qKDF256 + qKDF128) * time(concatSHA256_pad) + (qKDF256 + qKDF128) * time(second_part) + qKDF128 * time(truncate128) + time
+RESULT time_5 = qMAC^2 * time(= bitstring, maxlength(game 37: m), maxlength(game 37: m)) + 2 * qKDF256^2 * time(first_part) + qKDF256 * time(concatSHA256_pad) + qKDF256 * time(second_part) + time + (qKDF256^2 - 1) * time(SHA256_comp)
+All queries proved.

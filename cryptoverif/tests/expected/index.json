@@ -1,0 +1,345 @@
+{
+  "cryptoverif": "2.13",
+  "limit": 10,
+  "examples": {
+    "examples/arinc823/publickey/arinc823-public-key.AUTHENTICATION.m4.cv": {
+      "exit": 2,
+      "ms": 50
+    },
+    "examples/arinc823/publickey/arinc823-public-key.KEY_SECRECY.m4.cv": {
+      "exit": 2,
+      "ms": 37
+    },
+    "examples/arinc823/publickey/arinc823-public-key.SECRECY.m4.cv": {
+      "exit": 2,
+      "ms": 38
+    },
+    "examples/arinc823/publickey/arinc823-public-key.fixed.AUTHENTICATION.m4.cv": {
+      "exit": 2,
+      "ms": 38
+    },
+    "examples/arinc823/publickey/arinc823-public-key.fixed.KEY_SECRECY.m4.cv": {
+      "exit": 2,
+      "ms": 60
+    },
+    "examples/arinc823/publickey/arinc823-public-key.fixed.SECRECY.m4.cv": {
+      "exit": 2,
+      "ms": 39
+    },
+    "examples/arinc823/sharedkey/arinc823-secret-key.AUTHENTICATION.m4.cv": {
+      "exit": 2,
+      "ms": 39
+    },
+    "examples/arinc823/sharedkey/arinc823-secret-key.KEY_SECRECY.m4.cv": {
+      "exit": 2,
+      "ms": 41
+    },
+    "examples/arinc823/sharedkey/arinc823-secret-key.SECRECY.m4.cv": {
+      "exit": 2,
+      "ms": 38
+    },
+    "examples/arinc823/sharedkey/arinc823-secret-key.UKS.m4.cv": {
+      "exit": 2,
+      "ms": 39
+    },
+    "examples/arinc823/sharedkey/lemmaEnc.ocv": {
+      "exit": 0,
+      "ms": 402
+    },
+    "examples/arinc823/sharedkey/lemmaEnc_equiv.ocv": {
+      "exit": 0,
+      "ms": 394
+    },
+    "examples/arinc823/sharedkey/lemmaEnc_equiv_v2.ocv": {
+      "exit": 0,
+      "ms": 451
+    },
+    "examples/arinc823/sharedkey/lemmaEnc_equiv_v2_optim.ocv": {
+      "exit": 0,
+      "ms": 113
+    },
+    "examples/arinc823/sharedkey/lemmaEnc_equiv_v3.ocv": {
+      "exit": 0,
+      "ms": 375
+    },
+    "examples/arinc823/sharedkey/lemmaMAC_KDF_are_indep_PRFs_from_compression_PRF.ocv": {
+      "exit": 0,
+      "ms": 180
+    },
+    "examples/arinc823/sharedkey/lemmaMAC_KDF_are_indep_PRFs_from_compression_PRF_equiv.ocv": {
+      "exit": 0,
+      "ms": 169
+    },
+    "examples/arinc823/sharedkey/lemmaMAC_KDF_are_indep_PRFs_from_compression_ROM.ocv": {
+      "exit": 0,
+      "ms": 77
+    },
+    "examples/arinc823/sharedkey/lemmaMAC_SUFCMA_KDF_PRF.ocv": {
+      "exit": 0,
+      "ms": 84
+    },
+    "examples/arinc823/sharedkey/lemmaMAC_SUFCMA_KDF_PRF_equiv.ocv": {
+      "exit": 0,
+      "ms": 99
+    },
+    "examples/arinc823/sharedkey/lemmaMAC_collision_resistant.ocv": {
+      "exit": 0,
+      "ms": 91
+    },
+    "examples/arinc823/sharedkey/lemmaMAC_collision_resistant_event.ocv": {
+      "exit": 0,
+      "ms": 87
+    },
+    "examples/basic/forward-secrecy-focus-success-simplify.cv": {
+      "exit": 0,
+      "ms": 195
+    },
+    "examples/basic/pfdh.cv": {
+      "exit": 0,
+      "ms": 71
+    },
+    "examples/basic/pkauth-guess.cv": {
+      "exit": 0,
+      "ms": 51
+    },
+    "examples/basic/runex.cv": {
+      "exit": 0,
+      "ms": 50
+    },
+    "examples/basic/signedDH-DDH-RSR.cv": {
+      "exit": 0,
+      "ms": 191
+    },
+    "examples/basic/signedDH-DDH-auto.cv": {
+      "exit": 0,
+      "ms": 348
+    },
+    "examples/basic/signedDH-DDH.cv": {
+      "exit": 0,
+      "ms": 185
+    },
+    "examples/basic/signedDH-forward-secrecy-rompartial.cv": {
+      "exit": 0,
+      "ms": 1339
+    },
+    "examples/basic/signedDH-forward-secrecy.cv": {
+      "exit": 0,
+      "ms": 3298
+    },
+    "examples/hpke/dhkem.auth.insider-cca-lr.m4.ocv": {
+      "exit": 2,
+      "ms": 47
+    },
+    "examples/hpke/dhkem.auth.outsider-auth-lr.m4.ocv": {
+      "exit": 2,
+      "ms": 41
+    },
+    "examples/hpke/dhkem.auth.outsider-cca-lr.m4.ocv": {
+      "exit": 2,
+      "ms": 40
+    },
+    "examples/hpke/dhkem.base.indcca2-lr.m4.ocv": {
+      "exit": 2,
+      "ms": 39
+    },
+    "examples/hpke/hpke.auth.insider-cca.m4.ocv": {
+      "exit": 2,
+      "ms": 47
+    },
+    "examples/hpke/hpke.auth.outsider-auth.m4.ocv": {
+      "exit": 2,
+      "ms": 53
+    },
+    "examples/hpke/hpke.auth.outsider-cca.m4.ocv": {
+      "exit": 2,
+      "ms": 46
+    },
+    "examples/hpke/hpke.base.indcca2.ocv": {
+      "exit": 2,
+      "ms": 42
+    },
+    "examples/hpke/keyschedule.prf.ocv": {
+      "exit": 2,
+      "ms": 40
+    },
+    "examples/kerberos/BasicKerberos_keyuse_Updated.m4.cv": {
+      "exit": 2,
+      "ms": 41
+    },
+    "examples/kerberos/PublicKeyKerberos_keyuse_Updated.m4.cv": {
+      "exit": 2,
+      "ms": 39
+    },
+    "examples/noiseNK/NK-PRFODH.cv": {
+      "exit": 2,
+      "ms": 51
+    },
+    "examples/noiseNK/NK.cv": {
+      "exit": 2,
+      "ms": 52
+    },
+    "examples/obasic/OAEP-CPA-diff.ocv": {
+      "exit": 0,
+      "ms": 65
+    },
+    "examples/obasic/OAEP-CPA.ocv": {
+      "exit": 0,
+      "ms": 68
+    },
+    "examples/obasic/OAEP.ocv": {
+      "exit": 0,
+      "ms": 309
+    },
+    "examples/obasic/OEKE-forward-secrecy.ocv": {
+      "slow": true
+    },
+    "examples/obasic/OEKE.ocv": {
+      "exit": 0,
+      "ms": 1533
+    },
+    "examples/obasic/encryptBR93-1.ocv": {
+      "exit": 0,
+      "ms": 59
+    },
+    "examples/obasic/encryptBR93-2.ocv": {
+      "exit": 0,
+      "ms": 107
+    },
+    "examples/obasic/encryptBR93-2v.ocv": {
+      "exit": 0,
+      "ms": 112
+    },
+    "examples/obasic/fdh-JSC.ocv": {
+      "exit": 0,
+      "ms": 72
+    },
+    "examples/obasic/fdh-latergen.ocv": {
+      "exit": 0,
+      "ms": 75
+    },
+    "examples/obasic/fdh-multikey.ocv": {
+      "exit": 0,
+      "ms": 113
+    },
+    "examples/obasic/fdh.ocv": {
+      "exit": 0,
+      "ms": 64
+    },
+    "examples/obasic/intctxt-corrupt-comput-hyp_no_comput.ocv": {
+      "exit": 0,
+      "ms": 49
+    },
+    "examples/obasic/intctxt-corrupt-comput.ocv": {
+      "exit": 0,
+      "ms": 54
+    },
+    "examples/obasic/intctxt-corrupt.ocv": {
+      "exit": 0,
+      "ms": 74
+    },
+    "examples/obasic/undeniable-sig.ocv": {
+      "exit": 0,
+      "ms": 85
+    },
+    "examples/obasic/undeniable-sig2.ocv": {
+      "exit": 0,
+      "ms": 98
+    },
+    "examples/pq-ssh/ssh.m4.ocv": {
+      "exit": 2,
+      "ms": 42
+    },
+    "examples/textsecure/TextSecure.m4.cv": {
+      "exit": 2,
+      "ms": 40
+    },
+    "examples/textsecure/indiff_HKDF_1.ocv": {
+      "exit": 0,
+      "ms": 99
+    },
+    "examples/textsecure/indiff_HKDF_2.ocv": {
+      "exit": 0,
+      "ms": 127
+    },
+    "examples/tls13/HKDFexpand.ocv": {
+      "exit": 0,
+      "ms": 52
+    },
+    "examples/tls13/HKDFexpand_query_equiv.ocv": {
+      "exit": 0,
+      "ms": 43
+    },
+    "examples/tls13/KeySchedule.m4.ocv": {
+      "exit": 2,
+      "ms": 37
+    },
+    "examples/tls13/pq-tls/tls13-core-InitialHandshake.m4.ocv": {
+      "exit": 2,
+      "ms": 54
+    },
+    "examples/tls13/pq-tls/tls13-core-PSKDHE-CorruptPSK.m4.ocv": {
+      "exit": 2,
+      "ms": 55
+    },
+    "examples/tls13/pq-tls/tls13-core-PSKandPSKDHE-NoCorruption.m4.ocv": {
+      "exit": 2,
+      "ms": 47
+    },
+    "examples/tls13/tls13-core-InitialHandshake-1RTTonly.m4.cv": {
+      "exit": 2,
+      "ms": 38
+    },
+    "examples/tls13/tls13-core-InitialHandshake.m4.cv": {
+      "exit": 2,
+      "ms": 41
+    },
+    "examples/tls13/tls13-core-PSKDHE-CorruptPSK.m4.cv": {
+      "exit": 2,
+      "ms": 38
+    },
+    "examples/tls13/tls13-core-PSKandPSKDHE-NoCorruption.m4.cv": {
+      "exit": 2,
+      "ms": 39
+    },
+    "examples/tls13/tls13-core-RecordProtocol-0RTT-badkey.cv": {
+      "exit": 0,
+      "ms": 48
+    },
+    "examples/tls13/tls13-core-RecordProtocol-0RTT.cv": {
+      "exit": 0,
+      "ms": 75
+    },
+    "examples/tls13/tls13-core-RecordProtocol.cv": {
+      "exit": 0,
+      "ms": 71
+    },
+    "examples/wireguard/WG.25519.AB-BA.replay_prot.cv": {
+      "exit": 2,
+      "ms": 50
+    },
+    "examples/wireguard/WG.25519.correctness.m4.cv": {
+      "exit": 2,
+      "ms": 37
+    },
+    "examples/wireguard/WG.25519.dos.cv": {
+      "exit": 0,
+      "ms": 241
+    },
+    "examples/wireguard/WG.25519.identityhiding.m4.cv": {
+      "exit": 2,
+      "ms": 54
+    },
+    "examples/wireguard/WG.25519.keysecrecy.m4.cv": {
+      "exit": 2,
+      "ms": 38
+    },
+    "examples/wireguard/WG.25519.m4.cv": {
+      "exit": 2,
+      "ms": 39
+    },
+    "examples/wireguard/WG.25519.psk_dyn.m4.cv": {
+      "exit": 2,
+      "ms": 39
+    }
+  }
+}

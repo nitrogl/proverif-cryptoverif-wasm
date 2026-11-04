@@ -1,0 +1,4359 @@
+Doing expand get, insert and prove unique annotations... No change.
+Doing simplify (non-expanded game)... No change.
+Doing expand... Done.
+Doing remove assignments of findcond... Done.
+Doing simplify... Run simplify 1 time(s). Fixpoint reached.
+No change.
+Doing move all binders... Done.
+Doing SA rename new without array accesses and remove assignments of findcond... No change.
+Doing merge branches... No change.
+Proof of (one-session) secrecy of k_secret_c failed:
+  k_secret_c is defined from k', which is not defined only by restrictions.
+Proof of (one-session) secrecy of k_secret_s failed:
+  k_secret_s is defined from k, which is not defined only by restrictions.
+Doing insert instruction find j3 <= Ns suchthat defined(X'[j3], Y[j3]) && X = X'[j3] && Y' = Y[j3] then else event_abort client_break_auth at occurrence 57... Done.
+Doing insert instruction find j4 <= Nc suchthat defined(X[j4]) && X' = X[j4] then else event_abort server_break_auth at occurrence 134... Done.
+Proof of event(client_break_auth) ==> false with public variables k_secret_c, k_secret_s failed:
+  Found client_break_auth at 79
+  but could not prove false
+Proof of event(server_break_auth) ==> false with public variables k_secret_s, k_secret_c failed:
+  Found server_break_auth at 146
+  but could not prove false
+Sorry, the following queries remain unproved:
+- event(server_break_auth) ==> false with public variables k_secret_s, k_secret_c
+- event(client_break_auth) ==> false with public variables k_secret_c, k_secret_s
+Doing simplify eliminating code unreachable when queries fail... Doing global dependency analysis on x inside simplify... At 17, returned message X depends on x.
+No change
+Doing global dependency analysis on y inside simplify... At 116, returned message Y depends on y.
+No change
+Applied collision x_1 <-R Z; forall X_1, Y_1: G; return((exp(X_1, x_1) = Y_1)) <=(1 / |Z|)=> return(false) if X_1 independent-of x_1 && Y_1 independent-of x_1 with x_1 -> y[is_1], X_1 -> g, Y_1 -> Y' Probability: Ns * Nc / |Z|
+Applied collision x_1 <-R Z; forall X_1, Y_1: G; return((exp(X_1, x_1) = Y_1)) <=(1 / |Z|)=> return(false) if X_1 independent-of x_1 && Y_1 independent-of x_1 with x_1 -> x[i2_3], X_1 -> g, Y_1 -> X'[is_1] Probability: Nc * Ns / |Z|
+Doing global dependency analysis on x inside simplify... At 17, returned message X depends on x.
+No change
+Doing global dependency analysis on y inside simplify... At 113, returned message Y depends on y.
+No change
+Run simplify 2 time(s). Maximum reached.
+Done.
+Trying equivalence rom(H)... Transf. OK Proba. computed Transf. done Succeeded.
+Doing simplify (non-expanded game)... Eliminated collisions between y and y Probability: 0.5 * Pcoll2rand(Z) * Ns * Ns
+Eliminated collisions between x and x Probability: 0.5 * Pcoll2rand(Z) * Nc * Nc
+Done.
+Doing expand... Eliminated collisions between y and y Probability: 0.5 * Pcoll2rand(Z) * Ns * Ns
+Eliminated collisions between x and x Probability: 0.5 * Pcoll2rand(Z) * Nc * Nc
+Done.
+Doing remove assignments of findcond... Done.
+Doing simplify... Doing global dependency analysis on y inside simplify... At 389, returned message Y depends on y.
+No change
+Doing global dependency analysis on psk_1 inside simplify... Done. Restarting simplify
+Eliminated collisions between psk_1 and x4[ri_6] Probability: qH / |key|
+(psk_1 collides with a value independent of psk_1[...] with probability at most 1 / |key|;
+ x4[ri_6] does not depend on psk_1[...])
+Doing global dependency analysis on r_1 inside simplify... At 225, returned message k_s_2 depends on r_1.
+No change
+Doing global dependency analysis on x inside simplify... At 16, returned message X depends on x.
+No change
+Doing global dependency analysis on y inside simplify... At 223, returned message Y depends on y.
+No change
+Eliminated collisions between k_s' and k_s_1 Probability: Nc / |key|
+(k_s' collides with a value independent of r with probability at most 1 / |key|;
+ k_s_1 does not depend on r)
+Eliminated collisions between exp(g, y) and Y'[ri_5] Probability: Pcoll1rand(Z) * Nc * Ns
+(exp(g, y) collides with a value independent of y with probability at most Pcoll1rand(Z);
+ Y'[ri_5] does not depend on y)
+Eliminated collisions between y and y Probability: 0.5 * Pcoll2rand(Z) * Ns * Ns
+Doing global dependency analysis on r_1 inside simplify... At 108, returned message k_s_2 depends on r_1.
+No change
+Doing global dependency analysis on x inside simplify... At 15, returned message X depends on x.
+No change
+Doing global dependency analysis on y inside simplify... At 106, returned message Y depends on y.
+No change
+Run simplify 2 time(s). Maximum reached.
+Done.
+Doing move all binders... Done.
+Doing SA rename new without array accesses and remove assignments of findcond... Done.
+Doing merge branches... No change.
+Trying equivalence splitter(tuple3keys)... Transf. OK Proba. computed Transf. done Succeeded.
+Doing simplify (non-expanded game)... No change.
+Doing expand... No change.
+Doing remove assignments of findcond... Done.
+Doing simplify... Doing global dependency analysis on part1 inside simplify... At 49, returned message part1[u_7] depends on part1.
+No change
+Doing global dependency analysis on x inside simplify... At 15, returned message X depends on x.
+No change
+Doing global dependency analysis on y inside simplify... At 69, returned message Y depends on y.
+No change
+Doing global dependency analysis on part2 inside simplify... At 71, returned message part2 depends on part2.
+No change
+Run simplify 1 time(s). Fixpoint reached.
+No change.
+Doing move all binders... No change.
+Doing SA rename new without array accesses and remove assignments of findcond... No change.
+Doing merge branches... No change.
+Trying equivalence splitter(tuple3keys)... Failed:
+At 135, term r_2 could not be discharged
+Done all possible transformations with this equivalence.
+Trying equivalence move_array(key) with part1.... Transf. OK Proba. computed Transf. done Succeeded.
+Doing simplify (non-expanded game)... Eliminated collisions between x and x Probability: 0.5 * Pcoll2rand(Z) * Nc * Nc
+Done.
+Doing expand... Eliminated collisions between x and x Probability: 0.5 * Pcoll2rand(Z) * Nc * Nc
+Done.
+Doing remove assignments of findcond... Done.
+Doing simplify... Doing global dependency analysis on y inside simplify... At 67, returned message Y depends on y.
+No change
+Doing global dependency analysis on x inside simplify... At 15, returned message X depends on x.
+No change
+Doing global dependency analysis on part2 inside simplify... At 69, returned message part2 depends on part2.
+No change
+Doing global dependency analysis on Y_1 inside simplify... At 49, returned message Y_1 depends on Y_1.
+No change
+Doing global dependency analysis on part3 inside simplify... The variable k_secret_s depends on part3 and occurs in a query.
+No change
+Eliminated collisions between x and x Probability: 0.5 * Pcoll2rand(Z) * Nc * Nc
+Doing global dependency analysis on y inside simplify... At 67, returned message Y depends on y.
+No change
+Doing global dependency analysis on x inside simplify... At 15, returned message X depends on x.
+No change
+Doing global dependency analysis on part2 inside simplify... At 69, returned message part2 depends on part2.
+No change
+Doing global dependency analysis on Y_1 inside simplify... At 49, returned message Y_1 depends on Y_1.
+No change
+Run simplify 2 time(s). Fixpoint reached.
+Done.
+Doing move all binders... No change.
+Doing SA rename new without array accesses and remove assignments of findcond... Done.
+Doing merge branches... No change.
+Proved query event(client_break_auth) ==> false with public variables k_secret_c, k_secret_s
+Proved query event(server_break_auth) ==> false with public variables k_secret_s, k_secret_c
+All active queries proved. Going back to the last focus or guess_branch command.
+     cStart() :=
+     hk_1 <-R hashkey;
+     psk_1 <-R key;
+     return();
+     ((
+       foreach ic <= Nc do
+       cC0() :=
+       x <-R Z;
+       X: G <- exp(g, x);
+       return(X);
+       cC2(Y': G, k_s_1: key) :=
+       v_5: three_keys <- H(hk_1, exp(Y', x), X, Y', psk_1);
+       k_s': key <- 2-proj-tuple3keys(v_5);
+       if k_s_1 = k_s' then
+       k_c'_1: key <- 1-proj-tuple3keys(v_5);
+       if defined(corruptedPSK) then
+         return(k_c'_1)
+       else
+         k': key <- 3-proj-tuple3keys(v_5);
+         find j3 = j3_1 <= Ns suchthat defined(X'[j3_1], Y[j3_1]) && (X = X'[j3_1]) && (Y' = Y[j3_1]) then
+           k_secret_c: key <- k';
+           return(k_c'_1)
+         else
+           event_abort client_break_auth
+     ) | (
+       foreach is <= Ns do
+       cS1(X': G) :=
+       y <-R Z;
+       Y: G <- exp(g, y);
+       v_4: three_keys <- H(hk_1, exp(X', y), X', Y, psk_1);
+       k_s_2: key <- 2-proj-tuple3keys(v_4);
+       k_c: key <- 1-proj-tuple3keys(v_4);
+       return(Y, k_s_2);
+       cS3(k_c'_2: key) :=
+       if k_c = k_c'_2 then
+       if defined(corruptedPSK) then
+         yield
+       else
+         k: key <- 3-proj-tuple3keys(v_4);
+         find j4 = j4_1 <= Nc suchthat defined(X[j4_1]) && (X' = X[j4_1]) then
+           k_secret_s: key <- k
+         else
+           event_abort server_break_auth
+     ) | (
+       cCorrupt() :=
+       corruptedPSK: bool <- cst_bool;
+       return(psk_1)
+     ) | (
+       foreach iH <= qH do
+       ch1(x1: G, x2: G, x3: G, x4: key) :=
+       return(H(hk_1, x1, x2, x3, x4))
+     ))
+
+Doing insert instruction find j' <= Nc suchthat defined(X[j']) && X' = X[j'] then at occurrence 88... Done.
+Doing SA rename Y... Done.
+Doing SA rename new without array accesses and remove assignments of findcond... Done.
+Doing simplify... Doing global dependency analysis on x inside simplify... At 17, returned message X depends on x.
+No change
+Doing global dependency analysis on y_2 inside simplify... At 144, returned message Y_2 depends on y_2.
+No change
+Eliminated collisions between x and x Probability: 0.5 * Pcoll2rand(Z) * Nc * Nc
+Applied collision x_1 <-R Z; forall X_1, Y_1: G; return((exp(X_1, x_1) = Y_1)) <=(1 / |Z|)=> return(false) if X_1 independent-of x_1 && Y_1 independent-of x_1 with x_1 -> x[j4_1], X_1 -> g, Y_1 -> X' Probability: Nc * Ns / |Z|
+Doing global dependency analysis on x inside simplify... At 17, returned message X depends on x.
+No change
+Doing global dependency analysis on y_2 inside simplify... At 126, returned message Y_2 depends on y_2.
+No change
+Run simplify 2 time(s). Fixpoint reached.
+Done.
+Doing insert instruction find j'' <= Ns suchthat defined(Y_2[j''], X'[j'']) && X = X'[j''] && Y' = Y_2[j''] then at occurrence 20... Done.
+Doing simplify... Doing global dependency analysis on x inside simplify... At 17, returned message X depends on x.
+No change
+Doing global dependency analysis on y_2 inside simplify... At 204, returned message Y_2 depends on y_2.
+No change
+Eliminated collisions between y_2 and y_2 Probability: 0.5 * Pcoll2rand(Z) * Ns * Ns
+Eliminated collisions between x and x Probability: 0.5 * Pcoll2rand(Z) * Nc * Nc
+Applied collision x_1 <-R Z; forall X_1, Y_1: G; return((exp(X_1, x_1) = Y_1)) <=(1 / |Z|)=> return(false) if X_1 independent-of x_1 && Y_1 independent-of x_1 with x_1 -> y_2[j3_1], X_1 -> g, Y_1 -> Y' Probability: Ns * Nc / |Z|
+Doing global dependency analysis on x inside simplify... At 17, returned message X depends on x.
+No change
+Doing global dependency analysis on y_2 inside simplify... At 176, returned message Y_2 depends on y_2.
+No change
+Run simplify 2 time(s). Fixpoint reached.
+Done.
+Trying equivalence rom(H)... Transf. OK Proba. computed Transf. done Succeeded.
+Doing simplify (non-expanded game)... Eliminated collisions between y_1 and y_1 Probability: 0.5 * Pcoll2rand(Z) * Ns * Ns
+Eliminated collisions between y_2 and y_1 Probability: Pcoll2rand(Z) * Ns * Ns
+Eliminated collisions between x and x Probability: 0.5 * Pcoll2rand(Z) * Nc * Nc
+Eliminated collisions between y_2 and y_2 Probability: 0.5 * Pcoll2rand(Z) * Ns * Ns
+Applied collision x_1 <-R Z; forall y_1, z: Z; return((mult(x_1, y_1) = z)) <=(1 / |Z|)=> return(false) if y_1 independent-of x_1 && z independent-of x_1 with x_1 -> x[i2_213], y_1 -> y_2, z -> mult(x[i2_214], y_2[ri_22]) Probability: Nc * Ns * Ns * Nc / |Z|
+Applied collision x_1 <-R Z; forall y_1, z: Z; return((mult(x_1, y_1) = z)) <=(1 / |Z|)=> return(false) if y_1 independent-of x_1 && z independent-of x_1 with x_1 -> y_2[i2_206], y_1 -> x, z -> mult(x[i2_207], y_2[ri_32]) Probability: Ns * Nc * Ns * Nc / |Z|
+Done.
+Doing expand... Eliminated collisions between y_2 and y_2 Probability: 0.5 * Pcoll2rand(Z) * Ns * Ns
+Eliminated collisions between x and x Probability: 0.5 * Pcoll2rand(Z) * Nc * Nc
+Applied collision x_1 <-R Z; forall y_1, z: Z; return((mult(x_1, y_1) = z)) <=(1 / |Z|)=> return(false) if y_1 independent-of x_1 && z independent-of x_1 with x_1 -> x[i2_340], y_1 -> y_2[i2_342], z -> mult(y_2[i2_341], x) Probability: Nc * Ns * Nc * Ns / |Z|
+Applied collision x_1 <-R Z; forall X_1, Y_1: G; return((exp(X_1, x_1) = Y_1)) <=(1 / |Z|)=> return(false) if X_1 independent-of x_1 && Y_1 independent-of x_1 with x_1 -> y_2, X_1 -> g, Y_1 -> Y'[ri_25] Probability: Ns * Nc / |Z|
+Applied collision x_1 <-R Z; forall X_1, Y_1: G; return((exp(X_1, x_1) = Y_1)) <=(1 / |Z|)=> return(false) if X_1 independent-of x_1 && Y_1 independent-of x_1 with x_1 -> x[ri_20], X_1 -> g, Y_1 -> X' Probability: Nc * Ns / |Z|
+Done.
+Doing remove assignments of findcond... Done.
+Doing simplify... Doing global dependency analysis on x inside simplify... At 16, returned message X depends on x.
+No change
+Doing global dependency analysis on y_2 inside simplify... At 403, returned message Y_2 depends on y_2.
+No change
+Doing global dependency analysis on psk_1 inside simplify... At 536, returned message psk_1 depends on psk_1.
+No change
+Doing global dependency analysis on y_1 inside simplify... At 512, returned message Y_3 depends on y_1.
+No change
+Doing global dependency analysis on r_5 inside simplify... At 514, returned message k_s_2 depends on r_5.
+No change
+Doing global dependency analysis on r_6 inside simplify... At 405, returned message k_s_2 depends on r_6.
+No change
+Doing global dependency analysis on r_7 inside simplify... At 704, returned message r_7 depends on r_7.
+No change
+Eliminated collisions between k_s' and k_s_1 Probability: Nc / |key|
+(k_s' collides with a value independent of r_4 with probability at most 1 / |key|;
+ k_s_1 does not depend on r_4)
+Eliminated collisions between k_s' and k_s_1 Probability: Nc / |key|
+(k_s' collides with a value independent of r_3 with probability at most 1 / |key|;
+ k_s_1 does not depend on r_3)
+Eliminated collisions between exp(g, y_2) and x3[ri_21] Probability: Pcoll1rand(Z) * qH * Ns
+(exp(g, y_2) collides with a value independent of y_2 with probability at most Pcoll1rand(Z);
+ x3[ri_21] does not depend on y_2)
+Eliminated collisions between exp(g, y_1) and x3[ri_16] Probability: Pcoll1rand(Z) * qH * Ns
+(exp(g, y_1) collides with a value independent of y_1 with probability at most Pcoll1rand(Z);
+ x3[ri_16] does not depend on y_1)
+Eliminated collisions between x and x Probability: 0.5 * Pcoll2rand(Z) * Nc * Nc
+Eliminated collisions between y_2 and y_2 Probability: 0.5 * Pcoll2rand(Z) * Ns * Ns
+Applied collision x_1 <-R Z; forall y_1, z: Z; return((mult(x_1, y_1) = z)) <=(1 / |Z|)=> return(false) if y_1 independent-of x_1 && z independent-of x_1 with x_1 -> y_2[i2_458], y_1 -> x, z -> mult(x[i2_457], y_2[ri_32]) Probability: Ns * Nc * Ns * Nc / |Z|
+Doing global dependency analysis on x inside simplify... At 16, returned message X depends on x.
+No change
+Doing global dependency analysis on y_2 inside simplify... At 261, returned message Y_2 depends on y_2.
+No change
+Doing global dependency analysis on psk_1 inside simplify... At 336, returned message psk_1 depends on psk_1.
+No change
+Doing global dependency analysis on y_1 inside simplify... At 312, returned message Y_3 depends on y_1.
+No change
+Doing global dependency analysis on r_5 inside simplify... At 314, returned message k_s_2 depends on r_5.
+No change
+Doing global dependency analysis on r_6 inside simplify... At 263, returned message k_s_2 depends on r_6.
+No change
+Doing global dependency analysis on r_7 inside simplify... At 503, returned message r_7 depends on r_7.
+No change
+Applied collision x_1 <-R Z; forall X_1, Y_1: G; return((exp(X_1, x_1) = Y_1)) <=(1 / |Z|)=> return(false) if X_1 independent-of x_1 && Y_1 independent-of x_1 with x_1 -> y_2[i2_512], X_1 -> g, Y_1 -> x3[ri_31] Probability: Ns * qH / |Z|
+Run simplify 2 time(s). Maximum reached.
+Done.
+Doing move all binders... Done.
+Doing SA rename new without array accesses and remove assignments of findcond... Done.
+Doing merge branches... No change.
+Doing simplify... Doing global dependency analysis on x inside simplify... At 16, returned message X depends on x.
+No change
+Doing global dependency analysis on y_2 inside simplify... At 172, returned message Y_2 depends on y_2.
+No change
+Doing global dependency analysis on psk_1 inside simplify... At 247, returned message psk_1 depends on psk_1.
+No change
+Doing global dependency analysis on y_1 inside simplify... At 223, returned message Y_3 depends on y_1.
+No change
+Doing global dependency analysis on r_5 inside simplify... At 225, returned message k_s_2 depends on r_5.
+No change
+Doing global dependency analysis on r_6 inside simplify... At 174, returned message k_s_2 depends on r_6.
+No change
+Doing global dependency analysis on r_7 inside simplify... At 381, returned message r_7 depends on r_7.
+No change
+Doing global dependency analysis on x inside simplify... At 16, returned message X depends on x.
+No change
+Doing global dependency analysis on y_2 inside simplify... At 171, returned message Y_2 depends on y_2.
+No change
+Doing global dependency analysis on psk_1 inside simplify... At 246, returned message psk_1 depends on psk_1.
+No change
+Doing global dependency analysis on y_1 inside simplify... At 222, returned message Y_3 depends on y_1.
+No change
+Doing global dependency analysis on r_5 inside simplify... At 224, returned message k_s_2 depends on r_5.
+No change
+Doing global dependency analysis on r_6 inside simplify... At 173, returned message k_s_2 depends on r_6.
+No change
+Doing global dependency analysis on r_7 inside simplify... At 380, returned message r_7 depends on r_7.
+No change
+Run simplify 2 time(s). Fixpoint reached.
+Done.
+Trying equivalence gdh(exp) with variables: x -> a, y_2 -> b.... Failed.
+Doing remove assignments of binder x_O_15... Done.
+Doing remove assignments of binder x_O_27... Done.
+Trying equivalence gdh(exp) with variables: x -> a, y_2 -> b.... Transf. OK Eliminated collisions between y_2 and y_2 Probability: 0.5 * Pcoll2rand(Z) * Ns * Ns
+Eliminated collisions between x and x Probability: 0.5 * Pcoll2rand(Z) * Nc * Nc
+Proba. computed Transf. done Succeeded.
+Doing simplify (non-expanded game)... Done.
+Doing expand... Done.
+Doing remove assignments of findcond... Done.
+Doing simplify... Doing global dependency analysis on y_1 inside simplify... At 207, returned message Y_3 depends on y_1.
+No change
+Doing global dependency analysis on psk_1 inside simplify... At 231, returned message psk_1 depends on psk_1.
+No change
+Doing global dependency analysis on x inside simplify... At 16, returned message X depends on x.
+No change
+Doing global dependency analysis on r_5 inside simplify... At 209, returned message k_s_2 depends on r_5.
+No change
+Doing global dependency analysis on r_6 inside simplify... At 159, returned message k_s_2 depends on r_6.
+No change
+Doing global dependency analysis on r_7 inside simplify... At 337, returned message r_7 depends on r_7.
+No change
+Doing global dependency analysis on y_2 inside simplify... At 157, returned message Y_2 depends on y_2.
+No change
+Run simplify 1 time(s). Fixpoint reached.
+No change.
+Doing move all binders... No change.
+Doing SA rename new without array accesses and remove assignments of findcond... No change.
+Doing merge branches... No change.
+Trying equivalence splitter(tuple3keys)... Transf. OK Proba. computed Transf. done Succeeded.
+Doing simplify (non-expanded game)... No change.
+Doing expand... No change.
+Doing remove assignments of findcond... Done.
+Doing simplify... Doing global dependency analysis on y_1 inside simplify... At 182, returned message Y_3 depends on y_1.
+No change
+Doing global dependency analysis on psk_1 inside simplify... At 206, returned message psk_1 depends on psk_1.
+No change
+Doing global dependency analysis on x inside simplify... At 16, returned message X depends on x.
+No change
+Doing global dependency analysis on r_5 inside simplify... At 184, returned message k_s_2 depends on r_5.
+No change
+Doing global dependency analysis on part1_1 inside simplify... At 45, returned message part1_1[j''] depends on part1_1.
+No change
+Doing global dependency analysis on r_7 inside simplify... At 312, returned message r_7 depends on r_7.
+No change
+Doing global dependency analysis on y_2 inside simplify... At 139, returned message Y_2 depends on y_2.
+No change
+Doing global dependency analysis on part2_1 inside simplify... At 141, returned message part2_1 depends on part2_1.
+No change
+Run simplify 1 time(s). Fixpoint reached.
+No change.
+Doing move all binders... No change.
+Doing SA rename new without array accesses and remove assignments of findcond... No change.
+Doing merge branches... No change.
+Trying equivalence splitter(tuple3keys)... Failed.
+Done all possible transformations with this equivalence.
+Proved one-session secrecy of k_secret_c
+Proved secrecy of k_secret_c
+Proved one-session secrecy of k_secret_s
+Proved secrecy of k_secret_s
+===================== Proof starts =======================
+Initial state
+Game 1 is
+      cStart() :=
+      hk_1 <-R hashkey;
+      psk_1 <-R key;
+      return();
+      ((
+        foreach ic <= Nc do
+        cC0() :=
+        x <-R Z;
+        X: G <- exp(g, x);
+        return(X);
+        cC2(Y': G, k_s_1: key) :=
+  {20}  let tuple3keys(k_c'_1: key, k_s': key, k': key) = H(hk_1, exp(Y', x), X, Y', psk_1) in
+        if k_s_1 = k_s' then
+        if defined(corruptedPSK) then
+          return(k_c'_1)
+        else
+          k_secret_c: key <- k';
+          return(k_c'_1)
+      ) | (
+        foreach is <= Ns do
+        cS1(X': G) :=
+        y <-R Z;
+        Y: G <- exp(g, y);
+  {64}  let tuple3keys(k_c: key, k_s_2: key, k: key) = H(hk_1, exp(X', y), X', Y, psk_1) in
+        return(Y, k_s_2);
+        cS3(k_c'_2: key) :=
+        if k_c = k_c'_2 then
+        if defined(corruptedPSK) then
+          yield
+        else
+          k_secret_s: key <- k
+      ) | (
+        cCorrupt() :=
+        corruptedPSK: bool <- true;
+        return(psk_1)
+      ) | (
+        foreach iH <= qH do
+        ch1(x1: G, x2: G, x3: G, x4: key) :=
+        return(H(hk_1, x1, x2, x3, x4))
+      ))
+
+
+Applying expand
+  - Expand if/find/let
+    - Simplify pattern tuple3keys(k_c: key, k_s_2: key, k: key) (bijective tuple expanded) at 64
+    - Simplify pattern tuple3keys(k_c'_1: key, k_s': key, k': key) (bijective tuple expanded) at 20
+yields
+
+Game 2 is
+      cStart() :=
+      hk_1 <-R hashkey;
+      psk_1 <-R key;
+      return();
+      ((
+        foreach ic <= Nc do
+        cC0() :=
+        x <-R Z;
+        X: G <- exp(g, x);
+        return(X);
+        cC2(Y': G, k_s_1: key) :=
+        v_5: three_keys <- H(hk_1, exp(Y', x), X, Y', psk_1);
+        k': key <- 3-proj-tuple3keys(v_5);
+        k_s': key <- 2-proj-tuple3keys(v_5);
+        k_c'_1: key <- 1-proj-tuple3keys(v_5);
+        if k_s_1 = k_s' then
+        if defined(corruptedPSK) then
+          return(k_c'_1)
+        else
+          k_secret_c: key <- k';
+          return(k_c'_1)
+      ) | (
+        foreach is <= Ns do
+        cS1(X': G) :=
+        y <-R Z;
+        Y: G <- exp(g, y);
+        v_4: three_keys <- H(hk_1, exp(X', y), X', Y, psk_1);
+        k: key <- 3-proj-tuple3keys(v_4);
+        k_s_2: key <- 2-proj-tuple3keys(v_4);
+        k_c: key <- 1-proj-tuple3keys(v_4);
+        return(Y, k_s_2);
+        cS3(k_c'_2: key) :=
+        if k_c = k_c'_2 then
+        if defined(corruptedPSK) then
+          yield
+        else
+          k_secret_s: key <- k
+      ) | (
+        cCorrupt() :=
+        corruptedPSK: bool <- true;
+        return(psk_1)
+      ) | (
+        foreach iH <= qH do
+        ch1(x1: G, x2: G, x3: G, x4: key) :=
+        return(H(hk_1, x1, x2, x3, x4))
+      ))
+
+
+Applying remove assignments of findcond
+  - Remove assignments on corruptedPSK (definition point kept, all usages removed)
+yields
+
+Game 3 is
+      cStart() :=
+      hk_1 <-R hashkey;
+      psk_1 <-R key;
+      return();
+      ((
+        foreach ic <= Nc do
+        cC0() :=
+        x <-R Z;
+        X: G <- exp(g, x);
+        return(X);
+        cC2(Y': G, k_s_1: key) :=
+        v_5: three_keys <- H(hk_1, exp(Y', x), X, Y', psk_1);
+        k': key <- 3-proj-tuple3keys(v_5);
+        k_s': key <- 2-proj-tuple3keys(v_5);
+        k_c'_1: key <- 1-proj-tuple3keys(v_5);
+        if k_s_1 = k_s' then
+        if defined(corruptedPSK) then
+          return(k_c'_1)
+        else
+          k_secret_c: key <- k';
+          return(k_c'_1)
+      ) | (
+        foreach is <= Ns do
+        cS1(X': G) :=
+        y <-R Z;
+        Y: G <- exp(g, y);
+        v_4: three_keys <- H(hk_1, exp(X', y), X', Y, psk_1);
+        k: key <- 3-proj-tuple3keys(v_4);
+        k_s_2: key <- 2-proj-tuple3keys(v_4);
+        k_c: key <- 1-proj-tuple3keys(v_4);
+        return(Y, k_s_2);
+        cS3(k_c'_2: key) :=
+        if k_c = k_c'_2 then
+        if defined(corruptedPSK) then
+          yield
+        else
+          k_secret_s: key <- k
+      ) | (
+        cCorrupt() :=
+        corruptedPSK: bool <- cst_bool;
+        return(psk_1)
+      ) | (
+        foreach iH <= qH do
+        ch1(x1: G, x2: G, x3: G, x4: key) :=
+        return(H(hk_1, x1, x2, x3, x4))
+      ))
+
+
+Applying move all binders
+  - Move assignment to k
+  - Move assignment to k_c'_1
+  - Move assignment to k'
+yields
+
+Game 4 is
+      cStart() :=
+      hk_1 <-R hashkey;
+      psk_1 <-R key;
+      return();
+      ((
+        foreach ic <= Nc do
+        cC0() :=
+        x <-R Z;
+        X: G <- exp(g, x);
+        return(X);
+        cC2(Y': G, k_s_1: key) :=
+        v_5: three_keys <- H(hk_1, exp(Y', x), X, Y', psk_1);
+        k_s': key <- 2-proj-tuple3keys(v_5);
+        if k_s_1 = k_s' then
+        k_c'_1: key <- 1-proj-tuple3keys(v_5);
+        if defined(corruptedPSK) then
+          return(k_c'_1)
+        else
+          k': key <- 3-proj-tuple3keys(v_5);
+  {57}    k_secret_c: key <- k';
+          return(k_c'_1)
+      ) | (
+        foreach is <= Ns do
+        cS1(X': G) :=
+        y <-R Z;
+        Y: G <- exp(g, y);
+        v_4: three_keys <- H(hk_1, exp(X', y), X', Y, psk_1);
+        k_s_2: key <- 2-proj-tuple3keys(v_4);
+        k_c: key <- 1-proj-tuple3keys(v_4);
+        return(Y, k_s_2);
+        cS3(k_c'_2: key) :=
+        if k_c = k_c'_2 then
+        if defined(corruptedPSK) then
+          yield
+        else
+          k: key <- 3-proj-tuple3keys(v_4);
+          k_secret_s: key <- k
+      ) | (
+        cCorrupt() :=
+        corruptedPSK: bool <- cst_bool;
+        return(psk_1)
+      ) | (
+        foreach iH <= qH do
+        ch1(x1: G, x2: G, x3: G, x4: key) :=
+        return(H(hk_1, x1, x2, x3, x4))
+      ))
+
+
+Applying insert instruction find j3 <= Ns suchthat defined(X'[j3], Y[j3]) && X = X'[j3] && Y' = Y[j3] then else event_abort client_break_auth at occurrence 57 [probability Pr[event client_break_auth in game 5 with public variables k_secret_c, k_secret_s]]
+yields
+
+Game 5 is
+      cStart() :=
+      hk_1 <-R hashkey;
+      psk_1 <-R key;
+      return();
+      ((
+        foreach ic <= Nc do
+        cC0() :=
+        x <-R Z;
+        X: G <- exp(g, x);
+        return(X);
+        cC2(Y': G, k_s_1: key) :=
+        v_5: three_keys <- H(hk_1, exp(Y', x), X, Y', psk_1);
+        k_s': key <- 2-proj-tuple3keys(v_5);
+        if k_s_1 = k_s' then
+        k_c'_1: key <- 1-proj-tuple3keys(v_5);
+        if defined(corruptedPSK) then
+          return(k_c'_1)
+        else
+          k': key <- 3-proj-tuple3keys(v_5);
+          find j3 = j3_1 <= Ns suchthat defined(X'[j3_1], Y[j3_1]) && (X = X'[j3_1]) && (Y' = Y[j3_1]) then
+            k_secret_c: key <- k';
+            return(k_c'_1)
+          else
+            event_abort client_break_auth
+      ) | (
+        foreach is <= Ns do
+        cS1(X': G) :=
+        y <-R Z;
+        Y: G <- exp(g, y);
+        v_4: three_keys <- H(hk_1, exp(X', y), X', Y, psk_1);
+        k_s_2: key <- 2-proj-tuple3keys(v_4);
+        k_c: key <- 1-proj-tuple3keys(v_4);
+        return(Y, k_s_2);
+        cS3(k_c'_2: key) :=
+        if k_c = k_c'_2 then
+        if defined(corruptedPSK) then
+          yield
+        else
+          k: key <- 3-proj-tuple3keys(v_4);
+ {134}    k_secret_s: key <- k
+      ) | (
+        cCorrupt() :=
+        corruptedPSK: bool <- cst_bool;
+        return(psk_1)
+      ) | (
+        foreach iH <= qH do
+        ch1(x1: G, x2: G, x3: G, x4: key) :=
+        return(H(hk_1, x1, x2, x3, x4))
+      ))
+
+
+Applying insert instruction find j4 <= Nc suchthat defined(X[j4]) && X' = X[j4] then else event_abort server_break_auth at occurrence 134 [probability Pr[event server_break_auth in game 6 with public variables k_secret_s, k_secret_c]]
+yields
+
+Game 6 is
+      cStart() :=
+      hk_1 <-R hashkey;
+      psk_1 <-R key;
+      return();
+      ((
+        foreach ic <= Nc do
+        cC0() :=
+        x <-R Z;
+        X: G <- exp(g, x);
+        return(X);
+        cC2(Y': G, k_s_1: key) :=
+        v_5: three_keys <- H(hk_1, exp(Y', x), X, Y', psk_1);
+        k_s': key <- 2-proj-tuple3keys(v_5);
+        if k_s_1 = k_s' then
+        k_c'_1: key <- 1-proj-tuple3keys(v_5);
+        if defined(corruptedPSK) then
+          return(k_c'_1)
+        else
+          k': key <- 3-proj-tuple3keys(v_5);
+          find j3 = j3_1 <= Ns suchthat defined(X'[j3_1], Y[j3_1]) && (X = X'[j3_1]) && (Y' = Y[j3_1]) then
+            k_secret_c: key <- k';
+            return(k_c'_1)
+          else
+            event_abort client_break_auth
+      ) | (
+        foreach is <= Ns do
+        cS1(X': G) :=
+        y <-R Z;
+        Y: G <- exp(g, y);
+        v_4: three_keys <- H(hk_1, exp(X', y), X', Y, psk_1);
+        k_s_2: key <- 2-proj-tuple3keys(v_4);
+        k_c: key <- 1-proj-tuple3keys(v_4);
+        return(Y, k_s_2);
+        cS3(k_c'_2: key) :=
+        if k_c = k_c'_2 then
+        if defined(corruptedPSK) then
+          yield
+        else
+          k: key <- 3-proj-tuple3keys(v_4);
+          find j4 = j4_1 <= Nc suchthat defined(X[j4_1]) && (X' = X[j4_1]) then
+            k_secret_s: key <- k
+          else
+            event_abort server_break_auth
+      ) | (
+        cCorrupt() :=
+        corruptedPSK: bool <- cst_bool;
+        return(psk_1)
+      ) | (
+        foreach iH <= qH do
+        ch1(x1: G, x2: G, x3: G, x4: key) :=
+        return(H(hk_1, x1, x2, x3, x4))
+      ))
+
+
+Applying focus on queries
+  - event(client_break_auth) ==> false
+  - event(server_break_auth) ==> false
+yields
+
+Game 7 is
+      cStart() :=
+      hk_1 <-R hashkey;
+      psk_1 <-R key;
+      return();
+      ((
+        foreach ic <= Nc do
+        cC0() :=
+        x <-R Z;
+        X: G <- exp(g, x);
+        return(X);
+        cC2(Y': G, k_s_1: key) :=
+        v_5: three_keys <- H(hk_1, exp(Y', x), X, Y', psk_1);
+        k_s': key <- 2-proj-tuple3keys(v_5);
+        if k_s_1 = k_s' then
+        k_c'_1: key <- 1-proj-tuple3keys(v_5);
+        if defined(corruptedPSK) then
+  {49}    return(k_c'_1)
+        else
+          k': key <- 3-proj-tuple3keys(v_5);
+          find j3 = j3_1 <= Ns suchthat defined(X'[j3_1], Y[j3_1]) && (X = X'[j3_1]) && (Y' = Y[j3_1]) then
+            k_secret_c: key <- k';
+            return(k_c'_1)
+          else
+            event_abort client_break_auth
+      ) | (
+        foreach is <= Ns do
+        cS1(X': G) :=
+        y <-R Z;
+        Y: G <- exp(g, y);
+        v_4: three_keys <- H(hk_1, exp(X', y), X', Y, psk_1);
+        k_s_2: key <- 2-proj-tuple3keys(v_4);
+        k_c: key <- 1-proj-tuple3keys(v_4);
+        return(Y, k_s_2);
+        cS3(k_c'_2: key) :=
+        if k_c = k_c'_2 then
+        if defined(corruptedPSK) then
+ {129}    yield
+        else
+          k: key <- 3-proj-tuple3keys(v_4);
+          find j4 = j4_1 <= Nc suchthat defined(X[j4_1]) && (X' = X[j4_1]) then
+            k_secret_s: key <- k
+          else
+            event_abort server_break_auth
+      ) | (
+        cCorrupt() :=
+        corruptedPSK: bool <- cst_bool;
+ {156}  return(psk_1)
+      ) | (
+        foreach iH <= qH do
+        ch1(x1: G, x2: G, x3: G, x4: key) :=
+        return(H(hk_1, x1, x2, x3, x4))
+      ))
+
+
+Applying simplify eliminating code unreachable when queries fail [probability 2 * Nc * Ns / |Z|]
+  - Simplification pass
+    - Adversary always loses at 156
+    - Adversary always loses at 129
+    - Adversary always loses at 49
+yields
+
+Game 8 is
+      cStart() :=
+      hk_1 <-R hashkey;
+      psk_1 <-R key;
+      return();
+      ((
+        foreach ic <= Nc do
+        cC0() :=
+        x <-R Z;
+        X: G <- exp(g, x);
+        return(X);
+        cC2(Y': G, k_s_1: key) :=
+        v_5: three_keys <- H(hk_1, exp(Y', x), X, Y', psk_1);
+        k_s': key <- 2-proj-tuple3keys(v_5);
+        if k_s_1 = k_s' then
+        k_c'_1: key <- 1-proj-tuple3keys(v_5);
+  {47}  if defined(corruptedPSK) then
+          event_abort adv_loses
+        else
+          k': key <- 3-proj-tuple3keys(v_5);
+          find j3 = j3_1 <= Ns suchthat defined(X'[j3_1], Y[j3_1]) && (X = X'[j3_1]) && (Y' = Y[j3_1]) then
+            k_secret_c: key <- k';
+            return(k_c'_1)
+          else
+            event_abort client_break_auth
+      ) | (
+        foreach is <= Ns do
+        cS1(X': G) :=
+        y <-R Z;
+        Y: G <- exp(g, y);
+        v_4: three_keys <- H(hk_1, exp(X', y), X', Y, psk_1);
+        k_s_2: key <- 2-proj-tuple3keys(v_4);
+        k_c: key <- 1-proj-tuple3keys(v_4);
+        return(Y, k_s_2);
+        cS3(k_c'_2: key) :=
+        if k_c = k_c'_2 then
+ {124}  if defined(corruptedPSK) then
+          event_abort adv_loses
+        else
+          k: key <- 3-proj-tuple3keys(v_4);
+          find j4 = j4_1 <= Nc suchthat defined(X[j4_1]) && (X' = X[j4_1]) then
+            k_secret_s: key <- k
+          else
+            event_abort server_break_auth
+      ) | (
+        cCorrupt() :=
+        corruptedPSK: bool <- cst_bool;
+        event_abort adv_loses
+      ) | (
+        foreach iH <= qH do
+        ch1(x1: G, x2: G, x3: G, x4: key) :=
+        return(H(hk_1, x1, x2, x3, x4))
+      ))
+
+
+Applying simplify
+  - Simplification pass
+    - Remove branch 1 in find at 124
+    - Find at 124 removed (else branch kept if any)
+    - Remove branch 1 in find at 47
+    - Find at 47 removed (else branch kept if any)
+yields
+
+Game 9 is
+      cStart() :=
+      hk_1 <-R hashkey;
+      psk_1 <-R key;
+      return();
+      ((
+        foreach ic <= Nc do
+        cC0() :=
+        x <-R Z;
+        X: G <- exp(g, x);
+        return(X);
+        cC2(Y': G, k_s_1: key) :=
+        v_5: three_keys <- H(hk_1, exp(Y', x), X, Y', psk_1);
+        k_s': key <- 2-proj-tuple3keys(v_5);
+        if k_s_1 = k_s' then
+        k_c'_1: key <- 1-proj-tuple3keys(v_5);
+        k': key <- 3-proj-tuple3keys(v_5);
+        find j3 = j3_1 <= Ns suchthat defined(X'[j3_1], Y[j3_1]) && (X = X'[j3_1]) && (Y' = Y[j3_1]) then
+          k_secret_c: key <- k';
+          return(k_c'_1)
+        else
+          event_abort client_break_auth
+      ) | (
+        foreach is <= Ns do
+        cS1(X': G) :=
+        y <-R Z;
+        Y: G <- exp(g, y);
+        v_4: three_keys <- H(hk_1, exp(X', y), X', Y, psk_1);
+        k_s_2: key <- 2-proj-tuple3keys(v_4);
+        k_c: key <- 1-proj-tuple3keys(v_4);
+        return(Y, k_s_2);
+        cS3(k_c'_2: key) :=
+        if k_c = k_c'_2 then
+        k: key <- 3-proj-tuple3keys(v_4);
+        find j4 = j4_1 <= Nc suchthat defined(X[j4_1]) && (X' = X[j4_1]) then
+          k_secret_s: key <- k
+        else
+          event_abort server_break_auth
+      ) | (
+        cCorrupt() :=
+        event_abort adv_loses
+      ) | (
+        foreach iH <= qH do
+        ch1(x1: G, x2: G, x3: G, x4: key) :=
+        return(H(hk_1, x1, x2, x3, x4))
+      ))
+
+
+Applying equivalence rom(H)
+  - Equivalence rom(H) with variables: hk_1 -> hk_2
+yields
+
+Game 10 is
+      cStart() :=
+      psk_1 <-R key;
+      return();
+      ((
+        foreach ic <= Nc do
+        cC0() :=
+        x <-R Z;
+        X: G <- exp(g, x);
+        return(X);
+        cC2(Y': G, k_s_1: key) :=
+        v_5: three_keys <- (x_O_3: G <- exp(Y', x); x_O_2: G <- X; x_O_1: G <- Y'; x_O: key <- psk_1; {34}find [unique] u_8 = ri_8 <= Nc suchthat defined(x_O_3[ri_8], x_O_2[ri_8], x_O_1[ri_8], x_O[ri_8], r[ri_8]) && {40}((x_O_3 = x_O_3[ri_8]) && (x_O_2 = x_O_2[ri_8]) && (x_O_1 = x_O_1[ri_8]) && (x_O = x_O[ri_8])) then r[u_8] orfind u_7 = ri_7 <= Ns suchthat defined(x_O_7[ri_7], x_O_6[ri_7], x_O_5[ri_7], x_O_4[ri_7], r_1[ri_7]) && (x_O_3 = x_O_7[ri_7]) && (x_O_2 = x_O_6[ri_7]) && (x_O_1 = x_O_5[ri_7]) && (x_O = x_O_4[ri_7]) then r_1[u_7] orfind u_6 = ri_6 <= qH suchthat defined(x_O_11[ri_6], x_O_10[ri_6], x_O_9[ri_6], x_O_8[ri_6], r_2[ri_6]) && (x_O_3 = x_O_11[ri_6]) && (x_O_2 = x_O_10[ri_6]) && (x_O_1 = x_O_9[ri_6]) && (x_O = x_O_8[ri_6]) then r_2[u_6] else r <-R three_keys; r);
+        k_s': key <- 2-proj-tuple3keys(v_5);
+        if k_s_1 = k_s' then
+        k_c'_1: key <- 1-proj-tuple3keys(v_5);
+        k': key <- 3-proj-tuple3keys(v_5);
+        find j3 = j3_1 <= Ns suchthat defined(X'[j3_1], Y[j3_1]) && (X = X'[j3_1]) && (Y' = Y[j3_1]) then
+          k_secret_c: key <- k';
+          return(k_c'_1)
+        else
+          event_abort client_break_auth
+      ) | (
+        foreach is <= Ns do
+        cS1(X': G) :=
+        y <-R Z;
+        Y: G <- exp(g, y);
+        v_4: three_keys <- (x_O_7: G <- exp(X', y); x_O_6: G <- X'; x_O_5: G <- Y; x_O_4: key <- psk_1; {201}find [unique] u_5 = ri_5 <= Nc suchthat defined(x_O_3[ri_5], x_O_2[ri_5], x_O_1[ri_5], x_O[ri_5], r[ri_5]) && (x_O_7 = x_O_3[ri_5]) && (x_O_6 = x_O_2[ri_5]) && (x_O_5 = x_O_1[ri_5]) && (x_O_4 = x_O[ri_5]) then r[u_5] orfind u_4 = ri_4 <= Ns suchthat defined(x_O_7[ri_4], x_O_6[ri_4], x_O_5[ri_4], x_O_4[ri_4], r_1[ri_4]) && {238}((x_O_7 = x_O_7[ri_4]) && (x_O_6 = x_O_6[ri_4]) && (x_O_5 = x_O_5[ri_4]) && (x_O_4 = x_O_4[ri_4])) then r_1[u_4] orfind u_3 = ri_3 <= qH suchthat defined(x_O_11[ri_3], x_O_10[ri_3], x_O_9[ri_3], x_O_8[ri_3], r_2[ri_3]) && (x_O_7 = x_O_11[ri_3]) && (x_O_6 = x_O_10[ri_3]) && (x_O_5 = x_O_9[ri_3]) && (x_O_4 = x_O_8[ri_3]) then r_2[u_3] else r_1 <-R three_keys; r_1);
+        k_s_2: key <- 2-proj-tuple3keys(v_4);
+        k_c: key <- 1-proj-tuple3keys(v_4);
+        return(Y, k_s_2);
+        cS3(k_c'_2: key) :=
+        if k_c = k_c'_2 then
+        k: key <- 3-proj-tuple3keys(v_4);
+        find j4 = j4_1 <= Nc suchthat defined(X[j4_1]) && (X' = X[j4_1]) then
+          k_secret_s: key <- k
+        else
+          event_abort server_break_auth
+      ) | (
+        cCorrupt() :=
+        event_abort adv_loses
+      ) | (
+        foreach iH <= qH do
+        ch1(x1: G, x2: G, x3: G, x4: key) :=
+        return((x_O_11: G <- x1; x_O_10: G <- x2; x_O_9: G <- x3; x_O_8: key <- x4; find [unique] u_2 = ri_2 <= Nc suchthat defined(x_O_3[ri_2], x_O_2[ri_2], x_O_1[ri_2], x_O[ri_2], r[ri_2]) && (x_O_11 = x_O_3[ri_2]) && (x_O_10 = x_O_2[ri_2]) && (x_O_9 = x_O_1[ri_2]) && (x_O_8 = x_O[ri_2]) then r[u_2] orfind u_1 = ri_1 <= Ns suchthat defined(x_O_7[ri_1], x_O_6[ri_1], x_O_5[ri_1], x_O_4[ri_1], r_1[ri_1]) && (x_O_11 = x_O_7[ri_1]) && (x_O_10 = x_O_6[ri_1]) && (x_O_9 = x_O_5[ri_1]) && (x_O_8 = x_O_4[ri_1]) then r_1[u_1] orfind u = ri <= qH suchthat defined(x_O_11[ri], x_O_10[ri], x_O_9[ri], x_O_8[ri], r_2[ri]) && (x_O_11 = x_O_11[ri]) && (x_O_10 = x_O_10[ri]) && (x_O_9 = x_O_9[ri]) && (x_O_8 = x_O_8[ri]) then r_2[u] else r_2 <-R three_keys; r_2))
+      ))
+
+
+Applying simplify (non-expanded game) [probability (0.5 * Ns^2 + 0.5 * Nc^2) * Pcoll2rand(Z)]
+  - Simplification pass
+    - Replaced ((x_O_3 = x_O_3[ri_8]) && (x_O_2 = x_O_2[ri_8]) && (x_O_1 = x_O_1[ri_8]) && (x_O = x_O[ri_8])) with false at 40
+    - Remove branch 1 in find at 34
+    - Replaced ((x_O_7 = x_O_7[ri_4]) && (x_O_6 = x_O_6[ri_4]) && (x_O_5 = x_O_5[ri_4]) && (x_O_4 = x_O_4[ri_4])) with false at 238
+    - Remove branch 2 in find at 201
+yields
+
+Game 11 is
+      cStart() :=
+      psk_1 <-R key;
+      return();
+      ((
+        foreach ic <= Nc do
+        cC0() :=
+        x <-R Z;
+        X: G <- exp(g, x);
+        return(X);
+        cC2(Y': G, k_s_1: key) :=
+        v_5: three_keys <- (x_O_3: G <- exp(Y', x); x_O_2: G <- X; x_O_1: G <- Y'; x_O: key <- psk_1; find [unique] u_7 = ri_7 <= Ns suchthat defined(x_O_7[ri_7], x_O_6[ri_7], x_O_5[ri_7], x_O_4[ri_7], r_1[ri_7]) && (x_O_3 = x_O_7[ri_7]) && (x_O_2 = x_O_6[ri_7]) && (x_O_1 = x_O_5[ri_7]) && (x_O = x_O_4[ri_7]) then r_1[u_7] orfind u_6 = ri_6 <= qH suchthat defined(x_O_11[ri_6], x_O_10[ri_6], x_O_9[ri_6], x_O_8[ri_6], r_2[ri_6]) && (x_O_3 = x_O_11[ri_6]) && (x_O_2 = x_O_10[ri_6]) && (x_O_1 = x_O_9[ri_6]) && (x_O = x_O_8[ri_6]) then r_2[u_6] else r <-R three_keys; r);
+        k_s': key <- 2-proj-tuple3keys(v_5);
+        if k_s_1 = k_s' then
+        k_c'_1: key <- 1-proj-tuple3keys(v_5);
+        k': key <- 3-proj-tuple3keys(v_5);
+        find j3 = j3_1 <= Ns suchthat defined(X'[j3_1], Y[j3_1]) && (X = X'[j3_1]) && (Y' = Y[j3_1]) then
+          k_secret_c: key <- k';
+          return(k_c'_1)
+        else
+          event_abort client_break_auth
+      ) | (
+        foreach is <= Ns do
+        cS1(X': G) :=
+        y <-R Z;
+        Y: G <- exp(g, y);
+        v_4: three_keys <- (x_O_7: G <- exp(X', y); x_O_6: G <- X'; x_O_5: G <- Y; x_O_4: key <- psk_1; find [unique] u_5 = ri_5 <= Nc suchthat defined(x_O_3[ri_5], x_O_2[ri_5], x_O_1[ri_5], x_O[ri_5], r[ri_5]) && (x_O_7 = x_O_3[ri_5]) && (x_O_6 = x_O_2[ri_5]) && (x_O_5 = x_O_1[ri_5]) && (x_O_4 = x_O[ri_5]) then r[u_5] orfind u_3 = ri_3 <= qH suchthat defined(x_O_11[ri_3], x_O_10[ri_3], x_O_9[ri_3], x_O_8[ri_3], r_2[ri_3]) && (x_O_7 = x_O_11[ri_3]) && (x_O_6 = x_O_10[ri_3]) && (x_O_5 = x_O_9[ri_3]) && (x_O_4 = x_O_8[ri_3]) then r_2[u_3] else r_1 <-R three_keys; r_1);
+        k_s_2: key <- 2-proj-tuple3keys(v_4);
+        k_c: key <- 1-proj-tuple3keys(v_4);
+        return(Y, k_s_2);
+        cS3(k_c'_2: key) :=
+        if k_c = k_c'_2 then
+        k: key <- 3-proj-tuple3keys(v_4);
+        find j4 = j4_1 <= Nc suchthat defined(X[j4_1]) && (X' = X[j4_1]) then
+          k_secret_s: key <- k
+        else
+          event_abort server_break_auth
+      ) | (
+        cCorrupt() :=
+        event_abort adv_loses
+      ) | (
+        foreach iH <= qH do
+        ch1(x1: G, x2: G, x3: G, x4: key) :=
+        return((x_O_11: G <- x1; x_O_10: G <- x2; x_O_9: G <- x3; x_O_8: key <- x4; find [unique] u_2 = ri_2 <= Nc suchthat defined(x_O_3[ri_2], x_O_2[ri_2], x_O_1[ri_2], x_O[ri_2], r[ri_2]) && (x_O_11 = x_O_3[ri_2]) && (x_O_10 = x_O_2[ri_2]) && (x_O_9 = x_O_1[ri_2]) && (x_O_8 = x_O[ri_2]) then r[u_2] orfind u_1 = ri_1 <= Ns suchthat defined(x_O_7[ri_1], x_O_6[ri_1], x_O_5[ri_1], x_O_4[ri_1], r_1[ri_1]) && (x_O_11 = x_O_7[ri_1]) && (x_O_10 = x_O_6[ri_1]) && (x_O_9 = x_O_5[ri_1]) && (x_O_8 = x_O_4[ri_1]) then r_1[u_1] orfind u = ri <= qH suchthat defined(x_O_11[ri], x_O_10[ri], x_O_9[ri], x_O_8[ri], r_2[ri]) && (x_O_11 = x_O_11[ri]) && (x_O_10 = x_O_10[ri]) && (x_O_9 = x_O_9[ri]) && (x_O_8 = x_O_8[ri]) then r_2[u] else r_2 <-R three_keys; r_2))
+      ))
+
+
+Applying expand [probability (0.5 * Ns^2 + 0.5 * Nc^2) * Pcoll2rand(Z)]
+  - Expand if/find/let
+yields
+
+Game 12 is
+      cStart() :=
+      psk_1 <-R key;
+      return();
+      ((
+        foreach ic <= Nc do
+        cC0() :=
+        x <-R Z;
+        X: G <- exp(g, x);
+        return(X);
+        cC2(Y': G, k_s_1: key) :=
+        x_O_3: G <- exp(Y', x);
+        x_O_2: G <- X;
+        x_O_1: G <- Y';
+        x_O: key <- psk_1;
+        find [unique] u_7 = ri_7 <= Ns suchthat defined(x_O_7[ri_7], x_O_6[ri_7], x_O_5[ri_7], x_O_4[ri_7], r_1[ri_7]) && (x_O_3 = x_O_7[ri_7]) && (x_O_2 = x_O_6[ri_7]) && (x_O_1 = x_O_5[ri_7]) && (x_O = x_O_4[ri_7]) then
+        (
+          v_5: three_keys <- r_1[u_7];
+          k_s': key <- 2-proj-tuple3keys(v_5);
+          if k_s_1 = k_s' then
+          k_c'_1: key <- 1-proj-tuple3keys(v_5);
+          k': key <- 3-proj-tuple3keys(v_5);
+          find j3 = j3_1 <= Ns suchthat defined(X'[j3_1], Y[j3_1]) && (X = X'[j3_1]) && (Y' = Y[j3_1]) then
+            k_secret_c: key <- k';
+            return(k_c'_1)
+          else
+            event_abort client_break_auth
+        )
+        orfind u_6 = ri_6 <= qH suchthat defined(x_O_11[ri_6], x_O_10[ri_6], x_O_9[ri_6], x_O_8[ri_6], r_2[ri_6]) && (x_O_3 = x_O_11[ri_6]) && (x_O_2 = x_O_10[ri_6]) && (x_O_1 = x_O_9[ri_6]) && (x_O = x_O_8[ri_6]) then
+        (
+          v_5: three_keys <- r_2[u_6];
+          k_s': key <- 2-proj-tuple3keys(v_5);
+          if k_s_1 = k_s' then
+          k_c'_1: key <- 1-proj-tuple3keys(v_5);
+          k': key <- 3-proj-tuple3keys(v_5);
+          find j3 = j3_1 <= Ns suchthat defined(X'[j3_1], Y[j3_1]) && (X = X'[j3_1]) && (Y' = Y[j3_1]) then
+            k_secret_c: key <- k';
+            return(k_c'_1)
+          else
+            event_abort client_break_auth
+        )
+        else
+          r <-R three_keys;
+          v_5: three_keys <- r;
+          k_s': key <- 2-proj-tuple3keys(v_5);
+          if k_s_1 = k_s' then
+          k_c'_1: key <- 1-proj-tuple3keys(v_5);
+          k': key <- 3-proj-tuple3keys(v_5);
+          find j3 = j3_1 <= Ns suchthat defined(X'[j3_1], Y[j3_1]) && (X = X'[j3_1]) && (Y' = Y[j3_1]) then
+            k_secret_c: key <- k';
+            return(k_c'_1)
+          else
+            event_abort client_break_auth
+      ) | (
+        foreach is <= Ns do
+        cS1(X': G) :=
+        y <-R Z;
+        Y: G <- exp(g, y);
+        x_O_7: G <- exp(X', y);
+        x_O_6: G <- X';
+        x_O_5: G <- Y;
+        x_O_4: key <- psk_1;
+        find [unique] u_5 = ri_5 <= Nc suchthat defined(x_O_3[ri_5], x_O_2[ri_5], x_O_1[ri_5], x_O[ri_5], r[ri_5]) && (x_O_7 = x_O_3[ri_5]) && (x_O_6 = x_O_2[ri_5]) && (x_O_5 = x_O_1[ri_5]) && (x_O_4 = x_O[ri_5]) then
+        (
+          v_4: three_keys <- r[u_5];
+          k_s_2: key <- 2-proj-tuple3keys(v_4);
+          k_c: key <- 1-proj-tuple3keys(v_4);
+          return(Y, k_s_2);
+          cS3(k_c'_2: key) :=
+          if k_c = k_c'_2 then
+          k: key <- 3-proj-tuple3keys(v_4);
+          find j4 = j4_1 <= Nc suchthat defined(X[j4_1]) && (X' = X[j4_1]) then
+            k_secret_s: key <- k
+          else
+            event_abort server_break_auth
+        )
+        orfind u_3 = ri_3 <= qH suchthat defined(x_O_11[ri_3], x_O_10[ri_3], x_O_9[ri_3], x_O_8[ri_3], r_2[ri_3]) && (x_O_7 = x_O_11[ri_3]) && (x_O_6 = x_O_10[ri_3]) && (x_O_5 = x_O_9[ri_3]) && (x_O_4 = x_O_8[ri_3]) then
+        (
+          v_4: three_keys <- r_2[u_3];
+          k_s_2: key <- 2-proj-tuple3keys(v_4);
+          k_c: key <- 1-proj-tuple3keys(v_4);
+          return(Y, k_s_2);
+          cS3(k_c'_2: key) :=
+          if k_c = k_c'_2 then
+          k: key <- 3-proj-tuple3keys(v_4);
+          find j4 = j4_1 <= Nc suchthat defined(X[j4_1]) && (X' = X[j4_1]) then
+            k_secret_s: key <- k
+          else
+            event_abort server_break_auth
+        )
+        else
+          r_1 <-R three_keys;
+          v_4: three_keys <- r_1;
+          k_s_2: key <- 2-proj-tuple3keys(v_4);
+          k_c: key <- 1-proj-tuple3keys(v_4);
+          return(Y, k_s_2);
+          cS3(k_c'_2: key) :=
+          if k_c = k_c'_2 then
+          k: key <- 3-proj-tuple3keys(v_4);
+          find j4 = j4_1 <= Nc suchthat defined(X[j4_1]) && (X' = X[j4_1]) then
+            k_secret_s: key <- k
+          else
+            event_abort server_break_auth
+      ) | (
+        cCorrupt() :=
+        event_abort adv_loses
+      ) | (
+        foreach iH <= qH do
+        ch1(x1: G, x2: G, x3: G, x4: key) :=
+        x_O_11: G <- x1;
+        x_O_10: G <- x2;
+        x_O_9: G <- x3;
+        x_O_8: key <- x4;
+        find [unique] u_2 = ri_2 <= Nc suchthat defined(x_O_3[ri_2], x_O_2[ri_2], x_O_1[ri_2], x_O[ri_2], r[ri_2]) && (x_O_11 = x_O_3[ri_2]) && (x_O_10 = x_O_2[ri_2]) && (x_O_9 = x_O_1[ri_2]) && (x_O_8 = x_O[ri_2]) then
+          return(r[u_2])
+        orfind u_1 = ri_1 <= Ns suchthat defined(x_O_7[ri_1], x_O_6[ri_1], x_O_5[ri_1], x_O_4[ri_1], r_1[ri_1]) && (x_O_11 = x_O_7[ri_1]) && (x_O_10 = x_O_6[ri_1]) && (x_O_9 = x_O_5[ri_1]) && (x_O_8 = x_O_4[ri_1]) then
+          return(r_1[u_1])
+        orfind u = ri <= qH suchthat defined(x_O_11[ri], x_O_10[ri], x_O_9[ri], x_O_8[ri], r_2[ri]) && (x_O_11 = x_O_11[ri]) && (x_O_10 = x_O_10[ri]) && (x_O_9 = x_O_9[ri]) && (x_O_8 = x_O_8[ri]) then
+          return(r_2[u])
+        else
+          r_2 <-R three_keys;
+          return(r_2)
+      ))
+
+
+Applying remove assignments of findcond
+  - Remove assignments on x_O_11 (definition point kept, all usages removed)
+  - Remove assignments on x_O_10 (definition removed, all usages removed)
+  - Remove assignments on x_O_9 (definition removed, all usages removed)
+  - Remove assignments on x_O_8 (definition removed, all usages removed)
+  - Remove assignments on x_O_6 (definition removed, all usages removed)
+  - Remove assignments on x_O_5 (definition removed, all usages removed)
+  - Remove assignments on x_O_4 (definition removed, all usages removed)
+  - Remove assignments on v_4 (definition removed, all usages removed)
+  - Remove assignments on v_4 (definition removed, all usages removed)
+  - Remove assignments on v_4 (definition removed, all usages removed)
+  - Remove assignments on x_O_2 (definition removed, all usages removed)
+  - Remove assignments on x_O_1 (definition removed, all usages removed)
+  - Remove assignments on x_O (definition removed, all usages removed)
+  - Remove assignments on v_5 (definition removed, all usages removed)
+  - Remove assignments on v_5 (definition removed, all usages removed)
+  - Remove assignments on v_5 (definition removed, all usages removed)
+yields
+
+Game 13 is
+      cStart() :=
+      psk_1 <-R key;
+      return();
+      ((
+        foreach ic <= Nc do
+        cC0() :=
+        x <-R Z;
+        X: G <- exp(g, x);
+        return(X);
+        cC2(Y': G, k_s_1: key) :=
+        x_O_3: G <- exp(Y', x);
+        find [unique] u_7 = ri_7 <= Ns suchthat defined(X'[ri_7], Y[ri_7], psk_1, x_O_7[ri_7], r_1[ri_7]) && (x_O_3 = x_O_7[ri_7]) && (X = X'[ri_7]) && (Y' = Y[ri_7]) && (psk_1 = psk_1) then
+        (
+          k_s': key <- 2-proj-tuple3keys(r_1[u_7]);
+          if k_s_1 = k_s' then
+          k_c'_1: key <- 1-proj-tuple3keys(r_1[u_7]);
+          k': key <- 3-proj-tuple3keys(r_1[u_7]);
+          find j3 = j3_1 <= Ns suchthat defined(X'[j3_1], Y[j3_1]) && (X = X'[j3_1]) && (Y' = Y[j3_1]) then
+            k_secret_c: key <- k';
+            return(k_c'_1)
+          else
+            event_abort client_break_auth
+        )
+        orfind u_6 = ri_6 <= qH suchthat defined(x1[ri_6], x2[ri_6], x3[ri_6], x4[ri_6], x_O_11[ri_6], r_2[ri_6]) && (x_O_3 = x1[ri_6]) && (X = x2[ri_6]) && (Y' = x3[ri_6]) && (psk_1 = x4[ri_6]) then
+        (
+          k_s': key <- 2-proj-tuple3keys(r_2[u_6]);
+          if k_s_1 = k_s' then
+          k_c'_1: key <- 1-proj-tuple3keys(r_2[u_6]);
+          k': key <- 3-proj-tuple3keys(r_2[u_6]);
+          find j3 = j3_1 <= Ns suchthat defined(X'[j3_1], Y[j3_1]) && (X = X'[j3_1]) && (Y' = Y[j3_1]) then
+            k_secret_c: key <- k';
+            return(k_c'_1)
+          else
+            event_abort client_break_auth
+        )
+        else
+          r <-R three_keys;
+          k_s': key <- 2-proj-tuple3keys(r);
+          if k_s_1 = k_s' then
+          k_c'_1: key <- 1-proj-tuple3keys(r);
+          k': key <- 3-proj-tuple3keys(r);
+          find j3 = j3_1 <= Ns suchthat defined(X'[j3_1], Y[j3_1]) && (X = X'[j3_1]) && (Y' = Y[j3_1]) then
+            k_secret_c: key <- k';
+            return(k_c'_1)
+          else
+            event_abort client_break_auth
+      ) | (
+        foreach is <= Ns do
+        cS1(X': G) :=
+        y <-R Z;
+        Y: G <- exp(g, y);
+        x_O_7: G <- exp(X', y);
+        find [unique] u_5 = ri_5 <= Nc suchthat defined(X[ri_5], Y'[ri_5], psk_1, x_O_3[ri_5], r[ri_5]) && (x_O_7 = x_O_3[ri_5]) && (X' = X[ri_5]) && (Y = Y'[ri_5]) && (psk_1 = psk_1) then
+        (
+          k_s_2: key <- 2-proj-tuple3keys(r[u_5]);
+          k_c: key <- 1-proj-tuple3keys(r[u_5]);
+          return(Y, k_s_2);
+          cS3(k_c'_2: key) :=
+          if k_c = k_c'_2 then
+          k: key <- 3-proj-tuple3keys(r[u_5]);
+          find j4 = j4_1 <= Nc suchthat defined(X[j4_1]) && (X' = X[j4_1]) then
+            k_secret_s: key <- k
+          else
+            event_abort server_break_auth
+        )
+        orfind u_3 = ri_3 <= qH suchthat defined(x1[ri_3], x2[ri_3], x3[ri_3], x4[ri_3], x_O_11[ri_3], r_2[ri_3]) && (x_O_7 = x1[ri_3]) && (X' = x2[ri_3]) && (Y = x3[ri_3]) && (psk_1 = x4[ri_3]) then
+        (
+          k_s_2: key <- 2-proj-tuple3keys(r_2[u_3]);
+          k_c: key <- 1-proj-tuple3keys(r_2[u_3]);
+          return(Y, k_s_2);
+          cS3(k_c'_2: key) :=
+          if k_c = k_c'_2 then
+          k: key <- 3-proj-tuple3keys(r_2[u_3]);
+          find j4 = j4_1 <= Nc suchthat defined(X[j4_1]) && (X' = X[j4_1]) then
+            k_secret_s: key <- k
+          else
+            event_abort server_break_auth
+        )
+        else
+          r_1 <-R three_keys;
+          k_s_2: key <- 2-proj-tuple3keys(r_1);
+          k_c: key <- 1-proj-tuple3keys(r_1);
+          return(Y, k_s_2);
+          cS3(k_c'_2: key) :=
+          if k_c = k_c'_2 then
+          k: key <- 3-proj-tuple3keys(r_1);
+          find j4 = j4_1 <= Nc suchthat defined(X[j4_1]) && (X' = X[j4_1]) then
+            k_secret_s: key <- k
+          else
+            event_abort server_break_auth
+      ) | (
+        cCorrupt() :=
+        event_abort adv_loses
+      ) | (
+        foreach iH <= qH do
+        ch1(x1: G, x2: G, x3: G, x4: key) :=
+        x_O_11: G <- cst_G;
+        find [unique] u_2 = ri_2 <= Nc suchthat defined(X[ri_2], Y'[ri_2], psk_1, x_O_3[ri_2], r[ri_2]) && (x1 = x_O_3[ri_2]) && (x2 = X[ri_2]) && (x3 = Y'[ri_2]) && (x4 = psk_1) then
+          return(r[u_2])
+        orfind u_1 = ri_1 <= Ns suchthat defined(X'[ri_1], Y[ri_1], psk_1, x_O_7[ri_1], r_1[ri_1]) && (x1 = x_O_7[ri_1]) && (x2 = X'[ri_1]) && (x3 = Y[ri_1]) && (x4 = psk_1) then
+          return(r_1[u_1])
+        orfind u = ri <= qH suchthat defined(x1[ri], x2[ri], x3[ri], x4[ri], x_O_11[ri], r_2[ri]) && (x1 = x1[ri]) && (x2 = x2[ri]) && (x3 = x3[ri]) && (x4 = x4[ri]) then
+          return(r_2[u])
+        else
+          r_2 <-R three_keys;
+          return(r_2)
+      ))
+
+
+Applying simplify [probability qH / |key|]
+  - Global dependency analysis on psk_1
+yields
+
+Game 14 is
+      cStart() :=
+   {2}psk_1 <-R key;
+      return();
+      ((
+        foreach ic <= Nc do
+        cC0() :=
+        x <-R Z;
+        X: G <- exp(g, x);
+        return(X);
+        cC2(Y': G, k_s_1: key) :=
+        x_O_3: G <- exp(Y', x);
+        find [unique] u_7 = ri_7 <= Ns suchthat defined(r_1[ri_7], X'[ri_7], y[ri_7]) && (Y' = exp(g, y[ri_7])) && (X = X'[ri_7]) then
+        (
+          k_s': key <- 2-proj-tuple3keys(r_1[u_7]);
+          if k_s_1 = k_s' then
+          k_c'_1: key <- 1-proj-tuple3keys(r_1[u_7]);
+          k': key <- 3-proj-tuple3keys(r_1[u_7]);
+  {63}    find j3 = j3_1 <= Ns suchthat defined(X'[j3_1], Y[j3_1]) && {66}((X = X'[j3_1]) && (Y' = Y[j3_1])) then
+            k_secret_c: key <- k';
+            return(k_c'_1)
+          else
+            event_abort client_break_auth
+        )
+        else
+          r <-R three_keys;
+  {91}    k_s': key <- 2-proj-tuple3keys(r);
+  {95}    if k_s_1 = k_s' then
+          k_c'_1: key <- 1-proj-tuple3keys(r);
+          k': key <- 3-proj-tuple3keys(r);
+          find j3 = j3_1 <= Ns suchthat defined(X'[j3_1], Y[j3_1]) && (X = X'[j3_1]) && (Y' = Y[j3_1]) then
+            k_secret_c: key <- k';
+            return(k_c'_1)
+          else
+            event_abort client_break_auth
+      ) | (
+        foreach is <= Ns do
+        cS1(X': G) :=
+        y <-R Z;
+        Y: G <- exp(g, y);
+        x_O_7: G <- exp(X', y);
+ {152}  find [unique] u_5 = ri_5 <= Nc suchthat defined(r[ri_5], X[ri_5], Y'[ri_5]) && {156}((Y'[ri_5] = exp(g, y)) && (X' = X[ri_5])) then
+        (
+          k_s_2: key <- 2-proj-tuple3keys(r[u_5]);
+          k_c: key <- 1-proj-tuple3keys(r[u_5]);
+          return(Y, k_s_2);
+          cS3(k_c'_2: key) :=
+          if k_c = k_c'_2 then
+          k: key <- 3-proj-tuple3keys(r[u_5]);
+          find j4 = j4_1 <= Nc suchthat defined(X[j4_1]) && (X' = X[j4_1]) then
+            k_secret_s: key <- k
+          else
+            event_abort server_break_auth
+        )
+        else
+          r_1 <-R three_keys;
+          k_s_2: key <- 2-proj-tuple3keys(r_1);
+          k_c: key <- 1-proj-tuple3keys(r_1);
+          return(Y, k_s_2);
+          cS3(k_c'_2: key) :=
+          if k_c = k_c'_2 then
+          k: key <- 3-proj-tuple3keys(r_1);
+          find j4 = j4_1 <= Nc suchthat defined(X[j4_1]) && (X' = X[j4_1]) then
+            k_secret_s: key <- k
+          else
+            event_abort server_break_auth
+      ) | (
+        cCorrupt() :=
+        event_abort adv_loses
+      ) | (
+        foreach iH <= qH do
+        ch1(x1: G, x2: G, x3: G, x4: key) :=
+        x_O_11: G <- cst_G;
+ {263}  find [unique] u = ri <= qH suchthat defined(x1[ri], x2[ri], x3[ri], x4[ri], x_O_11[ri], r_2[ri]) && (x1 = x1[ri]) && (x2 = x2[ri]) && (x3 = x3[ri]) && (x4 = x4[ri]) then
+          return(r_2[u])
+        else
+          r_2 <-R three_keys;
+          return(r_2)
+      ))
+
+
+Applying simplify [probability 0.5 * Ns^2 * Pcoll2rand(Z) + Nc / |key| + Nc * Ns * Pcoll1rand(Z)]
+  - Simplification pass
+    - Replaced defined condition x1[ri], x2[ri], x3[ri], x4[ri], x_O_11[ri], r_2[ri] with r_2[ri], x4[ri], x3[ri], x2[ri], x1[ri] in find at 263
+    - Replaced ((Y'[ri_5] = exp(g, y)) && (X' = X[ri_5])) with false at 156
+    - Remove branch 1 in find at 152
+    - Find at 152 removed (else branch kept if any)
+    - Test at 95 always false
+    - Remove let at 91
+    - Remove else branch of find at 63
+    - Replaced ((X = X'[j3_1]) && (Y' = Y[j3_1])) with (u_7 = j3_1) at 66
+    - In branch 1 of find at 63, substituting j3 with u_7
+    - Replaced defined condition X'[j3_1], Y[j3_1] with an empty condition in find at 63
+    - A single branch always succeeds in find at 63
+    - Remove random number generation at 2
+yields
+
+Game 15 is
+      cStart() :=
+      return();
+      ((
+        foreach ic <= Nc do
+        cC0() :=
+        x <-R Z;
+        X: G <- exp(g, x);
+        return(X);
+        cC2(Y': G, k_s_1: key) :=
+        x_O_3: G <- exp(Y', x);
+        find [unique] u_7 = ri_7 <= Ns suchthat defined(r_1[ri_7], X'[ri_7], y[ri_7]) && (Y' = exp(g, y[ri_7])) && (X = X'[ri_7]) then
+        (
+          k_s': key <- 2-proj-tuple3keys(r_1[u_7]);
+          if k_s_1 = k_s' then
+          k_c'_1: key <- 1-proj-tuple3keys(r_1[u_7]);
+          k': key <- 3-proj-tuple3keys(r_1[u_7]);
+          j3 <= Ns <- u_7;
+          k_secret_c: key <- k';
+          return(k_c'_1)
+        )
+        else
+  {78}    r <-R three_keys
+      ) | (
+        foreach is <= Ns do
+        cS1(X': G) :=
+        y <-R Z;
+        Y: G <- exp(g, y);
+        x_O_7: G <- exp(X', y);
+        r_1 <-R three_keys;
+        k_s_2: key <- 2-proj-tuple3keys(r_1);
+        k_c: key <- 1-proj-tuple3keys(r_1);
+        return(Y, k_s_2);
+        cS3(k_c'_2: key) :=
+        if k_c = k_c'_2 then
+        k: key <- 3-proj-tuple3keys(r_1);
+        find j4 = j4_1 <= Nc suchthat defined(X[j4_1]) && (X' = X[j4_1]) then
+          k_secret_s: key <- k
+        else
+          event_abort server_break_auth
+      ) | (
+        cCorrupt() :=
+        event_abort adv_loses
+      ) | (
+        foreach iH <= qH do
+        ch1(x1: G, x2: G, x3: G, x4: key) :=
+        x_O_11: G <- cst_G;
+        find [unique] u = ri <= qH suchthat defined(r_2[ri], x4[ri], x3[ri], x2[ri], x1[ri]) && (x1 = x1[ri]) && (x2 = x2[ri]) && (x3 = x3[ri]) && (x4 = x4[ri]) then
+          return(r_2[u])
+        else
+          r_2 <-R three_keys;
+          return(r_2)
+      ))
+
+
+Applying simplify
+  - Simplification pass
+    - Remove random number generation at 78
+yields
+
+Game 16 is
+      cStart() :=
+      return();
+      ((
+        foreach ic <= Nc do
+        cC0() :=
+        x <-R Z;
+        X: G <- exp(g, x);
+        return(X);
+        cC2(Y': G, k_s_1: key) :=
+        x_O_3: G <- exp(Y', x);
+        find [unique] u_7 = ri_7 <= Ns suchthat defined(r_1[ri_7], X'[ri_7], y[ri_7]) && (Y' = exp(g, y[ri_7])) && (X = X'[ri_7]) then
+        k_s': key <- 2-proj-tuple3keys(r_1[u_7]);
+        if k_s_1 = k_s' then
+        k_c'_1: key <- 1-proj-tuple3keys(r_1[u_7]);
+        k': key <- 3-proj-tuple3keys(r_1[u_7]);
+        j3 <= Ns <- u_7;
+        k_secret_c: key <- k';
+        return(k_c'_1)
+      ) | (
+        foreach is <= Ns do
+        cS1(X': G) :=
+        y <-R Z;
+        Y: G <- exp(g, y);
+        x_O_7: G <- exp(X', y);
+        r_1 <-R three_keys;
+        k_s_2: key <- 2-proj-tuple3keys(r_1);
+        k_c: key <- 1-proj-tuple3keys(r_1);
+        return(Y, k_s_2);
+        cS3(k_c'_2: key) :=
+        if k_c = k_c'_2 then
+        k: key <- 3-proj-tuple3keys(r_1);
+        find j4 = j4_1 <= Nc suchthat defined(X[j4_1]) && (X' = X[j4_1]) then
+          k_secret_s: key <- k
+        else
+          event_abort server_break_auth
+      ) | (
+        cCorrupt() :=
+        event_abort adv_loses
+      ) | (
+        foreach iH <= qH do
+        ch1(x1: G, x2: G, x3: G, x4: key) :=
+        x_O_11: G <- cst_G;
+        find [unique] u = ri <= qH suchthat defined(r_2[ri], x4[ri], x3[ri], x2[ri], x1[ri]) && (x1 = x1[ri]) && (x2 = x2[ri]) && (x3 = x3[ri]) && (x4 = x4[ri]) then
+          return(r_2[u])
+        else
+          r_2 <-R three_keys;
+          return(r_2)
+      ))
+
+
+Applying move all binders
+  - Move assignment to x_O_11
+  - Move assignment to k
+  - Move assignment to x_O_3
+yields
+
+Game 17 is
+      cStart() :=
+      return();
+      ((
+        foreach ic <= Nc do
+        cC0() :=
+        x <-R Z;
+        X: G <- exp(g, x);
+        return(X);
+        cC2(Y': G, k_s_1: key) :=
+        find [unique] u_7 = ri_7 <= Ns suchthat defined(r_1[ri_7], X'[ri_7], y[ri_7]) && (Y' = exp(g, y[ri_7])) && (X = X'[ri_7]) then
+        k_s': key <- 2-proj-tuple3keys(r_1[u_7]);
+        if k_s_1 = k_s' then
+        k_c'_1: key <- 1-proj-tuple3keys(r_1[u_7]);
+        k': key <- 3-proj-tuple3keys(r_1[u_7]);
+        j3 <= Ns <- u_7;
+        k_secret_c: key <- k';
+        return(k_c'_1)
+      ) | (
+        foreach is <= Ns do
+        cS1(X': G) :=
+        y <-R Z;
+        Y: G <- exp(g, y);
+        x_O_7: G <- exp(X', y);
+        r_1 <-R three_keys;
+        k_s_2: key <- 2-proj-tuple3keys(r_1);
+        k_c: key <- 1-proj-tuple3keys(r_1);
+        return(Y, k_s_2);
+        cS3(k_c'_2: key) :=
+        if k_c = k_c'_2 then
+        find j4 = j4_1 <= Nc suchthat defined(X[j4_1]) && (X' = X[j4_1]) then
+          k: key <- 3-proj-tuple3keys(r_1);
+          k_secret_s: key <- k
+        else
+          event_abort server_break_auth
+      ) | (
+        cCorrupt() :=
+        event_abort adv_loses
+      ) | (
+        foreach iH <= qH do
+        ch1(x1: G, x2: G, x3: G, x4: key) :=
+        find [unique] u = ri <= qH suchthat defined(r_2[ri], x4[ri], x3[ri], x2[ri], x1[ri]) && (x1 = x1[ri]) && (x2 = x2[ri]) && (x3 = x3[ri]) && (x4 = x4[ri]) then
+          return(r_2[u])
+        else
+          r_2 <-R three_keys;
+          return(r_2)
+      ))
+
+
+Applying SA rename new without array accesses and remove assignments of findcond
+  - Remove assignments on x_O_7 (definition removed, all usages removed)
+  - Remove assignments on j3 (definition removed, all usages removed)
+yields
+
+Game 18 is
+      cStart() :=
+      return();
+      ((
+        foreach ic <= Nc do
+        cC0() :=
+        x <-R Z;
+        X: G <- exp(g, x);
+        return(X);
+        cC2(Y': G, k_s_1: key) :=
+        find [unique] u_7 = ri_7 <= Ns suchthat defined(r_1[ri_7], X'[ri_7], y[ri_7]) && (Y' = exp(g, y[ri_7])) && (X = X'[ri_7]) then
+        k_s': key <- 2-proj-tuple3keys(r_1[u_7]);
+        if k_s_1 = k_s' then
+        k_c'_1: key <- 1-proj-tuple3keys(r_1[u_7]);
+        k': key <- 3-proj-tuple3keys(r_1[u_7]);
+        k_secret_c: key <- k';
+        return(k_c'_1)
+      ) | (
+        foreach is <= Ns do
+        cS1(X': G) :=
+        y <-R Z;
+        Y: G <- exp(g, y);
+        r_1 <-R three_keys;
+        k_s_2: key <- 2-proj-tuple3keys(r_1);
+        k_c: key <- 1-proj-tuple3keys(r_1);
+        return(Y, k_s_2);
+        cS3(k_c'_2: key) :=
+        if k_c = k_c'_2 then
+        find j4 = j4_1 <= Nc suchthat defined(X[j4_1]) && (X' = X[j4_1]) then
+          k: key <- 3-proj-tuple3keys(r_1);
+          k_secret_s: key <- k
+        else
+          event_abort server_break_auth
+      ) | (
+        cCorrupt() :=
+        event_abort adv_loses
+      ) | (
+        foreach iH <= qH do
+        ch1(x1: G, x2: G, x3: G, x4: key) :=
+        find [unique] u = ri <= qH suchthat defined(r_2[ri], x4[ri], x3[ri], x2[ri], x1[ri]) && (x1 = x1[ri]) && (x2 = x2[ri]) && (x3 = x3[ri]) && (x4 = x4[ri]) then
+          return(r_2[u])
+        else
+          r_2 <-R three_keys;
+          return(r_2)
+      ))
+
+
+Applying equivalence splitter(tuple3keys)
+  - Equivalence splitter(tuple3keys) with variables: r_1 -> r
+yields
+
+Game 19 is
+      cStart() :=
+      return();
+      ((
+        foreach ic <= Nc do
+        cC0() :=
+        x <-R Z;
+        X: G <- exp(g, x);
+        return(X);
+        cC2(Y': G, k_s_1: key) :=
+        find [unique] u_7 = ri_7 <= Ns suchthat defined(part3[ri_7], part1[ri_7], part2[ri_7], X'[ri_7], y[ri_7]) && (Y' = exp(g, y[ri_7])) && (X = X'[ri_7]) then
+        k_s': key <- part2[u_7];
+        if k_s_1 = k_s' then
+        k_c'_1: key <- part1[u_7];
+        k': key <- part3[u_7];
+        k_secret_c: key <- k';
+        return(k_c'_1)
+      ) | (
+        foreach is <= Ns do
+        cS1(X': G) :=
+        y <-R Z;
+        Y: G <- exp(g, y);
+        part3 <-R key;
+        part2 <-R key;
+        part1 <-R key;
+        r_1: three_keys <- cst_three_keys;
+        k_s_2: key <- part2;
+        k_c: key <- part1;
+        return(Y, k_s_2);
+        cS3(k_c'_2: key) :=
+        if k_c = k_c'_2 then
+        find j4 = j4_1 <= Nc suchthat defined(X[j4_1]) && (X' = X[j4_1]) then
+          k: key <- part3;
+          k_secret_s: key <- k
+        else
+          event_abort server_break_auth
+      ) | (
+        cCorrupt() :=
+        event_abort adv_loses
+      ) | (
+        foreach iH <= qH do
+        ch1(x1: G, x2: G, x3: G, x4: key) :=
+        find [unique] u = ri <= qH suchthat defined(r_2[ri], x4[ri], x3[ri], x2[ri], x1[ri]) && (x1 = x1[ri]) && (x2 = x2[ri]) && (x3 = x3[ri]) && (x4 = x4[ri]) then
+          return(r_2[u])
+        else
+          r_2 <-R three_keys;
+          return(r_2)
+      ))
+
+
+Applying remove assignments of findcond
+  - Remove assignments on r_1 (definition removed, all usages removed)
+  - Remove assignments on k_s_2 (definition removed, all usages removed)
+  - Remove assignments on k_c (definition removed, all usages removed)
+  - Remove assignments on k (definition removed, all usages removed)
+  - Remove assignments on k_s' (definition removed, all usages removed)
+  - Remove assignments on k_c'_1 (definition removed, all usages removed)
+  - Remove assignments on k' (definition removed, all usages removed)
+yields
+
+Game 20 is
+      cStart() :=
+      return();
+      ((
+        foreach ic <= Nc do
+        cC0() :=
+        x <-R Z;
+        X: G <- exp(g, x);
+        return(X);
+        cC2(Y': G, k_s_1: key) :=
+        find [unique] u_7 = ri_7 <= Ns suchthat defined(part3[ri_7], part1[ri_7], part2[ri_7], X'[ri_7], y[ri_7]) && (Y' = exp(g, y[ri_7])) && (X = X'[ri_7]) then
+        if k_s_1 = part2[u_7] then
+        k_secret_c: key <- part3[u_7];
+        return(part1[u_7])
+      ) | (
+        foreach is <= Ns do
+        cS1(X': G) :=
+        y <-R Z;
+        Y: G <- exp(g, y);
+        part3 <-R key;
+        part2 <-R key;
+        part1 <-R key;
+        return(Y, part2);
+        cS3(k_c'_2: key) :=
+        if part1 = k_c'_2 then
+        find j4 = j4_1 <= Nc suchthat defined(X[j4_1]) && (X' = X[j4_1]) then
+          k_secret_s: key <- part3
+        else
+          event_abort server_break_auth
+      ) | (
+        cCorrupt() :=
+        event_abort adv_loses
+      ) | (
+        foreach iH <= qH do
+        ch1(x1: G, x2: G, x3: G, x4: key) :=
+        find [unique] u = ri <= qH suchthat defined(r_2[ri], x4[ri], x3[ri], x2[ri], x1[ri]) && (x1 = x1[ri]) && (x2 = x2[ri]) && (x3 = x3[ri]) && (x4 = x4[ri]) then
+          return(r_2[u])
+        else
+          r_2 <-R three_keys;
+          return(r_2)
+      ))
+
+
+Applying equivalence move_array(key) with part1. [probability Ns / |key|]
+  - Equivalence move_array(key) with variables: part1 -> X_1.
+yields
+
+Game 21 is
+      cStart() :=
+      return();
+      ((
+        foreach ic <= Nc do
+        cC0() :=
+        x <-R Z;
+        X: G <- exp(g, x);
+        return(X);
+        cC2(Y': G, k_s_1: key) :=
+        find [unique] u_7 = ri_7 <= Ns suchthat defined(part3[ri_7], part2[ri_7], X'[ri_7], y[ri_7]) && (Y' = exp(g, y[ri_7])) && (X = X'[ri_7]) then
+        if k_s_1 = part2[u_7] then
+        k_secret_c: key <- part3[u_7];
+        return({48}(find [unique] u_10 = ri_10 <= Nc suchthat defined(Y_1[ri_10], u_7[ri_10]) && {51}(u_7[ri_10] = u_7) then Y_1[u_10] else Y_1 <-R key; Y_1))
+      ) | (
+        foreach is <= Ns do
+        cS1(X': G) :=
+        y <-R Z;
+        Y: G <- exp(g, y);
+        part3 <-R key;
+        part2 <-R key;
+        part1: key <- cst_key;
+        return(Y, part2);
+        cS3(k_c'_2: key) :=
+        if (X'_1: key <- k_c'_2; find [unique] u_9 = ri_9 <= Nc suchthat defined(u_7[ri_9], Y_1[ri_9]) && (u_7[ri_9] = is) then (X'_1 = Y_1[u_9]) else false) then
+        find j4 = j4_1 <= Nc suchthat defined(X[j4_1]) && (X' = X[j4_1]) then
+          k_secret_s: key <- part3
+        else
+          event_abort server_break_auth
+      ) | (
+        cCorrupt() :=
+        event_abort adv_loses
+      ) | (
+        foreach iH <= qH do
+        ch1(x1: G, x2: G, x3: G, x4: key) :=
+        find [unique] u = ri <= qH suchthat defined(r_2[ri], x4[ri], x3[ri], x2[ri], x1[ri]) && (x1 = x1[ri]) && (x2 = x2[ri]) && (x3 = x3[ri]) && (x4 = x4[ri]) then
+          return(r_2[u])
+        else
+          r_2 <-R three_keys;
+          return(r_2)
+      ))
+
+
+Applying simplify (non-expanded game) [probability 0.5 * Nc^2 * Pcoll2rand(Z)]
+  - Simplification pass
+    - Replaced (u_7[ri_10] = u_7) with false at 51
+    - Remove branch 1 in find at 48
+    - Find at 48 removed (else branch kept if any)
+yields
+
+Game 22 is
+      cStart() :=
+      return();
+      ((
+        foreach ic <= Nc do
+        cC0() :=
+        x <-R Z;
+        X: G <- exp(g, x);
+        return(X);
+        cC2(Y': G, k_s_1: key) :=
+        find [unique] u_7 = ri_7 <= Ns suchthat defined(part3[ri_7], part2[ri_7], X'[ri_7], y[ri_7]) && (Y' = exp(g, y[ri_7])) && (X = X'[ri_7]) then
+        if k_s_1 = part2[u_7] then
+        k_secret_c: key <- part3[u_7];
+        return((Y_1 <-R key; Y_1))
+      ) | (
+        foreach is <= Ns do
+        cS1(X': G) :=
+        y <-R Z;
+        Y: G <- exp(g, y);
+        part3 <-R key;
+        part2 <-R key;
+        part1: key <- cst_key;
+        return(Y, part2);
+        cS3(k_c'_2: key) :=
+  {74}  if (X'_1: key <- k_c'_2; find [unique] u_9 = ri_9 <= Nc suchthat defined(u_7[ri_9], Y_1[ri_9]) && (u_7[ri_9] = is) then (X'_1 = Y_1[u_9]) else false) then
+        find j4 = j4_1 <= Nc suchthat defined(X[j4_1]) && (X' = X[j4_1]) then
+          k_secret_s: key <- part3
+        else
+          event_abort server_break_auth
+      ) | (
+        cCorrupt() :=
+        event_abort adv_loses
+      ) | (
+        foreach iH <= qH do
+        ch1(x1: G, x2: G, x3: G, x4: key) :=
+        find [unique] u = ri <= qH suchthat defined(r_2[ri], x4[ri], x3[ri], x2[ri], x1[ri]) && (x1 = x1[ri]) && (x2 = x2[ri]) && (x3 = x3[ri]) && (x4 = x4[ri]) then
+          return(r_2[u])
+        else
+          r_2 <-R three_keys;
+          return(r_2)
+      ))
+
+
+Applying expand [probability 0.5 * Nc^2 * Pcoll2rand(Z)]
+  - Expand if/find/let
+    - Test at 74 always false
+yields
+
+Game 23 is
+      cStart() :=
+      return();
+      ((
+        foreach ic <= Nc do
+        cC0() :=
+        x <-R Z;
+        X: G <- exp(g, x);
+        return(X);
+        cC2(Y': G, k_s_1: key) :=
+        find [unique] u_7 = ri_7 <= Ns suchthat defined(part3[ri_7], part2[ri_7], X'[ri_7], y[ri_7]) && (Y' = exp(g, y[ri_7])) && (X = X'[ri_7]) then
+        if k_s_1 = part2[u_7] then
+        k_secret_c: key <- part3[u_7];
+        Y_1 <-R key;
+        return(Y_1)
+      ) | (
+        foreach is <= Ns do
+        cS1(X': G) :=
+        y <-R Z;
+        Y: G <- exp(g, y);
+        part3 <-R key;
+        part2 <-R key;
+        part1: key <- cst_key;
+        return(Y, part2);
+        cS3(k_c'_2: key) :=
+        X'_1: key <- k_c'_2;
+        find [unique] u_9 = ri_9 <= Nc suchthat defined(u_7[ri_9], Y_1[ri_9]) && (u_7[ri_9] = is) then
+        if X'_1 = Y_1[u_9] then
+        find j4 = j4_1 <= Nc suchthat defined(X[j4_1]) && (X' = X[j4_1]) then
+          k_secret_s: key <- part3
+        else
+          event_abort server_break_auth
+      ) | (
+        cCorrupt() :=
+        event_abort adv_loses
+      ) | (
+        foreach iH <= qH do
+        ch1(x1: G, x2: G, x3: G, x4: key) :=
+        find [unique] u = ri <= qH suchthat defined(r_2[ri], x4[ri], x3[ri], x2[ri], x1[ri]) && (x1 = x1[ri]) && (x2 = x2[ri]) && (x3 = x3[ri]) && (x4 = x4[ri]) then
+          return(r_2[u])
+        else
+          r_2 <-R three_keys;
+          return(r_2)
+      ))
+
+
+Applying remove assignments of findcond
+  - Remove assignments on part1 (definition removed, all usages removed)
+  - Remove assignments on X'_1 (definition removed, all usages removed)
+yields
+
+Game 24 is
+      cStart() :=
+      return();
+      ((
+        foreach ic <= Nc do
+        cC0() :=
+        x <-R Z;
+        X: G <- exp(g, x);
+        return(X);
+        cC2(Y': G, k_s_1: key) :=
+        find [unique] u_7 = ri_7 <= Ns suchthat defined(part3[ri_7], part2[ri_7], X'[ri_7], y[ri_7]) && (Y' = exp(g, y[ri_7])) && (X = X'[ri_7]) then
+        if k_s_1 = part2[u_7] then
+        k_secret_c: key <- part3[u_7];
+        Y_1 <-R key;
+        return(Y_1)
+      ) | (
+        foreach is <= Ns do
+        cS1(X': G) :=
+        y <-R Z;
+        Y: G <- exp(g, y);
+        part3 <-R key;
+        part2 <-R key;
+        return(Y, part2);
+        cS3(k_c'_2: key) :=
+        find [unique] u_9 = ri_9 <= Nc suchthat defined(u_7[ri_9], Y_1[ri_9]) && (u_7[ri_9] = is) then
+        if k_c'_2 = Y_1[u_9] then
+  {86}  find j4 = j4_1 <= Nc suchthat defined(X[j4_1]) && {88}(X' = X[j4_1]) then
+          k_secret_s: key <- part3
+        else
+          event_abort server_break_auth
+      ) | (
+        cCorrupt() :=
+        event_abort adv_loses
+      ) | (
+        foreach iH <= qH do
+        ch1(x1: G, x2: G, x3: G, x4: key) :=
+        find [unique] u = ri <= qH suchthat defined(r_2[ri], x4[ri], x3[ri], x2[ri], x1[ri]) && (x1 = x1[ri]) && (x2 = x2[ri]) && (x3 = x3[ri]) && (x4 = x4[ri]) then
+          return(r_2[u])
+        else
+          r_2 <-R three_keys;
+          return(r_2)
+      ))
+
+
+Applying simplify [probability 0.5 * Nc^2 * Pcoll2rand(Z)]
+  - Simplification pass
+    - Remove else branch of find at 86
+    - Replaced (X' = X[j4_1]) with (u_9 = j4_1) at 88
+    - In branch 1 of find at 86, substituting j4 with u_9
+    - Replaced defined condition X[j4_1] with an empty condition in find at 86
+    - A single branch always succeeds in find at 86
+yields
+
+Game 25 is
+      cStart() :=
+      return();
+      ((
+        foreach ic <= Nc do
+        cC0() :=
+        x <-R Z;
+        X: G <- exp(g, x);
+        return(X);
+        cC2(Y': G, k_s_1: key) :=
+        find [unique] u_7 = ri_7 <= Ns suchthat defined(part3[ri_7], part2[ri_7], X'[ri_7], y[ri_7]) && (Y' = exp(g, y[ri_7])) && (X = X'[ri_7]) then
+        if k_s_1 = part2[u_7] then
+        k_secret_c: key <- part3[u_7];
+        Y_1 <-R key;
+        return(Y_1)
+      ) | (
+        foreach is <= Ns do
+        cS1(X': G) :=
+        y <-R Z;
+        Y: G <- exp(g, y);
+        part3 <-R key;
+        part2 <-R key;
+        return(Y, part2);
+        cS3(k_c'_2: key) :=
+        find [unique] u_9 = ri_9 <= Nc suchthat defined(u_7[ri_9], Y_1[ri_9]) && (u_7[ri_9] = is) then
+        if k_c'_2 = Y_1[u_9] then
+        j4 <= Nc <- u_9;
+        k_secret_s: key <- part3
+      ) | (
+        cCorrupt() :=
+        event_abort adv_loses
+      ) | (
+        foreach iH <= qH do
+        ch1(x1: G, x2: G, x3: G, x4: key) :=
+        find [unique] u = ri <= qH suchthat defined(r_2[ri], x4[ri], x3[ri], x2[ri], x1[ri]) && (x1 = x1[ri]) && (x2 = x2[ri]) && (x3 = x3[ri]) && (x4 = x4[ri]) then
+          return(r_2[u])
+        else
+          r_2 <-R three_keys;
+          return(r_2)
+      ))
+
+
+Applying SA rename new without array accesses and remove assignments of findcond
+  - Remove assignments on j4 (definition removed, all usages removed)
+yields
+
+Game 26 is
+      cStart() :=
+      return();
+      ((
+        foreach ic <= Nc do
+        cC0() :=
+        x <-R Z;
+        X: G <- exp(g, x);
+        return(X);
+        cC2(Y': G, k_s_1: key) :=
+        find [unique] u_7 = ri_7 <= Ns suchthat defined(part3[ri_7], part2[ri_7], X'[ri_7], y[ri_7]) && (Y' = exp(g, y[ri_7])) && (X = X'[ri_7]) then
+        if k_s_1 = part2[u_7] then
+        k_secret_c: key <- part3[u_7];
+        Y_1 <-R key;
+        return(Y_1)
+      ) | (
+        foreach is <= Ns do
+        cS1(X': G) :=
+        y <-R Z;
+        Y: G <- exp(g, y);
+        part3 <-R key;
+        part2 <-R key;
+        return(Y, part2);
+        cS3(k_c'_2: key) :=
+        find [unique] u_9 = ri_9 <= Nc suchthat defined(u_7[ri_9], Y_1[ri_9]) && (u_7[ri_9] = is) then
+        if k_c'_2 = Y_1[u_9] then
+        k_secret_s: key <- part3
+      ) | (
+        cCorrupt() :=
+        event_abort adv_loses
+      ) | (
+        foreach iH <= qH do
+        ch1(x1: G, x2: G, x3: G, x4: key) :=
+        find [unique] u = ri <= qH suchthat defined(r_2[ri], x4[ri], x3[ri], x2[ri], x1[ri]) && (x1 = x1[ri]) && (x2 = x2[ri]) && (x3 = x3[ri]) && (x4 = x4[ri]) then
+          return(r_2[u])
+        else
+          r_2 <-R three_keys;
+          return(r_2)
+      ))
+
+===================== New branch =====================
+Game 6 [Already displayed]
+
+Applying insert instruction find j' <= Nc suchthat defined(X[j']) && X' = X[j'] then at occurrence 88
+yields
+
+Game 27 is
+      cStart() :=
+      hk_1 <-R hashkey;
+      psk_1 <-R key;
+      return();
+      ((
+        foreach ic <= Nc do
+        cC0() :=
+        x <-R Z;
+        X: G <- exp(g, x);
+        return(X);
+        cC2(Y': G, k_s_1: key) :=
+        v_5: three_keys <- H(hk_1, exp(Y', x), X, Y', psk_1);
+        k_s': key <- 2-proj-tuple3keys(v_5);
+        if k_s_1 = k_s' then
+        k_c'_1: key <- 1-proj-tuple3keys(v_5);
+        if defined(corruptedPSK) then
+          return(k_c'_1)
+        else
+          k': key <- 3-proj-tuple3keys(v_5);
+          find j3 = j3_1 <= Ns suchthat defined(X'[j3_1], Y[j3_1]) && (X = X'[j3_1]) && (Y' = Y[j3_1]) then
+            k_secret_c: key <- k';
+            return(k_c'_1)
+          else
+            event_abort client_break_auth
+      ) | (
+        foreach is <= Ns do
+        cS1(X': G) :=
+        find j' = j'_1 <= Nc suchthat defined(X[j'_1]) && (X' = X[j'_1]) then
+        (
+          y <-R Z;
+          Y: G <- exp(g, y);
+          v_4: three_keys <- H(hk_1, exp(X', y), X', Y, psk_1);
+          k_s_2: key <- 2-proj-tuple3keys(v_4);
+          k_c: key <- 1-proj-tuple3keys(v_4);
+          return(Y, k_s_2);
+          cS3(k_c'_2: key) :=
+          if k_c = k_c'_2 then
+          if defined(corruptedPSK) then
+            yield
+          else
+            k: key <- 3-proj-tuple3keys(v_4);
+            find j4 = j4_1 <= Nc suchthat defined(X[j4_1]) && (X' = X[j4_1]) then
+              k_secret_s: key <- k
+            else
+              event_abort server_break_auth
+        )
+        else
+          y <-R Z;
+          Y: G <- exp(g, y);
+          v_4: three_keys <- H(hk_1, exp(X', y), X', Y, psk_1);
+          k_s_2: key <- 2-proj-tuple3keys(v_4);
+          k_c: key <- 1-proj-tuple3keys(v_4);
+          return(Y, k_s_2);
+          cS3(k_c'_2: key) :=
+          if k_c = k_c'_2 then
+          if defined(corruptedPSK) then
+            yield
+          else
+            k: key <- 3-proj-tuple3keys(v_4);
+            find j4 = j4_1 <= Nc suchthat defined(X[j4_1]) && (X' = X[j4_1]) then
+              k_secret_s: key <- k
+            else
+              event_abort server_break_auth
+      ) | (
+        cCorrupt() :=
+        corruptedPSK: bool <- cst_bool;
+        return(psk_1)
+      ) | (
+        foreach iH <= qH do
+        ch1(x1: G, x2: G, x3: G, x4: key) :=
+        return(H(hk_1, x1, x2, x3, x4))
+      ))
+
+
+Applying SA rename Y
+  - Rename variable Y into Y_3, Y_2
+yields
+
+Game 28 is
+      cStart() :=
+      hk_1 <-R hashkey;
+      psk_1 <-R key;
+      return();
+      ((
+        foreach ic <= Nc do
+        cC0() :=
+        x <-R Z;
+        X: G <- exp(g, x);
+        return(X);
+        cC2(Y': G, k_s_1: key) :=
+        v_5: three_keys <- H(hk_1, exp(Y', x), X, Y', psk_1);
+        k_s': key <- 2-proj-tuple3keys(v_5);
+        if k_s_1 = k_s' then
+        k_c'_1: key <- 1-proj-tuple3keys(v_5);
+        if defined(corruptedPSK) then
+          return(k_c'_1)
+        else
+          k': key <- 3-proj-tuple3keys(v_5);
+          find j3 = j3_1 <= Ns suchthat defined(X'[j3_1], Y_2[j3_1]) && (X = X'[j3_1]) && (Y' = Y_2[j3_1]) then
+            k_secret_c: key <- k';
+            return(k_c'_1)
+          orfind j3 = j3_1 <= Ns suchthat defined(X'[j3_1], Y_3[j3_1]) && (X = X'[j3_1]) && (Y' = Y_3[j3_1]) then
+            k_secret_c: key <- k';
+            return(k_c'_1)
+          else
+            event_abort client_break_auth
+      ) | (
+        foreach is <= Ns do
+        cS1(X': G) :=
+        find j' = j'_1 <= Nc suchthat defined(X[j'_1]) && (X' = X[j'_1]) then
+        (
+          y <-R Z;
+          Y_2: G <- exp(g, y);
+          v_4: three_keys <- H(hk_1, exp(X', y), X', Y_2, psk_1);
+          k_s_2: key <- 2-proj-tuple3keys(v_4);
+          k_c: key <- 1-proj-tuple3keys(v_4);
+          return(Y_2, k_s_2);
+          cS3(k_c'_2: key) :=
+          if k_c = k_c'_2 then
+          if defined(corruptedPSK) then
+            yield
+          else
+            k: key <- 3-proj-tuple3keys(v_4);
+            find j4 = j4_1 <= Nc suchthat defined(X[j4_1]) && (X' = X[j4_1]) then
+              k_secret_s: key <- k
+            else
+              event_abort server_break_auth
+        )
+        else
+          y <-R Z;
+          Y_3: G <- exp(g, y);
+          v_4: three_keys <- H(hk_1, exp(X', y), X', Y_3, psk_1);
+          k_s_2: key <- 2-proj-tuple3keys(v_4);
+          k_c: key <- 1-proj-tuple3keys(v_4);
+          return(Y_3, k_s_2);
+          cS3(k_c'_2: key) :=
+          if k_c = k_c'_2 then
+          if defined(corruptedPSK) then
+            yield
+          else
+            k: key <- 3-proj-tuple3keys(v_4);
+            find j4 = j4_1 <= Nc suchthat defined(X[j4_1]) && (X' = X[j4_1]) then
+              k_secret_s: key <- k
+            else
+              event_abort server_break_auth
+      ) | (
+        cCorrupt() :=
+        corruptedPSK: bool <- cst_bool;
+        return(psk_1)
+      ) | (
+        foreach iH <= qH do
+        ch1(x1: G, x2: G, x3: G, x4: key) :=
+        return(H(hk_1, x1, x2, x3, x4))
+      ))
+
+
+Applying SA rename new without array accesses and remove assignments of findcond
+  - Rename variable y into y_2, y_1
+yields
+
+Game 29 is
+      cStart() :=
+      hk_1 <-R hashkey;
+      psk_1 <-R key;
+      return();
+      ((
+        foreach ic <= Nc do
+        cC0() :=
+        x <-R Z;
+        X: G <- exp(g, x);
+        return(X);
+        cC2(Y': G, k_s_1: key) :=
+        v_5: three_keys <- H(hk_1, exp(Y', x), X, Y', psk_1);
+        k_s': key <- 2-proj-tuple3keys(v_5);
+        if k_s_1 = k_s' then
+        k_c'_1: key <- 1-proj-tuple3keys(v_5);
+        if defined(corruptedPSK) then
+          return(k_c'_1)
+        else
+          k': key <- 3-proj-tuple3keys(v_5);
+  {57}    find j3 = j3_1 <= Ns suchthat defined(X'[j3_1], Y_2[j3_1]) && {60}((X = X'[j3_1]) && (Y' = Y_2[j3_1])) then
+            k_secret_c: key <- k';
+            return(k_c'_1)
+          orfind j3 = j3_1 <= Ns suchthat defined(X'[j3_1], Y_3[j3_1]) && {81}((X = X'[j3_1]) && (Y' = Y_3[j3_1])) then
+            k_secret_c: key <- k';
+            return(k_c'_1)
+          else
+            event_abort client_break_auth
+      ) | (
+        foreach is <= Ns do
+        cS1(X': G) :=
+ {109}  find j' = j'_1 <= Nc suchthat defined(X[j'_1]) && (X' = X[j'_1]) then
+        (
+          y_2 <-R Z;
+          Y_2: G <- exp(g, y_2);
+          v_4: three_keys <- {123}H(hk_1, exp(X', y_2), X', Y_2, psk_1);
+          k_s_2: key <- 2-proj-tuple3keys(v_4);
+          k_c: key <- 1-proj-tuple3keys(v_4);
+          return(Y_2, k_s_2);
+          cS3(k_c'_2: key) :=
+          if k_c = k_c'_2 then
+          if defined(corruptedPSK) then
+            yield
+          else
+            k: key <- 3-proj-tuple3keys(v_4);
+ {162}      find j4 = j4_1 <= Nc suchthat defined(X[j4_1]) && {164}(X' = X[j4_1]) then
+              k_secret_s: key <- k
+            else
+              event_abort server_break_auth
+        )
+        else
+          y_1 <-R Z;
+          Y_3: G <- exp(g, y_1);
+          v_4: three_keys <- H(hk_1, exp(X', y_1), X', Y_3, psk_1);
+          k_s_2: key <- 2-proj-tuple3keys(v_4);
+          k_c: key <- 1-proj-tuple3keys(v_4);
+          return(Y_3, k_s_2);
+          cS3(k_c'_2: key) :=
+          if k_c = k_c'_2 then
+          if defined(corruptedPSK) then
+            yield
+          else
+            k: key <- 3-proj-tuple3keys(v_4);
+ {227}      find j4 = j4_1 <= Nc suchthat defined(X[j4_1]) && {229}(X' = X[j4_1]) then
+              k_secret_s: key <- k
+            else
+              event_abort server_break_auth
+      ) | (
+        cCorrupt() :=
+        corruptedPSK: bool <- cst_bool;
+        return(psk_1)
+      ) | (
+        foreach iH <= qH do
+        ch1(x1: G, x2: G, x3: G, x4: key) :=
+        return(H(hk_1, x1, x2, x3, x4))
+      ))
+
+
+Applying simplify [probability 0.5 * Nc^2 * Pcoll2rand(Z) + Nc * Ns / |Z|]
+  - Simplification pass
+    - Replaced (X' = X[j4_1]) with false at 229
+    - Remove branch 1 in find at 227
+    - Find at 227 removed (else branch kept if any)
+    - Replaced H(hk_1, exp(X', y_2), X', Y_2, psk_1) with H(hk_1, exp(g, mult(x[j'], y_2)), X', Y_2, psk_1) at 123
+    - Remove else branch of find at 162
+    - Replaced (X' = X[j4_1]) with (j' = j4_1) at 164
+    - In branch 1 of find at 162, substituting j4 with j'
+    - Replaced defined condition X[j4_1] with an empty condition in find at 162
+    - A single branch always succeeds in find at 162
+    - Replaced defined condition X[j'_1] with x[j'_1], X[j'_1] in find at 109
+    - Replaced ((X = X'[j3_1]) && (Y' = Y_3[j3_1])) with false at 81
+    - Remove branch 2 in find at 57
+    - Replaced ((X = X'[j3_1]) && (Y' = Y_2[j3_1])) with ((ic = j'[j3_1]) && (Y' = Y_2[j3_1])) at 60
+    - Replaced defined condition X'[j3_1], Y_2[j3_1] with Y_2[j3_1], j'[j3_1] in find at 57
+yields
+
+Game 30 is
+      cStart() :=
+      hk_1 <-R hashkey;
+      psk_1 <-R key;
+      return();
+      ((
+        foreach ic <= Nc do
+        cC0() :=
+        x <-R Z;
+        X: G <- exp(g, x);
+        return(X);
+        cC2(Y': G, k_s_1: key) :=
+  {20}  v_5: three_keys <- H(hk_1, exp(Y', x), X, Y', psk_1);
+        k_s': key <- 2-proj-tuple3keys(v_5);
+        if k_s_1 = k_s' then
+        k_c'_1: key <- 1-proj-tuple3keys(v_5);
+        if defined(corruptedPSK) then
+          return(k_c'_1)
+        else
+          k': key <- 3-proj-tuple3keys(v_5);
+          find j3 = j3_1 <= Ns suchthat defined(Y_2[j3_1], j'[j3_1]) && (ic = j'[j3_1]) && (Y' = Y_2[j3_1]) then
+            k_secret_c: key <- k';
+            return(k_c'_1)
+          else
+            event_abort client_break_auth
+      ) | (
+        foreach is <= Ns do
+        cS1(X': G) :=
+        find j' = j'_1 <= Nc suchthat defined(x[j'_1], X[j'_1]) && (X' = X[j'_1]) then
+        (
+          y_2 <-R Z;
+          Y_2: G <- exp(g, y_2);
+          v_4: three_keys <- H(hk_1, exp(g, mult(x[j'], y_2)), X', Y_2, psk_1);
+          k_s_2: key <- 2-proj-tuple3keys(v_4);
+          k_c: key <- 1-proj-tuple3keys(v_4);
+          return(Y_2, k_s_2);
+          cS3(k_c'_2: key) :=
+          if k_c = k_c'_2 then
+          if defined(corruptedPSK) then
+            yield
+          else
+            k: key <- 3-proj-tuple3keys(v_4);
+            j4 <= Nc <- j';
+            k_secret_s: key <- k
+        )
+        else
+          y_1 <-R Z;
+          Y_3: G <- exp(g, y_1);
+          v_4: three_keys <- H(hk_1, exp(X', y_1), X', Y_3, psk_1);
+          k_s_2: key <- 2-proj-tuple3keys(v_4);
+          k_c: key <- 1-proj-tuple3keys(v_4);
+          return(Y_3, k_s_2);
+          cS3(k_c'_2: key) :=
+          if k_c = k_c'_2 then
+          if defined(corruptedPSK) then
+            yield
+          else
+            k: key <- 3-proj-tuple3keys(v_4);
+            event_abort server_break_auth
+      ) | (
+        cCorrupt() :=
+        corruptedPSK: bool <- cst_bool;
+        return(psk_1)
+      ) | (
+        foreach iH <= qH do
+        ch1(x1: G, x2: G, x3: G, x4: key) :=
+        return(H(hk_1, x1, x2, x3, x4))
+      ))
+
+
+Applying insert instruction find j'' <= Ns suchthat defined(Y_2[j''], X'[j'']) && X = X'[j''] && Y' = Y_2[j''] then at occurrence 20
+yields
+
+Game 31 is
+      cStart() :=
+      hk_1 <-R hashkey;
+      psk_1 <-R key;
+      return();
+      ((
+        foreach ic <= Nc do
+        cC0() :=
+        x <-R Z;
+        X: G <- exp(g, x);
+        return(X);
+        cC2(Y': G, k_s_1: key) :=
+  {20}  find j'' = j''_1 <= Ns suchthat defined(Y_2[j''_1], X'[j''_1]) && {23}((X = X'[j''_1]) && (Y' = Y_2[j''_1])) then
+        (
+          v_5: three_keys <- {35}H(hk_1, exp(Y', x), X, Y', psk_1);
+          k_s': key <- 2-proj-tuple3keys(v_5);
+          if k_s_1 = k_s' then
+          k_c'_1: key <- 1-proj-tuple3keys(v_5);
+          if defined(corruptedPSK) then
+            return(k_c'_1)
+          else
+            k': key <- 3-proj-tuple3keys(v_5);
+  {71}      find j3 = j3_1 <= Ns suchthat defined(Y_2[j3_1], j'[j3_1]) && {74}((ic = j'[j3_1]) && (Y' = Y_2[j3_1])) then
+              k_secret_c: key <- k';
+              return(k_c'_1)
+            else
+              event_abort client_break_auth
+        )
+        else
+          v_5: three_keys <- H(hk_1, exp(Y', x), X, Y', psk_1);
+          k_s': key <- 2-proj-tuple3keys(v_5);
+          if k_s_1 = k_s' then
+          k_c'_1: key <- 1-proj-tuple3keys(v_5);
+          if defined(corruptedPSK) then
+            return(k_c'_1)
+          else
+            k': key <- 3-proj-tuple3keys(v_5);
+ {135}      find j3 = j3_1 <= Ns suchthat defined(Y_2[j3_1], j'[j3_1]) && {138}((ic = j'[j3_1]) && (Y' = Y_2[j3_1])) then
+              k_secret_c: key <- k';
+              return(k_c'_1)
+            else
+              event_abort client_break_auth
+      ) | (
+        foreach is <= Ns do
+        cS1(X': G) :=
+        find j' = j'_1 <= Nc suchthat defined(x[j'_1], X[j'_1]) && (X' = X[j'_1]) then
+        (
+          y_2 <-R Z;
+          Y_2: G <- exp(g, y_2);
+          v_4: three_keys <- H(hk_1, exp(g, mult(x[j'], y_2)), X', Y_2, psk_1);
+          k_s_2: key <- 2-proj-tuple3keys(v_4);
+          k_c: key <- 1-proj-tuple3keys(v_4);
+          return(Y_2, k_s_2);
+          cS3(k_c'_2: key) :=
+          if k_c = k_c'_2 then
+          if defined(corruptedPSK) then
+            yield
+          else
+            k: key <- 3-proj-tuple3keys(v_4);
+            j4 <= Nc <- j';
+            k_secret_s: key <- k
+        )
+        else
+          y_1 <-R Z;
+          Y_3: G <- exp(g, y_1);
+          v_4: three_keys <- H(hk_1, exp(X', y_1), X', Y_3, psk_1);
+          k_s_2: key <- 2-proj-tuple3keys(v_4);
+          k_c: key <- 1-proj-tuple3keys(v_4);
+          return(Y_3, k_s_2);
+          cS3(k_c'_2: key) :=
+          if k_c = k_c'_2 then
+          if defined(corruptedPSK) then
+            yield
+          else
+            k: key <- 3-proj-tuple3keys(v_4);
+            event_abort server_break_auth
+      ) | (
+        cCorrupt() :=
+        corruptedPSK: bool <- cst_bool;
+        return(psk_1)
+      ) | (
+        foreach iH <= qH do
+        ch1(x1: G, x2: G, x3: G, x4: key) :=
+        return(H(hk_1, x1, x2, x3, x4))
+      ))
+
+
+Applying simplify [probability (0.5 * Ns^2 + 0.5 * Nc^2) * Pcoll2rand(Z) + Ns * Nc / |Z|]
+  - Simplification pass
+    - Replaced ((ic = j'[j3_1]) && (Y' = Y_2[j3_1])) with false at 138
+    - Remove branch 1 in find at 135
+    - Find at 135 removed (else branch kept if any)
+    - Replaced ((X = X'[j''_1]) && (Y' = Y_2[j''_1])) with ((ic = j'[j''_1]) && (Y' = Y_2[j''_1])) at 23
+    - Replaced H(hk_1, exp(Y', x), X, Y', psk_1) with H(hk_1, exp(g, mult(y_2[j''], x)), X, Y', psk_1) at 35
+    - Remove else branch of find at 71
+    - Replaced ((ic = j'[j3_1]) && (Y' = Y_2[j3_1])) with (j'' = j3_1) at 74
+    - In branch 1 of find at 71, substituting j3 with j''
+    - Replaced defined condition Y_2[j3_1], j'[j3_1] with an empty condition in find at 71
+    - A single branch always succeeds in find at 71
+    - Replaced defined condition Y_2[j''_1], X'[j''_1] with y_2[j''_1], Y_2[j''_1], j'[j''_1] in find at 20
+yields
+
+Game 32 is
+      cStart() :=
+      hk_1 <-R hashkey;
+      psk_1 <-R key;
+      return();
+      ((
+        foreach ic <= Nc do
+        cC0() :=
+        x <-R Z;
+        X: G <- exp(g, x);
+        return(X);
+        cC2(Y': G, k_s_1: key) :=
+        find j'' = j''_1 <= Ns suchthat defined(y_2[j''_1], Y_2[j''_1], j'[j''_1]) && (ic = j'[j''_1]) && (Y' = Y_2[j''_1]) then
+        (
+          v_5: three_keys <- H(hk_1, exp(g, mult(y_2[j''], x)), X, Y', psk_1);
+          k_s': key <- 2-proj-tuple3keys(v_5);
+          if k_s_1 = k_s' then
+          k_c'_1: key <- 1-proj-tuple3keys(v_5);
+          if defined(corruptedPSK) then
+            return(k_c'_1)
+          else
+            k': key <- 3-proj-tuple3keys(v_5);
+            j3 <= Ns <- j'';
+            k_secret_c: key <- k';
+            return(k_c'_1)
+        )
+        else
+          v_5: three_keys <- H(hk_1, exp(Y', x), X, Y', psk_1);
+          k_s': key <- 2-proj-tuple3keys(v_5);
+          if k_s_1 = k_s' then
+          k_c'_1: key <- 1-proj-tuple3keys(v_5);
+          if defined(corruptedPSK) then
+            return(k_c'_1)
+          else
+            k': key <- 3-proj-tuple3keys(v_5);
+            event_abort client_break_auth
+      ) | (
+        foreach is <= Ns do
+        cS1(X': G) :=
+        find j' = j'_1 <= Nc suchthat defined(x[j'_1], X[j'_1]) && (X' = X[j'_1]) then
+        (
+          y_2 <-R Z;
+          Y_2: G <- exp(g, y_2);
+          v_4: three_keys <- H(hk_1, exp(g, mult(x[j'], y_2)), X', Y_2, psk_1);
+          k_s_2: key <- 2-proj-tuple3keys(v_4);
+          k_c: key <- 1-proj-tuple3keys(v_4);
+          return(Y_2, k_s_2);
+          cS3(k_c'_2: key) :=
+          if k_c = k_c'_2 then
+          if defined(corruptedPSK) then
+            yield
+          else
+            k: key <- 3-proj-tuple3keys(v_4);
+            j4 <= Nc <- j';
+            k_secret_s: key <- k
+        )
+        else
+          y_1 <-R Z;
+          Y_3: G <- exp(g, y_1);
+          v_4: three_keys <- H(hk_1, exp(X', y_1), X', Y_3, psk_1);
+          k_s_2: key <- 2-proj-tuple3keys(v_4);
+          k_c: key <- 1-proj-tuple3keys(v_4);
+          return(Y_3, k_s_2);
+          cS3(k_c'_2: key) :=
+          if k_c = k_c'_2 then
+          if defined(corruptedPSK) then
+            yield
+          else
+            event_abort server_break_auth
+      ) | (
+        cCorrupt() :=
+        corruptedPSK: bool <- cst_bool;
+        return(psk_1)
+      ) | (
+        foreach iH <= qH do
+        ch1(x1: G, x2: G, x3: G, x4: key) :=
+        return(H(hk_1, x1, x2, x3, x4))
+      ))
+
+
+Applying equivalence rom(H)
+  - Equivalence rom(H) with variables: hk_1 -> hk_2
+yields
+
+Game 33 is
+      cStart() :=
+      psk_1 <-R key;
+      return();
+      ((
+        foreach ic <= Nc do
+        cC0() :=
+        x <-R Z;
+        X: G <- exp(g, x);
+        return(X);
+        cC2(Y': G, k_s_1: key) :=
+        find j'' = j''_1 <= Ns suchthat defined(y_2[j''_1], Y_2[j''_1], j'[j''_1]) && (ic = j'[j''_1]) && (Y' = Y_2[j''_1]) then
+        (
+          v_5: three_keys <- (x_O_19: G <- exp(g, mult(y_2[j''], x)); x_O_18: G <- X; x_O_17: G <- Y'; x_O_16: key <- psk_1; {51}find [unique] u_35 = ri_35 <= Nc suchthat defined(x_O_15[ri_35], x_O_14[ri_35], x_O_13[ri_35], x_O_12[ri_35], r_3[ri_35]) && {57}((x_O_19 = x_O_15[ri_35]) && (x_O_18 = x_O_14[ri_35]) && (x_O_17 = x_O_13[ri_35]) && (x_O_16 = x_O_12[ri_35])) then r_3[u_35] orfind u_34 = ri_34 <= Nc suchthat defined(x_O_19[ri_34], x_O_18[ri_34], x_O_17[ri_34], x_O_16[ri_34], r_4[ri_34]) && {88}((x_O_19 = x_O_19[ri_34]) && (x_O_18 = x_O_18[ri_34]) && (x_O_17 = x_O_17[ri_34]) && (x_O_16 = x_O_16[ri_34])) then r_4[u_34] orfind u_33 = ri_33 <= Ns suchthat defined(x_O_23[ri_33], x_O_22[ri_33], x_O_21[ri_33], x_O_20[ri_33], r_5[ri_33]) && {119}((x_O_19 = x_O_23[ri_33]) && (x_O_18 = x_O_22[ri_33]) && (x_O_17 = x_O_21[ri_33]) && (x_O_16 = x_O_20[ri_33])) then r_5[u_33] orfind u_32 = ri_32 <= Ns suchthat defined(x_O_27[ri_32], x_O_26[ri_32], x_O_25[ri_32], x_O_24[ri_32], r_6[ri_32]) && (x_O_19 = x_O_27[ri_32]) && (x_O_18 = x_O_26[ri_32]) && (x_O_17 = x_O_25[ri_32]) && (x_O_16 = x_O_24[ri_32]) then r_6[u_32] orfind u_31 = ri_31 <= qH suchthat defined(x_O_31[ri_31], x_O_30[ri_31], x_O_29[ri_31], x_O_28[ri_31], r_7[ri_31]) && (x_O_19 = x_O_31[ri_31]) && (x_O_18 = x_O_30[ri_31]) && (x_O_17 = x_O_29[ri_31]) && (x_O_16 = x_O_28[ri_31]) then r_7[u_31] else r_4 <-R three_keys; r_4);
+          k_s': key <- 2-proj-tuple3keys(v_5);
+          if k_s_1 = k_s' then
+          k_c'_1: key <- 1-proj-tuple3keys(v_5);
+          if defined(corruptedPSK) then
+            return(k_c'_1)
+          else
+            k': key <- 3-proj-tuple3keys(v_5);
+            j3 <= Ns <- j'';
+            k_secret_c: key <- k';
+            return(k_c'_1)
+        )
+        else
+          v_5: three_keys <- (x_O_15: G <- exp(Y', x); x_O_14: G <- X; x_O_13: G <- Y'; x_O_12: key <- psk_1; {266}find [unique] u_30 = ri_30 <= Nc suchthat defined(x_O_15[ri_30], x_O_14[ri_30], x_O_13[ri_30], x_O_12[ri_30], r_3[ri_30]) && {272}((x_O_15 = x_O_15[ri_30]) && (x_O_14 = x_O_14[ri_30]) && (x_O_13 = x_O_13[ri_30]) && (x_O_12 = x_O_12[ri_30])) then r_3[u_30] orfind u_29 = ri_29 <= Nc suchthat defined(x_O_19[ri_29], x_O_18[ri_29], x_O_17[ri_29], x_O_16[ri_29], r_4[ri_29]) && {303}((x_O_15 = x_O_19[ri_29]) && (x_O_14 = x_O_18[ri_29]) && (x_O_13 = x_O_17[ri_29]) && (x_O_12 = x_O_16[ri_29])) then r_4[u_29] orfind u_28 = ri_28 <= Ns suchthat defined(x_O_23[ri_28], x_O_22[ri_28], x_O_21[ri_28], x_O_20[ri_28], r_5[ri_28]) && (x_O_15 = x_O_23[ri_28]) && (x_O_14 = x_O_22[ri_28]) && (x_O_13 = x_O_21[ri_28]) && (x_O_12 = x_O_20[ri_28]) then r_5[u_28] orfind u_27 = ri_27 <= Ns suchthat defined(x_O_27[ri_27], x_O_26[ri_27], x_O_25[ri_27], x_O_24[ri_27], r_6[ri_27]) && (x_O_15 = x_O_27[ri_27]) && (x_O_14 = x_O_26[ri_27]) && (x_O_13 = x_O_25[ri_27]) && (x_O_12 = x_O_24[ri_27]) then r_6[u_27] orfind u_26 = ri_26 <= qH suchthat defined(x_O_31[ri_26], x_O_30[ri_26], x_O_29[ri_26], x_O_28[ri_26], r_7[ri_26]) && (x_O_15 = x_O_31[ri_26]) && (x_O_14 = x_O_30[ri_26]) && (x_O_13 = x_O_29[ri_26]) && (x_O_12 = x_O_28[ri_26]) then r_7[u_26] else r_3 <-R three_keys; r_3);
+          k_s': key <- 2-proj-tuple3keys(v_5);
+          if k_s_1 = k_s' then
+          k_c'_1: key <- 1-proj-tuple3keys(v_5);
+          if defined(corruptedPSK) then
+            return(k_c'_1)
+          else
+            k': key <- 3-proj-tuple3keys(v_5);
+            event_abort client_break_auth
+      ) | (
+        foreach is <= Ns do
+        cS1(X': G) :=
+        find j' = j'_1 <= Nc suchthat defined(x[j'_1], X[j'_1]) && (X' = X[j'_1]) then
+        (
+          y_2 <-R Z;
+          Y_2: G <- exp(g, y_2);
+          v_4: three_keys <- (x_O_27: G <- exp(g, mult(x[j'], y_2)); x_O_26: G <- X'; x_O_25: G <- Y_2; x_O_24: key <- psk_1; {490}find [unique] u_25 = ri_25 <= Nc suchthat defined(x_O_15[ri_25], x_O_14[ri_25], x_O_13[ri_25], x_O_12[ri_25], r_3[ri_25]) && (x_O_27 = x_O_15[ri_25]) && (x_O_26 = x_O_14[ri_25]) && (x_O_25 = x_O_13[ri_25]) && (x_O_24 = x_O_12[ri_25]) then r_3[u_25] orfind u_24 = ri_24 <= Nc suchthat defined(x_O_19[ri_24], x_O_18[ri_24], x_O_17[ri_24], x_O_16[ri_24], r_4[ri_24]) && {527}((x_O_27 = x_O_19[ri_24]) && (x_O_26 = x_O_18[ri_24]) && (x_O_25 = x_O_17[ri_24]) && (x_O_24 = x_O_16[ri_24])) then r_4[u_24] orfind u_23 = ri_23 <= Ns suchthat defined(x_O_23[ri_23], x_O_22[ri_23], x_O_21[ri_23], x_O_20[ri_23], r_5[ri_23]) && {558}((x_O_27 = x_O_23[ri_23]) && (x_O_26 = x_O_22[ri_23]) && (x_O_25 = x_O_21[ri_23]) && (x_O_24 = x_O_20[ri_23])) then r_5[u_23] orfind u_22 = ri_22 <= Ns suchthat defined(x_O_27[ri_22], x_O_26[ri_22], x_O_25[ri_22], x_O_24[ri_22], r_6[ri_22]) && {589}((x_O_27 = x_O_27[ri_22]) && (x_O_26 = x_O_26[ri_22]) && (x_O_25 = x_O_25[ri_22]) && (x_O_24 = x_O_24[ri_22])) then r_6[u_22] orfind u_21 = ri_21 <= qH suchthat defined(x_O_31[ri_21], x_O_30[ri_21], x_O_29[ri_21], x_O_28[ri_21], r_7[ri_21]) && (x_O_27 = x_O_31[ri_21]) && (x_O_26 = x_O_30[ri_21]) && (x_O_25 = x_O_29[ri_21]) && (x_O_24 = x_O_28[ri_21]) then r_7[u_21] else r_6 <-R three_keys; r_6);
+          k_s_2: key <- 2-proj-tuple3keys(v_4);
+          k_c: key <- 1-proj-tuple3keys(v_4);
+          return(Y_2, k_s_2);
+          cS3(k_c'_2: key) :=
+          if k_c = k_c'_2 then
+          if defined(corruptedPSK) then
+            yield
+          else
+            k: key <- 3-proj-tuple3keys(v_4);
+            j4 <= Nc <- j';
+            k_secret_s: key <- k
+        )
+        else
+          y_1 <-R Z;
+          Y_3: G <- exp(g, y_1);
+          v_4: three_keys <- (x_O_23: G <- exp(X', y_1); x_O_22: G <- X'; x_O_21: G <- Y_3; x_O_20: key <- psk_1; {712}find [unique] u_20 = ri_20 <= Nc suchthat defined(x_O_15[ri_20], x_O_14[ri_20], x_O_13[ri_20], x_O_12[ri_20], r_3[ri_20]) && (x_O_23 = x_O_15[ri_20]) && (x_O_22 = x_O_14[ri_20]) && (x_O_21 = x_O_13[ri_20]) && (x_O_20 = x_O_12[ri_20]) then r_3[u_20] orfind u_19 = ri_19 <= Nc suchthat defined(x_O_19[ri_19], x_O_18[ri_19], x_O_17[ri_19], x_O_16[ri_19], r_4[ri_19]) && {749}((x_O_23 = x_O_19[ri_19]) && (x_O_22 = x_O_18[ri_19]) && (x_O_21 = x_O_17[ri_19]) && (x_O_20 = x_O_16[ri_19])) then r_4[u_19] orfind u_18 = ri_18 <= Ns suchthat defined(x_O_23[ri_18], x_O_22[ri_18], x_O_21[ri_18], x_O_20[ri_18], r_5[ri_18]) && {780}((x_O_23 = x_O_23[ri_18]) && (x_O_22 = x_O_22[ri_18]) && (x_O_21 = x_O_21[ri_18]) && (x_O_20 = x_O_20[ri_18])) then r_5[u_18] orfind u_17 = ri_17 <= Ns suchthat defined(x_O_27[ri_17], x_O_26[ri_17], x_O_25[ri_17], x_O_24[ri_17], r_6[ri_17]) && {811}((x_O_23 = x_O_27[ri_17]) && (x_O_22 = x_O_26[ri_17]) && (x_O_21 = x_O_25[ri_17]) && (x_O_20 = x_O_24[ri_17])) then r_6[u_17] orfind u_16 = ri_16 <= qH suchthat defined(x_O_31[ri_16], x_O_30[ri_16], x_O_29[ri_16], x_O_28[ri_16], r_7[ri_16]) && (x_O_23 = x_O_31[ri_16]) && (x_O_22 = x_O_30[ri_16]) && (x_O_21 = x_O_29[ri_16]) && (x_O_20 = x_O_28[ri_16]) then r_7[u_16] else r_5 <-R three_keys; r_5);
+          k_s_2: key <- 2-proj-tuple3keys(v_4);
+          k_c: key <- 1-proj-tuple3keys(v_4);
+          return(Y_3, k_s_2);
+          cS3(k_c'_2: key) :=
+          if k_c = k_c'_2 then
+          if defined(corruptedPSK) then
+            yield
+          else
+            event_abort server_break_auth
+      ) | (
+        cCorrupt() :=
+        corruptedPSK: bool <- cst_bool;
+        return(psk_1)
+      ) | (
+        foreach iH <= qH do
+        ch1(x1: G, x2: G, x3: G, x4: key) :=
+        return((x_O_31: G <- x1; x_O_30: G <- x2; x_O_29: G <- x3; x_O_28: key <- x4; find [unique] u_15 = ri_15 <= Nc suchthat defined(x_O_15[ri_15], x_O_14[ri_15], x_O_13[ri_15], x_O_12[ri_15], r_3[ri_15]) && (x_O_31 = x_O_15[ri_15]) && (x_O_30 = x_O_14[ri_15]) && (x_O_29 = x_O_13[ri_15]) && (x_O_28 = x_O_12[ri_15]) then r_3[u_15] orfind u_14 = ri_14 <= Nc suchthat defined(x_O_19[ri_14], x_O_18[ri_14], x_O_17[ri_14], x_O_16[ri_14], r_4[ri_14]) && (x_O_31 = x_O_19[ri_14]) && (x_O_30 = x_O_18[ri_14]) && (x_O_29 = x_O_17[ri_14]) && (x_O_28 = x_O_16[ri_14]) then r_4[u_14] orfind u_13 = ri_13 <= Ns suchthat defined(x_O_23[ri_13], x_O_22[ri_13], x_O_21[ri_13], x_O_20[ri_13], r_5[ri_13]) && (x_O_31 = x_O_23[ri_13]) && (x_O_30 = x_O_22[ri_13]) && (x_O_29 = x_O_21[ri_13]) && (x_O_28 = x_O_20[ri_13]) then r_5[u_13] orfind u_12 = ri_12 <= Ns suchthat defined(x_O_27[ri_12], x_O_26[ri_12], x_O_25[ri_12], x_O_24[ri_12], r_6[ri_12]) && (x_O_31 = x_O_27[ri_12]) && (x_O_30 = x_O_26[ri_12]) && (x_O_29 = x_O_25[ri_12]) && (x_O_28 = x_O_24[ri_12]) then r_6[u_12] orfind u_11 = ri_11 <= qH suchthat defined(x_O_31[ri_11], x_O_30[ri_11], x_O_29[ri_11], x_O_28[ri_11], r_7[ri_11]) && (x_O_31 = x_O_31[ri_11]) && (x_O_30 = x_O_30[ri_11]) && (x_O_29 = x_O_29[ri_11]) && (x_O_28 = x_O_28[ri_11]) then r_7[u_11] else r_7 <-R three_keys; r_7))
+      ))
+
+
+Applying simplify (non-expanded game) [probability (0.5 * Nc^2 + 2 * Ns^2) * Pcoll2rand(Z) + 2 * Ns^2 * Nc^2 / |Z|]
+  - Simplification pass
+    - Replaced ((x_O_19 = x_O_23[ri_33]) && (x_O_18 = x_O_22[ri_33]) && (x_O_17 = x_O_21[ri_33]) && (x_O_16 = x_O_20[ri_33])) with false at 119
+    - Remove branch 3 in find at 51
+    - Replaced ((x_O_19 = x_O_19[ri_34]) && (x_O_18 = x_O_18[ri_34]) && (x_O_17 = x_O_17[ri_34]) && (x_O_16 = x_O_16[ri_34])) with false at 88
+    - Remove branch 2 in find at 51
+    - Replaced ((x_O_19 = x_O_15[ri_35]) && (x_O_18 = x_O_14[ri_35]) && (x_O_17 = x_O_13[ri_35]) && (x_O_16 = x_O_12[ri_35])) with false at 57
+    - Remove branch 1 in find at 51
+    - Replaced ((x_O_15 = x_O_19[ri_29]) && (x_O_14 = x_O_18[ri_29]) && (x_O_13 = x_O_17[ri_29]) && (x_O_12 = x_O_16[ri_29])) with false at 303
+    - Remove branch 2 in find at 266
+    - Replaced ((x_O_15 = x_O_15[ri_30]) && (x_O_14 = x_O_14[ri_30]) && (x_O_13 = x_O_13[ri_30]) && (x_O_12 = x_O_12[ri_30])) with false at 272
+    - Remove branch 1 in find at 266
+    - Replaced ((x_O_27 = x_O_27[ri_22]) && (x_O_26 = x_O_26[ri_22]) && (x_O_25 = x_O_25[ri_22]) && (x_O_24 = x_O_24[ri_22])) with false at 589
+    - Remove branch 4 in find at 490
+    - Replaced ((x_O_27 = x_O_23[ri_23]) && (x_O_26 = x_O_22[ri_23]) && (x_O_25 = x_O_21[ri_23]) && (x_O_24 = x_O_20[ri_23])) with false at 558
+    - Remove branch 3 in find at 490
+    - Replaced ((x_O_27 = x_O_19[ri_24]) && (x_O_26 = x_O_18[ri_24]) && (x_O_25 = x_O_17[ri_24]) && (x_O_24 = x_O_16[ri_24])) with false at 527
+    - Remove branch 2 in find at 490
+    - Replaced ((x_O_23 = x_O_27[ri_17]) && (x_O_22 = x_O_26[ri_17]) && (x_O_21 = x_O_25[ri_17]) && (x_O_20 = x_O_24[ri_17])) with false at 811
+    - Remove branch 4 in find at 712
+    - Replaced ((x_O_23 = x_O_23[ri_18]) && (x_O_22 = x_O_22[ri_18]) && (x_O_21 = x_O_21[ri_18]) && (x_O_20 = x_O_20[ri_18])) with false at 780
+    - Remove branch 3 in find at 712
+    - Replaced ((x_O_23 = x_O_19[ri_19]) && (x_O_22 = x_O_18[ri_19]) && (x_O_21 = x_O_17[ri_19]) && (x_O_20 = x_O_16[ri_19])) with false at 749
+    - Remove branch 2 in find at 712
+yields
+
+Game 34 is
+      cStart() :=
+      psk_1 <-R key;
+      return();
+      ((
+        foreach ic <= Nc do
+        cC0() :=
+        x <-R Z;
+        X: G <- exp(g, x);
+        return(X);
+        cC2(Y': G, k_s_1: key) :=
+        find j'' = j''_1 <= Ns suchthat defined(y_2[j''_1], Y_2[j''_1], j'[j''_1]) && (ic = j'[j''_1]) && (Y' = Y_2[j''_1]) then
+        (
+          v_5: three_keys <- (x_O_19: G <- exp(g, mult(y_2[j''], x)); x_O_18: G <- X; x_O_17: G <- Y'; x_O_16: key <- psk_1; find [unique] u_32 = ri_32 <= Ns suchthat defined(x_O_27[ri_32], x_O_26[ri_32], x_O_25[ri_32], x_O_24[ri_32], r_6[ri_32]) && (x_O_19 = x_O_27[ri_32]) && (x_O_18 = x_O_26[ri_32]) && (x_O_17 = x_O_25[ri_32]) && (x_O_16 = x_O_24[ri_32]) then r_6[u_32] orfind u_31 = ri_31 <= qH suchthat defined(x_O_31[ri_31], x_O_30[ri_31], x_O_29[ri_31], x_O_28[ri_31], r_7[ri_31]) && (x_O_19 = x_O_31[ri_31]) && (x_O_18 = x_O_30[ri_31]) && (x_O_17 = x_O_29[ri_31]) && (x_O_16 = x_O_28[ri_31]) then r_7[u_31] else r_4 <-R three_keys; r_4);
+          k_s': key <- 2-proj-tuple3keys(v_5);
+          if k_s_1 = k_s' then
+          k_c'_1: key <- 1-proj-tuple3keys(v_5);
+          if defined(corruptedPSK) then
+            return(k_c'_1)
+          else
+            k': key <- 3-proj-tuple3keys(v_5);
+            j3 <= Ns <- j'';
+            k_secret_c: key <- k';
+            return(k_c'_1)
+        )
+        else
+          v_5: three_keys <- (x_O_15: G <- exp(Y', x); x_O_14: G <- X; x_O_13: G <- Y'; x_O_12: key <- psk_1; {173}find [unique] u_28 = ri_28 <= Ns suchthat defined(x_O_23[ri_28], x_O_22[ri_28], x_O_21[ri_28], x_O_20[ri_28], r_5[ri_28]) && (x_O_15 = x_O_23[ri_28]) && (x_O_14 = x_O_22[ri_28]) && (x_O_13 = x_O_21[ri_28]) && (x_O_12 = x_O_20[ri_28]) then r_5[u_28] orfind u_27 = ri_27 <= Ns suchthat defined(x_O_27[ri_27], x_O_26[ri_27], x_O_25[ri_27], x_O_24[ri_27], r_6[ri_27]) && (x_O_15 = x_O_27[ri_27]) && (x_O_14 = x_O_26[ri_27]) && (x_O_13 = x_O_25[ri_27]) && (x_O_12 = x_O_24[ri_27]) then r_6[u_27] orfind u_26 = ri_26 <= qH suchthat defined(x_O_31[ri_26], x_O_30[ri_26], x_O_29[ri_26], x_O_28[ri_26], r_7[ri_26]) && (x_O_15 = x_O_31[ri_26]) && (x_O_14 = x_O_30[ri_26]) && (x_O_13 = x_O_29[ri_26]) && (x_O_12 = x_O_28[ri_26]) then r_7[u_26] else r_3 <-R three_keys; r_3);
+          k_s': key <- 2-proj-tuple3keys(v_5);
+          if k_s_1 = k_s' then
+          k_c'_1: key <- 1-proj-tuple3keys(v_5);
+          if defined(corruptedPSK) then
+            return(k_c'_1)
+          else
+            k': key <- 3-proj-tuple3keys(v_5);
+            event_abort client_break_auth
+      ) | (
+        foreach is <= Ns do
+        cS1(X': G) :=
+        find j' = j'_1 <= Nc suchthat defined(x[j'_1], X[j'_1]) && (X' = X[j'_1]) then
+        (
+          y_2 <-R Z;
+          Y_2: G <- exp(g, y_2);
+          v_4: three_keys <- (x_O_27: G <- exp(g, mult(x[j'], y_2)); x_O_26: G <- X'; x_O_25: G <- Y_2; x_O_24: key <- psk_1; {335}find [unique] u_25 = ri_25 <= Nc suchthat defined(x_O_15[ri_25], x_O_14[ri_25], x_O_13[ri_25], x_O_12[ri_25], r_3[ri_25]) && (x_O_27 = x_O_15[ri_25]) && (x_O_26 = x_O_14[ri_25]) && (x_O_25 = x_O_13[ri_25]) && (x_O_24 = x_O_12[ri_25]) then r_3[u_25] orfind u_21 = ri_21 <= qH suchthat defined(x_O_31[ri_21], x_O_30[ri_21], x_O_29[ri_21], x_O_28[ri_21], r_7[ri_21]) && (x_O_27 = x_O_31[ri_21]) && (x_O_26 = x_O_30[ri_21]) && (x_O_25 = x_O_29[ri_21]) && (x_O_24 = x_O_28[ri_21]) then r_7[u_21] else r_6 <-R three_keys; r_6);
+          k_s_2: key <- 2-proj-tuple3keys(v_4);
+          k_c: key <- 1-proj-tuple3keys(v_4);
+          return(Y_2, k_s_2);
+          cS3(k_c'_2: key) :=
+          if k_c = k_c'_2 then
+          if defined(corruptedPSK) then
+            yield
+          else
+            k: key <- 3-proj-tuple3keys(v_4);
+            j4 <= Nc <- j';
+            k_secret_s: key <- k
+        )
+        else
+          y_1 <-R Z;
+          Y_3: G <- exp(g, y_1);
+          v_4: three_keys <- (x_O_23: G <- exp(X', y_1); x_O_22: G <- X'; x_O_21: G <- Y_3; x_O_20: key <- psk_1; {464}find [unique] u_20 = ri_20 <= Nc suchthat defined(x_O_15[ri_20], x_O_14[ri_20], x_O_13[ri_20], x_O_12[ri_20], r_3[ri_20]) && (x_O_23 = x_O_15[ri_20]) && (x_O_22 = x_O_14[ri_20]) && (x_O_21 = x_O_13[ri_20]) && (x_O_20 = x_O_12[ri_20]) then r_3[u_20] orfind u_16 = ri_16 <= qH suchthat defined(x_O_31[ri_16], x_O_30[ri_16], x_O_29[ri_16], x_O_28[ri_16], r_7[ri_16]) && (x_O_23 = x_O_31[ri_16]) && (x_O_22 = x_O_30[ri_16]) && (x_O_21 = x_O_29[ri_16]) && (x_O_20 = x_O_28[ri_16]) then r_7[u_16] else r_5 <-R three_keys; r_5);
+          k_s_2: key <- 2-proj-tuple3keys(v_4);
+          k_c: key <- 1-proj-tuple3keys(v_4);
+          return(Y_3, k_s_2);
+          cS3(k_c'_2: key) :=
+          if k_c = k_c'_2 then
+          if defined(corruptedPSK) then
+            yield
+          else
+            event_abort server_break_auth
+      ) | (
+        cCorrupt() :=
+        corruptedPSK: bool <- cst_bool;
+        return(psk_1)
+      ) | (
+        foreach iH <= qH do
+        ch1(x1: G, x2: G, x3: G, x4: key) :=
+        return((x_O_31: G <- x1; x_O_30: G <- x2; x_O_29: G <- x3; x_O_28: key <- x4; find [unique] u_15 = ri_15 <= Nc suchthat defined(x_O_15[ri_15], x_O_14[ri_15], x_O_13[ri_15], x_O_12[ri_15], r_3[ri_15]) && (x_O_31 = x_O_15[ri_15]) && (x_O_30 = x_O_14[ri_15]) && (x_O_29 = x_O_13[ri_15]) && (x_O_28 = x_O_12[ri_15]) then r_3[u_15] orfind u_14 = ri_14 <= Nc suchthat defined(x_O_19[ri_14], x_O_18[ri_14], x_O_17[ri_14], x_O_16[ri_14], r_4[ri_14]) && (x_O_31 = x_O_19[ri_14]) && (x_O_30 = x_O_18[ri_14]) && (x_O_29 = x_O_17[ri_14]) && (x_O_28 = x_O_16[ri_14]) then r_4[u_14] orfind u_13 = ri_13 <= Ns suchthat defined(x_O_23[ri_13], x_O_22[ri_13], x_O_21[ri_13], x_O_20[ri_13], r_5[ri_13]) && (x_O_31 = x_O_23[ri_13]) && (x_O_30 = x_O_22[ri_13]) && (x_O_29 = x_O_21[ri_13]) && (x_O_28 = x_O_20[ri_13]) then r_5[u_13] orfind u_12 = ri_12 <= Ns suchthat defined(x_O_27[ri_12], x_O_26[ri_12], x_O_25[ri_12], x_O_24[ri_12], r_6[ri_12]) && (x_O_31 = x_O_27[ri_12]) && (x_O_30 = x_O_26[ri_12]) && (x_O_29 = x_O_25[ri_12]) && (x_O_28 = x_O_24[ri_12]) then r_6[u_12] orfind u_11 = ri_11 <= qH suchthat defined(x_O_31[ri_11], x_O_30[ri_11], x_O_29[ri_11], x_O_28[ri_11], r_7[ri_11]) && (x_O_31 = x_O_31[ri_11]) && (x_O_30 = x_O_30[ri_11]) && (x_O_29 = x_O_29[ri_11]) && (x_O_28 = x_O_28[ri_11]) then r_7[u_11] else r_7 <-R three_keys; r_7))
+      ))
+
+
+Applying expand [probability (0.5 * Ns^2 + 0.5 * Nc^2) * Pcoll2rand(Z) + (Nc^2 * Ns^2 + 2 * Nc * Ns) / |Z|]
+  - Expand if/find/let
+    - Remove branch 1 in find at 464
+    - Remove branch 1 in find at 335
+    - Remove branch 2 in find at 173
+    - Remove branch 1 in find at 173
+yields
+
+Game 35 is
+      cStart() :=
+      psk_1 <-R key;
+      return();
+      ((
+        foreach ic <= Nc do
+        cC0() :=
+        x <-R Z;
+        X: G <- exp(g, x);
+        return(X);
+        cC2(Y': G, k_s_1: key) :=
+        find j'' = j''_1 <= Ns suchthat defined(y_2[j''_1], Y_2[j''_1], j'[j''_1]) && (ic = j'[j''_1]) && (Y' = Y_2[j''_1]) then
+        (
+          x_O_19: G <- exp(g, mult(y_2[j''], x));
+          x_O_18: G <- X;
+          x_O_17: G <- Y';
+          x_O_16: key <- psk_1;
+          find [unique] u_32 = ri_32 <= Ns suchthat defined(x_O_27[ri_32], x_O_26[ri_32], x_O_25[ri_32], x_O_24[ri_32], r_6[ri_32]) && (x_O_19 = x_O_27[ri_32]) && (x_O_18 = x_O_26[ri_32]) && (x_O_17 = x_O_25[ri_32]) && (x_O_16 = x_O_24[ri_32]) then
+          (
+            v_5: three_keys <- r_6[u_32];
+            k_s': key <- 2-proj-tuple3keys(v_5);
+            if k_s_1 = k_s' then
+            k_c'_1: key <- 1-proj-tuple3keys(v_5);
+            if defined(corruptedPSK) then
+              return(k_c'_1)
+            else
+              k': key <- 3-proj-tuple3keys(v_5);
+              j3 <= Ns <- j'';
+              k_secret_c: key <- k';
+              return(k_c'_1)
+          )
+          orfind u_31 = ri_31 <= qH suchthat defined(x_O_31[ri_31], x_O_30[ri_31], x_O_29[ri_31], x_O_28[ri_31], r_7[ri_31]) && (x_O_19 = x_O_31[ri_31]) && (x_O_18 = x_O_30[ri_31]) && (x_O_17 = x_O_29[ri_31]) && (x_O_16 = x_O_28[ri_31]) then
+          (
+            v_5: three_keys <- r_7[u_31];
+            k_s': key <- 2-proj-tuple3keys(v_5);
+            if k_s_1 = k_s' then
+            k_c'_1: key <- 1-proj-tuple3keys(v_5);
+            if defined(corruptedPSK) then
+              return(k_c'_1)
+            else
+              k': key <- 3-proj-tuple3keys(v_5);
+              j3 <= Ns <- j'';
+              k_secret_c: key <- k';
+              return(k_c'_1)
+          )
+          else
+            r_4 <-R three_keys;
+            v_5: three_keys <- r_4;
+            k_s': key <- 2-proj-tuple3keys(v_5);
+            if k_s_1 = k_s' then
+            k_c'_1: key <- 1-proj-tuple3keys(v_5);
+            if defined(corruptedPSK) then
+              return(k_c'_1)
+            else
+              k': key <- 3-proj-tuple3keys(v_5);
+              j3 <= Ns <- j'';
+              k_secret_c: key <- k';
+              return(k_c'_1)
+        )
+        else
+          x_O_15: G <- exp(Y', x);
+          x_O_14: G <- X;
+          x_O_13: G <- Y';
+          x_O_12: key <- psk_1;
+          find [unique] u_26 = ri_26 <= qH suchthat defined(x_O_31[ri_26], x_O_30[ri_26], x_O_29[ri_26], x_O_28[ri_26], r_7[ri_26]) && (x_O_15 = x_O_31[ri_26]) && (x_O_14 = x_O_30[ri_26]) && (x_O_13 = x_O_29[ri_26]) && (x_O_12 = x_O_28[ri_26]) then
+          (
+            v_5: three_keys <- r_7[u_26];
+            k_s': key <- 2-proj-tuple3keys(v_5);
+            if k_s_1 = k_s' then
+            k_c'_1: key <- 1-proj-tuple3keys(v_5);
+            if defined(corruptedPSK) then
+              return(k_c'_1)
+            else
+              k': key <- 3-proj-tuple3keys(v_5);
+              event_abort client_break_auth
+          )
+          else
+            r_3 <-R three_keys;
+            v_5: three_keys <- r_3;
+            k_s': key <- 2-proj-tuple3keys(v_5);
+            if k_s_1 = k_s' then
+            k_c'_1: key <- 1-proj-tuple3keys(v_5);
+            if defined(corruptedPSK) then
+              return(k_c'_1)
+            else
+              k': key <- 3-proj-tuple3keys(v_5);
+              event_abort client_break_auth
+      ) | (
+        foreach is <= Ns do
+        cS1(X': G) :=
+        find j' = j'_1 <= Nc suchthat defined(x[j'_1], X[j'_1]) && (X' = X[j'_1]) then
+        (
+          y_2 <-R Z;
+          Y_2: G <- exp(g, y_2);
+          x_O_27: G <- exp(g, mult(x[j'], y_2));
+          x_O_26: G <- X';
+          x_O_25: G <- Y_2;
+          x_O_24: key <- psk_1;
+          find [unique] u_21 = ri_21 <= qH suchthat defined(x_O_31[ri_21], x_O_30[ri_21], x_O_29[ri_21], x_O_28[ri_21], r_7[ri_21]) && (x_O_27 = x_O_31[ri_21]) && (x_O_26 = x_O_30[ri_21]) && (x_O_25 = x_O_29[ri_21]) && (x_O_24 = x_O_28[ri_21]) then
+          (
+            v_4: three_keys <- r_7[u_21];
+            k_s_2: key <- 2-proj-tuple3keys(v_4);
+            k_c: key <- 1-proj-tuple3keys(v_4);
+            return(Y_2, k_s_2);
+            cS3(k_c'_2: key) :=
+            if k_c = k_c'_2 then
+            if defined(corruptedPSK) then
+              yield
+            else
+              k: key <- 3-proj-tuple3keys(v_4);
+              j4 <= Nc <- j';
+              k_secret_s: key <- k
+          )
+          else
+            r_6 <-R three_keys;
+            v_4: three_keys <- r_6;
+            k_s_2: key <- 2-proj-tuple3keys(v_4);
+            k_c: key <- 1-proj-tuple3keys(v_4);
+            return(Y_2, k_s_2);
+            cS3(k_c'_2: key) :=
+            if k_c = k_c'_2 then
+            if defined(corruptedPSK) then
+              yield
+            else
+              k: key <- 3-proj-tuple3keys(v_4);
+              j4 <= Nc <- j';
+              k_secret_s: key <- k
+        )
+        else
+          y_1 <-R Z;
+          Y_3: G <- exp(g, y_1);
+          x_O_23: G <- exp(X', y_1);
+          x_O_22: G <- X';
+          x_O_21: G <- Y_3;
+          x_O_20: key <- psk_1;
+          find [unique] u_16 = ri_16 <= qH suchthat defined(x_O_31[ri_16], x_O_30[ri_16], x_O_29[ri_16], x_O_28[ri_16], r_7[ri_16]) && (x_O_23 = x_O_31[ri_16]) && (x_O_22 = x_O_30[ri_16]) && (x_O_21 = x_O_29[ri_16]) && (x_O_20 = x_O_28[ri_16]) then
+          (
+            v_4: three_keys <- r_7[u_16];
+            k_s_2: key <- 2-proj-tuple3keys(v_4);
+            k_c: key <- 1-proj-tuple3keys(v_4);
+            return(Y_3, k_s_2);
+            cS3(k_c'_2: key) :=
+            if k_c = k_c'_2 then
+            if defined(corruptedPSK) then
+              yield
+            else
+              event_abort server_break_auth
+          )
+          else
+            r_5 <-R three_keys;
+            v_4: three_keys <- r_5;
+            k_s_2: key <- 2-proj-tuple3keys(v_4);
+            k_c: key <- 1-proj-tuple3keys(v_4);
+            return(Y_3, k_s_2);
+            cS3(k_c'_2: key) :=
+            if k_c = k_c'_2 then
+            if defined(corruptedPSK) then
+              yield
+            else
+              event_abort server_break_auth
+      ) | (
+        cCorrupt() :=
+        corruptedPSK: bool <- cst_bool;
+        return(psk_1)
+      ) | (
+        foreach iH <= qH do
+        ch1(x1: G, x2: G, x3: G, x4: key) :=
+        x_O_31: G <- x1;
+        x_O_30: G <- x2;
+        x_O_29: G <- x3;
+        x_O_28: key <- x4;
+        find [unique] u_15 = ri_15 <= Nc suchthat defined(x_O_15[ri_15], x_O_14[ri_15], x_O_13[ri_15], x_O_12[ri_15], r_3[ri_15]) && (x_O_31 = x_O_15[ri_15]) && (x_O_30 = x_O_14[ri_15]) && (x_O_29 = x_O_13[ri_15]) && (x_O_28 = x_O_12[ri_15]) then
+          return(r_3[u_15])
+        orfind u_14 = ri_14 <= Nc suchthat defined(x_O_19[ri_14], x_O_18[ri_14], x_O_17[ri_14], x_O_16[ri_14], r_4[ri_14]) && (x_O_31 = x_O_19[ri_14]) && (x_O_30 = x_O_18[ri_14]) && (x_O_29 = x_O_17[ri_14]) && (x_O_28 = x_O_16[ri_14]) then
+          return(r_4[u_14])
+        orfind u_13 = ri_13 <= Ns suchthat defined(x_O_23[ri_13], x_O_22[ri_13], x_O_21[ri_13], x_O_20[ri_13], r_5[ri_13]) && (x_O_31 = x_O_23[ri_13]) && (x_O_30 = x_O_22[ri_13]) && (x_O_29 = x_O_21[ri_13]) && (x_O_28 = x_O_20[ri_13]) then
+          return(r_5[u_13])
+        orfind u_12 = ri_12 <= Ns suchthat defined(x_O_27[ri_12], x_O_26[ri_12], x_O_25[ri_12], x_O_24[ri_12], r_6[ri_12]) && (x_O_31 = x_O_27[ri_12]) && (x_O_30 = x_O_26[ri_12]) && (x_O_29 = x_O_25[ri_12]) && (x_O_28 = x_O_24[ri_12]) then
+          return(r_6[u_12])
+        orfind u_11 = ri_11 <= qH suchthat defined(x_O_31[ri_11], x_O_30[ri_11], x_O_29[ri_11], x_O_28[ri_11], r_7[ri_11]) && (x_O_31 = x_O_31[ri_11]) && (x_O_30 = x_O_30[ri_11]) && (x_O_29 = x_O_29[ri_11]) && (x_O_28 = x_O_28[ri_11]) then
+          return(r_7[u_11])
+        else
+          r_7 <-R three_keys;
+          return(r_7)
+      ))
+
+
+Applying remove assignments of findcond
+  - Remove assignments on x_O_31 (definition point kept, all usages removed)
+  - Remove assignments on x_O_30 (definition removed, all usages removed)
+  - Remove assignments on x_O_29 (definition removed, all usages removed)
+  - Remove assignments on x_O_28 (definition removed, all usages removed)
+  - Remove assignments on x_O_22 (definition removed, all usages removed)
+  - Remove assignments on x_O_21 (definition removed, all usages removed)
+  - Remove assignments on x_O_20 (definition removed, all usages removed)
+  - Remove assignments on v_4 (definition removed, all usages removed)
+  - Remove assignments on v_4 (definition removed, all usages removed)
+  - Remove assignments on x_O_26 (definition removed, all usages removed)
+  - Remove assignments on x_O_25 (definition removed, all usages removed)
+  - Remove assignments on x_O_24 (definition removed, all usages removed)
+  - Remove assignments on v_4 (definition removed, all usages removed)
+  - Remove assignments on j4 (definition removed, all usages removed)
+  - Remove assignments on v_4 (definition removed, all usages removed)
+  - Remove assignments on j4 (definition removed, all usages removed)
+  - Remove assignments on x_O_14 (definition removed, all usages removed)
+  - Remove assignments on x_O_13 (definition removed, all usages removed)
+  - Remove assignments on x_O_12 (definition removed, all usages removed)
+  - Remove assignments on v_5 (definition removed, all usages removed)
+  - Remove assignments on k' (definition removed, all usages removed)
+  - Remove assignments on v_5 (definition removed, all usages removed)
+  - Remove assignments on k' (definition removed, all usages removed)
+  - Remove assignments on x_O_18 (definition removed, all usages removed)
+  - Remove assignments on x_O_17 (definition removed, all usages removed)
+  - Remove assignments on x_O_16 (definition removed, all usages removed)
+  - Remove assignments on v_5 (definition removed, all usages removed)
+  - Remove assignments on j3 (definition removed, all usages removed)
+  - Remove assignments on v_5 (definition removed, all usages removed)
+  - Remove assignments on j3 (definition removed, all usages removed)
+  - Remove assignments on v_5 (definition removed, all usages removed)
+  - Remove assignments on j3 (definition removed, all usages removed)
+yields
+
+Game 36 is
+      cStart() :=
+      psk_1 <-R key;
+      return();
+      ((
+        foreach ic <= Nc do
+        cC0() :=
+        x <-R Z;
+        X: G <- exp(g, x);
+        return(X);
+        cC2(Y': G, k_s_1: key) :=
+        find j'' = j''_1 <= Ns suchthat defined(y_2[j''_1], Y_2[j''_1], j'[j''_1]) && (ic = j'[j''_1]) && (Y' = Y_2[j''_1]) then
+        (
+          x_O_19: G <- exp(g, mult(y_2[j''], x));
+  {42}    find [unique] u_32 = ri_32 <= Ns suchthat defined(X'[ri_32], Y_2[ri_32], psk_1, x_O_27[ri_32], r_6[ri_32]) && {47}((x_O_19 = x_O_27[ri_32]) && (X = X'[ri_32]) && (Y' = Y_2[ri_32]) && (psk_1 = psk_1)) then
+          (
+            k_s': key <- 2-proj-tuple3keys(r_6[u_32]);
+            if k_s_1 = k_s' then
+            k_c'_1: key <- 1-proj-tuple3keys(r_6[u_32]);
+            if defined(corruptedPSK) then
+              return(k_c'_1)
+            else
+              k': key <- 3-proj-tuple3keys(r_6[u_32]);
+              k_secret_c: key <- k';
+              return(k_c'_1)
+          )
+          orfind u_31 = ri_31 <= qH suchthat defined(x1[ri_31], x2[ri_31], x3[ri_31], x4[ri_31], x_O_31[ri_31], r_7[ri_31]) && (x_O_19 = x1[ri_31]) && (X = x2[ri_31]) && (Y' = x3[ri_31]) && (psk_1 = x4[ri_31]) then
+          (
+            k_s': key <- 2-proj-tuple3keys(r_7[u_31]);
+            if k_s_1 = k_s' then
+            k_c'_1: key <- 1-proj-tuple3keys(r_7[u_31]);
+            if defined(corruptedPSK) then
+              return(k_c'_1)
+            else
+              k': key <- 3-proj-tuple3keys(r_7[u_31]);
+              k_secret_c: key <- k';
+              return(k_c'_1)
+          )
+          else
+            r_4 <-R three_keys;
+ {175}      k_s': key <- 2-proj-tuple3keys(r_4);
+ {179}      if k_s_1 = k_s' then
+            k_c'_1: key <- 1-proj-tuple3keys(r_4);
+            if defined(corruptedPSK) then
+              return(k_c'_1)
+            else
+              k': key <- 3-proj-tuple3keys(r_4);
+              k_secret_c: key <- k';
+              return(k_c'_1)
+        )
+        else
+          x_O_15: G <- exp(Y', x);
+ {218}    find [unique] u_26 = ri_26 <= qH suchthat defined(x1[ri_26], x2[ri_26], x3[ri_26], x4[ri_26], x_O_31[ri_26], r_7[ri_26]) && (x_O_15 = x1[ri_26]) && (X = x2[ri_26]) && (Y' = x3[ri_26]) && (psk_1 = x4[ri_26]) then
+          (
+            k_s': key <- 2-proj-tuple3keys(r_7[u_26]);
+            if k_s_1 = k_s' then
+            k_c'_1: key <- 1-proj-tuple3keys(r_7[u_26]);
+            if defined(corruptedPSK) then
+              return(k_c'_1)
+            else
+              event_abort client_break_auth
+          )
+          else
+            r_3 <-R three_keys;
+ {274}      k_s': key <- 2-proj-tuple3keys(r_3);
+ {278}      if k_s_1 = k_s' then
+            k_c'_1: key <- 1-proj-tuple3keys(r_3);
+            if defined(corruptedPSK) then
+              return(k_c'_1)
+            else
+              event_abort client_break_auth
+      ) | (
+        foreach is <= Ns do
+        cS1(X': G) :=
+        find j' = j'_1 <= Nc suchthat defined(x[j'_1], X[j'_1]) && (X' = X[j'_1]) then
+        (
+          y_2 <-R Z;
+          Y_2: G <- exp(g, y_2);
+          x_O_27: G <- exp(g, mult(x[j'], y_2));
+ {325}    find [unique] u_21 = ri_21 <= qH suchthat defined(x1[ri_21], x2[ri_21], x3[ri_21], x4[ri_21], x_O_31[ri_21], r_7[ri_21]) && {332}((x_O_27 = x1[ri_21]) && (X' = x2[ri_21]) && (Y_2 = x3[ri_21]) && (psk_1 = x4[ri_21])) then
+          (
+            k_s_2: key <- 2-proj-tuple3keys(r_7[u_21]);
+            k_c: key <- 1-proj-tuple3keys(r_7[u_21]);
+            return(Y_2, k_s_2);
+            cS3(k_c'_2: key) :=
+            if k_c = k_c'_2 then
+            if defined(corruptedPSK) then
+              yield
+            else
+              k: key <- 3-proj-tuple3keys(r_7[u_21]);
+              k_secret_s: key <- k
+          )
+          else
+            r_6 <-R three_keys;
+            k_s_2: key <- 2-proj-tuple3keys(r_6);
+            k_c: key <- 1-proj-tuple3keys(r_6);
+            return(Y_2, k_s_2);
+            cS3(k_c'_2: key) :=
+            if k_c = k_c'_2 then
+            if defined(corruptedPSK) then
+              yield
+            else
+              k: key <- 3-proj-tuple3keys(r_6);
+              k_secret_s: key <- k
+        )
+        else
+          y_1 <-R Z;
+          Y_3: G <- exp(g, y_1);
+          x_O_23: G <- exp(X', y_1);
+ {444}    find [unique] u_16 = ri_16 <= qH suchthat defined(x1[ri_16], x2[ri_16], x3[ri_16], x4[ri_16], x_O_31[ri_16], r_7[ri_16]) && {451}((x_O_23 = x1[ri_16]) && (X' = x2[ri_16]) && (Y_3 = x3[ri_16]) && (psk_1 = x4[ri_16])) then
+          (
+            k_s_2: key <- 2-proj-tuple3keys(r_7[u_16]);
+            k_c: key <- 1-proj-tuple3keys(r_7[u_16]);
+            return(Y_3, k_s_2);
+            cS3(k_c'_2: key) :=
+            if k_c = k_c'_2 then
+            if defined(corruptedPSK) then
+              yield
+            else
+              event_abort server_break_auth
+          )
+          else
+            r_5 <-R three_keys;
+            k_s_2: key <- 2-proj-tuple3keys(r_5);
+            k_c: key <- 1-proj-tuple3keys(r_5);
+            return(Y_3, k_s_2);
+            cS3(k_c'_2: key) :=
+            if k_c = k_c'_2 then
+            if defined(corruptedPSK) then
+              yield
+            else
+              event_abort server_break_auth
+      ) | (
+        cCorrupt() :=
+        corruptedPSK: bool <- cst_bool;
+        return(psk_1)
+      ) | (
+        foreach iH <= qH do
+        ch1(x1: G, x2: G, x3: G, x4: key) :=
+        x_O_31: G <- cst_G;
+ {543}  find [unique] u_15 = ri_15 <= Nc suchthat defined(X[ri_15], Y'[ri_15], psk_1, x_O_15[ri_15], r_3[ri_15]) && (x1 = x_O_15[ri_15]) && (x2 = X[ri_15]) && (x3 = Y'[ri_15]) && (x4 = psk_1) then
+          return(r_3[u_15])
+        orfind u_14 = ri_14 <= Nc suchthat defined(X[ri_14], Y'[ri_14], psk_1, x_O_19[ri_14], r_4[ri_14]) && (x1 = x_O_19[ri_14]) && (x2 = X[ri_14]) && (x3 = Y'[ri_14]) && (x4 = psk_1) then
+          return(r_4[u_14])
+        orfind u_13 = ri_13 <= Ns suchthat defined(X'[ri_13], Y_3[ri_13], psk_1, x_O_23[ri_13], r_5[ri_13]) && (x1 = x_O_23[ri_13]) && (x2 = X'[ri_13]) && (x3 = Y_3[ri_13]) && (x4 = psk_1) then
+          return(r_5[u_13])
+        orfind u_12 = ri_12 <= Ns suchthat defined(X'[ri_12], Y_2[ri_12], psk_1, x_O_27[ri_12], r_6[ri_12]) && (x1 = x_O_27[ri_12]) && (x2 = X'[ri_12]) && (x3 = Y_2[ri_12]) && (x4 = psk_1) then
+          return(r_6[u_12])
+        orfind u_11 = ri_11 <= qH suchthat defined(x1[ri_11], x2[ri_11], x3[ri_11], x4[ri_11], x_O_31[ri_11], r_7[ri_11]) && (x1 = x1[ri_11]) && (x2 = x2[ri_11]) && (x3 = x3[ri_11]) && (x4 = x4[ri_11]) then
+          return(r_7[u_11])
+        else
+          r_7 <-R three_keys;
+          return(r_7)
+      ))
+
+
+Applying simplify [probability (0.5 * Nc^2 + 0.5 * Ns^2) * Pcoll2rand(Z) + Ns^2 * Nc^2 / |Z| + 2 * Nc / |key| + 2 * qH * Ns * Pcoll1rand(Z)]
+  - Simplification pass
+    - Replaced defined condition x1[ri_11], x2[ri_11], x3[ri_11], x4[ri_11], x_O_31[ri_11], r_7[ri_11] with r_7[ri_11], x4[ri_11], x3[ri_11], x2[ri_11], x1[ri_11] in find at 543
+    - Replaced defined condition X'[ri_12], Y_2[ri_12], psk_1, x_O_27[ri_12], r_6[ri_12] with X'[ri_12], Y_2[ri_12], x_O_27[ri_12], r_6[ri_12] in find at 543
+    - Replaced defined condition X'[ri_13], Y_3[ri_13], psk_1, x_O_23[ri_13], r_5[ri_13] with X'[ri_13], Y_3[ri_13], x_O_23[ri_13], r_5[ri_13] in find at 543
+    - Replaced defined condition X[ri_14], Y'[ri_14], psk_1, x_O_19[ri_14], r_4[ri_14] with X[ri_14], Y'[ri_14], x_O_19[ri_14], r_4[ri_14] in find at 543
+    - Replaced defined condition X[ri_15], Y'[ri_15], psk_1, x_O_15[ri_15], r_3[ri_15] with X[ri_15], Y'[ri_15], x_O_15[ri_15], r_3[ri_15] in find at 543
+    - Replaced ((x_O_23 = x1[ri_16]) && (X' = x2[ri_16]) && (Y_3 = x3[ri_16]) && (psk_1 = x4[ri_16])) with false at 451
+    - Remove branch 1 in find at 444
+    - Find at 444 removed (else branch kept if any)
+    - Replaced ((x_O_27 = x1[ri_21]) && (X' = x2[ri_21]) && (Y_2 = x3[ri_21]) && (psk_1 = x4[ri_21])) with false at 332
+    - Remove branch 1 in find at 325
+    - Find at 325 removed (else branch kept if any)
+    - Test at 278 always false
+    - Remove let at 274
+    - Replaced defined condition x1[ri_26], x2[ri_26], x3[ri_26], x4[ri_26], x_O_31[ri_26], r_7[ri_26] with r_7[ri_26], x4[ri_26], x3[ri_26], x2[ri_26], x1[ri_26] in find at 218
+    - Test at 179 always false
+    - Remove let at 175
+    - Replaced defined condition x1[ri_31], x2[ri_31], x3[ri_31], x4[ri_31], x_O_31[ri_31], r_7[ri_31] with r_7[ri_31], x4[ri_31], x3[ri_31], x2[ri_31], x1[ri_31] in find at 42
+    - Replaced ((x_O_19 = x_O_27[ri_32]) && (X = X'[ri_32]) && (Y' = Y_2[ri_32]) && (psk_1 = psk_1)) with (j'' = ri_32) at 47
+    - In branch 1 of find at 42, substituting u_32 with j''
+    - Replaced defined condition X'[ri_32], Y_2[ri_32], psk_1, x_O_27[ri_32], r_6[ri_32] with r_6[j''] in find at 42
+yields
+
+Game 37 is
+      cStart() :=
+      psk_1 <-R key;
+      return();
+      ((
+        foreach ic <= Nc do
+        cC0() :=
+        x <-R Z;
+        X: G <- exp(g, x);
+        return(X);
+        cC2(Y': G, k_s_1: key) :=
+  {19}  find j'' = j''_1 <= Ns suchthat defined(y_2[j''_1], Y_2[j''_1], j'[j''_1]) && (ic = j'[j''_1]) && (Y' = Y_2[j''_1]) then
+          x_O_19: G <- exp(g, mult(y_2[j''], x));
+  {42}    find [unique]  suchthat defined(r_6[j'']) && {45}(j'' = j'') then
+          (
+            u_32 <= Ns <- j'';
+            k_s': key <- 2-proj-tuple3keys(r_6[j'']);
+            if k_s_1 = k_s' then
+            k_c'_1: key <- 1-proj-tuple3keys(r_6[j'']);
+            if defined(corruptedPSK) then
+              return(k_c'_1)
+            else
+              k': key <- 3-proj-tuple3keys(r_6[j'']);
+              k_secret_c: key <- k';
+              return(k_c'_1)
+          )
+          orfind u_31 = ri_31 <= qH suchthat defined(r_7[ri_31], x4[ri_31], x3[ri_31], x2[ri_31], x1[ri_31]) && {98}((x_O_19 = x1[ri_31]) && (X = x2[ri_31]) && (Y' = x3[ri_31]) && (psk_1 = x4[ri_31])) then
+          (
+            k_s': key <- 2-proj-tuple3keys(r_7[u_31]);
+            if k_s_1 = k_s' then
+            k_c'_1: key <- 1-proj-tuple3keys(r_7[u_31]);
+            if defined(corruptedPSK) then
+              return(k_c'_1)
+            else
+              k': key <- 3-proj-tuple3keys(r_7[u_31]);
+              k_secret_c: key <- k';
+              return(k_c'_1)
+          )
+          else
+            r_4 <-R three_keys
+        else
+          x_O_15: G <- exp(Y', x);
+          find [unique] u_26 = ri_26 <= qH suchthat defined(r_7[ri_26], x4[ri_26], x3[ri_26], x2[ri_26], x1[ri_26]) && (x_O_15 = x1[ri_26]) && (X = x2[ri_26]) && (Y' = x3[ri_26]) && (psk_1 = x4[ri_26]) then
+          (
+            k_s': key <- 2-proj-tuple3keys(r_7[u_26]);
+            if k_s_1 = k_s' then
+            k_c'_1: key <- 1-proj-tuple3keys(r_7[u_26]);
+            if defined(corruptedPSK) then
+              return(k_c'_1)
+            else
+              event_abort client_break_auth
+          )
+          else
+            r_3 <-R three_keys
+      ) | (
+        foreach is <= Ns do
+        cS1(X': G) :=
+        find j' = j'_1 <= Nc suchthat defined(x[j'_1], X[j'_1]) && (X' = X[j'_1]) then
+        (
+          y_2 <-R Z;
+          Y_2: G <- exp(g, y_2);
+          x_O_27: G <- exp(g, mult(x[j'], y_2));
+          r_6 <-R three_keys;
+          k_s_2: key <- 2-proj-tuple3keys(r_6);
+          k_c: key <- 1-proj-tuple3keys(r_6);
+          return(Y_2, k_s_2);
+          cS3(k_c'_2: key) :=
+          if k_c = k_c'_2 then
+          if defined(corruptedPSK) then
+            yield
+          else
+            k: key <- 3-proj-tuple3keys(r_6);
+            k_secret_s: key <- k
+        )
+        else
+          y_1 <-R Z;
+          Y_3: G <- exp(g, y_1);
+          x_O_23: G <- exp(X', y_1);
+          r_5 <-R three_keys;
+          k_s_2: key <- 2-proj-tuple3keys(r_5);
+          k_c: key <- 1-proj-tuple3keys(r_5);
+          return(Y_3, k_s_2);
+          cS3(k_c'_2: key) :=
+          if k_c = k_c'_2 then
+          if defined(corruptedPSK) then
+            yield
+          else
+            event_abort server_break_auth
+      ) | (
+        cCorrupt() :=
+        corruptedPSK: bool <- cst_bool;
+        return(psk_1)
+      ) | (
+        foreach iH <= qH do
+        ch1(x1: G, x2: G, x3: G, x4: key) :=
+        x_O_31: G <- cst_G;
+ {343}  find [unique] u_15 = ri_15 <= Nc suchthat defined(X[ri_15], Y'[ri_15], x_O_15[ri_15], r_3[ri_15]) && (x1 = x_O_15[ri_15]) && (x2 = X[ri_15]) && (x3 = Y'[ri_15]) && (x4 = psk_1) then
+          return(r_3[u_15])
+        orfind u_14 = ri_14 <= Nc suchthat defined(X[ri_14], Y'[ri_14], x_O_19[ri_14], r_4[ri_14]) && (x1 = x_O_19[ri_14]) && (x2 = X[ri_14]) && (x3 = Y'[ri_14]) && (x4 = psk_1) then
+          return(r_4[u_14])
+        orfind u_13 = ri_13 <= Ns suchthat defined(X'[ri_13], Y_3[ri_13], x_O_23[ri_13], r_5[ri_13]) && (x1 = x_O_23[ri_13]) && (x2 = X'[ri_13]) && (x3 = Y_3[ri_13]) && (x4 = psk_1) then
+          return(r_5[u_13])
+        orfind u_12 = ri_12 <= Ns suchthat defined(X'[ri_12], Y_2[ri_12], x_O_27[ri_12], r_6[ri_12]) && (x1 = x_O_27[ri_12]) && (x2 = X'[ri_12]) && (x3 = Y_2[ri_12]) && (x4 = psk_1) then
+          return(r_6[u_12])
+        orfind u_11 = ri_11 <= qH suchthat defined(r_7[ri_11], x4[ri_11], x3[ri_11], x2[ri_11], x1[ri_11]) && (x1 = x1[ri_11]) && (x2 = x2[ri_11]) && (x3 = x3[ri_11]) && (x4 = x4[ri_11]) then
+          return(r_7[u_11])
+        else
+          r_7 <-R three_keys;
+          return(r_7)
+      ))
+
+
+Applying simplify [probability Ns * qH / |Z|]
+  - Simplification pass
+    - Remove branch 2 in find at 343
+    - Remove else branch of find at 42
+    - Replaced ((x_O_19 = x1[ri_31]) && (X = x2[ri_31]) && (Y' = x3[ri_31]) && (psk_1 = x4[ri_31])) with false at 98
+    - Remove branch 2 in find at 42
+    - Replaced (j'' = j'') with true at 45
+    - Replaced defined condition r_6[j''] with an empty condition in find at 42
+    - A single branch always succeeds in find at 42
+    - Replaced defined condition y_2[j''_1], Y_2[j''_1], j'[j''_1] with r_6[j''_1], y_2[j''_1], Y_2[j''_1], j'[j''_1] in find at 19
+yields
+
+Game 38 is
+      cStart() :=
+      psk_1 <-R key;
+      return();
+      ((
+        foreach ic <= Nc do
+        cC0() :=
+        x <-R Z;
+        X: G <- exp(g, x);
+        return(X);
+        cC2(Y': G, k_s_1: key) :=
+        find j'' = j''_1 <= Ns suchthat defined(r_6[j''_1], y_2[j''_1], Y_2[j''_1], j'[j''_1]) && (ic = j'[j''_1]) && (Y' = Y_2[j''_1]) then
+        (
+          x_O_19: G <- exp(g, mult(y_2[j''], x));
+          u_32 <= Ns <- j'';
+          k_s': key <- 2-proj-tuple3keys(r_6[j'']);
+          if k_s_1 = k_s' then
+          k_c'_1: key <- 1-proj-tuple3keys(r_6[j'']);
+          if defined(corruptedPSK) then
+            return(k_c'_1)
+          else
+            k': key <- 3-proj-tuple3keys(r_6[j'']);
+            k_secret_c: key <- k';
+            return(k_c'_1)
+        )
+        else
+          x_O_15: G <- exp(Y', x);
+          find [unique] u_26 = ri_26 <= qH suchthat defined(r_7[ri_26], x4[ri_26], x3[ri_26], x2[ri_26], x1[ri_26]) && (x_O_15 = x1[ri_26]) && (X = x2[ri_26]) && (Y' = x3[ri_26]) && (psk_1 = x4[ri_26]) then
+          (
+            k_s': key <- 2-proj-tuple3keys(r_7[u_26]);
+            if k_s_1 = k_s' then
+            k_c'_1: key <- 1-proj-tuple3keys(r_7[u_26]);
+            if defined(corruptedPSK) then
+              return(k_c'_1)
+            else
+              event_abort client_break_auth
+          )
+          else
+            r_3 <-R three_keys
+      ) | (
+        foreach is <= Ns do
+        cS1(X': G) :=
+        find j' = j'_1 <= Nc suchthat defined(x[j'_1], X[j'_1]) && (X' = X[j'_1]) then
+        (
+          y_2 <-R Z;
+          Y_2: G <- exp(g, y_2);
+          x_O_27: G <- exp(g, mult(x[j'], y_2));
+          r_6 <-R three_keys;
+          k_s_2: key <- 2-proj-tuple3keys(r_6);
+          k_c: key <- 1-proj-tuple3keys(r_6);
+          return(Y_2, k_s_2);
+          cS3(k_c'_2: key) :=
+          if k_c = k_c'_2 then
+          if defined(corruptedPSK) then
+            yield
+          else
+            k: key <- 3-proj-tuple3keys(r_6);
+            k_secret_s: key <- k
+        )
+        else
+          y_1 <-R Z;
+          Y_3: G <- exp(g, y_1);
+          x_O_23: G <- exp(X', y_1);
+          r_5 <-R three_keys;
+          k_s_2: key <- 2-proj-tuple3keys(r_5);
+          k_c: key <- 1-proj-tuple3keys(r_5);
+          return(Y_3, k_s_2);
+          cS3(k_c'_2: key) :=
+          if k_c = k_c'_2 then
+          if defined(corruptedPSK) then
+            yield
+          else
+            event_abort server_break_auth
+      ) | (
+        cCorrupt() :=
+        corruptedPSK: bool <- cst_bool;
+        return(psk_1)
+      ) | (
+        foreach iH <= qH do
+        ch1(x1: G, x2: G, x3: G, x4: key) :=
+        x_O_31: G <- cst_G;
+        find [unique] u_15 = ri_15 <= Nc suchthat defined(X[ri_15], Y'[ri_15], x_O_15[ri_15], r_3[ri_15]) && (x1 = x_O_15[ri_15]) && (x2 = X[ri_15]) && (x3 = Y'[ri_15]) && (x4 = psk_1) then
+          return(r_3[u_15])
+        orfind u_13 = ri_13 <= Ns suchthat defined(X'[ri_13], Y_3[ri_13], x_O_23[ri_13], r_5[ri_13]) && (x1 = x_O_23[ri_13]) && (x2 = X'[ri_13]) && (x3 = Y_3[ri_13]) && (x4 = psk_1) then
+          return(r_5[u_13])
+        orfind u_12 = ri_12 <= Ns suchthat defined(X'[ri_12], Y_2[ri_12], x_O_27[ri_12], r_6[ri_12]) && (x1 = x_O_27[ri_12]) && (x2 = X'[ri_12]) && (x3 = Y_2[ri_12]) && (x4 = psk_1) then
+          return(r_6[u_12])
+        orfind u_11 = ri_11 <= qH suchthat defined(r_7[ri_11], x4[ri_11], x3[ri_11], x2[ri_11], x1[ri_11]) && (x1 = x1[ri_11]) && (x2 = x2[ri_11]) && (x3 = x3[ri_11]) && (x4 = x4[ri_11]) then
+          return(r_7[u_11])
+        else
+          r_7 <-R three_keys;
+          return(r_7)
+      ))
+
+
+Applying move all binders
+  - Move assignment to x_O_31
+  - Move assignment to k_c'_1
+yields
+
+Game 39 is
+      cStart() :=
+      psk_1 <-R key;
+      return();
+      ((
+        foreach ic <= Nc do
+        cC0() :=
+        x <-R Z;
+        X: G <- exp(g, x);
+        return(X);
+        cC2(Y': G, k_s_1: key) :=
+        find j'' = j''_1 <= Ns suchthat defined(r_6[j''_1], y_2[j''_1], Y_2[j''_1], j'[j''_1]) && (ic = j'[j''_1]) && (Y' = Y_2[j''_1]) then
+        (
+          x_O_19: G <- exp(g, mult(y_2[j''], x));
+          u_32 <= Ns <- j'';
+          k_s': key <- 2-proj-tuple3keys(r_6[j'']);
+          if k_s_1 = k_s' then
+          k_c'_1: key <- 1-proj-tuple3keys(r_6[j'']);
+          if defined(corruptedPSK) then
+            return(k_c'_1)
+          else
+            k': key <- 3-proj-tuple3keys(r_6[j'']);
+            k_secret_c: key <- k';
+            return(k_c'_1)
+        )
+        else
+          x_O_15: G <- exp(Y', x);
+          find [unique] u_26 = ri_26 <= qH suchthat defined(r_7[ri_26], x4[ri_26], x3[ri_26], x2[ri_26], x1[ri_26]) && (x_O_15 = x1[ri_26]) && (X = x2[ri_26]) && (Y' = x3[ri_26]) && (psk_1 = x4[ri_26]) then
+          (
+            k_s': key <- 2-proj-tuple3keys(r_7[u_26]);
+            if k_s_1 = k_s' then
+            if defined(corruptedPSK) then
+              k_c'_1: key <- 1-proj-tuple3keys(r_7[u_26]);
+              return(k_c'_1)
+            else
+              event_abort client_break_auth
+          )
+          else
+            r_3 <-R three_keys
+      ) | (
+        foreach is <= Ns do
+        cS1(X': G) :=
+        find j' = j'_1 <= Nc suchthat defined(x[j'_1], X[j'_1]) && (X' = X[j'_1]) then
+        (
+          y_2 <-R Z;
+          Y_2: G <- exp(g, y_2);
+          x_O_27: G <- exp(g, mult(x[j'], y_2));
+          r_6 <-R three_keys;
+          k_s_2: key <- 2-proj-tuple3keys(r_6);
+          k_c: key <- 1-proj-tuple3keys(r_6);
+          return(Y_2, k_s_2);
+          cS3(k_c'_2: key) :=
+          if k_c = k_c'_2 then
+          if defined(corruptedPSK) then
+            yield
+          else
+            k: key <- 3-proj-tuple3keys(r_6);
+            k_secret_s: key <- k
+        )
+        else
+          y_1 <-R Z;
+          Y_3: G <- exp(g, y_1);
+          x_O_23: G <- exp(X', y_1);
+          r_5 <-R three_keys;
+          k_s_2: key <- 2-proj-tuple3keys(r_5);
+          k_c: key <- 1-proj-tuple3keys(r_5);
+          return(Y_3, k_s_2);
+          cS3(k_c'_2: key) :=
+          if k_c = k_c'_2 then
+          if defined(corruptedPSK) then
+            yield
+          else
+            event_abort server_break_auth
+      ) | (
+        cCorrupt() :=
+        corruptedPSK: bool <- cst_bool;
+        return(psk_1)
+      ) | (
+        foreach iH <= qH do
+        ch1(x1: G, x2: G, x3: G, x4: key) :=
+        find [unique] u_15 = ri_15 <= Nc suchthat defined(X[ri_15], Y'[ri_15], x_O_15[ri_15], r_3[ri_15]) && (x1 = x_O_15[ri_15]) && (x2 = X[ri_15]) && (x3 = Y'[ri_15]) && (x4 = psk_1) then
+          return(r_3[u_15])
+        orfind u_13 = ri_13 <= Ns suchthat defined(X'[ri_13], Y_3[ri_13], x_O_23[ri_13], r_5[ri_13]) && (x1 = x_O_23[ri_13]) && (x2 = X'[ri_13]) && (x3 = Y_3[ri_13]) && (x4 = psk_1) then
+          return(r_5[u_13])
+        orfind u_12 = ri_12 <= Ns suchthat defined(X'[ri_12], Y_2[ri_12], x_O_27[ri_12], r_6[ri_12]) && (x1 = x_O_27[ri_12]) && (x2 = X'[ri_12]) && (x3 = Y_2[ri_12]) && (x4 = psk_1) then
+          return(r_6[u_12])
+        orfind u_11 = ri_11 <= qH suchthat defined(r_7[ri_11], x4[ri_11], x3[ri_11], x2[ri_11], x1[ri_11]) && (x1 = x1[ri_11]) && (x2 = x2[ri_11]) && (x3 = x3[ri_11]) && (x4 = x4[ri_11]) then
+          return(r_7[u_11])
+        else
+          r_7 <-R three_keys;
+          return(r_7)
+      ))
+
+
+Applying SA rename new without array accesses and remove assignments of findcond
+  - Remove assignments on x_O_19 (definition removed, all usages removed)
+  - Remove assignments on u_32 (definition removed, all usages removed)
+yields
+
+Game 40 is
+      cStart() :=
+      psk_1 <-R key;
+      return();
+      ((
+        foreach ic <= Nc do
+        cC0() :=
+        x <-R Z;
+        X: G <- exp(g, x);
+        return(X);
+        cC2(Y': G, k_s_1: key) :=
+  {19}  find j'' = j''_1 <= Ns suchthat defined(r_6[j''_1], y_2[j''_1], Y_2[j''_1], j'[j''_1]) && (ic = j'[j''_1]) && (Y' = Y_2[j''_1]) then
+        (
+          k_s': key <- 2-proj-tuple3keys(r_6[j'']);
+          if k_s_1 = k_s' then
+          k_c'_1: key <- 1-proj-tuple3keys(r_6[j'']);
+          if defined(corruptedPSK) then
+            return(k_c'_1)
+          else
+            k': key <- 3-proj-tuple3keys(r_6[j'']);
+            k_secret_c: key <- k';
+            return(k_c'_1)
+        )
+        else
+          x_O_15: G <- exp(Y', x);
+          find [unique] u_26 = ri_26 <= qH suchthat defined(r_7[ri_26], x4[ri_26], x3[ri_26], x2[ri_26], x1[ri_26]) && (x_O_15 = x1[ri_26]) && (X = x2[ri_26]) && (Y' = x3[ri_26]) && (psk_1 = x4[ri_26]) then
+          (
+            k_s': key <- 2-proj-tuple3keys(r_7[u_26]);
+            if k_s_1 = k_s' then
+            if defined(corruptedPSK) then
+              k_c'_1: key <- 1-proj-tuple3keys(r_7[u_26]);
+              return(k_c'_1)
+            else
+              event_abort client_break_auth
+          )
+          else
+            r_3 <-R three_keys
+      ) | (
+        foreach is <= Ns do
+        cS1(X': G) :=
+        find j' = j'_1 <= Nc suchthat defined(x[j'_1], X[j'_1]) && (X' = X[j'_1]) then
+        (
+          y_2 <-R Z;
+          Y_2: G <- exp(g, y_2);
+          x_O_27: G <- exp(g, mult(x[j'], y_2));
+          r_6 <-R three_keys;
+          k_s_2: key <- 2-proj-tuple3keys(r_6);
+          k_c: key <- 1-proj-tuple3keys(r_6);
+          return(Y_2, k_s_2);
+          cS3(k_c'_2: key) :=
+          if k_c = k_c'_2 then
+          if defined(corruptedPSK) then
+            yield
+          else
+            k: key <- 3-proj-tuple3keys(r_6);
+            k_secret_s: key <- k
+        )
+        else
+          y_1 <-R Z;
+          Y_3: G <- exp(g, y_1);
+          x_O_23: G <- exp(X', y_1);
+          r_5 <-R three_keys;
+          k_s_2: key <- 2-proj-tuple3keys(r_5);
+          k_c: key <- 1-proj-tuple3keys(r_5);
+          return(Y_3, k_s_2);
+          cS3(k_c'_2: key) :=
+          if k_c = k_c'_2 then
+          if defined(corruptedPSK) then
+            yield
+          else
+            event_abort server_break_auth
+      ) | (
+        cCorrupt() :=
+        corruptedPSK: bool <- cst_bool;
+        return(psk_1)
+      ) | (
+        foreach iH <= qH do
+        ch1(x1: G, x2: G, x3: G, x4: key) :=
+        find [unique] u_15 = ri_15 <= Nc suchthat defined(X[ri_15], Y'[ri_15], x_O_15[ri_15], r_3[ri_15]) && (x1 = x_O_15[ri_15]) && (x2 = X[ri_15]) && (x3 = Y'[ri_15]) && (x4 = psk_1) then
+          return(r_3[u_15])
+        orfind u_13 = ri_13 <= Ns suchthat defined(X'[ri_13], Y_3[ri_13], x_O_23[ri_13], r_5[ri_13]) && (x1 = x_O_23[ri_13]) && (x2 = X'[ri_13]) && (x3 = Y_3[ri_13]) && (x4 = psk_1) then
+          return(r_5[u_13])
+        orfind u_12 = ri_12 <= Ns suchthat defined(X'[ri_12], Y_2[ri_12], x_O_27[ri_12], r_6[ri_12]) && (x1 = x_O_27[ri_12]) && (x2 = X'[ri_12]) && (x3 = Y_2[ri_12]) && (x4 = psk_1) then
+          return(r_6[u_12])
+        orfind u_11 = ri_11 <= qH suchthat defined(r_7[ri_11], x4[ri_11], x3[ri_11], x2[ri_11], x1[ri_11]) && (x1 = x1[ri_11]) && (x2 = x2[ri_11]) && (x3 = x3[ri_11]) && (x4 = x4[ri_11]) then
+          return(r_7[u_11])
+        else
+          r_7 <-R three_keys;
+          return(r_7)
+      ))
+
+
+Applying simplify
+  - Simplification pass
+    - Replaced defined condition r_6[j''_1], y_2[j''_1], Y_2[j''_1], j'[j''_1] with r_6[j''_1], Y_2[j''_1], j'[j''_1] in find at 19
+yields
+
+Game 41 is
+      cStart() :=
+      psk_1 <-R key;
+      return();
+      ((
+        foreach ic <= Nc do
+        cC0() :=
+        x <-R Z;
+        X: G <- exp(g, x);
+        return(X);
+        cC2(Y': G, k_s_1: key) :=
+        find j'' = j''_1 <= Ns suchthat defined(r_6[j''_1], Y_2[j''_1], j'[j''_1]) && (ic = j'[j''_1]) && (Y' = Y_2[j''_1]) then
+        (
+          k_s': key <- 2-proj-tuple3keys(r_6[j'']);
+          if k_s_1 = k_s' then
+          k_c'_1: key <- 1-proj-tuple3keys(r_6[j'']);
+          if defined(corruptedPSK) then
+            return(k_c'_1)
+          else
+            k': key <- 3-proj-tuple3keys(r_6[j'']);
+            k_secret_c: key <- k';
+            return(k_c'_1)
+        )
+        else
+          x_O_15: G <- exp(Y', x);
+          find [unique] u_26 = ri_26 <= qH suchthat defined(r_7[ri_26], x4[ri_26], x3[ri_26], x2[ri_26], x1[ri_26]) && (x_O_15 = x1[ri_26]) && (X = x2[ri_26]) && (Y' = x3[ri_26]) && (psk_1 = x4[ri_26]) then
+          (
+            k_s': key <- 2-proj-tuple3keys(r_7[u_26]);
+            if k_s_1 = k_s' then
+            if defined(corruptedPSK) then
+              k_c'_1: key <- 1-proj-tuple3keys(r_7[u_26]);
+              return(k_c'_1)
+            else
+              event_abort client_break_auth
+          )
+          else
+            r_3 <-R three_keys
+      ) | (
+        foreach is <= Ns do
+        cS1(X': G) :=
+        find j' = j'_1 <= Nc suchthat defined(x[j'_1], X[j'_1]) && (X' = X[j'_1]) then
+        (
+          y_2 <-R Z;
+          Y_2: G <- exp(g, y_2);
+          x_O_27: G <- exp(g, mult(x[j'], y_2));
+          r_6 <-R three_keys;
+          k_s_2: key <- 2-proj-tuple3keys(r_6);
+          k_c: key <- 1-proj-tuple3keys(r_6);
+          return(Y_2, k_s_2);
+          cS3(k_c'_2: key) :=
+          if k_c = k_c'_2 then
+          if defined(corruptedPSK) then
+            yield
+          else
+            k: key <- 3-proj-tuple3keys(r_6);
+            k_secret_s: key <- k
+        )
+        else
+          y_1 <-R Z;
+          Y_3: G <- exp(g, y_1);
+          x_O_23: G <- exp(X', y_1);
+          r_5 <-R three_keys;
+          k_s_2: key <- 2-proj-tuple3keys(r_5);
+          k_c: key <- 1-proj-tuple3keys(r_5);
+          return(Y_3, k_s_2);
+          cS3(k_c'_2: key) :=
+          if k_c = k_c'_2 then
+          if defined(corruptedPSK) then
+            yield
+          else
+            event_abort server_break_auth
+      ) | (
+        cCorrupt() :=
+        corruptedPSK: bool <- cst_bool;
+        return(psk_1)
+      ) | (
+        foreach iH <= qH do
+        ch1(x1: G, x2: G, x3: G, x4: key) :=
+        find [unique] u_15 = ri_15 <= Nc suchthat defined(X[ri_15], Y'[ri_15], x_O_15[ri_15], r_3[ri_15]) && (x1 = x_O_15[ri_15]) && (x2 = X[ri_15]) && (x3 = Y'[ri_15]) && (x4 = psk_1) then
+          return(r_3[u_15])
+        orfind u_13 = ri_13 <= Ns suchthat defined(X'[ri_13], Y_3[ri_13], x_O_23[ri_13], r_5[ri_13]) && (x1 = x_O_23[ri_13]) && (x2 = X'[ri_13]) && (x3 = Y_3[ri_13]) && (x4 = psk_1) then
+          return(r_5[u_13])
+        orfind u_12 = ri_12 <= Ns suchthat defined(X'[ri_12], Y_2[ri_12], x_O_27[ri_12], r_6[ri_12]) && (x1 = x_O_27[ri_12]) && (x2 = X'[ri_12]) && (x3 = Y_2[ri_12]) && (x4 = psk_1) then
+          return(r_6[u_12])
+        orfind u_11 = ri_11 <= qH suchthat defined(r_7[ri_11], x4[ri_11], x3[ri_11], x2[ri_11], x1[ri_11]) && (x1 = x1[ri_11]) && (x2 = x2[ri_11]) && (x3 = x3[ri_11]) && (x4 = x4[ri_11]) then
+          return(r_7[u_11])
+        else
+          r_7 <-R three_keys;
+          return(r_7)
+      ))
+
+
+Applying remove assignments of binder x_O_15
+  - Remove assignments on x_O_15 (definition point kept, all usages removed)
+yields
+
+Game 42 is
+      cStart() :=
+      psk_1 <-R key;
+      return();
+      ((
+        foreach ic <= Nc do
+        cC0() :=
+        x <-R Z;
+        X: G <- exp(g, x);
+        return(X);
+        cC2(Y': G, k_s_1: key) :=
+        find j'' = j''_1 <= Ns suchthat defined(r_6[j''_1], Y_2[j''_1], j'[j''_1]) && (ic = j'[j''_1]) && (Y' = Y_2[j''_1]) then
+        (
+          k_s': key <- 2-proj-tuple3keys(r_6[j'']);
+          if k_s_1 = k_s' then
+          k_c'_1: key <- 1-proj-tuple3keys(r_6[j'']);
+          if defined(corruptedPSK) then
+            return(k_c'_1)
+          else
+            k': key <- 3-proj-tuple3keys(r_6[j'']);
+            k_secret_c: key <- k';
+            return(k_c'_1)
+        )
+        else
+          x_O_15: G <- cst_G;
+          find [unique] u_26 = ri_26 <= qH suchthat defined(r_7[ri_26], x4[ri_26], x3[ri_26], x2[ri_26], x1[ri_26]) && (exp(Y', x) = x1[ri_26]) && (X = x2[ri_26]) && (Y' = x3[ri_26]) && (psk_1 = x4[ri_26]) then
+          (
+            k_s': key <- 2-proj-tuple3keys(r_7[u_26]);
+            if k_s_1 = k_s' then
+            if defined(corruptedPSK) then
+              k_c'_1: key <- 1-proj-tuple3keys(r_7[u_26]);
+              return(k_c'_1)
+            else
+              event_abort client_break_auth
+          )
+          else
+            r_3 <-R three_keys
+      ) | (
+        foreach is <= Ns do
+        cS1(X': G) :=
+        find j' = j'_1 <= Nc suchthat defined(x[j'_1], X[j'_1]) && (X' = X[j'_1]) then
+        (
+          y_2 <-R Z;
+          Y_2: G <- exp(g, y_2);
+          x_O_27: G <- exp(g, mult(x[j'], y_2));
+          r_6 <-R three_keys;
+          k_s_2: key <- 2-proj-tuple3keys(r_6);
+          k_c: key <- 1-proj-tuple3keys(r_6);
+          return(Y_2, k_s_2);
+          cS3(k_c'_2: key) :=
+          if k_c = k_c'_2 then
+          if defined(corruptedPSK) then
+            yield
+          else
+            k: key <- 3-proj-tuple3keys(r_6);
+            k_secret_s: key <- k
+        )
+        else
+          y_1 <-R Z;
+          Y_3: G <- exp(g, y_1);
+          x_O_23: G <- exp(X', y_1);
+          r_5 <-R three_keys;
+          k_s_2: key <- 2-proj-tuple3keys(r_5);
+          k_c: key <- 1-proj-tuple3keys(r_5);
+          return(Y_3, k_s_2);
+          cS3(k_c'_2: key) :=
+          if k_c = k_c'_2 then
+          if defined(corruptedPSK) then
+            yield
+          else
+            event_abort server_break_auth
+      ) | (
+        cCorrupt() :=
+        corruptedPSK: bool <- cst_bool;
+        return(psk_1)
+      ) | (
+        foreach iH <= qH do
+        ch1(x1: G, x2: G, x3: G, x4: key) :=
+        find [unique] u_15 = ri_15 <= Nc suchthat defined(x[ri_15], x_O_15[ri_15], X[ri_15], Y'[ri_15], r_3[ri_15]) && (x1 = exp(Y'[ri_15], x[ri_15])) && (x2 = X[ri_15]) && (x3 = Y'[ri_15]) && (x4 = psk_1) then
+          return(r_3[u_15])
+        orfind u_13 = ri_13 <= Ns suchthat defined(X'[ri_13], Y_3[ri_13], x_O_23[ri_13], r_5[ri_13]) && (x1 = x_O_23[ri_13]) && (x2 = X'[ri_13]) && (x3 = Y_3[ri_13]) && (x4 = psk_1) then
+          return(r_5[u_13])
+        orfind u_12 = ri_12 <= Ns suchthat defined(X'[ri_12], Y_2[ri_12], x_O_27[ri_12], r_6[ri_12]) && (x1 = x_O_27[ri_12]) && (x2 = X'[ri_12]) && (x3 = Y_2[ri_12]) && (x4 = psk_1) then
+          return(r_6[u_12])
+        orfind u_11 = ri_11 <= qH suchthat defined(r_7[ri_11], x4[ri_11], x3[ri_11], x2[ri_11], x1[ri_11]) && (x1 = x1[ri_11]) && (x2 = x2[ri_11]) && (x3 = x3[ri_11]) && (x4 = x4[ri_11]) then
+          return(r_7[u_11])
+        else
+          r_7 <-R three_keys;
+          return(r_7)
+      ))
+
+
+Applying remove assignments of binder x_O_27
+  - Remove assignments on x_O_27 (definition removed, all usages removed)
+yields
+
+Game 43 is
+      cStart() :=
+      psk_1 <-R key;
+      return();
+      ((
+        foreach ic <= Nc do
+        cC0() :=
+        x <-R Z;
+        X: G <- exp(g, x);
+        return(X);
+        cC2(Y': G, k_s_1: key) :=
+        find j'' = j''_1 <= Ns suchthat defined(r_6[j''_1], Y_2[j''_1], j'[j''_1]) && (ic = j'[j''_1]) && (Y' = Y_2[j''_1]) then
+        (
+          k_s': key <- 2-proj-tuple3keys(r_6[j'']);
+          if k_s_1 = k_s' then
+          k_c'_1: key <- 1-proj-tuple3keys(r_6[j'']);
+          if defined(corruptedPSK) then
+            return(k_c'_1)
+          else
+            k': key <- 3-proj-tuple3keys(r_6[j'']);
+            k_secret_c: key <- k';
+            return(k_c'_1)
+        )
+        else
+          x_O_15: G <- cst_G;
+          find [unique] u_26 = ri_26 <= qH suchthat defined(r_7[ri_26], x4[ri_26], x3[ri_26], x2[ri_26], x1[ri_26]) && (exp(Y', x) = x1[ri_26]) && (X = x2[ri_26]) && (Y' = x3[ri_26]) && (psk_1 = x4[ri_26]) then
+          (
+            k_s': key <- 2-proj-tuple3keys(r_7[u_26]);
+            if k_s_1 = k_s' then
+            if defined(corruptedPSK) then
+              k_c'_1: key <- 1-proj-tuple3keys(r_7[u_26]);
+              return(k_c'_1)
+            else
+              event_abort client_break_auth
+          )
+          else
+            r_3 <-R three_keys
+      ) | (
+        foreach is <= Ns do
+        cS1(X': G) :=
+        find j' = j'_1 <= Nc suchthat defined(x[j'_1], X[j'_1]) && (X' = X[j'_1]) then
+        (
+          y_2 <-R Z;
+          Y_2: G <- exp(g, y_2);
+          r_6 <-R three_keys;
+          k_s_2: key <- 2-proj-tuple3keys(r_6);
+          k_c: key <- 1-proj-tuple3keys(r_6);
+          return(Y_2, k_s_2);
+          cS3(k_c'_2: key) :=
+          if k_c = k_c'_2 then
+          if defined(corruptedPSK) then
+            yield
+          else
+            k: key <- 3-proj-tuple3keys(r_6);
+            k_secret_s: key <- k
+        )
+        else
+          y_1 <-R Z;
+          Y_3: G <- exp(g, y_1);
+          x_O_23: G <- exp(X', y_1);
+          r_5 <-R three_keys;
+          k_s_2: key <- 2-proj-tuple3keys(r_5);
+          k_c: key <- 1-proj-tuple3keys(r_5);
+          return(Y_3, k_s_2);
+          cS3(k_c'_2: key) :=
+          if k_c = k_c'_2 then
+          if defined(corruptedPSK) then
+            yield
+          else
+            event_abort server_break_auth
+      ) | (
+        cCorrupt() :=
+        corruptedPSK: bool <- cst_bool;
+        return(psk_1)
+      ) | (
+        foreach iH <= qH do
+        ch1(x1: G, x2: G, x3: G, x4: key) :=
+        find [unique] u_15 = ri_15 <= Nc suchthat defined(x[ri_15], x_O_15[ri_15], X[ri_15], Y'[ri_15], r_3[ri_15]) && (x1 = exp(Y'[ri_15], x[ri_15])) && (x2 = X[ri_15]) && (x3 = Y'[ri_15]) && (x4 = psk_1) then
+          return(r_3[u_15])
+        orfind u_13 = ri_13 <= Ns suchthat defined(X'[ri_13], Y_3[ri_13], x_O_23[ri_13], r_5[ri_13]) && (x1 = x_O_23[ri_13]) && (x2 = X'[ri_13]) && (x3 = Y_3[ri_13]) && (x4 = psk_1) then
+          return(r_5[u_13])
+        orfind u_12 = ri_12 <= Ns suchthat defined(y_2[ri_12], x[j'[ri_12]], X'[ri_12], Y_2[ri_12], r_6[ri_12]) && (x1 = exp(g, mult(x[j'[ri_12]], y_2[ri_12]))) && (x2 = X'[ri_12]) && (x3 = Y_2[ri_12]) && (x4 = psk_1) then
+          return(r_6[u_12])
+        orfind u_11 = ri_11 <= qH suchthat defined(r_7[ri_11], x4[ri_11], x3[ri_11], x2[ri_11], x1[ri_11]) && (x1 = x1[ri_11]) && (x2 = x2[ri_11]) && (x3 = x3[ri_11]) && (x4 = x4[ri_11]) then
+          return(r_7[u_11])
+        else
+          r_7 <-R three_keys;
+          return(r_7)
+      ))
+
+
+Applying equivalence gdh(exp) with variables: x -> a, y_2 -> b. [probability pGDH(time_1, 2 * qH) + (0.5 * Ns^2 + 0.5 * Nc^2) * Pcoll2rand(Z)]
+  - Equivalence gdh(exp) with variables: x -> a, y_2 -> b.
+yields
+
+Game 44 is
+      cStart() :=
+      psk_1 <-R key;
+      return();
+      ((
+        foreach ic <= Nc do
+        cC0() :=
+        x <-R Z;
+        X: G <- exp'(g, x);
+        return(X);
+        cC2(Y': G, k_s_1: key) :=
+        find j'' = j''_1 <= Ns suchthat defined(r_6[j''_1], Y_2[j''_1], j'[j''_1]) && (ic = j'[j''_1]) && (Y' = Y_2[j''_1]) then
+        (
+          k_s': key <- 2-proj-tuple3keys(r_6[j'']);
+          if k_s_1 = k_s' then
+          k_c'_1: key <- 1-proj-tuple3keys(r_6[j'']);
+          if defined(corruptedPSK) then
+            return(k_c'_1)
+          else
+            k': key <- 3-proj-tuple3keys(r_6[j'']);
+            k_secret_c: key <- k';
+            return(k_c'_1)
+        )
+        else
+          x_O_15: G <- cst_G;
+          find [unique] u_26 = ri_26 <= qH suchthat defined(r_7[ri_26], x4[ri_26], x3[ri_26], x2[ri_26], x1[ri_26]) && (m: G <- x1[ri_26]; m': G <- Y'; (m = exp'(m', x))) && (X = x2[ri_26]) && (Y' = x3[ri_26]) && (psk_1 = x4[ri_26]) then
+          (
+            k_s': key <- 2-proj-tuple3keys(r_7[u_26]);
+            if k_s_1 = k_s' then
+            if defined(corruptedPSK) then
+              k_c'_1: key <- 1-proj-tuple3keys(r_7[u_26]);
+              return(k_c'_1)
+            else
+              event_abort client_break_auth
+          )
+          else
+            r_3 <-R three_keys
+      ) | (
+        foreach is <= Ns do
+        cS1(X': G) :=
+        find j' = j'_1 <= Nc suchthat defined(X[j'_1]) && (X' = X[j'_1]) then
+        (
+          y_2 <-R Z;
+          Y_2: G <- exp'(g, y_2);
+          r_6 <-R three_keys;
+          k_s_2: key <- 2-proj-tuple3keys(r_6);
+          k_c: key <- 1-proj-tuple3keys(r_6);
+          return(Y_2, k_s_2);
+          cS3(k_c'_2: key) :=
+          if k_c = k_c'_2 then
+          if defined(corruptedPSK) then
+            yield
+          else
+            k: key <- 3-proj-tuple3keys(r_6);
+            k_secret_s: key <- k
+        )
+        else
+          y_1 <-R Z;
+          Y_3: G <- exp(g, y_1);
+          x_O_23: G <- exp(X', y_1);
+          r_5 <-R three_keys;
+          k_s_2: key <- 2-proj-tuple3keys(r_5);
+          k_c: key <- 1-proj-tuple3keys(r_5);
+          return(Y_3, k_s_2);
+          cS3(k_c'_2: key) :=
+          if k_c = k_c'_2 then
+          if defined(corruptedPSK) then
+            yield
+          else
+            event_abort server_break_auth
+      ) | (
+        cCorrupt() :=
+        corruptedPSK: bool <- cst_bool;
+        return(psk_1)
+      ) | (
+        foreach iH <= qH do
+        ch1(x1: G, x2: G, x3: G, x4: key) :=
+        find [unique] u_15 = ri_15 <= Nc suchthat defined(r_3[ri_15], X[ri_15], x[ri_15], Y'[ri_15]) && (m_3: G <- x1; m'_2: G <- Y'[ri_15]; (m_3 = exp'(m'_2, x[ri_15]))) && (x2 = X[ri_15]) && (x3 = Y'[ri_15]) && (x4 = psk_1) then
+          return(r_3[u_15])
+        orfind u_13 = ri_13 <= Ns suchthat defined(X'[ri_13], Y_3[ri_13], x_O_23[ri_13], r_5[ri_13]) && (x1 = x_O_23[ri_13]) && (x2 = X'[ri_13]) && (x3 = Y_3[ri_13]) && (x4 = psk_1) then
+          return(r_5[u_13])
+        orfind u_12 = ri_12 <= Ns suchthat defined(r_6[ri_12], Y_2[ri_12], X'[ri_12]) && (m_5: G <- x1; {328}find  else {329}find  else false) && (x2 = X'[ri_12]) && (x3 = Y_2[ri_12]) && (x4 = psk_1) then
+          return(r_6[u_12])
+        orfind u_11 = ri_11 <= qH suchthat defined(r_7[ri_11], x4[ri_11], x3[ri_11], x2[ri_11], x1[ri_11]) && (x1 = x1[ri_11]) && (x2 = x2[ri_11]) && (x3 = x3[ri_11]) && (x4 = x4[ri_11]) then
+          return(r_7[u_11])
+        else
+          r_7 <-R three_keys;
+          return(r_7)
+      ))
+
+
+Applying simplify (non-expanded game)
+  - Simplification pass
+    - Find at 328 removed (else branch kept if any)
+    - Find at 329 removed (else branch kept if any)
+yields
+
+Game 45 is
+      cStart() :=
+      psk_1 <-R key;
+      return();
+      ((
+        foreach ic <= Nc do
+        cC0() :=
+        x <-R Z;
+        X: G <- exp'(g, x);
+        return(X);
+        cC2(Y': G, k_s_1: key) :=
+        find j'' = j''_1 <= Ns suchthat defined(r_6[j''_1], Y_2[j''_1], j'[j''_1]) && (ic = j'[j''_1]) && (Y' = Y_2[j''_1]) then
+        (
+          k_s': key <- 2-proj-tuple3keys(r_6[j'']);
+          if k_s_1 = k_s' then
+          k_c'_1: key <- 1-proj-tuple3keys(r_6[j'']);
+          if defined(corruptedPSK) then
+            return(k_c'_1)
+          else
+            k': key <- 3-proj-tuple3keys(r_6[j'']);
+            k_secret_c: key <- k';
+            return(k_c'_1)
+        )
+        else
+          x_O_15: G <- cst_G;
+          find [unique] u_26 = ri_26 <= qH suchthat defined(r_7[ri_26], x4[ri_26], x3[ri_26], x2[ri_26], x1[ri_26]) && (m: G <- x1[ri_26]; m': G <- Y'; (m = exp'(m', x))) && (X = x2[ri_26]) && (Y' = x3[ri_26]) && (psk_1 = x4[ri_26]) then
+          (
+            k_s': key <- 2-proj-tuple3keys(r_7[u_26]);
+            if k_s_1 = k_s' then
+            if defined(corruptedPSK) then
+              k_c'_1: key <- 1-proj-tuple3keys(r_7[u_26]);
+              return(k_c'_1)
+            else
+              event_abort client_break_auth
+          )
+          else
+            r_3 <-R three_keys
+      ) | (
+        foreach is <= Ns do
+        cS1(X': G) :=
+        find j' = j'_1 <= Nc suchthat defined(X[j'_1]) && (X' = X[j'_1]) then
+        (
+          y_2 <-R Z;
+          Y_2: G <- exp'(g, y_2);
+          r_6 <-R three_keys;
+          k_s_2: key <- 2-proj-tuple3keys(r_6);
+          k_c: key <- 1-proj-tuple3keys(r_6);
+          return(Y_2, k_s_2);
+          cS3(k_c'_2: key) :=
+          if k_c = k_c'_2 then
+          if defined(corruptedPSK) then
+            yield
+          else
+            k: key <- 3-proj-tuple3keys(r_6);
+            k_secret_s: key <- k
+        )
+        else
+          y_1 <-R Z;
+          Y_3: G <- exp(g, y_1);
+          x_O_23: G <- exp(X', y_1);
+          r_5 <-R three_keys;
+          k_s_2: key <- 2-proj-tuple3keys(r_5);
+          k_c: key <- 1-proj-tuple3keys(r_5);
+          return(Y_3, k_s_2);
+          cS3(k_c'_2: key) :=
+          if k_c = k_c'_2 then
+          if defined(corruptedPSK) then
+            yield
+          else
+            event_abort server_break_auth
+      ) | (
+        cCorrupt() :=
+        corruptedPSK: bool <- cst_bool;
+        return(psk_1)
+      ) | (
+        foreach iH <= qH do
+        ch1(x1: G, x2: G, x3: G, x4: key) :=
+ {247}  find [unique] u_15 = ri_15 <= Nc suchthat defined(r_3[ri_15], X[ri_15], x[ri_15], Y'[ri_15]) && (m_3: G <- x1; m'_2: G <- Y'[ri_15]; (m_3 = exp'(m'_2, x[ri_15]))) && (x2 = X[ri_15]) && (x3 = Y'[ri_15]) && (x4 = psk_1) then
+          return(r_3[u_15])
+        orfind u_13 = ri_13 <= Ns suchthat defined(X'[ri_13], Y_3[ri_13], x_O_23[ri_13], r_5[ri_13]) && (x1 = x_O_23[ri_13]) && (x2 = X'[ri_13]) && (x3 = Y_3[ri_13]) && (x4 = psk_1) then
+          return(r_5[u_13])
+        orfind u_12 = ri_12 <= Ns suchthat defined(r_6[ri_12], Y_2[ri_12], X'[ri_12]) && (m_5: G <- x1; false) && (x2 = X'[ri_12]) && (x3 = Y_2[ri_12]) && (x4 = psk_1) then
+          return(r_6[u_12])
+        orfind u_11 = ri_11 <= qH suchthat defined(r_7[ri_11], x4[ri_11], x3[ri_11], x2[ri_11], x1[ri_11]) && (x1 = x1[ri_11]) && (x2 = x2[ri_11]) && (x3 = x3[ri_11]) && (x4 = x4[ri_11]) then
+          return(r_7[u_11])
+        else
+          r_7 <-R three_keys;
+          return(r_7)
+      ))
+
+
+Applying expand
+  - Expand if/find/let
+    - Remove branch 3 in find at 247
+yields
+
+Game 46 is
+      cStart() :=
+      psk_1 <-R key;
+      return();
+      ((
+        foreach ic <= Nc do
+        cC0() :=
+        x <-R Z;
+        X: G <- exp'(g, x);
+        return(X);
+        cC2(Y': G, k_s_1: key) :=
+        find j'' = j''_1 <= Ns suchthat defined(r_6[j''_1], Y_2[j''_1], j'[j''_1]) && (ic = j'[j''_1]) && (Y' = Y_2[j''_1]) then
+        (
+          k_s': key <- 2-proj-tuple3keys(r_6[j'']);
+          if k_s_1 = k_s' then
+          k_c'_1: key <- 1-proj-tuple3keys(r_6[j'']);
+          if defined(corruptedPSK) then
+            return(k_c'_1)
+          else
+            k': key <- 3-proj-tuple3keys(r_6[j'']);
+            k_secret_c: key <- k';
+            return(k_c'_1)
+        )
+        else
+          x_O_15: G <- cst_G;
+          find [unique] u_26 = ri_26 <= qH suchthat defined(r_7[ri_26], x4[ri_26], x3[ri_26], x2[ri_26], x1[ri_26]) && (m: G <- x1[ri_26]; m': G <- Y'; ((m = exp'(m', x)) && (X = x2[ri_26]) && (Y' = x3[ri_26]) && (psk_1 = x4[ri_26]))) then
+          (
+            k_s': key <- 2-proj-tuple3keys(r_7[u_26]);
+            if k_s_1 = k_s' then
+            if defined(corruptedPSK) then
+              k_c'_1: key <- 1-proj-tuple3keys(r_7[u_26]);
+              return(k_c'_1)
+            else
+              event_abort client_break_auth
+          )
+          else
+            r_3 <-R three_keys
+      ) | (
+        foreach is <= Ns do
+        cS1(X': G) :=
+        find j' = j'_1 <= Nc suchthat defined(X[j'_1]) && (X' = X[j'_1]) then
+        (
+          y_2 <-R Z;
+          Y_2: G <- exp'(g, y_2);
+          r_6 <-R three_keys;
+          k_s_2: key <- 2-proj-tuple3keys(r_6);
+          k_c: key <- 1-proj-tuple3keys(r_6);
+          return(Y_2, k_s_2);
+          cS3(k_c'_2: key) :=
+          if k_c = k_c'_2 then
+          if defined(corruptedPSK) then
+            yield
+          else
+            k: key <- 3-proj-tuple3keys(r_6);
+            k_secret_s: key <- k
+        )
+        else
+          y_1 <-R Z;
+          Y_3: G <- exp(g, y_1);
+          x_O_23: G <- exp(X', y_1);
+          r_5 <-R three_keys;
+          k_s_2: key <- 2-proj-tuple3keys(r_5);
+          k_c: key <- 1-proj-tuple3keys(r_5);
+          return(Y_3, k_s_2);
+          cS3(k_c'_2: key) :=
+          if k_c = k_c'_2 then
+          if defined(corruptedPSK) then
+            yield
+          else
+            event_abort server_break_auth
+      ) | (
+        cCorrupt() :=
+        corruptedPSK: bool <- cst_bool;
+        return(psk_1)
+      ) | (
+        foreach iH <= qH do
+        ch1(x1: G, x2: G, x3: G, x4: key) :=
+        find [unique] u_15 = ri_15 <= Nc suchthat defined(r_3[ri_15], X[ri_15], x[ri_15], Y'[ri_15]) && (m_3: G <- x1; m'_2: G <- Y'[ri_15]; ((m_3 = exp'(m'_2, x[ri_15])) && (x2 = X[ri_15]) && (x3 = Y'[ri_15]) && (x4 = psk_1))) then
+          return(r_3[u_15])
+        orfind u_13 = ri_13 <= Ns suchthat defined(X'[ri_13], Y_3[ri_13], x_O_23[ri_13], r_5[ri_13]) && (x1 = x_O_23[ri_13]) && (x2 = X'[ri_13]) && (x3 = Y_3[ri_13]) && (x4 = psk_1) then
+          return(r_5[u_13])
+        orfind u_11 = ri_11 <= qH suchthat defined(r_7[ri_11], x4[ri_11], x3[ri_11], x2[ri_11], x1[ri_11]) && (x1 = x1[ri_11]) && (x2 = x2[ri_11]) && (x3 = x3[ri_11]) && (x4 = x4[ri_11]) then
+          return(r_7[u_11])
+        else
+          r_7 <-R three_keys;
+          return(r_7)
+      ))
+
+
+Applying remove assignments of findcond
+  - Remove assignments on m_3 (definition removed, all usages removed)
+  - Remove assignments on m'_2 (definition removed, all usages removed)
+  - Remove assignments on x_O_15 (definition removed, all usages removed)
+  - Remove assignments on m (definition removed, all usages removed)
+  - Remove assignments on m' (definition removed, all usages removed)
+yields
+
+Game 47 is
+      cStart() :=
+      psk_1 <-R key;
+      return();
+      ((
+        foreach ic <= Nc do
+        cC0() :=
+        x <-R Z;
+        X: G <- exp'(g, x);
+        return(X);
+        cC2(Y': G, k_s_1: key) :=
+        find j'' = j''_1 <= Ns suchthat defined(r_6[j''_1], Y_2[j''_1], j'[j''_1]) && (ic = j'[j''_1]) && (Y' = Y_2[j''_1]) then
+        (
+          k_s': key <- 2-proj-tuple3keys(r_6[j'']);
+          if k_s_1 = k_s' then
+          k_c'_1: key <- 1-proj-tuple3keys(r_6[j'']);
+          if defined(corruptedPSK) then
+            return(k_c'_1)
+          else
+            k': key <- 3-proj-tuple3keys(r_6[j'']);
+            k_secret_c: key <- k';
+            return(k_c'_1)
+        )
+        else
+          find [unique] u_26 = ri_26 <= qH suchthat defined(r_7[ri_26], x4[ri_26], x3[ri_26], x2[ri_26], x1[ri_26]) && (x1[ri_26] = exp'(Y', x)) && (X = x2[ri_26]) && (Y' = x3[ri_26]) && (psk_1 = x4[ri_26]) then
+          (
+            k_s': key <- 2-proj-tuple3keys(r_7[u_26]);
+            if k_s_1 = k_s' then
+            if defined(corruptedPSK) then
+              k_c'_1: key <- 1-proj-tuple3keys(r_7[u_26]);
+              return(k_c'_1)
+            else
+              event_abort client_break_auth
+          )
+          else
+            r_3 <-R three_keys
+      ) | (
+        foreach is <= Ns do
+        cS1(X': G) :=
+        find j' = j'_1 <= Nc suchthat defined(X[j'_1]) && (X' = X[j'_1]) then
+        (
+          y_2 <-R Z;
+          Y_2: G <- exp'(g, y_2);
+          r_6 <-R three_keys;
+          k_s_2: key <- 2-proj-tuple3keys(r_6);
+          k_c: key <- 1-proj-tuple3keys(r_6);
+          return(Y_2, k_s_2);
+          cS3(k_c'_2: key) :=
+          if k_c = k_c'_2 then
+          if defined(corruptedPSK) then
+            yield
+          else
+            k: key <- 3-proj-tuple3keys(r_6);
+            k_secret_s: key <- k
+        )
+        else
+          y_1 <-R Z;
+          Y_3: G <- exp(g, y_1);
+          x_O_23: G <- exp(X', y_1);
+          r_5 <-R three_keys;
+          k_s_2: key <- 2-proj-tuple3keys(r_5);
+          k_c: key <- 1-proj-tuple3keys(r_5);
+          return(Y_3, k_s_2);
+          cS3(k_c'_2: key) :=
+          if k_c = k_c'_2 then
+          if defined(corruptedPSK) then
+            yield
+          else
+            event_abort server_break_auth
+      ) | (
+        cCorrupt() :=
+        corruptedPSK: bool <- cst_bool;
+        return(psk_1)
+      ) | (
+        foreach iH <= qH do
+        ch1(x1: G, x2: G, x3: G, x4: key) :=
+        find [unique] u_15 = ri_15 <= Nc suchthat defined(r_3[ri_15], X[ri_15], x[ri_15], Y'[ri_15]) && (x1 = exp'(Y'[ri_15], x[ri_15])) && (x2 = X[ri_15]) && (x3 = Y'[ri_15]) && (x4 = psk_1) then
+          return(r_3[u_15])
+        orfind u_13 = ri_13 <= Ns suchthat defined(X'[ri_13], Y_3[ri_13], x_O_23[ri_13], r_5[ri_13]) && (x1 = x_O_23[ri_13]) && (x2 = X'[ri_13]) && (x3 = Y_3[ri_13]) && (x4 = psk_1) then
+          return(r_5[u_13])
+        orfind u_11 = ri_11 <= qH suchthat defined(r_7[ri_11], x4[ri_11], x3[ri_11], x2[ri_11], x1[ri_11]) && (x1 = x1[ri_11]) && (x2 = x2[ri_11]) && (x3 = x3[ri_11]) && (x4 = x4[ri_11]) then
+          return(r_7[u_11])
+        else
+          r_7 <-R three_keys;
+          return(r_7)
+      ))
+
+
+Applying equivalence splitter(tuple3keys)
+  - Equivalence splitter(tuple3keys) with variables: r_6 -> r
+yields
+
+Game 48 is
+      cStart() :=
+      psk_1 <-R key;
+      return();
+      ((
+        foreach ic <= Nc do
+        cC0() :=
+        x <-R Z;
+        X: G <- exp'(g, x);
+        return(X);
+        cC2(Y': G, k_s_1: key) :=
+        find j'' = j''_1 <= Ns suchthat defined(part3_1[j''_1], part1_1[j''_1], part2_1[j''_1], Y_2[j''_1], j'[j''_1]) && (ic = j'[j''_1]) && (Y' = Y_2[j''_1]) then
+        (
+          k_s': key <- part2_1[j''];
+          if k_s_1 = k_s' then
+          k_c'_1: key <- part1_1[j''];
+          if defined(corruptedPSK) then
+            return(k_c'_1)
+          else
+            k': key <- part3_1[j''];
+            k_secret_c: key <- k';
+            return(k_c'_1)
+        )
+        else
+          find [unique] u_26 = ri_26 <= qH suchthat defined(r_7[ri_26], x4[ri_26], x3[ri_26], x2[ri_26], x1[ri_26]) && (x1[ri_26] = exp'(Y', x)) && (X = x2[ri_26]) && (Y' = x3[ri_26]) && (psk_1 = x4[ri_26]) then
+          (
+            k_s': key <- 2-proj-tuple3keys(r_7[u_26]);
+            if k_s_1 = k_s' then
+            if defined(corruptedPSK) then
+              k_c'_1: key <- 1-proj-tuple3keys(r_7[u_26]);
+              return(k_c'_1)
+            else
+              event_abort client_break_auth
+          )
+          else
+            r_3 <-R three_keys
+      ) | (
+        foreach is <= Ns do
+        cS1(X': G) :=
+        find j' = j'_1 <= Nc suchthat defined(X[j'_1]) && (X' = X[j'_1]) then
+        (
+          y_2 <-R Z;
+          Y_2: G <- exp'(g, y_2);
+          part3_1 <-R key;
+          part2_1 <-R key;
+          part1_1 <-R key;
+          r_6: three_keys <- cst_three_keys;
+          k_s_2: key <- part2_1;
+          k_c: key <- part1_1;
+          return(Y_2, k_s_2);
+          cS3(k_c'_2: key) :=
+          if k_c = k_c'_2 then
+          if defined(corruptedPSK) then
+            yield
+          else
+            k: key <- part3_1;
+            k_secret_s: key <- k
+        )
+        else
+          y_1 <-R Z;
+          Y_3: G <- exp(g, y_1);
+          x_O_23: G <- exp(X', y_1);
+          r_5 <-R three_keys;
+          k_s_2: key <- 2-proj-tuple3keys(r_5);
+          k_c: key <- 1-proj-tuple3keys(r_5);
+          return(Y_3, k_s_2);
+          cS3(k_c'_2: key) :=
+          if k_c = k_c'_2 then
+          if defined(corruptedPSK) then
+            yield
+          else
+            event_abort server_break_auth
+      ) | (
+        cCorrupt() :=
+        corruptedPSK: bool <- cst_bool;
+        return(psk_1)
+      ) | (
+        foreach iH <= qH do
+        ch1(x1: G, x2: G, x3: G, x4: key) :=
+        find [unique] u_15 = ri_15 <= Nc suchthat defined(r_3[ri_15], X[ri_15], x[ri_15], Y'[ri_15]) && (x1 = exp'(Y'[ri_15], x[ri_15])) && (x2 = X[ri_15]) && (x3 = Y'[ri_15]) && (x4 = psk_1) then
+          return(r_3[u_15])
+        orfind u_13 = ri_13 <= Ns suchthat defined(X'[ri_13], Y_3[ri_13], x_O_23[ri_13], r_5[ri_13]) && (x1 = x_O_23[ri_13]) && (x2 = X'[ri_13]) && (x3 = Y_3[ri_13]) && (x4 = psk_1) then
+          return(r_5[u_13])
+        orfind u_11 = ri_11 <= qH suchthat defined(r_7[ri_11], x4[ri_11], x3[ri_11], x2[ri_11], x1[ri_11]) && (x1 = x1[ri_11]) && (x2 = x2[ri_11]) && (x3 = x3[ri_11]) && (x4 = x4[ri_11]) then
+          return(r_7[u_11])
+        else
+          r_7 <-R three_keys;
+          return(r_7)
+      ))
+
+
+Applying remove assignments of findcond
+  - Remove assignments on r_6 (definition removed, all usages removed)
+  - Remove assignments on k_s_2 (definition removed, all usages removed)
+  - Remove assignments on k_c (definition removed, all usages removed)
+  - Remove assignments on k (definition removed, all usages removed)
+  - Remove assignments on k_s' (definition removed, all usages removed)
+  - Remove assignments on k_c'_1 (definition removed, all usages removed)
+  - Remove assignments on k' (definition removed, all usages removed)
+yields
+
+Game 49 is
+      cStart() :=
+      psk_1 <-R key;
+      return();
+      ((
+        foreach ic <= Nc do
+        cC0() :=
+        x <-R Z;
+        X: G <- exp'(g, x);
+        return(X);
+        cC2(Y': G, k_s_1: key) :=
+        find j'' = j''_1 <= Ns suchthat defined(part3_1[j''_1], part1_1[j''_1], part2_1[j''_1], Y_2[j''_1], j'[j''_1]) && (ic = j'[j''_1]) && (Y' = Y_2[j''_1]) then
+        (
+          if k_s_1 = part2_1[j''] then
+          if defined(corruptedPSK) then
+            return(part1_1[j''])
+          else
+            k_secret_c: key <- part3_1[j''];
+            return(part1_1[j''])
+        )
+        else
+          find [unique] u_26 = ri_26 <= qH suchthat defined(r_7[ri_26], x4[ri_26], x3[ri_26], x2[ri_26], x1[ri_26]) && (x1[ri_26] = exp'(Y', x)) && (X = x2[ri_26]) && (Y' = x3[ri_26]) && (psk_1 = x4[ri_26]) then
+          (
+            k_s': key <- 2-proj-tuple3keys(r_7[u_26]);
+            if k_s_1 = k_s' then
+            if defined(corruptedPSK) then
+              k_c'_1: key <- 1-proj-tuple3keys(r_7[u_26]);
+              return(k_c'_1)
+            else
+              event_abort client_break_auth
+          )
+          else
+            r_3 <-R three_keys
+      ) | (
+        foreach is <= Ns do
+        cS1(X': G) :=
+        find j' = j'_1 <= Nc suchthat defined(X[j'_1]) && (X' = X[j'_1]) then
+        (
+          y_2 <-R Z;
+          Y_2: G <- exp'(g, y_2);
+          part3_1 <-R key;
+          part2_1 <-R key;
+          part1_1 <-R key;
+          return(Y_2, part2_1);
+          cS3(k_c'_2: key) :=
+          if part1_1 = k_c'_2 then
+          if defined(corruptedPSK) then
+            yield
+          else
+            k_secret_s: key <- part3_1
+        )
+        else
+          y_1 <-R Z;
+          Y_3: G <- exp(g, y_1);
+          x_O_23: G <- exp(X', y_1);
+          r_5 <-R three_keys;
+          k_s_2: key <- 2-proj-tuple3keys(r_5);
+          k_c: key <- 1-proj-tuple3keys(r_5);
+          return(Y_3, k_s_2);
+          cS3(k_c'_2: key) :=
+          if k_c = k_c'_2 then
+          if defined(corruptedPSK) then
+            yield
+          else
+            event_abort server_break_auth
+      ) | (
+        cCorrupt() :=
+        corruptedPSK: bool <- cst_bool;
+        return(psk_1)
+      ) | (
+        foreach iH <= qH do
+        ch1(x1: G, x2: G, x3: G, x4: key) :=
+        find [unique] u_15 = ri_15 <= Nc suchthat defined(r_3[ri_15], X[ri_15], x[ri_15], Y'[ri_15]) && (x1 = exp'(Y'[ri_15], x[ri_15])) && (x2 = X[ri_15]) && (x3 = Y'[ri_15]) && (x4 = psk_1) then
+          return(r_3[u_15])
+        orfind u_13 = ri_13 <= Ns suchthat defined(X'[ri_13], Y_3[ri_13], x_O_23[ri_13], r_5[ri_13]) && (x1 = x_O_23[ri_13]) && (x2 = X'[ri_13]) && (x3 = Y_3[ri_13]) && (x4 = psk_1) then
+          return(r_5[u_13])
+        orfind u_11 = ri_11 <= qH suchthat defined(r_7[ri_11], x4[ri_11], x3[ri_11], x2[ri_11], x1[ri_11]) && (x1 = x1[ri_11]) && (x2 = x2[ri_11]) && (x3 = x3[ri_11]) && (x4 = x4[ri_11]) then
+          return(r_7[u_11])
+        else
+          r_7 <-R three_keys;
+          return(r_7)
+      ))
+
+
+Proved secrecy of k_secret_s in game 49
+Proved secrecy of k_secret_c in game 49
+Adv[Game 1: secrecy of k_secret_s] <= Adv[Game 4: secrecy of k_secret_s]
+Adv[Game 4: secrecy of k_secret_s] <= Adv[Game 5: secrecy of k_secret_s, client_break_auth]
+Adv[Game 5: secrecy of k_secret_s, client_break_auth] <= Adv[Game 5: secrecy of k_secret_s, client_break_auth]
+Adv[Game 5: secrecy of k_secret_s, client_break_auth] <= Adv[Game 6: secrecy of k_secret_s, server_break_auth || client_break_auth]
+Adv[Game 6: secrecy of k_secret_s, server_break_auth || client_break_auth] <= Pr[Game 6: server_break_auth || client_break_auth] + Adv[Game 6: secrecy of k_secret_s]
+Pr[Game 6: server_break_auth || client_break_auth] <= (Ns + Nc + qH) / |key| + Nc * Ns * Pcoll1rand(Z) + (2.5 * Nc^2 + 1.5 * Ns^2) * Pcoll2rand(Z) + 2 * Nc * Ns / |Z| + Pr[Game 26: server_break_auth] + Pr[Game 26: client_break_auth]
+Pr[Game 26: server_break_auth] <= 0
+Pr[Game 26: client_break_auth] <= 0
+Adv[Game 6: secrecy of k_secret_s] <= 2 * pGDH(time_1, 2 * qH) + (2 * Ns * qH + 8 * Ns^2 * Nc^2 + 8 * Nc * Ns) / |Z| + 4 * qH * Ns * Pcoll1rand(Z) + 4 * Nc / |key| + (8 * Ns^2 + 6 * Nc^2) * Pcoll2rand(Z) + Adv[Game 49: secrecy of k_secret_s]
+Adv[Game 49: secrecy of k_secret_s] <= 0
+RESULT Proved secrecy of k_secret_s up to probability (qH + Ns + 5 * Nc) / |key| + (Nc * Ns + 4 * qH * Ns) * Pcoll1rand(Z) + 2 * pGDH(time_1, 2 * qH) + (10 * Nc * Ns + 8 * Ns^2 * Nc^2 + 2 * Ns * qH) / |Z| + (8.5 * Nc^2 + 9.5 * Ns^2) * Pcoll2rand(Z)
+Adv[Game 1: secrecy of k_secret_c] <= Adv[Game 4: secrecy of k_secret_c]
+Adv[Game 4: secrecy of k_secret_c] <= Adv[Game 5: secrecy of k_secret_c, client_break_auth]
+Adv[Game 5: secrecy of k_secret_c, client_break_auth] <= Adv[Game 5: secrecy of k_secret_c, client_break_auth]
+Adv[Game 5: secrecy of k_secret_c, client_break_auth] <= Adv[Game 6: secrecy of k_secret_c, server_break_auth || client_break_auth]
+Adv[Game 6: secrecy of k_secret_c, server_break_auth || client_break_auth] <= Pr[Game 6: server_break_auth || client_break_auth] + Adv[Game 6: secrecy of k_secret_c]
+Pr[Game 6: server_break_auth || client_break_auth] <= (Ns + Nc + qH) / |key| + Nc * Ns * Pcoll1rand(Z) + (2.5 * Nc^2 + 1.5 * Ns^2) * Pcoll2rand(Z) + 2 * Nc * Ns / |Z| + Pr[Game 26: server_break_auth] + Pr[Game 26: client_break_auth]
+Pr[Game 26: server_break_auth] <= 0
+Pr[Game 26: client_break_auth] <= 0
+Adv[Game 6: secrecy of k_secret_c] <= 2 * pGDH(time_1, 2 * qH) + (2 * Ns * qH + 8 * Ns^2 * Nc^2 + 8 * Nc * Ns) / |Z| + 4 * qH * Ns * Pcoll1rand(Z) + 4 * Nc / |key| + (8 * Ns^2 + 6 * Nc^2) * Pcoll2rand(Z) + Adv[Game 49: secrecy of k_secret_c]
+Adv[Game 49: secrecy of k_secret_c] <= 0
+RESULT Proved secrecy of k_secret_c up to probability (qH + Ns + 5 * Nc) / |key| + (Nc * Ns + 4 * qH * Ns) * Pcoll1rand(Z) + 2 * pGDH(time_1, 2 * qH) + (10 * Nc * Ns + 8 * Ns^2 * Nc^2 + 2 * Ns * qH) / |Z| + (8.5 * Nc^2 + 9.5 * Ns^2) * Pcoll2rand(Z)
+RESULT time_1 = (Nc + Ns) * time(3-proj-tuple3keys) + (Nc + Ns) * time(2-proj-tuple3keys) + (Nc + Ns) * time(1-proj-tuple3keys) + time + (1 + 3 * Ns + Nc) * time(exp)
+All queries proved.

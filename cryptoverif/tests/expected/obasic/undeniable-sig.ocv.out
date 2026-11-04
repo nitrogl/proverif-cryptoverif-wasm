@@ -1,0 +1,1638 @@
+File "undeniable-sig.ocv", line 156, characters 56-58:
+Warning: Foreach uses the same parameter NS with oracle OC as foreach at line 156, characters 17-19 with oracle OS. Avoid reusing parameters for multiple foreach with different oracles to avoid losing precision in the probability bound.
+Doing expand get, insert and prove unique annotations... No change.
+Doing simplify (non-expanded game)... No change.
+Doing expand... No change.
+Doing remove assignments of findcond... No change.
+Doing simplify... Run simplify 2 time(s). Fixpoint reached.
+Done.
+Doing move all binders... No change.
+Doing SA rename new without array accesses and remove assignments of findcond... No change.
+Doing merge branches... No change.
+Proof of event(forgery) ==> false failed:
+  Found forgery at 53
+  but could not prove false
+Eliminated collisions between exp(X, e) and R Probability: 1 / |G|
+(exp(X, e) collides with a value independent of X with probability at most 1 / |G|;
+ R does not depend on X)
+Trying equivalence rom(H)... Transf. OK Proba. computed Transf. done Succeeded.
+Doing simplify (non-expanded game)... No change.
+Doing expand... Done.
+Doing remove assignments of findcond... Done.
+Doing simplify... Doing global dependency analysis on r_1 inside simplify... At 179, returned message r_1 depends on r_1.
+No change
+Doing global dependency analysis on x_2 inside simplify... At 8, returned message y depends on x_2.
+No change
+Doing global dependency analysis on r inside simplify... At 61, returned message s depends on r.
+No change
+Doing global dependency analysis on r_1 inside simplify... At 159, returned message r_1 depends on r_1.
+No change
+Doing global dependency analysis on x_2 inside simplify... At 8, returned message y depends on x_2.
+No change
+Doing global dependency analysis on r inside simplify... At 59, returned message s depends on r.
+No change
+Run simplify 2 time(s). Fixpoint reached.
+Done.
+Doing move all binders... Done.
+Doing SA rename new without array accesses and remove assignments of findcond... No change.
+Doing merge branches... No change.
+Trying equivalence group_to_exp_strict(exp)... Transf. OK Proba. computed Transf. done Succeeded.
+Doing simplify (non-expanded game)... No change.
+Doing expand... Done.
+Doing remove assignments of findcond... Done.
+Doing simplify... Doing global dependency analysis on x_3 inside simplify... At 160, returned message exp(g, x_3) depends on x_3.
+No change
+Doing global dependency analysis on x_2 inside simplify... At 8, returned message y depends on x_2.
+No change
+Doing global dependency analysis on r inside simplify... At 59, returned message s depends on r.
+No change
+Run simplify 1 time(s). Fixpoint reached.
+No change.
+Doing move all binders... No change.
+Doing SA rename new without array accesses and remove assignments of findcond... No change.
+Doing merge branches... No change.
+Trying equivalence group_to_exp_strict(exp)... Transf. OK Proba. computed Transf. done Succeeded.
+Doing simplify (non-expanded game)... No change.
+Doing expand... Done.
+Doing remove assignments of findcond... Done.
+Doing simplify... Doing global dependency analysis on x_3 inside simplify... At 168, returned message exp(g, x_3) depends on x_3.
+No change
+Doing global dependency analysis on x_2 inside simplify... At 8, returned message y depends on x_2.
+No change
+Doing global dependency analysis on x_4 inside simplify... At 63, returned message s depends on x_4.
+No change
+Run simplify 1 time(s). Fixpoint reached.
+No change.
+Doing move all binders... No change.
+Doing SA rename new without array accesses and remove assignments of findcond... No change.
+Doing merge branches... No change.
+Trying equivalence group_to_exp_strict(exp)... Failed.
+Done all possible transformations with this equivalence.
+Doing SA rename s... Done.
+Doing SA rename new without array accesses and remove assignments of findcond... No change.
+Doing simplify... Doing global dependency analysis on x_3 inside simplify... At 168, returned message exp(g, x_3) depends on x_3.
+No change
+Doing global dependency analysis on x_2 inside simplify... At 8, returned message y depends on x_2.
+No change
+Doing global dependency analysis on x_4 inside simplify... At 63, returned message s_3 depends on x_4.
+No change
+Run simplify 1 time(s). Fixpoint reached.
+No change.
+  {1}Ostart() :=
+  {2}x_2 <-R Z;
+  {3}y: G <- {4}exp({5}g, {6}x_2);
+  {7}return({8}y);
+  {9}((
+ {11}  foreach iS <= NS do
+ {12}  OS(m: bitstring) :=
+ {13}  find [unique] u_5 = ri_5 <= NS suchthat defined(x_4[{14}ri_5], m[{15}ri_5]) && {16}({17}m = {19}m[{20}ri_5]) then
+ {21}    s_1: G <- {22}exp({23}g, {24}mult({25}x_4[{26}u_5], {28}x_2));
+ {29}    return({30}s_1)
+       orfind u_4 = ri_4 <= NH suchthat defined(x_3[{34}ri_4], x_1[{35}ri_4]) && {36}({37}m = {39}x_1[{40}ri_4]) then
+ {41}    s_2: G <- {42}exp({43}g, {44}mult({45}x_3[{46}u_4], {48}x_2));
+ {49}    return({50}s_2)
+       else
+ {54}    x_4 <-R Z;
+ {55}    s_3: G <- {56}exp({57}g, {58}mult({59}x_4, {61}x_2));
+ {62}    return({63}s_3)
+     ) | (
+ {67}  foreach iC <= NS do
+ {68}  OC(m': bitstring, s': G) :=
+ {69}  find [unique] u_3 = ri_3 <= NS suchthat defined(x_4[{70}ri_3], m[{71}ri_3]) && {72}({73}m' = {75}m[{76}ri_3]) then
+ {77}    if {78}({79}exp({80}g, {81}mult({82}x_4[{83}u_3], {85}x_2)) = {86}s') then
+ {88}      return({89}true)
+         else
+ {91}      return({92}false)
+       orfind u_2 = ri_2 <= NH suchthat defined(x_3[{94}ri_2], x_1[{95}ri_2]) && {96}({97}m' = {99}x_1[{100}ri_2]) then
+{101}    if {102}({103}exp({104}g, {105}mult({106}x_3[{107}u_2], {109}x_2)) = {110}s') then
+{112}      find j_1 = j <= NS suchthat defined(m[{113}j]) && {114}({115}m' = {117}m[{118}j]) then
+{119}        return({120}true)
+           else
+{122}        event {123}forgery;
+{126}        return({127}true)
+         else
+{129}      return({130}false)
+       else
+{132}    return({133}false)
+     ) | (
+{135}  foreach iH <= NH do
+{136}  OH(x_1: bitstring) :=
+{137}  find [unique] u_1 = ri_1 <= NS suchthat defined(x_4[{138}ri_1], m[{139}ri_1]) && {140}({141}x_1 = {143}m[{144}ri_1]) then
+{145}    return({146}exp({147}g, {148}x_4[{149}u_1]))
+       orfind u = ri <= NH suchthat defined(x_3[{152}ri], x_1[{153}ri]) && {154}({155}x_1 = {157}x_1[{158}ri]) then
+{159}    return({160}exp({161}g, {162}x_3[{163}u]))
+       else
+{166}    x_3 <-R Z;
+{167}    return({168}exp({169}g, {170}x_3))
+     ))
+
+Doing replace term at occurrence 56 with exp(y, x_4)... Done.
+Doing replace term at occurrence 42 with exp(y, x_3[u_4])... Done.
+Doing replace term at occurrence 22 with exp(y, x_4[u_5])... Done.
+Trying equivalence gdh(exp)... Failed.
+Doing remove assignments of binder s_2... Done.
+Doing remove assignments of binder s_3... Done.
+Doing remove assignments of binder s_1... Done.
+Trying equivalence gdh(exp) with x_3, x_2, x_4... Transf. OK Proba. computed Transf. done Succeeded.
+Doing simplify (non-expanded game)... Done.
+Doing expand... Done.
+Doing remove assignments of findcond... Done.
+Doing simplify... Doing global dependency analysis on x_2 inside simplify... At 8, returned message y depends on x_2.
+No change
+Doing global dependency analysis on x_3 inside simplify... At 198, returned message exp'(g, x_3) depends on x_3.
+No change
+Doing global dependency analysis on x_4 inside simplify... At 50, returned message exp(y, x_4) depends on x_4.
+No change
+Doing global dependency analysis on x_2 inside simplify... At 8, returned message y depends on x_2.
+No change
+Doing global dependency analysis on x_3 inside simplify... At 178, returned message exp'(g, x_3) depends on x_3.
+No change
+Doing global dependency analysis on x_4 inside simplify... At 50, returned message exp(y, x_4) depends on x_4.
+No change
+Run simplify 2 time(s). Fixpoint reached.
+Done.
+Doing move all binders... No change.
+Doing SA rename new without array accesses and remove assignments of findcond... Done.
+Doing merge branches... Done.
+Proved query event(forgery) ==> false
+===================== Proof starts =======================
+Initial state
+Game 1 is
+     Ostart() :=
+     hk_1 <-R hashkey;
+     x_2 <-R Z;
+     y: G <- exp(g, x_2);
+     return(y);
+     ((
+       foreach iS <= NS do
+       OS(m: bitstring) :=
+       h: G <- H(hk_1, m);
+       s: G <- exp(h, x_2);
+       return(s)
+     ) | (
+       foreach iC <= NS do
+       OC(m': bitstring, s': G) :=
+       if exp(H(hk_1, m'), x_2) = s' then
+ {42}    find j_1 = j <= NS suchthat defined(m[j], s[j]) && {45}((m' = m[j]) && (s' = s[j])) then
+           return(true)
+         else
+           event forgery;
+           return(true)
+       else
+         return(false)
+     ) | (
+       foreach iH <= NH do
+       OH(x_1: bitstring) :=
+       return(H(hk_1, x_1))
+     ))
+
+
+Applying simplify
+  - Simplification pass
+    - Replaced ((m' = m[j]) && (s' = s[j])) with (m' = m[j]) at 45
+    - Replaced defined condition m[j], s[j] with m[j] in find at 42
+yields
+
+Game 2 is
+     Ostart() :=
+     hk_1 <-R hashkey;
+     x_2 <-R Z;
+     y: G <- exp(g, x_2);
+     return(y);
+     ((
+       foreach iS <= NS do
+       OS(m: bitstring) :=
+       h: G <- H(hk_1, m);
+       s: G <- exp(h, x_2);
+       return(s)
+     ) | (
+       foreach iC <= NS do
+       OC(m': bitstring, s': G) :=
+       if exp(H(hk_1, m'), x_2) = s' then
+         find j_1 = j <= NS suchthat defined(m[j]) && (m' = m[j]) then
+           return(true)
+         else
+           event forgery;
+           return(true)
+       else
+         return(false)
+     ) | (
+       foreach iH <= NH do
+       OH(x_1: bitstring) :=
+       return(H(hk_1, x_1))
+     ))
+
+
+Applying equivalence rom(H) [probability NS / |G|]
+  - Equivalence rom(H) with variables: hk_1 -> k
+yields
+
+Game 3 is
+     Ostart() :=
+     x_2 <-R Z;
+     y: G <- exp(g, x_2);
+     return(y);
+     ((
+       foreach iS <= NS do
+       OS(m: bitstring) :=
+       h: G <- (x_O: bitstring <- m; find [unique] u_5 = ri_5 <= NS suchthat defined(x_O[ri_5], r[ri_5]) && (x_O = x_O[ri_5]) then r[u_5] orfind u_4 = ri_4 <= NH suchthat defined(x_O_1[ri_4], r_1[ri_4]) && (x_O = x_O_1[ri_4]) then r_1[u_4] else r <-R G; r);
+       s: G <- exp(h, x_2);
+       return(s)
+     ) | (
+       foreach iC <= NS do
+       OC(m': bitstring, s': G) :=
+ {54}  if (x_Oeq: bitstring <- m'; R_Oeq: G <- s'; e_Oeq: Z <- x_2; find [unique] u_3 = ri_3 <= NS suchthat defined(x_O[ri_3], r[ri_3]) && (x_Oeq = x_O[ri_3]) then (exp(r[u_3], e_Oeq) = R_Oeq) orfind u_2 = ri_2 <= NH suchthat defined(x_O_1[ri_2], r_1[ri_2]) && (x_Oeq = x_O_1[ri_2]) then (exp(r_1[u_2], e_Oeq) = R_Oeq) else false) then
+         find j_1 = j <= NS suchthat defined(m[j]) && (m' = m[j]) then
+           return(true)
+         else
+           event forgery;
+           return(true)
+       else
+         return(false)
+     ) | (
+       foreach iH <= NH do
+       OH(x_1: bitstring) :=
+       return((x_O_1: bitstring <- x_1; find [unique] u_1 = ri_1 <= NS suchthat defined(x_O[ri_1], r[ri_1]) && (x_O_1 = x_O[ri_1]) then r[u_1] orfind u = ri <= NH suchthat defined(x_O_1[ri], r_1[ri]) && (x_O_1 = x_O_1[ri]) then r_1[u] else r_1 <-R G; r_1))
+     ))
+
+
+Applying expand
+  - Expand if/find/let
+    - Test at 54 always false
+yields
+
+Game 4 is
+     Ostart() :=
+     x_2 <-R Z;
+     y: G <- exp(g, x_2);
+     return(y);
+     ((
+       foreach iS <= NS do
+       OS(m: bitstring) :=
+       x_O: bitstring <- m;
+       find [unique] u_5 = ri_5 <= NS suchthat defined(x_O[ri_5], r[ri_5]) && (x_O = x_O[ri_5]) then
+         h: G <- r[u_5];
+         s: G <- exp(h, x_2);
+         return(s)
+       orfind u_4 = ri_4 <= NH suchthat defined(x_O_1[ri_4], r_1[ri_4]) && (x_O = x_O_1[ri_4]) then
+         h: G <- r_1[u_4];
+         s: G <- exp(h, x_2);
+         return(s)
+       else
+         r <-R G;
+         h: G <- r;
+         s: G <- exp(h, x_2);
+         return(s)
+     ) | (
+       foreach iC <= NS do
+       OC(m': bitstring, s': G) :=
+       x_Oeq: bitstring <- m';
+       R_Oeq: G <- s';
+       e_Oeq: Z <- x_2;
+       find [unique] u_3 = ri_3 <= NS suchthat defined(x_O[ri_3], r[ri_3]) && (x_Oeq = x_O[ri_3]) then
+         if exp(r[u_3], e_Oeq) = R_Oeq then
+           find j_1 = j <= NS suchthat defined(m[j]) && (m' = m[j]) then
+             return(true)
+           else
+             event forgery;
+             return(true)
+         else
+           return(false)
+       orfind u_2 = ri_2 <= NH suchthat defined(x_O_1[ri_2], r_1[ri_2]) && (x_Oeq = x_O_1[ri_2]) then
+         if exp(r_1[u_2], e_Oeq) = R_Oeq then
+           find j_1 = j <= NS suchthat defined(m[j]) && (m' = m[j]) then
+             return(true)
+           else
+             event forgery;
+             return(true)
+         else
+           return(false)
+       else
+         return(false)
+     ) | (
+       foreach iH <= NH do
+       OH(x_1: bitstring) :=
+       x_O_1: bitstring <- x_1;
+       find [unique] u_1 = ri_1 <= NS suchthat defined(x_O[ri_1], r[ri_1]) && (x_O_1 = x_O[ri_1]) then
+         return(r[u_1])
+       orfind u = ri <= NH suchthat defined(x_O_1[ri], r_1[ri]) && (x_O_1 = x_O_1[ri]) then
+         return(r_1[u])
+       else
+         r_1 <-R G;
+         return(r_1)
+     ))
+
+
+Applying remove assignments of findcond
+  - Remove assignments on x_O_1 (definition point kept, all usages removed)
+  - Remove assignments on x_Oeq (definition removed, all usages removed)
+  - Remove assignments on R_Oeq (definition removed, all usages removed)
+  - Remove assignments on e_Oeq (definition removed, all usages removed)
+  - Remove assignments on x_O (definition point kept, all usages removed)
+  - Remove assignments on h (definition removed, all usages removed)
+  - Remove assignments on h (definition removed, all usages removed)
+  - Remove assignments on h (definition removed, all usages removed)
+yields
+
+Game 5 is
+     Ostart() :=
+     x_2 <-R Z;
+     y: G <- exp(g, x_2);
+     return(y);
+     ((
+       foreach iS <= NS do
+       OS(m: bitstring) :=
+       x_O: bitstring <- cst_bitstring;
+ {15}  find [unique] u_5 = ri_5 <= NS suchthat defined(m[ri_5], x_O[ri_5], r[ri_5]) && (m = m[ri_5]) then
+         s: G <- exp(r[u_5], x_2);
+         return(s)
+       orfind u_4 = ri_4 <= NH suchthat defined(x_1[ri_4], x_O_1[ri_4], r_1[ri_4]) && (m = x_1[ri_4]) then
+         s: G <- exp(r_1[u_4], x_2);
+         return(s)
+       else
+         r <-R G;
+         s: G <- exp(r, x_2);
+         return(s)
+     ) | (
+       foreach iC <= NS do
+       OC(m': bitstring, s': G) :=
+ {68}  find [unique] u_3 = ri_3 <= NS suchthat defined(m[ri_3], x_O[ri_3], r[ri_3]) && (m' = m[ri_3]) then
+         if exp(r[u_3], x_2) = s' then
+ {86}      find j_1 = j <= NS suchthat defined(m[j]) && (m' = m[j]) then
+             return(true)
+           else
+             event forgery;
+             return(true)
+         else
+           return(false)
+       orfind u_2 = ri_2 <= NH suchthat defined(x_1[ri_2], x_O_1[ri_2], r_1[ri_2]) && (m' = x_1[ri_2]) then
+         if exp(r_1[u_2], x_2) = s' then
+           find j_1 = j <= NS suchthat defined(m[j]) && (m' = m[j]) then
+             return(true)
+           else
+             event forgery;
+             return(true)
+         else
+           return(false)
+       else
+         return(false)
+     ) | (
+       foreach iH <= NH do
+       OH(x_1: bitstring) :=
+       x_O_1: bitstring <- cst_bitstring;
+{150}  find [unique] u_1 = ri_1 <= NS suchthat defined(m[ri_1], x_O[ri_1], r[ri_1]) && (x_1 = m[ri_1]) then
+         return(r[u_1])
+       orfind u = ri <= NH suchthat defined(x_1[ri], x_O_1[ri], r_1[ri]) && (x_1 = x_1[ri]) then
+         return(r_1[u])
+       else
+         r_1 <-R G;
+         return(r_1)
+     ))
+
+
+Applying simplify
+  - Simplification pass
+    - Replaced defined condition x_1[ri], x_O_1[ri], r_1[ri] with r_1[ri], x_1[ri] in find at 150
+    - Replaced defined condition m[ri_1], x_O[ri_1], r[ri_1] with r[ri_1], m[ri_1] in find at 150
+    - Replaced defined condition x_1[ri_2], x_O_1[ri_2], r_1[ri_2] with r_1[ri_2], x_1[ri_2] in find at 68
+    - Remove else branch of find at 86
+    - A single branch always succeeds in find at 86
+    - Replaced defined condition m[ri_3], x_O[ri_3], r[ri_3] with r[ri_3], m[ri_3] in find at 68
+    - Replaced defined condition x_1[ri_4], x_O_1[ri_4], r_1[ri_4] with r_1[ri_4], x_1[ri_4] in find at 15
+    - Replaced defined condition m[ri_5], x_O[ri_5], r[ri_5] with r[ri_5], m[ri_5] in find at 15
+yields
+
+Game 6 is
+     Ostart() :=
+     x_2 <-R Z;
+     y: G <- exp(g, x_2);
+     return(y);
+     ((
+       foreach iS <= NS do
+       OS(m: bitstring) :=
+       x_O: bitstring <- cst_bitstring;
+       find [unique] u_5 = ri_5 <= NS suchthat defined(r[ri_5], m[ri_5]) && (m = m[ri_5]) then
+         s: G <- exp(r[u_5], x_2);
+         return(s)
+       orfind u_4 = ri_4 <= NH suchthat defined(r_1[ri_4], x_1[ri_4]) && (m = x_1[ri_4]) then
+         s: G <- exp(r_1[u_4], x_2);
+         return(s)
+       else
+         r <-R G;
+         s: G <- exp(r, x_2);
+         return(s)
+     ) | (
+       foreach iC <= NS do
+       OC(m': bitstring, s': G) :=
+       find [unique] u_3 = ri_3 <= NS suchthat defined(r[ri_3], m[ri_3]) && (m' = m[ri_3]) then
+         if exp(r[u_3], x_2) = s' then
+           return(true)
+         else
+           return(false)
+       orfind u_2 = ri_2 <= NH suchthat defined(r_1[ri_2], x_1[ri_2]) && (m' = x_1[ri_2]) then
+         if exp(r_1[u_2], x_2) = s' then
+           find j_1 = j <= NS suchthat defined(m[j]) && (m' = m[j]) then
+             return(true)
+           else
+             event forgery;
+             return(true)
+         else
+           return(false)
+       else
+         return(false)
+     ) | (
+       foreach iH <= NH do
+       OH(x_1: bitstring) :=
+       x_O_1: bitstring <- cst_bitstring;
+       find [unique] u_1 = ri_1 <= NS suchthat defined(r[ri_1], m[ri_1]) && (x_1 = m[ri_1]) then
+         return(r[u_1])
+       orfind u = ri <= NH suchthat defined(r_1[ri], x_1[ri]) && (x_1 = x_1[ri]) then
+         return(r_1[u])
+       else
+         r_1 <-R G;
+         return(r_1)
+     ))
+
+
+Applying move all binders
+  - Move assignment to x_O_1
+  - Move assignment to x_O
+yields
+
+Game 7 is
+     Ostart() :=
+     x_2 <-R Z;
+     y: G <- exp(g, x_2);
+     return(y);
+     ((
+       foreach iS <= NS do
+       OS(m: bitstring) :=
+       find [unique] u_5 = ri_5 <= NS suchthat defined(r[ri_5], m[ri_5]) && (m = m[ri_5]) then
+         s: G <- exp(r[u_5], x_2);
+         return(s)
+       orfind u_4 = ri_4 <= NH suchthat defined(r_1[ri_4], x_1[ri_4]) && (m = x_1[ri_4]) then
+         s: G <- exp(r_1[u_4], x_2);
+         return(s)
+       else
+         r <-R G;
+         s: G <- exp(r, x_2);
+         return(s)
+     ) | (
+       foreach iC <= NS do
+       OC(m': bitstring, s': G) :=
+       find [unique] u_3 = ri_3 <= NS suchthat defined(r[ri_3], m[ri_3]) && (m' = m[ri_3]) then
+         if exp(r[u_3], x_2) = s' then
+           return(true)
+         else
+           return(false)
+       orfind u_2 = ri_2 <= NH suchthat defined(r_1[ri_2], x_1[ri_2]) && (m' = x_1[ri_2]) then
+         if exp(r_1[u_2], x_2) = s' then
+           find j_1 = j <= NS suchthat defined(m[j]) && (m' = m[j]) then
+             return(true)
+           else
+             event forgery;
+             return(true)
+         else
+           return(false)
+       else
+         return(false)
+     ) | (
+       foreach iH <= NH do
+       OH(x_1: bitstring) :=
+       find [unique] u_1 = ri_1 <= NS suchthat defined(r[ri_1], m[ri_1]) && (x_1 = m[ri_1]) then
+         return(r[u_1])
+       orfind u = ri <= NH suchthat defined(r_1[ri], x_1[ri]) && (x_1 = x_1[ri]) then
+         return(r_1[u])
+       else
+         r_1 <-R G;
+         return(r_1)
+     ))
+
+
+Applying equivalence group_to_exp_strict(exp)
+  - Equivalence group_to_exp_strict(exp) with variables: r_1 -> X
+yields
+
+Game 8 is
+     Ostart() :=
+     x_2 <-R Z;
+     y: G <- exp(g, x_2);
+     return(y);
+     ((
+       foreach iS <= NS do
+       OS(m: bitstring) :=
+       find [unique] u_5 = ri_5 <= NS suchthat defined(r[ri_5], m[ri_5]) && (m = m[ri_5]) then
+         s: G <- exp(r[u_5], x_2);
+         return(s)
+       orfind u_4 = ri_4 <= NH suchthat defined(x_3[ri_4], x_1[ri_4]) && (m = x_1[ri_4]) then
+         s: G <- (m_1: Z <- x_2; exp(g, mult(x_3[u_4], m_1)));
+         return(s)
+       else
+         r <-R G;
+         s: G <- exp(r, x_2);
+         return(s)
+     ) | (
+       foreach iC <= NS do
+       OC(m': bitstring, s': G) :=
+       find [unique] u_3 = ri_3 <= NS suchthat defined(r[ri_3], m[ri_3]) && (m' = m[ri_3]) then
+         if exp(r[u_3], x_2) = s' then
+           return(true)
+         else
+           return(false)
+       orfind u_2 = ri_2 <= NH suchthat defined(x_3[ri_2], x_1[ri_2]) && (m' = x_1[ri_2]) then
+         if (m_2: Z <- x_2; exp(g, mult(x_3[u_2], m_2))) = s' then
+           find j_1 = j <= NS suchthat defined(m[j]) && (m' = m[j]) then
+             return(true)
+           else
+             event forgery;
+             return(true)
+         else
+           return(false)
+       else
+         return(false)
+     ) | (
+       foreach iH <= NH do
+       OH(x_1: bitstring) :=
+       find [unique] u_1 = ri_1 <= NS suchthat defined(r[ri_1], m[ri_1]) && (x_1 = m[ri_1]) then
+         return(r[u_1])
+       orfind u = ri <= NH suchthat defined(x_3[ri], x_1[ri]) && (x_1 = x_1[ri]) then
+         return(exp(g, x_3[u]))
+       else
+         x_3 <-R Z;
+         r_1: G <- cst_G;
+         return(exp(g, x_3))
+     ))
+
+
+Applying expand
+  - Expand if/find/let
+yields
+
+Game 9 is
+     Ostart() :=
+     x_2 <-R Z;
+     y: G <- exp(g, x_2);
+     return(y);
+     ((
+       foreach iS <= NS do
+       OS(m: bitstring) :=
+       find [unique] u_5 = ri_5 <= NS suchthat defined(r[ri_5], m[ri_5]) && (m = m[ri_5]) then
+         s: G <- exp(r[u_5], x_2);
+         return(s)
+       orfind u_4 = ri_4 <= NH suchthat defined(x_3[ri_4], x_1[ri_4]) && (m = x_1[ri_4]) then
+         m_1: Z <- x_2;
+         s: G <- exp(g, mult(x_3[u_4], m_1));
+         return(s)
+       else
+         r <-R G;
+         s: G <- exp(r, x_2);
+         return(s)
+     ) | (
+       foreach iC <= NS do
+       OC(m': bitstring, s': G) :=
+       find [unique] u_3 = ri_3 <= NS suchthat defined(r[ri_3], m[ri_3]) && (m' = m[ri_3]) then
+         if exp(r[u_3], x_2) = s' then
+           return(true)
+         else
+           return(false)
+       orfind u_2 = ri_2 <= NH suchthat defined(x_3[ri_2], x_1[ri_2]) && (m' = x_1[ri_2]) then
+         m_2: Z <- x_2;
+         if exp(g, mult(x_3[u_2], m_2)) = s' then
+           find j_1 = j <= NS suchthat defined(m[j]) && (m' = m[j]) then
+             return(true)
+           else
+             event forgery;
+             return(true)
+         else
+           return(false)
+       else
+         return(false)
+     ) | (
+       foreach iH <= NH do
+       OH(x_1: bitstring) :=
+       find [unique] u_1 = ri_1 <= NS suchthat defined(r[ri_1], m[ri_1]) && (x_1 = m[ri_1]) then
+         return(r[u_1])
+       orfind u = ri <= NH suchthat defined(x_3[ri], x_1[ri]) && (x_1 = x_1[ri]) then
+         return(exp(g, x_3[u]))
+       else
+         x_3 <-R Z;
+         r_1: G <- cst_G;
+         return(exp(g, x_3))
+     ))
+
+
+Applying remove assignments of findcond
+  - Remove assignments on r_1 (definition removed, all usages removed)
+  - Remove assignments on m_2 (definition removed, all usages removed)
+  - Remove assignments on m_1 (definition removed, all usages removed)
+yields
+
+Game 10 is
+     Ostart() :=
+     x_2 <-R Z;
+     y: G <- exp(g, x_2);
+     return(y);
+     ((
+       foreach iS <= NS do
+       OS(m: bitstring) :=
+       find [unique] u_5 = ri_5 <= NS suchthat defined(r[ri_5], m[ri_5]) && (m = m[ri_5]) then
+         s: G <- exp(r[u_5], x_2);
+         return(s)
+       orfind u_4 = ri_4 <= NH suchthat defined(x_3[ri_4], x_1[ri_4]) && (m = x_1[ri_4]) then
+         s: G <- exp(g, mult(x_3[u_4], x_2));
+         return(s)
+       else
+         r <-R G;
+         s: G <- exp(r, x_2);
+         return(s)
+     ) | (
+       foreach iC <= NS do
+       OC(m': bitstring, s': G) :=
+       find [unique] u_3 = ri_3 <= NS suchthat defined(r[ri_3], m[ri_3]) && (m' = m[ri_3]) then
+         if exp(r[u_3], x_2) = s' then
+           return(true)
+         else
+           return(false)
+       orfind u_2 = ri_2 <= NH suchthat defined(x_3[ri_2], x_1[ri_2]) && (m' = x_1[ri_2]) then
+         if exp(g, mult(x_3[u_2], x_2)) = s' then
+           find j_1 = j <= NS suchthat defined(m[j]) && (m' = m[j]) then
+             return(true)
+           else
+             event forgery;
+             return(true)
+         else
+           return(false)
+       else
+         return(false)
+     ) | (
+       foreach iH <= NH do
+       OH(x_1: bitstring) :=
+       find [unique] u_1 = ri_1 <= NS suchthat defined(r[ri_1], m[ri_1]) && (x_1 = m[ri_1]) then
+         return(r[u_1])
+       orfind u = ri <= NH suchthat defined(x_3[ri], x_1[ri]) && (x_1 = x_1[ri]) then
+         return(exp(g, x_3[u]))
+       else
+         x_3 <-R Z;
+         return(exp(g, x_3))
+     ))
+
+
+Applying equivalence group_to_exp_strict(exp)
+  - Equivalence group_to_exp_strict(exp) with variables: r -> X
+yields
+
+Game 11 is
+     Ostart() :=
+     x_2 <-R Z;
+     y: G <- exp(g, x_2);
+     return(y);
+     ((
+       foreach iS <= NS do
+       OS(m: bitstring) :=
+       find [unique] u_5 = ri_5 <= NS suchthat defined(x_4[ri_5], m[ri_5]) && (m = m[ri_5]) then
+         s: G <- (m_4: Z <- x_2; exp(g, mult(x_4[u_5], m_4)));
+         return(s)
+       orfind u_4 = ri_4 <= NH suchthat defined(x_3[ri_4], x_1[ri_4]) && (m = x_1[ri_4]) then
+         s: G <- exp(g, mult(x_3[u_4], x_2));
+         return(s)
+       else
+         x_4 <-R Z;
+         r: G <- cst_G;
+         s: G <- (m_3: Z <- x_2; exp(g, mult(x_4, m_3)));
+         return(s)
+     ) | (
+       foreach iC <= NS do
+       OC(m': bitstring, s': G) :=
+       find [unique] u_3 = ri_3 <= NS suchthat defined(x_4[ri_3], m[ri_3]) && (m' = m[ri_3]) then
+         if (m_5: Z <- x_2; exp(g, mult(x_4[u_3], m_5))) = s' then
+           return(true)
+         else
+           return(false)
+       orfind u_2 = ri_2 <= NH suchthat defined(x_3[ri_2], x_1[ri_2]) && (m' = x_1[ri_2]) then
+         if exp(g, mult(x_3[u_2], x_2)) = s' then
+           find j_1 = j <= NS suchthat defined(m[j]) && (m' = m[j]) then
+             return(true)
+           else
+             event forgery;
+             return(true)
+         else
+           return(false)
+       else
+         return(false)
+     ) | (
+       foreach iH <= NH do
+       OH(x_1: bitstring) :=
+       find [unique] u_1 = ri_1 <= NS suchthat defined(x_4[ri_1], m[ri_1]) && (x_1 = m[ri_1]) then
+         return(exp(g, x_4[u_1]))
+       orfind u = ri <= NH suchthat defined(x_3[ri], x_1[ri]) && (x_1 = x_1[ri]) then
+         return(exp(g, x_3[u]))
+       else
+         x_3 <-R Z;
+         return(exp(g, x_3))
+     ))
+
+
+Applying expand
+  - Expand if/find/let
+yields
+
+Game 12 is
+     Ostart() :=
+     x_2 <-R Z;
+     y: G <- exp(g, x_2);
+     return(y);
+     ((
+       foreach iS <= NS do
+       OS(m: bitstring) :=
+       find [unique] u_5 = ri_5 <= NS suchthat defined(x_4[ri_5], m[ri_5]) && (m = m[ri_5]) then
+         m_4: Z <- x_2;
+         s: G <- exp(g, mult(x_4[u_5], m_4));
+         return(s)
+       orfind u_4 = ri_4 <= NH suchthat defined(x_3[ri_4], x_1[ri_4]) && (m = x_1[ri_4]) then
+         s: G <- exp(g, mult(x_3[u_4], x_2));
+         return(s)
+       else
+         x_4 <-R Z;
+         r: G <- cst_G;
+         m_3: Z <- x_2;
+         s: G <- exp(g, mult(x_4, m_3));
+         return(s)
+     ) | (
+       foreach iC <= NS do
+       OC(m': bitstring, s': G) :=
+       find [unique] u_3 = ri_3 <= NS suchthat defined(x_4[ri_3], m[ri_3]) && (m' = m[ri_3]) then
+         m_5: Z <- x_2;
+         if exp(g, mult(x_4[u_3], m_5)) = s' then
+           return(true)
+         else
+           return(false)
+       orfind u_2 = ri_2 <= NH suchthat defined(x_3[ri_2], x_1[ri_2]) && (m' = x_1[ri_2]) then
+         if exp(g, mult(x_3[u_2], x_2)) = s' then
+           find j_1 = j <= NS suchthat defined(m[j]) && (m' = m[j]) then
+             return(true)
+           else
+             event forgery;
+             return(true)
+         else
+           return(false)
+       else
+         return(false)
+     ) | (
+       foreach iH <= NH do
+       OH(x_1: bitstring) :=
+       find [unique] u_1 = ri_1 <= NS suchthat defined(x_4[ri_1], m[ri_1]) && (x_1 = m[ri_1]) then
+         return(exp(g, x_4[u_1]))
+       orfind u = ri <= NH suchthat defined(x_3[ri], x_1[ri]) && (x_1 = x_1[ri]) then
+         return(exp(g, x_3[u]))
+       else
+         x_3 <-R Z;
+         return(exp(g, x_3))
+     ))
+
+
+Applying remove assignments of findcond
+  - Remove assignments on m_5 (definition removed, all usages removed)
+  - Remove assignments on r (definition removed, all usages removed)
+  - Remove assignments on m_3 (definition removed, all usages removed)
+  - Remove assignments on m_4 (definition removed, all usages removed)
+yields
+
+Game 13 is
+     Ostart() :=
+     x_2 <-R Z;
+     y: G <- exp(g, x_2);
+     return(y);
+     ((
+       foreach iS <= NS do
+       OS(m: bitstring) :=
+       find [unique] u_5 = ri_5 <= NS suchthat defined(x_4[ri_5], m[ri_5]) && (m = m[ri_5]) then
+         s: G <- exp(g, mult(x_4[u_5], x_2));
+         return(s)
+       orfind u_4 = ri_4 <= NH suchthat defined(x_3[ri_4], x_1[ri_4]) && (m = x_1[ri_4]) then
+         s: G <- exp(g, mult(x_3[u_4], x_2));
+         return(s)
+       else
+         x_4 <-R Z;
+         s: G <- exp(g, mult(x_4, x_2));
+         return(s)
+     ) | (
+       foreach iC <= NS do
+       OC(m': bitstring, s': G) :=
+       find [unique] u_3 = ri_3 <= NS suchthat defined(x_4[ri_3], m[ri_3]) && (m' = m[ri_3]) then
+         if exp(g, mult(x_4[u_3], x_2)) = s' then
+           return(true)
+         else
+           return(false)
+       orfind u_2 = ri_2 <= NH suchthat defined(x_3[ri_2], x_1[ri_2]) && (m' = x_1[ri_2]) then
+         if exp(g, mult(x_3[u_2], x_2)) = s' then
+           find j_1 = j <= NS suchthat defined(m[j]) && (m' = m[j]) then
+             return(true)
+           else
+             event forgery;
+             return(true)
+         else
+           return(false)
+       else
+         return(false)
+     ) | (
+       foreach iH <= NH do
+       OH(x_1: bitstring) :=
+       find [unique] u_1 = ri_1 <= NS suchthat defined(x_4[ri_1], m[ri_1]) && (x_1 = m[ri_1]) then
+         return(exp(g, x_4[u_1]))
+       orfind u = ri <= NH suchthat defined(x_3[ri], x_1[ri]) && (x_1 = x_1[ri]) then
+         return(exp(g, x_3[u]))
+       else
+         x_3 <-R Z;
+         return(exp(g, x_3))
+     ))
+
+
+Applying SA rename s
+  - Rename variable s into s_3, s_2, s_1
+yields
+
+Game 14 is
+     Ostart() :=
+     x_2 <-R Z;
+     y: G <- exp(g, x_2);
+     return(y);
+     ((
+       foreach iS <= NS do
+       OS(m: bitstring) :=
+       find [unique] u_5 = ri_5 <= NS suchthat defined(x_4[ri_5], m[ri_5]) && (m = m[ri_5]) then
+         s_1: G <- exp(g, mult(x_4[u_5], x_2));
+         return(s_1)
+       orfind u_4 = ri_4 <= NH suchthat defined(x_3[ri_4], x_1[ri_4]) && (m = x_1[ri_4]) then
+         s_2: G <- exp(g, mult(x_3[u_4], x_2));
+         return(s_2)
+       else
+         x_4 <-R Z;
+         s_3: G <- {56}exp(g, mult(x_4, x_2));
+         return(s_3)
+     ) | (
+       foreach iC <= NS do
+       OC(m': bitstring, s': G) :=
+       find [unique] u_3 = ri_3 <= NS suchthat defined(x_4[ri_3], m[ri_3]) && (m' = m[ri_3]) then
+         if exp(g, mult(x_4[u_3], x_2)) = s' then
+           return(true)
+         else
+           return(false)
+       orfind u_2 = ri_2 <= NH suchthat defined(x_3[ri_2], x_1[ri_2]) && (m' = x_1[ri_2]) then
+         if exp(g, mult(x_3[u_2], x_2)) = s' then
+           find j_1 = j <= NS suchthat defined(m[j]) && (m' = m[j]) then
+             return(true)
+           else
+             event forgery;
+             return(true)
+         else
+           return(false)
+       else
+         return(false)
+     ) | (
+       foreach iH <= NH do
+       OH(x_1: bitstring) :=
+       find [unique] u_1 = ri_1 <= NS suchthat defined(x_4[ri_1], m[ri_1]) && (x_1 = m[ri_1]) then
+         return(exp(g, x_4[u_1]))
+       orfind u = ri <= NH suchthat defined(x_3[ri], x_1[ri]) && (x_1 = x_1[ri]) then
+         return(exp(g, x_3[u]))
+       else
+         x_3 <-R Z;
+         return(exp(g, x_3))
+     ))
+
+
+Applying replace term at occurrence 56 with exp(y, x_4)
+yields
+
+Game 15 is
+     Ostart() :=
+     x_2 <-R Z;
+     y: G <- exp(g, x_2);
+     return(y);
+     ((
+       foreach iS <= NS do
+       OS(m: bitstring) :=
+       find [unique] u_5 = ri_5 <= NS suchthat defined(x_4[ri_5], m[ri_5]) && (m = m[ri_5]) then
+         s_1: G <- exp(g, mult(x_4[u_5], x_2));
+         return(s_1)
+       orfind u_4 = ri_4 <= NH suchthat defined(x_3[ri_4], x_1[ri_4]) && (m = x_1[ri_4]) then
+         s_2: G <- {42}exp(g, mult(x_3[u_4], x_2));
+         return(s_2)
+       else
+         x_4 <-R Z;
+         s_3: G <- exp(y, x_4);
+         return(s_3)
+     ) | (
+       foreach iC <= NS do
+       OC(m': bitstring, s': G) :=
+       find [unique] u_3 = ri_3 <= NS suchthat defined(x_4[ri_3], m[ri_3]) && (m' = m[ri_3]) then
+         if exp(g, mult(x_4[u_3], x_2)) = s' then
+           return(true)
+         else
+           return(false)
+       orfind u_2 = ri_2 <= NH suchthat defined(x_3[ri_2], x_1[ri_2]) && (m' = x_1[ri_2]) then
+         if exp(g, mult(x_3[u_2], x_2)) = s' then
+           find j_1 = j <= NS suchthat defined(m[j]) && (m' = m[j]) then
+             return(true)
+           else
+             event forgery;
+             return(true)
+         else
+           return(false)
+       else
+         return(false)
+     ) | (
+       foreach iH <= NH do
+       OH(x_1: bitstring) :=
+       find [unique] u_1 = ri_1 <= NS suchthat defined(x_4[ri_1], m[ri_1]) && (x_1 = m[ri_1]) then
+         return(exp(g, x_4[u_1]))
+       orfind u = ri <= NH suchthat defined(x_3[ri], x_1[ri]) && (x_1 = x_1[ri]) then
+         return(exp(g, x_3[u]))
+       else
+         x_3 <-R Z;
+         return(exp(g, x_3))
+     ))
+
+
+Applying replace term at occurrence 42 with exp(y, x_3[u_4])
+yields
+
+Game 16 is
+     Ostart() :=
+     x_2 <-R Z;
+     y: G <- exp(g, x_2);
+     return(y);
+     ((
+       foreach iS <= NS do
+       OS(m: bitstring) :=
+       find [unique] u_5 = ri_5 <= NS suchthat defined(x_4[ri_5], m[ri_5]) && (m = m[ri_5]) then
+         s_1: G <- {22}exp(g, mult(x_4[u_5], x_2));
+         return(s_1)
+       orfind u_4 = ri_4 <= NH suchthat defined(x_3[ri_4], x_1[ri_4]) && (m = x_1[ri_4]) then
+         s_2: G <- exp(y, x_3[u_4]);
+         return(s_2)
+       else
+         x_4 <-R Z;
+         s_3: G <- exp(y, x_4);
+         return(s_3)
+     ) | (
+       foreach iC <= NS do
+       OC(m': bitstring, s': G) :=
+       find [unique] u_3 = ri_3 <= NS suchthat defined(x_4[ri_3], m[ri_3]) && (m' = m[ri_3]) then
+         if exp(g, mult(x_4[u_3], x_2)) = s' then
+           return(true)
+         else
+           return(false)
+       orfind u_2 = ri_2 <= NH suchthat defined(x_3[ri_2], x_1[ri_2]) && (m' = x_1[ri_2]) then
+         if exp(g, mult(x_3[u_2], x_2)) = s' then
+           find j_1 = j <= NS suchthat defined(m[j]) && (m' = m[j]) then
+             return(true)
+           else
+             event forgery;
+             return(true)
+         else
+           return(false)
+       else
+         return(false)
+     ) | (
+       foreach iH <= NH do
+       OH(x_1: bitstring) :=
+       find [unique] u_1 = ri_1 <= NS suchthat defined(x_4[ri_1], m[ri_1]) && (x_1 = m[ri_1]) then
+         return(exp(g, x_4[u_1]))
+       orfind u = ri <= NH suchthat defined(x_3[ri], x_1[ri]) && (x_1 = x_1[ri]) then
+         return(exp(g, x_3[u]))
+       else
+         x_3 <-R Z;
+         return(exp(g, x_3))
+     ))
+
+
+Applying replace term at occurrence 22 with exp(y, x_4[u_5])
+yields
+
+Game 17 is
+     Ostart() :=
+     x_2 <-R Z;
+     y: G <- exp(g, x_2);
+     return(y);
+     ((
+       foreach iS <= NS do
+       OS(m: bitstring) :=
+       find [unique] u_5 = ri_5 <= NS suchthat defined(x_4[ri_5], m[ri_5]) && (m = m[ri_5]) then
+         s_1: G <- exp(y, x_4[u_5]);
+         return(s_1)
+       orfind u_4 = ri_4 <= NH suchthat defined(x_3[ri_4], x_1[ri_4]) && (m = x_1[ri_4]) then
+         s_2: G <- exp(y, x_3[u_4]);
+         return(s_2)
+       else
+         x_4 <-R Z;
+         s_3: G <- exp(y, x_4);
+         return(s_3)
+     ) | (
+       foreach iC <= NS do
+       OC(m': bitstring, s': G) :=
+       find [unique] u_3 = ri_3 <= NS suchthat defined(x_4[ri_3], m[ri_3]) && (m' = m[ri_3]) then
+         if exp(g, mult(x_4[u_3], x_2)) = s' then
+           return(true)
+         else
+           return(false)
+       orfind u_2 = ri_2 <= NH suchthat defined(x_3[ri_2], x_1[ri_2]) && (m' = x_1[ri_2]) then
+         if exp(g, mult(x_3[u_2], x_2)) = s' then
+           find j_1 = j <= NS suchthat defined(m[j]) && (m' = m[j]) then
+             return(true)
+           else
+             event forgery;
+             return(true)
+         else
+           return(false)
+       else
+         return(false)
+     ) | (
+       foreach iH <= NH do
+       OH(x_1: bitstring) :=
+       find [unique] u_1 = ri_1 <= NS suchthat defined(x_4[ri_1], m[ri_1]) && (x_1 = m[ri_1]) then
+         return(exp(g, x_4[u_1]))
+       orfind u = ri <= NH suchthat defined(x_3[ri], x_1[ri]) && (x_1 = x_1[ri]) then
+         return(exp(g, x_3[u]))
+       else
+         x_3 <-R Z;
+         return(exp(g, x_3))
+     ))
+
+
+Applying remove assignments of binder s_2
+  - Remove assignments on s_2 (definition removed, all usages removed)
+yields
+
+Game 18 is
+     Ostart() :=
+     x_2 <-R Z;
+     y: G <- exp(g, x_2);
+     return(y);
+     ((
+       foreach iS <= NS do
+       OS(m: bitstring) :=
+       find [unique] u_5 = ri_5 <= NS suchthat defined(x_4[ri_5], m[ri_5]) && (m = m[ri_5]) then
+         s_1: G <- exp(y, x_4[u_5]);
+         return(s_1)
+       orfind u_4 = ri_4 <= NH suchthat defined(x_3[ri_4], x_1[ri_4]) && (m = x_1[ri_4]) then
+         return(exp(y, x_3[u_4]))
+       else
+         x_4 <-R Z;
+         s_3: G <- exp(y, x_4);
+         return(s_3)
+     ) | (
+       foreach iC <= NS do
+       OC(m': bitstring, s': G) :=
+       find [unique] u_3 = ri_3 <= NS suchthat defined(x_4[ri_3], m[ri_3]) && (m' = m[ri_3]) then
+         if exp(g, mult(x_4[u_3], x_2)) = s' then
+           return(true)
+         else
+           return(false)
+       orfind u_2 = ri_2 <= NH suchthat defined(x_3[ri_2], x_1[ri_2]) && (m' = x_1[ri_2]) then
+         if exp(g, mult(x_3[u_2], x_2)) = s' then
+           find j_1 = j <= NS suchthat defined(m[j]) && (m' = m[j]) then
+             return(true)
+           else
+             event forgery;
+             return(true)
+         else
+           return(false)
+       else
+         return(false)
+     ) | (
+       foreach iH <= NH do
+       OH(x_1: bitstring) :=
+       find [unique] u_1 = ri_1 <= NS suchthat defined(x_4[ri_1], m[ri_1]) && (x_1 = m[ri_1]) then
+         return(exp(g, x_4[u_1]))
+       orfind u = ri <= NH suchthat defined(x_3[ri], x_1[ri]) && (x_1 = x_1[ri]) then
+         return(exp(g, x_3[u]))
+       else
+         x_3 <-R Z;
+         return(exp(g, x_3))
+     ))
+
+
+Applying remove assignments of binder s_3
+  - Remove assignments on s_3 (definition removed, all usages removed)
+yields
+
+Game 19 is
+     Ostart() :=
+     x_2 <-R Z;
+     y: G <- exp(g, x_2);
+     return(y);
+     ((
+       foreach iS <= NS do
+       OS(m: bitstring) :=
+       find [unique] u_5 = ri_5 <= NS suchthat defined(x_4[ri_5], m[ri_5]) && (m = m[ri_5]) then
+         s_1: G <- exp(y, x_4[u_5]);
+         return(s_1)
+       orfind u_4 = ri_4 <= NH suchthat defined(x_3[ri_4], x_1[ri_4]) && (m = x_1[ri_4]) then
+         return(exp(y, x_3[u_4]))
+       else
+         x_4 <-R Z;
+         return(exp(y, x_4))
+     ) | (
+       foreach iC <= NS do
+       OC(m': bitstring, s': G) :=
+       find [unique] u_3 = ri_3 <= NS suchthat defined(x_4[ri_3], m[ri_3]) && (m' = m[ri_3]) then
+         if exp(g, mult(x_4[u_3], x_2)) = s' then
+           return(true)
+         else
+           return(false)
+       orfind u_2 = ri_2 <= NH suchthat defined(x_3[ri_2], x_1[ri_2]) && (m' = x_1[ri_2]) then
+         if exp(g, mult(x_3[u_2], x_2)) = s' then
+           find j_1 = j <= NS suchthat defined(m[j]) && (m' = m[j]) then
+             return(true)
+           else
+             event forgery;
+             return(true)
+         else
+           return(false)
+       else
+         return(false)
+     ) | (
+       foreach iH <= NH do
+       OH(x_1: bitstring) :=
+       find [unique] u_1 = ri_1 <= NS suchthat defined(x_4[ri_1], m[ri_1]) && (x_1 = m[ri_1]) then
+         return(exp(g, x_4[u_1]))
+       orfind u = ri <= NH suchthat defined(x_3[ri], x_1[ri]) && (x_1 = x_1[ri]) then
+         return(exp(g, x_3[u]))
+       else
+         x_3 <-R Z;
+         return(exp(g, x_3))
+     ))
+
+
+Applying remove assignments of binder s_1
+  - Remove assignments on s_1 (definition removed, all usages removed)
+yields
+
+Game 20 is
+     Ostart() :=
+     x_2 <-R Z;
+     y: G <- exp(g, x_2);
+     return(y);
+     ((
+       foreach iS <= NS do
+       OS(m: bitstring) :=
+       find [unique] u_5 = ri_5 <= NS suchthat defined(x_4[ri_5], m[ri_5]) && (m = m[ri_5]) then
+         return(exp(y, x_4[u_5]))
+       orfind u_4 = ri_4 <= NH suchthat defined(x_3[ri_4], x_1[ri_4]) && (m = x_1[ri_4]) then
+         return(exp(y, x_3[u_4]))
+       else
+         x_4 <-R Z;
+         return(exp(y, x_4))
+     ) | (
+       foreach iC <= NS do
+       OC(m': bitstring, s': G) :=
+       find [unique] u_3 = ri_3 <= NS suchthat defined(x_4[ri_3], m[ri_3]) && (m' = m[ri_3]) then
+         if exp(g, mult(x_4[u_3], x_2)) = s' then
+           return(true)
+         else
+           return(false)
+       orfind u_2 = ri_2 <= NH suchthat defined(x_3[ri_2], x_1[ri_2]) && (m' = x_1[ri_2]) then
+         if exp(g, mult(x_3[u_2], x_2)) = s' then
+           find j_1 = j <= NS suchthat defined(m[j]) && (m' = m[j]) then
+             return(true)
+           else
+             event forgery;
+             return(true)
+         else
+           return(false)
+       else
+         return(false)
+     ) | (
+       foreach iH <= NH do
+       OH(x_1: bitstring) :=
+       find [unique] u_1 = ri_1 <= NS suchthat defined(x_4[ri_1], m[ri_1]) && (x_1 = m[ri_1]) then
+         return(exp(g, x_4[u_1]))
+       orfind u = ri <= NH suchthat defined(x_3[ri], x_1[ri]) && (x_1 = x_1[ri]) then
+         return(exp(g, x_3[u]))
+       else
+         x_3 <-R Z;
+         return(exp(g, x_3))
+     ))
+
+
+Applying equivalence gdh(exp) with x_3, x_2, x_4 [probability (3 * NS + 1) * pGDH(time_1, NS)]
+  - Equivalence gdh(exp) with variables: x_3 -> a, x_2 -> b, x_4 -> a
+yields
+
+Game 21 is
+     Ostart() :=
+     x_2 <-R Z;
+     y: G <- exp'(g, x_2);
+     return(y);
+     ((
+       foreach iS <= NS do
+       OS(m: bitstring) :=
+       find [unique] u_5 = ri_5 <= NS suchthat defined(x_4[ri_5], m[ri_5]) && (m = m[ri_5]) then
+         return(exp(y, (ka_1: bool <- cst_bool; x_4[u_5])))
+       orfind u_4 = ri_4 <= NH suchthat defined(x_3[ri_4], x_1[ri_4]) && (m = x_1[ri_4]) then
+         return(exp(y, (ka_2: bool <- cst_bool; x_3[u_4])))
+       else
+         x_4 <-R Z;
+         return(exp(y, (ka: bool <- cst_bool; x_4)))
+     ) | (
+       foreach iC <= NS do
+       OC(m': bitstring, s': G) :=
+       find [unique] u_3 = ri_3 <= NS suchthat defined(x_4[ri_3], m[ri_3]) && (m' = m[ri_3]) then
+         if (m_7: G <- s'; {69}find  else find  suchthat defined(ka[u_3]) then (m_7 = exp'(g, mult(x_2, x_4[u_3]))) orfind u_6 = ri_7 <= NS suchthat defined(ka_1[ri_7], u_5[ri_7]) && (u_3 = u_5[ri_7]) then (m_7 = exp'(g, mult(x_2, x_4[u_3]))) else false) then
+           return(true)
+         else
+           return(false)
+       orfind u_2 = ri_2 <= NH suchthat defined(x_3[ri_2], x_1[ri_2]) && (m' = x_1[ri_2]) then
+         if (m_9: G <- s'; {119}find  else find u_7 = ri_9 <= NS suchthat defined(ka_2[ri_9], u_4[ri_9]) && (u_2 = u_4[ri_9]) then (m_9 = exp'(g, mult(x_2, x_3[u_2]))) else false) then
+           find j_1 = j <= NS suchthat defined(m[j]) && (m' = m[j]) then
+             return(true)
+           else
+             event forgery;
+             return(true)
+         else
+           return(false)
+       else
+         return(false)
+     ) | (
+       foreach iH <= NH do
+       OH(x_1: bitstring) :=
+       find [unique] u_1 = ri_1 <= NS suchthat defined(x_4[ri_1], m[ri_1]) && (x_1 = m[ri_1]) then
+         return(exp'(g, x_4[u_1]))
+       orfind u = ri <= NH suchthat defined(x_3[ri], x_1[ri]) && (x_1 = x_1[ri]) then
+         return(exp'(g, x_3[u]))
+       else
+         x_3 <-R Z;
+         return(exp'(g, x_3))
+     ))
+
+
+Applying simplify (non-expanded game)
+  - Simplification pass
+    - Find at 69 removed (else branch kept if any)
+    - Find at 119 removed (else branch kept if any)
+yields
+
+Game 22 is
+     Ostart() :=
+     x_2 <-R Z;
+     y: G <- exp'(g, x_2);
+     return(y);
+     ((
+       foreach iS <= NS do
+       OS(m: bitstring) :=
+       find [unique] u_5 = ri_5 <= NS suchthat defined(x_4[ri_5], m[ri_5]) && (m = m[ri_5]) then
+         return(exp(y, (ka_1: bool <- cst_bool; x_4[u_5])))
+       orfind u_4 = ri_4 <= NH suchthat defined(x_3[ri_4], x_1[ri_4]) && (m = x_1[ri_4]) then
+         return(exp(y, (ka_2: bool <- cst_bool; x_3[u_4])))
+       else
+         x_4 <-R Z;
+         return(exp(y, (ka: bool <- cst_bool; x_4)))
+     ) | (
+       foreach iC <= NS do
+       OC(m': bitstring, s': G) :=
+       find [unique] u_3 = ri_3 <= NS suchthat defined(x_4[ri_3], m[ri_3]) && (m' = m[ri_3]) then
+ {65}    if (m_7: G <- s'; find  suchthat defined(ka[u_3]) then (m_7 = exp'(g, mult(x_2, x_4[u_3]))) orfind u_6 = ri_7 <= NS suchthat defined(ka_1[ri_7], u_5[ri_7]) && (u_3 = u_5[ri_7]) then (m_7 = exp'(g, mult(x_2, x_4[u_3]))) else false) then
+           return(true)
+         else
+           return(false)
+       orfind u_2 = ri_2 <= NH suchthat defined(x_3[ri_2], x_1[ri_2]) && (m' = x_1[ri_2]) then
+{114}    if (m_9: G <- s'; find u_7 = ri_9 <= NS suchthat defined(ka_2[ri_9], u_4[ri_9]) && (u_2 = u_4[ri_9]) then (m_9 = exp'(g, mult(x_2, x_3[u_2]))) else false) then
+           find j_1 = j <= NS suchthat defined(m[j]) && (m' = m[j]) then
+             return(true)
+           else
+             event forgery;
+             return(true)
+         else
+           return(false)
+       else
+         return(false)
+     ) | (
+       foreach iH <= NH do
+       OH(x_1: bitstring) :=
+       find [unique] u_1 = ri_1 <= NS suchthat defined(x_4[ri_1], m[ri_1]) && (x_1 = m[ri_1]) then
+         return(exp'(g, x_4[u_1]))
+       orfind u = ri <= NH suchthat defined(x_3[ri], x_1[ri]) && (x_1 = x_1[ri]) then
+         return(exp'(g, x_3[u]))
+       else
+         x_3 <-R Z;
+         return(exp'(g, x_3))
+     ))
+
+
+Applying expand
+  - Expand if/find/let
+    - Test at 114 always false
+    - Test at 65 always false
+yields
+
+Game 23 is
+     Ostart() :=
+     x_2 <-R Z;
+     y: G <- exp'(g, x_2);
+     return(y);
+     ((
+       foreach iS <= NS do
+       OS(m: bitstring) :=
+       find [unique] u_5 = ri_5 <= NS suchthat defined(x_4[ri_5], m[ri_5]) && (m = m[ri_5]) then
+         ka_1: bool <- cst_bool;
+         return(exp(y, x_4[u_5]))
+       orfind u_4 = ri_4 <= NH suchthat defined(x_3[ri_4], x_1[ri_4]) && (m = x_1[ri_4]) then
+         ka_2: bool <- cst_bool;
+         return(exp(y, x_3[u_4]))
+       else
+         x_4 <-R Z;
+         ka: bool <- cst_bool;
+         return(exp(y, x_4))
+     ) | (
+       foreach iC <= NS do
+       OC(m': bitstring, s': G) :=
+       find [unique] u_3 = ri_3 <= NS suchthat defined(x_4[ri_3], m[ri_3]) && (m' = m[ri_3]) then
+         m_7: G <- s';
+         find  suchthat defined(ka[u_3]) then
+           if m_7 = exp'(g, mult(x_2, x_4[u_3])) then
+             return(true)
+           else
+             return(false)
+         orfind u_6 = ri_7 <= NS suchthat defined(ka_1[ri_7], u_5[ri_7]) && (u_3 = u_5[ri_7]) then
+           if m_7 = exp'(g, mult(x_2, x_4[u_3])) then
+             return(true)
+           else
+             return(false)
+         else
+           return(false)
+       orfind u_2 = ri_2 <= NH suchthat defined(x_3[ri_2], x_1[ri_2]) && (m' = x_1[ri_2]) then
+         m_9: G <- s';
+         find u_7 = ri_9 <= NS suchthat defined(ka_2[ri_9], u_4[ri_9]) && (u_2 = u_4[ri_9]) then
+           if m_9 = exp'(g, mult(x_2, x_3[u_2])) then
+             find j_1 = j <= NS suchthat defined(m[j]) && (m' = m[j]) then
+               return(true)
+             else
+               event forgery;
+               return(true)
+           else
+             return(false)
+         else
+           return(false)
+       else
+         return(false)
+     ) | (
+       foreach iH <= NH do
+       OH(x_1: bitstring) :=
+       find [unique] u_1 = ri_1 <= NS suchthat defined(x_4[ri_1], m[ri_1]) && (x_1 = m[ri_1]) then
+         return(exp'(g, x_4[u_1]))
+       orfind u = ri <= NH suchthat defined(x_3[ri], x_1[ri]) && (x_1 = x_1[ri]) then
+         return(exp'(g, x_3[u]))
+       else
+         x_3 <-R Z;
+         return(exp'(g, x_3))
+     ))
+
+
+Applying remove assignments of findcond
+  - Remove assignments on m_7 (definition removed, all usages removed)
+  - Remove assignments on m_9 (definition removed, all usages removed)
+  - Remove assignments on ka (definition removed, all usages removed)
+yields
+
+Game 24 is
+     Ostart() :=
+     x_2 <-R Z;
+     y: G <- exp'(g, x_2);
+     return(y);
+     ((
+       foreach iS <= NS do
+       OS(m: bitstring) :=
+       find [unique] u_5 = ri_5 <= NS suchthat defined(x_4[ri_5], m[ri_5]) && (m = m[ri_5]) then
+         ka_1: bool <- cst_bool;
+         return(exp(y, x_4[u_5]))
+       orfind u_4 = ri_4 <= NH suchthat defined(x_3[ri_4], x_1[ri_4]) && (m = x_1[ri_4]) then
+         ka_2: bool <- cst_bool;
+         return(exp(y, x_3[u_4]))
+       else
+         x_4 <-R Z;
+         return(exp(y, x_4))
+     ) | (
+       foreach iC <= NS do
+       OC(m': bitstring, s': G) :=
+       find [unique] u_3 = ri_3 <= NS suchthat defined(x_4[ri_3], m[ri_3]) && (m' = m[ri_3]) then
+ {65}    find  suchthat defined(x_4[u_3]) then
+           if s' = exp'(g, mult(x_2, x_4[u_3])) then
+             return(true)
+           else
+             return(false)
+         orfind u_6 = ri_7 <= NS suchthat defined(ka_1[ri_7], u_5[ri_7]) && (u_3 = u_5[ri_7]) then
+           if s' = exp'(g, mult(x_2, x_4[u_3])) then
+             return(true)
+           else
+             return(false)
+         else
+           return(false)
+       orfind u_2 = ri_2 <= NH suchthat defined(x_3[ri_2], x_1[ri_2]) && (m' = x_1[ri_2]) then
+{120}    find u_7 = ri_9 <= NS suchthat defined(ka_2[ri_9], u_4[ri_9]) && (u_2 = u_4[ri_9]) then
+           if s' = exp'(g, mult(x_2, x_3[u_2])) then
+{139}        find j_1 = j <= NS suchthat defined(m[j]) && (m' = m[j]) then
+               return(true)
+             else
+               event forgery;
+               return(true)
+           else
+             return(false)
+         else
+           return(false)
+       else
+         return(false)
+     ) | (
+       foreach iH <= NH do
+       OH(x_1: bitstring) :=
+       find [unique] u_1 = ri_1 <= NS suchthat defined(x_4[ri_1], m[ri_1]) && (x_1 = m[ri_1]) then
+         return(exp'(g, x_4[u_1]))
+       orfind u = ri <= NH suchthat defined(x_3[ri], x_1[ri]) && (x_1 = x_1[ri]) then
+         return(exp'(g, x_3[u]))
+       else
+         x_3 <-R Z;
+         return(exp'(g, x_3))
+     ))
+
+
+Applying simplify
+  - Simplification pass
+    - Remove else branch of find at 139
+    - A single branch always succeeds in find at 139
+    - Replaced defined condition ka_2[ri_9], u_4[ri_9] with u_4[ri_9] in find at 120
+    - Remove else branch of find at 65
+    - Replaced defined condition ka_1[ri_7], u_5[ri_7] with u_5[ri_7] in find at 65
+    - Replaced defined condition x_4[u_3] with an empty condition in find at 65
+yields
+
+Game 25 is
+     Ostart() :=
+     x_2 <-R Z;
+     y: G <- exp'(g, x_2);
+     return(y);
+     ((
+       foreach iS <= NS do
+       OS(m: bitstring) :=
+       find [unique] u_5 = ri_5 <= NS suchthat defined(x_4[ri_5], m[ri_5]) && (m = m[ri_5]) then
+         ka_1: bool <- cst_bool;
+         return(exp(y, x_4[u_5]))
+       orfind u_4 = ri_4 <= NH suchthat defined(x_3[ri_4], x_1[ri_4]) && (m = x_1[ri_4]) then
+         ka_2: bool <- cst_bool;
+         return(exp(y, x_3[u_4]))
+       else
+         x_4 <-R Z;
+         return(exp(y, x_4))
+     ) | (
+       foreach iC <= NS do
+       OC(m': bitstring, s': G) :=
+       find [unique] u_3 = ri_3 <= NS suchthat defined(x_4[ri_3], m[ri_3]) && (m' = m[ri_3]) then
+       (
+         find  suchthat true then
+           if s' = exp'(g, mult(x_2, x_4[u_3])) then
+             return(true)
+           else
+             return(false)
+         orfind u_6 = ri_7 <= NS suchthat defined(u_5[ri_7]) && (u_3 = u_5[ri_7]) then
+           if s' = exp'(g, mult(x_2, x_4[u_3])) then
+             return(true)
+           else
+             return(false)
+       )
+       orfind u_2 = ri_2 <= NH suchthat defined(x_3[ri_2], x_1[ri_2]) && (m' = x_1[ri_2]) then
+         find u_7 = ri_9 <= NS suchthat defined(u_4[ri_9]) && (u_2 = u_4[ri_9]) then
+           if s' = exp'(g, mult(x_2, x_3[u_2])) then
+             return(true)
+           else
+             return(false)
+         else
+           return(false)
+       else
+         return(false)
+     ) | (
+       foreach iH <= NH do
+       OH(x_1: bitstring) :=
+       find [unique] u_1 = ri_1 <= NS suchthat defined(x_4[ri_1], m[ri_1]) && (x_1 = m[ri_1]) then
+         return(exp'(g, x_4[u_1]))
+       orfind u = ri <= NH suchthat defined(x_3[ri], x_1[ri]) && (x_1 = x_1[ri]) then
+         return(exp'(g, x_3[u]))
+       else
+         x_3 <-R Z;
+         return(exp'(g, x_3))
+     ))
+
+
+Applying SA rename new without array accesses and remove assignments of findcond
+  - Remove assignments on ka_1 (definition removed, all usages removed)
+  - Remove assignments on ka_2 (definition removed, all usages removed)
+yields
+
+Game 26 is
+     Ostart() :=
+     x_2 <-R Z;
+     y: G <- exp'(g, x_2);
+     return(y);
+     ((
+       foreach iS <= NS do
+       OS(m: bitstring) :=
+       find [unique] u_5 = ri_5 <= NS suchthat defined(x_4[ri_5], m[ri_5]) && (m = m[ri_5]) then
+         return(exp(y, x_4[u_5]))
+       orfind u_4 = ri_4 <= NH suchthat defined(x_3[ri_4], x_1[ri_4]) && (m = x_1[ri_4]) then
+         return(exp(y, x_3[u_4]))
+       else
+         x_4 <-R Z;
+         return(exp(y, x_4))
+     ) | (
+       foreach iC <= NS do
+       OC(m': bitstring, s': G) :=
+       find [unique] u_3 = ri_3 <= NS suchthat defined(x_4[ri_3], m[ri_3]) && (m' = m[ri_3]) then
+       (
+ {59}    find  suchthat true then
+           if s' = exp'(g, mult(x_2, x_4[u_3])) then
+             return(true)
+           else
+             return(false)
+         orfind u_6 = ri_7 <= NS suchthat defined(u_5[ri_7]) && (u_3 = u_5[ri_7]) then
+           if s' = exp'(g, mult(x_2, x_4[u_3])) then
+             return(true)
+           else
+             return(false)
+       )
+       orfind u_2 = ri_2 <= NH suchthat defined(x_3[ri_2], x_1[ri_2]) && (m' = x_1[ri_2]) then
+         find u_7 = ri_9 <= NS suchthat defined(u_4[ri_9]) && (u_2 = u_4[ri_9]) then
+           if s' = exp'(g, mult(x_2, x_3[u_2])) then
+             return(true)
+           else
+             return(false)
+         else
+           return(false)
+       else
+         return(false)
+     ) | (
+       foreach iH <= NH do
+       OH(x_1: bitstring) :=
+       find [unique] u_1 = ri_1 <= NS suchthat defined(x_4[ri_1], m[ri_1]) && (x_1 = m[ri_1]) then
+         return(exp'(g, x_4[u_1]))
+       orfind u = ri <= NH suchthat defined(x_3[ri], x_1[ri]) && (x_1 = x_1[ri]) then
+         return(exp'(g, x_3[u]))
+       else
+         x_3 <-R Z;
+         return(exp'(g, x_3))
+     ))
+
+
+Applying merge branches
+  - Merge all branches of find at 59 (else branch unreachable)
+yields
+
+Game 27 is
+     Ostart() :=
+     x_2 <-R Z;
+     y: G <- exp'(g, x_2);
+     return(y);
+     ((
+       foreach iS <= NS do
+       OS(m: bitstring) :=
+       find [unique] u_5 = ri_5 <= NS suchthat defined(x_4[ri_5], m[ri_5]) && (m = m[ri_5]) then
+         return(exp(y, x_4[u_5]))
+       orfind u_4 = ri_4 <= NH suchthat defined(x_3[ri_4], x_1[ri_4]) && (m = x_1[ri_4]) then
+         return(exp(y, x_3[u_4]))
+       else
+         x_4 <-R Z;
+         return(exp(y, x_4))
+     ) | (
+       foreach iC <= NS do
+       OC(m': bitstring, s': G) :=
+       find [unique] u_3 = ri_3 <= NS suchthat defined(x_4[ri_3], m[ri_3]) && (m' = m[ri_3]) then
+         if s' = exp'(g, mult(x_2, x_4[u_3])) then
+           return(true)
+         else
+           return(false)
+       orfind u_2 = ri_2 <= NH suchthat defined(x_3[ri_2], x_1[ri_2]) && (m' = x_1[ri_2]) then
+         find u_7 = ri_9 <= NS suchthat defined(u_4[ri_9]) && (u_2 = u_4[ri_9]) then
+           if s' = exp'(g, mult(x_2, x_3[u_2])) then
+             return(true)
+           else
+             return(false)
+         else
+           return(false)
+       else
+         return(false)
+     ) | (
+       foreach iH <= NH do
+       OH(x_1: bitstring) :=
+       find [unique] u_1 = ri_1 <= NS suchthat defined(x_4[ri_1], m[ri_1]) && (x_1 = m[ri_1]) then
+         return(exp'(g, x_4[u_1]))
+       orfind u = ri <= NH suchthat defined(x_3[ri], x_1[ri]) && (x_1 = x_1[ri]) then
+         return(exp'(g, x_3[u]))
+       else
+         x_3 <-R Z;
+         return(exp'(g, x_3))
+     ))
+
+
+Proved event(forgery) ==> false in game 27
+Pr[Game 1: forgery] <= (1 + 3 * NS) * pGDH(time_1, NS) + NS / |G| + Pr[Game 27: forgery]
+Pr[Game 27: forgery] <= 0
+RESULT Proved event(forgery) ==> false up to probability (3 * NS + 1) * pGDH(time_1, NS) + NS / |G|
+RESULT time_1 = NS^2 * time(= bitstring, maxlength(game 20: m), maxlength(game 20: m)) + NS * NH * time(= bitstring, maxlength(game 20: m), maxlength(game 20: x_1)) + NS * NH * time(= bitstring, maxlength(game 20: m'), maxlength(game 20: x_1)) + 2 * NS^2 * time(= bitstring, maxlength(game 20: m'), maxlength(game 20: m)) + NS * time(([1,NS])) + NH * NS * time(= bitstring, maxlength(game 20: x_1), maxlength(game 20: m)) + NH^2 * time(= bitstring, maxlength(game 20: x_1), maxlength(game 20: x_1)) + time + (2 + 2 * NS + NH) * time(exp)
+All queries proved.

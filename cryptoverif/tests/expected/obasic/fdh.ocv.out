@@ -1,0 +1,835 @@
+Doing expand get, insert and prove unique annotations... No change.
+Doing simplify (non-expanded game)... No change.
+Doing expand... No change.
+Doing remove assignments of findcond... No change.
+Doing simplify... Run simplify 1 time(s). Fixpoint reached.
+No change.
+Doing move all binders... No change.
+Doing SA rename new without array accesses and remove assignments of findcond... No change.
+Doing merge branches... No change.
+Proof of event(forge) ==> false failed:
+  Found forge at 49
+  but could not prove false
+Trying equivalence rom(hash)... Transf. OK Proba. computed Transf. done Succeeded.
+Doing simplify (non-expanded game)... No change.
+Doing expand... Done.
+Doing remove assignments of findcond... Done.
+Doing simplify... Doing global dependency analysis on r_2 inside simplify... At 87, returned message invf(sk, r_2) depends on r_2.
+No change
+Doing global dependency analysis on r_1 inside simplify... At 46, returned message r_1 depends on r_1.
+No change
+Doing global dependency analysis on r_1 inside simplify... At 44, returned message r_1 depends on r_1.
+No change
+Run simplify 2 time(s). Fixpoint reached.
+Done.
+Doing move all binders... Done.
+Doing SA rename new without array accesses and remove assignments of findcond... No change.
+Doing merge branches... Done.
+Proof of event(forge) ==> false failed:
+  Found forge at 108
+  but could not prove false
+Trying equivalence rom(hash)... Failed.
+Trying equivalence ow(f)... Failed.
+Trying equivalence remove_invf(f)... Failed.
+Doing remove assignments of binder sk... Done.
+Trying equivalence remove_invf(f) with r_2, r... Transf. OK Proba. computed Transf. done Succeeded.
+Doing simplify (non-expanded game)... No change.
+Doing expand... No change.
+Doing remove assignments of findcond... Done.
+Doing simplify... Doing global dependency analysis on r_4 inside simplify... At 45, returned message f(pkgen(r), r_4) depends on r_4.
+No change
+Doing global dependency analysis on r_4 inside simplify... At 45, returned message f(pkgen(r), r_4) depends on r_4.
+No change
+Run simplify 2 time(s). Fixpoint reached.
+Done.
+Doing move all binders... Done.
+Doing SA rename new without array accesses and remove assignments of findcond... No change.
+Doing merge branches... No change.
+Proof of event(forge) ==> false failed:
+  Found forge at 104
+  but could not prove false
+Trying equivalence rom(hash)... Failed.
+Trying equivalence ow(f)... Failed.
+Trying equivalence remove_invf(f)... Failed.
+Doing remove assignments of binder pk... Done.
+Trying equivalence ow(f) with r_3, r, r_4... Transf. OK Proba. computed Transf. done Succeeded.
+Doing simplify (non-expanded game)... No change.
+Doing expand... Done.
+Doing remove assignments of findcond... Done.
+Doing simplify... Doing global dependency analysis on r_4 inside simplify... At 43, returned message f'(pkgen'(r), r_4) depends on r_4.
+No change
+Run simplify 2 time(s). Fixpoint reached.
+Done.
+Doing move all binders... No change.
+Doing SA rename new without array accesses and remove assignments of findcond... Done.
+Doing merge branches... No change.
+Proved query event(forge) ==> false
+===================== Proof starts =======================
+Initial state
+Game 1 is
+     Ogen() :=
+     hk_1 <-R hashkey;
+     r <-R seed;
+     pk: pkey <- pkgen(r);
+     sk: skey <- skgen(r);
+     return(pk);
+     ((
+       foreach iH <= qH do
+       OH(x1: bitstring) :=
+       return(hash(hk_1, x1))
+     ) | (
+       foreach iS <= qS do
+       OS(m: bitstring) :=
+       return(invf(sk, hash(hk_1, m)))
+     ) | (
+       OT(m': bitstring, s: D) :=
+       if f(pk, s) = hash(hk_1, m') then
+       find u_1 = u <= qS suchthat defined(m[u]) && (m' = m[u]) then
+         yield
+       else
+         event forge
+     ))
+
+
+Applying equivalence rom(hash) [probability 1 / |D|]
+  - Equivalence rom(hash) with variables: hk_1 -> hk_2
+yields
+
+Game 2 is
+     Ogen() :=
+     r <-R seed;
+     pk: pkey <- pkgen(r);
+     sk: skey <- skgen(r);
+     return(pk);
+     ((
+       foreach iH <= qH do
+       OH(x1: bitstring) :=
+       return((x_O: bitstring <- x1; find [unique] u_7 = ri_5 <= qH suchthat defined(x_O[ri_5], r_1[ri_5]) && (x_O = x_O[ri_5]) then r_1[u_7] orfind u_6 = ri_4 <= qS suchthat defined(x_O_1[ri_4], r_2[ri_4]) && (x_O = x_O_1[ri_4]) then r_2[u_6] else r_1 <-R D; r_1))
+     ) | (
+       foreach iS <= qS do
+       OS(m: bitstring) :=
+       return(invf(sk, (x_O_1: bitstring <- m; find [unique] u_5 = ri_3 <= qH suchthat defined(x_O[ri_3], r_1[ri_3]) && (x_O_1 = x_O[ri_3]) then r_1[u_5] orfind u_4 = ri_2 <= qS suchthat defined(x_O_1[ri_2], r_2[ri_2]) && (x_O_1 = x_O_1[ri_2]) then r_2[u_4] else r_2 <-R D; r_2)))
+     ) | (
+       OT(m': bitstring, s: D) :=
+ {78}  if (x_Oeq: bitstring <- m'; X_Oeq: D <- f(pk, s); find [unique] u_3 = ri_1 <= qH suchthat defined(x_O[ri_1], r_1[ri_1]) && (x_Oeq = x_O[ri_1]) then (X_Oeq = r_1[u_3]) orfind u_2 = ri <= qS suchthat defined(x_O_1[ri], r_2[ri]) && (x_Oeq = x_O_1[ri]) then (X_Oeq = r_2[u_2]) else false) then
+       find u_1 = u <= qS suchthat defined(m[u]) && (m' = m[u]) then
+         yield
+       else
+         event forge
+     ))
+
+
+Applying expand
+  - Expand if/find/let
+    - Test at 78 always false
+yields
+
+Game 3 is
+     Ogen() :=
+     r <-R seed;
+     pk: pkey <- pkgen(r);
+     sk: skey <- skgen(r);
+     return(pk);
+     ((
+       foreach iH <= qH do
+       OH(x1: bitstring) :=
+       x_O: bitstring <- x1;
+       find [unique] u_7 = ri_5 <= qH suchthat defined(x_O[ri_5], r_1[ri_5]) && (x_O = x_O[ri_5]) then
+         return(r_1[u_7])
+       orfind u_6 = ri_4 <= qS suchthat defined(x_O_1[ri_4], r_2[ri_4]) && (x_O = x_O_1[ri_4]) then
+         return(r_2[u_6])
+       else
+         r_1 <-R D;
+         return(r_1)
+     ) | (
+       foreach iS <= qS do
+       OS(m: bitstring) :=
+       x_O_1: bitstring <- m;
+       find [unique] u_5 = ri_3 <= qH suchthat defined(x_O[ri_3], r_1[ri_3]) && (x_O_1 = x_O[ri_3]) then
+         return(invf(sk, r_1[u_5]))
+       orfind u_4 = ri_2 <= qS suchthat defined(x_O_1[ri_2], r_2[ri_2]) && (x_O_1 = x_O_1[ri_2]) then
+         return(invf(sk, r_2[u_4]))
+       else
+         r_2 <-R D;
+         return(invf(sk, r_2))
+     ) | (
+       OT(m': bitstring, s: D) :=
+       x_Oeq: bitstring <- m';
+       X_Oeq: D <- f(pk, s);
+       find [unique] u_3 = ri_1 <= qH suchthat defined(x_O[ri_1], r_1[ri_1]) && (x_Oeq = x_O[ri_1]) then
+       (
+         if X_Oeq = r_1[u_3] then
+         find u_1 = u <= qS suchthat defined(m[u]) && (m' = m[u]) then
+           yield
+         else
+           event forge
+       )
+       orfind u_2 = ri <= qS suchthat defined(x_O_1[ri], r_2[ri]) && (x_Oeq = x_O_1[ri]) then
+       (
+         if X_Oeq = r_2[u_2] then
+         find u_1 = u <= qS suchthat defined(m[u]) && (m' = m[u]) then
+           yield
+         else
+           event forge
+       )
+     ))
+
+
+Applying remove assignments of findcond
+  - Remove assignments on x_Oeq (definition removed, all usages removed)
+  - Remove assignments on x_O_1 (definition point kept, all usages removed)
+  - Remove assignments on x_O (definition point kept, all usages removed)
+yields
+
+Game 4 is
+     Ogen() :=
+     r <-R seed;
+     pk: pkey <- pkgen(r);
+     sk: skey <- skgen(r);
+     return(pk);
+     ((
+       foreach iH <= qH do
+       OH(x1: bitstring) :=
+       x_O: bitstring <- cst_bitstring;
+ {17}  find [unique] u_7 = ri_5 <= qH suchthat defined(x1[ri_5], x_O[ri_5], r_1[ri_5]) && (x1 = x1[ri_5]) then
+         return(r_1[u_7])
+       orfind u_6 = ri_4 <= qS suchthat defined(m[ri_4], x_O_1[ri_4], r_2[ri_4]) && (x1 = m[ri_4]) then
+         return(r_2[u_6])
+       else
+         r_1 <-R D;
+         return(r_1)
+     ) | (
+       foreach iS <= qS do
+       OS(m: bitstring) :=
+       x_O_1: bitstring <- cst_bitstring;
+ {54}  find [unique] u_5 = ri_3 <= qH suchthat defined(x1[ri_3], x_O[ri_3], r_1[ri_3]) && (m = x1[ri_3]) then
+         return(invf(sk, r_1[u_5]))
+       orfind u_4 = ri_2 <= qS suchthat defined(m[ri_2], x_O_1[ri_2], r_2[ri_2]) && (m = m[ri_2]) then
+         return(invf(sk, r_2[u_4]))
+       else
+         r_2 <-R D;
+         return(invf(sk, r_2))
+     ) | (
+       OT(m': bitstring, s: D) :=
+       X_Oeq: D <- f(pk, s);
+ {98}  find [unique] u_3 = ri_1 <= qH suchthat defined(x1[ri_1], x_O[ri_1], r_1[ri_1]) && (m' = x1[ri_1]) then
+       (
+         if X_Oeq = r_1[u_3] then
+         find u_1 = u <= qS suchthat defined(m[u]) && (m' = m[u]) then
+           yield
+         else
+           event forge
+       )
+       orfind u_2 = ri <= qS suchthat defined(m[ri], x_O_1[ri], r_2[ri]) && (m' = m[ri]) then
+       (
+{130}    if X_Oeq = r_2[u_2] then
+{135}    find u_1 = u <= qS suchthat defined(m[u]) && (m' = m[u]) then
+           yield
+         else
+           event forge
+       )
+     ))
+
+
+Applying simplify
+  - Simplification pass
+    - Remove else branch of find at 135
+    - A single branch always succeeds in find at 135
+    - Merge branches of test at 130
+    - Replaced defined condition m[ri], x_O_1[ri], r_2[ri] with r_2[ri], m[ri] in find at 98
+    - Replaced defined condition x1[ri_1], x_O[ri_1], r_1[ri_1] with r_1[ri_1], x1[ri_1] in find at 98
+    - Replaced defined condition m[ri_2], x_O_1[ri_2], r_2[ri_2] with r_2[ri_2], m[ri_2] in find at 54
+    - Replaced defined condition x1[ri_3], x_O[ri_3], r_1[ri_3] with r_1[ri_3], x1[ri_3] in find at 54
+    - Replaced defined condition m[ri_4], x_O_1[ri_4], r_2[ri_4] with r_2[ri_4], m[ri_4] in find at 17
+    - Replaced defined condition x1[ri_5], x_O[ri_5], r_1[ri_5] with r_1[ri_5], x1[ri_5] in find at 17
+yields
+
+Game 5 is
+     Ogen() :=
+     r <-R seed;
+     pk: pkey <- pkgen(r);
+     sk: skey <- skgen(r);
+     return(pk);
+     ((
+       foreach iH <= qH do
+       OH(x1: bitstring) :=
+       x_O: bitstring <- cst_bitstring;
+       find [unique] u_7 = ri_5 <= qH suchthat defined(r_1[ri_5], x1[ri_5]) && (x1 = x1[ri_5]) then
+         return(r_1[u_7])
+       orfind u_6 = ri_4 <= qS suchthat defined(r_2[ri_4], m[ri_4]) && (x1 = m[ri_4]) then
+         return(r_2[u_6])
+       else
+         r_1 <-R D;
+         return(r_1)
+     ) | (
+       foreach iS <= qS do
+       OS(m: bitstring) :=
+       x_O_1: bitstring <- cst_bitstring;
+       find [unique] u_5 = ri_3 <= qH suchthat defined(r_1[ri_3], x1[ri_3]) && (m = x1[ri_3]) then
+         return(invf(sk, r_1[u_5]))
+       orfind u_4 = ri_2 <= qS suchthat defined(r_2[ri_2], m[ri_2]) && (m = m[ri_2]) then
+         return(invf(sk, r_2[u_4]))
+       else
+         r_2 <-R D;
+         return(invf(sk, r_2))
+     ) | (
+       OT(m': bitstring, s: D) :=
+       X_Oeq: D <- f(pk, s);
+       find [unique] u_3 = ri_1 <= qH suchthat defined(r_1[ri_1], x1[ri_1]) && (m' = x1[ri_1]) then
+       (
+         if X_Oeq = r_1[u_3] then
+         find u_1 = u <= qS suchthat defined(m[u]) && (m' = m[u]) then
+           yield
+         else
+           event forge
+       )
+       orfind u_2 = ri <= qS suchthat defined(r_2[ri], m[ri]) && (m' = m[ri]) then
+         yield
+     ))
+
+
+Applying move all binders
+  - Move assignment to X_Oeq
+  - Move assignment to x_O_1
+  - Move assignment to x_O
+yields
+
+Game 6 is
+     Ogen() :=
+     r <-R seed;
+     pk: pkey <- pkgen(r);
+     sk: skey <- skgen(r);
+     return(pk);
+     ((
+       foreach iH <= qH do
+       OH(x1: bitstring) :=
+       find [unique] u_7 = ri_5 <= qH suchthat defined(r_1[ri_5], x1[ri_5]) && (x1 = x1[ri_5]) then
+         return(r_1[u_7])
+       orfind u_6 = ri_4 <= qS suchthat defined(r_2[ri_4], m[ri_4]) && (x1 = m[ri_4]) then
+         return(r_2[u_6])
+       else
+         r_1 <-R D;
+         return(r_1)
+     ) | (
+       foreach iS <= qS do
+       OS(m: bitstring) :=
+       find [unique] u_5 = ri_3 <= qH suchthat defined(r_1[ri_3], x1[ri_3]) && (m = x1[ri_3]) then
+         return(invf(sk, r_1[u_5]))
+       orfind u_4 = ri_2 <= qS suchthat defined(r_2[ri_2], m[ri_2]) && (m = m[ri_2]) then
+         return(invf(sk, r_2[u_4]))
+       else
+         r_2 <-R D;
+         return(invf(sk, r_2))
+     ) | (
+       OT(m': bitstring, s: D) :=
+ {84}  find [unique] u_3 = ri_1 <= qH suchthat defined(r_1[ri_1], x1[ri_1]) && (m' = x1[ri_1]) then
+       (
+         X_Oeq: D <- f(pk, s);
+         if X_Oeq = r_1[u_3] then
+         find u_1 = u <= qS suchthat defined(m[u]) && (m' = m[u]) then
+           yield
+         else
+           event forge
+       )
+       orfind u_2 = ri <= qS suchthat defined(r_2[ri], m[ri]) && (m' = m[ri]) then
+{119}    yield
+     ))
+
+
+Applying merge branches
+  - Merge branch(es) at 119 with else branch of find at 84
+yields
+
+Game 7 is
+     Ogen() :=
+     r <-R seed;
+     pk: pkey <- pkgen(r);
+     sk: skey <- skgen(r);
+     return(pk);
+     ((
+       foreach iH <= qH do
+       OH(x1: bitstring) :=
+       find [unique] u_7 = ri_5 <= qH suchthat defined(r_1[ri_5], x1[ri_5]) && (x1 = x1[ri_5]) then
+         return(r_1[u_7])
+       orfind u_6 = ri_4 <= qS suchthat defined(r_2[ri_4], m[ri_4]) && (x1 = m[ri_4]) then
+         return(r_2[u_6])
+       else
+         r_1 <-R D;
+         return(r_1)
+     ) | (
+       foreach iS <= qS do
+       OS(m: bitstring) :=
+       find [unique] u_5 = ri_3 <= qH suchthat defined(r_1[ri_3], x1[ri_3]) && (m = x1[ri_3]) then
+         return(invf(sk, r_1[u_5]))
+       orfind u_4 = ri_2 <= qS suchthat defined(r_2[ri_2], m[ri_2]) && (m = m[ri_2]) then
+         return(invf(sk, r_2[u_4]))
+       else
+         r_2 <-R D;
+         return(invf(sk, r_2))
+     ) | (
+       OT(m': bitstring, s: D) :=
+       find [unique] u_3 = ri_1 <= qH suchthat defined(r_1[ri_1], x1[ri_1]) && (m' = x1[ri_1]) then
+       X_Oeq: D <- f(pk, s);
+       if X_Oeq = r_1[u_3] then
+       find u_1 = u <= qS suchthat defined(m[u]) && (m' = m[u]) then
+         yield
+       else
+         event forge
+     ))
+
+
+Applying remove assignments of binder sk
+  - Remove assignments on sk (definition removed, all usages removed)
+yields
+
+Game 8 is
+     Ogen() :=
+     r <-R seed;
+     pk: pkey <- pkgen(r);
+     return(pk);
+     ((
+       foreach iH <= qH do
+       OH(x1: bitstring) :=
+       find [unique] u_7 = ri_5 <= qH suchthat defined(r_1[ri_5], x1[ri_5]) && (x1 = x1[ri_5]) then
+         return(r_1[u_7])
+       orfind u_6 = ri_4 <= qS suchthat defined(r_2[ri_4], m[ri_4]) && (x1 = m[ri_4]) then
+         return(r_2[u_6])
+       else
+         r_1 <-R D;
+         return(r_1)
+     ) | (
+       foreach iS <= qS do
+       OS(m: bitstring) :=
+       find [unique] u_5 = ri_3 <= qH suchthat defined(r_1[ri_3], x1[ri_3]) && (m = x1[ri_3]) then
+         return(invf(skgen(r), r_1[u_5]))
+       orfind u_4 = ri_2 <= qS suchthat defined(r_2[ri_2], m[ri_2]) && (m = m[ri_2]) then
+         return(invf(skgen(r), r_2[u_4]))
+       else
+         r_2 <-R D;
+         return(invf(skgen(r), r_2))
+     ) | (
+       OT(m': bitstring, s: D) :=
+       find [unique] u_3 = ri_1 <= qH suchthat defined(r_1[ri_1], x1[ri_1]) && (m' = x1[ri_1]) then
+       X_Oeq: D <- f(pk, s);
+       if X_Oeq = r_1[u_3] then
+       find u_1 = u <= qS suchthat defined(m[u]) && (m' = m[u]) then
+         yield
+       else
+         event forge
+     ))
+
+
+Applying equivalence remove_invf(f) with r_2, r
+  - Equivalence remove_invf(f) with variables: r_1 -> x_1, r -> r_1, r_2 -> x_1
+yields
+
+Game 9 is
+     Ogen() :=
+     r <-R seed;
+     pk: pkey <- pkgen(r);
+     return(pk);
+     ((
+       foreach iH <= qH do
+       OH(x1: bitstring) :=
+       find [unique] u_7 = ri_5 <= qH suchthat defined(r_4[ri_5], x1[ri_5]) && (x1 = x1[ri_5]) then
+         return(f(pkgen(r), r_4[u_7]))
+       orfind u_6 = ri_4 <= qS suchthat defined(r_3[ri_4], m[ri_4]) && (x1 = m[ri_4]) then
+         return(f(pkgen(r), r_3[u_6]))
+       else
+         r_4 <-R D;
+         r_1: D <- cst_D;
+         return(f(pkgen(r), r_4))
+     ) | (
+       foreach iS <= qS do
+       OS(m: bitstring) :=
+       find [unique] u_5 = ri_3 <= qH suchthat defined(r_4[ri_3], x1[ri_3]) && (m = x1[ri_3]) then
+         return(r_4[u_5])
+       orfind u_4 = ri_2 <= qS suchthat defined(r_3[ri_2], m[ri_2]) && (m = m[ri_2]) then
+         return(r_3[u_4])
+       else
+         r_3 <-R D;
+         r_2: D <- cst_D;
+         return(r_3)
+     ) | (
+       OT(m': bitstring, s: D) :=
+       find [unique] u_3 = ri_1 <= qH suchthat defined(r_4[ri_1], x1[ri_1]) && (m' = x1[ri_1]) then
+       X_Oeq: D <- f(pk, s);
+       if X_Oeq = f(pkgen(r), r_4[u_3]) then
+       find u_1 = u <= qS suchthat defined(m[u]) && (m' = m[u]) then
+         yield
+       else
+         event forge
+     ))
+
+
+Applying remove assignments of findcond
+  - Remove assignments on r_2 (definition removed, all usages removed)
+  - Remove assignments on r_1 (definition removed, all usages removed)
+yields
+
+Game 10 is
+     Ogen() :=
+     r <-R seed;
+     pk: pkey <- pkgen(r);
+     return(pk);
+     ((
+       foreach iH <= qH do
+       OH(x1: bitstring) :=
+       find [unique] u_7 = ri_5 <= qH suchthat defined(r_4[ri_5], x1[ri_5]) && (x1 = x1[ri_5]) then
+         return(f(pkgen(r), r_4[u_7]))
+       orfind u_6 = ri_4 <= qS suchthat defined(r_3[ri_4], m[ri_4]) && (x1 = m[ri_4]) then
+         return(f(pkgen(r), r_3[u_6]))
+       else
+         r_4 <-R D;
+         return(f(pkgen(r), r_4))
+     ) | (
+       foreach iS <= qS do
+       OS(m: bitstring) :=
+       find [unique] u_5 = ri_3 <= qH suchthat defined(r_4[ri_3], x1[ri_3]) && (m = x1[ri_3]) then
+         return(r_4[u_5])
+       orfind u_4 = ri_2 <= qS suchthat defined(r_3[ri_2], m[ri_2]) && (m = m[ri_2]) then
+         return(r_3[u_4])
+       else
+         r_3 <-R D;
+         return(r_3)
+     ) | (
+       OT(m': bitstring, s: D) :=
+       find [unique] u_3 = ri_1 <= qH suchthat defined(r_4[ri_1], x1[ri_1]) && (m' = x1[ri_1]) then
+       X_Oeq: D <- f(pk, s);
+       if {96}(X_Oeq = f(pkgen(r), r_4[u_3])) then
+       find u_1 = u <= qS suchthat defined(m[u]) && (m' = m[u]) then
+         yield
+       else
+         event forge
+     ))
+
+
+Applying simplify
+  - Simplification pass
+    - Replaced (X_Oeq = f(pkgen(r), r_4[u_3])) with (s = r_4[u_3]) at 96
+yields
+
+Game 11 is
+     Ogen() :=
+     r <-R seed;
+     pk: pkey <- pkgen(r);
+     return(pk);
+     ((
+       foreach iH <= qH do
+       OH(x1: bitstring) :=
+       find [unique] u_7 = ri_5 <= qH suchthat defined(r_4[ri_5], x1[ri_5]) && (x1 = x1[ri_5]) then
+         return(f(pkgen(r), r_4[u_7]))
+       orfind u_6 = ri_4 <= qS suchthat defined(r_3[ri_4], m[ri_4]) && (x1 = m[ri_4]) then
+         return(f(pkgen(r), r_3[u_6]))
+       else
+         r_4 <-R D;
+         return(f(pkgen(r), r_4))
+     ) | (
+       foreach iS <= qS do
+       OS(m: bitstring) :=
+       find [unique] u_5 = ri_3 <= qH suchthat defined(r_4[ri_3], x1[ri_3]) && (m = x1[ri_3]) then
+         return(r_4[u_5])
+       orfind u_4 = ri_2 <= qS suchthat defined(r_3[ri_2], m[ri_2]) && (m = m[ri_2]) then
+         return(r_3[u_4])
+       else
+         r_3 <-R D;
+         return(r_3)
+     ) | (
+       OT(m': bitstring, s: D) :=
+       find [unique] u_3 = ri_1 <= qH suchthat defined(r_4[ri_1], x1[ri_1]) && (m' = x1[ri_1]) then
+       X_Oeq: D <- f(pk, s);
+       if s = r_4[u_3] then
+       find u_1 = u <= qS suchthat defined(m[u]) && (m' = m[u]) then
+         yield
+       else
+         event forge
+     ))
+
+
+Applying move all binders
+  - Move assignment to X_Oeq
+yields
+
+Game 12 is
+     Ogen() :=
+     r <-R seed;
+     pk: pkey <- pkgen(r);
+     return(pk);
+     ((
+       foreach iH <= qH do
+       OH(x1: bitstring) :=
+       find [unique] u_7 = ri_5 <= qH suchthat defined(r_4[ri_5], x1[ri_5]) && (x1 = x1[ri_5]) then
+         return(f(pkgen(r), r_4[u_7]))
+       orfind u_6 = ri_4 <= qS suchthat defined(r_3[ri_4], m[ri_4]) && (x1 = m[ri_4]) then
+         return(f(pkgen(r), r_3[u_6]))
+       else
+         r_4 <-R D;
+         return(f(pkgen(r), r_4))
+     ) | (
+       foreach iS <= qS do
+       OS(m: bitstring) :=
+       find [unique] u_5 = ri_3 <= qH suchthat defined(r_4[ri_3], x1[ri_3]) && (m = x1[ri_3]) then
+         return(r_4[u_5])
+       orfind u_4 = ri_2 <= qS suchthat defined(r_3[ri_2], m[ri_2]) && (m = m[ri_2]) then
+         return(r_3[u_4])
+       else
+         r_3 <-R D;
+         return(r_3)
+     ) | (
+       OT(m': bitstring, s: D) :=
+       find [unique] u_3 = ri_1 <= qH suchthat defined(r_4[ri_1], x1[ri_1]) && (m' = x1[ri_1]) then
+       if s = r_4[u_3] then
+       find u_1 = u <= qS suchthat defined(m[u]) && (m' = m[u]) then
+         yield
+       else
+         event forge
+     ))
+
+
+Applying remove assignments of binder pk
+  - Remove assignments on pk (definition removed, all usages removed)
+yields
+
+Game 13 is
+     Ogen() :=
+     r <-R seed;
+     return(pkgen(r));
+     ((
+       foreach iH <= qH do
+       OH(x1: bitstring) :=
+       find [unique] u_7 = ri_5 <= qH suchthat defined(r_4[ri_5], x1[ri_5]) && (x1 = x1[ri_5]) then
+         return(f(pkgen(r), r_4[u_7]))
+       orfind u_6 = ri_4 <= qS suchthat defined(r_3[ri_4], m[ri_4]) && (x1 = m[ri_4]) then
+         return(f(pkgen(r), r_3[u_6]))
+       else
+         r_4 <-R D;
+         return(f(pkgen(r), r_4))
+     ) | (
+       foreach iS <= qS do
+       OS(m: bitstring) :=
+       find [unique] u_5 = ri_3 <= qH suchthat defined(r_4[ri_3], x1[ri_3]) && (m = x1[ri_3]) then
+         return(r_4[u_5])
+       orfind u_4 = ri_2 <= qS suchthat defined(r_3[ri_2], m[ri_2]) && (m = m[ri_2]) then
+         return(r_3[u_4])
+       else
+         r_3 <-R D;
+         return(r_3)
+     ) | (
+       OT(m': bitstring, s: D) :=
+       find [unique] u_3 = ri_1 <= qH suchthat defined(r_4[ri_1], x1[ri_1]) && (m' = x1[ri_1]) then
+       if s = r_4[u_3] then
+       find u_1 = u <= qS suchthat defined(m[u]) && (m' = m[u]) then
+         yield
+       else
+         event forge
+     ))
+
+
+Applying equivalence ow(f) with r_3, r, r_4 [probability (qS + qH) * POW(time_1)]
+  - Equivalence ow(f) with variables: r_4 -> x_1, r -> r_1, r_3 -> x_1
+yields
+
+Game 14 is
+     Ogen() :=
+     r <-R seed;
+     return(pkgen'(r));
+     ((
+       foreach iH <= qH do
+       OH(x1: bitstring) :=
+       find [unique] u_7 = ri_5 <= qH suchthat defined(r_4[ri_5], x1[ri_5]) && (x1 = x1[ri_5]) then
+         return(f'(pkgen'(r), r_4[u_7]))
+       orfind u_6 = ri_4 <= qS suchthat defined(r_3[ri_4], m[ri_4]) && (x1 = m[ri_4]) then
+         return(f'(pkgen'(r), r_3[u_6]))
+       else
+         r_4 <-R D;
+         return(f'(pkgen'(r), r_4))
+     ) | (
+       foreach iS <= qS do
+       OS(m: bitstring) :=
+       find [unique] u_5 = ri_3 <= qH suchthat defined(r_4[ri_3], x1[ri_3]) && (m = x1[ri_3]) then
+         return((k_1: bool <- cst_bool; r_4[u_5]))
+       orfind u_4 = ri_2 <= qS suchthat defined(r_3[ri_2], m[ri_2]) && (m = m[ri_2]) then
+         return((k_2: bool <- cst_bool; r_3[u_4]))
+       else
+         r_3 <-R D;
+         return((k: bool <- cst_bool; r_3))
+     ) | (
+       OT(m': bitstring, s: D) :=
+       find [unique] u_3 = ri_1 <= qH suchthat defined(r_4[ri_1], x1[ri_1]) && (m' = x1[ri_1]) then
+ {95}  if (x': D <- s; find u_8 = ri_7 <= qS suchthat defined(k_1[ri_7], u_5[ri_7]) && (u_3 = u_5[ri_7]) then (x' = r_4[u_3]) else false) then
+       find u_1 = u <= qS suchthat defined(m[u]) && (m' = m[u]) then
+         yield
+       else
+         event forge
+     ))
+
+
+Applying expand
+  - Expand if/find/let
+    - Test at 95 always false
+yields
+
+Game 15 is
+     Ogen() :=
+     r <-R seed;
+     return(pkgen'(r));
+     ((
+       foreach iH <= qH do
+       OH(x1: bitstring) :=
+       find [unique] u_7 = ri_5 <= qH suchthat defined(r_4[ri_5], x1[ri_5]) && (x1 = x1[ri_5]) then
+         return(f'(pkgen'(r), r_4[u_7]))
+       orfind u_6 = ri_4 <= qS suchthat defined(r_3[ri_4], m[ri_4]) && (x1 = m[ri_4]) then
+         return(f'(pkgen'(r), r_3[u_6]))
+       else
+         r_4 <-R D;
+         return(f'(pkgen'(r), r_4))
+     ) | (
+       foreach iS <= qS do
+       OS(m: bitstring) :=
+       find [unique] u_5 = ri_3 <= qH suchthat defined(r_4[ri_3], x1[ri_3]) && (m = x1[ri_3]) then
+         k_1: bool <- cst_bool;
+         return(r_4[u_5])
+       orfind u_4 = ri_2 <= qS suchthat defined(r_3[ri_2], m[ri_2]) && (m = m[ri_2]) then
+         k_2: bool <- cst_bool;
+         return(r_3[u_4])
+       else
+         r_3 <-R D;
+         k: bool <- cst_bool;
+         return(r_3)
+     ) | (
+       OT(m': bitstring, s: D) :=
+       find [unique] u_3 = ri_1 <= qH suchthat defined(r_4[ri_1], x1[ri_1]) && (m' = x1[ri_1]) then
+       x': D <- s;
+       find u_8 = ri_7 <= qS suchthat defined(k_1[ri_7], u_5[ri_7]) && (u_3 = u_5[ri_7]) then
+       if x' = r_4[u_3] then
+       find u_1 = u <= qS suchthat defined(m[u]) && (m' = m[u]) then
+         yield
+       else
+         event forge
+     ))
+
+
+Applying remove assignments of findcond
+  - Remove assignments on x' (definition removed, all usages removed)
+  - Remove assignments on k (definition removed, all usages removed)
+  - Remove assignments on k_2 (definition removed, all usages removed)
+yields
+
+Game 16 is
+     Ogen() :=
+     r <-R seed;
+     return(pkgen'(r));
+     ((
+       foreach iH <= qH do
+       OH(x1: bitstring) :=
+       find [unique] u_7 = ri_5 <= qH suchthat defined(r_4[ri_5], x1[ri_5]) && (x1 = x1[ri_5]) then
+         return(f'(pkgen'(r), r_4[u_7]))
+       orfind u_6 = ri_4 <= qS suchthat defined(r_3[ri_4], m[ri_4]) && (x1 = m[ri_4]) then
+         return(f'(pkgen'(r), r_3[u_6]))
+       else
+         r_4 <-R D;
+         return(f'(pkgen'(r), r_4))
+     ) | (
+       foreach iS <= qS do
+       OS(m: bitstring) :=
+       find [unique] u_5 = ri_3 <= qH suchthat defined(r_4[ri_3], x1[ri_3]) && (m = x1[ri_3]) then
+         k_1: bool <- cst_bool;
+         return(r_4[u_5])
+       orfind u_4 = ri_2 <= qS suchthat defined(r_3[ri_2], m[ri_2]) && (m = m[ri_2]) then
+         return(r_3[u_4])
+       else
+         r_3 <-R D;
+         return(r_3)
+     ) | (
+       OT(m': bitstring, s: D) :=
+ {85}  find [unique] u_3 = ri_1 <= qH suchthat defined(r_4[ri_1], x1[ri_1]) && (m' = x1[ri_1]) then
+ {92}  find u_8 = ri_7 <= qS suchthat defined(k_1[ri_7], u_5[ri_7]) && (u_3 = u_5[ri_7]) then
+ {99}  if s = r_4[u_3] then
+{104}  find u_1 = u <= qS suchthat defined(m[u]) && (m' = m[u]) then
+         yield
+       else
+         event forge
+     ))
+
+
+Applying simplify
+  - Simplification pass
+    - Remove else branch of find at 104
+    - A single branch always succeeds in find at 104
+    - Merge branches of test at 99
+    - Replaced defined condition k_1[ri_7], u_5[ri_7] with u_5[ri_7] in find at 92
+    - Find at 92 removed (else branch kept if any)
+    - Find at 85 removed (else branch kept if any)
+yields
+
+Game 17 is
+     Ogen() :=
+     r <-R seed;
+     return(pkgen'(r));
+     ((
+       foreach iH <= qH do
+       OH(x1: bitstring) :=
+       find [unique] u_7 = ri_5 <= qH suchthat defined(r_4[ri_5], x1[ri_5]) && (x1 = x1[ri_5]) then
+         return(f'(pkgen'(r), r_4[u_7]))
+       orfind u_6 = ri_4 <= qS suchthat defined(r_3[ri_4], m[ri_4]) && (x1 = m[ri_4]) then
+         return(f'(pkgen'(r), r_3[u_6]))
+       else
+         r_4 <-R D;
+         return(f'(pkgen'(r), r_4))
+     ) | (
+       foreach iS <= qS do
+       OS(m: bitstring) :=
+       find [unique] u_5 = ri_3 <= qH suchthat defined(r_4[ri_3], x1[ri_3]) && (m = x1[ri_3]) then
+         k_1: bool <- cst_bool;
+         return(r_4[u_5])
+       orfind u_4 = ri_2 <= qS suchthat defined(r_3[ri_2], m[ri_2]) && (m = m[ri_2]) then
+         return(r_3[u_4])
+       else
+         r_3 <-R D;
+         return(r_3)
+     ) | (
+       OT(m': bitstring, s: D) :=
+       yield
+     ))
+
+
+Applying SA rename new without array accesses and remove assignments of findcond
+  - Remove assignments on k_1 (definition removed, all usages removed)
+yields
+
+Game 18 is
+     Ogen() :=
+     r <-R seed;
+     return(pkgen'(r));
+     ((
+       foreach iH <= qH do
+       OH(x1: bitstring) :=
+       find [unique] u_7 = ri_5 <= qH suchthat defined(r_4[ri_5], x1[ri_5]) && (x1 = x1[ri_5]) then
+         return(f'(pkgen'(r), r_4[u_7]))
+       orfind u_6 = ri_4 <= qS suchthat defined(r_3[ri_4], m[ri_4]) && (x1 = m[ri_4]) then
+         return(f'(pkgen'(r), r_3[u_6]))
+       else
+         r_4 <-R D;
+         return(f'(pkgen'(r), r_4))
+     ) | (
+       foreach iS <= qS do
+       OS(m: bitstring) :=
+       find [unique] u_5 = ri_3 <= qH suchthat defined(r_4[ri_3], x1[ri_3]) && (m = x1[ri_3]) then
+         return(r_4[u_5])
+       orfind u_4 = ri_2 <= qS suchthat defined(r_3[ri_2], m[ri_2]) && (m = m[ri_2]) then
+         return(r_3[u_4])
+       else
+         r_3 <-R D;
+         return(r_3)
+     ) | (
+       OT(m': bitstring, s: D) :=
+       yield
+     ))
+
+
+Proved event(forge) ==> false in game 18
+Pr[Game 1: forge] <= (qH + qS) * POW(time_1) + 1 / |D| + Pr[Game 18: forge]
+Pr[Game 18: forge] <= 0
+RESULT Proved event(forge) ==> false up to probability (qS + qH) * POW(time_1) + 1 / |D|
+RESULT time_1 = qH^2 * time(= bitstring, maxlength(game 13: x1), maxlength(game 13: x1)) + qH * qS * time(= bitstring, maxlength(game 13: x1), maxlength(game 13: m)) + qS * qH * time(= bitstring, maxlength(game 13: m), maxlength(game 13: x1)) + qS^2 * time(= bitstring, maxlength(game 13: m), maxlength(game 13: m)) + qH * time(= bitstring, maxlength(game 13: m'), maxlength(game 13: x1)) + qS * time(= bitstring, maxlength(game 13: m'), maxlength(game 13: m)) + time + (qH - 1) * time(f)
+All queries proved.

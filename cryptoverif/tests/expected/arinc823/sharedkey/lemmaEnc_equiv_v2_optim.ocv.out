@@ -1,0 +1,2691 @@
+Doing expand get, insert and prove unique annotations... No change.
+Doing simplify (non-expanded game)... No change.
+Doing expand... No change.
+Doing remove assignments of findcond... No change.
+Doing simplify... Run simplify 2 time(s). Fixpoint reached.
+Done.
+Doing move all binders... No change.
+Doing SA rename new without array accesses and remove assignments of findcond... No change.
+Doing merge branches... No change.
+Doing expand get, insert and prove unique annotations... No change.
+Doing simplify (non-expanded game)... No change.
+Doing expand... No change.
+Doing remove assignments of findcond... No change.
+Doing simplify... Run simplify 1 time(s). Fixpoint reached.
+No change.
+Doing move all binders... No change.
+Doing SA rename new without array accesses and remove assignments of findcond... No change.
+Doing merge branches... No change.
+At 110 in this process and at 98 on the other end, terms cannot be proved equal.
+Trying equivalence prf_partial(AES) with terms: 4 -> AES(k_4, x_O_enc_1), 27 -> AES(k_4, x_O_enc_2), 55 -> AES(k_4, x_O_enc_3), 61 -> AES(k_4, x_O_enc_4), 91 -> AES(k_4, x_O_enc_5), 97 -> AES(k_4, x_O_enc_6), 103 -> AES(k_4, x_O_enc_7)... Transf. OK Proba. computed Transf. done Succeeded.
+Doing simplify (non-expanded game)... Done.
+Doing expand... Done.
+Doing remove assignments of findcond... Done.
+Doing simplify... Doing global dependency analysis on r_enc inside simplify... Done. Restarting simplify
+Eliminated collisions between IV3 and c32 Probability: 1 / |blocksize|
+(IV3 collides with a value independent of r_enc[...] with probability at most 1 / |blocksize|;
+ c32 does not depend on r_enc[...])
+Eliminated collisions between IV3 and c31 Probability: 1 / |blocksize|
+(IV3 collides with a value independent of r_enc[...] with probability at most 1 / |blocksize|;
+ c31 does not depend on r_enc[...])
+Eliminated collisions between IV3 and x_O_enc Probability: 1 / |blocksize|
+(IV3 collides with a value independent of r_enc[...] with probability at most 1 / |blocksize|;
+ x_O_enc does not depend on r_enc[...])
+Eliminated collisions between IV3 and c21 Probability: 1 / |blocksize|
+(IV3 collides with a value independent of r_enc[...] with probability at most 1 / |blocksize|;
+ c21 does not depend on r_enc[...])
+Eliminated collisions between IV2 and c21 Probability: 1 / |blocksize|
+(IV2 collides with a value independent of r_enc[...] with probability at most 1 / |blocksize|;
+ c21 does not depend on r_enc[...])
+Eliminated collisions between IV2 and c32 Probability: 1 / |blocksize|
+(IV2 collides with a value independent of r_enc[...] with probability at most 1 / |blocksize|;
+ c32 does not depend on r_enc[...])
+Eliminated collisions between IV2 and c31 Probability: 1 / |blocksize|
+(IV2 collides with a value independent of r_enc[...] with probability at most 1 / |blocksize|;
+ c31 does not depend on r_enc[...])
+Eliminated collisions between IV2 and x_O_enc Probability: 1 / |blocksize|
+(IV2 collides with a value independent of r_enc[...] with probability at most 1 / |blocksize|;
+ x_O_enc does not depend on r_enc[...])
+Eliminated collisions between IV1 and c32 Probability: 1 / |blocksize|
+(IV1 collides with a value independent of r_enc[...] with probability at most 1 / |blocksize|;
+ c32 does not depend on r_enc[...])
+Eliminated collisions between IV1 and c31 Probability: 1 / |blocksize|
+(IV1 collides with a value independent of r_enc[...] with probability at most 1 / |blocksize|;
+ c31 does not depend on r_enc[...])
+Eliminated collisions between IV1 and c21 Probability: 1 / |blocksize|
+(IV1 collides with a value independent of r_enc[...] with probability at most 1 / |blocksize|;
+ c21 does not depend on r_enc[...])
+Eliminated collisions between IV1 and x_O_enc Probability: 1 / |blocksize|
+(IV1 collides with a value independent of r_enc[...] with probability at most 1 / |blocksize|;
+ x_O_enc does not depend on r_enc[...])
+Eliminated collisions between xor(r_enc_2, m21) and x_O_enc Probability: 1 / |blocksize|
+(xor(r_enc_2, m21) collides with a value independent of r_enc_2 with probability at most 1 / |blocksize|;
+ x_O_enc does not depend on r_enc_2)
+Eliminated collisions between xor(r_enc_2, m21) and c31 Probability: 1 / |blocksize|
+(xor(r_enc_2, m21) collides with a value independent of r_enc_2 with probability at most 1 / |blocksize|;
+ c31 does not depend on r_enc_2)
+Eliminated collisions between xor(r_enc_2, m21) and c32 Probability: 1 / |blocksize|
+(xor(r_enc_2, m21) collides with a value independent of r_enc_2 with probability at most 1 / |blocksize|;
+ c32 does not depend on r_enc_2)
+Eliminated collisions between xor(r_enc_5, m32) and x_O_enc Probability: 1 / |blocksize|
+(xor(r_enc_5, m32) collides with a value independent of r_enc_5 with probability at most 1 / |blocksize|;
+ x_O_enc does not depend on r_enc_5)
+Eliminated collisions between xor(r_enc_5, m32) and c21 Probability: 1 / |blocksize|
+(xor(r_enc_5, m32) collides with a value independent of r_enc_5 with probability at most 1 / |blocksize|;
+ c21 does not depend on r_enc_5)
+Eliminated collisions between xor(r_enc_5, m32) and c31 Probability: 1 / |blocksize|
+(xor(r_enc_5, m32) collides with a value independent of r_enc_5 with probability at most 1 / |blocksize|;
+ c31 does not depend on r_enc_5)
+Eliminated collisions between xor(r_enc_4, m31) and x_O_enc Probability: 1 / |blocksize|
+(xor(r_enc_4, m31) collides with a value independent of r_enc_4 with probability at most 1 / |blocksize|;
+ x_O_enc does not depend on r_enc_4)
+Eliminated collisions between xor(r_enc_4, m31) and c21 Probability: 1 / |blocksize|
+(xor(r_enc_4, m31) collides with a value independent of r_enc_4 with probability at most 1 / |blocksize|;
+ c21 does not depend on r_enc_4)
+Run simplify 2 time(s). Fixpoint reached.
+Done.
+Doing move all binders... No change.
+Doing SA rename new without array accesses and remove assignments of findcond... Done.
+Doing merge branches... No change.
+Proved query event(ev_coll) ==> false
+Proved query event(ev_coll_1) ==> false
+Proved query event(ev_coll_2) ==> false
+Proved query event(ev_coll_3) ==> false
+Proved query event(ev_coll_4) ==> false
+Proved query event(ev_coll_5) ==> false
+Proved query event(ev_coll_6) ==> false
+Proved query event(ev_coll_7) ==> false
+Proved query event(ev_coll_8) ==> false
+Proved query event(ev_coll_9) ==> false
+Proved query event(ev_coll_10) ==> false
+Proved query event(ev_coll_11) ==> false
+Proved query event(ev_coll_12) ==> false
+Proved query event(ev_coll_13) ==> false
+Proved query event(ev_coll_14) ==> false
+Proved query event(ev_coll_15) ==> false
+Proved query event(ev_coll_16) ==> false
+Proved query event(ev_coll_17) ==> false
+Proved query event(ev_coll_18) ==> false
+Proved query event(ev_coll_19) ==> false
+Proved query event(ev_coll_20) ==> false
+Proved query event(ev_coll_21) ==> false
+Proved query event(ev_coll_22) ==> false
+Proved query event(ev_coll_23) ==> false
+Proved query event(ev_coll_24) ==> false
+Proved query event(ev_coll_25) ==> false
+Proved query event(ev_coll_26) ==> false
+Proved query event(ev_coll_27) ==> false
+Proved query event(ev_coll_28) ==> false
+Proved query event(ev_coll_29) ==> false
+Proved query event(ev_coll_30) ==> false
+Proved query event(ev_coll_31) ==> false
+Proved query event(ev_coll_32) ==> false
+Proved query event(ev_coll_33) ==> false
+Proved query event(ev_coll_34) ==> false
+Proved query event(ev_coll_35) ==> false
+Proved query event(ev_coll_36) ==> false
+Proved query event(ev_coll_37) ==> false
+Proved query event(ev_coll_38) ==> false
+Proved query event(ev_coll_39) ==> false
+Proved query event(ev_coll_40) ==> false
+Proved query event(ev_coll_41) ==> false
+Proved query event(ev_coll_42) ==> false
+Proved query event(ev_coll_43) ==> false
+Proved query event(ev_coll_44) ==> false
+Proved query event(ev_coll_45) ==> false
+Proved query event(ev_coll_46) ==> false
+Proved query event(ev_coll_47) ==> false
+Proved query event(ev_coll_48) ==> false
+At 86 in this process and at 98 on the other end, terms cannot be proved equal.
+Trying equivalence remove_xor(xor)... Transf. OK Proba. computed Transf. done Succeeded.
+Doing simplify (non-expanded game)... No change.
+Doing expand... Done.
+Doing remove assignments of findcond... Done.
+Doing simplify... Run simplify 2 time(s). Fixpoint reached.
+Done.
+Doing move all binders... No change.
+Doing SA rename new without array accesses and remove assignments of findcond... No change.
+Doing merge branches... No change.
+At 81 in this process and at 98 on the other end, terms cannot be proved equal.
+Trying equivalence remove_xor(xor)... Transf. OK Proba. computed Transf. done Succeeded.
+Doing simplify (non-expanded game)... No change.
+Doing expand... Done.
+Doing remove assignments of findcond... Done.
+Doing simplify... Run simplify 1 time(s). Fixpoint reached.
+No change.
+Doing move all binders... No change.
+Doing SA rename new without array accesses and remove assignments of findcond... No change.
+Doing merge branches... No change.
+At 77 in this process and at 98 on the other end, terms cannot be proved equal.
+Trying equivalence remove_xor(xor)... Transf. OK Proba. computed Transf. done Succeeded.
+Doing simplify (non-expanded game)... No change.
+Doing expand... Done.
+Doing remove assignments of findcond... Done.
+Doing simplify... Run simplify 1 time(s). Fixpoint reached.
+No change.
+Doing move all binders... No change.
+Doing SA rename new without array accesses and remove assignments of findcond... No change.
+Doing merge branches... No change.
+At 73 in this process and at 98 on the other end, terms cannot be proved equal.
+Trying equivalence remove_xor(xor)... Transf. OK Proba. computed Transf. done Succeeded.
+Doing simplify (non-expanded game)... No change.
+Doing expand... Done.
+Doing remove assignments of findcond... Done.
+Doing simplify... Run simplify 1 time(s). Fixpoint reached.
+No change.
+Doing move all binders... No change.
+Doing SA rename new without array accesses and remove assignments of findcond... No change.
+Doing merge branches... No change.
+At 68 in this process and at 98 on the other end, terms cannot be proved equal.
+Trying equivalence remove_xor(xor)... Transf. OK Proba. computed Transf. done Succeeded.
+Doing simplify (non-expanded game)... No change.
+Doing expand... Done.
+Doing remove assignments of findcond... Done.
+Doing simplify... Run simplify 1 time(s). Fixpoint reached.
+No change.
+Doing move all binders... No change.
+Doing SA rename new without array accesses and remove assignments of findcond... No change.
+Doing merge branches... No change.
+At 63 in this process and at 98 on the other end, terms cannot be proved equal.
+Trying equivalence remove_xor(xor)... Transf. OK Proba. computed Transf. done Succeeded.
+Doing simplify (non-expanded game)... No change.
+Doing expand... Done.
+Doing remove assignments of findcond... Done.
+Doing simplify... Run simplify 1 time(s). Fixpoint reached.
+No change.
+Doing move all binders... No change.
+Doing SA rename new without array accesses and remove assignments of findcond... No change.
+Doing merge branches... No change.
+At 58 in this process and at 98 on the other end, terms cannot be proved equal.
+Trying equivalence remove_xor(xor)... Failed.
+Trying equivalence prf(AES)... Failed.
+Trying equivalence prf_partial(AES) with terms: 4 -> AES(k_5, x_O_enc_13), 26 -> AES(k_5, x_O_enc_12), 52 -> AES(k_5, x_O_enc_11), 56 -> AES(k_5, x_O_enc_10), 84 -> AES(k_5, x_O_enc_9), 88 -> AES(k_5, x_O_enc_8), 92 -> AES(k_5, x_O_enc_7)... Transf. OK Proba. computed Transf. done Succeeded.
+Doing simplify (non-expanded game)... Done.
+Doing expand... Eliminated collisions between r_enc_15 and Zero Probability: 1 / |blocksize|
+(r_enc_15 collides with a value independent of r_enc_15 with probability at most 1 / |blocksize|;
+ Zero does not depend on r_enc_15)
+Eliminated collisions between r_enc_17 and Zero Probability: 1 / |blocksize|
+(r_enc_17 collides with a value independent of r_enc_17 with probability at most 1 / |blocksize|;
+ Zero does not depend on r_enc_17)
+Eliminated collisions between r_enc_18 and Zero Probability: 1 / |blocksize|
+(r_enc_18 collides with a value independent of r_enc_18 with probability at most 1 / |blocksize|;
+ Zero does not depend on r_enc_18)
+Eliminated collisions between r_enc_18 and r_enc_17 Probability: 1 / |blocksize|
+Done.
+Doing remove assignments of findcond... Done.
+Doing simplify... Doing global dependency analysis on r_enc_13 inside simplify... Done. Restarting simplify
+Eliminated collisions between IV3_1 and r_enc_18 Probability: 1 / |blocksize|
+(IV3_1 collides with a value independent of r_enc_13[...] with probability at most 1 / |blocksize|;
+ r_enc_18 does not depend on r_enc_13[...])
+Eliminated collisions between IV3_1 and r_enc_17 Probability: 1 / |blocksize|
+(IV3_1 collides with a value independent of r_enc_13[...] with probability at most 1 / |blocksize|;
+ r_enc_17 does not depend on r_enc_13[...])
+Eliminated collisions between IV3_1 and x_O_enc_7 Probability: 1 / |blocksize|
+(IV3_1 collides with a value independent of r_enc_13[...] with probability at most 1 / |blocksize|;
+ x_O_enc_7 does not depend on r_enc_13[...])
+Eliminated collisions between IV3_1 and r_enc_15 Probability: 1 / |blocksize|
+(IV3_1 collides with a value independent of r_enc_13[...] with probability at most 1 / |blocksize|;
+ r_enc_15 does not depend on r_enc_13[...])
+Eliminated collisions between IV2_1 and r_enc_15 Probability: 1 / |blocksize|
+(IV2_1 collides with a value independent of r_enc_13[...] with probability at most 1 / |blocksize|;
+ r_enc_15 does not depend on r_enc_13[...])
+Eliminated collisions between IV2_1 and r_enc_18 Probability: 1 / |blocksize|
+(IV2_1 collides with a value independent of r_enc_13[...] with probability at most 1 / |blocksize|;
+ r_enc_18 does not depend on r_enc_13[...])
+Eliminated collisions between IV2_1 and r_enc_17 Probability: 1 / |blocksize|
+(IV2_1 collides with a value independent of r_enc_13[...] with probability at most 1 / |blocksize|;
+ r_enc_17 does not depend on r_enc_13[...])
+Eliminated collisions between IV2_1 and x_O_enc_7 Probability: 1 / |blocksize|
+(IV2_1 collides with a value independent of r_enc_13[...] with probability at most 1 / |blocksize|;
+ x_O_enc_7 does not depend on r_enc_13[...])
+Eliminated collisions between IV1_1 and r_enc_18 Probability: 1 / |blocksize|
+(IV1_1 collides with a value independent of r_enc_13[...] with probability at most 1 / |blocksize|;
+ r_enc_18 does not depend on r_enc_13[...])
+Eliminated collisions between IV1_1 and r_enc_17 Probability: 1 / |blocksize|
+(IV1_1 collides with a value independent of r_enc_13[...] with probability at most 1 / |blocksize|;
+ r_enc_17 does not depend on r_enc_13[...])
+Eliminated collisions between IV1_1 and r_enc_15 Probability: 1 / |blocksize|
+(IV1_1 collides with a value independent of r_enc_13[...] with probability at most 1 / |blocksize|;
+ r_enc_15 does not depend on r_enc_13[...])
+Eliminated collisions between IV1_1 and x_O_enc_7 Probability: 1 / |blocksize|
+(IV1_1 collides with a value independent of r_enc_13[...] with probability at most 1 / |blocksize|;
+ x_O_enc_7 does not depend on r_enc_13[...])
+Eliminated collisions between r_enc_15 and r_enc_17 Probability: 1 / |blocksize|
+(r_enc_15 collides with a value independent of r_enc_15 with probability at most 1 / |blocksize|;
+ r_enc_17 does not depend on r_enc_15)
+Eliminated collisions between r_enc_15 and r_enc_18 Probability: 1 / |blocksize|
+(r_enc_15 collides with a value independent of r_enc_15 with probability at most 1 / |blocksize|;
+ r_enc_18 does not depend on r_enc_15)
+Eliminated collisions between r_enc_18 and r_enc_15 Probability: 1 / |blocksize|
+(r_enc_18 collides with a value independent of r_enc_18 with probability at most 1 / |blocksize|;
+ r_enc_15 does not depend on r_enc_18)
+Eliminated collisions between r_enc_17 and r_enc_15 Probability: 1 / |blocksize|
+(r_enc_17 collides with a value independent of r_enc_17 with probability at most 1 / |blocksize|;
+ r_enc_15 does not depend on r_enc_17)
+Run simplify 2 time(s). Fixpoint reached.
+Done.
+Doing move all binders... No change.
+Doing SA rename new without array accesses and remove assignments of findcond... Done.
+Doing merge branches... No change.
+Proved query event(ev_coll_49) ==> false
+Proved query event(ev_coll_50) ==> false
+Proved query event(ev_coll_51) ==> false
+Proved query event(ev_coll_52) ==> false
+Proved query event(ev_coll_53) ==> false
+Proved query event(ev_coll_54) ==> false
+Proved query event(ev_coll_55) ==> false
+Proved query event(ev_coll_56) ==> false
+Proved query event(ev_coll_57) ==> false
+Proved query event(ev_coll_58) ==> false
+Proved query event(ev_coll_59) ==> false
+Proved query event(ev_coll_60) ==> false
+Proved query event(ev_coll_61) ==> false
+Proved query event(ev_coll_62) ==> false
+Proved query event(ev_coll_63) ==> false
+Proved query event(ev_coll_64) ==> false
+Proved query event(ev_coll_65) ==> false
+Proved query event(ev_coll_66) ==> false
+Proved query event(ev_coll_67) ==> false
+Proved query event(ev_coll_68) ==> false
+Proved query event(ev_coll_69) ==> false
+Proved query event(ev_coll_70) ==> false
+Proved query event(ev_coll_71) ==> false
+Proved query event(ev_coll_72) ==> false
+Proved query event(ev_coll_73) ==> false
+Proved query event(ev_coll_74) ==> false
+Proved query event(ev_coll_75) ==> false
+Proved query event(ev_coll_76) ==> false
+Proved query event(ev_coll_77) ==> false
+Proved query event(ev_coll_78) ==> false
+Proved query event(ev_coll_79) ==> false
+Proved query event(ev_coll_80) ==> false
+Proved query event(ev_coll_81) ==> false
+Proved query event(ev_coll_82) ==> false
+Proved query event(ev_coll_83) ==> false
+Proved query event(ev_coll_84) ==> false
+Proved query event(ev_coll_85) ==> false
+Proved query event(ev_coll_86) ==> false
+Proved query event(ev_coll_87) ==> false
+Proved query event(ev_coll_88) ==> false
+Proved query event(ev_coll_89) ==> false
+Proved query event(ev_coll_90) ==> false
+Proved query event(ev_coll_91) ==> false
+Proved query event(ev_coll_92) ==> false
+Proved query event(ev_coll_93) ==> false
+Proved query event(ev_coll_94) ==> false
+Proved query event(ev_coll_95) ==> false
+Proved query event(ev_coll_96) ==> false
+Proved query event(ev_coll_97) ==> false
+At 59 in this process and at 58 on the other end, terms cannot be proved equal.
+Trying equivalence remove_xor(xor)... Failed.
+Trying equivalence prf(AES)... Failed.
+Doing simplify... Run simplify 2 time(s). Fixpoint reached.
+Done.
+Proved query indistinguishability from game 1
+===================== Proof starts =======================
+Initial state
+Game 1 is
+     Ogen() :=
+     k_1 <-R enc_key;
+     IV0: blocksize <- AES(k_1, Zero);
+     return();
+     ((
+       Oenc1(IVdata1: blocksize, m1: blocksize, l_1: len) :=
+       if defined(IVdata2) && (IVdata1 = IVdata2) then
+         event_abort repeatedIV
+       else
+         if defined(IVdata3) && (IVdata1 = IVdata3) then
+           event_abort repeatedIV
+         else
+           IV1: blocksize <- xor(IV0, IVdata1);
+           c1: blocksize <- xor(AES(k_1, IV1), m1);
+           return(truncate(c1, l_1))
+     ) | (
+       Oenc2(IVdata2: blocksize, m21: blocksize, m22: blocksize, l_2: len) :=
+       if defined(IVdata1) && (IVdata2 = IVdata1) then
+         event_abort repeatedIV
+       else
+         if defined(IVdata3) && (IVdata2 = IVdata3) then
+           event_abort repeatedIV
+         else
+           IV2: blocksize <- xor(IV0, IVdata2);
+           c21: blocksize <- xor(AES(k_1, IV2), m21);
+           c22: blocksize <- xor(AES(k_1, c21), m22);
+           return(c21, truncate(c22, l_2))
+     ) | (
+       Oenc3(IVdata3: blocksize, m31: blocksize, m32: blocksize, m33: blocksize, l_3: len) :=
+       if defined(IVdata1) && (IVdata3 = IVdata1) then
+         event_abort repeatedIV
+       else
+         if defined(IVdata2) && (IVdata3 = IVdata2) then
+           event_abort repeatedIV
+         else
+           IV3: blocksize <- xor(IV0, IVdata3);
+           c31: blocksize <- xor(AES(k_1, IV3), m31);
+           c32: blocksize <- xor(AES(k_1, c31), m32);
+           c33: blocksize <- xor(AES(k_1, c32), m33);
+           return(c31, c32, truncate(c33, l_3))
+     ))
+
+
+Applying equivalence prf_partial(AES) with terms: 4 -> AES(k_4, x_O_enc_1), 27 -> AES(k_4, x_O_enc_2), 55 -> AES(k_4, x_O_enc_3), 61 -> AES(k_4, x_O_enc_4), 91 -> AES(k_4, x_O_enc_5), 97 -> AES(k_4, x_O_enc_6), 103 -> AES(k_4, x_O_enc_7) [probability P_AES(time_1, 7) + Pr[event ev_coll_48 in game 2] + Pr[event ev_coll_47 in game 2] + Pr[event ev_coll_46 in game 2] + Pr[event ev_coll_45 in game 2] + Pr[event ev_coll_44 in game 2] + Pr[event ev_coll_43 in game 2] + Pr[event ev_coll_42 in game 2] + Pr[event ev_coll_41 in game 2] + Pr[event ev_coll_40 in game 2] + Pr[event ev_coll_39 in game 2] + Pr[event ev_coll_38 in game 2] + Pr[event ev_coll_37 in game 2] + Pr[event ev_coll_36 in game 2] + Pr[event ev_coll_35 in game 2] + Pr[event ev_coll_34 in game 2] + Pr[event ev_coll_33 in game 2] + Pr[event ev_coll_32 in game 2] + Pr[event ev_coll_31 in game 2] + Pr[event ev_coll_30 in game 2] + Pr[event ev_coll_29 in game 2] + Pr[event ev_coll_28 in game 2] + Pr[event ev_coll_27 in game 2] + Pr[event ev_coll_26 in game 2] + Pr[event ev_coll_25 in game 2] + Pr[event ev_coll_24 in game 2] + Pr[event ev_coll_23 in game 2] + Pr[event ev_coll_22 in game 2] + Pr[event ev_coll_21 in game 2] + Pr[event ev_coll_20 in game 2] + Pr[event ev_coll_19 in game 2] + Pr[event ev_coll_18 in game 2] + Pr[event ev_coll_17 in game 2] + Pr[event ev_coll_16 in game 2] + Pr[event ev_coll_15 in game 2] + Pr[event ev_coll_14 in game 2] + Pr[event ev_coll_13 in game 2] + Pr[event ev_coll_12 in game 2] + Pr[event ev_coll_11 in game 2] + Pr[event ev_coll_10 in game 2] + Pr[event ev_coll_9 in game 2] + Pr[event ev_coll_8 in game 2] + Pr[event ev_coll_7 in game 2] + Pr[event ev_coll_6 in game 2] + Pr[event ev_coll_5 in game 2] + Pr[event ev_coll_4 in game 2] + Pr[event ev_coll_3 in game 2] + Pr[event ev_coll_2 in game 2] + Pr[event ev_coll_1 in game 2] + Pr[event ev_coll in game 2]]
+  - Equivalence prf_partial(AES) with variables: k_1 -> k_4;terms: 4 -> AES(k_4, x_O_enc_1), 27 -> AES(k_4, x_O_enc_2), 55 -> AES(k_4, x_O_enc_3), 61 -> AES(k_4, x_O_enc_4), 91 -> AES(k_4, x_O_enc_5), 97 -> AES(k_4, x_O_enc_6), 103 -> AES(k_4, x_O_enc_7)
+yields
+
+Game 2 is
+     Ogen() :=
+     k_4 <-R enc_key;
+     IV0: blocksize <- (x_O_enc: blocksize <- Zero; {6}find [unique]  else {7}find  else r_enc <-R blocksize; r_enc);
+     return();
+     ((
+       Oenc1(IVdata1: blocksize, m1: blocksize, l_1: len) :=
+       if defined(IVdata2) && (IVdata1 = IVdata2) then
+         event_abort repeatedIV
+       else
+         if defined(IVdata3) && (IVdata1 = IVdata3) then
+           event_abort repeatedIV
+         else
+           IV1: blocksize <- xor(IV0, IVdata1);
+           c1: blocksize <- xor((x_O_enc_1: blocksize <- IV1; find [unique]  suchthat defined(x_O_enc, r_enc) && (x_O_enc_1 = x_O_enc) then event_abort ev_coll_41 orfind  suchthat defined(x_O_enc_2, r_enc_2) && (x_O_enc_1 = x_O_enc_2) then event_abort ev_coll_39 orfind  suchthat defined(x_O_enc_3, r_enc_3) && (x_O_enc_1 = x_O_enc_3) then event_abort ev_coll_38 orfind  suchthat defined(x_O_enc_4, r_enc_4) && (x_O_enc_1 = x_O_enc_4) then event_abort ev_coll_37 orfind  suchthat defined(x_O_enc_5, r_enc_5) && (x_O_enc_1 = x_O_enc_5) then event_abort ev_coll_36 orfind  suchthat defined(x_O_enc_6, r_enc_6) && (x_O_enc_1 = x_O_enc_6) then event_abort ev_coll_35 else {57}find  else r_enc_1 <-R blocksize; r_enc_1), m1);
+           return(truncate(c1, l_1))
+     ) | (
+       Oenc2(IVdata2: blocksize, m21: blocksize, m22: blocksize, l_2: len) :=
+       if defined(IVdata1) && (IVdata2 = IVdata1) then
+         event_abort repeatedIV
+       else
+         if defined(IVdata3) && (IVdata2 = IVdata3) then
+           event_abort repeatedIV
+         else
+           IV2: blocksize <- xor(IV0, IVdata2);
+           c21: blocksize <- xor((x_O_enc_2: blocksize <- IV2; find [unique]  suchthat defined(x_O_enc, r_enc) && (x_O_enc_2 = x_O_enc) then event_abort ev_coll_34 orfind  suchthat defined(x_O_enc_1, r_enc_1) && (x_O_enc_2 = x_O_enc_1) then event_abort ev_coll_33 orfind  suchthat defined(x_O_enc_4, r_enc_4) && (x_O_enc_2 = x_O_enc_4) then event_abort ev_coll_30 orfind  suchthat defined(x_O_enc_5, r_enc_5) && (x_O_enc_2 = x_O_enc_5) then event_abort ev_coll_29 orfind  suchthat defined(x_O_enc_6, r_enc_6) && (x_O_enc_2 = x_O_enc_6) then event_abort ev_coll_28 else {108}find  else r_enc_2 <-R blocksize; r_enc_2), m21);
+           c22: blocksize <- xor((x_O_enc_3: blocksize <- c21; find [unique]  suchthat defined(x_O_enc, r_enc) && (x_O_enc_3 = x_O_enc) then event_abort ev_coll_27 orfind  suchthat defined(x_O_enc_1, r_enc_1) && (x_O_enc_3 = x_O_enc_1) then event_abort ev_coll_26 orfind  suchthat defined(x_O_enc_2, r_enc_2) && (x_O_enc_3 = x_O_enc_2) then event_abort ev_coll_25 orfind  suchthat defined(x_O_enc_4, r_enc_4) && (x_O_enc_3 = x_O_enc_4) then event_abort ev_coll_23 orfind  suchthat defined(x_O_enc_5, r_enc_5) && (x_O_enc_3 = x_O_enc_5) then event_abort ev_coll_22 orfind  suchthat defined(x_O_enc_6, r_enc_6) && (x_O_enc_3 = x_O_enc_6) then event_abort ev_coll_21 else {141}find  else r_enc_3 <-R blocksize; r_enc_3), m22);
+           return(c21, truncate(c22, l_2))
+     ) | (
+       Oenc3(IVdata3: blocksize, m31: blocksize, m32: blocksize, m33: blocksize, l_3: len) :=
+       if defined(IVdata1) && (IVdata3 = IVdata1) then
+         event_abort repeatedIV
+       else
+         if defined(IVdata2) && (IVdata3 = IVdata2) then
+           event_abort repeatedIV
+         else
+           IV3: blocksize <- xor(IV0, IVdata3);
+           c31: blocksize <- xor((x_O_enc_4: blocksize <- IV3; find [unique]  suchthat defined(x_O_enc, r_enc) && (x_O_enc_4 = x_O_enc) then event_abort ev_coll_20 orfind  suchthat defined(x_O_enc_1, r_enc_1) && (x_O_enc_4 = x_O_enc_1) then event_abort ev_coll_19 orfind  suchthat defined(x_O_enc_2, r_enc_2) && (x_O_enc_4 = x_O_enc_2) then event_abort ev_coll_18 orfind  suchthat defined(x_O_enc_3, r_enc_3) && (x_O_enc_4 = x_O_enc_3) then event_abort ev_coll_17 else {190}find  else r_enc_4 <-R blocksize; r_enc_4), m31);
+           c32: blocksize <- xor((x_O_enc_5: blocksize <- c31; find [unique]  suchthat defined(x_O_enc, r_enc) && (x_O_enc_5 = x_O_enc) then event_abort ev_coll_13 orfind  suchthat defined(x_O_enc_1, r_enc_1) && (x_O_enc_5 = x_O_enc_1) then event_abort ev_coll_12 orfind  suchthat defined(x_O_enc_2, r_enc_2) && (x_O_enc_5 = x_O_enc_2) then event_abort ev_coll_11 orfind  suchthat defined(x_O_enc_3, r_enc_3) && (x_O_enc_5 = x_O_enc_3) then event_abort ev_coll_10 orfind  suchthat defined(x_O_enc_4, r_enc_4) && (x_O_enc_5 = x_O_enc_4) then event_abort ev_coll_9 else {219}find  else r_enc_5 <-R blocksize; r_enc_5), m32);
+           c33: blocksize <- xor((x_O_enc_6: blocksize <- c32; find [unique]  suchthat defined(x_O_enc, r_enc) && (x_O_enc_6 = x_O_enc) then event_abort ev_coll_6 orfind  suchthat defined(x_O_enc_1, r_enc_1) && (x_O_enc_6 = x_O_enc_1) then event_abort ev_coll_5 orfind  suchthat defined(x_O_enc_2, r_enc_2) && (x_O_enc_6 = x_O_enc_2) then event_abort ev_coll_4 orfind  suchthat defined(x_O_enc_3, r_enc_3) && (x_O_enc_6 = x_O_enc_3) then event_abort ev_coll_3 orfind  suchthat defined(x_O_enc_4, r_enc_4) && (x_O_enc_6 = x_O_enc_4) then event_abort ev_coll_2 orfind  suchthat defined(x_O_enc_5, r_enc_5) && (x_O_enc_6 = x_O_enc_5) then event_abort ev_coll_1 else {252}find  else r_enc_6 <-R blocksize; r_enc_6), m33);
+           return(c31, c32, truncate(c33, l_3))
+     ))
+
+
+Applying simplify (non-expanded game)
+  - Simplification pass
+    - Find at 6 removed (else branch kept if any)
+    - Find at 7 removed (else branch kept if any)
+    - Find at 57 removed (else branch kept if any)
+    - Find at 108 removed (else branch kept if any)
+    - Find at 141 removed (else branch kept if any)
+    - Find at 190 removed (else branch kept if any)
+    - Find at 219 removed (else branch kept if any)
+    - Find at 252 removed (else branch kept if any)
+yields
+
+Game 3 is
+     Ogen() :=
+     k_4 <-R enc_key;
+     IV0: blocksize <- (x_O_enc: blocksize <- Zero; r_enc <-R blocksize; r_enc);
+     return();
+     ((
+       Oenc1(IVdata1: blocksize, m1: blocksize, l_1: len) :=
+       if defined(IVdata2) && (IVdata1 = IVdata2) then
+         event_abort repeatedIV
+       else
+         if defined(IVdata3) && (IVdata1 = IVdata3) then
+           event_abort repeatedIV
+         else
+           IV1: blocksize <- xor(IV0, IVdata1);
+           c1: blocksize <- xor((x_O_enc_1: blocksize <- IV1; {30}find [unique]  suchthat defined(x_O_enc, r_enc) && (x_O_enc_1 = x_O_enc) then event_abort ev_coll_41 orfind  suchthat defined(x_O_enc_2, r_enc_2) && (x_O_enc_1 = x_O_enc_2) then event_abort ev_coll_39 orfind  suchthat defined(x_O_enc_3, r_enc_3) && (x_O_enc_1 = x_O_enc_3) then event_abort ev_coll_38 orfind  suchthat defined(x_O_enc_4, r_enc_4) && (x_O_enc_1 = x_O_enc_4) then event_abort ev_coll_37 orfind  suchthat defined(x_O_enc_5, r_enc_5) && (x_O_enc_1 = x_O_enc_5) then event_abort ev_coll_36 orfind  suchthat defined(x_O_enc_6, r_enc_6) && (x_O_enc_1 = x_O_enc_6) then event_abort ev_coll_35 else r_enc_1 <-R blocksize; r_enc_1), m1);
+           return(truncate(c1, l_1))
+     ) | (
+       Oenc2(IVdata2: blocksize, m21: blocksize, m22: blocksize, l_2: len) :=
+       if defined(IVdata1) && (IVdata2 = IVdata1) then
+         event_abort repeatedIV
+       else
+         if defined(IVdata3) && (IVdata2 = IVdata3) then
+           event_abort repeatedIV
+         else
+           IV2: blocksize <- xor(IV0, IVdata2);
+           c21: blocksize <- xor((x_O_enc_2: blocksize <- IV2; {84}find [unique]  suchthat defined(x_O_enc, r_enc) && (x_O_enc_2 = x_O_enc) then event_abort ev_coll_34 orfind  suchthat defined(x_O_enc_1, r_enc_1) && (x_O_enc_2 = x_O_enc_1) then event_abort ev_coll_33 orfind  suchthat defined(x_O_enc_4, r_enc_4) && (x_O_enc_2 = x_O_enc_4) then event_abort ev_coll_30 orfind  suchthat defined(x_O_enc_5, r_enc_5) && (x_O_enc_2 = x_O_enc_5) then event_abort ev_coll_29 orfind  suchthat defined(x_O_enc_6, r_enc_6) && (x_O_enc_2 = x_O_enc_6) then event_abort ev_coll_28 else r_enc_2 <-R blocksize; r_enc_2), m21);
+           c22: blocksize <- xor((x_O_enc_3: blocksize <- c21; find [unique]  suchthat defined(x_O_enc, r_enc) && (x_O_enc_3 = x_O_enc) then event_abort ev_coll_27 orfind  suchthat defined(x_O_enc_1, r_enc_1) && (x_O_enc_3 = x_O_enc_1) then event_abort ev_coll_26 orfind  suchthat defined(x_O_enc_2, r_enc_2) && (x_O_enc_3 = x_O_enc_2) then event_abort ev_coll_25 orfind  suchthat defined(x_O_enc_4, r_enc_4) && (x_O_enc_3 = x_O_enc_4) then event_abort ev_coll_23 orfind  suchthat defined(x_O_enc_5, r_enc_5) && (x_O_enc_3 = x_O_enc_5) then event_abort ev_coll_22 orfind  suchthat defined(x_O_enc_6, r_enc_6) && (x_O_enc_3 = x_O_enc_6) then event_abort ev_coll_21 else r_enc_3 <-R blocksize; r_enc_3), m22);
+           return(c21, truncate(c22, l_2))
+     ) | (
+       Oenc3(IVdata3: blocksize, m31: blocksize, m32: blocksize, m33: blocksize, l_3: len) :=
+       if defined(IVdata1) && (IVdata3 = IVdata1) then
+         event_abort repeatedIV
+       else
+         if defined(IVdata2) && (IVdata3 = IVdata2) then
+           event_abort repeatedIV
+         else
+           IV3: blocksize <- xor(IV0, IVdata3);
+           c31: blocksize <- xor((x_O_enc_4: blocksize <- IV3; {168}find [unique]  suchthat defined(x_O_enc, r_enc) && (x_O_enc_4 = x_O_enc) then event_abort ev_coll_20 orfind  suchthat defined(x_O_enc_1, r_enc_1) && (x_O_enc_4 = x_O_enc_1) then event_abort ev_coll_19 orfind  suchthat defined(x_O_enc_2, r_enc_2) && (x_O_enc_4 = x_O_enc_2) then event_abort ev_coll_18 orfind  suchthat defined(x_O_enc_3, r_enc_3) && (x_O_enc_4 = x_O_enc_3) then event_abort ev_coll_17 else r_enc_4 <-R blocksize; r_enc_4), m31);
+           c32: blocksize <- xor((x_O_enc_5: blocksize <- c31; find [unique]  suchthat defined(x_O_enc, r_enc) && (x_O_enc_5 = x_O_enc) then event_abort ev_coll_13 orfind  suchthat defined(x_O_enc_1, r_enc_1) && (x_O_enc_5 = x_O_enc_1) then event_abort ev_coll_12 orfind  suchthat defined(x_O_enc_2, r_enc_2) && (x_O_enc_5 = x_O_enc_2) then event_abort ev_coll_11 orfind  suchthat defined(x_O_enc_3, r_enc_3) && (x_O_enc_5 = x_O_enc_3) then event_abort ev_coll_10 orfind  suchthat defined(x_O_enc_4, r_enc_4) && (x_O_enc_5 = x_O_enc_4) then event_abort ev_coll_9 else r_enc_5 <-R blocksize; r_enc_5), m32);
+           c33: blocksize <- xor((x_O_enc_6: blocksize <- c32; find [unique]  suchthat defined(x_O_enc, r_enc) && (x_O_enc_6 = x_O_enc) then event_abort ev_coll_6 orfind  suchthat defined(x_O_enc_1, r_enc_1) && (x_O_enc_6 = x_O_enc_1) then event_abort ev_coll_5 orfind  suchthat defined(x_O_enc_2, r_enc_2) && (x_O_enc_6 = x_O_enc_2) then event_abort ev_coll_4 orfind  suchthat defined(x_O_enc_3, r_enc_3) && (x_O_enc_6 = x_O_enc_3) then event_abort ev_coll_3 orfind  suchthat defined(x_O_enc_4, r_enc_4) && (x_O_enc_6 = x_O_enc_4) then event_abort ev_coll_2 orfind  suchthat defined(x_O_enc_5, r_enc_5) && (x_O_enc_6 = x_O_enc_5) then event_abort ev_coll_1 else r_enc_6 <-R blocksize; r_enc_6), m33);
+           return(c31, c32, truncate(c33, l_3))
+     ))
+
+
+Applying expand
+  - Expand if/find/let
+    - Remove branch 3 in find at 168
+    - Remove branch 2 in find at 168
+    - Remove branch 3 in find at 84
+    - Remove branch 2 in find at 84
+    - Remove branch 4 in find at 30
+    - Remove branch 2 in find at 30
+yields
+
+Game 4 is
+     Ogen() :=
+     k_4 <-R enc_key;
+     x_O_enc: blocksize <- Zero;
+     r_enc <-R blocksize;
+     IV0: blocksize <- r_enc;
+     return();
+     ((
+       Oenc1(IVdata1: blocksize, m1: blocksize, l_1: len) :=
+       if defined(IVdata2) && (IVdata1 = IVdata2) then
+         event_abort repeatedIV
+       else
+         if defined(IVdata3) && (IVdata1 = IVdata3) then
+           event_abort repeatedIV
+         else
+           IV1: blocksize <- xor(IV0, IVdata1);
+           x_O_enc_1: blocksize <- IV1;
+           find [unique]  suchthat defined(x_O_enc, r_enc) && (x_O_enc_1 = x_O_enc) then
+             event_abort ev_coll_41
+           orfind  suchthat defined(x_O_enc_3, r_enc_3) && (x_O_enc_1 = x_O_enc_3) then
+             event_abort ev_coll_38
+           orfind  suchthat defined(x_O_enc_5, r_enc_5) && (x_O_enc_1 = x_O_enc_5) then
+             event_abort ev_coll_36
+           orfind  suchthat defined(x_O_enc_6, r_enc_6) && (x_O_enc_1 = x_O_enc_6) then
+             event_abort ev_coll_35
+           else
+             r_enc_1 <-R blocksize;
+             c1: blocksize <- xor(r_enc_1, m1);
+             return(truncate(c1, l_1))
+     ) | (
+       Oenc2(IVdata2: blocksize, m21: blocksize, m22: blocksize, l_2: len) :=
+       if defined(IVdata1) && (IVdata2 = IVdata1) then
+         event_abort repeatedIV
+       else
+         if defined(IVdata3) && (IVdata2 = IVdata3) then
+           event_abort repeatedIV
+         else
+           IV2: blocksize <- xor(IV0, IVdata2);
+           x_O_enc_2: blocksize <- IV2;
+           find [unique]  suchthat defined(x_O_enc, r_enc) && (x_O_enc_2 = x_O_enc) then
+             event_abort ev_coll_34
+           orfind  suchthat defined(x_O_enc_5, r_enc_5) && (x_O_enc_2 = x_O_enc_5) then
+             event_abort ev_coll_29
+           orfind  suchthat defined(x_O_enc_6, r_enc_6) && (x_O_enc_2 = x_O_enc_6) then
+             event_abort ev_coll_28
+           else
+             r_enc_2 <-R blocksize;
+             c21: blocksize <- xor(r_enc_2, m21);
+             x_O_enc_3: blocksize <- c21;
+             find [unique]  suchthat defined(x_O_enc, r_enc) && (x_O_enc_3 = x_O_enc) then
+               event_abort ev_coll_27
+             orfind  suchthat defined(x_O_enc_1, r_enc_1) && (x_O_enc_3 = x_O_enc_1) then
+               event_abort ev_coll_26
+             orfind  suchthat defined(x_O_enc_2, r_enc_2) && (x_O_enc_3 = x_O_enc_2) then
+               event_abort ev_coll_25
+             orfind  suchthat defined(x_O_enc_4, r_enc_4) && (x_O_enc_3 = x_O_enc_4) then
+               event_abort ev_coll_23
+             orfind  suchthat defined(x_O_enc_5, r_enc_5) && (x_O_enc_3 = x_O_enc_5) then
+               event_abort ev_coll_22
+             orfind  suchthat defined(x_O_enc_6, r_enc_6) && (x_O_enc_3 = x_O_enc_6) then
+               event_abort ev_coll_21
+             else
+               r_enc_3 <-R blocksize;
+               c22: blocksize <- xor(r_enc_3, m22);
+               return(c21, truncate(c22, l_2))
+     ) | (
+       Oenc3(IVdata3: blocksize, m31: blocksize, m32: blocksize, m33: blocksize, l_3: len) :=
+       if defined(IVdata1) && (IVdata3 = IVdata1) then
+         event_abort repeatedIV
+       else
+         if defined(IVdata2) && (IVdata3 = IVdata2) then
+           event_abort repeatedIV
+         else
+           IV3: blocksize <- xor(IV0, IVdata3);
+           x_O_enc_4: blocksize <- IV3;
+           find [unique]  suchthat defined(x_O_enc, r_enc) && (x_O_enc_4 = x_O_enc) then
+             event_abort ev_coll_20
+           orfind  suchthat defined(x_O_enc_3, r_enc_3) && (x_O_enc_4 = x_O_enc_3) then
+             event_abort ev_coll_17
+           else
+             r_enc_4 <-R blocksize;
+             c31: blocksize <- xor(r_enc_4, m31);
+             x_O_enc_5: blocksize <- c31;
+             find [unique]  suchthat defined(x_O_enc, r_enc) && (x_O_enc_5 = x_O_enc) then
+               event_abort ev_coll_13
+             orfind  suchthat defined(x_O_enc_1, r_enc_1) && (x_O_enc_5 = x_O_enc_1) then
+               event_abort ev_coll_12
+             orfind  suchthat defined(x_O_enc_2, r_enc_2) && (x_O_enc_5 = x_O_enc_2) then
+               event_abort ev_coll_11
+             orfind  suchthat defined(x_O_enc_3, r_enc_3) && (x_O_enc_5 = x_O_enc_3) then
+               event_abort ev_coll_10
+             orfind  suchthat defined(x_O_enc_4, r_enc_4) && (x_O_enc_5 = x_O_enc_4) then
+               event_abort ev_coll_9
+             else
+               r_enc_5 <-R blocksize;
+               c32: blocksize <- xor(r_enc_5, m32);
+               x_O_enc_6: blocksize <- c32;
+               find [unique]  suchthat defined(x_O_enc, r_enc) && (x_O_enc_6 = x_O_enc) then
+                 event_abort ev_coll_6
+               orfind  suchthat defined(x_O_enc_1, r_enc_1) && (x_O_enc_6 = x_O_enc_1) then
+                 event_abort ev_coll_5
+               orfind  suchthat defined(x_O_enc_2, r_enc_2) && (x_O_enc_6 = x_O_enc_2) then
+                 event_abort ev_coll_4
+               orfind  suchthat defined(x_O_enc_3, r_enc_3) && (x_O_enc_6 = x_O_enc_3) then
+                 event_abort ev_coll_3
+               orfind  suchthat defined(x_O_enc_4, r_enc_4) && (x_O_enc_6 = x_O_enc_4) then
+                 event_abort ev_coll_2
+               orfind  suchthat defined(x_O_enc_5, r_enc_5) && (x_O_enc_6 = x_O_enc_5) then
+                 event_abort ev_coll_1
+               else
+                 r_enc_6 <-R blocksize;
+                 c33: blocksize <- xor(r_enc_6, m33);
+                 return(c31, c32, truncate(c33, l_3))
+     ))
+
+
+Applying remove assignments of findcond
+  - Remove assignments on IV0 (definition removed, all usages removed)
+  - Remove assignments on x_O_enc_4 (definition removed, all usages removed)
+  - Remove assignments on x_O_enc_5 (definition removed, all usages removed)
+  - Remove assignments on x_O_enc_6 (definition removed, all usages removed)
+  - Remove assignments on x_O_enc_2 (definition removed, all usages removed)
+  - Remove assignments on x_O_enc_3 (definition removed, all usages removed)
+  - Remove assignments on x_O_enc_1 (definition removed, all usages removed)
+yields
+
+Game 5 is
+     Ogen() :=
+     k_4 <-R enc_key;
+     x_O_enc: blocksize <- Zero;
+     r_enc <-R blocksize;
+     return();
+     ((
+       Oenc1(IVdata1: blocksize, m1: blocksize, l_1: len) :=
+       if defined(IVdata2) && (IVdata1 = IVdata2) then
+         event_abort repeatedIV
+       else
+         if defined(IVdata3) && (IVdata1 = IVdata3) then
+           event_abort repeatedIV
+         else
+           IV1: blocksize <- xor(r_enc, IVdata1);
+           find [unique]  suchthat defined(x_O_enc, r_enc) && (IV1 = x_O_enc) then
+             event_abort ev_coll_41
+           orfind  suchthat defined(c21, r_enc_3) && (IV1 = c21) then
+             event_abort ev_coll_38
+           orfind  suchthat defined(c31, r_enc_5) && (IV1 = c31) then
+             event_abort ev_coll_36
+           orfind  suchthat defined(c32, r_enc_6) && (IV1 = c32) then
+             event_abort ev_coll_35
+           else
+             r_enc_1 <-R blocksize;
+             c1: blocksize <- xor(r_enc_1, m1);
+             return(truncate(c1, l_1))
+     ) | (
+       Oenc2(IVdata2: blocksize, m21: blocksize, m22: blocksize, l_2: len) :=
+       if defined(IVdata1) && (IVdata2 = IVdata1) then
+         event_abort repeatedIV
+       else
+         if defined(IVdata3) && (IVdata2 = IVdata3) then
+           event_abort repeatedIV
+         else
+           IV2: blocksize <- xor(r_enc, IVdata2);
+           find [unique]  suchthat defined(x_O_enc, r_enc) && (IV2 = x_O_enc) then
+             event_abort ev_coll_34
+           orfind  suchthat defined(c31, r_enc_5) && (IV2 = c31) then
+             event_abort ev_coll_29
+           orfind  suchthat defined(c32, r_enc_6) && (IV2 = c32) then
+             event_abort ev_coll_28
+           else
+             r_enc_2 <-R blocksize;
+             c21: blocksize <- xor(r_enc_2, m21);
+             find [unique]  suchthat defined(x_O_enc, r_enc) && (c21 = x_O_enc) then
+               event_abort ev_coll_27
+             orfind  suchthat defined(IV1, r_enc_1) && (c21 = IV1) then
+               event_abort ev_coll_26
+             orfind  suchthat defined(r_enc_2) && (c21 = IV2) then
+               event_abort ev_coll_25
+             orfind  suchthat defined(IV3, r_enc_4) && (c21 = IV3) then
+               event_abort ev_coll_23
+             orfind  suchthat defined(c31, r_enc_5) && (c21 = c31) then
+               event_abort ev_coll_22
+             orfind  suchthat defined(c32, r_enc_6) && (c21 = c32) then
+               event_abort ev_coll_21
+             else
+               r_enc_3 <-R blocksize;
+               c22: blocksize <- xor(r_enc_3, m22);
+               return(c21, truncate(c22, l_2))
+     ) | (
+       Oenc3(IVdata3: blocksize, m31: blocksize, m32: blocksize, m33: blocksize, l_3: len) :=
+       if defined(IVdata1) && (IVdata3 = IVdata1) then
+         event_abort repeatedIV
+       else
+         if defined(IVdata2) && (IVdata3 = IVdata2) then
+           event_abort repeatedIV
+         else
+           IV3: blocksize <- xor(r_enc, IVdata3);
+           find [unique]  suchthat defined(x_O_enc, r_enc) && (IV3 = x_O_enc) then
+             event_abort ev_coll_20
+           orfind  suchthat defined(c21, r_enc_3) && (IV3 = c21) then
+             event_abort ev_coll_17
+           else
+             r_enc_4 <-R blocksize;
+             c31: blocksize <- xor(r_enc_4, m31);
+             find [unique]  suchthat defined(x_O_enc, r_enc) && (c31 = x_O_enc) then
+               event_abort ev_coll_13
+             orfind  suchthat defined(IV1, r_enc_1) && (c31 = IV1) then
+               event_abort ev_coll_12
+             orfind  suchthat defined(IV2, r_enc_2) && (c31 = IV2) then
+               event_abort ev_coll_11
+             orfind  suchthat defined(c21, r_enc_3) && (c31 = c21) then
+               event_abort ev_coll_10
+             orfind  suchthat defined(r_enc_4) && (c31 = IV3) then
+               event_abort ev_coll_9
+             else
+               r_enc_5 <-R blocksize;
+               c32: blocksize <- xor(r_enc_5, m32);
+               find [unique]  suchthat defined(x_O_enc, r_enc) && (c32 = x_O_enc) then
+                 event_abort ev_coll_6
+               orfind  suchthat defined(IV1, r_enc_1) && (c32 = IV1) then
+                 event_abort ev_coll_5
+               orfind  suchthat defined(IV2, r_enc_2) && (c32 = IV2) then
+                 event_abort ev_coll_4
+               orfind  suchthat defined(c21, r_enc_3) && (c32 = c21) then
+                 event_abort ev_coll_3
+               orfind  suchthat defined(r_enc_4) && (c32 = IV3) then
+                 event_abort ev_coll_2
+               orfind  suchthat defined(r_enc_5) && (c32 = c31) then
+                 event_abort ev_coll_1
+               else
+                 r_enc_6 <-R blocksize;
+                 c33: blocksize <- xor(r_enc_6, m33);
+                 return(c31, c32, truncate(c33, l_3))
+     ))
+
+
+Applying simplify [probability 12 / |blocksize|]
+  - Global dependency analysis on r_enc
+yields
+
+Game 6 is
+     Ogen() :=
+  {2}k_4 <-R enc_key;
+     x_O_enc: blocksize <- Zero;
+     r_enc <-R blocksize;
+     return();
+     ((
+       Oenc1(IVdata1: blocksize, m1: blocksize, l_1: len) :=
+       if defined(IVdata2) && (IVdata1 = IVdata2) then
+         event_abort repeatedIV
+       else
+         if defined(IVdata3) && (IVdata1 = IVdata3) then
+           event_abort repeatedIV
+         else
+           IV1: blocksize <- xor(r_enc, IVdata1);
+ {24}      find [unique] 
+           else
+             r_enc_1 <-R blocksize;
+             c1: blocksize <- xor(r_enc_1, m1);
+             return(truncate(c1, l_1))
+     ) | (
+       Oenc2(IVdata2: blocksize, m21: blocksize, m22: blocksize, l_2: len) :=
+       if defined(IVdata1) && (IVdata2 = IVdata1) then
+         event_abort repeatedIV
+       else
+         if defined(IVdata3) && (IVdata2 = IVdata3) then
+           event_abort repeatedIV
+         else
+           IV2: blocksize <- xor(r_enc, IVdata2);
+ {52}      find [unique] 
+           else
+             r_enc_2 <-R blocksize;
+             c21: blocksize <- xor(r_enc_2, m21);
+ {58}        find [unique]  suchthat defined(x_O_enc, r_enc) && {59}(c21 = x_O_enc) then
+               event_abort ev_coll_27
+             orfind  suchthat defined(c31, r_enc_5) && {63}(c21 = c31) then
+               event_abort ev_coll_22
+             orfind  suchthat defined(c32, r_enc_6) && {67}(c21 = c32) then
+               event_abort ev_coll_21
+             else
+               r_enc_3 <-R blocksize;
+               c22: blocksize <- xor(r_enc_3, m22);
+               return(c21, truncate(c22, l_2))
+     ) | (
+       Oenc3(IVdata3: blocksize, m31: blocksize, m32: blocksize, m33: blocksize, l_3: len) :=
+       if defined(IVdata1) && (IVdata3 = IVdata1) then
+         event_abort repeatedIV
+       else
+         if defined(IVdata2) && (IVdata3 = IVdata2) then
+           event_abort repeatedIV
+         else
+           IV3: blocksize <- xor(r_enc, IVdata3);
+{100}      find [unique] 
+           else
+             r_enc_4 <-R blocksize;
+             c31: blocksize <- xor(r_enc_4, m31);
+{106}        find [unique]  suchthat defined(x_O_enc, r_enc) && {107}(c31 = x_O_enc) then
+               event_abort ev_coll_13
+             orfind  suchthat defined(c21, r_enc_3) && {111}(c31 = c21) then
+               event_abort ev_coll_10
+             else
+               r_enc_5 <-R blocksize;
+               c32: blocksize <- xor(r_enc_5, m32);
+{120}          find [unique]  suchthat defined(x_O_enc, r_enc) && {121}(c32 = x_O_enc) then
+                 event_abort ev_coll_6
+               orfind  suchthat defined(c21, r_enc_3) && {125}(c32 = c21) then
+                 event_abort ev_coll_3
+               orfind  suchthat defined(r_enc_5) && {129}(c32 = c31) then
+                 event_abort ev_coll_1
+               else
+                 r_enc_6 <-R blocksize;
+                 c33: blocksize <- xor(r_enc_6, m33);
+                 return(c31, c32, truncate(c33, l_3))
+     ))
+
+
+Applying simplify [probability 8 / |blocksize|]
+  - Simplification pass
+    - Find at 100 removed (else branch kept if any)
+    - Replaced (c31 = c21) with false at 111
+    - Remove branch 2 in find at 106
+    - Replaced (c31 = x_O_enc) with false at 107
+    - Remove branch 1 in find at 106
+    - Find at 106 removed (else branch kept if any)
+    - Replaced (c32 = c31) with false at 129
+    - Remove branch 3 in find at 120
+    - Replaced (c32 = c21) with false at 125
+    - Remove branch 2 in find at 120
+    - Replaced (c32 = x_O_enc) with false at 121
+    - Remove branch 1 in find at 120
+    - Find at 120 removed (else branch kept if any)
+    - Find at 52 removed (else branch kept if any)
+    - Replaced (c21 = c32) with false at 67
+    - Remove branch 3 in find at 58
+    - Replaced (c21 = c31) with false at 63
+    - Remove branch 2 in find at 58
+    - Replaced (c21 = x_O_enc) with false at 59
+    - Remove branch 1 in find at 58
+    - Find at 58 removed (else branch kept if any)
+    - Find at 24 removed (else branch kept if any)
+    - Remove random number generation at 2
+yields
+
+Game 7 is
+     Ogen() :=
+     x_O_enc: blocksize <- Zero;
+     r_enc <-R blocksize;
+     return();
+     ((
+       Oenc1(IVdata1: blocksize, m1: blocksize, l_1: len) :=
+       if defined(IVdata2) && (IVdata1 = IVdata2) then
+         event_abort repeatedIV
+       else
+         if defined(IVdata3) && (IVdata1 = IVdata3) then
+           event_abort repeatedIV
+         else
+           IV1: blocksize <- xor(r_enc, IVdata1);
+           r_enc_1 <-R blocksize;
+           c1: blocksize <- xor(r_enc_1, m1);
+           return(truncate(c1, l_1))
+     ) | (
+       Oenc2(IVdata2: blocksize, m21: blocksize, m22: blocksize, l_2: len) :=
+       if defined(IVdata1) && (IVdata2 = IVdata1) then
+         event_abort repeatedIV
+       else
+         if defined(IVdata3) && (IVdata2 = IVdata3) then
+           event_abort repeatedIV
+         else
+           IV2: blocksize <- xor(r_enc, IVdata2);
+           r_enc_2 <-R blocksize;
+           c21: blocksize <- xor(r_enc_2, m21);
+           r_enc_3 <-R blocksize;
+           c22: blocksize <- xor(r_enc_3, m22);
+           return(c21, truncate(c22, l_2))
+     ) | (
+       Oenc3(IVdata3: blocksize, m31: blocksize, m32: blocksize, m33: blocksize, l_3: len) :=
+       if defined(IVdata1) && (IVdata3 = IVdata1) then
+         event_abort repeatedIV
+       else
+         if defined(IVdata2) && (IVdata3 = IVdata2) then
+           event_abort repeatedIV
+         else
+           IV3: blocksize <- xor(r_enc, IVdata3);
+           r_enc_4 <-R blocksize;
+           c31: blocksize <- xor(r_enc_4, m31);
+           r_enc_5 <-R blocksize;
+           c32: blocksize <- xor(r_enc_5, m32);
+           r_enc_6 <-R blocksize;
+           c33: blocksize <- xor(r_enc_6, m33);
+           return(c31, c32, truncate(c33, l_3))
+     ))
+
+
+Applying SA rename new without array accesses and remove assignments of findcond
+  - Remove assignments on x_O_enc (definition removed, all usages removed)
+  - Remove assignments on IV3 (definition removed, all usages removed)
+  - Remove assignments on IV2 (definition removed, all usages removed)
+  - Remove assignments on IV1 (definition removed, all usages removed)
+yields
+
+Game 8 is
+     Ogen() :=
+     r_enc <-R blocksize;
+     return();
+     ((
+       Oenc1(IVdata1: blocksize, m1: blocksize, l_1: len) :=
+       if defined(IVdata2) && (IVdata1 = IVdata2) then
+         event_abort repeatedIV
+       else
+         if defined(IVdata3) && (IVdata1 = IVdata3) then
+           event_abort repeatedIV
+         else
+           r_enc_1 <-R blocksize;
+           c1: blocksize <- xor(r_enc_1, m1);
+           return(truncate(c1, l_1))
+     ) | (
+       Oenc2(IVdata2: blocksize, m21: blocksize, m22: blocksize, l_2: len) :=
+       if defined(IVdata1) && (IVdata2 = IVdata1) then
+         event_abort repeatedIV
+       else
+         if defined(IVdata3) && (IVdata2 = IVdata3) then
+           event_abort repeatedIV
+         else
+           r_enc_2 <-R blocksize;
+           c21: blocksize <- xor(r_enc_2, m21);
+           r_enc_3 <-R blocksize;
+           c22: blocksize <- xor(r_enc_3, m22);
+           return(c21, truncate(c22, l_2))
+     ) | (
+       Oenc3(IVdata3: blocksize, m31: blocksize, m32: blocksize, m33: blocksize, l_3: len) :=
+       if defined(IVdata1) && (IVdata3 = IVdata1) then
+         event_abort repeatedIV
+       else
+         if defined(IVdata2) && (IVdata3 = IVdata2) then
+           event_abort repeatedIV
+         else
+           r_enc_4 <-R blocksize;
+           c31: blocksize <- xor(r_enc_4, m31);
+           r_enc_5 <-R blocksize;
+           c32: blocksize <- xor(r_enc_5, m32);
+           r_enc_6 <-R blocksize;
+           c33: blocksize <- xor(r_enc_6, m33);
+           return(c31, c32, truncate(c33, l_3))
+     ))
+
+
+Proved event(ev_coll_48) ==> false in game 8
+Proved event(ev_coll_47) ==> false in game 8
+Proved event(ev_coll_46) ==> false in game 8
+Proved event(ev_coll_45) ==> false in game 8
+Proved event(ev_coll_44) ==> false in game 8
+Proved event(ev_coll_43) ==> false in game 8
+Proved event(ev_coll_42) ==> false in game 8
+Proved event(ev_coll_41) ==> false in game 8
+Proved event(ev_coll_40) ==> false in game 8
+Proved event(ev_coll_39) ==> false in game 8
+Proved event(ev_coll_38) ==> false in game 8
+Proved event(ev_coll_37) ==> false in game 8
+Proved event(ev_coll_36) ==> false in game 8
+Proved event(ev_coll_35) ==> false in game 8
+Proved event(ev_coll_34) ==> false in game 8
+Proved event(ev_coll_33) ==> false in game 8
+Proved event(ev_coll_32) ==> false in game 8
+Proved event(ev_coll_31) ==> false in game 8
+Proved event(ev_coll_30) ==> false in game 8
+Proved event(ev_coll_29) ==> false in game 8
+Proved event(ev_coll_28) ==> false in game 8
+Proved event(ev_coll_27) ==> false in game 8
+Proved event(ev_coll_26) ==> false in game 8
+Proved event(ev_coll_25) ==> false in game 8
+Proved event(ev_coll_24) ==> false in game 8
+Proved event(ev_coll_23) ==> false in game 8
+Proved event(ev_coll_22) ==> false in game 8
+Proved event(ev_coll_21) ==> false in game 8
+Proved event(ev_coll_20) ==> false in game 8
+Proved event(ev_coll_19) ==> false in game 8
+Proved event(ev_coll_18) ==> false in game 8
+Proved event(ev_coll_17) ==> false in game 8
+Proved event(ev_coll_16) ==> false in game 8
+Proved event(ev_coll_15) ==> false in game 8
+Proved event(ev_coll_14) ==> false in game 8
+Proved event(ev_coll_13) ==> false in game 8
+Proved event(ev_coll_12) ==> false in game 8
+Proved event(ev_coll_11) ==> false in game 8
+Proved event(ev_coll_10) ==> false in game 8
+Proved event(ev_coll_9) ==> false in game 8
+Proved event(ev_coll_8) ==> false in game 8
+Proved event(ev_coll_7) ==> false in game 8
+Proved event(ev_coll_6) ==> false in game 8
+Proved event(ev_coll_5) ==> false in game 8
+Proved event(ev_coll_4) ==> false in game 8
+Proved event(ev_coll_3) ==> false in game 8
+Proved event(ev_coll_2) ==> false in game 8
+Proved event(ev_coll_1) ==> false in game 8
+Proved event(ev_coll) ==> false in game 8
+
+Applying equivalence remove_xor(xor)
+  - Equivalence remove_xor(xor) with variables: r_enc_6 -> a
+yields
+
+Game 9 is
+     Ogen() :=
+     r_enc <-R blocksize;
+     return();
+     ((
+       Oenc1(IVdata1: blocksize, m1: blocksize, l_1: len) :=
+       if defined(IVdata2) && (IVdata1 = IVdata2) then
+         event_abort repeatedIV
+       else
+         if defined(IVdata3) && (IVdata1 = IVdata3) then
+           event_abort repeatedIV
+         else
+           r_enc_1 <-R blocksize;
+           c1: blocksize <- xor(r_enc_1, m1);
+           return(truncate(c1, l_1))
+     ) | (
+       Oenc2(IVdata2: blocksize, m21: blocksize, m22: blocksize, l_2: len) :=
+       if defined(IVdata1) && (IVdata2 = IVdata1) then
+         event_abort repeatedIV
+       else
+         if defined(IVdata3) && (IVdata2 = IVdata3) then
+           event_abort repeatedIV
+         else
+           r_enc_2 <-R blocksize;
+           c21: blocksize <- xor(r_enc_2, m21);
+           r_enc_3 <-R blocksize;
+           c22: blocksize <- xor(r_enc_3, m22);
+           return(c21, truncate(c22, l_2))
+     ) | (
+       Oenc3(IVdata3: blocksize, m31: blocksize, m32: blocksize, m33: blocksize, l_3: len) :=
+       if defined(IVdata1) && (IVdata3 = IVdata1) then
+         event_abort repeatedIV
+       else
+         if defined(IVdata2) && (IVdata3 = IVdata2) then
+           event_abort repeatedIV
+         else
+           r_enc_4 <-R blocksize;
+           c31: blocksize <- xor(r_enc_4, m31);
+           r_enc_5 <-R blocksize;
+           c32: blocksize <- xor(r_enc_5, m32);
+           r_enc_7 <-R blocksize;
+           c33: blocksize <- (x: blocksize <- m33; r_enc_7);
+           return(c31, c32, truncate(c33, l_3))
+     ))
+
+
+Applying expand
+  - Expand if/find/let
+yields
+
+Game 10 is
+     Ogen() :=
+     r_enc <-R blocksize;
+     return();
+     ((
+       Oenc1(IVdata1: blocksize, m1: blocksize, l_1: len) :=
+       if defined(IVdata2) && (IVdata1 = IVdata2) then
+         event_abort repeatedIV
+       else
+         if defined(IVdata3) && (IVdata1 = IVdata3) then
+           event_abort repeatedIV
+         else
+           r_enc_1 <-R blocksize;
+           c1: blocksize <- xor(r_enc_1, m1);
+           return(truncate(c1, l_1))
+     ) | (
+       Oenc2(IVdata2: blocksize, m21: blocksize, m22: blocksize, l_2: len) :=
+       if defined(IVdata1) && (IVdata2 = IVdata1) then
+         event_abort repeatedIV
+       else
+         if defined(IVdata3) && (IVdata2 = IVdata3) then
+           event_abort repeatedIV
+         else
+           r_enc_2 <-R blocksize;
+           c21: blocksize <- xor(r_enc_2, m21);
+           r_enc_3 <-R blocksize;
+           c22: blocksize <- xor(r_enc_3, m22);
+           return(c21, truncate(c22, l_2))
+     ) | (
+       Oenc3(IVdata3: blocksize, m31: blocksize, m32: blocksize, m33: blocksize, l_3: len) :=
+       if defined(IVdata1) && (IVdata3 = IVdata1) then
+         event_abort repeatedIV
+       else
+         if defined(IVdata2) && (IVdata3 = IVdata2) then
+           event_abort repeatedIV
+         else
+           r_enc_4 <-R blocksize;
+           c31: blocksize <- xor(r_enc_4, m31);
+           r_enc_5 <-R blocksize;
+           c32: blocksize <- xor(r_enc_5, m32);
+           r_enc_7 <-R blocksize;
+           x: blocksize <- m33;
+           c33: blocksize <- r_enc_7;
+           return(c31, c32, truncate(c33, l_3))
+     ))
+
+
+Applying remove assignments of findcond
+  - Remove assignments on x (definition removed, all usages removed)
+  - Remove assignments on c33 (definition removed, all usages removed)
+yields
+
+Game 11 is
+     Ogen() :=
+  {2}r_enc <-R blocksize;
+     return();
+     ((
+       Oenc1(IVdata1: blocksize, m1: blocksize, l_1: len) :=
+       if defined(IVdata2) && (IVdata1 = IVdata2) then
+         event_abort repeatedIV
+       else
+         if defined(IVdata3) && (IVdata1 = IVdata3) then
+           event_abort repeatedIV
+         else
+           r_enc_1 <-R blocksize;
+           c1: blocksize <- xor(r_enc_1, m1);
+           return(truncate(c1, l_1))
+     ) | (
+       Oenc2(IVdata2: blocksize, m21: blocksize, m22: blocksize, l_2: len) :=
+       if defined(IVdata1) && (IVdata2 = IVdata1) then
+         event_abort repeatedIV
+       else
+         if defined(IVdata3) && (IVdata2 = IVdata3) then
+           event_abort repeatedIV
+         else
+           r_enc_2 <-R blocksize;
+           c21: blocksize <- xor(r_enc_2, m21);
+           r_enc_3 <-R blocksize;
+           c22: blocksize <- xor(r_enc_3, m22);
+           return(c21, truncate(c22, l_2))
+     ) | (
+       Oenc3(IVdata3: blocksize, m31: blocksize, m32: blocksize, m33: blocksize, l_3: len) :=
+       if defined(IVdata1) && (IVdata3 = IVdata1) then
+         event_abort repeatedIV
+       else
+         if defined(IVdata2) && (IVdata3 = IVdata2) then
+           event_abort repeatedIV
+         else
+           r_enc_4 <-R blocksize;
+           c31: blocksize <- xor(r_enc_4, m31);
+           r_enc_5 <-R blocksize;
+           c32: blocksize <- xor(r_enc_5, m32);
+           r_enc_7 <-R blocksize;
+           return(c31, c32, truncate(r_enc_7, l_3))
+     ))
+
+
+Applying simplify
+  - Simplification pass
+    - Remove random number generation at 2
+yields
+
+Game 12 is
+     Ogen() :=
+     return();
+     ((
+       Oenc1(IVdata1: blocksize, m1: blocksize, l_1: len) :=
+       if defined(IVdata2) && (IVdata1 = IVdata2) then
+         event_abort repeatedIV
+       else
+         if defined(IVdata3) && (IVdata1 = IVdata3) then
+           event_abort repeatedIV
+         else
+           r_enc_1 <-R blocksize;
+           c1: blocksize <- xor(r_enc_1, m1);
+           return(truncate(c1, l_1))
+     ) | (
+       Oenc2(IVdata2: blocksize, m21: blocksize, m22: blocksize, l_2: len) :=
+       if defined(IVdata1) && (IVdata2 = IVdata1) then
+         event_abort repeatedIV
+       else
+         if defined(IVdata3) && (IVdata2 = IVdata3) then
+           event_abort repeatedIV
+         else
+           r_enc_2 <-R blocksize;
+           c21: blocksize <- xor(r_enc_2, m21);
+           r_enc_3 <-R blocksize;
+           c22: blocksize <- xor(r_enc_3, m22);
+           return(c21, truncate(c22, l_2))
+     ) | (
+       Oenc3(IVdata3: blocksize, m31: blocksize, m32: blocksize, m33: blocksize, l_3: len) :=
+       if defined(IVdata1) && (IVdata3 = IVdata1) then
+         event_abort repeatedIV
+       else
+         if defined(IVdata2) && (IVdata3 = IVdata2) then
+           event_abort repeatedIV
+         else
+           r_enc_4 <-R blocksize;
+           c31: blocksize <- xor(r_enc_4, m31);
+           r_enc_5 <-R blocksize;
+           c32: blocksize <- xor(r_enc_5, m32);
+           r_enc_7 <-R blocksize;
+           return(c31, c32, truncate(r_enc_7, l_3))
+     ))
+
+
+Applying equivalence remove_xor(xor)
+  - Equivalence remove_xor(xor) with variables: r_enc_5 -> a
+yields
+
+Game 13 is
+     Ogen() :=
+     return();
+     ((
+       Oenc1(IVdata1: blocksize, m1: blocksize, l_1: len) :=
+       if defined(IVdata2) && (IVdata1 = IVdata2) then
+         event_abort repeatedIV
+       else
+         if defined(IVdata3) && (IVdata1 = IVdata3) then
+           event_abort repeatedIV
+         else
+           r_enc_1 <-R blocksize;
+           c1: blocksize <- xor(r_enc_1, m1);
+           return(truncate(c1, l_1))
+     ) | (
+       Oenc2(IVdata2: blocksize, m21: blocksize, m22: blocksize, l_2: len) :=
+       if defined(IVdata1) && (IVdata2 = IVdata1) then
+         event_abort repeatedIV
+       else
+         if defined(IVdata3) && (IVdata2 = IVdata3) then
+           event_abort repeatedIV
+         else
+           r_enc_2 <-R blocksize;
+           c21: blocksize <- xor(r_enc_2, m21);
+           r_enc_3 <-R blocksize;
+           c22: blocksize <- xor(r_enc_3, m22);
+           return(c21, truncate(c22, l_2))
+     ) | (
+       Oenc3(IVdata3: blocksize, m31: blocksize, m32: blocksize, m33: blocksize, l_3: len) :=
+       if defined(IVdata1) && (IVdata3 = IVdata1) then
+         event_abort repeatedIV
+       else
+         if defined(IVdata2) && (IVdata3 = IVdata2) then
+           event_abort repeatedIV
+         else
+           r_enc_4 <-R blocksize;
+           c31: blocksize <- xor(r_enc_4, m31);
+           r_enc_8 <-R blocksize;
+           c32: blocksize <- (x_1: blocksize <- m32; r_enc_8);
+           r_enc_7 <-R blocksize;
+           return(c31, c32, truncate(r_enc_7, l_3))
+     ))
+
+
+Applying expand
+  - Expand if/find/let
+yields
+
+Game 14 is
+     Ogen() :=
+     return();
+     ((
+       Oenc1(IVdata1: blocksize, m1: blocksize, l_1: len) :=
+       if defined(IVdata2) && (IVdata1 = IVdata2) then
+         event_abort repeatedIV
+       else
+         if defined(IVdata3) && (IVdata1 = IVdata3) then
+           event_abort repeatedIV
+         else
+           r_enc_1 <-R blocksize;
+           c1: blocksize <- xor(r_enc_1, m1);
+           return(truncate(c1, l_1))
+     ) | (
+       Oenc2(IVdata2: blocksize, m21: blocksize, m22: blocksize, l_2: len) :=
+       if defined(IVdata1) && (IVdata2 = IVdata1) then
+         event_abort repeatedIV
+       else
+         if defined(IVdata3) && (IVdata2 = IVdata3) then
+           event_abort repeatedIV
+         else
+           r_enc_2 <-R blocksize;
+           c21: blocksize <- xor(r_enc_2, m21);
+           r_enc_3 <-R blocksize;
+           c22: blocksize <- xor(r_enc_3, m22);
+           return(c21, truncate(c22, l_2))
+     ) | (
+       Oenc3(IVdata3: blocksize, m31: blocksize, m32: blocksize, m33: blocksize, l_3: len) :=
+       if defined(IVdata1) && (IVdata3 = IVdata1) then
+         event_abort repeatedIV
+       else
+         if defined(IVdata2) && (IVdata3 = IVdata2) then
+           event_abort repeatedIV
+         else
+           r_enc_4 <-R blocksize;
+           c31: blocksize <- xor(r_enc_4, m31);
+           r_enc_8 <-R blocksize;
+           x_1: blocksize <- m32;
+           c32: blocksize <- r_enc_8;
+           r_enc_7 <-R blocksize;
+           return(c31, c32, truncate(r_enc_7, l_3))
+     ))
+
+
+Applying remove assignments of findcond
+  - Remove assignments on x_1 (definition removed, all usages removed)
+  - Remove assignments on c32 (definition removed, all usages removed)
+yields
+
+Game 15 is
+     Ogen() :=
+     return();
+     ((
+       Oenc1(IVdata1: blocksize, m1: blocksize, l_1: len) :=
+       if defined(IVdata2) && (IVdata1 = IVdata2) then
+         event_abort repeatedIV
+       else
+         if defined(IVdata3) && (IVdata1 = IVdata3) then
+           event_abort repeatedIV
+         else
+           r_enc_1 <-R blocksize;
+           c1: blocksize <- xor(r_enc_1, m1);
+           return(truncate(c1, l_1))
+     ) | (
+       Oenc2(IVdata2: blocksize, m21: blocksize, m22: blocksize, l_2: len) :=
+       if defined(IVdata1) && (IVdata2 = IVdata1) then
+         event_abort repeatedIV
+       else
+         if defined(IVdata3) && (IVdata2 = IVdata3) then
+           event_abort repeatedIV
+         else
+           r_enc_2 <-R blocksize;
+           c21: blocksize <- xor(r_enc_2, m21);
+           r_enc_3 <-R blocksize;
+           c22: blocksize <- xor(r_enc_3, m22);
+           return(c21, truncate(c22, l_2))
+     ) | (
+       Oenc3(IVdata3: blocksize, m31: blocksize, m32: blocksize, m33: blocksize, l_3: len) :=
+       if defined(IVdata1) && (IVdata3 = IVdata1) then
+         event_abort repeatedIV
+       else
+         if defined(IVdata2) && (IVdata3 = IVdata2) then
+           event_abort repeatedIV
+         else
+           r_enc_4 <-R blocksize;
+           c31: blocksize <- xor(r_enc_4, m31);
+           r_enc_8 <-R blocksize;
+           r_enc_7 <-R blocksize;
+           return(c31, r_enc_8, truncate(r_enc_7, l_3))
+     ))
+
+
+Applying equivalence remove_xor(xor)
+  - Equivalence remove_xor(xor) with variables: r_enc_4 -> a
+yields
+
+Game 16 is
+     Ogen() :=
+     return();
+     ((
+       Oenc1(IVdata1: blocksize, m1: blocksize, l_1: len) :=
+       if defined(IVdata2) && (IVdata1 = IVdata2) then
+         event_abort repeatedIV
+       else
+         if defined(IVdata3) && (IVdata1 = IVdata3) then
+           event_abort repeatedIV
+         else
+           r_enc_1 <-R blocksize;
+           c1: blocksize <- xor(r_enc_1, m1);
+           return(truncate(c1, l_1))
+     ) | (
+       Oenc2(IVdata2: blocksize, m21: blocksize, m22: blocksize, l_2: len) :=
+       if defined(IVdata1) && (IVdata2 = IVdata1) then
+         event_abort repeatedIV
+       else
+         if defined(IVdata3) && (IVdata2 = IVdata3) then
+           event_abort repeatedIV
+         else
+           r_enc_2 <-R blocksize;
+           c21: blocksize <- xor(r_enc_2, m21);
+           r_enc_3 <-R blocksize;
+           c22: blocksize <- xor(r_enc_3, m22);
+           return(c21, truncate(c22, l_2))
+     ) | (
+       Oenc3(IVdata3: blocksize, m31: blocksize, m32: blocksize, m33: blocksize, l_3: len) :=
+       if defined(IVdata1) && (IVdata3 = IVdata1) then
+         event_abort repeatedIV
+       else
+         if defined(IVdata2) && (IVdata3 = IVdata2) then
+           event_abort repeatedIV
+         else
+           r_enc_9 <-R blocksize;
+           c31: blocksize <- (x_2: blocksize <- m31; r_enc_9);
+           r_enc_8 <-R blocksize;
+           r_enc_7 <-R blocksize;
+           return(c31, r_enc_8, truncate(r_enc_7, l_3))
+     ))
+
+
+Applying expand
+  - Expand if/find/let
+yields
+
+Game 17 is
+     Ogen() :=
+     return();
+     ((
+       Oenc1(IVdata1: blocksize, m1: blocksize, l_1: len) :=
+       if defined(IVdata2) && (IVdata1 = IVdata2) then
+         event_abort repeatedIV
+       else
+         if defined(IVdata3) && (IVdata1 = IVdata3) then
+           event_abort repeatedIV
+         else
+           r_enc_1 <-R blocksize;
+           c1: blocksize <- xor(r_enc_1, m1);
+           return(truncate(c1, l_1))
+     ) | (
+       Oenc2(IVdata2: blocksize, m21: blocksize, m22: blocksize, l_2: len) :=
+       if defined(IVdata1) && (IVdata2 = IVdata1) then
+         event_abort repeatedIV
+       else
+         if defined(IVdata3) && (IVdata2 = IVdata3) then
+           event_abort repeatedIV
+         else
+           r_enc_2 <-R blocksize;
+           c21: blocksize <- xor(r_enc_2, m21);
+           r_enc_3 <-R blocksize;
+           c22: blocksize <- xor(r_enc_3, m22);
+           return(c21, truncate(c22, l_2))
+     ) | (
+       Oenc3(IVdata3: blocksize, m31: blocksize, m32: blocksize, m33: blocksize, l_3: len) :=
+       if defined(IVdata1) && (IVdata3 = IVdata1) then
+         event_abort repeatedIV
+       else
+         if defined(IVdata2) && (IVdata3 = IVdata2) then
+           event_abort repeatedIV
+         else
+           r_enc_9 <-R blocksize;
+           x_2: blocksize <- m31;
+           c31: blocksize <- r_enc_9;
+           r_enc_8 <-R blocksize;
+           r_enc_7 <-R blocksize;
+           return(c31, r_enc_8, truncate(r_enc_7, l_3))
+     ))
+
+
+Applying remove assignments of findcond
+  - Remove assignments on x_2 (definition removed, all usages removed)
+  - Remove assignments on c31 (definition removed, all usages removed)
+yields
+
+Game 18 is
+     Ogen() :=
+     return();
+     ((
+       Oenc1(IVdata1: blocksize, m1: blocksize, l_1: len) :=
+       if defined(IVdata2) && (IVdata1 = IVdata2) then
+         event_abort repeatedIV
+       else
+         if defined(IVdata3) && (IVdata1 = IVdata3) then
+           event_abort repeatedIV
+         else
+           r_enc_1 <-R blocksize;
+           c1: blocksize <- xor(r_enc_1, m1);
+           return(truncate(c1, l_1))
+     ) | (
+       Oenc2(IVdata2: blocksize, m21: blocksize, m22: blocksize, l_2: len) :=
+       if defined(IVdata1) && (IVdata2 = IVdata1) then
+         event_abort repeatedIV
+       else
+         if defined(IVdata3) && (IVdata2 = IVdata3) then
+           event_abort repeatedIV
+         else
+           r_enc_2 <-R blocksize;
+           c21: blocksize <- xor(r_enc_2, m21);
+           r_enc_3 <-R blocksize;
+           c22: blocksize <- xor(r_enc_3, m22);
+           return(c21, truncate(c22, l_2))
+     ) | (
+       Oenc3(IVdata3: blocksize, m31: blocksize, m32: blocksize, m33: blocksize, l_3: len) :=
+       if defined(IVdata1) && (IVdata3 = IVdata1) then
+         event_abort repeatedIV
+       else
+         if defined(IVdata2) && (IVdata3 = IVdata2) then
+           event_abort repeatedIV
+         else
+           r_enc_9 <-R blocksize;
+           r_enc_8 <-R blocksize;
+           r_enc_7 <-R blocksize;
+           return(r_enc_9, r_enc_8, truncate(r_enc_7, l_3))
+     ))
+
+
+Applying equivalence remove_xor(xor)
+  - Equivalence remove_xor(xor) with variables: r_enc_3 -> a
+yields
+
+Game 19 is
+     Ogen() :=
+     return();
+     ((
+       Oenc1(IVdata1: blocksize, m1: blocksize, l_1: len) :=
+       if defined(IVdata2) && (IVdata1 = IVdata2) then
+         event_abort repeatedIV
+       else
+         if defined(IVdata3) && (IVdata1 = IVdata3) then
+           event_abort repeatedIV
+         else
+           r_enc_1 <-R blocksize;
+           c1: blocksize <- xor(r_enc_1, m1);
+           return(truncate(c1, l_1))
+     ) | (
+       Oenc2(IVdata2: blocksize, m21: blocksize, m22: blocksize, l_2: len) :=
+       if defined(IVdata1) && (IVdata2 = IVdata1) then
+         event_abort repeatedIV
+       else
+         if defined(IVdata3) && (IVdata2 = IVdata3) then
+           event_abort repeatedIV
+         else
+           r_enc_2 <-R blocksize;
+           c21: blocksize <- xor(r_enc_2, m21);
+           r_enc_10 <-R blocksize;
+           c22: blocksize <- (x_3: blocksize <- m22; r_enc_10);
+           return(c21, truncate(c22, l_2))
+     ) | (
+       Oenc3(IVdata3: blocksize, m31: blocksize, m32: blocksize, m33: blocksize, l_3: len) :=
+       if defined(IVdata1) && (IVdata3 = IVdata1) then
+         event_abort repeatedIV
+       else
+         if defined(IVdata2) && (IVdata3 = IVdata2) then
+           event_abort repeatedIV
+         else
+           r_enc_9 <-R blocksize;
+           r_enc_8 <-R blocksize;
+           r_enc_7 <-R blocksize;
+           return(r_enc_9, r_enc_8, truncate(r_enc_7, l_3))
+     ))
+
+
+Applying expand
+  - Expand if/find/let
+yields
+
+Game 20 is
+     Ogen() :=
+     return();
+     ((
+       Oenc1(IVdata1: blocksize, m1: blocksize, l_1: len) :=
+       if defined(IVdata2) && (IVdata1 = IVdata2) then
+         event_abort repeatedIV
+       else
+         if defined(IVdata3) && (IVdata1 = IVdata3) then
+           event_abort repeatedIV
+         else
+           r_enc_1 <-R blocksize;
+           c1: blocksize <- xor(r_enc_1, m1);
+           return(truncate(c1, l_1))
+     ) | (
+       Oenc2(IVdata2: blocksize, m21: blocksize, m22: blocksize, l_2: len) :=
+       if defined(IVdata1) && (IVdata2 = IVdata1) then
+         event_abort repeatedIV
+       else
+         if defined(IVdata3) && (IVdata2 = IVdata3) then
+           event_abort repeatedIV
+         else
+           r_enc_2 <-R blocksize;
+           c21: blocksize <- xor(r_enc_2, m21);
+           r_enc_10 <-R blocksize;
+           x_3: blocksize <- m22;
+           c22: blocksize <- r_enc_10;
+           return(c21, truncate(c22, l_2))
+     ) | (
+       Oenc3(IVdata3: blocksize, m31: blocksize, m32: blocksize, m33: blocksize, l_3: len) :=
+       if defined(IVdata1) && (IVdata3 = IVdata1) then
+         event_abort repeatedIV
+       else
+         if defined(IVdata2) && (IVdata3 = IVdata2) then
+           event_abort repeatedIV
+         else
+           r_enc_9 <-R blocksize;
+           r_enc_8 <-R blocksize;
+           r_enc_7 <-R blocksize;
+           return(r_enc_9, r_enc_8, truncate(r_enc_7, l_3))
+     ))
+
+
+Applying remove assignments of findcond
+  - Remove assignments on x_3 (definition removed, all usages removed)
+  - Remove assignments on c22 (definition removed, all usages removed)
+yields
+
+Game 21 is
+     Ogen() :=
+     return();
+     ((
+       Oenc1(IVdata1: blocksize, m1: blocksize, l_1: len) :=
+       if defined(IVdata2) && (IVdata1 = IVdata2) then
+         event_abort repeatedIV
+       else
+         if defined(IVdata3) && (IVdata1 = IVdata3) then
+           event_abort repeatedIV
+         else
+           r_enc_1 <-R blocksize;
+           c1: blocksize <- xor(r_enc_1, m1);
+           return(truncate(c1, l_1))
+     ) | (
+       Oenc2(IVdata2: blocksize, m21: blocksize, m22: blocksize, l_2: len) :=
+       if defined(IVdata1) && (IVdata2 = IVdata1) then
+         event_abort repeatedIV
+       else
+         if defined(IVdata3) && (IVdata2 = IVdata3) then
+           event_abort repeatedIV
+         else
+           r_enc_2 <-R blocksize;
+           c21: blocksize <- xor(r_enc_2, m21);
+           r_enc_10 <-R blocksize;
+           return(c21, truncate(r_enc_10, l_2))
+     ) | (
+       Oenc3(IVdata3: blocksize, m31: blocksize, m32: blocksize, m33: blocksize, l_3: len) :=
+       if defined(IVdata1) && (IVdata3 = IVdata1) then
+         event_abort repeatedIV
+       else
+         if defined(IVdata2) && (IVdata3 = IVdata2) then
+           event_abort repeatedIV
+         else
+           r_enc_9 <-R blocksize;
+           r_enc_8 <-R blocksize;
+           r_enc_7 <-R blocksize;
+           return(r_enc_9, r_enc_8, truncate(r_enc_7, l_3))
+     ))
+
+
+Applying equivalence remove_xor(xor)
+  - Equivalence remove_xor(xor) with variables: r_enc_2 -> a
+yields
+
+Game 22 is
+     Ogen() :=
+     return();
+     ((
+       Oenc1(IVdata1: blocksize, m1: blocksize, l_1: len) :=
+       if defined(IVdata2) && (IVdata1 = IVdata2) then
+         event_abort repeatedIV
+       else
+         if defined(IVdata3) && (IVdata1 = IVdata3) then
+           event_abort repeatedIV
+         else
+           r_enc_1 <-R blocksize;
+           c1: blocksize <- xor(r_enc_1, m1);
+           return(truncate(c1, l_1))
+     ) | (
+       Oenc2(IVdata2: blocksize, m21: blocksize, m22: blocksize, l_2: len) :=
+       if defined(IVdata1) && (IVdata2 = IVdata1) then
+         event_abort repeatedIV
+       else
+         if defined(IVdata3) && (IVdata2 = IVdata3) then
+           event_abort repeatedIV
+         else
+           r_enc_11 <-R blocksize;
+           c21: blocksize <- (x_4: blocksize <- m21; r_enc_11);
+           r_enc_10 <-R blocksize;
+           return(c21, truncate(r_enc_10, l_2))
+     ) | (
+       Oenc3(IVdata3: blocksize, m31: blocksize, m32: blocksize, m33: blocksize, l_3: len) :=
+       if defined(IVdata1) && (IVdata3 = IVdata1) then
+         event_abort repeatedIV
+       else
+         if defined(IVdata2) && (IVdata3 = IVdata2) then
+           event_abort repeatedIV
+         else
+           r_enc_9 <-R blocksize;
+           r_enc_8 <-R blocksize;
+           r_enc_7 <-R blocksize;
+           return(r_enc_9, r_enc_8, truncate(r_enc_7, l_3))
+     ))
+
+
+Applying expand
+  - Expand if/find/let
+yields
+
+Game 23 is
+     Ogen() :=
+     return();
+     ((
+       Oenc1(IVdata1: blocksize, m1: blocksize, l_1: len) :=
+       if defined(IVdata2) && (IVdata1 = IVdata2) then
+         event_abort repeatedIV
+       else
+         if defined(IVdata3) && (IVdata1 = IVdata3) then
+           event_abort repeatedIV
+         else
+           r_enc_1 <-R blocksize;
+           c1: blocksize <- xor(r_enc_1, m1);
+           return(truncate(c1, l_1))
+     ) | (
+       Oenc2(IVdata2: blocksize, m21: blocksize, m22: blocksize, l_2: len) :=
+       if defined(IVdata1) && (IVdata2 = IVdata1) then
+         event_abort repeatedIV
+       else
+         if defined(IVdata3) && (IVdata2 = IVdata3) then
+           event_abort repeatedIV
+         else
+           r_enc_11 <-R blocksize;
+           x_4: blocksize <- m21;
+           c21: blocksize <- r_enc_11;
+           r_enc_10 <-R blocksize;
+           return(c21, truncate(r_enc_10, l_2))
+     ) | (
+       Oenc3(IVdata3: blocksize, m31: blocksize, m32: blocksize, m33: blocksize, l_3: len) :=
+       if defined(IVdata1) && (IVdata3 = IVdata1) then
+         event_abort repeatedIV
+       else
+         if defined(IVdata2) && (IVdata3 = IVdata2) then
+           event_abort repeatedIV
+         else
+           r_enc_9 <-R blocksize;
+           r_enc_8 <-R blocksize;
+           r_enc_7 <-R blocksize;
+           return(r_enc_9, r_enc_8, truncate(r_enc_7, l_3))
+     ))
+
+
+Applying remove assignments of findcond
+  - Remove assignments on x_4 (definition removed, all usages removed)
+  - Remove assignments on c21 (definition removed, all usages removed)
+yields
+
+Game 24 is
+     Ogen() :=
+     return();
+     ((
+       Oenc1(IVdata1: blocksize, m1: blocksize, l_1: len) :=
+       if defined(IVdata2) && (IVdata1 = IVdata2) then
+         event_abort repeatedIV
+       else
+         if defined(IVdata3) && (IVdata1 = IVdata3) then
+           event_abort repeatedIV
+         else
+           r_enc_1 <-R blocksize;
+           c1: blocksize <- xor(r_enc_1, m1);
+           return(truncate(c1, l_1))
+     ) | (
+       Oenc2(IVdata2: blocksize, m21: blocksize, m22: blocksize, l_2: len) :=
+       if defined(IVdata1) && (IVdata2 = IVdata1) then
+         event_abort repeatedIV
+       else
+         if defined(IVdata3) && (IVdata2 = IVdata3) then
+           event_abort repeatedIV
+         else
+           r_enc_11 <-R blocksize;
+           r_enc_10 <-R blocksize;
+           return(r_enc_11, truncate(r_enc_10, l_2))
+     ) | (
+       Oenc3(IVdata3: blocksize, m31: blocksize, m32: blocksize, m33: blocksize, l_3: len) :=
+       if defined(IVdata1) && (IVdata3 = IVdata1) then
+         event_abort repeatedIV
+       else
+         if defined(IVdata2) && (IVdata3 = IVdata2) then
+           event_abort repeatedIV
+         else
+           r_enc_9 <-R blocksize;
+           r_enc_8 <-R blocksize;
+           r_enc_7 <-R blocksize;
+           return(r_enc_9, r_enc_8, truncate(r_enc_7, l_3))
+     ))
+
+
+Applying equivalence remove_xor(xor)
+  - Equivalence remove_xor(xor) with variables: r_enc_1 -> a
+yields
+
+Game 25 is
+     Ogen() :=
+     return();
+     ((
+       Oenc1(IVdata1: blocksize, m1: blocksize, l_1: len) :=
+       if defined(IVdata2) && (IVdata1 = IVdata2) then
+         event_abort repeatedIV
+       else
+         if defined(IVdata3) && (IVdata1 = IVdata3) then
+           event_abort repeatedIV
+         else
+           r_enc_12 <-R blocksize;
+           c1: blocksize <- (x_5: blocksize <- m1; r_enc_12);
+           return(truncate(c1, l_1))
+     ) | (
+       Oenc2(IVdata2: blocksize, m21: blocksize, m22: blocksize, l_2: len) :=
+       if defined(IVdata1) && (IVdata2 = IVdata1) then
+         event_abort repeatedIV
+       else
+         if defined(IVdata3) && (IVdata2 = IVdata3) then
+           event_abort repeatedIV
+         else
+           r_enc_11 <-R blocksize;
+           r_enc_10 <-R blocksize;
+           return(r_enc_11, truncate(r_enc_10, l_2))
+     ) | (
+       Oenc3(IVdata3: blocksize, m31: blocksize, m32: blocksize, m33: blocksize, l_3: len) :=
+       if defined(IVdata1) && (IVdata3 = IVdata1) then
+         event_abort repeatedIV
+       else
+         if defined(IVdata2) && (IVdata3 = IVdata2) then
+           event_abort repeatedIV
+         else
+           r_enc_9 <-R blocksize;
+           r_enc_8 <-R blocksize;
+           r_enc_7 <-R blocksize;
+           return(r_enc_9, r_enc_8, truncate(r_enc_7, l_3))
+     ))
+
+
+Applying expand
+  - Expand if/find/let
+yields
+
+Game 26 is
+     Ogen() :=
+     return();
+     ((
+       Oenc1(IVdata1: blocksize, m1: blocksize, l_1: len) :=
+       if defined(IVdata2) && (IVdata1 = IVdata2) then
+         event_abort repeatedIV
+       else
+         if defined(IVdata3) && (IVdata1 = IVdata3) then
+           event_abort repeatedIV
+         else
+           r_enc_12 <-R blocksize;
+           x_5: blocksize <- m1;
+           c1: blocksize <- r_enc_12;
+           return(truncate(c1, l_1))
+     ) | (
+       Oenc2(IVdata2: blocksize, m21: blocksize, m22: blocksize, l_2: len) :=
+       if defined(IVdata1) && (IVdata2 = IVdata1) then
+         event_abort repeatedIV
+       else
+         if defined(IVdata3) && (IVdata2 = IVdata3) then
+           event_abort repeatedIV
+         else
+           r_enc_11 <-R blocksize;
+           r_enc_10 <-R blocksize;
+           return(r_enc_11, truncate(r_enc_10, l_2))
+     ) | (
+       Oenc3(IVdata3: blocksize, m31: blocksize, m32: blocksize, m33: blocksize, l_3: len) :=
+       if defined(IVdata1) && (IVdata3 = IVdata1) then
+         event_abort repeatedIV
+       else
+         if defined(IVdata2) && (IVdata3 = IVdata2) then
+           event_abort repeatedIV
+         else
+           r_enc_9 <-R blocksize;
+           r_enc_8 <-R blocksize;
+           r_enc_7 <-R blocksize;
+           return(r_enc_9, r_enc_8, truncate(r_enc_7, l_3))
+     ))
+
+
+Applying remove assignments of findcond
+  - Remove assignments on x_5 (definition removed, all usages removed)
+  - Remove assignments on c1 (definition removed, all usages removed)
+yields
+
+Game 27 is
+     Ogen() :=
+     return();
+     ((
+       Oenc1(IVdata1: blocksize, m1: blocksize, l_1: len) :=
+       if defined(IVdata2) && (IVdata1 = IVdata2) then
+         event_abort repeatedIV
+       else
+         if defined(IVdata3) && (IVdata1 = IVdata3) then
+           event_abort repeatedIV
+         else
+           r_enc_12 <-R blocksize;
+           return(truncate(r_enc_12, l_1))
+     ) | (
+       Oenc2(IVdata2: blocksize, m21: blocksize, m22: blocksize, l_2: len) :=
+       if defined(IVdata1) && (IVdata2 = IVdata1) then
+         event_abort repeatedIV
+       else
+         if defined(IVdata3) && (IVdata2 = IVdata3) then
+           event_abort repeatedIV
+         else
+           r_enc_11 <-R blocksize;
+           r_enc_10 <-R blocksize;
+           return(r_enc_11, truncate(r_enc_10, l_2))
+     ) | (
+       Oenc3(IVdata3: blocksize, m31: blocksize, m32: blocksize, m33: blocksize, l_3: len) :=
+       if defined(IVdata1) && (IVdata3 = IVdata1) then
+         event_abort repeatedIV
+       else
+         if defined(IVdata2) && (IVdata3 = IVdata2) then
+           event_abort repeatedIV
+         else
+           r_enc_9 <-R blocksize;
+           r_enc_8 <-R blocksize;
+           r_enc_7 <-R blocksize;
+           return(r_enc_9, r_enc_8, truncate(r_enc_7, l_3))
+     ))
+
+Initial state
+Game 28 is
+     Ogen() :=
+     k_3 <-R enc_key;
+     IV0_1: blocksize <- AES(k_3, Zero);
+     return();
+     ((
+       Oenc1(IVdata1_1: blocksize, m1_1: blocksize, l_5: len) :=
+       if defined(IVdata2_1) && (IVdata1_1 = IVdata2_1) then
+         event_abort repeatedIV
+       else
+         if defined(IVdata3_1) && (IVdata1_1 = IVdata3_1) then
+           event_abort repeatedIV
+         else
+           IV1_1: blocksize <- xor(IV0_1, IVdata1_1);
+           c1_1: blocksize <- {26}xor(AES(k_3, IV1_1), Zero);
+           return(truncate(c1_1, l_5))
+     ) | (
+       Oenc2(IVdata2_1: blocksize, m21_1: blocksize, m22_1: blocksize, l_6: len) :=
+       if defined(IVdata1_1) && (IVdata2_1 = IVdata1_1) then
+         event_abort repeatedIV
+       else
+         if defined(IVdata3_1) && (IVdata2_1 = IVdata3_1) then
+           event_abort repeatedIV
+         else
+           IV2_1: blocksize <- xor(IV0_1, IVdata2_1);
+           c21_1: blocksize <- {54}xor(AES(k_3, IV2_1), Zero);
+           c22_1: blocksize <- {60}xor(AES(k_3, c21_1), Zero);
+           return(c21_1, truncate(c22_1, l_6))
+     ) | (
+       Oenc3(IVdata3_1: blocksize, m31_1: blocksize, m32_1: blocksize, m33_1: blocksize, l_7: len) :=
+       if defined(IVdata1_1) && (IVdata3_1 = IVdata1_1) then
+         event_abort repeatedIV
+       else
+         if defined(IVdata2_1) && (IVdata3_1 = IVdata2_1) then
+           event_abort repeatedIV
+         else
+           IV3_1: blocksize <- xor(IV0_1, IVdata3_1);
+           c31_1: blocksize <- {90}xor(AES(k_3, IV3_1), Zero);
+           c32_1: blocksize <- {96}xor(AES(k_3, c31_1), Zero);
+           c33_1: blocksize <- {102}xor(AES(k_3, c32_1), Zero);
+           return(c31_1, c32_1, truncate(c33_1, l_7))
+     ))
+
+
+Applying simplify
+  - Simplification pass
+    - Replaced xor(AES(k_3, IV3_1), Zero) with AES(k_3, IV3_1) at 90
+    - Replaced xor(AES(k_3, c31_1), Zero) with AES(k_3, c31_1) at 96
+    - Replaced xor(AES(k_3, c32_1), Zero) with AES(k_3, c32_1) at 102
+    - Replaced xor(AES(k_3, IV2_1), Zero) with AES(k_3, IV2_1) at 54
+    - Replaced xor(AES(k_3, c21_1), Zero) with AES(k_3, c21_1) at 60
+    - Replaced xor(AES(k_3, IV1_1), Zero) with AES(k_3, IV1_1) at 26
+yields
+
+Game 29 is
+     Ogen() :=
+     k_3 <-R enc_key;
+     IV0_1: blocksize <- AES(k_3, Zero);
+     return();
+     ((
+       Oenc1(IVdata1_1: blocksize, m1_1: blocksize, l_5: len) :=
+       if defined(IVdata2_1) && (IVdata1_1 = IVdata2_1) then
+         event_abort repeatedIV
+       else
+         if defined(IVdata3_1) && (IVdata1_1 = IVdata3_1) then
+           event_abort repeatedIV
+         else
+           IV1_1: blocksize <- xor(IV0_1, IVdata1_1);
+           c1_1: blocksize <- AES(k_3, IV1_1);
+           return(truncate(c1_1, l_5))
+     ) | (
+       Oenc2(IVdata2_1: blocksize, m21_1: blocksize, m22_1: blocksize, l_6: len) :=
+       if defined(IVdata1_1) && (IVdata2_1 = IVdata1_1) then
+         event_abort repeatedIV
+       else
+         if defined(IVdata3_1) && (IVdata2_1 = IVdata3_1) then
+           event_abort repeatedIV
+         else
+           IV2_1: blocksize <- xor(IV0_1, IVdata2_1);
+           c21_1: blocksize <- AES(k_3, IV2_1);
+           c22_1: blocksize <- AES(k_3, c21_1);
+           return(c21_1, truncate(c22_1, l_6))
+     ) | (
+       Oenc3(IVdata3_1: blocksize, m31_1: blocksize, m32_1: blocksize, m33_1: blocksize, l_7: len) :=
+       if defined(IVdata1_1) && (IVdata3_1 = IVdata1_1) then
+         event_abort repeatedIV
+       else
+         if defined(IVdata2_1) && (IVdata3_1 = IVdata2_1) then
+           event_abort repeatedIV
+         else
+           IV3_1: blocksize <- xor(IV0_1, IVdata3_1);
+           c31_1: blocksize <- AES(k_3, IV3_1);
+           c32_1: blocksize <- AES(k_3, c31_1);
+           c33_1: blocksize <- AES(k_3, c32_1);
+           return(c31_1, c32_1, truncate(c33_1, l_7))
+     ))
+
+
+Applying equivalence prf_partial(AES) with terms: 4 -> AES(k_5, x_O_enc_13), 26 -> AES(k_5, x_O_enc_12), 52 -> AES(k_5, x_O_enc_11), 56 -> AES(k_5, x_O_enc_10), 84 -> AES(k_5, x_O_enc_9), 88 -> AES(k_5, x_O_enc_8), 92 -> AES(k_5, x_O_enc_7) [probability P_AES(time_2, 7) + Pr[event ev_coll_97 in game 30] + Pr[event ev_coll_96 in game 30] + Pr[event ev_coll_95 in game 30] + Pr[event ev_coll_94 in game 30] + Pr[event ev_coll_93 in game 30] + Pr[event ev_coll_92 in game 30] + Pr[event ev_coll_91 in game 30] + Pr[event ev_coll_90 in game 30] + Pr[event ev_coll_89 in game 30] + Pr[event ev_coll_88 in game 30] + Pr[event ev_coll_87 in game 30] + Pr[event ev_coll_86 in game 30] + Pr[event ev_coll_85 in game 30] + Pr[event ev_coll_84 in game 30] + Pr[event ev_coll_83 in game 30] + Pr[event ev_coll_82 in game 30] + Pr[event ev_coll_81 in game 30] + Pr[event ev_coll_80 in game 30] + Pr[event ev_coll_79 in game 30] + Pr[event ev_coll_78 in game 30] + Pr[event ev_coll_77 in game 30] + Pr[event ev_coll_76 in game 30] + Pr[event ev_coll_75 in game 30] + Pr[event ev_coll_74 in game 30] + Pr[event ev_coll_73 in game 30] + Pr[event ev_coll_72 in game 30] + Pr[event ev_coll_71 in game 30] + Pr[event ev_coll_70 in game 30] + Pr[event ev_coll_69 in game 30] + Pr[event ev_coll_68 in game 30] + Pr[event ev_coll_67 in game 30] + Pr[event ev_coll_66 in game 30] + Pr[event ev_coll_65 in game 30] + Pr[event ev_coll_64 in game 30] + Pr[event ev_coll_63 in game 30] + Pr[event ev_coll_62 in game 30] + Pr[event ev_coll_61 in game 30] + Pr[event ev_coll_60 in game 30] + Pr[event ev_coll_59 in game 30] + Pr[event ev_coll_58 in game 30] + Pr[event ev_coll_57 in game 30] + Pr[event ev_coll_56 in game 30] + Pr[event ev_coll_55 in game 30] + Pr[event ev_coll_54 in game 30] + Pr[event ev_coll_53 in game 30] + Pr[event ev_coll_52 in game 30] + Pr[event ev_coll_51 in game 30] + Pr[event ev_coll_50 in game 30] + Pr[event ev_coll_49 in game 30]]
+  - Equivalence prf_partial(AES) with variables: k_3 -> k_5;terms: 4 -> AES(k_5, x_O_enc_13), 26 -> AES(k_5, x_O_enc_12), 52 -> AES(k_5, x_O_enc_11), 56 -> AES(k_5, x_O_enc_10), 84 -> AES(k_5, x_O_enc_9), 88 -> AES(k_5, x_O_enc_8), 92 -> AES(k_5, x_O_enc_7)
+yields
+
+Game 30 is
+     Ogen() :=
+     k_5 <-R enc_key;
+     IV0_1: blocksize <- (x_O_enc_7: blocksize <- Zero; {6}find [unique]  else {7}find  else r_enc_13 <-R blocksize; r_enc_13);
+     return();
+     ((
+       Oenc1(IVdata1_1: blocksize, m1_1: blocksize, l_5: len) :=
+       if defined(IVdata2_1) && (IVdata1_1 = IVdata2_1) then
+         event_abort repeatedIV
+       else
+         if defined(IVdata3_1) && (IVdata1_1 = IVdata3_1) then
+           event_abort repeatedIV
+         else
+           IV1_1: blocksize <- xor(IV0_1, IVdata1_1);
+           c1_1: blocksize <- (x_O_enc_8: blocksize <- IV1_1; find [unique]  suchthat defined(x_O_enc_7, r_enc_13) && (x_O_enc_8 = x_O_enc_7) then event_abort ev_coll_90 orfind  suchthat defined(x_O_enc_9, r_enc_15) && (x_O_enc_8 = x_O_enc_9) then event_abort ev_coll_88 orfind  suchthat defined(x_O_enc_10, r_enc_16) && (x_O_enc_8 = x_O_enc_10) then event_abort ev_coll_87 orfind  suchthat defined(x_O_enc_11, r_enc_17) && (x_O_enc_8 = x_O_enc_11) then event_abort ev_coll_86 orfind  suchthat defined(x_O_enc_12, r_enc_18) && (x_O_enc_8 = x_O_enc_12) then event_abort ev_coll_85 orfind  suchthat defined(x_O_enc_13, r_enc_19) && (x_O_enc_8 = x_O_enc_13) then event_abort ev_coll_84 else {56}find  else r_enc_14 <-R blocksize; r_enc_14);
+           return(truncate(c1_1, l_5))
+     ) | (
+       Oenc2(IVdata2_1: blocksize, m21_1: blocksize, m22_1: blocksize, l_6: len) :=
+       if defined(IVdata1_1) && (IVdata2_1 = IVdata1_1) then
+         event_abort repeatedIV
+       else
+         if defined(IVdata3_1) && (IVdata2_1 = IVdata3_1) then
+           event_abort repeatedIV
+         else
+           IV2_1: blocksize <- xor(IV0_1, IVdata2_1);
+           c21_1: blocksize <- (x_O_enc_9: blocksize <- IV2_1; find [unique]  suchthat defined(x_O_enc_7, r_enc_13) && (x_O_enc_9 = x_O_enc_7) then event_abort ev_coll_83 orfind  suchthat defined(x_O_enc_8, r_enc_14) && (x_O_enc_9 = x_O_enc_8) then event_abort ev_coll_82 orfind  suchthat defined(x_O_enc_11, r_enc_17) && (x_O_enc_9 = x_O_enc_11) then event_abort ev_coll_79 orfind  suchthat defined(x_O_enc_12, r_enc_18) && (x_O_enc_9 = x_O_enc_12) then event_abort ev_coll_78 orfind  suchthat defined(x_O_enc_13, r_enc_19) && (x_O_enc_9 = x_O_enc_13) then event_abort ev_coll_77 else {105}find  else r_enc_15 <-R blocksize; r_enc_15);
+           c22_1: blocksize <- (x_O_enc_10: blocksize <- c21_1; find [unique]  suchthat defined(x_O_enc_7, r_enc_13) && (x_O_enc_10 = x_O_enc_7) then event_abort ev_coll_76 orfind  suchthat defined(x_O_enc_8, r_enc_14) && (x_O_enc_10 = x_O_enc_8) then event_abort ev_coll_75 orfind  suchthat defined(x_O_enc_9, r_enc_15) && (x_O_enc_10 = x_O_enc_9) then event_abort ev_coll_74 orfind  suchthat defined(x_O_enc_11, r_enc_17) && (x_O_enc_10 = x_O_enc_11) then event_abort ev_coll_72 orfind  suchthat defined(x_O_enc_12, r_enc_18) && (x_O_enc_10 = x_O_enc_12) then event_abort ev_coll_71 orfind  suchthat defined(x_O_enc_13, r_enc_19) && (x_O_enc_10 = x_O_enc_13) then event_abort ev_coll_70 else {136}find  else r_enc_16 <-R blocksize; r_enc_16);
+           return(c21_1, truncate(c22_1, l_6))
+     ) | (
+       Oenc3(IVdata3_1: blocksize, m31_1: blocksize, m32_1: blocksize, m33_1: blocksize, l_7: len) :=
+       if defined(IVdata1_1) && (IVdata3_1 = IVdata1_1) then
+         event_abort repeatedIV
+       else
+         if defined(IVdata2_1) && (IVdata3_1 = IVdata2_1) then
+           event_abort repeatedIV
+         else
+           IV3_1: blocksize <- xor(IV0_1, IVdata3_1);
+           c31_1: blocksize <- (x_O_enc_11: blocksize <- IV3_1; find [unique]  suchthat defined(x_O_enc_7, r_enc_13) && (x_O_enc_11 = x_O_enc_7) then event_abort ev_coll_69 orfind  suchthat defined(x_O_enc_8, r_enc_14) && (x_O_enc_11 = x_O_enc_8) then event_abort ev_coll_68 orfind  suchthat defined(x_O_enc_9, r_enc_15) && (x_O_enc_11 = x_O_enc_9) then event_abort ev_coll_67 orfind  suchthat defined(x_O_enc_10, r_enc_16) && (x_O_enc_11 = x_O_enc_10) then event_abort ev_coll_66 else {183}find  else r_enc_17 <-R blocksize; r_enc_17);
+           c32_1: blocksize <- (x_O_enc_12: blocksize <- c31_1; find [unique]  suchthat defined(x_O_enc_7, r_enc_13) && (x_O_enc_12 = x_O_enc_7) then event_abort ev_coll_62 orfind  suchthat defined(x_O_enc_8, r_enc_14) && (x_O_enc_12 = x_O_enc_8) then event_abort ev_coll_61 orfind  suchthat defined(x_O_enc_9, r_enc_15) && (x_O_enc_12 = x_O_enc_9) then event_abort ev_coll_60 orfind  suchthat defined(x_O_enc_10, r_enc_16) && (x_O_enc_12 = x_O_enc_10) then event_abort ev_coll_59 orfind  suchthat defined(x_O_enc_11, r_enc_17) && (x_O_enc_12 = x_O_enc_11) then event_abort ev_coll_58 else {210}find  else r_enc_18 <-R blocksize; r_enc_18);
+           c33_1: blocksize <- (x_O_enc_13: blocksize <- c32_1; find [unique]  suchthat defined(x_O_enc_7, r_enc_13) && (x_O_enc_13 = x_O_enc_7) then event_abort ev_coll_55 orfind  suchthat defined(x_O_enc_8, r_enc_14) && (x_O_enc_13 = x_O_enc_8) then event_abort ev_coll_54 orfind  suchthat defined(x_O_enc_9, r_enc_15) && (x_O_enc_13 = x_O_enc_9) then event_abort ev_coll_53 orfind  suchthat defined(x_O_enc_10, r_enc_16) && (x_O_enc_13 = x_O_enc_10) then event_abort ev_coll_52 orfind  suchthat defined(x_O_enc_11, r_enc_17) && (x_O_enc_13 = x_O_enc_11) then event_abort ev_coll_51 orfind  suchthat defined(x_O_enc_12, r_enc_18) && (x_O_enc_13 = x_O_enc_12) then event_abort ev_coll_50 else {241}find  else r_enc_19 <-R blocksize; r_enc_19);
+           return(c31_1, c32_1, truncate(c33_1, l_7))
+     ))
+
+
+Applying simplify (non-expanded game)
+  - Simplification pass
+    - Find at 6 removed (else branch kept if any)
+    - Find at 7 removed (else branch kept if any)
+    - Find at 56 removed (else branch kept if any)
+    - Find at 105 removed (else branch kept if any)
+    - Find at 136 removed (else branch kept if any)
+    - Find at 183 removed (else branch kept if any)
+    - Find at 210 removed (else branch kept if any)
+    - Find at 241 removed (else branch kept if any)
+yields
+
+Game 31 is
+     Ogen() :=
+     k_5 <-R enc_key;
+     IV0_1: blocksize <- (x_O_enc_7: blocksize <- Zero; r_enc_13 <-R blocksize; r_enc_13);
+     return();
+     ((
+       Oenc1(IVdata1_1: blocksize, m1_1: blocksize, l_5: len) :=
+       if defined(IVdata2_1) && (IVdata1_1 = IVdata2_1) then
+         event_abort repeatedIV
+       else
+         if defined(IVdata3_1) && (IVdata1_1 = IVdata3_1) then
+           event_abort repeatedIV
+         else
+           IV1_1: blocksize <- xor(IV0_1, IVdata1_1);
+           c1_1: blocksize <- (x_O_enc_8: blocksize <- IV1_1; {29}find [unique]  suchthat defined(x_O_enc_7, r_enc_13) && (x_O_enc_8 = x_O_enc_7) then event_abort ev_coll_90 orfind  suchthat defined(x_O_enc_9, r_enc_15) && (x_O_enc_8 = x_O_enc_9) then event_abort ev_coll_88 orfind  suchthat defined(x_O_enc_10, r_enc_16) && (x_O_enc_8 = x_O_enc_10) then event_abort ev_coll_87 orfind  suchthat defined(x_O_enc_11, r_enc_17) && (x_O_enc_8 = x_O_enc_11) then event_abort ev_coll_86 orfind  suchthat defined(x_O_enc_12, r_enc_18) && (x_O_enc_8 = x_O_enc_12) then event_abort ev_coll_85 orfind  suchthat defined(x_O_enc_13, r_enc_19) && (x_O_enc_8 = x_O_enc_13) then event_abort ev_coll_84 else r_enc_14 <-R blocksize; r_enc_14);
+           return(truncate(c1_1, l_5))
+     ) | (
+       Oenc2(IVdata2_1: blocksize, m21_1: blocksize, m22_1: blocksize, l_6: len) :=
+       if defined(IVdata1_1) && (IVdata2_1 = IVdata1_1) then
+         event_abort repeatedIV
+       else
+         if defined(IVdata3_1) && (IVdata2_1 = IVdata3_1) then
+           event_abort repeatedIV
+         else
+           IV2_1: blocksize <- xor(IV0_1, IVdata2_1);
+           c21_1: blocksize <- (x_O_enc_9: blocksize <- IV2_1; {81}find [unique]  suchthat defined(x_O_enc_7, r_enc_13) && (x_O_enc_9 = x_O_enc_7) then event_abort ev_coll_83 orfind  suchthat defined(x_O_enc_8, r_enc_14) && (x_O_enc_9 = x_O_enc_8) then event_abort ev_coll_82 orfind  suchthat defined(x_O_enc_11, r_enc_17) && (x_O_enc_9 = x_O_enc_11) then event_abort ev_coll_79 orfind  suchthat defined(x_O_enc_12, r_enc_18) && (x_O_enc_9 = x_O_enc_12) then event_abort ev_coll_78 orfind  suchthat defined(x_O_enc_13, r_enc_19) && (x_O_enc_9 = x_O_enc_13) then event_abort ev_coll_77 else r_enc_15 <-R blocksize; r_enc_15);
+           c22_1: blocksize <- (x_O_enc_10: blocksize <- c21_1; {107}find [unique]  suchthat defined(x_O_enc_7, r_enc_13) && (x_O_enc_10 = x_O_enc_7) then event_abort ev_coll_76 orfind  suchthat defined(x_O_enc_8, r_enc_14) && (x_O_enc_10 = x_O_enc_8) then event_abort ev_coll_75 orfind  suchthat defined(x_O_enc_9, r_enc_15) && (x_O_enc_10 = x_O_enc_9) then event_abort ev_coll_74 orfind  suchthat defined(x_O_enc_11, r_enc_17) && (x_O_enc_10 = x_O_enc_11) then event_abort ev_coll_72 orfind  suchthat defined(x_O_enc_12, r_enc_18) && (x_O_enc_10 = x_O_enc_12) then event_abort ev_coll_71 orfind  suchthat defined(x_O_enc_13, r_enc_19) && (x_O_enc_10 = x_O_enc_13) then event_abort ev_coll_70 else r_enc_16 <-R blocksize; r_enc_16);
+           return(c21_1, truncate(c22_1, l_6))
+     ) | (
+       Oenc3(IVdata3_1: blocksize, m31_1: blocksize, m32_1: blocksize, m33_1: blocksize, l_7: len) :=
+       if defined(IVdata1_1) && (IVdata3_1 = IVdata1_1) then
+         event_abort repeatedIV
+       else
+         if defined(IVdata2_1) && (IVdata3_1 = IVdata2_1) then
+           event_abort repeatedIV
+         else
+           IV3_1: blocksize <- xor(IV0_1, IVdata3_1);
+           c31_1: blocksize <- (x_O_enc_11: blocksize <- IV3_1; {161}find [unique]  suchthat defined(x_O_enc_7, r_enc_13) && (x_O_enc_11 = x_O_enc_7) then event_abort ev_coll_69 orfind  suchthat defined(x_O_enc_8, r_enc_14) && (x_O_enc_11 = x_O_enc_8) then event_abort ev_coll_68 orfind  suchthat defined(x_O_enc_9, r_enc_15) && (x_O_enc_11 = x_O_enc_9) then event_abort ev_coll_67 orfind  suchthat defined(x_O_enc_10, r_enc_16) && (x_O_enc_11 = x_O_enc_10) then event_abort ev_coll_66 else r_enc_17 <-R blocksize; r_enc_17);
+           c32_1: blocksize <- (x_O_enc_12: blocksize <- c31_1; {183}find [unique]  suchthat defined(x_O_enc_7, r_enc_13) && (x_O_enc_12 = x_O_enc_7) then event_abort ev_coll_62 orfind  suchthat defined(x_O_enc_8, r_enc_14) && (x_O_enc_12 = x_O_enc_8) then event_abort ev_coll_61 orfind  suchthat defined(x_O_enc_9, r_enc_15) && (x_O_enc_12 = x_O_enc_9) then event_abort ev_coll_60 orfind  suchthat defined(x_O_enc_10, r_enc_16) && (x_O_enc_12 = x_O_enc_10) then event_abort ev_coll_59 orfind  suchthat defined(x_O_enc_11, r_enc_17) && (x_O_enc_12 = x_O_enc_11) then event_abort ev_coll_58 else r_enc_18 <-R blocksize; r_enc_18);
+           c33_1: blocksize <- (x_O_enc_13: blocksize <- c32_1; {209}find [unique]  suchthat defined(x_O_enc_7, r_enc_13) && (x_O_enc_13 = x_O_enc_7) then event_abort ev_coll_55 orfind  suchthat defined(x_O_enc_8, r_enc_14) && (x_O_enc_13 = x_O_enc_8) then event_abort ev_coll_54 orfind  suchthat defined(x_O_enc_9, r_enc_15) && (x_O_enc_13 = x_O_enc_9) then event_abort ev_coll_53 orfind  suchthat defined(x_O_enc_10, r_enc_16) && (x_O_enc_13 = x_O_enc_10) then event_abort ev_coll_52 orfind  suchthat defined(x_O_enc_11, r_enc_17) && (x_O_enc_13 = x_O_enc_11) then event_abort ev_coll_51 orfind  suchthat defined(x_O_enc_12, r_enc_18) && (x_O_enc_13 = x_O_enc_12) then event_abort ev_coll_50 else r_enc_19 <-R blocksize; r_enc_19);
+           return(c31_1, c32_1, truncate(c33_1, l_7))
+     ))
+
+
+Applying expand [probability 4 / |blocksize|]
+  - Expand if/find/let
+    - Remove branch 6 in find at 209
+    - Remove branch 1 in find at 209
+    - Remove branch 1 in find at 183
+    - Remove branch 3 in find at 161
+    - Remove branch 2 in find at 161
+    - Remove branch 1 in find at 107
+    - Remove branch 3 in find at 81
+    - Remove branch 2 in find at 81
+    - Remove branch 4 in find at 29
+    - Remove branch 2 in find at 29
+yields
+
+Game 32 is
+     Ogen() :=
+     k_5 <-R enc_key;
+     x_O_enc_7: blocksize <- Zero;
+     r_enc_13 <-R blocksize;
+     IV0_1: blocksize <- r_enc_13;
+     return();
+     ((
+       Oenc1(IVdata1_1: blocksize, m1_1: blocksize, l_5: len) :=
+       if defined(IVdata2_1) && (IVdata1_1 = IVdata2_1) then
+         event_abort repeatedIV
+       else
+         if defined(IVdata3_1) && (IVdata1_1 = IVdata3_1) then
+           event_abort repeatedIV
+         else
+           IV1_1: blocksize <- xor(IV0_1, IVdata1_1);
+           x_O_enc_8: blocksize <- IV1_1;
+           find [unique]  suchthat defined(x_O_enc_7, r_enc_13) && (x_O_enc_8 = x_O_enc_7) then
+             event_abort ev_coll_90
+           orfind  suchthat defined(x_O_enc_10, r_enc_16) && (x_O_enc_8 = x_O_enc_10) then
+             event_abort ev_coll_87
+           orfind  suchthat defined(x_O_enc_12, r_enc_18) && (x_O_enc_8 = x_O_enc_12) then
+             event_abort ev_coll_85
+           orfind  suchthat defined(x_O_enc_13, r_enc_19) && (x_O_enc_8 = x_O_enc_13) then
+             event_abort ev_coll_84
+           else
+             r_enc_14 <-R blocksize;
+             c1_1: blocksize <- r_enc_14;
+             return(truncate(c1_1, l_5))
+     ) | (
+       Oenc2(IVdata2_1: blocksize, m21_1: blocksize, m22_1: blocksize, l_6: len) :=
+       if defined(IVdata1_1) && (IVdata2_1 = IVdata1_1) then
+         event_abort repeatedIV
+       else
+         if defined(IVdata3_1) && (IVdata2_1 = IVdata3_1) then
+           event_abort repeatedIV
+         else
+           IV2_1: blocksize <- xor(IV0_1, IVdata2_1);
+           x_O_enc_9: blocksize <- IV2_1;
+           find [unique]  suchthat defined(x_O_enc_7, r_enc_13) && (x_O_enc_9 = x_O_enc_7) then
+             event_abort ev_coll_83
+           orfind  suchthat defined(x_O_enc_12, r_enc_18) && (x_O_enc_9 = x_O_enc_12) then
+             event_abort ev_coll_78
+           orfind  suchthat defined(x_O_enc_13, r_enc_19) && (x_O_enc_9 = x_O_enc_13) then
+             event_abort ev_coll_77
+           else
+             r_enc_15 <-R blocksize;
+             c21_1: blocksize <- r_enc_15;
+             x_O_enc_10: blocksize <- c21_1;
+             find [unique]  suchthat defined(x_O_enc_8, r_enc_14) && (x_O_enc_10 = x_O_enc_8) then
+               event_abort ev_coll_75
+             orfind  suchthat defined(x_O_enc_9, r_enc_15) && (x_O_enc_10 = x_O_enc_9) then
+               event_abort ev_coll_74
+             orfind  suchthat defined(x_O_enc_11, r_enc_17) && (x_O_enc_10 = x_O_enc_11) then
+               event_abort ev_coll_72
+             orfind  suchthat defined(x_O_enc_12, r_enc_18) && (x_O_enc_10 = x_O_enc_12) then
+               event_abort ev_coll_71
+             orfind  suchthat defined(x_O_enc_13, r_enc_19) && (x_O_enc_10 = x_O_enc_13) then
+               event_abort ev_coll_70
+             else
+               r_enc_16 <-R blocksize;
+               c22_1: blocksize <- r_enc_16;
+               return(c21_1, truncate(c22_1, l_6))
+     ) | (
+       Oenc3(IVdata3_1: blocksize, m31_1: blocksize, m32_1: blocksize, m33_1: blocksize, l_7: len) :=
+       if defined(IVdata1_1) && (IVdata3_1 = IVdata1_1) then
+         event_abort repeatedIV
+       else
+         if defined(IVdata2_1) && (IVdata3_1 = IVdata2_1) then
+           event_abort repeatedIV
+         else
+           IV3_1: blocksize <- xor(IV0_1, IVdata3_1);
+           x_O_enc_11: blocksize <- IV3_1;
+           find [unique]  suchthat defined(x_O_enc_7, r_enc_13) && (x_O_enc_11 = x_O_enc_7) then
+             event_abort ev_coll_69
+           orfind  suchthat defined(x_O_enc_10, r_enc_16) && (x_O_enc_11 = x_O_enc_10) then
+             event_abort ev_coll_66
+           else
+             r_enc_17 <-R blocksize;
+             c31_1: blocksize <- r_enc_17;
+             x_O_enc_12: blocksize <- c31_1;
+             find [unique]  suchthat defined(x_O_enc_8, r_enc_14) && (x_O_enc_12 = x_O_enc_8) then
+               event_abort ev_coll_61
+             orfind  suchthat defined(x_O_enc_9, r_enc_15) && (x_O_enc_12 = x_O_enc_9) then
+               event_abort ev_coll_60
+             orfind  suchthat defined(x_O_enc_10, r_enc_16) && (x_O_enc_12 = x_O_enc_10) then
+               event_abort ev_coll_59
+             orfind  suchthat defined(x_O_enc_11, r_enc_17) && (x_O_enc_12 = x_O_enc_11) then
+               event_abort ev_coll_58
+             else
+               r_enc_18 <-R blocksize;
+               c32_1: blocksize <- r_enc_18;
+               x_O_enc_13: blocksize <- c32_1;
+               find [unique]  suchthat defined(x_O_enc_8, r_enc_14) && (x_O_enc_13 = x_O_enc_8) then
+                 event_abort ev_coll_54
+               orfind  suchthat defined(x_O_enc_9, r_enc_15) && (x_O_enc_13 = x_O_enc_9) then
+                 event_abort ev_coll_53
+               orfind  suchthat defined(x_O_enc_10, r_enc_16) && (x_O_enc_13 = x_O_enc_10) then
+                 event_abort ev_coll_52
+               orfind  suchthat defined(x_O_enc_11, r_enc_17) && (x_O_enc_13 = x_O_enc_11) then
+                 event_abort ev_coll_51
+               else
+                 r_enc_19 <-R blocksize;
+                 c33_1: blocksize <- r_enc_19;
+                 return(c31_1, c32_1, truncate(c33_1, l_7))
+     ))
+
+
+Applying remove assignments of findcond
+  - Remove assignments on IV0_1 (definition removed, all usages removed)
+  - Remove assignments on x_O_enc_11 (definition removed, all usages removed)
+  - Remove assignments on c31_1 (definition removed, all usages removed)
+  - Remove assignments on x_O_enc_12 (definition removed, all usages removed)
+  - Remove assignments on c32_1 (definition removed, all usages removed)
+  - Remove assignments on x_O_enc_13 (definition removed, all usages removed)
+  - Remove assignments on c33_1 (definition removed, all usages removed)
+  - Remove assignments on x_O_enc_9 (definition removed, all usages removed)
+  - Remove assignments on c21_1 (definition removed, all usages removed)
+  - Remove assignments on x_O_enc_10 (definition removed, all usages removed)
+  - Remove assignments on c22_1 (definition removed, all usages removed)
+  - Remove assignments on x_O_enc_8 (definition removed, all usages removed)
+  - Remove assignments on c1_1 (definition removed, all usages removed)
+yields
+
+Game 33 is
+     Ogen() :=
+     k_5 <-R enc_key;
+     x_O_enc_7: blocksize <- Zero;
+     r_enc_13 <-R blocksize;
+     return();
+     ((
+       Oenc1(IVdata1_1: blocksize, m1_1: blocksize, l_5: len) :=
+       if defined(IVdata2_1) && (IVdata1_1 = IVdata2_1) then
+         event_abort repeatedIV
+       else
+         if defined(IVdata3_1) && (IVdata1_1 = IVdata3_1) then
+           event_abort repeatedIV
+         else
+           IV1_1: blocksize <- xor(r_enc_13, IVdata1_1);
+           find [unique]  suchthat defined(x_O_enc_7, r_enc_13) && (IV1_1 = x_O_enc_7) then
+             event_abort ev_coll_90
+           orfind  suchthat defined(r_enc_15, r_enc_16) && (IV1_1 = r_enc_15) then
+             event_abort ev_coll_87
+           orfind  suchthat defined(r_enc_17, r_enc_18) && (IV1_1 = r_enc_17) then
+             event_abort ev_coll_85
+           orfind  suchthat defined(r_enc_18, r_enc_19) && (IV1_1 = r_enc_18) then
+             event_abort ev_coll_84
+           else
+             r_enc_14 <-R blocksize;
+             return(truncate(r_enc_14, l_5))
+     ) | (
+       Oenc2(IVdata2_1: blocksize, m21_1: blocksize, m22_1: blocksize, l_6: len) :=
+       if defined(IVdata1_1) && (IVdata2_1 = IVdata1_1) then
+         event_abort repeatedIV
+       else
+         if defined(IVdata3_1) && (IVdata2_1 = IVdata3_1) then
+           event_abort repeatedIV
+         else
+           IV2_1: blocksize <- xor(r_enc_13, IVdata2_1);
+           find [unique]  suchthat defined(x_O_enc_7, r_enc_13) && (IV2_1 = x_O_enc_7) then
+             event_abort ev_coll_83
+           orfind  suchthat defined(r_enc_17, r_enc_18) && (IV2_1 = r_enc_17) then
+             event_abort ev_coll_78
+           orfind  suchthat defined(r_enc_18, r_enc_19) && (IV2_1 = r_enc_18) then
+             event_abort ev_coll_77
+           else
+             r_enc_15 <-R blocksize;
+             find [unique]  suchthat defined(IV1_1, r_enc_14) && (r_enc_15 = IV1_1) then
+               event_abort ev_coll_75
+             orfind  suchthat defined(r_enc_15) && (r_enc_15 = IV2_1) then
+               event_abort ev_coll_74
+             orfind  suchthat defined(IV3_1, r_enc_17) && (r_enc_15 = IV3_1) then
+               event_abort ev_coll_72
+             orfind  suchthat defined(r_enc_17, r_enc_18) && (r_enc_15 = r_enc_17) then
+               event_abort ev_coll_71
+             orfind  suchthat defined(r_enc_18, r_enc_19) && (r_enc_15 = r_enc_18) then
+               event_abort ev_coll_70
+             else
+               r_enc_16 <-R blocksize;
+               return(r_enc_15, truncate(r_enc_16, l_6))
+     ) | (
+       Oenc3(IVdata3_1: blocksize, m31_1: blocksize, m32_1: blocksize, m33_1: blocksize, l_7: len) :=
+       if defined(IVdata1_1) && (IVdata3_1 = IVdata1_1) then
+         event_abort repeatedIV
+       else
+         if defined(IVdata2_1) && (IVdata3_1 = IVdata2_1) then
+           event_abort repeatedIV
+         else
+           IV3_1: blocksize <- xor(r_enc_13, IVdata3_1);
+           find [unique]  suchthat defined(x_O_enc_7, r_enc_13) && (IV3_1 = x_O_enc_7) then
+             event_abort ev_coll_69
+           orfind  suchthat defined(r_enc_15, r_enc_16) && (IV3_1 = r_enc_15) then
+             event_abort ev_coll_66
+           else
+             r_enc_17 <-R blocksize;
+             find [unique]  suchthat defined(IV1_1, r_enc_14) && (r_enc_17 = IV1_1) then
+               event_abort ev_coll_61
+             orfind  suchthat defined(IV2_1, r_enc_15) && (r_enc_17 = IV2_1) then
+               event_abort ev_coll_60
+             orfind  suchthat defined(r_enc_15, r_enc_16) && (r_enc_17 = r_enc_15) then
+               event_abort ev_coll_59
+             orfind  suchthat defined(r_enc_17) && (r_enc_17 = IV3_1) then
+               event_abort ev_coll_58
+             else
+               r_enc_18 <-R blocksize;
+               find [unique]  suchthat defined(IV1_1, r_enc_14) && (r_enc_18 = IV1_1) then
+                 event_abort ev_coll_54
+               orfind  suchthat defined(IV2_1, r_enc_15) && (r_enc_18 = IV2_1) then
+                 event_abort ev_coll_53
+               orfind  suchthat defined(r_enc_15, r_enc_16) && (r_enc_18 = r_enc_15) then
+                 event_abort ev_coll_52
+               orfind  suchthat defined(r_enc_17) && (r_enc_18 = IV3_1) then
+                 event_abort ev_coll_51
+               else
+                 r_enc_19 <-R blocksize;
+                 return(r_enc_17, r_enc_18, truncate(r_enc_19, l_7))
+     ))
+
+
+Applying simplify [probability 12 / |blocksize|]
+  - Global dependency analysis on r_enc_13
+yields
+
+Game 34 is
+     Ogen() :=
+  {2}k_5 <-R enc_key;
+     x_O_enc_7: blocksize <- Zero;
+     r_enc_13 <-R blocksize;
+     return();
+     ((
+       Oenc1(IVdata1_1: blocksize, m1_1: blocksize, l_5: len) :=
+       if defined(IVdata2_1) && (IVdata1_1 = IVdata2_1) then
+         event_abort repeatedIV
+       else
+         if defined(IVdata3_1) && (IVdata1_1 = IVdata3_1) then
+           event_abort repeatedIV
+         else
+           IV1_1: blocksize <- xor(r_enc_13, IVdata1_1);
+ {24}      find [unique] 
+           else
+             r_enc_14 <-R blocksize;
+             return(truncate(r_enc_14, l_5))
+     ) | (
+       Oenc2(IVdata2_1: blocksize, m21_1: blocksize, m22_1: blocksize, l_6: len) :=
+       if defined(IVdata1_1) && (IVdata2_1 = IVdata1_1) then
+         event_abort repeatedIV
+       else
+         if defined(IVdata3_1) && (IVdata2_1 = IVdata3_1) then
+           event_abort repeatedIV
+         else
+           IV2_1: blocksize <- xor(r_enc_13, IVdata2_1);
+ {47}      find [unique] 
+           else
+             r_enc_15 <-R blocksize;
+ {49}        find [unique]  suchthat defined(r_enc_17, r_enc_18) && {50}(r_enc_15 = r_enc_17) then
+               event_abort ev_coll_71
+             orfind  suchthat defined(r_enc_18, r_enc_19) && {54}(r_enc_15 = r_enc_18) then
+               event_abort ev_coll_70
+             else
+               r_enc_16 <-R blocksize;
+               return(r_enc_15, truncate(r_enc_16, l_6))
+     ) | (
+       Oenc3(IVdata3_1: blocksize, m31_1: blocksize, m32_1: blocksize, m33_1: blocksize, l_7: len) :=
+       if defined(IVdata1_1) && (IVdata3_1 = IVdata1_1) then
+         event_abort repeatedIV
+       else
+         if defined(IVdata2_1) && (IVdata3_1 = IVdata2_1) then
+           event_abort repeatedIV
+         else
+           IV3_1: blocksize <- xor(r_enc_13, IVdata3_1);
+ {81}      find [unique] 
+           else
+             r_enc_17 <-R blocksize;
+ {83}        if defined(r_enc_15, r_enc_16) && {84}(r_enc_17 = r_enc_15) then
+               event_abort ev_coll_59
+             else
+               r_enc_18 <-R blocksize;
+ {89}          if defined(r_enc_15, r_enc_16) && {90}(r_enc_18 = r_enc_15) then
+                 event_abort ev_coll_52
+               else
+                 r_enc_19 <-R blocksize;
+                 return(r_enc_17, r_enc_18, truncate(r_enc_19, l_7))
+     ))
+
+
+Applying simplify [probability 4 / |blocksize|]
+  - Simplification pass
+    - Find at 81 removed (else branch kept if any)
+    - Replaced (r_enc_17 = r_enc_15) with false at 84
+    - Remove branch 1 in find at 83
+    - Find at 83 removed (else branch kept if any)
+    - Replaced (r_enc_18 = r_enc_15) with false at 90
+    - Remove branch 1 in find at 89
+    - Find at 89 removed (else branch kept if any)
+    - Find at 47 removed (else branch kept if any)
+    - Replaced (r_enc_15 = r_enc_18) with false at 54
+    - Remove branch 2 in find at 49
+    - Replaced (r_enc_15 = r_enc_17) with false at 50
+    - Remove branch 1 in find at 49
+    - Find at 49 removed (else branch kept if any)
+    - Find at 24 removed (else branch kept if any)
+    - Remove random number generation at 2
+yields
+
+Game 35 is
+     Ogen() :=
+     x_O_enc_7: blocksize <- Zero;
+     r_enc_13 <-R blocksize;
+     return();
+     ((
+       Oenc1(IVdata1_1: blocksize, m1_1: blocksize, l_5: len) :=
+       if defined(IVdata2_1) && (IVdata1_1 = IVdata2_1) then
+         event_abort repeatedIV
+       else
+         if defined(IVdata3_1) && (IVdata1_1 = IVdata3_1) then
+           event_abort repeatedIV
+         else
+           IV1_1: blocksize <- xor(r_enc_13, IVdata1_1);
+           r_enc_14 <-R blocksize;
+           return(truncate(r_enc_14, l_5))
+     ) | (
+       Oenc2(IVdata2_1: blocksize, m21_1: blocksize, m22_1: blocksize, l_6: len) :=
+       if defined(IVdata1_1) && (IVdata2_1 = IVdata1_1) then
+         event_abort repeatedIV
+       else
+         if defined(IVdata3_1) && (IVdata2_1 = IVdata3_1) then
+           event_abort repeatedIV
+         else
+           IV2_1: blocksize <- xor(r_enc_13, IVdata2_1);
+           r_enc_15 <-R blocksize;
+           r_enc_16 <-R blocksize;
+           return(r_enc_15, truncate(r_enc_16, l_6))
+     ) | (
+       Oenc3(IVdata3_1: blocksize, m31_1: blocksize, m32_1: blocksize, m33_1: blocksize, l_7: len) :=
+       if defined(IVdata1_1) && (IVdata3_1 = IVdata1_1) then
+         event_abort repeatedIV
+       else
+         if defined(IVdata2_1) && (IVdata3_1 = IVdata2_1) then
+           event_abort repeatedIV
+         else
+           IV3_1: blocksize <- xor(r_enc_13, IVdata3_1);
+           r_enc_17 <-R blocksize;
+           r_enc_18 <-R blocksize;
+           r_enc_19 <-R blocksize;
+           return(r_enc_17, r_enc_18, truncate(r_enc_19, l_7))
+     ))
+
+
+Applying SA rename new without array accesses and remove assignments of findcond
+  - Remove assignments on x_O_enc_7 (definition removed, all usages removed)
+  - Remove assignments on IV3_1 (definition removed, all usages removed)
+  - Remove assignments on IV2_1 (definition removed, all usages removed)
+  - Remove assignments on IV1_1 (definition removed, all usages removed)
+yields
+
+Game 36 is
+     Ogen() :=
+  {2}r_enc_13 <-R blocksize;
+     return();
+     ((
+       Oenc1(IVdata1_1: blocksize, m1_1: blocksize, l_5: len) :=
+       if defined(IVdata2_1) && (IVdata1_1 = IVdata2_1) then
+         event_abort repeatedIV
+       else
+         if defined(IVdata3_1) && (IVdata1_1 = IVdata3_1) then
+           event_abort repeatedIV
+         else
+           r_enc_14 <-R blocksize;
+           return(truncate(r_enc_14, l_5))
+     ) | (
+       Oenc2(IVdata2_1: blocksize, m21_1: blocksize, m22_1: blocksize, l_6: len) :=
+       if defined(IVdata1_1) && (IVdata2_1 = IVdata1_1) then
+         event_abort repeatedIV
+       else
+         if defined(IVdata3_1) && (IVdata2_1 = IVdata3_1) then
+           event_abort repeatedIV
+         else
+           r_enc_15 <-R blocksize;
+           r_enc_16 <-R blocksize;
+           return(r_enc_15, truncate(r_enc_16, l_6))
+     ) | (
+       Oenc3(IVdata3_1: blocksize, m31_1: blocksize, m32_1: blocksize, m33_1: blocksize, l_7: len) :=
+       if defined(IVdata1_1) && (IVdata3_1 = IVdata1_1) then
+         event_abort repeatedIV
+       else
+         if defined(IVdata2_1) && (IVdata3_1 = IVdata2_1) then
+           event_abort repeatedIV
+         else
+           r_enc_17 <-R blocksize;
+           r_enc_18 <-R blocksize;
+           r_enc_19 <-R blocksize;
+           return(r_enc_17, r_enc_18, truncate(r_enc_19, l_7))
+     ))
+
+
+Proved event(ev_coll_97) ==> false in game 36
+Proved event(ev_coll_96) ==> false in game 36
+Proved event(ev_coll_95) ==> false in game 36
+Proved event(ev_coll_94) ==> false in game 36
+Proved event(ev_coll_93) ==> false in game 36
+Proved event(ev_coll_92) ==> false in game 36
+Proved event(ev_coll_91) ==> false in game 36
+Proved event(ev_coll_90) ==> false in game 36
+Proved event(ev_coll_89) ==> false in game 36
+Proved event(ev_coll_88) ==> false in game 36
+Proved event(ev_coll_87) ==> false in game 36
+Proved event(ev_coll_86) ==> false in game 36
+Proved event(ev_coll_85) ==> false in game 36
+Proved event(ev_coll_84) ==> false in game 36
+Proved event(ev_coll_83) ==> false in game 36
+Proved event(ev_coll_82) ==> false in game 36
+Proved event(ev_coll_81) ==> false in game 36
+Proved event(ev_coll_80) ==> false in game 36
+Proved event(ev_coll_79) ==> false in game 36
+Proved event(ev_coll_78) ==> false in game 36
+Proved event(ev_coll_77) ==> false in game 36
+Proved event(ev_coll_76) ==> false in game 36
+Proved event(ev_coll_75) ==> false in game 36
+Proved event(ev_coll_74) ==> false in game 36
+Proved event(ev_coll_73) ==> false in game 36
+Proved event(ev_coll_72) ==> false in game 36
+Proved event(ev_coll_71) ==> false in game 36
+Proved event(ev_coll_70) ==> false in game 36
+Proved event(ev_coll_69) ==> false in game 36
+Proved event(ev_coll_68) ==> false in game 36
+Proved event(ev_coll_67) ==> false in game 36
+Proved event(ev_coll_66) ==> false in game 36
+Proved event(ev_coll_65) ==> false in game 36
+Proved event(ev_coll_64) ==> false in game 36
+Proved event(ev_coll_63) ==> false in game 36
+Proved event(ev_coll_62) ==> false in game 36
+Proved event(ev_coll_61) ==> false in game 36
+Proved event(ev_coll_60) ==> false in game 36
+Proved event(ev_coll_59) ==> false in game 36
+Proved event(ev_coll_58) ==> false in game 36
+Proved event(ev_coll_57) ==> false in game 36
+Proved event(ev_coll_56) ==> false in game 36
+Proved event(ev_coll_55) ==> false in game 36
+Proved event(ev_coll_54) ==> false in game 36
+Proved event(ev_coll_53) ==> false in game 36
+Proved event(ev_coll_52) ==> false in game 36
+Proved event(ev_coll_51) ==> false in game 36
+Proved event(ev_coll_50) ==> false in game 36
+Proved event(ev_coll_49) ==> false in game 36
+
+Applying simplify
+  - Simplification pass
+    - Remove random number generation at 2
+yields
+
+Game 37 is
+     Ogen() :=
+     return();
+     ((
+       Oenc1(IVdata1_1: blocksize, m1_1: blocksize, l_5: len) :=
+       if defined(IVdata2_1) && (IVdata1_1 = IVdata2_1) then
+         event_abort repeatedIV
+       else
+         if defined(IVdata3_1) && (IVdata1_1 = IVdata3_1) then
+           event_abort repeatedIV
+         else
+           r_enc_14 <-R blocksize;
+           return(truncate(r_enc_14, l_5))
+     ) | (
+       Oenc2(IVdata2_1: blocksize, m21_1: blocksize, m22_1: blocksize, l_6: len) :=
+       if defined(IVdata1_1) && (IVdata2_1 = IVdata1_1) then
+         event_abort repeatedIV
+       else
+         if defined(IVdata3_1) && (IVdata2_1 = IVdata3_1) then
+           event_abort repeatedIV
+         else
+           r_enc_15 <-R blocksize;
+           r_enc_16 <-R blocksize;
+           return(r_enc_15, truncate(r_enc_16, l_6))
+     ) | (
+       Oenc3(IVdata3_1: blocksize, m31_1: blocksize, m32_1: blocksize, m33_1: blocksize, l_7: len) :=
+       if defined(IVdata1_1) && (IVdata3_1 = IVdata1_1) then
+         event_abort repeatedIV
+       else
+         if defined(IVdata2_1) && (IVdata3_1 = IVdata2_1) then
+           event_abort repeatedIV
+         else
+           r_enc_17 <-R blocksize;
+           r_enc_18 <-R blocksize;
+           r_enc_19 <-R blocksize;
+           return(r_enc_17, r_enc_18, truncate(r_enc_19, l_7))
+     ))
+
+
+Proved indistinguishability between game 37 and game 1
+Game 37 is the same as game 27.
+Adv[Game 1: indistinguishability from game 27] <= Adv[Game 1: indistinguishability from game 27]
+Adv[Game 1: indistinguishability from game 27] <= P_AES(time_1, 7) + Adv[Game 2: indistinguishability from game 27, ev_coll_48 || ev_coll_47 || ev_coll_46 || ev_coll_45 || ev_coll_44 || ev_coll_43 || ev_coll_42 || ev_coll_41 || ev_coll_40 || ev_coll_39 || ev_coll_38 || ev_coll_37 || ev_coll_36 || ev_coll_35 || ev_coll_34 || ev_coll_33 || ev_coll_32 || ev_coll_31 || ev_coll_30 || ev_coll_29 || ev_coll_28 || ev_coll_27 || ev_coll_26 || ev_coll_25 || ev_coll_24 || ev_coll_23 || ev_coll_22 || ev_coll_21 || ev_coll_20 || ev_coll_19 || ev_coll_18 || ev_coll_17 || ev_coll_16 || ev_coll_15 || ev_coll_14 || ev_coll_13 || ev_coll_12 || ev_coll_11 || ev_coll_10 || ev_coll_9 || ev_coll_8 || ev_coll_7 || ev_coll_6 || ev_coll_5 || ev_coll_4 || ev_coll_3 || ev_coll_2 || ev_coll_1 || ev_coll]
+Adv[Game 2: indistinguishability from game 27, ev_coll_48 || ev_coll_47 || ev_coll_46 || ev_coll_45 || ev_coll_44 || ev_coll_43 || ev_coll_42 || ev_coll_41 || ev_coll_40 || ev_coll_39 || ev_coll_38 || ev_coll_37 || ev_coll_36 || ev_coll_35 || ev_coll_34 || ev_coll_33 || ev_coll_32 || ev_coll_31 || ev_coll_30 || ev_coll_29 || ev_coll_28 || ev_coll_27 || ev_coll_26 || ev_coll_25 || ev_coll_24 || ev_coll_23 || ev_coll_22 || ev_coll_21 || ev_coll_20 || ev_coll_19 || ev_coll_18 || ev_coll_17 || ev_coll_16 || ev_coll_15 || ev_coll_14 || ev_coll_13 || ev_coll_12 || ev_coll_11 || ev_coll_10 || ev_coll_9 || ev_coll_8 || ev_coll_7 || ev_coll_6 || ev_coll_5 || ev_coll_4 || ev_coll_3 || ev_coll_2 || ev_coll_1 || ev_coll] <= 20 / |blocksize| + Pr[Game 8: ev_coll] + Pr[Game 8: ev_coll_1] + Pr[Game 8: ev_coll_2] + Pr[Game 8: ev_coll_3] + Pr[Game 8: ev_coll_4] + Pr[Game 8: ev_coll_5] + Pr[Game 8: ev_coll_6] + Pr[Game 8: ev_coll_7] + Pr[Game 8: ev_coll_8] + Pr[Game 8: ev_coll_9] + Pr[Game 8: ev_coll_10] + Pr[Game 8: ev_coll_11] + Pr[Game 8: ev_coll_12] + Pr[Game 8: ev_coll_13] + Pr[Game 8: ev_coll_14] + Pr[Game 8: ev_coll_15] + Pr[Game 8: ev_coll_16] + Pr[Game 8: ev_coll_17] + Pr[Game 8: ev_coll_18] + Pr[Game 8: ev_coll_19] + Pr[Game 8: ev_coll_20] + Pr[Game 8: ev_coll_21] + Pr[Game 8: ev_coll_22] + Pr[Game 8: ev_coll_23] + Pr[Game 8: ev_coll_24] + Pr[Game 8: ev_coll_25] + Pr[Game 8: ev_coll_26] + Pr[Game 8: ev_coll_27] + Pr[Game 8: ev_coll_28] + Pr[Game 8: ev_coll_29] + Pr[Game 8: ev_coll_30] + Pr[Game 8: ev_coll_31] + Pr[Game 8: ev_coll_32] + Pr[Game 8: ev_coll_33] + Pr[Game 8: ev_coll_34] + Pr[Game 8: ev_coll_35] + Pr[Game 8: ev_coll_36] + Pr[Game 8: ev_coll_37] + Pr[Game 8: ev_coll_38] + Pr[Game 8: ev_coll_39] + Pr[Game 8: ev_coll_40] + Pr[Game 8: ev_coll_41] + Pr[Game 8: ev_coll_42] + Pr[Game 8: ev_coll_43] + Pr[Game 8: ev_coll_44] + Pr[Game 8: ev_coll_45] + Pr[Game 8: ev_coll_46] + Pr[Game 8: ev_coll_47] + Pr[Game 8: ev_coll_48] + Adv[Game 8: indistinguishability from game 27]
+Pr[Game 8: ev_coll] <= 0
+Pr[Game 8: ev_coll_1] <= 0
+Pr[Game 8: ev_coll_2] <= 0
+Pr[Game 8: ev_coll_3] <= 0
+Pr[Game 8: ev_coll_4] <= 0
+Pr[Game 8: ev_coll_5] <= 0
+Pr[Game 8: ev_coll_6] <= 0
+Pr[Game 8: ev_coll_7] <= 0
+Pr[Game 8: ev_coll_8] <= 0
+Pr[Game 8: ev_coll_9] <= 0
+Pr[Game 8: ev_coll_10] <= 0
+Pr[Game 8: ev_coll_11] <= 0
+Pr[Game 8: ev_coll_12] <= 0
+Pr[Game 8: ev_coll_13] <= 0
+Pr[Game 8: ev_coll_14] <= 0
+Pr[Game 8: ev_coll_15] <= 0
+Pr[Game 8: ev_coll_16] <= 0
+Pr[Game 8: ev_coll_17] <= 0
+Pr[Game 8: ev_coll_18] <= 0
+Pr[Game 8: ev_coll_19] <= 0
+Pr[Game 8: ev_coll_20] <= 0
+Pr[Game 8: ev_coll_21] <= 0
+Pr[Game 8: ev_coll_22] <= 0
+Pr[Game 8: ev_coll_23] <= 0
+Pr[Game 8: ev_coll_24] <= 0
+Pr[Game 8: ev_coll_25] <= 0
+Pr[Game 8: ev_coll_26] <= 0
+Pr[Game 8: ev_coll_27] <= 0
+Pr[Game 8: ev_coll_28] <= 0
+Pr[Game 8: ev_coll_29] <= 0
+Pr[Game 8: ev_coll_30] <= 0
+Pr[Game 8: ev_coll_31] <= 0
+Pr[Game 8: ev_coll_32] <= 0
+Pr[Game 8: ev_coll_33] <= 0
+Pr[Game 8: ev_coll_34] <= 0
+Pr[Game 8: ev_coll_35] <= 0
+Pr[Game 8: ev_coll_36] <= 0
+Pr[Game 8: ev_coll_37] <= 0
+Pr[Game 8: ev_coll_38] <= 0
+Pr[Game 8: ev_coll_39] <= 0
+Pr[Game 8: ev_coll_40] <= 0
+Pr[Game 8: ev_coll_41] <= 0
+Pr[Game 8: ev_coll_42] <= 0
+Pr[Game 8: ev_coll_43] <= 0
+Pr[Game 8: ev_coll_44] <= 0
+Pr[Game 8: ev_coll_45] <= 0
+Pr[Game 8: ev_coll_46] <= 0
+Pr[Game 8: ev_coll_47] <= 0
+Pr[Game 8: ev_coll_48] <= 0
+Adv[Game 8: indistinguishability from game 27] <= Adv[Game 27: indistinguishability from game 27]
+Adv[Game 28: indistinguishability from game 37] <= Adv[Game 29: indistinguishability from game 37]
+Adv[Game 29: indistinguishability from game 37] <= P_AES(time_2, 7) + Adv[Game 30: indistinguishability from game 37, ev_coll_97 || ev_coll_96 || ev_coll_95 || ev_coll_94 || ev_coll_93 || ev_coll_92 || ev_coll_91 || ev_coll_90 || ev_coll_89 || ev_coll_88 || ev_coll_87 || ev_coll_86 || ev_coll_85 || ev_coll_84 || ev_coll_83 || ev_coll_82 || ev_coll_81 || ev_coll_80 || ev_coll_79 || ev_coll_78 || ev_coll_77 || ev_coll_76 || ev_coll_75 || ev_coll_74 || ev_coll_73 || ev_coll_72 || ev_coll_71 || ev_coll_70 || ev_coll_69 || ev_coll_68 || ev_coll_67 || ev_coll_66 || ev_coll_65 || ev_coll_64 || ev_coll_63 || ev_coll_62 || ev_coll_61 || ev_coll_60 || ev_coll_59 || ev_coll_58 || ev_coll_57 || ev_coll_56 || ev_coll_55 || ev_coll_54 || ev_coll_53 || ev_coll_52 || ev_coll_51 || ev_coll_50 || ev_coll_49]
+Adv[Game 30: indistinguishability from game 37, ev_coll_97 || ev_coll_96 || ev_coll_95 || ev_coll_94 || ev_coll_93 || ev_coll_92 || ev_coll_91 || ev_coll_90 || ev_coll_89 || ev_coll_88 || ev_coll_87 || ev_coll_86 || ev_coll_85 || ev_coll_84 || ev_coll_83 || ev_coll_82 || ev_coll_81 || ev_coll_80 || ev_coll_79 || ev_coll_78 || ev_coll_77 || ev_coll_76 || ev_coll_75 || ev_coll_74 || ev_coll_73 || ev_coll_72 || ev_coll_71 || ev_coll_70 || ev_coll_69 || ev_coll_68 || ev_coll_67 || ev_coll_66 || ev_coll_65 || ev_coll_64 || ev_coll_63 || ev_coll_62 || ev_coll_61 || ev_coll_60 || ev_coll_59 || ev_coll_58 || ev_coll_57 || ev_coll_56 || ev_coll_55 || ev_coll_54 || ev_coll_53 || ev_coll_52 || ev_coll_51 || ev_coll_50 || ev_coll_49] <= 20 / |blocksize| + Pr[Game 36: ev_coll_49] + Pr[Game 36: ev_coll_50] + Pr[Game 36: ev_coll_51] + Pr[Game 36: ev_coll_52] + Pr[Game 36: ev_coll_53] + Pr[Game 36: ev_coll_54] + Pr[Game 36: ev_coll_55] + Pr[Game 36: ev_coll_56] + Pr[Game 36: ev_coll_57] + Pr[Game 36: ev_coll_58] + Pr[Game 36: ev_coll_59] + Pr[Game 36: ev_coll_60] + Pr[Game 36: ev_coll_61] + Pr[Game 36: ev_coll_62] + Pr[Game 36: ev_coll_63] + Pr[Game 36: ev_coll_64] + Pr[Game 36: ev_coll_65] + Pr[Game 36: ev_coll_66] + Pr[Game 36: ev_coll_67] + Pr[Game 36: ev_coll_68] + Pr[Game 36: ev_coll_69] + Pr[Game 36: ev_coll_70] + Pr[Game 36: ev_coll_71] + Pr[Game 36: ev_coll_72] + Pr[Game 36: ev_coll_73] + Pr[Game 36: ev_coll_74] + Pr[Game 36: ev_coll_75] + Pr[Game 36: ev_coll_76] + Pr[Game 36: ev_coll_77] + Pr[Game 36: ev_coll_78] + Pr[Game 36: ev_coll_79] + Pr[Game 36: ev_coll_80] + Pr[Game 36: ev_coll_81] + Pr[Game 36: ev_coll_82] + Pr[Game 36: ev_coll_83] + Pr[Game 36: ev_coll_84] + Pr[Game 36: ev_coll_85] + Pr[Game 36: ev_coll_86] + Pr[Game 36: ev_coll_87] + Pr[Game 36: ev_coll_88] + Pr[Game 36: ev_coll_89] + Pr[Game 36: ev_coll_90] + Pr[Game 36: ev_coll_91] + Pr[Game 36: ev_coll_92] + Pr[Game 36: ev_coll_93] + Pr[Game 36: ev_coll_94] + Pr[Game 36: ev_coll_95] + Pr[Game 36: ev_coll_96] + Pr[Game 36: ev_coll_97] + Adv[Game 36: indistinguishability from game 37]
+Pr[Game 36: ev_coll_49] <= 0
+Pr[Game 36: ev_coll_50] <= 0
+Pr[Game 36: ev_coll_51] <= 0
+Pr[Game 36: ev_coll_52] <= 0
+Pr[Game 36: ev_coll_53] <= 0
+Pr[Game 36: ev_coll_54] <= 0
+Pr[Game 36: ev_coll_55] <= 0
+Pr[Game 36: ev_coll_56] <= 0
+Pr[Game 36: ev_coll_57] <= 0
+Pr[Game 36: ev_coll_58] <= 0
+Pr[Game 36: ev_coll_59] <= 0
+Pr[Game 36: ev_coll_60] <= 0
+Pr[Game 36: ev_coll_61] <= 0
+Pr[Game 36: ev_coll_62] <= 0
+Pr[Game 36: ev_coll_63] <= 0
+Pr[Game 36: ev_coll_64] <= 0
+Pr[Game 36: ev_coll_65] <= 0
+Pr[Game 36: ev_coll_66] <= 0
+Pr[Game 36: ev_coll_67] <= 0
+Pr[Game 36: ev_coll_68] <= 0
+Pr[Game 36: ev_coll_69] <= 0
+Pr[Game 36: ev_coll_70] <= 0
+Pr[Game 36: ev_coll_71] <= 0
+Pr[Game 36: ev_coll_72] <= 0
+Pr[Game 36: ev_coll_73] <= 0
+Pr[Game 36: ev_coll_74] <= 0
+Pr[Game 36: ev_coll_75] <= 0
+Pr[Game 36: ev_coll_76] <= 0
+Pr[Game 36: ev_coll_77] <= 0
+Pr[Game 36: ev_coll_78] <= 0
+Pr[Game 36: ev_coll_79] <= 0
+Pr[Game 36: ev_coll_80] <= 0
+Pr[Game 36: ev_coll_81] <= 0
+Pr[Game 36: ev_coll_82] <= 0
+Pr[Game 36: ev_coll_83] <= 0
+Pr[Game 36: ev_coll_84] <= 0
+Pr[Game 36: ev_coll_85] <= 0
+Pr[Game 36: ev_coll_86] <= 0
+Pr[Game 36: ev_coll_87] <= 0
+Pr[Game 36: ev_coll_88] <= 0
+Pr[Game 36: ev_coll_89] <= 0
+Pr[Game 36: ev_coll_90] <= 0
+Pr[Game 36: ev_coll_91] <= 0
+Pr[Game 36: ev_coll_92] <= 0
+Pr[Game 36: ev_coll_93] <= 0
+Pr[Game 36: ev_coll_94] <= 0
+Pr[Game 36: ev_coll_95] <= 0
+Pr[Game 36: ev_coll_96] <= 0
+Pr[Game 36: ev_coll_97] <= 0
+Adv[Game 36: indistinguishability from game 37] <= Adv[Game 37: indistinguishability from game 37]
+RESULT Proved indistinguishability between game 28 and game 1 up to probability P_AES(time_2, 7) + P_AES(time_1, 7) + 40 / |blocksize|
+RESULT time_1 = time(truncate, maxlength(game 1: l_1)) + time(truncate, maxlength(game 1: l_2)) + 9 * time(xor) + time(truncate, maxlength(game 1: l_3)) + time
+RESULT time_2 = time(truncate, maxlength(game 29: l_5)) + time(truncate, maxlength(game 29: l_6)) + 3 * time(xor) + time(truncate, maxlength(game 29: l_7)) + time
+All queries proved.

@@ -1,0 +1,1998 @@
+Doing expand get, insert and prove unique annotations... No change.
+Doing simplify (non-expanded game)... No change.
+Doing expand... No change.
+Doing remove assignments of findcond... No change.
+Doing simplify... Doing global dependency analysis on x_2 inside simplify... At 108, returned message aT depends on x_2.
+No change
+Run simplify 1 time(s). Fixpoint reached.
+No change.
+Doing move all binders... No change.
+Doing SA rename new without array accesses and remove assignments of findcond... No change.
+Doing merge branches... No change.
+Proof of (one-session) secrecy of b1 failed:
+  at 46, bad usage(s) of bT, which may depend on b1.
+  {1}Ohkgen() :=
+  {2}hk_1 <-R hashkey;
+  {3}hk2_1 <-R hashkey;
+  {4}return();
+  {5}((
+  {7}  foreach iH <= qH do
+  {8}  OH(x1: seed) :=
+  {9}  return({10}hash({11}hk_1, {12}x1))
+     ) | (
+ {15}  foreach iH_1 <= qH2 do
+ {16}  OH_1(x1_1: bitstring) :=
+ {17}  return({18}hash2({19}hk2_1, {20}x1_1))
+     ) | (
+ {23}  Ogen() :=
+ {24}  r <-R keyseed;
+ {25}  pk: pkey <- {26}pkgen({27}r);
+ {28}  sk: skey <- {29}skgen({30}r);
+ {31}  return({32}pk);
+ {33}  ((
+ {34}    foreach iD <= qD do
+ {35}    OD(a: seed, b: hasht, c: hasht2) :=
+ {36}    if defined(aT, bT, cT) && {37}({38}({39}a = {41}aT) && {42}({43}({44}b = {46}bT) && {47}({48}c = {50}cT))) then
+ {51}      yield
+         else
+ {52}      x_1: seed <- {53}invf({54}sk, {55}a);
+ {57}      m: hasht <- {58}xor({59}hash({60}hk_1, {61}x_1), {63}b);
+ {65}      if {66}({67}c = {69}hash2({70}hk2_1, {71}concat({72}x_1, {74}m))) then
+ {76}      return({77}m)
+       ) | (
+ {83}    OT(m1: hasht, m2: hasht) :=
+ {84}    b1 <-R bool;
+ {85}    menc: hasht <- {86}if_fun({87}b1, {88}m1, {89}m2);
+ {90}    x_2 <-R seed;
+ {91}    aT: seed <- {92}f({93}pk, {94}x_2);
+ {95}    bT: hasht <- {96}xor({97}hash({98}hk_1, {99}x_2), {100}menc);
+{101}    cT: hasht2 <- {102}hash2({103}hk2_1, {104}concat({105}x_2, {106}menc));
+{107}    return({108}aT, {109}bT, {110}cT)
+       ))
+     ))
+
+Doing insert instruction let concat(x1_1',x1_1'') = x1_1 in at occurrence 17... Done.
+Proof of (one-session) secrecy of b1 failed:
+  at 55, bad usage(s) of bT, which may depend on b1.
+Trying equivalence remove_xor(xor)... Failed.
+Trying equivalence rom(hash2)... Transf. OK Proba. computed Transf. done Succeeded.
+Doing simplify (non-expanded game)... Done.
+Doing expand... Done.
+Doing remove assignments of findcond... Done.
+Doing simplify... Doing global dependency analysis on x_2 inside simplify... At 201, returned message aT depends on x_2.
+No change
+Doing global dependency analysis on r_3 inside simplify... At 203, returned message r_3 depends on r_3.
+No change
+Doing global dependency analysis on r_1 inside simplify... At 44, returned message r_1 depends on r_1.
+No change
+Eliminated collisions between f(pkgen(r), x_2) and a Probability: qD / |seed|
+(f(pkgen(r), x_2) collides with a value independent of x_2 with probability at most 1 / |seed|;
+ a does not depend on x_2)
+Eliminated collisions between x_2 and x1_1'[ri_1] Probability: qH2 / |seed|
+(x_2 collides with a value independent of x_2 with probability at most 1 / |seed|;
+ x1_1'[ri_1] does not depend on x_2)
+Doing global dependency analysis on x_2 inside simplify... At 201, returned message aT depends on x_2.
+No change
+Doing global dependency analysis on r_1 inside simplify... At 55, returned message r_1 depends on r_1.
+No change
+Doing global dependency analysis on r_3 inside simplify... At 203, returned message r_3 depends on r_3.
+No change
+Eliminated collisions between f(pkgen(r), x_2) and a Probability: qD / |seed|
+(f(pkgen(r), x_2) collides with a value independent of x_2 with probability at most 1 / |seed|;
+ a does not depend on x_2)
+Run simplify 2 time(s). Maximum reached.
+Done.
+Doing move all binders... Done.
+Doing SA rename new without array accesses and remove assignments of findcond... Done.
+Doing merge branches... Done.
+Proof of (one-session) secrecy of b1 failed:
+  at 47, bad usage(s) of menc, which may depend on b1.
+Trying equivalence remove_xor(xor)... Failed.
+Trying equivalence rom(hash2)... Failed:
+At 9, term hash(hk_1, x1) could not be discharged
+Trying equivalence rom(hash)... Transf. OK Proba. computed Transf. done Succeeded.
+Doing simplify (non-expanded game)... No change.
+Doing expand... Done.
+Doing remove assignments of findcond... Done.
+Doing simplify... Doing global dependency analysis on x_2 inside simplify... At 374, returned message aT depends on x_2.
+No change
+Doing global dependency analysis on r_6 inside simplify... At 375, returned message bT depends on r_6.
+No change
+Doing global dependency analysis on r_1 inside simplify... At 87, returned message r_1 depends on r_1.
+No change
+Doing global dependency analysis on r_5 inside simplify... At 363, returned message bT depends on r_5.
+No change
+Doing global dependency analysis on r_4 inside simplify... At 44, returned message r_4 depends on r_4.
+No change
+Doing global dependency analysis on r_3 inside simplify... At 346, returned message r_3 depends on r_3.
+No change
+Eliminated collisions between x_2 and x1_1'[ri_3] Probability: qH2 / |seed|
+(x_2 collides with a value independent of x_2 with probability at most 1 / |seed|;
+ x1_1'[ri_3] does not depend on x_2)
+Eliminated collisions between f(pkgen(r), x_2) and a Probability: qD / |seed|
+(f(pkgen(r), x_2) collides with a value independent of x_2 with probability at most 1 / |seed|;
+ a does not depend on x_2)
+Eliminated collisions between xor(r_5, b) and x1_1''[ri_3] Probability: qH2 * qD / |hasht|
+(xor(r_5, b) collides with a value independent of r_5 with probability at most 1 / |hasht|;
+ x1_1''[ri_3] does not depend on r_5)
+Eliminated collisions between x_2 and x1[ri_9] Probability: qH / |seed|
+(x_2 collides with a value independent of x_2 with probability at most 1 / |seed|;
+ x1[ri_9] does not depend on x_2)
+Eliminated collisions between x_2 and x_1[ri_8] Probability: qD / |seed|
+(x_2 collides with a value independent of x_2 with probability at most 1 / |seed|;
+ x_1[ri_8] does not depend on x_2)
+Doing global dependency analysis on x_2 inside simplify... At 300, returned message aT depends on x_2.
+No change
+Doing global dependency analysis on r_6 inside simplify... At 301, returned message bT depends on r_6.
+No change
+Doing global dependency analysis on r_1 inside simplify... At 89, returned message r_1 depends on r_1.
+No change
+Doing global dependency analysis on r_5 inside simplify... At 33, returned message r_5[u_12] depends on r_5.
+No change
+Doing global dependency analysis on r_4 inside simplify... At 46, returned message r_4 depends on r_4.
+No change
+Doing global dependency analysis on r_3 inside simplify... At 302, returned message r_3 depends on r_3.
+No change
+Run simplify 2 time(s). Fixpoint reached.
+Done.
+Doing move all binders... Done.
+Doing SA rename new without array accesses and remove assignments of findcond... Done.
+Doing merge branches... No change.
+Proof of (one-session) secrecy of b1 failed:
+  at 80, bad usage(s) of menc, which may depend on b1.
+Trying equivalence remove_xor(xor)... Failed.
+Trying equivalence rom(hash2)... Failed.
+Trying equivalence rom(hash)... Failed.
+Trying equivalence ow(f)... Failed.
+Trying equivalence remove_invf(f)... Failed.
+Doing remove assignments of binder pk... Done.
+Doing remove assignments of binder x1_1'... No change.
+Trying equivalence ow(f) with x_2, r... Failed.
+Doing remove assignments of binder x1_1'... No change.
+Trying equivalence ow(f) with x_2, r... Transf. OK Proba. computed Transf. done Succeeded.
+Doing simplify (non-expanded game)... Done.
+Doing expand... Eliminated collisions between f'(pkgen'(r), x_2) and a Probability: qD / |seed|
+(f'(pkgen'(r), x_2) collides with a value independent of x_2 with probability at most 1 / |seed|;
+ a does not depend on x_2)
+Done.
+Doing remove assignments of findcond... No change.
+Doing simplify... Doing global dependency analysis on x_2 inside simplify... At 236, returned message aT depends on x_2.
+No change
+Doing global dependency analysis on r_5 inside simplify... At 31, returned message r_5[u_12] depends on r_5.
+No change
+Doing global dependency analysis on r_1 inside simplify... At 67, returned message r_1 depends on r_1.
+No change
+Doing global dependency analysis on r_4 inside simplify... At 37, returned message r_4 depends on r_4.
+No change
+Doing global dependency analysis on r_6 inside simplify... At 237, returned message bT depends on r_6.
+No change
+Doing global dependency analysis on r_3 inside simplify... At 238, returned message r_3 depends on r_3.
+No change
+Run simplify 1 time(s). Fixpoint reached.
+No change.
+Doing move all binders... No change.
+Doing SA rename new without array accesses and remove assignments of findcond... No change.
+Doing merge branches... No change.
+Proof of (one-session) secrecy of b1 failed:
+  at 106, bad usage(s) of bT, which may depend on b1.
+Trying equivalence remove_xor(xor)... Transf. OK Proba. computed Transf. done Succeeded.
+Doing simplify (non-expanded game)... No change.
+Doing expand... Eliminated collisions between f'(pkgen'(r), x_2) and a Probability: qD / |seed|
+(f'(pkgen'(r), x_2) collides with a value independent of x_2 with probability at most 1 / |seed|;
+ a does not depend on x_2)
+Done.
+Doing remove assignments of findcond... Done.
+Doing simplify... Doing global dependency analysis on x_2 inside simplify... At 227, returned message aT depends on x_2.
+No change
+Doing global dependency analysis on r_5 inside simplify... At 31, returned message r_5[u_12] depends on r_5.
+No change
+Doing global dependency analysis on r_1 inside simplify... At 67, returned message r_1 depends on r_1.
+No change
+Doing global dependency analysis on r_4 inside simplify... At 37, returned message r_4 depends on r_4.
+No change
+Doing global dependency analysis on r_7 inside simplify... At 228, returned message r_7 depends on r_7.
+No change
+Doing global dependency analysis on r_3 inside simplify... At 229, returned message r_3 depends on r_3.
+No change
+Run simplify 1 time(s). Fixpoint reached.
+No change.
+Doing move all binders... No change.
+Doing SA rename new without array accesses and remove assignments of findcond... No change.
+Doing merge branches... No change.
+Proved one-session secrecy of b1
+===================== Proof starts =======================
+Initial state
+Game 1 is
+     Ohkgen() :=
+     hk_1 <-R hashkey;
+     hk2_1 <-R hashkey;
+     return();
+     ((
+       foreach iH <= qH do
+       OH(x1: seed) :=
+       return(hash(hk_1, x1))
+     ) | (
+       foreach iH_1 <= qH2 do
+       OH_1(x1_1: bitstring) :=
+ {17}  return(hash2(hk2_1, x1_1))
+     ) | (
+       Ogen() :=
+       r <-R keyseed;
+       pk: pkey <- pkgen(r);
+       sk: skey <- skgen(r);
+       return(pk);
+       ((
+         foreach iD <= qD do
+         OD(a: seed, b: hasht, c: hasht2) :=
+         if defined(aT, bT, cT) && (a = aT) && (b = bT) && (c = cT) then
+           yield
+         else
+           x_1: seed <- invf(sk, a);
+           m: hasht <- xor(hash(hk_1, x_1), b);
+           if c = hash2(hk2_1, concat(x_1, m)) then
+           return(m)
+       ) | (
+         OT(m1: hasht, m2: hasht) :=
+         b1 <-R bool;
+         menc: hasht <- if_fun(b1, m1, m2);
+         x_2 <-R seed;
+         aT: seed <- f(pk, x_2);
+         bT: hasht <- xor(hash(hk_1, x_2), menc);
+         cT: hasht2 <- hash2(hk2_1, concat(x_2, menc));
+         return(aT, bT, cT)
+       ))
+     ))
+
+
+Applying insert instruction let concat(x1_1',x1_1'') = x1_1 in at occurrence 17
+yields
+
+Game 2 is
+     Ohkgen() :=
+     hk_1 <-R hashkey;
+     hk2_1 <-R hashkey;
+     return();
+     ((
+       foreach iH <= qH do
+       OH(x1: seed) :=
+       return(hash(hk_1, x1))
+     ) | (
+       foreach iH_1 <= qH2 do
+       OH_1(x1_1: bitstring) :=
+       let concat(x1_1': seed, x1_1'': hasht) = x1_1 in
+         return(hash2(hk2_1, x1_1))
+       else
+         return(hash2(hk2_1, x1_1))
+     ) | (
+       Ogen() :=
+       r <-R keyseed;
+       pk: pkey <- pkgen(r);
+       sk: skey <- skgen(r);
+       return(pk);
+       ((
+         foreach iD <= qD do
+         OD(a: seed, b: hasht, c: hasht2) :=
+         if defined(aT, bT, cT) && (a = aT) && (b = bT) && (c = cT) then
+           yield
+         else
+           x_1: seed <- invf(sk, a);
+           m: hasht <- xor(hash(hk_1, x_1), b);
+           if c = hash2(hk2_1, concat(x_1, m)) then
+           return(m)
+       ) | (
+         OT(m1: hasht, m2: hasht) :=
+         b1 <-R bool;
+         menc: hasht <- if_fun(b1, m1, m2);
+         x_2 <-R seed;
+         aT: seed <- f(pk, x_2);
+         bT: hasht <- xor(hash(hk_1, x_2), menc);
+         cT: hasht2 <- hash2(hk2_1, concat(x_2, menc));
+         return(aT, bT, cT)
+       ))
+     ))
+
+
+Applying equivalence rom(hash2) [probability qD / |hasht2|]
+  - Equivalence rom(hash2) with variables: hk2_1 -> hk_2
+yields
+
+Game 3 is
+     Ohkgen() :=
+     hk_1 <-R hashkey;
+     return();
+     ((
+       foreach iH <= qH do
+       OH(x1: seed) :=
+       return(hash(hk_1, x1))
+     ) | (
+       foreach iH_1 <= qH2 do
+       OH_1(x1_1: bitstring) :=
+       let concat(x1_1': seed, x1_1'': hasht) = x1_1 in
+         return((x_O: bitstring <- x1_1; {23}find [unique] u_7 = ri_7 <= qH2 suchthat defined(x_O[ri_7], r_1[ri_7]) && (x_O = x_O[ri_7]) then r_1[u_7] orfind u_6 = ri_6 <= qH2 suchthat defined(x_O_1[ri_6], r_2[ri_6]) && {36}(x_O = x_O_1[ri_6]) then r_2[u_6] orfind  suchthat defined(x_O_2, r_3) && (x_O = x_O_2) then r_3 else r_1 <-R hasht2; r_1))
+       else
+         return((x_O_1: bitstring <- x1_1; {57}find [unique] u_5 = ri_5 <= qH2 suchthat defined(x_O[ri_5], r_1[ri_5]) && {60}(x_O_1 = x_O[ri_5]) then r_1[u_5] orfind u_4 = ri_4 <= qH2 suchthat defined(x_O_1[ri_4], r_2[ri_4]) && (x_O_1 = x_O_1[ri_4]) then r_2[u_4] orfind  suchthat defined(x_O_2, r_3) && {78}(x_O_1 = x_O_2) then r_3 else r_2 <-R hasht2; r_2))
+     ) | (
+       Ogen() :=
+       r <-R keyseed;
+       pk: pkey <- pkgen(r);
+       sk: skey <- skgen(r);
+       return(pk);
+       ((
+         foreach iD <= qD do
+         OD(a: seed, b: hasht, c: hasht2) :=
+         if defined(aT, bT, cT) && (a = aT) && (b = bT) && (c = cT) then
+           yield
+         else
+           x_1: seed <- invf(sk, a);
+           m: hasht <- xor(hash(hk_1, x_1), b);
+           if (x_Oeq: bitstring <- concat(x_1, m); X_Oeq: hasht2 <- c; {139}find [unique] u_3 = ri_3 <= qH2 suchthat defined(x_O[ri_3], r_1[ri_3]) && (x_Oeq = x_O[ri_3]) then (X_Oeq = r_1[u_3]) orfind u_2 = ri_2 <= qH2 suchthat defined(x_O_1[ri_2], r_2[ri_2]) && {155}(x_Oeq = x_O_1[ri_2]) then (X_Oeq = r_2[u_2]) orfind  suchthat defined(x_O_2, r_3) && (x_Oeq = x_O_2) then (X_Oeq = r_3) else false) then
+           return(m)
+       ) | (
+         OT(m1: hasht, m2: hasht) :=
+         b1 <-R bool;
+         menc: hasht <- if_fun(b1, m1, m2);
+         x_2 <-R seed;
+         aT: seed <- f(pk, x_2);
+         bT: hasht <- xor(hash(hk_1, x_2), menc);
+         cT: hasht2 <- (x_O_2: bitstring <- concat(x_2, menc); {205}find [unique] u_1 = ri_1 <= qH2 suchthat defined(x_O[ri_1], r_1[ri_1]) && (x_O_2 = x_O[ri_1]) then r_1[u_1] orfind u = ri <= qH2 suchthat defined(x_O_1[ri], r_2[ri]) && {216}(x_O_2 = x_O_1[ri]) then r_2[u] else r_3 <-R hasht2; r_3);
+         return(aT, bT, cT)
+       ))
+     ))
+
+
+Applying simplify (non-expanded game)
+  - Simplification pass
+    - Replaced (x_O = x_O_1[ri_6]) with false at 36
+    - Remove branch 2 in find at 23
+    - Replaced (x_O_1 = x_O_2) with false at 78
+    - Remove branch 3 in find at 57
+    - Replaced (x_O_1 = x_O[ri_5]) with false at 60
+    - Remove branch 1 in find at 57
+    - Replaced (x_Oeq = x_O_1[ri_2]) with false at 155
+    - Remove branch 2 in find at 139
+    - Replaced (x_O_2 = x_O_1[ri]) with false at 216
+    - Remove branch 2 in find at 205
+yields
+
+Game 4 is
+     Ohkgen() :=
+     hk_1 <-R hashkey;
+     return();
+     ((
+       foreach iH <= qH do
+       OH(x1: seed) :=
+       return(hash(hk_1, x1))
+     ) | (
+       foreach iH_1 <= qH2 do
+       OH_1(x1_1: bitstring) :=
+       let concat(x1_1': seed, x1_1'': hasht) = x1_1 in
+         return((x_O: bitstring <- x1_1; find [unique] u_7 = ri_7 <= qH2 suchthat defined(x_O[ri_7], r_1[ri_7]) && (x_O = x_O[ri_7]) then r_1[u_7] orfind  suchthat defined(x_O_2, r_3) && (x_O = x_O_2) then r_3 else r_1 <-R hasht2; r_1))
+       else
+         return((x_O_1: bitstring <- x1_1; find [unique] u_4 = ri_4 <= qH2 suchthat defined(x_O_1[ri_4], r_2[ri_4]) && (x_O_1 = x_O_1[ri_4]) then r_2[u_4] else r_2 <-R hasht2; r_2))
+     ) | (
+       Ogen() :=
+       r <-R keyseed;
+       pk: pkey <- pkgen(r);
+       sk: skey <- skgen(r);
+       return(pk);
+       ((
+         foreach iD <= qD do
+         OD(a: seed, b: hasht, c: hasht2) :=
+         if defined(aT, bT, cT) && (a = aT) && (b = bT) && (c = cT) then
+           yield
+         else
+           x_1: seed <- invf(sk, a);
+           m: hasht <- xor(hash(hk_1, x_1), b);
+{104}      if (x_Oeq: bitstring <- concat(x_1, m); X_Oeq: hasht2 <- c; find [unique] u_3 = ri_3 <= qH2 suchthat defined(x_O[ri_3], r_1[ri_3]) && (x_Oeq = x_O[ri_3]) then (X_Oeq = r_1[u_3]) orfind  suchthat defined(x_O_2, r_3) && (x_Oeq = x_O_2) then (X_Oeq = r_3) else false) then
+           return(m)
+       ) | (
+         OT(m1: hasht, m2: hasht) :=
+         b1 <-R bool;
+         menc: hasht <- if_fun(b1, m1, m2);
+         x_2 <-R seed;
+         aT: seed <- f(pk, x_2);
+         bT: hasht <- xor(hash(hk_1, x_2), menc);
+         cT: hasht2 <- (x_O_2: bitstring <- concat(x_2, menc); find [unique] u_1 = ri_1 <= qH2 suchthat defined(x_O[ri_1], r_1[ri_1]) && (x_O_2 = x_O[ri_1]) then r_1[u_1] else r_3 <-R hasht2; r_3);
+         return(aT, bT, cT)
+       ))
+     ))
+
+
+Applying expand
+  - Expand if/find/let
+    - Test at 104 always false
+yields
+
+Game 5 is
+     Ohkgen() :=
+     hk_1 <-R hashkey;
+     return();
+     ((
+       foreach iH <= qH do
+       OH(x1: seed) :=
+       return(hash(hk_1, x1))
+     ) | (
+       foreach iH_1 <= qH2 do
+       OH_1(x1_1: bitstring) :=
+       let concat(x1_1': seed, x1_1'': hasht) = x1_1 in
+         x_O: bitstring <- x1_1;
+         find [unique] u_7 = ri_7 <= qH2 suchthat defined(x_O[ri_7], r_1[ri_7]) && (x_O = x_O[ri_7]) then
+           return(r_1[u_7])
+         orfind  suchthat defined(x_O_2, r_3) && (x_O = x_O_2) then
+           return(r_3)
+         else
+           r_1 <-R hasht2;
+           return(r_1)
+       else
+         x_O_1: bitstring <- x1_1;
+         find [unique] u_4 = ri_4 <= qH2 suchthat defined(x_O_1[ri_4], r_2[ri_4]) && (x_O_1 = x_O_1[ri_4]) then
+           return(r_2[u_4])
+         else
+           r_2 <-R hasht2;
+           return(r_2)
+     ) | (
+       Ogen() :=
+       r <-R keyseed;
+       pk: pkey <- pkgen(r);
+       sk: skey <- skgen(r);
+       return(pk);
+       ((
+         foreach iD <= qD do
+         OD(a: seed, b: hasht, c: hasht2) :=
+         if defined(aT, bT, cT) && (a = aT) && (b = bT) && (c = cT) then
+           yield
+         else
+           x_1: seed <- invf(sk, a);
+           m: hasht <- xor(hash(hk_1, x_1), b);
+           x_Oeq: bitstring <- concat(x_1, m);
+           X_Oeq: hasht2 <- c;
+           find [unique] u_3 = ri_3 <= qH2 suchthat defined(x_O[ri_3], r_1[ri_3]) && (x_Oeq = x_O[ri_3]) then
+           (
+             if X_Oeq = r_1[u_3] then
+             return(m)
+           )
+           orfind  suchthat defined(x_O_2, r_3) && (x_Oeq = x_O_2) then
+           (
+             if X_Oeq = r_3 then
+             return(m)
+           )
+       ) | (
+         OT(m1: hasht, m2: hasht) :=
+         b1 <-R bool;
+         menc: hasht <- if_fun(b1, m1, m2);
+         x_2 <-R seed;
+         aT: seed <- f(pk, x_2);
+         bT: hasht <- xor(hash(hk_1, x_2), menc);
+         x_O_2: bitstring <- concat(x_2, menc);
+         find [unique] u_1 = ri_1 <= qH2 suchthat defined(x_O[ri_1], r_1[ri_1]) && (x_O_2 = x_O[ri_1]) then
+           cT: hasht2 <- r_1[u_1];
+           return(aT, bT, cT)
+         else
+           r_3 <-R hasht2;
+           cT: hasht2 <- r_3;
+           return(aT, bT, cT)
+       ))
+     ))
+
+
+Applying remove assignments of findcond
+  - Remove assignments on cT (definition kept, array references kept)
+  - Remove assignments on cT (definition kept, array references kept)
+  - Remove assignments on X_Oeq (definition removed, all usages removed)
+  - Remove assignments on x_O_1 (definition point kept, all usages removed)
+  - Remove assignments on x_O (definition point kept, all usages removed)
+yields
+
+Game 6 is
+     Ohkgen() :=
+     hk_1 <-R hashkey;
+     return();
+     ((
+       foreach iH <= qH do
+       OH(x1: seed) :=
+       return(hash(hk_1, x1))
+     ) | (
+       foreach iH_1 <= qH2 do
+       OH_1(x1_1: bitstring) :=
+       let concat(x1_1': seed, x1_1'': hasht) = x1_1 in
+         x_O: bitstring <- cst_bitstring;
+ {21}    find [unique] u_7 = ri_7 <= qH2 suchthat defined(x1_1[ri_7], x_O[ri_7], r_1[ri_7]) && {25}(x1_1 = x1_1[ri_7]) then
+           return(r_1[u_7])
+         orfind  suchthat defined(x_O_2, r_3) && {35}(x1_1 = x_O_2) then
+           return(r_3)
+         else
+           r_1 <-R hasht2;
+           return(r_1)
+       else
+         x_O_1: bitstring <- cst_bitstring;
+ {50}    find [unique] u_4 = ri_4 <= qH2 suchthat defined(x1_1[ri_4], x_O_1[ri_4], r_2[ri_4]) && (x1_1 = x1_1[ri_4]) then
+           return(r_2[u_4])
+         else
+           r_2 <-R hasht2;
+           return(r_2)
+     ) | (
+       Ogen() :=
+       r <-R keyseed;
+       pk: pkey <- pkgen(r);
+       sk: skey <- skgen(r);
+       return(pk);
+       ((
+         foreach iD <= qD do
+         OD(a: seed, b: hasht, c: hasht2) :=
+         if defined(aT, bT, cT) && (a = aT) && (b = bT) && (c = cT) then
+           yield
+         else
+           x_1: seed <- invf(sk, a);
+           m: hasht <- xor(hash(hk_1, x_1), b);
+           x_Oeq: bitstring <- concat(x_1, m);
+{118}      find [unique] u_3 = ri_3 <= qH2 suchthat defined(x1_1[ri_3], x_O[ri_3], r_1[ri_3]) && {122}(x_Oeq = x1_1[ri_3]) then
+           (
+             if c = r_1[u_3] then
+             return(m)
+           )
+           orfind  suchthat defined(x_O_2, r_3) && {139}(x_Oeq = x_O_2) then
+           (
+{143}        if {144}(c = r_3) then
+             return(m)
+           )
+       ) | (
+         OT(m1: hasht, m2: hasht) :=
+         b1 <-R bool;
+         menc: hasht <- if_fun(b1, m1, m2);
+         x_2 <-R seed;
+         aT: seed <- f(pk, x_2);
+         bT: hasht <- xor(hash(hk_1, x_2), menc);
+         x_O_2: bitstring <- concat(x_2, menc);
+{179}    find [unique] u_1 = ri_1 <= qH2 suchthat defined(x1_1[ri_1], x_O[ri_1], r_1[ri_1]) && {183}(x_O_2 = x1_1[ri_1]) then
+           cT: hasht2 <- r_1[u_1];
+           return(aT, bT, r_1[u_1])
+         else
+           r_3 <-R hasht2;
+           cT: hasht2 <- r_3;
+           return(aT, bT, r_3)
+       ))
+     ))
+
+
+Applying simplify [probability (qD + qH2) / |seed|]
+  - Simplification pass
+    - Replaced (x_O_2 = x1_1[ri_1]) with false at 183
+    - Remove branch 1 in find at 179
+    - Find at 179 removed (else branch kept if any)
+    - Replaced (x_Oeq = x_O_2) with ((f(pkgen(r), x_2) = a) && (m = menc)) at 139
+    - Replaced (c = r_3) with false at 144
+    - Test at 143 always false
+    - Replaced defined condition x_O_2, r_3 with r_3, menc, x_2 in find at 118
+    - Replaced (x_Oeq = x1_1[ri_3]) with ((f(pkgen(r), x1_1'[ri_3]) = a) && (m = x1_1''[ri_3])) at 122
+    - Replaced defined condition x1_1[ri_3], x_O[ri_3], r_1[ri_3] with r_1[ri_3], x1_1''[ri_3], x1_1'[ri_3] in find at 118
+    - Replaced defined condition x1_1[ri_4], x_O_1[ri_4], r_2[ri_4] with r_2[ri_4], x1_1[ri_4] in find at 50
+    - Replaced (x1_1 = x_O_2) with ((x1_1' = x_2) && (x1_1'' = menc)) at 35
+    - Replaced defined condition x_O_2, r_3 with r_3, menc, x_2 in find at 21
+    - Replaced (x1_1 = x1_1[ri_7]) with ((x1_1' = x1_1'[ri_7]) && (x1_1'' = x1_1''[ri_7])) at 25
+    - Replaced defined condition x1_1[ri_7], x_O[ri_7], r_1[ri_7] with r_1[ri_7], x1_1''[ri_7], x1_1'[ri_7] in find at 21
+yields
+
+Game 7 is
+     Ohkgen() :=
+     hk_1 <-R hashkey;
+     return();
+     ((
+       foreach iH <= qH do
+       OH(x1: seed) :=
+       return(hash(hk_1, x1))
+     ) | (
+       foreach iH_1 <= qH2 do
+       OH_1(x1_1: bitstring) :=
+       let concat(x1_1': seed, x1_1'': hasht) = x1_1 in
+         x_O: bitstring <- cst_bitstring;
+         find [unique] u_7 = ri_7 <= qH2 suchthat defined(r_1[ri_7], x1_1''[ri_7], x1_1'[ri_7]) && (x1_1' = x1_1'[ri_7]) && (x1_1'' = x1_1''[ri_7]) then
+           return(r_1[u_7])
+         orfind  suchthat defined(r_3, menc, x_2) && (x1_1' = x_2) && (x1_1'' = menc) then
+           return(r_3)
+         else
+           r_1 <-R hasht2;
+           return(r_1)
+       else
+         x_O_1: bitstring <- cst_bitstring;
+         find [unique] u_4 = ri_4 <= qH2 suchthat defined(r_2[ri_4], x1_1[ri_4]) && (x1_1 = x1_1[ri_4]) then
+           return(r_2[u_4])
+         else
+           r_2 <-R hasht2;
+           return(r_2)
+     ) | (
+       Ogen() :=
+       r <-R keyseed;
+       pk: pkey <- pkgen(r);
+       sk: skey <- skgen(r);
+       return(pk);
+       ((
+         foreach iD <= qD do
+         OD(a: seed, b: hasht, c: hasht2) :=
+         if defined(aT, bT, cT) && (a = aT) && (b = bT) && (c = cT) then
+           yield
+         else
+           x_1: seed <- invf(sk, a);
+           m: hasht <- xor(hash(hk_1, x_1), b);
+           x_Oeq: bitstring <- concat(x_1, m);
+{128}      find [unique] u_3 = ri_3 <= qH2 suchthat defined(r_1[ri_3], x1_1''[ri_3], x1_1'[ri_3]) && (f(pkgen(r), x1_1'[ri_3]) = a) && (m = x1_1''[ri_3]) then
+           (
+             if c = r_1[u_3] then
+             return(m)
+           )
+           orfind  suchthat defined(r_3, menc, x_2) && (f(pkgen(r), x_2) = a) && (m = menc) then
+             yield
+       ) | (
+         OT(m1: hasht, m2: hasht) :=
+         b1 <-R bool;
+         menc: hasht <- if_fun(b1, m1, m2);
+         x_2 <-R seed;
+         aT: seed <- f(pk, x_2);
+         bT: hasht <- xor(hash(hk_1, x_2), menc);
+         x_O_2: bitstring <- concat(x_2, menc);
+         r_3 <-R hasht2;
+         cT: hasht2 <- r_3;
+         return(aT, bT, r_3)
+       ))
+     ))
+
+
+Applying simplify [probability qD / |seed|]
+  - Simplification pass
+    - Replaced defined condition r_3, menc, x_2 with menc, x_2 in find at 128
+yields
+
+Game 8 is
+     Ohkgen() :=
+     hk_1 <-R hashkey;
+     return();
+     ((
+       foreach iH <= qH do
+       OH(x1: seed) :=
+       return(hash(hk_1, x1))
+     ) | (
+       foreach iH_1 <= qH2 do
+       OH_1(x1_1: bitstring) :=
+       let concat(x1_1': seed, x1_1'': hasht) = x1_1 in
+         x_O: bitstring <- cst_bitstring;
+         find [unique] u_7 = ri_7 <= qH2 suchthat defined(r_1[ri_7], x1_1''[ri_7], x1_1'[ri_7]) && (x1_1' = x1_1'[ri_7]) && (x1_1'' = x1_1''[ri_7]) then
+           return(r_1[u_7])
+         orfind  suchthat defined(r_3, menc, x_2) && (x1_1' = x_2) && (x1_1'' = menc) then
+           return(r_3)
+         else
+           r_1 <-R hasht2;
+           return(r_1)
+       else
+         x_O_1: bitstring <- cst_bitstring;
+         find [unique] u_4 = ri_4 <= qH2 suchthat defined(r_2[ri_4], x1_1[ri_4]) && (x1_1 = x1_1[ri_4]) then
+           return(r_2[u_4])
+         else
+           r_2 <-R hasht2;
+           return(r_2)
+     ) | (
+       Ogen() :=
+       r <-R keyseed;
+       pk: pkey <- pkgen(r);
+       sk: skey <- skgen(r);
+       return(pk);
+       ((
+         foreach iD <= qD do
+         OD(a: seed, b: hasht, c: hasht2) :=
+         if defined(aT, bT, cT) && (a = aT) && (b = bT) && (c = cT) then
+           yield
+         else
+           x_1: seed <- invf(sk, a);
+           m: hasht <- xor(hash(hk_1, x_1), b);
+           x_Oeq: bitstring <- concat(x_1, m);
+           find [unique] u_3 = ri_3 <= qH2 suchthat defined(r_1[ri_3], x1_1''[ri_3], x1_1'[ri_3]) && (f(pkgen(r), x1_1'[ri_3]) = a) && (m = x1_1''[ri_3]) then
+           (
+             if c = r_1[u_3] then
+             return(m)
+           )
+           orfind  suchthat defined(menc, x_2) && (f(pkgen(r), x_2) = a) && (m = menc) then
+             yield
+       ) | (
+         OT(m1: hasht, m2: hasht) :=
+         b1 <-R bool;
+         menc: hasht <- if_fun(b1, m1, m2);
+         x_2 <-R seed;
+         aT: seed <- f(pk, x_2);
+         bT: hasht <- xor(hash(hk_1, x_2), menc);
+         x_O_2: bitstring <- concat(x_2, menc);
+         r_3 <-R hasht2;
+         cT: hasht2 <- r_3;
+         return(aT, bT, r_3)
+       ))
+     ))
+
+
+Applying move all binders
+  - Move assignment to x_Oeq
+  - Move assignment to x_O_1
+  - Move assignment to x_O
+yields
+
+Game 9 is
+     Ohkgen() :=
+     hk_1 <-R hashkey;
+     return();
+     ((
+       foreach iH <= qH do
+       OH(x1: seed) :=
+       return(hash(hk_1, x1))
+     ) | (
+       foreach iH_1 <= qH2 do
+       OH_1(x1_1: bitstring) :=
+       let concat(x1_1': seed, x1_1'': hasht) = x1_1 in
+         find [unique] u_7 = ri_7 <= qH2 suchthat defined(r_1[ri_7], x1_1''[ri_7], x1_1'[ri_7]) && (x1_1' = x1_1'[ri_7]) && (x1_1'' = x1_1''[ri_7]) then
+           return(r_1[u_7])
+         orfind  suchthat defined(r_3, menc, x_2) && (x1_1' = x_2) && (x1_1'' = menc) then
+           return(r_3)
+         else
+           r_1 <-R hasht2;
+           return(r_1)
+       else
+         find [unique] u_4 = ri_4 <= qH2 suchthat defined(r_2[ri_4], x1_1[ri_4]) && (x1_1 = x1_1[ri_4]) then
+           return(r_2[u_4])
+         else
+           r_2 <-R hasht2;
+           return(r_2)
+     ) | (
+       Ogen() :=
+       r <-R keyseed;
+       pk: pkey <- pkgen(r);
+       sk: skey <- skgen(r);
+       return(pk);
+       ((
+         foreach iD <= qD do
+         OD(a: seed, b: hasht, c: hasht2) :=
+         if defined(aT, bT, cT) && (a = aT) && (b = bT) && (c = cT) then
+           yield
+         else
+           x_1: seed <- invf(sk, a);
+           m: hasht <- xor(hash(hk_1, x_1), b);
+           find [unique] u_3 = ri_3 <= qH2 suchthat defined(r_1[ri_3], x1_1''[ri_3], x1_1'[ri_3]) && (f(pkgen(r), x1_1'[ri_3]) = a) && (m = x1_1''[ri_3]) then
+           (
+             if c = r_1[u_3] then
+             return(m)
+           )
+           orfind  suchthat defined(menc, x_2) && (f(pkgen(r), x_2) = a) && (m = menc) then
+             yield
+       ) | (
+         OT(m1: hasht, m2: hasht) :=
+         b1 <-R bool;
+         menc: hasht <- if_fun(b1, m1, m2);
+         x_2 <-R seed;
+         aT: seed <- f(pk, x_2);
+         bT: hasht <- xor(hash(hk_1, x_2), menc);
+         x_O_2: bitstring <- concat(x_2, menc);
+         r_3 <-R hasht2;
+         cT: hasht2 <- r_3;
+         return(aT, bT, r_3)
+       ))
+     ))
+
+
+Applying SA rename new without array accesses and remove assignments of findcond
+  - Remove assignments on x_O_2 (definition removed, all usages removed)
+  - Remove assignments on cT (definition removed, all usages removed)
+yields
+
+Game 10 is
+     Ohkgen() :=
+     hk_1 <-R hashkey;
+     return();
+     ((
+       foreach iH <= qH do
+       OH(x1: seed) :=
+       return(hash(hk_1, x1))
+     ) | (
+       foreach iH_1 <= qH2 do
+       OH_1(x1_1: bitstring) :=
+       let concat(x1_1': seed, x1_1'': hasht) = x1_1 in
+         find [unique] u_7 = ri_7 <= qH2 suchthat defined(r_1[ri_7], x1_1''[ri_7], x1_1'[ri_7]) && (x1_1' = x1_1'[ri_7]) && (x1_1'' = x1_1''[ri_7]) then
+           return(r_1[u_7])
+         orfind  suchthat defined(r_3, menc, x_2) && (x1_1' = x_2) && (x1_1'' = menc) then
+           return(r_3)
+         else
+           r_1 <-R hasht2;
+           return(r_1)
+       else
+         find [unique] u_4 = ri_4 <= qH2 suchthat defined(r_2[ri_4], x1_1[ri_4]) && (x1_1 = x1_1[ri_4]) then
+           return(r_2[u_4])
+         else
+           r_2 <-R hasht2;
+           return(r_2)
+     ) | (
+       Ogen() :=
+       r <-R keyseed;
+       pk: pkey <- pkgen(r);
+       sk: skey <- skgen(r);
+       return(pk);
+       ((
+         foreach iD <= qD do
+         OD(a: seed, b: hasht, c: hasht2) :=
+         if defined(r_3, aT, bT) && (a = aT) && (b = bT) && (c = r_3) then
+           yield
+         else
+           x_1: seed <- invf(sk, a);
+           m: hasht <- xor(hash(hk_1, x_1), b);
+{116}      find [unique] u_3 = ri_3 <= qH2 suchthat defined(r_1[ri_3], x1_1''[ri_3], x1_1'[ri_3]) && (f(pkgen(r), x1_1'[ri_3]) = a) && (m = x1_1''[ri_3]) then
+           (
+             if c = r_1[u_3] then
+             return(m)
+           )
+           orfind  suchthat defined(menc, x_2) && (f(pkgen(r), x_2) = a) && (m = menc) then
+{158}        yield
+       ) | (
+         OT(m1: hasht, m2: hasht) :=
+         b1 <-R bool;
+         menc: hasht <- if_fun(b1, m1, m2);
+         x_2 <-R seed;
+         aT: seed <- f(pk, x_2);
+         bT: hasht <- xor(hash(hk_1, x_2), menc);
+         r_3 <-R hasht2;
+         return(aT, bT, r_3)
+       ))
+     ))
+
+
+Applying merge branches
+  - Merge branch(es) at 158 with else branch of find at 116
+yields
+
+Game 11 is
+     Ohkgen() :=
+     hk_1 <-R hashkey;
+     return();
+     ((
+       foreach iH <= qH do
+       OH(x1: seed) :=
+       return(hash(hk_1, x1))
+     ) | (
+       foreach iH_1 <= qH2 do
+       OH_1(x1_1: bitstring) :=
+       let concat(x1_1': seed, x1_1'': hasht) = x1_1 in
+         find [unique] u_7 = ri_7 <= qH2 suchthat defined(r_1[ri_7], x1_1''[ri_7], x1_1'[ri_7]) && (x1_1' = x1_1'[ri_7]) && (x1_1'' = x1_1''[ri_7]) then
+           return(r_1[u_7])
+         orfind  suchthat defined(r_3, menc, x_2) && (x1_1' = x_2) && (x1_1'' = menc) then
+           return(r_3)
+         else
+           r_1 <-R hasht2;
+           return(r_1)
+       else
+         find [unique] u_4 = ri_4 <= qH2 suchthat defined(r_2[ri_4], x1_1[ri_4]) && (x1_1 = x1_1[ri_4]) then
+           return(r_2[u_4])
+         else
+           r_2 <-R hasht2;
+           return(r_2)
+     ) | (
+       Ogen() :=
+       r <-R keyseed;
+       pk: pkey <- pkgen(r);
+       sk: skey <- skgen(r);
+       return(pk);
+       ((
+         foreach iD <= qD do
+         OD(a: seed, b: hasht, c: hasht2) :=
+         if defined(r_3, aT, bT) && (a = aT) && (b = bT) && (c = r_3) then
+           yield
+         else
+           x_1: seed <- invf(sk, a);
+           m: hasht <- xor(hash(hk_1, x_1), b);
+           find [unique] u_3 = ri_3 <= qH2 suchthat defined(r_1[ri_3], x1_1''[ri_3], x1_1'[ri_3]) && (f(pkgen(r), x1_1'[ri_3]) = a) && (m = x1_1''[ri_3]) then
+           if c = r_1[u_3] then
+           return(m)
+       ) | (
+         OT(m1: hasht, m2: hasht) :=
+         b1 <-R bool;
+         menc: hasht <- if_fun(b1, m1, m2);
+         x_2 <-R seed;
+         aT: seed <- f(pk, x_2);
+         bT: hasht <- xor(hash(hk_1, x_2), menc);
+         r_3 <-R hasht2;
+         return(aT, bT, r_3)
+       ))
+     ))
+
+
+Applying equivalence rom(hash)
+  - Equivalence rom(hash) with variables: hk_1 -> hk_2
+yields
+
+Game 12 is
+     Ohkgen() :=
+     return();
+     ((
+       foreach iH <= qH do
+       OH(x1: seed) :=
+       return((x_O_3: seed <- x1; find [unique] u_13 = ri_13 <= qH suchthat defined(x_O_3[ri_13], r_4[ri_13]) && (x_O_3 = x_O_3[ri_13]) then r_4[u_13] orfind u_12 = ri_12 <= qD suchthat defined(x_O_4[ri_12], r_5[ri_12]) && (x_O_3 = x_O_4[ri_12]) then r_5[u_12] orfind  suchthat defined(x_O_5, r_6) && (x_O_3 = x_O_5) then r_6 else r_4 <-R hasht; r_4))
+     ) | (
+       foreach iH_1 <= qH2 do
+       OH_1(x1_1: bitstring) :=
+       let concat(x1_1': seed, x1_1'': hasht) = x1_1 in
+         find [unique] u_7 = ri_7 <= qH2 suchthat defined(r_1[ri_7], x1_1''[ri_7], x1_1'[ri_7]) && (x1_1' = x1_1'[ri_7]) && (x1_1'' = x1_1''[ri_7]) then
+           return(r_1[u_7])
+         orfind  suchthat defined(r_3, menc, x_2) && (x1_1' = x_2) && (x1_1'' = menc) then
+           return(r_3)
+         else
+           r_1 <-R hasht2;
+           return(r_1)
+       else
+         find [unique] u_4 = ri_4 <= qH2 suchthat defined(r_2[ri_4], x1_1[ri_4]) && (x1_1 = x1_1[ri_4]) then
+           return(r_2[u_4])
+         else
+           r_2 <-R hasht2;
+           return(r_2)
+     ) | (
+       Ogen() :=
+       r <-R keyseed;
+       pk: pkey <- pkgen(r);
+       sk: skey <- skgen(r);
+       return(pk);
+       ((
+         foreach iD <= qD do
+         OD(a: seed, b: hasht, c: hasht2) :=
+         if defined(r_3, aT, bT) && (a = aT) && (b = bT) && (c = r_3) then
+           yield
+         else
+           x_1: seed <- invf(sk, a);
+           m: hasht <- xor((x_O_4: seed <- x_1; find [unique] u_11 = ri_11 <= qH suchthat defined(x_O_3[ri_11], r_4[ri_11]) && (x_O_4 = x_O_3[ri_11]) then r_4[u_11] orfind u_10 = ri_10 <= qD suchthat defined(x_O_4[ri_10], r_5[ri_10]) && (x_O_4 = x_O_4[ri_10]) then r_5[u_10] orfind  suchthat defined(x_O_5, r_6) && (x_O_4 = x_O_5) then r_6 else r_5 <-R hasht; r_5), b);
+           find [unique] u_3 = ri_3 <= qH2 suchthat defined(r_1[ri_3], x1_1''[ri_3], x1_1'[ri_3]) && (f(pkgen(r), x1_1'[ri_3]) = a) && (m = x1_1''[ri_3]) then
+           if c = r_1[u_3] then
+           return(m)
+       ) | (
+         OT(m1: hasht, m2: hasht) :=
+         b1 <-R bool;
+         menc: hasht <- if_fun(b1, m1, m2);
+         x_2 <-R seed;
+         aT: seed <- f(pk, x_2);
+         bT: hasht <- xor((x_O_5: seed <- x_2; find [unique] u_9 = ri_9 <= qH suchthat defined(x_O_3[ri_9], r_4[ri_9]) && (x_O_5 = x_O_3[ri_9]) then r_4[u_9] orfind u_8 = ri_8 <= qD suchthat defined(x_O_4[ri_8], r_5[ri_8]) && (x_O_5 = x_O_4[ri_8]) then r_5[u_8] else r_6 <-R hasht; r_6), menc);
+         r_3 <-R hasht2;
+         return(aT, bT, r_3)
+       ))
+     ))
+
+
+Applying expand
+  - Expand if/find/let
+yields
+
+Game 13 is
+     Ohkgen() :=
+     return();
+     ((
+       foreach iH <= qH do
+       OH(x1: seed) :=
+       x_O_3: seed <- x1;
+       find [unique] u_13 = ri_13 <= qH suchthat defined(x_O_3[ri_13], r_4[ri_13]) && (x_O_3 = x_O_3[ri_13]) then
+         return(r_4[u_13])
+       orfind u_12 = ri_12 <= qD suchthat defined(x_O_4[ri_12], r_5[ri_12]) && (x_O_3 = x_O_4[ri_12]) then
+         return(r_5[u_12])
+       orfind  suchthat defined(x_O_5, r_6) && (x_O_3 = x_O_5) then
+         return(r_6)
+       else
+         r_4 <-R hasht;
+         return(r_4)
+     ) | (
+       foreach iH_1 <= qH2 do
+       OH_1(x1_1: bitstring) :=
+       let concat(x1_1': seed, x1_1'': hasht) = x1_1 in
+         find [unique] u_7 = ri_7 <= qH2 suchthat defined(r_1[ri_7], x1_1''[ri_7], x1_1'[ri_7]) && (x1_1' = x1_1'[ri_7]) && (x1_1'' = x1_1''[ri_7]) then
+           return(r_1[u_7])
+         orfind  suchthat defined(r_3, menc, x_2) && (x1_1' = x_2) && (x1_1'' = menc) then
+           return(r_3)
+         else
+           r_1 <-R hasht2;
+           return(r_1)
+       else
+         find [unique] u_4 = ri_4 <= qH2 suchthat defined(r_2[ri_4], x1_1[ri_4]) && (x1_1 = x1_1[ri_4]) then
+           return(r_2[u_4])
+         else
+           r_2 <-R hasht2;
+           return(r_2)
+     ) | (
+       Ogen() :=
+       r <-R keyseed;
+       pk: pkey <- pkgen(r);
+       sk: skey <- skgen(r);
+       return(pk);
+       ((
+         foreach iD <= qD do
+         OD(a: seed, b: hasht, c: hasht2) :=
+         if defined(r_3, aT, bT) && (a = aT) && (b = bT) && (c = r_3) then
+           yield
+         else
+           x_1: seed <- invf(sk, a);
+           x_O_4: seed <- x_1;
+           find [unique] u_11 = ri_11 <= qH suchthat defined(x_O_3[ri_11], r_4[ri_11]) && (x_O_4 = x_O_3[ri_11]) then
+           (
+             m: hasht <- xor(r_4[u_11], b);
+             find [unique] u_3 = ri_3 <= qH2 suchthat defined(r_1[ri_3], x1_1''[ri_3], x1_1'[ri_3]) && (f(pkgen(r), x1_1'[ri_3]) = a) && (m = x1_1''[ri_3]) then
+             if c = r_1[u_3] then
+             return(m)
+           )
+           orfind u_10 = ri_10 <= qD suchthat defined(x_O_4[ri_10], r_5[ri_10]) && (x_O_4 = x_O_4[ri_10]) then
+           (
+             m: hasht <- xor(r_5[u_10], b);
+             find [unique] u_3 = ri_3 <= qH2 suchthat defined(r_1[ri_3], x1_1''[ri_3], x1_1'[ri_3]) && (f(pkgen(r), x1_1'[ri_3]) = a) && (m = x1_1''[ri_3]) then
+             if c = r_1[u_3] then
+             return(m)
+           )
+           orfind  suchthat defined(x_O_5, r_6) && (x_O_4 = x_O_5) then
+           (
+             m: hasht <- xor(r_6, b);
+             find [unique] u_3 = ri_3 <= qH2 suchthat defined(r_1[ri_3], x1_1''[ri_3], x1_1'[ri_3]) && (f(pkgen(r), x1_1'[ri_3]) = a) && (m = x1_1''[ri_3]) then
+             if c = r_1[u_3] then
+             return(m)
+           )
+           else
+             r_5 <-R hasht;
+             m: hasht <- xor(r_5, b);
+             find [unique] u_3 = ri_3 <= qH2 suchthat defined(r_1[ri_3], x1_1''[ri_3], x1_1'[ri_3]) && (f(pkgen(r), x1_1'[ri_3]) = a) && (m = x1_1''[ri_3]) then
+             if c = r_1[u_3] then
+             return(m)
+       ) | (
+         OT(m1: hasht, m2: hasht) :=
+         b1 <-R bool;
+         menc: hasht <- if_fun(b1, m1, m2);
+         x_2 <-R seed;
+         aT: seed <- f(pk, x_2);
+         x_O_5: seed <- x_2;
+         find [unique] u_9 = ri_9 <= qH suchthat defined(x_O_3[ri_9], r_4[ri_9]) && (x_O_5 = x_O_3[ri_9]) then
+           bT: hasht <- xor(r_4[u_9], menc);
+           r_3 <-R hasht2;
+           return(aT, bT, r_3)
+         orfind u_8 = ri_8 <= qD suchthat defined(x_O_4[ri_8], r_5[ri_8]) && (x_O_5 = x_O_4[ri_8]) then
+           bT: hasht <- xor(r_5[u_8], menc);
+           r_3 <-R hasht2;
+           return(aT, bT, r_3)
+         else
+           r_6 <-R hasht;
+           bT: hasht <- xor(r_6, menc);
+           r_3 <-R hasht2;
+           return(aT, bT, r_3)
+       ))
+     ))
+
+
+Applying remove assignments of findcond
+  - Remove assignments on x_O_5 (definition removed, all usages removed)
+  - Remove assignments on x_O_4 (definition removed, all usages removed)
+  - Remove assignments on x_O_3 (definition point kept, all usages removed)
+yields
+
+Game 14 is
+     Ohkgen() :=
+     return();
+     ((
+       foreach iH <= qH do
+       OH(x1: seed) :=
+       x_O_3: seed <- cst_seed;
+  {9}  find [unique] u_13 = ri_13 <= qH suchthat defined(x1[ri_13], x_O_3[ri_13], r_4[ri_13]) && (x1 = x1[ri_13]) then
+         return(r_4[u_13])
+       orfind u_12 = ri_12 <= qD suchthat defined(x_1[ri_12], r_5[ri_12]) && {25}(x1 = x_1[ri_12]) then
+         return(r_5[u_12])
+       orfind  suchthat defined(x_2, aT, r_6) && (x1 = x_2) then
+         return(r_6)
+       else
+         r_4 <-R hasht;
+         return(r_4)
+     ) | (
+       foreach iH_1 <= qH2 do
+       OH_1(x1_1: bitstring) :=
+       let concat(x1_1': seed, x1_1'': hasht) = x1_1 in
+         find [unique] u_7 = ri_7 <= qH2 suchthat defined(r_1[ri_7], x1_1''[ri_7], x1_1'[ri_7]) && (x1_1' = x1_1'[ri_7]) && (x1_1'' = x1_1''[ri_7]) then
+           return(r_1[u_7])
+         orfind  suchthat defined(r_3, menc, x_2) && (x1_1' = x_2) && (x1_1'' = menc) then
+           return(r_3)
+         else
+           r_1 <-R hasht2;
+           return(r_1)
+       else
+         find [unique] u_4 = ri_4 <= qH2 suchthat defined(r_2[ri_4], x1_1[ri_4]) && (x1_1 = x1_1[ri_4]) then
+           return(r_2[u_4])
+         else
+           r_2 <-R hasht2;
+           return(r_2)
+     ) | (
+       Ogen() :=
+       r <-R keyseed;
+       pk: pkey <- pkgen(r);
+       sk: skey <- skgen(r);
+       return(pk);
+       ((
+         foreach iD <= qD do
+         OD(a: seed, b: hasht, c: hasht2) :=
+         if defined(r_3, aT, bT) && (a = aT) && (b = bT) && (c = r_3) then
+           yield
+         else
+           x_1: seed <- invf(sk, a);
+{142}      find [unique] u_11 = ri_11 <= qH suchthat defined(x1[ri_11], x_O_3[ri_11], r_4[ri_11]) && {146}(x_1 = x1[ri_11]) then
+           (
+             m: hasht <- xor(r_4[u_11], b);
+             find [unique] u_3 = ri_3 <= qH2 suchthat defined(r_1[ri_3], x1_1''[ri_3], x1_1'[ri_3]) && {162}((f(pkgen(r), x1_1'[ri_3]) = a) && (m = x1_1''[ri_3])) then
+             if c = r_1[u_3] then
+             return(m)
+           )
+           orfind u_10 = ri_10 <= qD suchthat defined(x_1[ri_10], r_5[ri_10]) && {192}(x_1 = x_1[ri_10]) then
+           (
+             m: hasht <- xor(r_5[u_10], b);
+             find [unique] u_3 = ri_3 <= qH2 suchthat defined(r_1[ri_3], x1_1''[ri_3], x1_1'[ri_3]) && (f(pkgen(r), x1_1'[ri_3]) = a) && (m = x1_1''[ri_3]) then
+             if c = r_1[u_3] then
+             return(m)
+           )
+           orfind  suchthat defined(x_2, aT, r_6) && {236}(x_1 = x_2) then
+           (
+             m: hasht <- xor(r_6, b);
+             find [unique] u_3 = ri_3 <= qH2 suchthat defined(r_1[ri_3], x1_1''[ri_3], x1_1'[ri_3]) && {249}((f(pkgen(r), x1_1'[ri_3]) = a) && (m = x1_1''[ri_3])) then
+             if c = r_1[u_3] then
+             return(m)
+           )
+           else
+             r_5 <-R hasht;
+{278}        m: hasht <- xor(r_5, b);
+{284}        find [unique] u_3 = ri_3 <= qH2 suchthat defined(r_1[ri_3], x1_1''[ri_3], x1_1'[ri_3]) && {288}((f(pkgen(r), x1_1'[ri_3]) = a) && (m = x1_1''[ri_3])) then
+             if c = r_1[u_3] then
+             return(m)
+       ) | (
+         OT(m1: hasht, m2: hasht) :=
+         b1 <-R bool;
+         menc: hasht <- if_fun(b1, m1, m2);
+         x_2 <-R seed;
+         aT: seed <- f(pk, x_2);
+{329}    find [unique] u_9 = ri_9 <= qH suchthat defined(x1[ri_9], x_O_3[ri_9], r_4[ri_9]) && {333}(x_2 = x1[ri_9]) then
+           bT: hasht <- xor(r_4[u_9], menc);
+           r_3 <-R hasht2;
+           return(aT, bT, r_3)
+         orfind u_8 = ri_8 <= qD suchthat defined(x_1[ri_8], r_5[ri_8]) && {351}(x_2 = x_1[ri_8]) then
+           bT: hasht <- xor(r_5[u_8], menc);
+           r_3 <-R hasht2;
+           return(aT, bT, r_3)
+         else
+           r_6 <-R hasht;
+           bT: hasht <- xor(r_6, menc);
+           r_3 <-R hasht2;
+           return(aT, bT, r_3)
+       ))
+     ))
+
+
+Applying simplify [probability (qH2 + qH + 2 * qD) / |seed| + qH2 * qD / |hasht|]
+  - Simplification pass
+    - Replaced (x_2 = x_1[ri_8]) with false at 351
+    - Remove branch 2 in find at 329
+    - Replaced (x_2 = x1[ri_9]) with false at 333
+    - Remove branch 1 in find at 329
+    - Find at 329 removed (else branch kept if any)
+    - Replaced ((f(pkgen(r), x1_1'[ri_3]) = a) && (m = x1_1''[ri_3])) with false at 288
+    - Remove branch 1 in find at 284
+    - Find at 284 removed (else branch kept if any)
+    - Remove let at 278
+    - Replaced (x_1 = x_2) with (f(pkgen(r), x_2) = a) at 236
+    - Replaced ((f(pkgen(r), x1_1'[ri_3]) = a) && (m = x1_1''[ri_3])) with ((x1_1'[ri_3] = x_2) && (m = x1_1''[ri_3])) at 249
+    - Replaced defined condition x_2, aT, r_6 with r_6, x_2 in find at 142
+    - Replaced (x_1 = x_1[ri_10]) with (a = a[ri_10]) at 192
+    - Replaced defined condition x_1[ri_10], r_5[ri_10] with r_5[ri_10], a[ri_10] in find at 142
+    - Replaced (x_1 = x1[ri_11]) with (f(pkgen(r), x1[ri_11]) = a) at 146
+    - Replaced ((f(pkgen(r), x1_1'[ri_3]) = a) && (m = x1_1''[ri_3])) with ((x1_1'[ri_3] = x1[u_11]) && (m = x1_1''[ri_3])) at 162
+    - Replaced defined condition x1[ri_11], x_O_3[ri_11], r_4[ri_11] with r_4[ri_11], x1[ri_11] in find at 142
+    - Replaced defined condition x_2, aT, r_6 with r_6, x_2 in find at 9
+    - Replaced (x1 = x_1[ri_12]) with (f(pkgen(r), x1) = a[ri_12]) at 25
+    - Replaced defined condition x_1[ri_12], r_5[ri_12] with r_5[ri_12], a[ri_12], r in find at 9
+    - Replaced defined condition x1[ri_13], x_O_3[ri_13], r_4[ri_13] with r_4[ri_13], x1[ri_13] in find at 9
+yields
+
+Game 15 is
+     Ohkgen() :=
+     return();
+     ((
+       foreach iH <= qH do
+       OH(x1: seed) :=
+       x_O_3: seed <- cst_seed;
+       find [unique] u_13 = ri_13 <= qH suchthat defined(r_4[ri_13], x1[ri_13]) && (x1 = x1[ri_13]) then
+         return(r_4[u_13])
+       orfind u_12 = ri_12 <= qD suchthat defined(r_5[ri_12], a[ri_12], r) && (f(pkgen(r), x1) = a[ri_12]) then
+         return(r_5[u_12])
+       orfind  suchthat defined(r_6, x_2) && (x1 = x_2) then
+         return(r_6)
+       else
+         r_4 <-R hasht;
+         return(r_4)
+     ) | (
+       foreach iH_1 <= qH2 do
+       OH_1(x1_1: bitstring) :=
+       let concat(x1_1': seed, x1_1'': hasht) = x1_1 in
+         find [unique] u_7 = ri_7 <= qH2 suchthat defined(r_1[ri_7], x1_1''[ri_7], x1_1'[ri_7]) && (x1_1' = x1_1'[ri_7]) && (x1_1'' = x1_1''[ri_7]) then
+           return(r_1[u_7])
+         orfind  suchthat defined(r_3, menc, x_2) && (x1_1' = x_2) && (x1_1'' = menc) then
+           return(r_3)
+         else
+           r_1 <-R hasht2;
+           return(r_1)
+       else
+         find [unique] u_4 = ri_4 <= qH2 suchthat defined(r_2[ri_4], x1_1[ri_4]) && (x1_1 = x1_1[ri_4]) then
+           return(r_2[u_4])
+         else
+           r_2 <-R hasht2;
+           return(r_2)
+     ) | (
+       Ogen() :=
+       r <-R keyseed;
+       pk: pkey <- pkgen(r);
+       sk: skey <- skgen(r);
+       return(pk);
+       ((
+         foreach iD <= qD do
+         OD(a: seed, b: hasht, c: hasht2) :=
+         if defined(r_3, aT, bT) && (a = aT) && (b = bT) && (c = r_3) then
+           yield
+         else
+           x_1: seed <- invf(sk, a);
+           find [unique] u_11 = ri_11 <= qH suchthat defined(r_4[ri_11], x1[ri_11]) && (f(pkgen(r), x1[ri_11]) = a) then
+           (
+             m: hasht <- xor(r_4[u_11], b);
+             find [unique] u_3 = ri_3 <= qH2 suchthat defined(r_1[ri_3], x1_1''[ri_3], x1_1'[ri_3]) && (x1_1'[ri_3] = x1[u_11]) && (m = x1_1''[ri_3]) then
+             if c = r_1[u_3] then
+             return(m)
+           )
+           orfind u_10 = ri_10 <= qD suchthat defined(r_5[ri_10], a[ri_10]) && (a = a[ri_10]) then
+           (
+             m: hasht <- xor(r_5[u_10], b);
+             find [unique] u_3 = ri_3 <= qH2 suchthat defined(r_1[ri_3], x1_1''[ri_3], x1_1'[ri_3]) && (f(pkgen(r), x1_1'[ri_3]) = a) && (m = x1_1''[ri_3]) then
+             if c = r_1[u_3] then
+             return(m)
+           )
+           orfind  suchthat defined(r_6, x_2) && (f(pkgen(r), x_2) = a) then
+           (
+             m: hasht <- xor(r_6, b);
+             find [unique] u_3 = ri_3 <= qH2 suchthat defined(r_1[ri_3], x1_1''[ri_3], x1_1'[ri_3]) && (x1_1'[ri_3] = x_2) && (m = x1_1''[ri_3]) then
+             if c = r_1[u_3] then
+             return(m)
+           )
+           else
+             r_5 <-R hasht
+       ) | (
+         OT(m1: hasht, m2: hasht) :=
+         b1 <-R bool;
+         menc: hasht <- if_fun(b1, m1, m2);
+         x_2 <-R seed;
+         aT: seed <- f(pk, x_2);
+         r_6 <-R hasht;
+         bT: hasht <- xor(r_6, menc);
+         r_3 <-R hasht2;
+         return(aT, bT, r_3)
+       ))
+     ))
+
+
+Applying move all binders
+  - Move assignment to x_1
+  - Move assignment to x_O_3
+yields
+
+Game 16 is
+     Ohkgen() :=
+     return();
+     ((
+       foreach iH <= qH do
+       OH(x1: seed) :=
+       find [unique] u_13 = ri_13 <= qH suchthat defined(r_4[ri_13], x1[ri_13]) && (x1 = x1[ri_13]) then
+         return(r_4[u_13])
+       orfind u_12 = ri_12 <= qD suchthat defined(r_5[ri_12], a[ri_12], r) && (f(pkgen(r), x1) = a[ri_12]) then
+         return(r_5[u_12])
+       orfind  suchthat defined(r_6, x_2) && (x1 = x_2) then
+         return(r_6)
+       else
+         r_4 <-R hasht;
+         return(r_4)
+     ) | (
+       foreach iH_1 <= qH2 do
+       OH_1(x1_1: bitstring) :=
+       let concat(x1_1': seed, x1_1'': hasht) = x1_1 in
+         find [unique] u_7 = ri_7 <= qH2 suchthat defined(r_1[ri_7], x1_1''[ri_7], x1_1'[ri_7]) && (x1_1' = x1_1'[ri_7]) && (x1_1'' = x1_1''[ri_7]) then
+           return(r_1[u_7])
+         orfind  suchthat defined(r_3, menc, x_2) && (x1_1' = x_2) && (x1_1'' = menc) then
+           return(r_3)
+         else
+           r_1 <-R hasht2;
+           return(r_1)
+       else
+         find [unique] u_4 = ri_4 <= qH2 suchthat defined(r_2[ri_4], x1_1[ri_4]) && (x1_1 = x1_1[ri_4]) then
+           return(r_2[u_4])
+         else
+           r_2 <-R hasht2;
+           return(r_2)
+     ) | (
+       Ogen() :=
+       r <-R keyseed;
+       pk: pkey <- pkgen(r);
+       sk: skey <- skgen(r);
+       return(pk);
+       ((
+         foreach iD <= qD do
+         OD(a: seed, b: hasht, c: hasht2) :=
+         if defined(r_3, aT, bT) && (a = aT) && (b = bT) && (c = r_3) then
+           yield
+         else
+           find [unique] u_11 = ri_11 <= qH suchthat defined(r_4[ri_11], x1[ri_11]) && (f(pkgen(r), x1[ri_11]) = a) then
+           (
+             m: hasht <- xor(r_4[u_11], b);
+             find [unique] u_3 = ri_3 <= qH2 suchthat defined(r_1[ri_3], x1_1''[ri_3], x1_1'[ri_3]) && (x1_1'[ri_3] = x1[u_11]) && (m = x1_1''[ri_3]) then
+             if c = r_1[u_3] then
+             return(m)
+           )
+           orfind u_10 = ri_10 <= qD suchthat defined(r_5[ri_10], a[ri_10]) && (a = a[ri_10]) then
+           (
+             m: hasht <- xor(r_5[u_10], b);
+             find [unique] u_3 = ri_3 <= qH2 suchthat defined(r_1[ri_3], x1_1''[ri_3], x1_1'[ri_3]) && (f(pkgen(r), x1_1'[ri_3]) = a) && (m = x1_1''[ri_3]) then
+             if c = r_1[u_3] then
+             return(m)
+           )
+           orfind  suchthat defined(r_6, x_2) && (f(pkgen(r), x_2) = a) then
+           (
+             m: hasht <- xor(r_6, b);
+             find [unique] u_3 = ri_3 <= qH2 suchthat defined(r_1[ri_3], x1_1''[ri_3], x1_1'[ri_3]) && (x1_1'[ri_3] = x_2) && (m = x1_1''[ri_3]) then
+             if c = r_1[u_3] then
+             return(m)
+           )
+           else
+             r_5 <-R hasht
+       ) | (
+         OT(m1: hasht, m2: hasht) :=
+         b1 <-R bool;
+         menc: hasht <- if_fun(b1, m1, m2);
+         x_2 <-R seed;
+         aT: seed <- f(pk, x_2);
+         r_6 <-R hasht;
+         bT: hasht <- xor(r_6, menc);
+         r_3 <-R hasht2;
+         return(aT, bT, r_3)
+       ))
+     ))
+
+
+Applying SA rename new without array accesses and remove assignments of findcond
+  - Remove assignments on sk (definition removed, all usages removed)
+yields
+
+Game 17 is
+     Ohkgen() :=
+     return();
+     ((
+       foreach iH <= qH do
+       OH(x1: seed) :=
+       find [unique] u_13 = ri_13 <= qH suchthat defined(r_4[ri_13], x1[ri_13]) && (x1 = x1[ri_13]) then
+         return(r_4[u_13])
+       orfind u_12 = ri_12 <= qD suchthat defined(r_5[ri_12], a[ri_12], r) && (f(pkgen(r), x1) = a[ri_12]) then
+         return(r_5[u_12])
+       orfind  suchthat defined(r_6, x_2) && (x1 = x_2) then
+         return(r_6)
+       else
+         r_4 <-R hasht;
+         return(r_4)
+     ) | (
+       foreach iH_1 <= qH2 do
+       OH_1(x1_1: bitstring) :=
+       let concat(x1_1': seed, x1_1'': hasht) = x1_1 in
+         find [unique] u_7 = ri_7 <= qH2 suchthat defined(r_1[ri_7], x1_1''[ri_7], x1_1'[ri_7]) && (x1_1' = x1_1'[ri_7]) && (x1_1'' = x1_1''[ri_7]) then
+           return(r_1[u_7])
+         orfind  suchthat defined(r_3, menc, x_2) && (x1_1' = x_2) && (x1_1'' = menc) then
+           return(r_3)
+         else
+           r_1 <-R hasht2;
+           return(r_1)
+       else
+         find [unique] u_4 = ri_4 <= qH2 suchthat defined(r_2[ri_4], x1_1[ri_4]) && (x1_1 = x1_1[ri_4]) then
+           return(r_2[u_4])
+         else
+           r_2 <-R hasht2;
+           return(r_2)
+     ) | (
+       Ogen() :=
+       r <-R keyseed;
+       pk: pkey <- pkgen(r);
+       return(pk);
+       ((
+         foreach iD <= qD do
+         OD(a: seed, b: hasht, c: hasht2) :=
+         if defined(r_3, aT, bT) && (a = aT) && (b = bT) && (c = r_3) then
+           yield
+         else
+           find [unique] u_11 = ri_11 <= qH suchthat defined(r_4[ri_11], x1[ri_11]) && (f(pkgen(r), x1[ri_11]) = a) then
+           (
+             m: hasht <- xor(r_4[u_11], b);
+             find [unique] u_3 = ri_3 <= qH2 suchthat defined(r_1[ri_3], x1_1''[ri_3], x1_1'[ri_3]) && (x1_1'[ri_3] = x1[u_11]) && (m = x1_1''[ri_3]) then
+             if c = r_1[u_3] then
+             return(m)
+           )
+           orfind u_10 = ri_10 <= qD suchthat defined(r_5[ri_10], a[ri_10]) && (a = a[ri_10]) then
+           (
+             m: hasht <- xor(r_5[u_10], b);
+             find [unique] u_3 = ri_3 <= qH2 suchthat defined(r_1[ri_3], x1_1''[ri_3], x1_1'[ri_3]) && (f(pkgen(r), x1_1'[ri_3]) = a) && (m = x1_1''[ri_3]) then
+             if c = r_1[u_3] then
+             return(m)
+           )
+           orfind  suchthat defined(r_6, x_2) && (f(pkgen(r), x_2) = a) then
+           (
+             m: hasht <- xor(r_6, b);
+             find [unique] u_3 = ri_3 <= qH2 suchthat defined(r_1[ri_3], x1_1''[ri_3], x1_1'[ri_3]) && (x1_1'[ri_3] = x_2) && (m = x1_1''[ri_3]) then
+             if c = r_1[u_3] then
+             return(m)
+           )
+           else
+             r_5 <-R hasht
+       ) | (
+         OT(m1: hasht, m2: hasht) :=
+         b1 <-R bool;
+         menc: hasht <- if_fun(b1, m1, m2);
+         x_2 <-R seed;
+         aT: seed <- f(pk, x_2);
+         r_6 <-R hasht;
+         bT: hasht <- xor(r_6, menc);
+         r_3 <-R hasht2;
+         return(aT, bT, r_3)
+       ))
+     ))
+
+
+Applying remove assignments of binder pk
+  - Remove assignments on pk (definition removed, all usages removed)
+yields
+
+Game 18 is
+     Ohkgen() :=
+     return();
+     ((
+       foreach iH <= qH do
+       OH(x1: seed) :=
+       find [unique] u_13 = ri_13 <= qH suchthat defined(r_4[ri_13], x1[ri_13]) && (x1 = x1[ri_13]) then
+         return(r_4[u_13])
+       orfind u_12 = ri_12 <= qD suchthat defined(r_5[ri_12], a[ri_12], r) && (f(pkgen(r), x1) = a[ri_12]) then
+         return(r_5[u_12])
+       orfind  suchthat defined(r_6, x_2) && (x1 = x_2) then
+         return(r_6)
+       else
+         r_4 <-R hasht;
+         return(r_4)
+     ) | (
+       foreach iH_1 <= qH2 do
+       OH_1(x1_1: bitstring) :=
+       let concat(x1_1': seed, x1_1'': hasht) = x1_1 in
+         find [unique] u_7 = ri_7 <= qH2 suchthat defined(r_1[ri_7], x1_1''[ri_7], x1_1'[ri_7]) && (x1_1' = x1_1'[ri_7]) && (x1_1'' = x1_1''[ri_7]) then
+           return(r_1[u_7])
+         orfind  suchthat defined(r_3, menc, x_2) && (x1_1' = x_2) && (x1_1'' = menc) then
+           return(r_3)
+         else
+           r_1 <-R hasht2;
+           return(r_1)
+       else
+         find [unique] u_4 = ri_4 <= qH2 suchthat defined(r_2[ri_4], x1_1[ri_4]) && (x1_1 = x1_1[ri_4]) then
+           return(r_2[u_4])
+         else
+           r_2 <-R hasht2;
+           return(r_2)
+     ) | (
+       Ogen() :=
+       r <-R keyseed;
+       return(pkgen(r));
+       ((
+         foreach iD <= qD do
+         OD(a: seed, b: hasht, c: hasht2) :=
+         if defined(r_3, aT, bT) && (a = aT) && (b = bT) && (c = r_3) then
+           yield
+         else
+           find [unique] u_11 = ri_11 <= qH suchthat defined(r_4[ri_11], x1[ri_11]) && (f(pkgen(r), x1[ri_11]) = a) then
+           (
+             m: hasht <- xor(r_4[u_11], b);
+             find [unique] u_3 = ri_3 <= qH2 suchthat defined(r_1[ri_3], x1_1''[ri_3], x1_1'[ri_3]) && (x1_1'[ri_3] = x1[u_11]) && (m = x1_1''[ri_3]) then
+             if c = r_1[u_3] then
+             return(m)
+           )
+           orfind u_10 = ri_10 <= qD suchthat defined(r_5[ri_10], a[ri_10]) && (a = a[ri_10]) then
+           (
+             m: hasht <- xor(r_5[u_10], b);
+             find [unique] u_3 = ri_3 <= qH2 suchthat defined(r_1[ri_3], x1_1''[ri_3], x1_1'[ri_3]) && (f(pkgen(r), x1_1'[ri_3]) = a) && (m = x1_1''[ri_3]) then
+             if c = r_1[u_3] then
+             return(m)
+           )
+           orfind  suchthat defined(r_6, x_2) && (f(pkgen(r), x_2) = a) then
+           (
+             m: hasht <- xor(r_6, b);
+             find [unique] u_3 = ri_3 <= qH2 suchthat defined(r_1[ri_3], x1_1''[ri_3], x1_1'[ri_3]) && (x1_1'[ri_3] = x_2) && (m = x1_1''[ri_3]) then
+             if c = r_1[u_3] then
+             return(m)
+           )
+           else
+             r_5 <-R hasht
+       ) | (
+         OT(m1: hasht, m2: hasht) :=
+         b1 <-R bool;
+         menc: hasht <- if_fun(b1, m1, m2);
+         x_2 <-R seed;
+         aT: seed <- f(pkgen(r), x_2);
+         r_6 <-R hasht;
+         bT: hasht <- xor(r_6, menc);
+         r_3 <-R hasht2;
+         return(aT, bT, r_3)
+       ))
+     ))
+
+
+Applying equivalence ow(f) with x_2, r [probability POW(time_1)]
+  - Equivalence ow(f) with variables: r -> r_1, x_2 -> x_1
+yields
+
+Game 19 is
+     Ohkgen() :=
+     return();
+     ((
+       foreach iH <= qH do
+       OH(x1: seed) :=
+       find [unique] u_13 = ri_13 <= qH suchthat defined(r_4[ri_13], x1[ri_13]) && (x1 = x1[ri_13]) then
+         return(r_4[u_13])
+       orfind u_12 = ri_12 <= qD suchthat defined(r_5[ri_12], a[ri_12], r) && (f(pkgen'(r), x1) = a[ri_12]) then
+         return(r_5[u_12])
+       orfind  suchthat defined(r_6) && (x'_1: seed <- x1; {38}find  else false) then
+         return(r_6)
+       else
+         r_4 <-R hasht;
+         return(r_4)
+     ) | (
+       foreach iH_1 <= qH2 do
+       OH_1(x1_1: bitstring) :=
+       let concat(x1_1': seed, x1_1'': hasht) = x1_1 in
+         find [unique] u_7 = ri_7 <= qH2 suchthat defined(r_1[ri_7], x1_1''[ri_7], x1_1'[ri_7]) && (x1_1' = x1_1'[ri_7]) && (x1_1'' = x1_1''[ri_7]) then
+           return(r_1[u_7])
+         orfind  suchthat defined(r_3, menc) && (x'_2: seed <- x1_1'; {77}find  else false) && (x1_1'' = menc) then
+           return(r_3)
+         else
+           r_1 <-R hasht2;
+           return(r_1)
+       else
+         find [unique] u_4 = ri_4 <= qH2 suchthat defined(r_2[ri_4], x1_1[ri_4]) && (x1_1 = x1_1[ri_4]) then
+           return(r_2[u_4])
+         else
+           r_2 <-R hasht2;
+           return(r_2)
+     ) | (
+       Ogen() :=
+       r <-R keyseed;
+       return(pkgen'(r));
+       ((
+         foreach iD <= qD do
+         OD(a: seed, b: hasht, c: hasht2) :=
+         if defined(r_3, aT, bT) && (a = aT) && (b = bT) && (c = r_3) then
+           yield
+         else
+           find [unique] u_11 = ri_11 <= qH suchthat defined(r_4[ri_11], x1[ri_11]) && (f(pkgen'(r), x1[ri_11]) = a) then
+           (
+             m: hasht <- xor(r_4[u_11], b);
+             find [unique] u_3 = ri_3 <= qH2 suchthat defined(r_1[ri_3], x1_1''[ri_3], x1_1'[ri_3]) && (x1_1'[ri_3] = x1[u_11]) && (m = x1_1''[ri_3]) then
+             if c = r_1[u_3] then
+             return(m)
+           )
+           orfind u_10 = ri_10 <= qD suchthat defined(r_5[ri_10], a[ri_10]) && (a = a[ri_10]) then
+           (
+             m: hasht <- xor(r_5[u_10], b);
+             find [unique] u_3 = ri_3 <= qH2 suchthat defined(r_1[ri_3], x1_1''[ri_3], x1_1'[ri_3]) && (f(pkgen'(r), x1_1'[ri_3]) = a) && (m = x1_1''[ri_3]) then
+             if c = r_1[u_3] then
+             return(m)
+           )
+           orfind  suchthat defined(r_6, x_2) && (f'(pkgen'(r), x_2) = a) then
+           (
+             m: hasht <- xor(r_6, b);
+             find [unique] u_3 = ri_3 <= qH2 suchthat defined(r_1[ri_3], x1_1''[ri_3], x1_1'[ri_3]) && (x': seed <- x1_1'[ri_3]; {247}find  else false) && (m = x1_1''[ri_3]) then
+             if c = r_1[u_3] then
+             return(m)
+           )
+           else
+             r_5 <-R hasht
+       ) | (
+         OT(m1: hasht, m2: hasht) :=
+         b1 <-R bool;
+         menc: hasht <- if_fun(b1, m1, m2);
+         x_2 <-R seed;
+         aT: seed <- f'(pkgen'(r), x_2);
+         r_6 <-R hasht;
+         bT: hasht <- xor(r_6, menc);
+         r_3 <-R hasht2;
+         return(aT, bT, r_3)
+       ))
+     ))
+
+
+Applying simplify (non-expanded game)
+  - Simplification pass
+    - Find at 38 removed (else branch kept if any)
+    - Find at 77 removed (else branch kept if any)
+    - Find at 247 removed (else branch kept if any)
+yields
+
+Game 20 is
+     Ohkgen() :=
+     return();
+     ((
+       foreach iH <= qH do
+       OH(x1: seed) :=
+  {7}  find [unique] u_13 = ri_13 <= qH suchthat defined(r_4[ri_13], x1[ri_13]) && (x1 = x1[ri_13]) then
+         return(r_4[u_13])
+       orfind u_12 = ri_12 <= qD suchthat defined(r_5[ri_12], a[ri_12], r) && (f(pkgen'(r), x1) = a[ri_12]) then
+         return(r_5[u_12])
+       orfind  suchthat defined(r_6) && (x'_1: seed <- x1; false) then
+         return(r_6)
+       else
+         r_4 <-R hasht;
+         return(r_4)
+     ) | (
+       foreach iH_1 <= qH2 do
+       OH_1(x1_1: bitstring) :=
+       let concat(x1_1': seed, x1_1'': hasht) = x1_1 in
+ {52}    find [unique] u_7 = ri_7 <= qH2 suchthat defined(r_1[ri_7], x1_1''[ri_7], x1_1'[ri_7]) && (x1_1' = x1_1'[ri_7]) && (x1_1'' = x1_1''[ri_7]) then
+           return(r_1[u_7])
+         orfind  suchthat defined(r_3, menc) && (x'_2: seed <- x1_1'; false) && (x1_1'' = menc) then
+           return(r_3)
+         else
+           r_1 <-R hasht2;
+           return(r_1)
+       else
+         find [unique] u_4 = ri_4 <= qH2 suchthat defined(r_2[ri_4], x1_1[ri_4]) && (x1_1 = x1_1[ri_4]) then
+           return(r_2[u_4])
+         else
+           r_2 <-R hasht2;
+           return(r_2)
+     ) | (
+       Ogen() :=
+       r <-R keyseed;
+       return(pkgen'(r));
+       ((
+         foreach iD <= qD do
+         OD(a: seed, b: hasht, c: hasht2) :=
+         if defined(r_3, aT, bT) && (a = aT) && (b = bT) && (c = r_3) then
+           yield
+         else
+{131}      find [unique] u_11 = ri_11 <= qH suchthat defined(r_4[ri_11], x1[ri_11]) && (f(pkgen'(r), x1[ri_11]) = a) then
+           (
+             m: hasht <- xor(r_4[u_11], b);
+             find [unique] u_3 = ri_3 <= qH2 suchthat defined(r_1[ri_3], x1_1''[ri_3], x1_1'[ri_3]) && (x1_1'[ri_3] = x1[u_11]) && (m = x1_1''[ri_3]) then
+             if c = r_1[u_3] then
+             return(m)
+           )
+           orfind u_10 = ri_10 <= qD suchthat defined(r_5[ri_10], a[ri_10]) && (a = a[ri_10]) then
+           (
+             m: hasht <- xor(r_5[u_10], b);
+             find [unique] u_3 = ri_3 <= qH2 suchthat defined(r_1[ri_3], x1_1''[ri_3], x1_1'[ri_3]) && (f(pkgen'(r), x1_1'[ri_3]) = a) && (m = x1_1''[ri_3]) then
+             if c = r_1[u_3] then
+             return(m)
+           )
+           orfind  suchthat defined(r_6, x_2) && (f'(pkgen'(r), x_2) = a) then
+           (
+{232}        m: hasht <- xor(r_6, b);
+{237}        find [unique] u_3 = ri_3 <= qH2 suchthat defined(r_1[ri_3], x1_1''[ri_3], x1_1'[ri_3]) && (x': seed <- x1_1'[ri_3]; false) && (m = x1_1''[ri_3]) then
+             if c = r_1[u_3] then
+             return(m)
+           )
+           else
+             r_5 <-R hasht
+       ) | (
+         OT(m1: hasht, m2: hasht) :=
+         b1 <-R bool;
+         menc: hasht <- if_fun(b1, m1, m2);
+         x_2 <-R seed;
+         aT: seed <- f'(pkgen'(r), x_2);
+         r_6 <-R hasht;
+         bT: hasht <- xor(r_6, menc);
+         r_3 <-R hasht2;
+         return(aT, bT, r_3)
+       ))
+     ))
+
+
+Applying expand [probability qD / |seed|]
+  - Expand if/find/let
+    - Remove branch 1 in find at 237
+    - Find at 237 removed (else branch kept if any)
+    - Remove let at 232
+    - Replaced defined condition r_6, x_2 with x_2 in find at 131
+    - Remove branch 2 in find at 52
+    - Remove branch 3 in find at 7
+yields
+
+Game 21 is
+     Ohkgen() :=
+     return();
+     ((
+       foreach iH <= qH do
+       OH(x1: seed) :=
+       find [unique] u_13 = ri_13 <= qH suchthat defined(r_4[ri_13], x1[ri_13]) && (x1 = x1[ri_13]) then
+         return(r_4[u_13])
+       orfind u_12 = ri_12 <= qD suchthat defined(r_5[ri_12], a[ri_12], r) && (f(pkgen'(r), x1) = a[ri_12]) then
+         return(r_5[u_12])
+       else
+         r_4 <-R hasht;
+         return(r_4)
+     ) | (
+       foreach iH_1 <= qH2 do
+       OH_1(x1_1: bitstring) :=
+       let concat(x1_1': seed, x1_1'': hasht) = x1_1 in
+         find [unique] u_7 = ri_7 <= qH2 suchthat defined(r_1[ri_7], x1_1''[ri_7], x1_1'[ri_7]) && (x1_1' = x1_1'[ri_7]) && (x1_1'' = x1_1''[ri_7]) then
+           return(r_1[u_7])
+         else
+           r_1 <-R hasht2;
+           return(r_1)
+       else
+         find [unique] u_4 = ri_4 <= qH2 suchthat defined(r_2[ri_4], x1_1[ri_4]) && (x1_1 = x1_1[ri_4]) then
+           return(r_2[u_4])
+         else
+           r_2 <-R hasht2;
+           return(r_2)
+     ) | (
+       Ogen() :=
+       r <-R keyseed;
+       return(pkgen'(r));
+       ((
+         foreach iD <= qD do
+         OD(a: seed, b: hasht, c: hasht2) :=
+         if defined(r_3, aT, bT) && (a = aT) && (b = bT) && (c = r_3) then
+           yield
+         else
+           find [unique] u_11 = ri_11 <= qH suchthat defined(r_4[ri_11], x1[ri_11]) && (f(pkgen'(r), x1[ri_11]) = a) then
+           (
+             m: hasht <- xor(r_4[u_11], b);
+             find [unique] u_3 = ri_3 <= qH2 suchthat defined(r_1[ri_3], x1_1''[ri_3], x1_1'[ri_3]) && (x1_1'[ri_3] = x1[u_11]) && (m = x1_1''[ri_3]) then
+             if c = r_1[u_3] then
+             return(m)
+           )
+           orfind u_10 = ri_10 <= qD suchthat defined(r_5[ri_10], a[ri_10]) && (a = a[ri_10]) then
+           (
+             m: hasht <- xor(r_5[u_10], b);
+             find [unique] u_3 = ri_3 <= qH2 suchthat defined(r_1[ri_3], x1_1''[ri_3], x1_1'[ri_3]) && (f(pkgen'(r), x1_1'[ri_3]) = a) && (m = x1_1''[ri_3]) then
+             if c = r_1[u_3] then
+             return(m)
+           )
+           orfind  suchthat defined(x_2) && (f'(pkgen'(r), x_2) = a) then
+             yield
+           else
+             r_5 <-R hasht
+       ) | (
+         OT(m1: hasht, m2: hasht) :=
+         b1 <-R bool;
+         menc: hasht <- if_fun(b1, m1, m2);
+         x_2 <-R seed;
+         aT: seed <- f'(pkgen'(r), x_2);
+         r_6 <-R hasht;
+         bT: hasht <- xor(r_6, menc);
+         r_3 <-R hasht2;
+         return(aT, bT, r_3)
+       ))
+     ))
+
+
+Applying equivalence remove_xor(xor)
+  - Equivalence remove_xor(xor) with variables: r_6 -> a_1
+yields
+
+Game 22 is
+     Ohkgen() :=
+     return();
+     ((
+       foreach iH <= qH do
+       OH(x1: seed) :=
+       find [unique] u_13 = ri_13 <= qH suchthat defined(r_4[ri_13], x1[ri_13]) && (x1 = x1[ri_13]) then
+         return(r_4[u_13])
+       orfind u_12 = ri_12 <= qD suchthat defined(r_5[ri_12], a[ri_12], r) && (f(pkgen'(r), x1) = a[ri_12]) then
+         return(r_5[u_12])
+       else
+         r_4 <-R hasht;
+         return(r_4)
+     ) | (
+       foreach iH_1 <= qH2 do
+       OH_1(x1_1: bitstring) :=
+       let concat(x1_1': seed, x1_1'': hasht) = x1_1 in
+         find [unique] u_7 = ri_7 <= qH2 suchthat defined(r_1[ri_7], x1_1''[ri_7], x1_1'[ri_7]) && (x1_1' = x1_1'[ri_7]) && (x1_1'' = x1_1''[ri_7]) then
+           return(r_1[u_7])
+         else
+           r_1 <-R hasht2;
+           return(r_1)
+       else
+         find [unique] u_4 = ri_4 <= qH2 suchthat defined(r_2[ri_4], x1_1[ri_4]) && (x1_1 = x1_1[ri_4]) then
+           return(r_2[u_4])
+         else
+           r_2 <-R hasht2;
+           return(r_2)
+     ) | (
+       Ogen() :=
+       r <-R keyseed;
+       return(pkgen'(r));
+       ((
+         foreach iD <= qD do
+         OD(a: seed, b: hasht, c: hasht2) :=
+         if defined(r_3, aT, bT) && (a = aT) && (b = bT) && (c = r_3) then
+           yield
+         else
+           find [unique] u_11 = ri_11 <= qH suchthat defined(r_4[ri_11], x1[ri_11]) && (f(pkgen'(r), x1[ri_11]) = a) then
+           (
+             m: hasht <- xor(r_4[u_11], b);
+             find [unique] u_3 = ri_3 <= qH2 suchthat defined(r_1[ri_3], x1_1''[ri_3], x1_1'[ri_3]) && (x1_1'[ri_3] = x1[u_11]) && (m = x1_1''[ri_3]) then
+             if c = r_1[u_3] then
+             return(m)
+           )
+           orfind u_10 = ri_10 <= qD suchthat defined(r_5[ri_10], a[ri_10]) && (a = a[ri_10]) then
+           (
+             m: hasht <- xor(r_5[u_10], b);
+             find [unique] u_3 = ri_3 <= qH2 suchthat defined(r_1[ri_3], x1_1''[ri_3], x1_1'[ri_3]) && (f(pkgen'(r), x1_1'[ri_3]) = a) && (m = x1_1''[ri_3]) then
+             if c = r_1[u_3] then
+             return(m)
+           )
+           orfind  suchthat defined(x_2) && (f'(pkgen'(r), x_2) = a) then
+             yield
+           else
+             r_5 <-R hasht
+       ) | (
+         OT(m1: hasht, m2: hasht) :=
+         b1 <-R bool;
+         menc: hasht <- if_fun(b1, m1, m2);
+         x_2 <-R seed;
+         aT: seed <- f'(pkgen'(r), x_2);
+         r_7 <-R hasht;
+         bT: hasht <- (x_3: hasht <- menc; r_7);
+         r_3 <-R hasht2;
+         return(aT, bT, r_3)
+       ))
+     ))
+
+
+Applying expand [probability qD / |seed|]
+  - Expand if/find/let
+yields
+
+Game 23 is
+     Ohkgen() :=
+     return();
+     ((
+       foreach iH <= qH do
+       OH(x1: seed) :=
+       find [unique] u_13 = ri_13 <= qH suchthat defined(r_4[ri_13], x1[ri_13]) && (x1 = x1[ri_13]) then
+         return(r_4[u_13])
+       orfind u_12 = ri_12 <= qD suchthat defined(r_5[ri_12], a[ri_12], r) && (f(pkgen'(r), x1) = a[ri_12]) then
+         return(r_5[u_12])
+       else
+         r_4 <-R hasht;
+         return(r_4)
+     ) | (
+       foreach iH_1 <= qH2 do
+       OH_1(x1_1: bitstring) :=
+       let concat(x1_1': seed, x1_1'': hasht) = x1_1 in
+         find [unique] u_7 = ri_7 <= qH2 suchthat defined(r_1[ri_7], x1_1''[ri_7], x1_1'[ri_7]) && (x1_1' = x1_1'[ri_7]) && (x1_1'' = x1_1''[ri_7]) then
+           return(r_1[u_7])
+         else
+           r_1 <-R hasht2;
+           return(r_1)
+       else
+         find [unique] u_4 = ri_4 <= qH2 suchthat defined(r_2[ri_4], x1_1[ri_4]) && (x1_1 = x1_1[ri_4]) then
+           return(r_2[u_4])
+         else
+           r_2 <-R hasht2;
+           return(r_2)
+     ) | (
+       Ogen() :=
+       r <-R keyseed;
+       return(pkgen'(r));
+       ((
+         foreach iD <= qD do
+         OD(a: seed, b: hasht, c: hasht2) :=
+         if defined(r_3, aT, bT) && (a = aT) && (b = bT) && (c = r_3) then
+           yield
+         else
+           find [unique] u_11 = ri_11 <= qH suchthat defined(r_4[ri_11], x1[ri_11]) && (f(pkgen'(r), x1[ri_11]) = a) then
+           (
+             m: hasht <- xor(r_4[u_11], b);
+             find [unique] u_3 = ri_3 <= qH2 suchthat defined(r_1[ri_3], x1_1''[ri_3], x1_1'[ri_3]) && (x1_1'[ri_3] = x1[u_11]) && (m = x1_1''[ri_3]) then
+             if c = r_1[u_3] then
+             return(m)
+           )
+           orfind u_10 = ri_10 <= qD suchthat defined(r_5[ri_10], a[ri_10]) && (a = a[ri_10]) then
+           (
+             m: hasht <- xor(r_5[u_10], b);
+             find [unique] u_3 = ri_3 <= qH2 suchthat defined(r_1[ri_3], x1_1''[ri_3], x1_1'[ri_3]) && (f(pkgen'(r), x1_1'[ri_3]) = a) && (m = x1_1''[ri_3]) then
+             if c = r_1[u_3] then
+             return(m)
+           )
+           orfind  suchthat defined(x_2) && (f'(pkgen'(r), x_2) = a) then
+             yield
+           else
+             r_5 <-R hasht
+       ) | (
+         OT(m1: hasht, m2: hasht) :=
+         b1 <-R bool;
+         menc: hasht <- if_fun(b1, m1, m2);
+         x_2 <-R seed;
+         aT: seed <- f'(pkgen'(r), x_2);
+         r_7 <-R hasht;
+         x_3: hasht <- menc;
+         bT: hasht <- r_7;
+         r_3 <-R hasht2;
+         return(aT, bT, r_3)
+       ))
+     ))
+
+
+Applying remove assignments of findcond
+  - Remove assignments on x_3 (definition removed, all usages removed)
+  - Remove assignments on bT (definition removed, all usages removed)
+  - Remove assignments on menc (definition removed, all usages removed)
+yields
+
+Game 24 is
+     Ohkgen() :=
+     return();
+     ((
+       foreach iH <= qH do
+       OH(x1: seed) :=
+       find [unique] u_13 = ri_13 <= qH suchthat defined(r_4[ri_13], x1[ri_13]) && (x1 = x1[ri_13]) then
+         return(r_4[u_13])
+       orfind u_12 = ri_12 <= qD suchthat defined(r_5[ri_12], a[ri_12], r) && (f(pkgen'(r), x1) = a[ri_12]) then
+         return(r_5[u_12])
+       else
+         r_4 <-R hasht;
+         return(r_4)
+     ) | (
+       foreach iH_1 <= qH2 do
+       OH_1(x1_1: bitstring) :=
+       let concat(x1_1': seed, x1_1'': hasht) = x1_1 in
+         find [unique] u_7 = ri_7 <= qH2 suchthat defined(r_1[ri_7], x1_1''[ri_7], x1_1'[ri_7]) && (x1_1' = x1_1'[ri_7]) && (x1_1'' = x1_1''[ri_7]) then
+           return(r_1[u_7])
+         else
+           r_1 <-R hasht2;
+           return(r_1)
+       else
+         find [unique] u_4 = ri_4 <= qH2 suchthat defined(r_2[ri_4], x1_1[ri_4]) && (x1_1 = x1_1[ri_4]) then
+           return(r_2[u_4])
+         else
+           r_2 <-R hasht2;
+           return(r_2)
+     ) | (
+       Ogen() :=
+       r <-R keyseed;
+       return(pkgen'(r));
+       ((
+         foreach iD <= qD do
+         OD(a: seed, b: hasht, c: hasht2) :=
+         if defined(r_7, r_3, aT) && (a = aT) && (b = r_7) && (c = r_3) then
+           yield
+         else
+           find [unique] u_11 = ri_11 <= qH suchthat defined(r_4[ri_11], x1[ri_11]) && (f(pkgen'(r), x1[ri_11]) = a) then
+           (
+             m: hasht <- xor(r_4[u_11], b);
+             find [unique] u_3 = ri_3 <= qH2 suchthat defined(r_1[ri_3], x1_1''[ri_3], x1_1'[ri_3]) && (x1_1'[ri_3] = x1[u_11]) && (m = x1_1''[ri_3]) then
+             if c = r_1[u_3] then
+             return(m)
+           )
+           orfind u_10 = ri_10 <= qD suchthat defined(r_5[ri_10], a[ri_10]) && (a = a[ri_10]) then
+           (
+             m: hasht <- xor(r_5[u_10], b);
+             find [unique] u_3 = ri_3 <= qH2 suchthat defined(r_1[ri_3], x1_1''[ri_3], x1_1'[ri_3]) && (f(pkgen'(r), x1_1'[ri_3]) = a) && (m = x1_1''[ri_3]) then
+             if c = r_1[u_3] then
+             return(m)
+           )
+           orfind  suchthat defined(x_2) && (f'(pkgen'(r), x_2) = a) then
+             yield
+           else
+             r_5 <-R hasht
+       ) | (
+         OT(m1: hasht, m2: hasht) :=
+         b1 <-R bool;
+         x_2 <-R seed;
+         aT: seed <- f'(pkgen'(r), x_2);
+         r_7 <-R hasht;
+         r_3 <-R hasht2;
+         return(aT, r_7, r_3)
+       ))
+     ))
+
+
+Proved bit secrecy of b1 in game 24
+Adv[Game 1: bit secrecy of b1] <= 2 * POW(time_1) + 2 * qH2 * qD / |hasht| + (2 * qH + 12 * qD + 4 * qH2) / |seed| + 2 * qD / |hasht2| + Adv[Game 24: bit secrecy of b1]
+Adv[Game 24: bit secrecy of b1] <= 0
+RESULT Proved bit secrecy of b1 up to probability 2 * POW(time_1) + 2 * qH2 * qD / |hasht| + (4 * qH2 + 12 * qD + 2 * qH) / |seed| + 2 * qD / |hasht2|
+RESULT time_1 = qH2 * time(let concat) + qH2^2 * time(= bitstring, maxlength(game 18: x1_1), maxlength(game 18: x1_1)) + (2 * qD * qH + qD * qH2) * time(f) + (qD + 1) * time(xor) + time(if_fun) + time
+All queries proved.

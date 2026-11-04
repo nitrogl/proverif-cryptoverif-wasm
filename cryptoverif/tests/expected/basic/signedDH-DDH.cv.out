@@ -1,0 +1,3467 @@
+Doing expand get, insert and prove unique annotations... No change.
+Doing simplify (non-expanded game)... No change.
+Doing expand... Done.
+Doing remove assignments of findcond... Done.
+Doing simplify... Run simplify 1 time(s). Fixpoint reached.
+No change.
+Doing move all binders... No change.
+Doing SA rename new without array accesses and remove assignments of findcond... No change.
+Doing merge branches... No change.
+Proof of (one-session) secrecy of keyA failed:
+  keyA is defined from kA, which is not defined only by restrictions.
+Proof of (one-session) secrecy of keyB failed:
+  keyB is defined from kB, which is not defined only by restrictions.
+Proof of forall y, x: G; inj-event(endA(A, B, x, y)) ==> inj-event(beginB(A, B, x, y)) with public variables keyA, keyB failed:
+  Found endA(A, hostB, ga, gb_1) at 73
+  but could not prove inj-event(beginB(A, B, x, y))
+Proof of forall y, x: G; inj-event(endB(A, B, x, y)) ==> inj-event(endA(A, B, x, y)) with public variables keyA, keyB failed:
+  Found endB(hostA, B, ga_1, gb_2) at 198
+  but could not prove inj-event(endA(A, B, x, y))
+Trying equivalence uf_cma(sign) with rkA... Failed.
+Doing remove assignments of binder skA... Done.
+Doing remove assignments of binder pkA... Done.
+Trying equivalence uf_cma(sign) with rkA... Failed.
+Doing SA rename Rkey... Done.
+Doing SA rename new without array accesses and remove assignments of findcond... Done.
+Doing simplify... Run simplify 2 time(s). Fixpoint reached.
+Done.
+Trying equivalence uf_cma(sign) with rkA... Failed.
+Doing remove assignments of binder Rkey_2... Done.
+Trying equivalence uf_cma(sign) with rkA... Transf. OK Proba. computed Transf. done Succeeded.
+Doing simplify (non-expanded game)... Applied collision r <-R keyseed; forall Y: pkey; return((pkgen(r) = Y)) <=(Psigncoll)=> return(false) if Y independent-of r with r -> rkB, Y -> pkgen2(rkA) Probability: Psigncoll
+Done.
+Doing expand... Done.
+Doing remove assignments of findcond... Done.
+Doing simplify... Doing global dependency analysis on a inside simplify... At 28, returned message ga depends on a.
+No change
+Doing global dependency analysis on b inside simplify... At 235, returned message gb_2 depends on b.
+No change
+Doing global dependency analysis on rkA inside simplify... At 11, returned message pkgen2(rkA) depends on rkA.
+No change
+Doing global dependency analysis on a inside simplify... At 28, returned message ga depends on a.
+No change
+Doing global dependency analysis on b inside simplify... At 235, returned message gb_2 depends on b.
+No change
+Doing global dependency analysis on rkA inside simplify... At 11, returned message pkgen2(rkA) depends on rkA.
+No change
+Run simplify 2 time(s). Fixpoint reached.
+Done.
+Doing move all binders... Done.
+Doing SA rename new without array accesses and remove assignments of findcond... No change.
+Doing merge branches... No change.
+Trying equivalence uf_cma(sign) with rkB... Failed.
+Doing remove assignments of binder skB... Done.
+Doing remove assignments of binder pkB... Done.
+Trying equivalence uf_cma(sign) with rkB... Transf. OK Proba. computed Transf. done Succeeded.
+Doing simplify (non-expanded game)... Done.
+Doing expand... Done.
+Doing remove assignments of findcond... Done.
+Doing simplify... Doing global dependency analysis on a inside simplify... At 23, returned message ga depends on a.
+No change
+Doing global dependency analysis on b inside simplify... At 247, returned message gb_2 depends on b.
+No change
+Doing global dependency analysis on rkA inside simplify... At 5, returned message pkgen2(rkA) depends on rkA.
+No change
+Doing global dependency analysis on rkB inside simplify... At 7, returned message pkgen2(rkB) depends on rkB.
+No change
+Applied collision x_1 <-R Z; forall Y: G; return((exp(g, x_1) = Y)) <=(PCollKey1)=> return(false) if Y independent-of x_1 with x_1 -> b, Y -> exp(g, b[i2_18]) Probability: PCollKey1 * NB * NB
+Doing global dependency analysis on a inside simplify... At 23, returned message ga depends on a.
+No change
+Doing global dependency analysis on b inside simplify... At 263, returned message gb_2 depends on b.
+No change
+Doing global dependency analysis on rkA inside simplify... At 5, returned message pkgen2(rkA) depends on rkA.
+No change
+Doing global dependency analysis on rkB inside simplify... At 7, returned message pkgen2(rkB) depends on rkB.
+No change
+Run simplify 2 time(s). Fixpoint reached.
+Done.
+Doing move all binders... Done.
+Doing SA rename new without array accesses and remove assignments of findcond... No change.
+Doing merge branches... No change.
+Trying equivalence ddh(exp)... Transf. OK Proba. computed Transf. done Succeeded.
+Doing simplify (non-expanded game)... Done.
+Doing expand... Done.
+Doing remove assignments of findcond... Done.
+Doing simplify... Doing global dependency analysis on a_1 inside simplify... At 23, returned message ga depends on a_1.
+No change
+Doing global dependency analysis on b_1 inside simplify... At 258, returned message gb_2 depends on b_1.
+No change
+Doing global dependency analysis on rkA inside simplify... At 5, returned message pkgen2(rkA) depends on rkA.
+No change
+Doing global dependency analysis on rkB inside simplify... At 7, returned message pkgen2(rkB) depends on rkB.
+No change
+Doing global dependency analysis on a_1 inside simplify... At 23, returned message ga depends on a_1.
+No change
+Doing global dependency analysis on b_1 inside simplify... At 258, returned message gb_2 depends on b_1.
+No change
+Doing global dependency analysis on rkA inside simplify... At 5, returned message pkgen2(rkA) depends on rkA.
+No change
+Doing global dependency analysis on rkB inside simplify... At 7, returned message pkgen2(rkB) depends on rkB.
+No change
+Run simplify 2 time(s). Fixpoint reached.
+Done.
+Doing move all binders... No change.
+Doing SA rename new without array accesses and remove assignments of findcond... Done.
+Doing merge branches... No change.
+Proof of (one-session) secrecy of keyA failed:
+  keyA is defined from kA, which is not defined only by restrictions.
+Proof of (one-session) secrecy of keyB failed:
+  keyB is defined from kB, which is not defined only by restrictions.
+Applied collision x_1 <-R Z; forall Y: G; return((exp(g, x_1) = Y)) <=(PCollKey1)=> return(false) if Y independent-of x_1 with x_1 -> a_1[i_7], Y -> exp'(g, a_1[i_6]) Probability: PCollKey1 * NA * NA
+Proved query forall y, x: G; inj-event(endA(A, B, x, y)) ==> inj-event(beginB(A, B, x, y)) with public variables keyA, keyB up to probability NA^2 * PCollKey1
+Proved query forall y, x: G; inj-event(endB(A, B, x, y)) ==> inj-event(endA(A, B, x, y)) with public variables keyA, keyB
+Proved query event(ev_abort_1) ==> false with public variables keyB, keyA
+Proved query event(ev_abort_2) ==> false with public variables keyB, keyA
+Proved query event(ev_abort_3) ==> false with public variables keyB, keyA
+Proved query event(ev_abort_4) ==> false with public variables keyB, keyA
+Doing remove assignments of binder kB... Done.
+Doing remove assignments of binder kA... Done.
+Proof of (one-session) secrecy of keyA failed:
+  keyA is not defined only by restrictions or assignments.
+Proof of (one-session) secrecy of keyB failed:
+  keyB is not defined only by restrictions or assignments.
+Trying equivalence uf_cma(sign)... Failed.
+Trying equivalence equiv
+  foreach i <= N do x <-R G; OH() := return(h(x))
+<=(N * pH(time + (N - 1) * time(h)))=>
+  foreach i <= N do X <-R D; OH() := return(X)
+... Transf. OK Proba. computed Transf. done Succeeded.
+Doing simplify (non-expanded game)... No change.
+Doing expand... No change.
+Doing remove assignments of findcond... Done.
+Doing simplify... Doing global dependency analysis on a_1 inside simplify... At 23, returned message ga depends on a_1.
+No change
+Doing global dependency analysis on b_1 inside simplify... At 248, returned message gb_2 depends on b_1.
+No change
+Doing global dependency analysis on rkA inside simplify... At 5, returned message pkgen2(rkA) depends on rkA.
+No change
+Doing global dependency analysis on rkB inside simplify... At 7, returned message pkgen2(rkB) depends on rkB.
+No change
+Doing global dependency analysis on a_1 inside simplify... At 23, returned message ga depends on a_1.
+No change
+Doing global dependency analysis on b_1 inside simplify... At 215, returned message gb_2 depends on b_1.
+No change
+Doing global dependency analysis on rkA inside simplify... At 5, returned message pkgen2(rkA) depends on rkA.
+No change
+Doing global dependency analysis on rkB inside simplify... At 7, returned message pkgen2(rkB) depends on rkB.
+No change
+Run simplify 2 time(s). Fixpoint reached.
+Done.
+Doing move all binders... No change.
+Doing SA rename new without array accesses and remove assignments of findcond... No change.
+Doing merge branches... No change.
+Proved one-session secrecy of keyA
+Proved secrecy of keyA
+Proved one-session secrecy of keyB
+Proved secrecy of keyB
+===================== Proof starts =======================
+Initial state
+Game 1 is
+     start() :=
+     rkA <-R keyseed;
+     skA: skey <- skgen(rkA);
+     pkA: pkey <- pkgen(rkA);
+     rkB <-R keyseed;
+     skB: skey <- skgen(rkB);
+     pkB: pkey <- pkgen(rkB);
+     return(pkA, pkB);
+     ((
+       foreach i <= NA do
+       cA1(hostB: host) :=
+       a <-R Z;
+       ga: G <- exp(g, a);
+       return(A, hostB, ga);
+       cA3(=A, =hostB, gb_1: G, s_2: signature) :=
+       find j2_4 = j2 <= NK suchthat defined(Khost[j2], Rkey[j2]) && (Khost[j2] = hostB) then
+       pkhostB: pkey <- Rkey[j2_4];
+       if check(concatB(A, hostB, ga, gb_1), pkhostB, s_2) then
+       gab: G <- exp(gb_1, a);
+       kA: D <- h(gab);
+       event endA(A, hostB, ga, gb_1);
+       return((m_2: blocksize <- concatA(A, hostB, ga, gb_1); r_2 <-R sign_seed; sign_r(m_2, skA, r_2)));
+       cA5() :=
+       if hostB = B then
+         keyA: D <- kA
+       else
+         return(kA)
+     ) | (
+       foreach i_1 <= NB do
+       cB1(hostA: host, =B, ga_1: G) :=
+       b <-R Z;
+       gb_2: G <- exp(g, b);
+       event beginB(hostA, B, ga_1, gb_2);
+       return(hostA, B, gb_2, (m_3: blocksize <- concatB(hostA, B, ga_1, gb_2); r_3 <-R sign_seed; sign_r(m_3, skB, r_3)));
+       cB3(s_3: signature) :=
+       find j2_5 = j2_2 <= NK suchthat defined(Khost[j2_2], Rkey[j2_2]) && (Khost[j2_2] = hostA) then
+       pkhostA: pkey <- Rkey[j2_5];
+       if check(concatA(hostA, B, ga_1, gb_2), pkhostA, s_3) then
+       gab_1: G <- exp(ga_1, b);
+       kB: D <- h(gab_1);
+       event endB(hostA, B, ga_1, gb_2);
+       if hostA = A then
+         keyB: D <- kB
+       else
+         return(kB)
+     ) | (
+       foreach i_2 <= NK do
+       cK(Khost: host, Kkey: pkey) :=
+       Rkey: pkey <- (if Khost = B then pkB else if Khost = A then pkA else Kkey)
+     ))
+
+
+Applying expand
+  - Expand if/find/let
+yields
+
+Game 2 is
+     start() :=
+     rkA <-R keyseed;
+     skA: skey <- skgen(rkA);
+     pkA: pkey <- pkgen(rkA);
+     rkB <-R keyseed;
+     skB: skey <- skgen(rkB);
+     pkB: pkey <- pkgen(rkB);
+     return(pkA, pkB);
+     ((
+       foreach i <= NA do
+       cA1(hostB: host) :=
+       a <-R Z;
+       ga: G <- exp(g, a);
+       return(A, hostB, ga);
+       cA3(=A, =hostB, gb_1: G, s_2: signature) :=
+       find j2_4 = j2 <= NK suchthat defined(Khost[j2], Rkey[j2]) && (Khost[j2] = hostB) then
+       pkhostB: pkey <- Rkey[j2_4];
+       if check(concatB(A, hostB, ga, gb_1), pkhostB, s_2) then
+       gab: G <- exp(gb_1, a);
+       kA: D <- h(gab);
+       event endA(A, hostB, ga, gb_1);
+       m_2: blocksize <- concatA(A, hostB, ga, gb_1);
+       r_2 <-R sign_seed;
+       return(sign_r(m_2, skA, r_2));
+       cA5() :=
+       if hostB = B then
+         keyA: D <- kA
+       else
+         return(kA)
+     ) | (
+       foreach i_1 <= NB do
+       cB1(hostA: host, =B, ga_1: G) :=
+       b <-R Z;
+       gb_2: G <- exp(g, b);
+       event beginB(hostA, B, ga_1, gb_2);
+       m_3: blocksize <- concatB(hostA, B, ga_1, gb_2);
+       r_3 <-R sign_seed;
+       return(hostA, B, gb_2, sign_r(m_3, skB, r_3));
+       cB3(s_3: signature) :=
+       find j2_5 = j2_2 <= NK suchthat defined(Khost[j2_2], Rkey[j2_2]) && (Khost[j2_2] = hostA) then
+       pkhostA: pkey <- Rkey[j2_5];
+       if check(concatA(hostA, B, ga_1, gb_2), pkhostA, s_3) then
+       gab_1: G <- exp(ga_1, b);
+       kB: D <- h(gab_1);
+       event endB(hostA, B, ga_1, gb_2);
+       if hostA = A then
+         keyB: D <- kB
+       else
+         return(kB)
+     ) | (
+       foreach i_2 <= NK do
+       cK(Khost: host, Kkey: pkey) :=
+       if Khost = B then
+         Rkey: pkey <- pkB
+       else
+         if Khost = A then
+           Rkey: pkey <- pkA
+         else
+           Rkey: pkey <- Kkey
+     ))
+
+
+Applying remove assignments of findcond
+  - Remove assignments on pkhostA (definition removed, all usages removed)
+  - Remove assignments on pkhostB (definition removed, all usages removed)
+yields
+
+Game 3 is
+     start() :=
+     rkA <-R keyseed;
+     skA: skey <- skgen(rkA);
+     pkA: pkey <- pkgen(rkA);
+     rkB <-R keyseed;
+     skB: skey <- skgen(rkB);
+     pkB: pkey <- pkgen(rkB);
+     return(pkA, pkB);
+     ((
+       foreach i <= NA do
+       cA1(hostB: host) :=
+       a <-R Z;
+       ga: G <- exp(g, a);
+       return(A, hostB, ga);
+       cA3(=A, =hostB, gb_1: G, s_2: signature) :=
+       find j2_4 = j2 <= NK suchthat defined(Khost[j2], Rkey[j2]) && (Khost[j2] = hostB) then
+       if check(concatB(A, hostB, ga, gb_1), Rkey[j2_4], s_2) then
+       gab: G <- exp(gb_1, a);
+       kA: D <- h(gab);
+       event endA(A, hostB, ga, gb_1);
+       m_2: blocksize <- concatA(A, hostB, ga, gb_1);
+       r_2 <-R sign_seed;
+       return(sign_r(m_2, skA, r_2));
+       cA5() :=
+       if hostB = B then
+         keyA: D <- kA
+       else
+         return(kA)
+     ) | (
+       foreach i_1 <= NB do
+       cB1(hostA: host, =B, ga_1: G) :=
+       b <-R Z;
+       gb_2: G <- exp(g, b);
+       event beginB(hostA, B, ga_1, gb_2);
+       m_3: blocksize <- concatB(hostA, B, ga_1, gb_2);
+       r_3 <-R sign_seed;
+       return(hostA, B, gb_2, sign_r(m_3, skB, r_3));
+       cB3(s_3: signature) :=
+       find j2_5 = j2_2 <= NK suchthat defined(Khost[j2_2], Rkey[j2_2]) && (Khost[j2_2] = hostA) then
+       if check(concatA(hostA, B, ga_1, gb_2), Rkey[j2_5], s_3) then
+       gab_1: G <- exp(ga_1, b);
+       kB: D <- h(gab_1);
+       event endB(hostA, B, ga_1, gb_2);
+       if hostA = A then
+         keyB: D <- kB
+       else
+         return(kB)
+     ) | (
+       foreach i_2 <= NK do
+       cK(Khost: host, Kkey: pkey) :=
+       if Khost = B then
+         Rkey: pkey <- pkB
+       else
+         if Khost = A then
+           Rkey: pkey <- pkA
+         else
+           Rkey: pkey <- Kkey
+     ))
+
+
+Applying remove assignments of binder skA
+  - Remove assignments on skA (definition removed, all usages removed)
+yields
+
+Game 4 is
+     start() :=
+     rkA <-R keyseed;
+     pkA: pkey <- pkgen(rkA);
+     rkB <-R keyseed;
+     skB: skey <- skgen(rkB);
+     pkB: pkey <- pkgen(rkB);
+     return(pkA, pkB);
+     ((
+       foreach i <= NA do
+       cA1(hostB: host) :=
+       a <-R Z;
+       ga: G <- exp(g, a);
+       return(A, hostB, ga);
+       cA3(=A, =hostB, gb_1: G, s_2: signature) :=
+       find j2_4 = j2 <= NK suchthat defined(Khost[j2], Rkey[j2]) && (Khost[j2] = hostB) then
+       if check(concatB(A, hostB, ga, gb_1), Rkey[j2_4], s_2) then
+       gab: G <- exp(gb_1, a);
+       kA: D <- h(gab);
+       event endA(A, hostB, ga, gb_1);
+       m_2: blocksize <- concatA(A, hostB, ga, gb_1);
+       r_2 <-R sign_seed;
+       return(sign_r(m_2, skgen(rkA), r_2));
+       cA5() :=
+       if hostB = B then
+         keyA: D <- kA
+       else
+         return(kA)
+     ) | (
+       foreach i_1 <= NB do
+       cB1(hostA: host, =B, ga_1: G) :=
+       b <-R Z;
+       gb_2: G <- exp(g, b);
+       event beginB(hostA, B, ga_1, gb_2);
+       m_3: blocksize <- concatB(hostA, B, ga_1, gb_2);
+       r_3 <-R sign_seed;
+       return(hostA, B, gb_2, sign_r(m_3, skB, r_3));
+       cB3(s_3: signature) :=
+       find j2_5 = j2_2 <= NK suchthat defined(Khost[j2_2], Rkey[j2_2]) && (Khost[j2_2] = hostA) then
+       if check(concatA(hostA, B, ga_1, gb_2), Rkey[j2_5], s_3) then
+       gab_1: G <- exp(ga_1, b);
+       kB: D <- h(gab_1);
+       event endB(hostA, B, ga_1, gb_2);
+       if hostA = A then
+         keyB: D <- kB
+       else
+         return(kB)
+     ) | (
+       foreach i_2 <= NK do
+       cK(Khost: host, Kkey: pkey) :=
+       if Khost = B then
+         Rkey: pkey <- pkB
+       else
+         if Khost = A then
+           Rkey: pkey <- pkA
+         else
+           Rkey: pkey <- Kkey
+     ))
+
+
+Applying remove assignments of binder pkA
+  - Remove assignments on pkA (definition removed, all usages removed)
+yields
+
+Game 5 is
+     start() :=
+     rkA <-R keyseed;
+     rkB <-R keyseed;
+     skB: skey <- skgen(rkB);
+     pkB: pkey <- pkgen(rkB);
+     return(pkgen(rkA), pkB);
+     ((
+       foreach i <= NA do
+       cA1(hostB: host) :=
+       a <-R Z;
+       ga: G <- exp(g, a);
+       return(A, hostB, ga);
+       cA3(=A, =hostB, gb_1: G, s_2: signature) :=
+       find j2_4 = j2 <= NK suchthat defined(Khost[j2], Rkey[j2]) && (Khost[j2] = hostB) then
+       if check(concatB(A, hostB, ga, gb_1), Rkey[j2_4], s_2) then
+       gab: G <- exp(gb_1, a);
+       kA: D <- h(gab);
+       event endA(A, hostB, ga, gb_1);
+       m_2: blocksize <- concatA(A, hostB, ga, gb_1);
+       r_2 <-R sign_seed;
+       return(sign_r(m_2, skgen(rkA), r_2));
+       cA5() :=
+       if hostB = B then
+         keyA: D <- kA
+       else
+         return(kA)
+     ) | (
+       foreach i_1 <= NB do
+       cB1(hostA: host, =B, ga_1: G) :=
+       b <-R Z;
+       gb_2: G <- exp(g, b);
+       event beginB(hostA, B, ga_1, gb_2);
+       m_3: blocksize <- concatB(hostA, B, ga_1, gb_2);
+       r_3 <-R sign_seed;
+       return(hostA, B, gb_2, sign_r(m_3, skB, r_3));
+       cB3(s_3: signature) :=
+       find j2_5 = j2_2 <= NK suchthat defined(Khost[j2_2], Rkey[j2_2]) && (Khost[j2_2] = hostA) then
+       if check(concatA(hostA, B, ga_1, gb_2), Rkey[j2_5], s_3) then
+       gab_1: G <- exp(ga_1, b);
+       kB: D <- h(gab_1);
+       event endB(hostA, B, ga_1, gb_2);
+       if hostA = A then
+         keyB: D <- kB
+       else
+         return(kB)
+     ) | (
+       foreach i_2 <= NK do
+       cK(Khost: host, Kkey: pkey) :=
+       if Khost = B then
+         Rkey: pkey <- pkB
+       else
+         if Khost = A then
+           Rkey: pkey <- pkgen(rkA)
+         else
+           Rkey: pkey <- Kkey
+     ))
+
+
+Applying SA rename Rkey
+  - Rename variable Rkey into Rkey_3, Rkey_2, Rkey_1
+yields
+
+Game 6 is
+     start() :=
+     rkA <-R keyseed;
+     rkB <-R keyseed;
+     skB: skey <- skgen(rkB);
+     pkB: pkey <- pkgen(rkB);
+     return(pkgen(rkA), pkB);
+     ((
+       foreach i <= NA do
+       cA1(hostB: host) :=
+       a <-R Z;
+       ga: G <- exp(g, a);
+       return(A, hostB, ga);
+       cA3(=A, =hostB, gb_1: G, s_2: signature) :=
+       find j2_4 = j2 <= NK suchthat defined(Khost[j2], Rkey_1[j2]) && (Khost[j2] = hostB) then
+       (
+         if check(concatB(A, hostB, ga, gb_1), Rkey_1[j2_4], s_2) then
+         gab: G <- exp(gb_1, a);
+         kA: D <- h(gab);
+         event endA(A, hostB, ga, gb_1);
+         m_2: blocksize <- concatA(A, hostB, ga, gb_1);
+         r_2 <-R sign_seed;
+         return(sign_r(m_2, skgen(rkA), r_2));
+         cA5() :=
+         if hostB = B then
+           keyA: D <- kA
+         else
+           return(kA)
+       )
+       orfind j2_4 = j2 <= NK suchthat defined(Khost[j2], Rkey_2[j2]) && (Khost[j2] = hostB) then
+       (
+         if check(concatB(A, hostB, ga, gb_1), Rkey_2[j2_4], s_2) then
+         gab: G <- exp(gb_1, a);
+         kA: D <- h(gab);
+         event endA(A, hostB, ga, gb_1);
+         m_2: blocksize <- concatA(A, hostB, ga, gb_1);
+         r_2 <-R sign_seed;
+         return(sign_r(m_2, skgen(rkA), r_2));
+         cA5() :=
+         if hostB = B then
+           keyA: D <- kA
+         else
+           return(kA)
+       )
+       orfind j2_4 = j2 <= NK suchthat defined(Khost[j2], Rkey_3[j2]) && (Khost[j2] = hostB) then
+       (
+         if check(concatB(A, hostB, ga, gb_1), Rkey_3[j2_4], s_2) then
+         gab: G <- exp(gb_1, a);
+         kA: D <- h(gab);
+         event endA(A, hostB, ga, gb_1);
+         m_2: blocksize <- concatA(A, hostB, ga, gb_1);
+         r_2 <-R sign_seed;
+         return(sign_r(m_2, skgen(rkA), r_2));
+         cA5() :=
+         if hostB = B then
+           keyA: D <- kA
+         else
+           return(kA)
+       )
+     ) | (
+       foreach i_1 <= NB do
+       cB1(hostA: host, =B, ga_1: G) :=
+       b <-R Z;
+       gb_2: G <- exp(g, b);
+       event beginB(hostA, B, ga_1, gb_2);
+       m_3: blocksize <- concatB(hostA, B, ga_1, gb_2);
+       r_3 <-R sign_seed;
+       return(hostA, B, gb_2, sign_r(m_3, skB, r_3));
+       cB3(s_3: signature) :=
+       find j2_5 = j2_2 <= NK suchthat defined(Khost[j2_2], Rkey_1[j2_2]) && (Khost[j2_2] = hostA) then
+       (
+         if check(concatA(hostA, B, ga_1, gb_2), Rkey_1[j2_5], s_3) then
+         gab_1: G <- exp(ga_1, b);
+         kB: D <- h(gab_1);
+         event endB(hostA, B, ga_1, gb_2);
+         if hostA = A then
+           keyB: D <- kB
+         else
+           return(kB)
+       )
+       orfind j2_5 = j2_2 <= NK suchthat defined(Khost[j2_2], Rkey_2[j2_2]) && (Khost[j2_2] = hostA) then
+       (
+         if check(concatA(hostA, B, ga_1, gb_2), Rkey_2[j2_5], s_3) then
+         gab_1: G <- exp(ga_1, b);
+         kB: D <- h(gab_1);
+         event endB(hostA, B, ga_1, gb_2);
+         if hostA = A then
+           keyB: D <- kB
+         else
+           return(kB)
+       )
+       orfind j2_5 = j2_2 <= NK suchthat defined(Khost[j2_2], Rkey_3[j2_2]) && (Khost[j2_2] = hostA) then
+       (
+         if check(concatA(hostA, B, ga_1, gb_2), Rkey_3[j2_5], s_3) then
+         gab_1: G <- exp(ga_1, b);
+         kB: D <- h(gab_1);
+         event endB(hostA, B, ga_1, gb_2);
+         if hostA = A then
+           keyB: D <- kB
+         else
+           return(kB)
+       )
+     ) | (
+       foreach i_2 <= NK do
+       cK(Khost: host, Kkey: pkey) :=
+       if Khost = B then
+         Rkey_3: pkey <- pkB
+       else
+         if Khost = A then
+           Rkey_2: pkey <- pkgen(rkA)
+         else
+           Rkey_1: pkey <- Kkey
+     ))
+
+
+Applying SA rename new without array accesses and remove assignments of findcond
+  - Remove assignments on Rkey_1 (definition point kept, all usages removed)
+  - Remove assignments on Rkey_3 (definition point kept, all usages removed)
+  - Rename variable r_2 into r_6, r_5, r_4
+yields
+
+Game 7 is
+     start() :=
+     rkA <-R keyseed;
+     rkB <-R keyseed;
+     skB: skey <- skgen(rkB);
+     pkB: pkey <- pkgen(rkB);
+     return(pkgen(rkA), pkB);
+     ((
+       foreach i <= NA do
+       cA1(hostB: host) :=
+       a <-R Z;
+       ga: G <- exp(g, a);
+       return(A, hostB, ga);
+       cA3(=A, =hostB, gb_1: G, s_2: signature) :=
+ {34}  find j2_4 = j2 <= NK suchthat defined(Kkey[j2], Rkey_1[j2], Khost[j2]) && (Khost[j2] = hostB) then
+       (
+         if check(concatB(A, hostB, ga, gb_1), Kkey[j2_4], s_2) then
+         gab: G <- exp(gb_1, a);
+         kA: D <- h(gab);
+         event endA(A, hostB, ga, gb_1);
+         m_2: blocksize <- concatA(A, hostB, ga, gb_1);
+         r_4 <-R sign_seed;
+         return(sign_r(m_2, skgen(rkA), r_4));
+         cA5() :=
+ {98}    if {99}(hostB = B) then
+           keyA: D <- kA
+         else
+           return(kA)
+       )
+       orfind j2_4 = j2 <= NK suchthat defined(Khost[j2], Rkey_2[j2]) && (Khost[j2] = hostB) then
+       (
+         if check(concatB(A, hostB, ga, gb_1), Rkey_2[j2_4], s_2) then
+         gab: G <- exp(gb_1, a);
+         kA: D <- h(gab);
+         event endA(A, hostB, ga, gb_1);
+         m_2: blocksize <- concatA(A, hostB, ga, gb_1);
+         r_5 <-R sign_seed;
+         return(sign_r(m_2, skgen(rkA), r_5));
+         cA5() :=
+{178}    if {179}(hostB = B) then
+           keyA: D <- kA
+         else
+           return(kA)
+       )
+       orfind j2_4 = j2 <= NK suchthat defined(pkB, Rkey_3[j2], Khost[j2]) && (Khost[j2] = hostB) then
+       (
+         if check(concatB(A, hostB, ga, gb_1), pkB, s_2) then
+         gab: G <- exp(gb_1, a);
+         kA: D <- h(gab);
+         event endA(A, hostB, ga, gb_1);
+         m_2: blocksize <- concatA(A, hostB, ga, gb_1);
+         r_6 <-R sign_seed;
+         return(sign_r(m_2, skgen(rkA), r_6));
+         cA5() :=
+{256}    if {257}(hostB = B) then
+           keyA: D <- kA
+         else
+           return(kA)
+       )
+     ) | (
+       foreach i_1 <= NB do
+       cB1(hostA: host, =B, ga_1: G) :=
+       b <-R Z;
+       gb_2: G <- exp(g, b);
+       event beginB(hostA, B, ga_1, gb_2);
+       m_3: blocksize <- concatB(hostA, B, ga_1, gb_2);
+       r_3 <-R sign_seed;
+       return(hostA, B, gb_2, sign_r(m_3, skB, r_3));
+       cB3(s_3: signature) :=
+{319}  find j2_5 = j2_2 <= NK suchthat defined(Kkey[j2_2], Rkey_1[j2_2], Khost[j2_2]) && (Khost[j2_2] = hostA) then
+       (
+         if check(concatA(hostA, B, ga_1, gb_2), Kkey[j2_5], s_3) then
+         gab_1: G <- exp(ga_1, b);
+         kB: D <- h(gab_1);
+         event endB(hostA, B, ga_1, gb_2);
+{364}    if {365}(hostA = A) then
+           keyB: D <- kB
+         else
+           return(kB)
+       )
+       orfind j2_5 = j2_2 <= NK suchthat defined(Khost[j2_2], Rkey_2[j2_2]) && (Khost[j2_2] = hostA) then
+       (
+         if check(concatA(hostA, B, ga_1, gb_2), Rkey_2[j2_5], s_3) then
+         gab_1: G <- exp(ga_1, b);
+         kB: D <- h(gab_1);
+         event endB(hostA, B, ga_1, gb_2);
+{424}    if {425}(hostA = A) then
+           keyB: D <- kB
+         else
+           return(kB)
+       )
+       orfind j2_5 = j2_2 <= NK suchthat defined(pkB, Rkey_3[j2_2], Khost[j2_2]) && (Khost[j2_2] = hostA) then
+       (
+         if check(concatA(hostA, B, ga_1, gb_2), pkB, s_3) then
+         gab_1: G <- exp(ga_1, b);
+         kB: D <- h(gab_1);
+         event endB(hostA, B, ga_1, gb_2);
+{482}    if {483}(hostA = A) then
+           keyB: D <- kB
+         else
+           return(kB)
+       )
+     ) | (
+       foreach i_2 <= NK do
+       cK(Khost: host, Kkey: pkey) :=
+       if Khost = B then
+         Rkey_3: pkey <- cst_pkey
+       else
+         if Khost = A then
+           Rkey_2: pkey <- pkgen(rkA)
+         else
+           Rkey_1: pkey <- cst_pkey
+     ))
+
+
+Applying simplify
+  - Simplification pass
+    - Replaced (hostA = A) with false at 483
+    - Test at 482 always false
+    - Replaced defined condition pkB, Rkey_3[j2_2], Khost[j2_2] with Rkey_3[j2_2], Khost[j2_2] in find at 319
+    - Replaced (hostA = A) with true at 425
+    - Test at 424 always true
+    - Replaced (hostA = A) with false at 365
+    - Test at 364 always false
+    - Replaced (hostB = B) with true at 257
+    - Test at 256 always true
+    - Replaced defined condition pkB, Rkey_3[j2], Khost[j2] with Rkey_3[j2], Khost[j2] in find at 34
+    - Replaced (hostB = B) with false at 179
+    - Test at 178 always false
+    - Replaced (hostB = B) with false at 99
+    - Test at 98 always false
+yields
+
+Game 8 is
+     start() :=
+     rkA <-R keyseed;
+     rkB <-R keyseed;
+     skB: skey <- skgen(rkB);
+     pkB: pkey <- pkgen(rkB);
+     return(pkgen(rkA), pkB);
+     ((
+       foreach i <= NA do
+       cA1(hostB: host) :=
+       a <-R Z;
+       ga: G <- exp(g, a);
+       return(A, hostB, ga);
+       cA3(=A, =hostB, gb_1: G, s_2: signature) :=
+       find j2_4 = j2 <= NK suchthat defined(Kkey[j2], Rkey_1[j2], Khost[j2]) && (Khost[j2] = hostB) then
+       (
+         if check(concatB(A, hostB, ga, gb_1), Kkey[j2_4], s_2) then
+         gab: G <- exp(gb_1, a);
+         kA: D <- h(gab);
+         event endA(A, hostB, ga, gb_1);
+         m_2: blocksize <- concatA(A, hostB, ga, gb_1);
+         r_4 <-R sign_seed;
+         return(sign_r(m_2, skgen(rkA), r_4));
+         cA5() :=
+         return(kA)
+       )
+       orfind j2_4 = j2 <= NK suchthat defined(Khost[j2], Rkey_2[j2]) && (Khost[j2] = hostB) then
+       (
+         if check(concatB(A, hostB, ga, gb_1), Rkey_2[j2_4], s_2) then
+         gab: G <- exp(gb_1, a);
+         kA: D <- h(gab);
+         event endA(A, hostB, ga, gb_1);
+         m_2: blocksize <- concatA(A, hostB, ga, gb_1);
+         r_5 <-R sign_seed;
+         return(sign_r(m_2, skgen(rkA), r_5));
+         cA5() :=
+         return(kA)
+       )
+       orfind j2_4 = j2 <= NK suchthat defined(Rkey_3[j2], Khost[j2]) && (Khost[j2] = hostB) then
+       (
+         if check(concatB(A, hostB, ga, gb_1), pkB, s_2) then
+         gab: G <- exp(gb_1, a);
+         kA: D <- h(gab);
+         event endA(A, hostB, ga, gb_1);
+         m_2: blocksize <- concatA(A, hostB, ga, gb_1);
+         r_6 <-R sign_seed;
+         return(sign_r(m_2, skgen(rkA), r_6));
+         cA5() :=
+         keyA: D <- kA
+       )
+     ) | (
+       foreach i_1 <= NB do
+       cB1(hostA: host, =B, ga_1: G) :=
+       b <-R Z;
+       gb_2: G <- exp(g, b);
+       event beginB(hostA, B, ga_1, gb_2);
+       m_3: blocksize <- concatB(hostA, B, ga_1, gb_2);
+       r_3 <-R sign_seed;
+       return(hostA, B, gb_2, sign_r(m_3, skB, r_3));
+       cB3(s_3: signature) :=
+       find j2_5 = j2_2 <= NK suchthat defined(Kkey[j2_2], Rkey_1[j2_2], Khost[j2_2]) && (Khost[j2_2] = hostA) then
+       (
+         if check(concatA(hostA, B, ga_1, gb_2), Kkey[j2_5], s_3) then
+         gab_1: G <- exp(ga_1, b);
+         kB: D <- h(gab_1);
+         event endB(hostA, B, ga_1, gb_2);
+         return(kB)
+       )
+       orfind j2_5 = j2_2 <= NK suchthat defined(Khost[j2_2], Rkey_2[j2_2]) && (Khost[j2_2] = hostA) then
+       (
+         if check(concatA(hostA, B, ga_1, gb_2), Rkey_2[j2_5], s_3) then
+         gab_1: G <- exp(ga_1, b);
+         kB: D <- h(gab_1);
+         event endB(hostA, B, ga_1, gb_2);
+         keyB: D <- kB
+       )
+       orfind j2_5 = j2_2 <= NK suchthat defined(Rkey_3[j2_2], Khost[j2_2]) && (Khost[j2_2] = hostA) then
+       (
+         if check(concatA(hostA, B, ga_1, gb_2), pkB, s_3) then
+         gab_1: G <- exp(ga_1, b);
+         kB: D <- h(gab_1);
+         event endB(hostA, B, ga_1, gb_2);
+         return(kB)
+       )
+     ) | (
+       foreach i_2 <= NK do
+       cK(Khost: host, Kkey: pkey) :=
+       if Khost = B then
+         Rkey_3: pkey <- cst_pkey
+       else
+         if Khost = A then
+           Rkey_2: pkey <- pkgen(rkA)
+         else
+           Rkey_1: pkey <- cst_pkey
+     ))
+
+
+Applying remove assignments of binder Rkey_2
+  - Remove assignments on Rkey_2 (definition point kept, all usages removed)
+yields
+
+Game 9 is
+     start() :=
+     rkA <-R keyseed;
+     rkB <-R keyseed;
+     skB: skey <- skgen(rkB);
+     pkB: pkey <- pkgen(rkB);
+     return(pkgen(rkA), pkB);
+     ((
+       foreach i <= NA do
+       cA1(hostB: host) :=
+       a <-R Z;
+       ga: G <- exp(g, a);
+       return(A, hostB, ga);
+       cA3(=A, =hostB, gb_1: G, s_2: signature) :=
+       find j2_4 = j2 <= NK suchthat defined(Kkey[j2], Rkey_1[j2], Khost[j2]) && (Khost[j2] = hostB) then
+       (
+         if check(concatB(A, hostB, ga, gb_1), Kkey[j2_4], s_2) then
+         gab: G <- exp(gb_1, a);
+         kA: D <- h(gab);
+         event endA(A, hostB, ga, gb_1);
+         m_2: blocksize <- concatA(A, hostB, ga, gb_1);
+         r_4 <-R sign_seed;
+         return(sign_r(m_2, skgen(rkA), r_4));
+         cA5() :=
+         return(kA)
+       )
+       orfind j2_4 = j2 <= NK suchthat defined(rkA, Rkey_2[j2], Khost[j2]) && (Khost[j2] = hostB) then
+       (
+         if check(concatB(A, hostB, ga, gb_1), pkgen(rkA), s_2) then
+         gab: G <- exp(gb_1, a);
+         kA: D <- h(gab);
+         event endA(A, hostB, ga, gb_1);
+         m_2: blocksize <- concatA(A, hostB, ga, gb_1);
+         r_5 <-R sign_seed;
+         return(sign_r(m_2, skgen(rkA), r_5));
+         cA5() :=
+         return(kA)
+       )
+       orfind j2_4 = j2 <= NK suchthat defined(Rkey_3[j2], Khost[j2]) && (Khost[j2] = hostB) then
+       (
+         if check(concatB(A, hostB, ga, gb_1), pkB, s_2) then
+         gab: G <- exp(gb_1, a);
+         kA: D <- h(gab);
+         event endA(A, hostB, ga, gb_1);
+         m_2: blocksize <- concatA(A, hostB, ga, gb_1);
+         r_6 <-R sign_seed;
+         return(sign_r(m_2, skgen(rkA), r_6));
+         cA5() :=
+         keyA: D <- kA
+       )
+     ) | (
+       foreach i_1 <= NB do
+       cB1(hostA: host, =B, ga_1: G) :=
+       b <-R Z;
+       gb_2: G <- exp(g, b);
+       event beginB(hostA, B, ga_1, gb_2);
+       m_3: blocksize <- concatB(hostA, B, ga_1, gb_2);
+       r_3 <-R sign_seed;
+       return(hostA, B, gb_2, sign_r(m_3, skB, r_3));
+       cB3(s_3: signature) :=
+       find j2_5 = j2_2 <= NK suchthat defined(Kkey[j2_2], Rkey_1[j2_2], Khost[j2_2]) && (Khost[j2_2] = hostA) then
+       (
+         if check(concatA(hostA, B, ga_1, gb_2), Kkey[j2_5], s_3) then
+         gab_1: G <- exp(ga_1, b);
+         kB: D <- h(gab_1);
+         event endB(hostA, B, ga_1, gb_2);
+         return(kB)
+       )
+       orfind j2_5 = j2_2 <= NK suchthat defined(rkA, Rkey_2[j2_2], Khost[j2_2]) && (Khost[j2_2] = hostA) then
+       (
+         if check(concatA(hostA, B, ga_1, gb_2), pkgen(rkA), s_3) then
+         gab_1: G <- exp(ga_1, b);
+         kB: D <- h(gab_1);
+         event endB(hostA, B, ga_1, gb_2);
+         keyB: D <- kB
+       )
+       orfind j2_5 = j2_2 <= NK suchthat defined(Rkey_3[j2_2], Khost[j2_2]) && (Khost[j2_2] = hostA) then
+       (
+         if check(concatA(hostA, B, ga_1, gb_2), pkB, s_3) then
+         gab_1: G <- exp(ga_1, b);
+         kB: D <- h(gab_1);
+         event endB(hostA, B, ga_1, gb_2);
+         return(kB)
+       )
+     ) | (
+       foreach i_2 <= NK do
+       cK(Khost: host, Kkey: pkey) :=
+       if Khost = B then
+         Rkey_3: pkey <- cst_pkey
+       else
+         if Khost = A then
+           Rkey_2: pkey <- cst_pkey
+         else
+           Rkey_1: pkey <- cst_pkey
+     ))
+
+
+Applying equivalence uf_cma(sign) with rkA [probability Psign(time_1, NA, maxlength(game 9: m_2))]
+  - Equivalence uf_cma(sign) with variables: r_6 -> r2, r_5 -> r2, r_4 -> r2, rkA -> r_1
+yields
+
+Game 10 is
+     start() :=
+     rkA <-R keyseed;
+     rkB <-R keyseed;
+     skB: skey <- skgen(rkB);
+     pkB: pkey <- pkgen(rkB);
+     return(pkgen2(rkA), pkB);
+     ((
+       foreach i <= NA do
+       cA1(hostB: host) :=
+       a <-R Z;
+       ga: G <- exp(g, a);
+       return(A, hostB, ga);
+       cA3(=A, =hostB, gb_1: G, s_2: signature) :=
+       find j2_4 = j2 <= NK suchthat defined(Kkey[j2], Rkey_1[j2], Khost[j2]) && (Khost[j2] = hostB) then
+       (
+         if (m_4: blocksize <- concatB(A, hostB, ga, gb_1); y: pkey <- Kkey[j2_4]; si: signature <- s_2; {60}find u_11 = ri_11 <= NA suchthat defined(x[ri_11]) && {62}((y = pkgen2(rkA)) && (m_4 = x[ri_11]) && check2(m_4, y, si)) then true orfind u_10 = ri_10 <= NA suchthat defined(x_1[ri_10]) && {83}((y = pkgen2(rkA)) && (m_4 = x_1[ri_10]) && check2(m_4, y, si)) then true orfind u_9 = ri_9 <= NA suchthat defined(x_2[ri_9]) && {104}((y = pkgen2(rkA)) && (m_4 = x_2[ri_9]) && check2(m_4, y, si)) then true else if y = pkgen2(rkA) then false else check(m_4, y, si)) then
+         gab: G <- exp(gb_1, a);
+         kA: D <- h(gab);
+         event endA(A, hostB, ga, gb_1);
+         m_2: blocksize <- concatA(A, hostB, ga, gb_1);
+         r_4 <-R sign_seed;
+         return((x: blocksize <- m_2; sign_r2(x, skgen2(rkA), r_4)));
+         cA5() :=
+         return(kA)
+       )
+       orfind j2_4 = j2 <= NK suchthat defined(Rkey_2[j2], Khost[j2]) && (Khost[j2] = hostB) then
+       (
+         if (m1: blocksize <- concatB(A, hostB, ga, gb_1); si1: signature <- s_2; {209}find u_14 = ri_14 <= NA suchthat defined(x[ri_14]) && {211}((m1 = x[ri_14]) && check2(m1, pkgen2(rkA), si1)) then true orfind u_13 = ri_13 <= NA suchthat defined(x_1[ri_13]) && {226}((m1 = x_1[ri_13]) && check2(m1, pkgen2(rkA), si1)) then true orfind u_12 = ri_12 <= NA suchthat defined(x_2[ri_12]) && {241}((m1 = x_2[ri_12]) && check2(m1, pkgen2(rkA), si1)) then true else false) then
+         gab: G <- exp(gb_1, a);
+         kA: D <- h(gab);
+         event endA(A, hostB, ga, gb_1);
+         m_2: blocksize <- concatA(A, hostB, ga, gb_1);
+         r_5 <-R sign_seed;
+         return((x_1: blocksize <- m_2; sign_r2(x_1, skgen2(rkA), r_5)));
+         cA5() :=
+         return(kA)
+       )
+       orfind j2_4 = j2 <= NK suchthat defined(Rkey_3[j2], Khost[j2]) && (Khost[j2] = hostB) then
+       (
+         if (m_5: blocksize <- concatB(A, hostB, ga, gb_1); y_1: pkey <- pkB; si_1: signature <- s_2; {329}find u_17 = ri_17 <= NA suchthat defined(x[ri_17]) && {331}((y_1 = pkgen2(rkA)) && (m_5 = x[ri_17]) && check2(m_5, y_1, si_1)) then true orfind u_16 = ri_16 <= NA suchthat defined(x_1[ri_16]) && {352}((y_1 = pkgen2(rkA)) && (m_5 = x_1[ri_16]) && check2(m_5, y_1, si_1)) then true orfind u_15 = ri_15 <= NA suchthat defined(x_2[ri_15]) && {373}((y_1 = pkgen2(rkA)) && (m_5 = x_2[ri_15]) && check2(m_5, y_1, si_1)) then true else {393}if {394}(y_1 = pkgen2(rkA)) then false else check(m_5, y_1, si_1)) then
+         gab: G <- exp(gb_1, a);
+         kA: D <- h(gab);
+         event endA(A, hostB, ga, gb_1);
+         m_2: blocksize <- concatA(A, hostB, ga, gb_1);
+         r_6 <-R sign_seed;
+         return((x_2: blocksize <- m_2; sign_r2(x_2, skgen2(rkA), r_6)));
+         cA5() :=
+         keyA: D <- kA
+       )
+     ) | (
+       foreach i_1 <= NB do
+       cB1(hostA: host, =B, ga_1: G) :=
+       b <-R Z;
+       gb_2: G <- exp(g, b);
+       event beginB(hostA, B, ga_1, gb_2);
+       m_3: blocksize <- concatB(hostA, B, ga_1, gb_2);
+       r_3 <-R sign_seed;
+       return(hostA, B, gb_2, sign_r(m_3, skB, r_3));
+       cB3(s_3: signature) :=
+       find j2_5 = j2_2 <= NK suchthat defined(Kkey[j2_2], Rkey_1[j2_2], Khost[j2_2]) && (Khost[j2_2] = hostA) then
+       (
+         if (m_6: blocksize <- concatA(hostA, B, ga_1, gb_2); y_2: pkey <- Kkey[j2_5]; si_2: signature <- s_3; {530}find u_2 = ri_2 <= NA suchthat defined(x[ri_2]) && {532}((y_2 = pkgen2(rkA)) && (m_6 = x[ri_2]) && check2(m_6, y_2, si_2)) then true orfind u_1 = ri_1 <= NA suchthat defined(x_1[ri_1]) && {553}((y_2 = pkgen2(rkA)) && (m_6 = x_1[ri_1]) && check2(m_6, y_2, si_2)) then true orfind u = ri <= NA suchthat defined(x_2[ri]) && {574}((y_2 = pkgen2(rkA)) && (m_6 = x_2[ri]) && check2(m_6, y_2, si_2)) then true else if y_2 = pkgen2(rkA) then false else check(m_6, y_2, si_2)) then
+         gab_1: G <- exp(ga_1, b);
+         kB: D <- h(gab_1);
+         event endB(hostA, B, ga_1, gb_2);
+         return(kB)
+       )
+       orfind j2_5 = j2_2 <= NK suchthat defined(Rkey_2[j2_2], Khost[j2_2]) && (Khost[j2_2] = hostA) then
+       (
+         if (m1_1: blocksize <- concatA(hostA, B, ga_1, gb_2); si1_1: signature <- s_3; {656}find u_5 = ri_5 <= NA suchthat defined(x[ri_5]) && {658}((m1_1 = x[ri_5]) && check2(m1_1, pkgen2(rkA), si1_1)) then true orfind u_4 = ri_4 <= NA suchthat defined(x_1[ri_4]) && {673}((m1_1 = x_1[ri_4]) && check2(m1_1, pkgen2(rkA), si1_1)) then true orfind u_3 = ri_3 <= NA suchthat defined(x_2[ri_3]) && (m1_1 = x_2[ri_3]) && check2(m1_1, pkgen2(rkA), si1_1) then true else false) then
+         gab_1: G <- exp(ga_1, b);
+         kB: D <- h(gab_1);
+         event endB(hostA, B, ga_1, gb_2);
+         keyB: D <- kB
+       )
+       orfind j2_5 = j2_2 <= NK suchthat defined(Rkey_3[j2_2], Khost[j2_2]) && (Khost[j2_2] = hostA) then
+       (
+         if (m_7: blocksize <- concatA(hostA, B, ga_1, gb_2); y_3: pkey <- pkB; si_3: signature <- s_3; {754}find u_8 = ri_8 <= NA suchthat defined(x[ri_8]) && {756}((y_3 = pkgen2(rkA)) && (m_7 = x[ri_8]) && check2(m_7, y_3, si_3)) then true orfind u_7 = ri_7 <= NA suchthat defined(x_1[ri_7]) && {777}((y_3 = pkgen2(rkA)) && (m_7 = x_1[ri_7]) && check2(m_7, y_3, si_3)) then true orfind u_6 = ri_6 <= NA suchthat defined(x_2[ri_6]) && {798}((y_3 = pkgen2(rkA)) && (m_7 = x_2[ri_6]) && check2(m_7, y_3, si_3)) then true else {818}if {819}(y_3 = pkgen2(rkA)) then false else check(m_7, y_3, si_3)) then
+         gab_1: G <- exp(ga_1, b);
+         kB: D <- h(gab_1);
+         event endB(hostA, B, ga_1, gb_2);
+         return(kB)
+       )
+     ) | (
+       foreach i_2 <= NK do
+       cK(Khost: host, Kkey: pkey) :=
+       if Khost = B then
+         Rkey_3: pkey <- cst_pkey
+       else
+         if Khost = A then
+           Rkey_2: pkey <- cst_pkey
+         else
+           Rkey_1: pkey <- cst_pkey
+     ))
+
+
+Applying simplify (non-expanded game) [probability Psigncoll]
+  - Simplification pass
+    - Replaced ((y = pkgen2(rkA)) && (m_4 = x_2[ri_9]) && check2(m_4, y, si)) with false at 104
+    - Remove branch 3 in find at 60
+    - Replaced ((y = pkgen2(rkA)) && (m_4 = x_1[ri_10]) && check2(m_4, y, si)) with false at 83
+    - Remove branch 2 in find at 60
+    - Replaced ((y = pkgen2(rkA)) && (m_4 = x[ri_11]) && check2(m_4, y, si)) with false at 62
+    - Remove branch 1 in find at 60
+    - Find at 60 removed (else branch kept if any)
+    - Replaced ((m1 = x_2[ri_12]) && check2(m1, pkgen2(rkA), si1)) with false at 241
+    - Remove branch 3 in find at 209
+    - Replaced ((m1 = x_1[ri_13]) && check2(m1, pkgen2(rkA), si1)) with false at 226
+    - Remove branch 2 in find at 209
+    - Replaced ((m1 = x[ri_14]) && check2(m1, pkgen2(rkA), si1)) with false at 211
+    - Remove branch 1 in find at 209
+    - Find at 209 removed (else branch kept if any)
+    - Replaced ((y_1 = pkgen2(rkA)) && (m_5 = x_2[ri_15]) && check2(m_5, y_1, si_1)) with false at 373
+    - Remove branch 3 in find at 329
+    - Replaced ((y_1 = pkgen2(rkA)) && (m_5 = x_1[ri_16]) && check2(m_5, y_1, si_1)) with false at 352
+    - Remove branch 2 in find at 329
+    - Replaced ((y_1 = pkgen2(rkA)) && (m_5 = x[ri_17]) && check2(m_5, y_1, si_1)) with false at 331
+    - Remove branch 1 in find at 329
+    - Find at 329 removed (else branch kept if any)
+    - Replaced (y_1 = pkgen2(rkA)) with false at 394
+    - Remove branch 1 in find at 393
+    - Find at 393 removed (else branch kept if any)
+    - Replaced ((y_2 = pkgen2(rkA)) && (m_6 = x_2[ri]) && check2(m_6, y_2, si_2)) with false at 574
+    - Remove branch 3 in find at 530
+    - Replaced ((y_2 = pkgen2(rkA)) && (m_6 = x_1[ri_1]) && check2(m_6, y_2, si_2)) with false at 553
+    - Remove branch 2 in find at 530
+    - Replaced ((y_2 = pkgen2(rkA)) && (m_6 = x[ri_2]) && check2(m_6, y_2, si_2)) with false at 532
+    - Remove branch 1 in find at 530
+    - Find at 530 removed (else branch kept if any)
+    - Replaced ((m1_1 = x_1[ri_4]) && check2(m1_1, pkgen2(rkA), si1_1)) with false at 673
+    - Remove branch 2 in find at 656
+    - Replaced ((m1_1 = x[ri_5]) && check2(m1_1, pkgen2(rkA), si1_1)) with false at 658
+    - Remove branch 1 in find at 656
+    - Replaced ((y_3 = pkgen2(rkA)) && (m_7 = x_2[ri_6]) && check2(m_7, y_3, si_3)) with false at 798
+    - Remove branch 3 in find at 754
+    - Replaced ((y_3 = pkgen2(rkA)) && (m_7 = x_1[ri_7]) && check2(m_7, y_3, si_3)) with false at 777
+    - Remove branch 2 in find at 754
+    - Replaced ((y_3 = pkgen2(rkA)) && (m_7 = x[ri_8]) && check2(m_7, y_3, si_3)) with false at 756
+    - Remove branch 1 in find at 754
+    - Find at 754 removed (else branch kept if any)
+    - Replaced (y_3 = pkgen2(rkA)) with false at 819
+    - Remove branch 1 in find at 818
+    - Find at 818 removed (else branch kept if any)
+yields
+
+Game 11 is
+     start() :=
+     rkA <-R keyseed;
+     rkB <-R keyseed;
+     skB: skey <- skgen(rkB);
+     pkB: pkey <- pkgen(rkB);
+     return(pkgen2(rkA), pkB);
+     ((
+       foreach i <= NA do
+       cA1(hostB: host) :=
+       a <-R Z;
+       ga: G <- exp(g, a);
+       return(A, hostB, ga);
+       cA3(=A, =hostB, gb_1: G, s_2: signature) :=
+       find j2_4 = j2 <= NK suchthat defined(Kkey[j2], Rkey_1[j2], Khost[j2]) && (Khost[j2] = hostB) then
+       (
+ {43}    if (m_4: blocksize <- concatB(A, hostB, ga, gb_1); y: pkey <- Kkey[j2_4]; si: signature <- s_2; {60}if y = pkgen2(rkA) then false else check(m_4, y, si)) then
+         gab: G <- exp(gb_1, a);
+         kA: D <- h(gab);
+         event endA(A, hostB, ga, gb_1);
+         m_2: blocksize <- concatA(A, hostB, ga, gb_1);
+         r_4 <-R sign_seed;
+         return((x: blocksize <- m_2; sign_r2(x, skgen2(rkA), r_4)));
+         cA5() :=
+         return(kA)
+       )
+       orfind j2_4 = j2 <= NK suchthat defined(Rkey_2[j2], Khost[j2]) && (Khost[j2] = hostB) then
+       (
+{132}    if {133}(m1: blocksize <- concatB(A, hostB, ga, gb_1); {142}si1: signature <- s_2; false) then
+         gab: G <- exp(gb_1, a);
+         kA: D <- h(gab);
+         event endA(A, hostB, ga, gb_1);
+         m_2: blocksize <- concatA(A, hostB, ga, gb_1);
+         r_5 <-R sign_seed;
+         return((x_1: blocksize <- m_2; sign_r2(x_1, skgen2(rkA), r_5)));
+         cA5() :=
+         return(kA)
+       )
+       orfind j2_4 = j2 <= NK suchthat defined(Rkey_3[j2], Khost[j2]) && (Khost[j2] = hostB) then
+       (
+         if (m_5: blocksize <- concatB(A, hostB, ga, gb_1); y_1: pkey <- pkB; si_1: signature <- s_2; check(m_5, y_1, si_1)) then
+         gab: G <- exp(gb_1, a);
+         kA: D <- h(gab);
+         event endA(A, hostB, ga, gb_1);
+         m_2: blocksize <- concatA(A, hostB, ga, gb_1);
+         r_6 <-R sign_seed;
+         return((x_2: blocksize <- m_2; sign_r2(x_2, skgen2(rkA), r_6)));
+         cA5() :=
+         keyA: D <- kA
+       )
+     ) | (
+       foreach i_1 <= NB do
+       cB1(hostA: host, =B, ga_1: G) :=
+       b <-R Z;
+       gb_2: G <- exp(g, b);
+       event beginB(hostA, B, ga_1, gb_2);
+       m_3: blocksize <- concatB(hostA, B, ga_1, gb_2);
+       r_3 <-R sign_seed;
+       return(hostA, B, gb_2, sign_r(m_3, skB, r_3));
+       cB3(s_3: signature) :=
+       find j2_5 = j2_2 <= NK suchthat defined(Kkey[j2_2], Rkey_1[j2_2], Khost[j2_2]) && (Khost[j2_2] = hostA) then
+       (
+{332}    if (m_6: blocksize <- concatA(hostA, B, ga_1, gb_2); y_2: pkey <- Kkey[j2_5]; si_2: signature <- s_3; {349}if y_2 = pkgen2(rkA) then false else check(m_6, y_2, si_2)) then
+         gab_1: G <- exp(ga_1, b);
+         kB: D <- h(gab_1);
+         event endB(hostA, B, ga_1, gb_2);
+         return(kB)
+       )
+       orfind j2_5 = j2_2 <= NK suchthat defined(Rkey_2[j2_2], Khost[j2_2]) && (Khost[j2_2] = hostA) then
+       (
+{398}    if (m1_1: blocksize <- concatA(hostA, B, ga_1, gb_2); si1_1: signature <- s_3; find u_3 = ri_3 <= NA suchthat defined(x_2[ri_3]) && (m1_1 = x_2[ri_3]) && check2(m1_1, pkgen2(rkA), si1_1) then true else false) then
+         gab_1: G <- exp(ga_1, b);
+         kB: D <- h(gab_1);
+         event endB(hostA, B, ga_1, gb_2);
+         keyB: D <- kB
+       )
+       orfind j2_5 = j2_2 <= NK suchthat defined(Rkey_3[j2_2], Khost[j2_2]) && (Khost[j2_2] = hostA) then
+       (
+         if (m_7: blocksize <- concatA(hostA, B, ga_1, gb_2); y_3: pkey <- pkB; si_3: signature <- s_3; check(m_7, y_3, si_3)) then
+         gab_1: G <- exp(ga_1, b);
+         kB: D <- h(gab_1);
+         event endB(hostA, B, ga_1, gb_2);
+         return(kB)
+       )
+     ) | (
+       foreach i_2 <= NK do
+       cK(Khost: host, Kkey: pkey) :=
+       if Khost = B then
+         Rkey_3: pkey <- cst_pkey
+       else
+         if Khost = A then
+           Rkey_2: pkey <- cst_pkey
+         else
+           Rkey_1: pkey <- cst_pkey
+     ))
+
+
+Applying expand
+  - Expand if/find/let
+    - Test at 398 always false
+    - Test at 398 always true
+    - Transformed find at 349 into a test
+    - Test at 332 always false
+    - Test at 132 always false
+    - Remove let at 142
+    - Remove let at 133
+    - Transformed find at 60 into a test
+    - Test at 43 always false
+yields
+
+Game 12 is
+     start() :=
+     rkA <-R keyseed;
+     rkB <-R keyseed;
+     skB: skey <- skgen(rkB);
+     pkB: pkey <- pkgen(rkB);
+     return(pkgen2(rkA), pkB);
+     ((
+       foreach i <= NA do
+       cA1(hostB: host) :=
+       a <-R Z;
+       ga: G <- exp(g, a);
+       return(A, hostB, ga);
+       cA3(=A, =hostB, gb_1: G, s_2: signature) :=
+       find j2_4 = j2 <= NK suchthat defined(Kkey[j2], Rkey_1[j2], Khost[j2]) && (Khost[j2] = hostB) then
+       (
+         m_4: blocksize <- concatB(A, hostB, ga, gb_1);
+         y: pkey <- Kkey[j2_4];
+         si: signature <- s_2;
+         if y = pkgen2(rkA) then
+           yield
+         else
+           if check(m_4, y, si) then
+           gab: G <- exp(gb_1, a);
+           kA: D <- h(gab);
+           event endA(A, hostB, ga, gb_1);
+           m_2: blocksize <- concatA(A, hostB, ga, gb_1);
+           r_4 <-R sign_seed;
+           x: blocksize <- m_2;
+           return(sign_r2(x, skgen2(rkA), r_4));
+           cA5() :=
+           return(kA)
+       )
+       orfind j2_4 = j2 <= NK suchthat defined(Rkey_2[j2], Khost[j2]) && (Khost[j2] = hostB) then
+         yield
+       orfind j2_4 = j2 <= NK suchthat defined(Rkey_3[j2], Khost[j2]) && (Khost[j2] = hostB) then
+       (
+         m_5: blocksize <- concatB(A, hostB, ga, gb_1);
+         y_1: pkey <- pkB;
+         si_1: signature <- s_2;
+         if check(m_5, y_1, si_1) then
+         gab: G <- exp(gb_1, a);
+         kA: D <- h(gab);
+         event endA(A, hostB, ga, gb_1);
+         m_2: blocksize <- concatA(A, hostB, ga, gb_1);
+         r_6 <-R sign_seed;
+         x_2: blocksize <- m_2;
+         return(sign_r2(x_2, skgen2(rkA), r_6));
+         cA5() :=
+         keyA: D <- kA
+       )
+     ) | (
+       foreach i_1 <= NB do
+       cB1(hostA: host, =B, ga_1: G) :=
+       b <-R Z;
+       gb_2: G <- exp(g, b);
+       event beginB(hostA, B, ga_1, gb_2);
+       m_3: blocksize <- concatB(hostA, B, ga_1, gb_2);
+       r_3 <-R sign_seed;
+       return(hostA, B, gb_2, sign_r(m_3, skB, r_3));
+       cB3(s_3: signature) :=
+       find j2_5 = j2_2 <= NK suchthat defined(Kkey[j2_2], Rkey_1[j2_2], Khost[j2_2]) && (Khost[j2_2] = hostA) then
+       (
+         m_6: blocksize <- concatA(hostA, B, ga_1, gb_2);
+         y_2: pkey <- Kkey[j2_5];
+         si_2: signature <- s_3;
+         if y_2 = pkgen2(rkA) then
+           yield
+         else
+           if check(m_6, y_2, si_2) then
+           gab_1: G <- exp(ga_1, b);
+           kB: D <- h(gab_1);
+           event endB(hostA, B, ga_1, gb_2);
+           return(kB)
+       )
+       orfind j2_5 = j2_2 <= NK suchthat defined(Rkey_2[j2_2], Khost[j2_2]) && (Khost[j2_2] = hostA) then
+       (
+         m1_1: blocksize <- concatA(hostA, B, ga_1, gb_2);
+         si1_1: signature <- s_3;
+         find u_3 = ri_3 <= NA suchthat defined(x_2[ri_3]) && (m1_1 = x_2[ri_3]) && check2(m1_1, pkgen2(rkA), si1_1) then
+         gab_1: G <- exp(ga_1, b);
+         kB: D <- h(gab_1);
+         event endB(hostA, B, ga_1, gb_2);
+         keyB: D <- kB
+       )
+       orfind j2_5 = j2_2 <= NK suchthat defined(Rkey_3[j2_2], Khost[j2_2]) && (Khost[j2_2] = hostA) then
+       (
+         m_7: blocksize <- concatA(hostA, B, ga_1, gb_2);
+         y_3: pkey <- pkB;
+         si_3: signature <- s_3;
+         if check(m_7, y_3, si_3) then
+         gab_1: G <- exp(ga_1, b);
+         kB: D <- h(gab_1);
+         event endB(hostA, B, ga_1, gb_2);
+         return(kB)
+       )
+     ) | (
+       foreach i_2 <= NK do
+       cK(Khost: host, Kkey: pkey) :=
+       if Khost = B then
+         Rkey_3: pkey <- cst_pkey
+       else
+         if Khost = A then
+           Rkey_2: pkey <- cst_pkey
+         else
+           Rkey_1: pkey <- cst_pkey
+     ))
+
+
+Applying remove assignments of findcond
+  - Remove assignments on y_2 (definition removed, all usages removed)
+  - Remove assignments on si_2 (definition removed, all usages removed)
+  - Remove assignments on si1_1 (definition removed, all usages removed)
+  - Remove assignments on y_3 (definition removed, all usages removed)
+  - Remove assignments on si_3 (definition removed, all usages removed)
+  - Remove assignments on y (definition removed, all usages removed)
+  - Remove assignments on si (definition removed, all usages removed)
+  - Remove assignments on x (definition removed, all usages removed)
+  - Remove assignments on y_1 (definition removed, all usages removed)
+  - Remove assignments on si_1 (definition removed, all usages removed)
+  - Remove assignments on x_2 (definition removed, all usages removed)
+yields
+
+Game 13 is
+     start() :=
+     rkA <-R keyseed;
+     rkB <-R keyseed;
+     skB: skey <- skgen(rkB);
+     pkB: pkey <- pkgen(rkB);
+     return(pkgen2(rkA), pkB);
+     ((
+       foreach i <= NA do
+       cA1(hostB: host) :=
+       a <-R Z;
+       ga: G <- exp(g, a);
+       return(A, hostB, ga);
+       cA3(=A, =hostB, gb_1: G, s_2: signature) :=
+       find j2_4 = j2 <= NK suchthat defined(Kkey[j2], Rkey_1[j2], Khost[j2]) && (Khost[j2] = hostB) then
+       (
+         m_4: blocksize <- concatB(A, hostB, ga, gb_1);
+         if Kkey[j2_4] = pkgen2(rkA) then
+           yield
+         else
+           if check(m_4, Kkey[j2_4], s_2) then
+           gab: G <- exp(gb_1, a);
+           kA: D <- h(gab);
+           event endA(A, hostB, ga, gb_1);
+           m_2: blocksize <- concatA(A, hostB, ga, gb_1);
+           r_4 <-R sign_seed;
+           return(sign_r2(m_2, skgen2(rkA), r_4));
+           cA5() :=
+           return(kA)
+       )
+       orfind j2_4 = j2 <= NK suchthat defined(Rkey_2[j2], Khost[j2]) && (Khost[j2] = hostB) then
+         yield
+       orfind j2_4 = j2 <= NK suchthat defined(Rkey_3[j2], Khost[j2]) && (Khost[j2] = hostB) then
+       (
+         m_5: blocksize <- concatB(A, hostB, ga, gb_1);
+         if check(m_5, pkB, s_2) then
+         gab: G <- exp(gb_1, a);
+         kA: D <- h(gab);
+         event endA(A, hostB, ga, gb_1);
+         m_2: blocksize <- concatA(A, hostB, ga, gb_1);
+         r_6 <-R sign_seed;
+         return(sign_r2(m_2, skgen2(rkA), r_6));
+         cA5() :=
+         keyA: D <- kA
+       )
+     ) | (
+       foreach i_1 <= NB do
+       cB1(hostA: host, =B, ga_1: G) :=
+       b <-R Z;
+       gb_2: G <- exp(g, b);
+       event beginB(hostA, B, ga_1, gb_2);
+       m_3: blocksize <- concatB(hostA, B, ga_1, gb_2);
+       r_3 <-R sign_seed;
+       return(hostA, B, gb_2, sign_r(m_3, skB, r_3));
+       cB3(s_3: signature) :=
+       find j2_5 = j2_2 <= NK suchthat defined(Kkey[j2_2], Rkey_1[j2_2], Khost[j2_2]) && (Khost[j2_2] = hostA) then
+       (
+         m_6: blocksize <- concatA(hostA, B, ga_1, gb_2);
+         if Kkey[j2_5] = pkgen2(rkA) then
+           yield
+         else
+           if check(m_6, Kkey[j2_5], s_3) then
+           gab_1: G <- exp(ga_1, b);
+           kB: D <- h(gab_1);
+           event endB(hostA, B, ga_1, gb_2);
+           return(kB)
+       )
+       orfind j2_5 = j2_2 <= NK suchthat defined(Rkey_2[j2_2], Khost[j2_2]) && (Khost[j2_2] = hostA) then
+       (
+         m1_1: blocksize <- concatA(hostA, B, ga_1, gb_2);
+{324}    find u_3 = ri_3 <= NA suchthat defined(m_2[ri_3], r_6[ri_3]) && {327}((m1_1 = m_2[ri_3]) && check2(m1_1, pkgen2(rkA), s_3)) then
+         gab_1: G <- {341}exp(ga_1, b);
+         kB: D <- h(gab_1);
+         event endB(hostA, B, ga_1, gb_2);
+         keyB: D <- kB
+       )
+       orfind j2_5 = j2_2 <= NK suchthat defined(Rkey_3[j2_2], Khost[j2_2]) && (Khost[j2_2] = hostA) then
+       (
+         m_7: blocksize <- concatA(hostA, B, ga_1, gb_2);
+         if check(m_7, pkB, s_3) then
+         gab_1: G <- exp(ga_1, b);
+         kB: D <- h(gab_1);
+         event endB(hostA, B, ga_1, gb_2);
+         return(kB)
+       )
+     ) | (
+       foreach i_2 <= NK do
+       cK(Khost: host, Kkey: pkey) :=
+       if Khost = B then
+         Rkey_3: pkey <- cst_pkey
+       else
+         if Khost = A then
+           Rkey_2: pkey <- cst_pkey
+         else
+           Rkey_1: pkey <- cst_pkey
+     ))
+
+
+Applying simplify
+  - Simplification pass
+    - Replaced ((m1_1 = m_2[ri_3]) && check2(m1_1, pkgen2(rkA), s_3)) with ((ga_1 = ga[ri_3]) && (gb_2 = gb_1[ri_3]) && check2(m1_1, pkgen2(rkA), s_3)) at 327
+    - Replaced exp(ga_1, b) with exp(g, mult(a[u_3], b)) at 341
+    - Replaced defined condition m_2[ri_3], r_6[ri_3] with r_6[ri_3], a[ri_3], gb_1[ri_3], ga[ri_3] in find at 324
+yields
+
+Game 14 is
+     start() :=
+     rkA <-R keyseed;
+     rkB <-R keyseed;
+     skB: skey <- skgen(rkB);
+     pkB: pkey <- pkgen(rkB);
+     return(pkgen2(rkA), pkB);
+     ((
+       foreach i <= NA do
+       cA1(hostB: host) :=
+       a <-R Z;
+       ga: G <- exp(g, a);
+       return(A, hostB, ga);
+       cA3(=A, =hostB, gb_1: G, s_2: signature) :=
+       find j2_4 = j2 <= NK suchthat defined(Kkey[j2], Rkey_1[j2], Khost[j2]) && (Khost[j2] = hostB) then
+       (
+         m_4: blocksize <- concatB(A, hostB, ga, gb_1);
+         if Kkey[j2_4] = pkgen2(rkA) then
+           yield
+         else
+           if check(m_4, Kkey[j2_4], s_2) then
+           gab: G <- exp(gb_1, a);
+           kA: D <- h(gab);
+           event endA(A, hostB, ga, gb_1);
+           m_2: blocksize <- concatA(A, hostB, ga, gb_1);
+           r_4 <-R sign_seed;
+           return(sign_r2(m_2, skgen2(rkA), r_4));
+           cA5() :=
+           return(kA)
+       )
+       orfind j2_4 = j2 <= NK suchthat defined(Rkey_2[j2], Khost[j2]) && (Khost[j2] = hostB) then
+         yield
+       orfind j2_4 = j2 <= NK suchthat defined(Rkey_3[j2], Khost[j2]) && (Khost[j2] = hostB) then
+       (
+         m_5: blocksize <- concatB(A, hostB, ga, gb_1);
+         if check(m_5, pkB, s_2) then
+         gab: G <- exp(gb_1, a);
+         kA: D <- h(gab);
+         event endA(A, hostB, ga, gb_1);
+         m_2: blocksize <- concatA(A, hostB, ga, gb_1);
+         r_6 <-R sign_seed;
+         return(sign_r2(m_2, skgen2(rkA), r_6));
+         cA5() :=
+         keyA: D <- kA
+       )
+     ) | (
+       foreach i_1 <= NB do
+       cB1(hostA: host, =B, ga_1: G) :=
+       b <-R Z;
+       gb_2: G <- exp(g, b);
+       event beginB(hostA, B, ga_1, gb_2);
+       m_3: blocksize <- concatB(hostA, B, ga_1, gb_2);
+       r_3 <-R sign_seed;
+       return(hostA, B, gb_2, sign_r(m_3, skB, r_3));
+       cB3(s_3: signature) :=
+       find j2_5 = j2_2 <= NK suchthat defined(Kkey[j2_2], Rkey_1[j2_2], Khost[j2_2]) && (Khost[j2_2] = hostA) then
+       (
+         m_6: blocksize <- concatA(hostA, B, ga_1, gb_2);
+         if Kkey[j2_5] = pkgen2(rkA) then
+           yield
+         else
+           if check(m_6, Kkey[j2_5], s_3) then
+           gab_1: G <- exp(ga_1, b);
+           kB: D <- h(gab_1);
+           event endB(hostA, B, ga_1, gb_2);
+           return(kB)
+       )
+       orfind j2_5 = j2_2 <= NK suchthat defined(Rkey_2[j2_2], Khost[j2_2]) && (Khost[j2_2] = hostA) then
+       (
+         m1_1: blocksize <- concatA(hostA, B, ga_1, gb_2);
+         find u_3 = ri_3 <= NA suchthat defined(r_6[ri_3], a[ri_3], gb_1[ri_3], ga[ri_3]) && (ga_1 = ga[ri_3]) && (gb_2 = gb_1[ri_3]) && check2(m1_1, pkgen2(rkA), s_3) then
+         gab_1: G <- exp(g, mult(a[u_3], b));
+         kB: D <- h(gab_1);
+         event endB(hostA, B, ga_1, gb_2);
+         keyB: D <- kB
+       )
+       orfind j2_5 = j2_2 <= NK suchthat defined(Rkey_3[j2_2], Khost[j2_2]) && (Khost[j2_2] = hostA) then
+       (
+         m_7: blocksize <- concatA(hostA, B, ga_1, gb_2);
+         if check(m_7, pkB, s_3) then
+         gab_1: G <- exp(ga_1, b);
+         kB: D <- h(gab_1);
+         event endB(hostA, B, ga_1, gb_2);
+         return(kB)
+       )
+     ) | (
+       foreach i_2 <= NK do
+       cK(Khost: host, Kkey: pkey) :=
+       if Khost = B then
+         Rkey_3: pkey <- cst_pkey
+       else
+         if Khost = A then
+           Rkey_2: pkey <- cst_pkey
+         else
+           Rkey_1: pkey <- cst_pkey
+     ))
+
+
+Applying move all binders
+  - Move assignment to m_6
+  - Move assignment to m_4
+yields
+
+Game 15 is
+     start() :=
+     rkA <-R keyseed;
+     rkB <-R keyseed;
+     skB: skey <- skgen(rkB);
+     pkB: pkey <- pkgen(rkB);
+     return(pkgen2(rkA), pkB);
+     ((
+       foreach i <= NA do
+       cA1(hostB: host) :=
+       a <-R Z;
+       ga: G <- exp(g, a);
+       return(A, hostB, ga);
+       cA3(=A, =hostB, gb_1: G, s_2: signature) :=
+       find j2_4 = j2 <= NK suchthat defined(Kkey[j2], Rkey_1[j2], Khost[j2]) && (Khost[j2] = hostB) then
+       (
+         if Kkey[j2_4] = pkgen2(rkA) then
+           yield
+         else
+           m_4: blocksize <- concatB(A, hostB, ga, gb_1);
+           if check(m_4, Kkey[j2_4], s_2) then
+           gab: G <- exp(gb_1, a);
+           kA: D <- h(gab);
+           event endA(A, hostB, ga, gb_1);
+           m_2: blocksize <- concatA(A, hostB, ga, gb_1);
+           r_4 <-R sign_seed;
+           return(sign_r2(m_2, skgen2(rkA), r_4));
+           cA5() :=
+           return(kA)
+       )
+       orfind j2_4 = j2 <= NK suchthat defined(Rkey_2[j2], Khost[j2]) && (Khost[j2] = hostB) then
+         yield
+       orfind j2_4 = j2 <= NK suchthat defined(Rkey_3[j2], Khost[j2]) && (Khost[j2] = hostB) then
+       (
+         m_5: blocksize <- concatB(A, hostB, ga, gb_1);
+         if check(m_5, pkB, s_2) then
+         gab: G <- exp(gb_1, a);
+         kA: D <- h(gab);
+         event endA(A, hostB, ga, gb_1);
+         m_2: blocksize <- concatA(A, hostB, ga, gb_1);
+         r_6 <-R sign_seed;
+         return(sign_r2(m_2, skgen2(rkA), r_6));
+         cA5() :=
+         keyA: D <- kA
+       )
+     ) | (
+       foreach i_1 <= NB do
+       cB1(hostA: host, =B, ga_1: G) :=
+       b <-R Z;
+       gb_2: G <- exp(g, b);
+       event beginB(hostA, B, ga_1, gb_2);
+       m_3: blocksize <- concatB(hostA, B, ga_1, gb_2);
+       r_3 <-R sign_seed;
+       return(hostA, B, gb_2, sign_r(m_3, skB, r_3));
+       cB3(s_3: signature) :=
+       find j2_5 = j2_2 <= NK suchthat defined(Kkey[j2_2], Rkey_1[j2_2], Khost[j2_2]) && (Khost[j2_2] = hostA) then
+       (
+         if Kkey[j2_5] = pkgen2(rkA) then
+           yield
+         else
+           m_6: blocksize <- concatA(hostA, B, ga_1, gb_2);
+           if check(m_6, Kkey[j2_5], s_3) then
+           gab_1: G <- exp(ga_1, b);
+           kB: D <- h(gab_1);
+           event endB(hostA, B, ga_1, gb_2);
+           return(kB)
+       )
+       orfind j2_5 = j2_2 <= NK suchthat defined(Rkey_2[j2_2], Khost[j2_2]) && (Khost[j2_2] = hostA) then
+       (
+         m1_1: blocksize <- concatA(hostA, B, ga_1, gb_2);
+         find u_3 = ri_3 <= NA suchthat defined(r_6[ri_3], a[ri_3], gb_1[ri_3], ga[ri_3]) && (ga_1 = ga[ri_3]) && (gb_2 = gb_1[ri_3]) && check2(m1_1, pkgen2(rkA), s_3) then
+         gab_1: G <- exp(g, mult(a[u_3], b));
+         kB: D <- h(gab_1);
+         event endB(hostA, B, ga_1, gb_2);
+         keyB: D <- kB
+       )
+       orfind j2_5 = j2_2 <= NK suchthat defined(Rkey_3[j2_2], Khost[j2_2]) && (Khost[j2_2] = hostA) then
+       (
+         m_7: blocksize <- concatA(hostA, B, ga_1, gb_2);
+         if check(m_7, pkB, s_3) then
+         gab_1: G <- exp(ga_1, b);
+         kB: D <- h(gab_1);
+         event endB(hostA, B, ga_1, gb_2);
+         return(kB)
+       )
+     ) | (
+       foreach i_2 <= NK do
+       cK(Khost: host, Kkey: pkey) :=
+       if Khost = B then
+         Rkey_3: pkey <- cst_pkey
+       else
+         if Khost = A then
+           Rkey_2: pkey <- cst_pkey
+         else
+           Rkey_1: pkey <- cst_pkey
+     ))
+
+
+Applying remove assignments of binder skB
+  - Remove assignments on skB (definition removed, all usages removed)
+yields
+
+Game 16 is
+     start() :=
+     rkA <-R keyseed;
+     rkB <-R keyseed;
+     pkB: pkey <- pkgen(rkB);
+     return(pkgen2(rkA), pkB);
+     ((
+       foreach i <= NA do
+       cA1(hostB: host) :=
+       a <-R Z;
+       ga: G <- exp(g, a);
+       return(A, hostB, ga);
+       cA3(=A, =hostB, gb_1: G, s_2: signature) :=
+       find j2_4 = j2 <= NK suchthat defined(Kkey[j2], Rkey_1[j2], Khost[j2]) && (Khost[j2] = hostB) then
+       (
+         if Kkey[j2_4] = pkgen2(rkA) then
+           yield
+         else
+           m_4: blocksize <- concatB(A, hostB, ga, gb_1);
+           if check(m_4, Kkey[j2_4], s_2) then
+           gab: G <- exp(gb_1, a);
+           kA: D <- h(gab);
+           event endA(A, hostB, ga, gb_1);
+           m_2: blocksize <- concatA(A, hostB, ga, gb_1);
+           r_4 <-R sign_seed;
+           return(sign_r2(m_2, skgen2(rkA), r_4));
+           cA5() :=
+           return(kA)
+       )
+       orfind j2_4 = j2 <= NK suchthat defined(Rkey_2[j2], Khost[j2]) && (Khost[j2] = hostB) then
+         yield
+       orfind j2_4 = j2 <= NK suchthat defined(Rkey_3[j2], Khost[j2]) && (Khost[j2] = hostB) then
+       (
+         m_5: blocksize <- concatB(A, hostB, ga, gb_1);
+         if check(m_5, pkB, s_2) then
+         gab: G <- exp(gb_1, a);
+         kA: D <- h(gab);
+         event endA(A, hostB, ga, gb_1);
+         m_2: blocksize <- concatA(A, hostB, ga, gb_1);
+         r_6 <-R sign_seed;
+         return(sign_r2(m_2, skgen2(rkA), r_6));
+         cA5() :=
+         keyA: D <- kA
+       )
+     ) | (
+       foreach i_1 <= NB do
+       cB1(hostA: host, =B, ga_1: G) :=
+       b <-R Z;
+       gb_2: G <- exp(g, b);
+       event beginB(hostA, B, ga_1, gb_2);
+       m_3: blocksize <- concatB(hostA, B, ga_1, gb_2);
+       r_3 <-R sign_seed;
+       return(hostA, B, gb_2, sign_r(m_3, skgen(rkB), r_3));
+       cB3(s_3: signature) :=
+       find j2_5 = j2_2 <= NK suchthat defined(Kkey[j2_2], Rkey_1[j2_2], Khost[j2_2]) && (Khost[j2_2] = hostA) then
+       (
+         if Kkey[j2_5] = pkgen2(rkA) then
+           yield
+         else
+           m_6: blocksize <- concatA(hostA, B, ga_1, gb_2);
+           if check(m_6, Kkey[j2_5], s_3) then
+           gab_1: G <- exp(ga_1, b);
+           kB: D <- h(gab_1);
+           event endB(hostA, B, ga_1, gb_2);
+           return(kB)
+       )
+       orfind j2_5 = j2_2 <= NK suchthat defined(Rkey_2[j2_2], Khost[j2_2]) && (Khost[j2_2] = hostA) then
+       (
+         m1_1: blocksize <- concatA(hostA, B, ga_1, gb_2);
+         find u_3 = ri_3 <= NA suchthat defined(r_6[ri_3], a[ri_3], gb_1[ri_3], ga[ri_3]) && (ga_1 = ga[ri_3]) && (gb_2 = gb_1[ri_3]) && check2(m1_1, pkgen2(rkA), s_3) then
+         gab_1: G <- exp(g, mult(a[u_3], b));
+         kB: D <- h(gab_1);
+         event endB(hostA, B, ga_1, gb_2);
+         keyB: D <- kB
+       )
+       orfind j2_5 = j2_2 <= NK suchthat defined(Rkey_3[j2_2], Khost[j2_2]) && (Khost[j2_2] = hostA) then
+       (
+         m_7: blocksize <- concatA(hostA, B, ga_1, gb_2);
+         if check(m_7, pkB, s_3) then
+         gab_1: G <- exp(ga_1, b);
+         kB: D <- h(gab_1);
+         event endB(hostA, B, ga_1, gb_2);
+         return(kB)
+       )
+     ) | (
+       foreach i_2 <= NK do
+       cK(Khost: host, Kkey: pkey) :=
+       if Khost = B then
+         Rkey_3: pkey <- cst_pkey
+       else
+         if Khost = A then
+           Rkey_2: pkey <- cst_pkey
+         else
+           Rkey_1: pkey <- cst_pkey
+     ))
+
+
+Applying remove assignments of binder pkB
+  - Remove assignments on pkB (definition removed, all usages removed)
+yields
+
+Game 17 is
+     start() :=
+     rkA <-R keyseed;
+     rkB <-R keyseed;
+     return(pkgen2(rkA), pkgen(rkB));
+     ((
+       foreach i <= NA do
+       cA1(hostB: host) :=
+       a <-R Z;
+       ga: G <- exp(g, a);
+       return(A, hostB, ga);
+       cA3(=A, =hostB, gb_1: G, s_2: signature) :=
+       find j2_4 = j2 <= NK suchthat defined(Kkey[j2], Rkey_1[j2], Khost[j2]) && (Khost[j2] = hostB) then
+       (
+         if Kkey[j2_4] = pkgen2(rkA) then
+           yield
+         else
+           m_4: blocksize <- concatB(A, hostB, ga, gb_1);
+           if check(m_4, Kkey[j2_4], s_2) then
+           gab: G <- exp(gb_1, a);
+           kA: D <- h(gab);
+           event endA(A, hostB, ga, gb_1);
+           m_2: blocksize <- concatA(A, hostB, ga, gb_1);
+           r_4 <-R sign_seed;
+           return(sign_r2(m_2, skgen2(rkA), r_4));
+           cA5() :=
+           return(kA)
+       )
+       orfind j2_4 = j2 <= NK suchthat defined(Rkey_2[j2], Khost[j2]) && (Khost[j2] = hostB) then
+         yield
+       orfind j2_4 = j2 <= NK suchthat defined(Rkey_3[j2], Khost[j2]) && (Khost[j2] = hostB) then
+       (
+         m_5: blocksize <- concatB(A, hostB, ga, gb_1);
+         if check(m_5, pkgen(rkB), s_2) then
+         gab: G <- exp(gb_1, a);
+         kA: D <- h(gab);
+         event endA(A, hostB, ga, gb_1);
+         m_2: blocksize <- concatA(A, hostB, ga, gb_1);
+         r_6 <-R sign_seed;
+         return(sign_r2(m_2, skgen2(rkA), r_6));
+         cA5() :=
+         keyA: D <- kA
+       )
+     ) | (
+       foreach i_1 <= NB do
+       cB1(hostA: host, =B, ga_1: G) :=
+       b <-R Z;
+       gb_2: G <- exp(g, b);
+       event beginB(hostA, B, ga_1, gb_2);
+       m_3: blocksize <- concatB(hostA, B, ga_1, gb_2);
+       r_3 <-R sign_seed;
+       return(hostA, B, gb_2, sign_r(m_3, skgen(rkB), r_3));
+       cB3(s_3: signature) :=
+       find j2_5 = j2_2 <= NK suchthat defined(Kkey[j2_2], Rkey_1[j2_2], Khost[j2_2]) && (Khost[j2_2] = hostA) then
+       (
+         if Kkey[j2_5] = pkgen2(rkA) then
+           yield
+         else
+           m_6: blocksize <- concatA(hostA, B, ga_1, gb_2);
+           if check(m_6, Kkey[j2_5], s_3) then
+           gab_1: G <- exp(ga_1, b);
+           kB: D <- h(gab_1);
+           event endB(hostA, B, ga_1, gb_2);
+           return(kB)
+       )
+       orfind j2_5 = j2_2 <= NK suchthat defined(Rkey_2[j2_2], Khost[j2_2]) && (Khost[j2_2] = hostA) then
+       (
+         m1_1: blocksize <- concatA(hostA, B, ga_1, gb_2);
+         find u_3 = ri_3 <= NA suchthat defined(r_6[ri_3], a[ri_3], gb_1[ri_3], ga[ri_3]) && (ga_1 = ga[ri_3]) && (gb_2 = gb_1[ri_3]) && check2(m1_1, pkgen2(rkA), s_3) then
+         gab_1: G <- exp(g, mult(a[u_3], b));
+         kB: D <- h(gab_1);
+         event endB(hostA, B, ga_1, gb_2);
+         keyB: D <- kB
+       )
+       orfind j2_5 = j2_2 <= NK suchthat defined(Rkey_3[j2_2], Khost[j2_2]) && (Khost[j2_2] = hostA) then
+       (
+         m_7: blocksize <- concatA(hostA, B, ga_1, gb_2);
+         if check(m_7, pkgen(rkB), s_3) then
+         gab_1: G <- exp(ga_1, b);
+         kB: D <- h(gab_1);
+         event endB(hostA, B, ga_1, gb_2);
+         return(kB)
+       )
+     ) | (
+       foreach i_2 <= NK do
+       cK(Khost: host, Kkey: pkey) :=
+       if Khost = B then
+         Rkey_3: pkey <- cst_pkey
+       else
+         if Khost = A then
+           Rkey_2: pkey <- cst_pkey
+         else
+           Rkey_1: pkey <- cst_pkey
+     ))
+
+
+Applying equivalence uf_cma(sign) with rkB [probability Psign(time_2, NB, maxlength(game 17: m_3))]
+  - Equivalence uf_cma(sign) with variables: r_3 -> r2, rkB -> r_1
+yields
+
+Game 18 is
+     start() :=
+     rkA <-R keyseed;
+     rkB <-R keyseed;
+     return(pkgen2(rkA), pkgen2(rkB));
+     ((
+       foreach i <= NA do
+       cA1(hostB: host) :=
+       a <-R Z;
+       ga: G <- exp(g, a);
+       return(A, hostB, ga);
+       cA3(=A, =hostB, gb_1: G, s_2: signature) :=
+       find j2_4 = j2 <= NK suchthat defined(Kkey[j2], Rkey_1[j2], Khost[j2]) && (Khost[j2] = hostB) then
+       (
+         if Kkey[j2_4] = pkgen2(rkA) then
+           yield
+         else
+           m_4: blocksize <- concatB(A, hostB, ga, gb_1);
+           if (m_8: blocksize <- m_4; y_4: pkey <- Kkey[j2_4]; si_4: signature <- s_2; {66}find u_20 = ri_20 <= NB suchthat defined(x_3[ri_20]) && {68}((y_4 = pkgen2(rkB)) && (m_8 = x_3[ri_20]) && check2(m_8, y_4, si_4)) then true else if y_4 = pkgen2(rkB) then false else check(m_8, y_4, si_4)) then
+           gab: G <- exp(gb_1, a);
+           kA: D <- h(gab);
+           event endA(A, hostB, ga, gb_1);
+           m_2: blocksize <- concatA(A, hostB, ga, gb_1);
+           r_4 <-R sign_seed;
+           return(sign_r2(m_2, skgen2(rkA), r_4));
+           cA5() :=
+           return(kA)
+       )
+       orfind j2_4 = j2 <= NK suchthat defined(Rkey_2[j2], Khost[j2]) && (Khost[j2] = hostB) then
+         yield
+       orfind j2_4 = j2 <= NK suchthat defined(Rkey_3[j2], Khost[j2]) && (Khost[j2] = hostB) then
+       (
+         m_5: blocksize <- concatB(A, hostB, ga, gb_1);
+         if (m1_2: blocksize <- m_5; si1_2: signature <- s_2; find u_21 = ri_21 <= NB suchthat defined(x_3[ri_21]) && (m1_2 = x_3[ri_21]) && check2(m1_2, pkgen2(rkB), si1_2) then true else false) then
+         gab: G <- exp(gb_1, a);
+         kA: D <- h(gab);
+         event endA(A, hostB, ga, gb_1);
+         m_2: blocksize <- concatA(A, hostB, ga, gb_1);
+         r_6 <-R sign_seed;
+         return(sign_r2(m_2, skgen2(rkA), r_6));
+         cA5() :=
+         keyA: D <- kA
+       )
+     ) | (
+       foreach i_1 <= NB do
+       cB1(hostA: host, =B, ga_1: G) :=
+       b <-R Z;
+       gb_2: G <- exp(g, b);
+       event beginB(hostA, B, ga_1, gb_2);
+       m_3: blocksize <- concatB(hostA, B, ga_1, gb_2);
+       r_3 <-R sign_seed;
+       return(hostA, B, gb_2, (x_3: blocksize <- m_3; sign_r2(x_3, skgen2(rkB), r_3)));
+       cB3(s_3: signature) :=
+       find j2_5 = j2_2 <= NK suchthat defined(Kkey[j2_2], Rkey_1[j2_2], Khost[j2_2]) && (Khost[j2_2] = hostA) then
+       (
+         if Kkey[j2_5] = pkgen2(rkA) then
+           yield
+         else
+           m_6: blocksize <- concatA(hostA, B, ga_1, gb_2);
+           if (m_9: blocksize <- m_6; y_5: pkey <- Kkey[j2_5]; si_5: signature <- s_3; {335}find u_18 = ri_18 <= NB suchthat defined(x_3[ri_18]) && {337}((y_5 = pkgen2(rkB)) && (m_9 = x_3[ri_18]) && check2(m_9, y_5, si_5)) then true else if y_5 = pkgen2(rkB) then false else check(m_9, y_5, si_5)) then
+           gab_1: G <- exp(ga_1, b);
+           kB: D <- h(gab_1);
+           event endB(hostA, B, ga_1, gb_2);
+           return(kB)
+       )
+       orfind j2_5 = j2_2 <= NK suchthat defined(Rkey_2[j2_2], Khost[j2_2]) && (Khost[j2_2] = hostA) then
+       (
+         m1_1: blocksize <- concatA(hostA, B, ga_1, gb_2);
+         find u_3 = ri_3 <= NA suchthat defined(r_6[ri_3], a[ri_3], gb_1[ri_3], ga[ri_3]) && (ga_1 = ga[ri_3]) && (gb_2 = gb_1[ri_3]) && check2(m1_1, pkgen2(rkA), s_3) then
+         gab_1: G <- exp(g, mult(a[u_3], b));
+         kB: D <- h(gab_1);
+         event endB(hostA, B, ga_1, gb_2);
+         keyB: D <- kB
+       )
+       orfind j2_5 = j2_2 <= NK suchthat defined(Rkey_3[j2_2], Khost[j2_2]) && (Khost[j2_2] = hostA) then
+       (
+         m_7: blocksize <- concatA(hostA, B, ga_1, gb_2);
+         if (m1_3: blocksize <- m_7; si1_3: signature <- s_3; {496}find u_19 = ri_19 <= NB suchthat defined(x_3[ri_19]) && {498}((m1_3 = x_3[ri_19]) && check2(m1_3, pkgen2(rkB), si1_3)) then true else false) then
+         gab_1: G <- exp(ga_1, b);
+         kB: D <- h(gab_1);
+         event endB(hostA, B, ga_1, gb_2);
+         return(kB)
+       )
+     ) | (
+       foreach i_2 <= NK do
+       cK(Khost: host, Kkey: pkey) :=
+       if Khost = B then
+         Rkey_3: pkey <- cst_pkey
+       else
+         if Khost = A then
+           Rkey_2: pkey <- cst_pkey
+         else
+           Rkey_1: pkey <- cst_pkey
+     ))
+
+
+Applying simplify (non-expanded game)
+  - Simplification pass
+    - Replaced ((y_4 = pkgen2(rkB)) && (m_8 = x_3[ri_20]) && check2(m_8, y_4, si_4)) with false at 68
+    - Remove branch 1 in find at 66
+    - Find at 66 removed (else branch kept if any)
+    - Replaced ((y_5 = pkgen2(rkB)) && (m_9 = x_3[ri_18]) && check2(m_9, y_5, si_5)) with false at 337
+    - Remove branch 1 in find at 335
+    - Find at 335 removed (else branch kept if any)
+    - Replaced ((m1_3 = x_3[ri_19]) && check2(m1_3, pkgen2(rkB), si1_3)) with false at 498
+    - Remove branch 1 in find at 496
+    - Find at 496 removed (else branch kept if any)
+yields
+
+Game 19 is
+     start() :=
+     rkA <-R keyseed;
+     rkB <-R keyseed;
+     return(pkgen2(rkA), pkgen2(rkB));
+     ((
+       foreach i <= NA do
+       cA1(hostB: host) :=
+       a <-R Z;
+       ga: G <- exp(g, a);
+       return(A, hostB, ga);
+       cA3(=A, =hostB, gb_1: G, s_2: signature) :=
+       find j2_4 = j2 <= NK suchthat defined(Kkey[j2], Rkey_1[j2], Khost[j2]) && (Khost[j2] = hostB) then
+       (
+         if Kkey[j2_4] = pkgen2(rkA) then
+           yield
+         else
+           m_4: blocksize <- concatB(A, hostB, ga, gb_1);
+ {55}      if (m_8: blocksize <- m_4; y_4: pkey <- Kkey[j2_4]; si_4: signature <- s_2; {66}if y_4 = pkgen2(rkB) then false else check(m_8, y_4, si_4)) then
+           gab: G <- exp(gb_1, a);
+           kA: D <- h(gab);
+           event endA(A, hostB, ga, gb_1);
+           m_2: blocksize <- concatA(A, hostB, ga, gb_1);
+           r_4 <-R sign_seed;
+           return(sign_r2(m_2, skgen2(rkA), r_4));
+           cA5() :=
+           return(kA)
+       )
+       orfind j2_4 = j2 <= NK suchthat defined(Rkey_2[j2], Khost[j2]) && (Khost[j2] = hostB) then
+         yield
+       orfind j2_4 = j2 <= NK suchthat defined(Rkey_3[j2], Khost[j2]) && (Khost[j2] = hostB) then
+       (
+         m_5: blocksize <- concatB(A, hostB, ga, gb_1);
+{153}    if (m1_2: blocksize <- m_5; si1_2: signature <- s_2; find u_21 = ri_21 <= NB suchthat defined(x_3[ri_21]) && (m1_2 = x_3[ri_21]) && check2(m1_2, pkgen2(rkB), si1_2) then true else false) then
+         gab: G <- exp(gb_1, a);
+         kA: D <- h(gab);
+         event endA(A, hostB, ga, gb_1);
+         m_2: blocksize <- concatA(A, hostB, ga, gb_1);
+         r_6 <-R sign_seed;
+         return(sign_r2(m_2, skgen2(rkA), r_6));
+         cA5() :=
+         keyA: D <- kA
+       )
+     ) | (
+       foreach i_1 <= NB do
+       cB1(hostA: host, =B, ga_1: G) :=
+       b <-R Z;
+       gb_2: G <- exp(g, b);
+       event beginB(hostA, B, ga_1, gb_2);
+       m_3: blocksize <- concatB(hostA, B, ga_1, gb_2);
+       r_3 <-R sign_seed;
+       return(hostA, B, gb_2, (x_3: blocksize <- m_3; sign_r2(x_3, skgen2(rkB), r_3)));
+       cB3(s_3: signature) :=
+       find j2_5 = j2_2 <= NK suchthat defined(Kkey[j2_2], Rkey_1[j2_2], Khost[j2_2]) && (Khost[j2_2] = hostA) then
+       (
+         if Kkey[j2_5] = pkgen2(rkA) then
+           yield
+         else
+           m_6: blocksize <- concatA(hostA, B, ga_1, gb_2);
+{302}      if (m_9: blocksize <- m_6; y_5: pkey <- Kkey[j2_5]; si_5: signature <- s_3; {313}if y_5 = pkgen2(rkB) then false else check(m_9, y_5, si_5)) then
+           gab_1: G <- exp(ga_1, b);
+           kB: D <- h(gab_1);
+           event endB(hostA, B, ga_1, gb_2);
+           return(kB)
+       )
+       orfind j2_5 = j2_2 <= NK suchthat defined(Rkey_2[j2_2], Khost[j2_2]) && (Khost[j2_2] = hostA) then
+       (
+         m1_1: blocksize <- concatA(hostA, B, ga_1, gb_2);
+         find u_3 = ri_3 <= NA suchthat defined(r_6[ri_3], a[ri_3], gb_1[ri_3], ga[ri_3]) && (ga_1 = ga[ri_3]) && (gb_2 = gb_1[ri_3]) && check2(m1_1, pkgen2(rkA), s_3) then
+         gab_1: G <- exp(g, mult(a[u_3], b));
+         kB: D <- h(gab_1);
+         event endB(hostA, B, ga_1, gb_2);
+         keyB: D <- kB
+       )
+       orfind j2_5 = j2_2 <= NK suchthat defined(Rkey_3[j2_2], Khost[j2_2]) && (Khost[j2_2] = hostA) then
+       (
+{436}    m_7: blocksize <- concatA(hostA, B, ga_1, gb_2);
+{445}    if {446}(m1_3: blocksize <- m_7; {449}si1_3: signature <- s_3; false) then
+         gab_1: G <- exp(ga_1, b);
+         kB: D <- h(gab_1);
+         event endB(hostA, B, ga_1, gb_2);
+         return(kB)
+       )
+     ) | (
+       foreach i_2 <= NK do
+       cK(Khost: host, Kkey: pkey) :=
+       if Khost = B then
+         Rkey_3: pkey <- cst_pkey
+       else
+         if Khost = A then
+           Rkey_2: pkey <- cst_pkey
+         else
+           Rkey_1: pkey <- cst_pkey
+     ))
+
+
+Applying expand
+  - Expand if/find/let
+    - Test at 445 always false
+    - Remove let at 449
+    - Remove let at 446
+    - Remove let at 436
+    - Transformed find at 313 into a test
+    - Test at 302 always false
+    - Test at 153 always false
+    - Test at 153 always true
+    - Transformed find at 66 into a test
+    - Test at 55 always false
+yields
+
+Game 20 is
+     start() :=
+     rkA <-R keyseed;
+     rkB <-R keyseed;
+     return(pkgen2(rkA), pkgen2(rkB));
+     ((
+       foreach i <= NA do
+       cA1(hostB: host) :=
+       a <-R Z;
+       ga: G <- exp(g, a);
+       return(A, hostB, ga);
+       cA3(=A, =hostB, gb_1: G, s_2: signature) :=
+       find j2_4 = j2 <= NK suchthat defined(Kkey[j2], Rkey_1[j2], Khost[j2]) && (Khost[j2] = hostB) then
+       (
+         if Kkey[j2_4] = pkgen2(rkA) then
+           yield
+         else
+           m_4: blocksize <- concatB(A, hostB, ga, gb_1);
+           m_8: blocksize <- m_4;
+           y_4: pkey <- Kkey[j2_4];
+           si_4: signature <- s_2;
+           if y_4 = pkgen2(rkB) then
+             yield
+           else
+             if check(m_8, y_4, si_4) then
+             gab: G <- exp(gb_1, a);
+             kA: D <- h(gab);
+             event endA(A, hostB, ga, gb_1);
+             m_2: blocksize <- concatA(A, hostB, ga, gb_1);
+             r_4 <-R sign_seed;
+             return(sign_r2(m_2, skgen2(rkA), r_4));
+             cA5() :=
+             return(kA)
+       )
+       orfind j2_4 = j2 <= NK suchthat defined(Rkey_2[j2], Khost[j2]) && (Khost[j2] = hostB) then
+         yield
+       orfind j2_4 = j2 <= NK suchthat defined(Rkey_3[j2], Khost[j2]) && (Khost[j2] = hostB) then
+       (
+         m_5: blocksize <- concatB(A, hostB, ga, gb_1);
+         m1_2: blocksize <- m_5;
+         si1_2: signature <- s_2;
+         find u_21 = ri_21 <= NB suchthat defined(x_3[ri_21]) && (m1_2 = x_3[ri_21]) && check2(m1_2, pkgen2(rkB), si1_2) then
+         gab: G <- exp(gb_1, a);
+         kA: D <- h(gab);
+         event endA(A, hostB, ga, gb_1);
+         m_2: blocksize <- concatA(A, hostB, ga, gb_1);
+         r_6 <-R sign_seed;
+         return(sign_r2(m_2, skgen2(rkA), r_6));
+         cA5() :=
+         keyA: D <- kA
+       )
+     ) | (
+       foreach i_1 <= NB do
+       cB1(hostA: host, =B, ga_1: G) :=
+       b <-R Z;
+       gb_2: G <- exp(g, b);
+       event beginB(hostA, B, ga_1, gb_2);
+       m_3: blocksize <- concatB(hostA, B, ga_1, gb_2);
+       r_3 <-R sign_seed;
+       x_3: blocksize <- m_3;
+       return(hostA, B, gb_2, sign_r2(x_3, skgen2(rkB), r_3));
+       cB3(s_3: signature) :=
+       find j2_5 = j2_2 <= NK suchthat defined(Kkey[j2_2], Rkey_1[j2_2], Khost[j2_2]) && (Khost[j2_2] = hostA) then
+       (
+         if Kkey[j2_5] = pkgen2(rkA) then
+           yield
+         else
+           m_6: blocksize <- concatA(hostA, B, ga_1, gb_2);
+           m_9: blocksize <- m_6;
+           y_5: pkey <- Kkey[j2_5];
+           si_5: signature <- s_3;
+           if y_5 = pkgen2(rkB) then
+             yield
+           else
+             if check(m_9, y_5, si_5) then
+             gab_1: G <- exp(ga_1, b);
+             kB: D <- h(gab_1);
+             event endB(hostA, B, ga_1, gb_2);
+             return(kB)
+       )
+       orfind j2_5 = j2_2 <= NK suchthat defined(Rkey_2[j2_2], Khost[j2_2]) && (Khost[j2_2] = hostA) then
+       (
+         m1_1: blocksize <- concatA(hostA, B, ga_1, gb_2);
+         find u_3 = ri_3 <= NA suchthat defined(r_6[ri_3], a[ri_3], gb_1[ri_3], ga[ri_3]) && (ga_1 = ga[ri_3]) && (gb_2 = gb_1[ri_3]) && check2(m1_1, pkgen2(rkA), s_3) then
+         gab_1: G <- exp(g, mult(a[u_3], b));
+         kB: D <- h(gab_1);
+         event endB(hostA, B, ga_1, gb_2);
+         keyB: D <- kB
+       )
+       orfind j2_5 = j2_2 <= NK suchthat defined(Rkey_3[j2_2], Khost[j2_2]) && (Khost[j2_2] = hostA) then
+         yield
+     ) | (
+       foreach i_2 <= NK do
+       cK(Khost: host, Kkey: pkey) :=
+       if Khost = B then
+         Rkey_3: pkey <- cst_pkey
+       else
+         if Khost = A then
+           Rkey_2: pkey <- cst_pkey
+         else
+           Rkey_1: pkey <- cst_pkey
+     ))
+
+
+Applying remove assignments of findcond
+  - Remove assignments on x_3 (definition removed, all usages removed)
+  - Remove assignments on m_9 (definition removed, all usages removed)
+  - Remove assignments on y_5 (definition removed, all usages removed)
+  - Remove assignments on si_5 (definition removed, all usages removed)
+  - Remove assignments on m_8 (definition removed, all usages removed)
+  - Remove assignments on y_4 (definition removed, all usages removed)
+  - Remove assignments on si_4 (definition removed, all usages removed)
+  - Remove assignments on m1_2 (definition removed, all usages removed)
+  - Remove assignments on si1_2 (definition removed, all usages removed)
+yields
+
+Game 21 is
+     start() :=
+     rkA <-R keyseed;
+     rkB <-R keyseed;
+     return(pkgen2(rkA), pkgen2(rkB));
+     ((
+       foreach i <= NA do
+       cA1(hostB: host) :=
+       a <-R Z;
+       ga: G <- exp(g, a);
+       return(A, hostB, ga);
+       cA3(=A, =hostB, gb_1: G, s_2: signature) :=
+       find j2_4 = j2 <= NK suchthat defined(Kkey[j2], Rkey_1[j2], Khost[j2]) && (Khost[j2] = hostB) then
+       (
+         if Kkey[j2_4] = pkgen2(rkA) then
+           yield
+         else
+           m_4: blocksize <- concatB(A, hostB, ga, gb_1);
+           if Kkey[j2_4] = pkgen2(rkB) then
+             yield
+           else
+             if check(m_4, Kkey[j2_4], s_2) then
+             gab: G <- exp(gb_1, a);
+             kA: D <- h(gab);
+             event endA(A, hostB, ga, gb_1);
+             m_2: blocksize <- concatA(A, hostB, ga, gb_1);
+             r_4 <-R sign_seed;
+             return(sign_r2(m_2, skgen2(rkA), r_4));
+             cA5() :=
+             return(kA)
+       )
+       orfind j2_4 = j2 <= NK suchthat defined(Rkey_2[j2], Khost[j2]) && (Khost[j2] = hostB) then
+         yield
+       orfind j2_4 = j2 <= NK suchthat defined(Rkey_3[j2], Khost[j2]) && (Khost[j2] = hostB) then
+       (
+         m_5: blocksize <- concatB(A, hostB, ga, gb_1);
+{145}    find u_21 = ri_21 <= NB suchthat defined(m_3[ri_21], r_3[ri_21]) && {148}((m_5 = m_3[ri_21]) && check2(m_5, pkgen2(rkB), s_2)) then
+         gab: G <- {162}exp(gb_1, a);
+         kA: D <- h(gab);
+         event endA(A, hostB, ga, gb_1);
+         m_2: blocksize <- concatA(A, hostB, ga, gb_1);
+         r_6 <-R sign_seed;
+         return(sign_r2(m_2, skgen2(rkA), r_6));
+         cA5() :=
+         keyA: D <- kA
+       )
+     ) | (
+       foreach i_1 <= NB do
+       cB1(hostA: host, =B, ga_1: G) :=
+       b <-R Z;
+       gb_2: G <- exp(g, b);
+       event beginB(hostA, B, ga_1, gb_2);
+       m_3: blocksize <- concatB(hostA, B, ga_1, gb_2);
+       r_3 <-R sign_seed;
+       return(hostA, B, gb_2, sign_r2(m_3, skgen2(rkB), r_3));
+       cB3(s_3: signature) :=
+       find j2_5 = j2_2 <= NK suchthat defined(Kkey[j2_2], Rkey_1[j2_2], Khost[j2_2]) && (Khost[j2_2] = hostA) then
+       (
+         if Kkey[j2_5] = pkgen2(rkA) then
+           yield
+         else
+           m_6: blocksize <- concatA(hostA, B, ga_1, gb_2);
+           if Kkey[j2_5] = pkgen2(rkB) then
+             yield
+           else
+             if check(m_6, Kkey[j2_5], s_3) then
+             gab_1: G <- exp(ga_1, b);
+             kB: D <- h(gab_1);
+             event endB(hostA, B, ga_1, gb_2);
+             return(kB)
+       )
+       orfind j2_5 = j2_2 <= NK suchthat defined(Rkey_2[j2_2], Khost[j2_2]) && (Khost[j2_2] = hostA) then
+       (
+         m1_1: blocksize <- concatA(hostA, B, ga_1, gb_2);
+{345}    find u_3 = ri_3 <= NA suchthat defined(r_6[ri_3], a[ri_3], gb_1[ri_3], ga[ri_3]) && {350}((ga_1 = ga[ri_3]) && (gb_2 = gb_1[ri_3]) && check2(m1_1, pkgen2(rkA), s_3)) then
+         gab_1: G <- exp(g, mult(a[u_3], b));
+         kB: D <- h(gab_1);
+         event endB(hostA, B, ga_1, gb_2);
+         keyB: D <- kB
+       )
+       orfind j2_5 = j2_2 <= NK suchthat defined(Rkey_3[j2_2], Khost[j2_2]) && (Khost[j2_2] = hostA) then
+         yield
+     ) | (
+       foreach i_2 <= NK do
+       cK(Khost: host, Kkey: pkey) :=
+       if Khost = B then
+         Rkey_3: pkey <- cst_pkey
+       else
+         if Khost = A then
+           Rkey_2: pkey <- cst_pkey
+         else
+           Rkey_1: pkey <- cst_pkey
+     ))
+
+
+Applying simplify [probability NB^2 * PCollKey1]
+  - Simplification pass
+    - Replaced ((ga_1 = ga[ri_3]) && (gb_2 = gb_1[ri_3]) && check2(m1_1, pkgen2(rkA), s_3)) with ((i_1 = u_21[ri_3]) && check2(m1_1, pkgen2(rkA), s_3)) at 350
+    - Replaced defined condition r_6[ri_3], a[ri_3], gb_1[ri_3], ga[ri_3] with a[ri_3], u_21[ri_3] in find at 345
+    - Replaced ((m_5 = m_3[ri_21]) && check2(m_5, pkgen2(rkB), s_2)) with ((A = hostA[ri_21]) && (ga = ga_1[ri_21]) && (gb_1 = gb_2[ri_21]) && check2(m_5, pkgen2(rkB), s_2)) at 148
+    - Replaced exp(gb_1, a) with exp(g, mult(b[u_21], a)) at 162
+    - Replaced defined condition m_3[ri_21], r_3[ri_21] with b[ri_21], gb_2[ri_21], ga_1[ri_21], hostA[ri_21] in find at 145
+yields
+
+Game 22 is
+     start() :=
+     rkA <-R keyseed;
+     rkB <-R keyseed;
+     return(pkgen2(rkA), pkgen2(rkB));
+     ((
+       foreach i <= NA do
+       cA1(hostB: host) :=
+       a <-R Z;
+       ga: G <- exp(g, a);
+       return(A, hostB, ga);
+       cA3(=A, =hostB, gb_1: G, s_2: signature) :=
+       find j2_4 = j2 <= NK suchthat defined(Kkey[j2], Rkey_1[j2], Khost[j2]) && (Khost[j2] = hostB) then
+       (
+         if Kkey[j2_4] = pkgen2(rkA) then
+           yield
+         else
+           m_4: blocksize <- concatB(A, hostB, ga, gb_1);
+           if Kkey[j2_4] = pkgen2(rkB) then
+             yield
+           else
+             if check(m_4, Kkey[j2_4], s_2) then
+             gab: G <- exp(gb_1, a);
+             kA: D <- h(gab);
+             event endA(A, hostB, ga, gb_1);
+             m_2: blocksize <- concatA(A, hostB, ga, gb_1);
+             r_4 <-R sign_seed;
+             return(sign_r2(m_2, skgen2(rkA), r_4));
+             cA5() :=
+             return(kA)
+       )
+       orfind j2_4 = j2 <= NK suchthat defined(Rkey_2[j2], Khost[j2]) && (Khost[j2] = hostB) then
+         yield
+       orfind j2_4 = j2 <= NK suchthat defined(Rkey_3[j2], Khost[j2]) && (Khost[j2] = hostB) then
+       (
+         m_5: blocksize <- concatB(A, hostB, ga, gb_1);
+         find u_21 = ri_21 <= NB suchthat defined(b[ri_21], gb_2[ri_21], ga_1[ri_21], hostA[ri_21]) && (A = hostA[ri_21]) && (ga = ga_1[ri_21]) && (gb_1 = gb_2[ri_21]) && check2(m_5, pkgen2(rkB), s_2) then
+         gab: G <- exp(g, mult(b[u_21], a));
+         kA: D <- h(gab);
+         event endA(A, hostB, ga, gb_1);
+         m_2: blocksize <- concatA(A, hostB, ga, gb_1);
+         r_6 <-R sign_seed;
+         return(sign_r2(m_2, skgen2(rkA), r_6));
+         cA5() :=
+         keyA: D <- kA
+       )
+     ) | (
+       foreach i_1 <= NB do
+       cB1(hostA: host, =B, ga_1: G) :=
+       b <-R Z;
+       gb_2: G <- exp(g, b);
+       event beginB(hostA, B, ga_1, gb_2);
+       m_3: blocksize <- concatB(hostA, B, ga_1, gb_2);
+       r_3 <-R sign_seed;
+       return(hostA, B, gb_2, sign_r2(m_3, skgen2(rkB), r_3));
+       cB3(s_3: signature) :=
+       find j2_5 = j2_2 <= NK suchthat defined(Kkey[j2_2], Rkey_1[j2_2], Khost[j2_2]) && (Khost[j2_2] = hostA) then
+       (
+         if Kkey[j2_5] = pkgen2(rkA) then
+           yield
+         else
+           m_6: blocksize <- concatA(hostA, B, ga_1, gb_2);
+           if Kkey[j2_5] = pkgen2(rkB) then
+             yield
+           else
+             if check(m_6, Kkey[j2_5], s_3) then
+             gab_1: G <- exp(ga_1, b);
+             kB: D <- h(gab_1);
+             event endB(hostA, B, ga_1, gb_2);
+             return(kB)
+       )
+       orfind j2_5 = j2_2 <= NK suchthat defined(Rkey_2[j2_2], Khost[j2_2]) && (Khost[j2_2] = hostA) then
+       (
+         m1_1: blocksize <- concatA(hostA, B, ga_1, gb_2);
+         find u_3 = ri_3 <= NA suchthat defined(a[ri_3], u_21[ri_3]) && (i_1 = u_21[ri_3]) && check2(m1_1, pkgen2(rkA), s_3) then
+         gab_1: G <- exp(g, mult(a[u_3], b));
+         kB: D <- h(gab_1);
+         event endB(hostA, B, ga_1, gb_2);
+         keyB: D <- kB
+       )
+       orfind j2_5 = j2_2 <= NK suchthat defined(Rkey_3[j2_2], Khost[j2_2]) && (Khost[j2_2] = hostA) then
+         yield
+     ) | (
+       foreach i_2 <= NK do
+       cK(Khost: host, Kkey: pkey) :=
+       if Khost = B then
+         Rkey_3: pkey <- cst_pkey
+       else
+         if Khost = A then
+           Rkey_2: pkey <- cst_pkey
+         else
+           Rkey_1: pkey <- cst_pkey
+     ))
+
+
+Applying move all binders
+  - Move assignment to m_6
+  - Move assignment to m_4
+yields
+
+Game 23 is
+     start() :=
+     rkA <-R keyseed;
+     rkB <-R keyseed;
+     return(pkgen2(rkA), pkgen2(rkB));
+     ((
+       foreach i <= NA do
+       cA1(hostB: host) :=
+       a <-R Z;
+       ga: G <- exp(g, a);
+       return(A, hostB, ga);
+       cA3(=A, =hostB, gb_1: G, s_2: signature) :=
+       find j2_4 = j2 <= NK suchthat defined(Kkey[j2], Rkey_1[j2], Khost[j2]) && (Khost[j2] = hostB) then
+       (
+         if Kkey[j2_4] = pkgen2(rkA) then
+           yield
+         else
+           if Kkey[j2_4] = pkgen2(rkB) then
+             yield
+           else
+             m_4: blocksize <- concatB(A, hostB, ga, gb_1);
+             if check(m_4, Kkey[j2_4], s_2) then
+             gab: G <- exp(gb_1, a);
+             kA: D <- h(gab);
+             event endA(A, hostB, ga, gb_1);
+             m_2: blocksize <- concatA(A, hostB, ga, gb_1);
+             r_4 <-R sign_seed;
+             return(sign_r2(m_2, skgen2(rkA), r_4));
+             cA5() :=
+             return(kA)
+       )
+       orfind j2_4 = j2 <= NK suchthat defined(Rkey_2[j2], Khost[j2]) && (Khost[j2] = hostB) then
+         yield
+       orfind j2_4 = j2 <= NK suchthat defined(Rkey_3[j2], Khost[j2]) && (Khost[j2] = hostB) then
+       (
+         m_5: blocksize <- concatB(A, hostB, ga, gb_1);
+         find u_21 = ri_21 <= NB suchthat defined(b[ri_21], gb_2[ri_21], ga_1[ri_21], hostA[ri_21]) && (A = hostA[ri_21]) && (ga = ga_1[ri_21]) && (gb_1 = gb_2[ri_21]) && check2(m_5, pkgen2(rkB), s_2) then
+         gab: G <- exp(g, mult(b[u_21], a));
+         kA: D <- h(gab);
+         event endA(A, hostB, ga, gb_1);
+         m_2: blocksize <- concatA(A, hostB, ga, gb_1);
+         r_6 <-R sign_seed;
+         return(sign_r2(m_2, skgen2(rkA), r_6));
+         cA5() :=
+         keyA: D <- kA
+       )
+     ) | (
+       foreach i_1 <= NB do
+       cB1(hostA: host, =B, ga_1: G) :=
+       b <-R Z;
+       gb_2: G <- exp(g, b);
+       event beginB(hostA, B, ga_1, gb_2);
+       m_3: blocksize <- concatB(hostA, B, ga_1, gb_2);
+       r_3 <-R sign_seed;
+       return(hostA, B, gb_2, sign_r2(m_3, skgen2(rkB), r_3));
+       cB3(s_3: signature) :=
+       find j2_5 = j2_2 <= NK suchthat defined(Kkey[j2_2], Rkey_1[j2_2], Khost[j2_2]) && (Khost[j2_2] = hostA) then
+       (
+         if Kkey[j2_5] = pkgen2(rkA) then
+           yield
+         else
+           if Kkey[j2_5] = pkgen2(rkB) then
+             yield
+           else
+             m_6: blocksize <- concatA(hostA, B, ga_1, gb_2);
+             if check(m_6, Kkey[j2_5], s_3) then
+             gab_1: G <- exp(ga_1, b);
+             kB: D <- h(gab_1);
+             event endB(hostA, B, ga_1, gb_2);
+             return(kB)
+       )
+       orfind j2_5 = j2_2 <= NK suchthat defined(Rkey_2[j2_2], Khost[j2_2]) && (Khost[j2_2] = hostA) then
+       (
+         m1_1: blocksize <- concatA(hostA, B, ga_1, gb_2);
+         find u_3 = ri_3 <= NA suchthat defined(a[ri_3], u_21[ri_3]) && (i_1 = u_21[ri_3]) && check2(m1_1, pkgen2(rkA), s_3) then
+         gab_1: G <- exp(g, mult(a[u_3], b));
+         kB: D <- h(gab_1);
+         event endB(hostA, B, ga_1, gb_2);
+         keyB: D <- kB
+       )
+       orfind j2_5 = j2_2 <= NK suchthat defined(Rkey_3[j2_2], Khost[j2_2]) && (Khost[j2_2] = hostA) then
+         yield
+     ) | (
+       foreach i_2 <= NK do
+       cK(Khost: host, Kkey: pkey) :=
+       if Khost = B then
+         Rkey_3: pkey <- cst_pkey
+       else
+         if Khost = A then
+           Rkey_2: pkey <- cst_pkey
+         else
+           Rkey_1: pkey <- cst_pkey
+     ))
+
+
+Applying equivalence ddh(exp) [probability NA * NB * pDDH(time_3) + Pr[event ev_abort_4 in game 24 with public variables keyB, keyA] + Pr[event ev_abort_3 in game 24 with public variables keyB, keyA] + Pr[event ev_abort_2 in game 24 with public variables keyB, keyA] + Pr[event ev_abort_1 in game 24 with public variables keyB, keyA]]
+  - Equivalence ddh(exp) with variables: a -> a_1, b -> b_1
+yields
+
+Game 24 is
+     start() :=
+     rkA <-R keyseed;
+     rkB <-R keyseed;
+     return(pkgen2(rkA), pkgen2(rkB));
+     ((
+       foreach i <= NA do
+       cA1(hostB: host) :=
+       a_1 <-R Z;
+       a: Z <- cst_Z;
+       ga: G <- exp'(g, a_1);
+       return(A, hostB, ga);
+       cA3(=A, =hostB, gb_1: G, s_2: signature) :=
+       find j2_4 = j2 <= NK suchthat defined(Kkey[j2], Rkey_1[j2], Khost[j2]) && (Khost[j2] = hostB) then
+       (
+         if Kkey[j2_4] = pkgen2(rkA) then
+           yield
+         else
+           if Kkey[j2_4] = pkgen2(rkB) then
+             yield
+           else
+             m_4: blocksize <- concatB(A, hostB, ga, gb_1);
+             if check(m_4, Kkey[j2_4], s_2) then
+             gab: G <- exp(gb_1, {78}(find u_28 = ri_29 <= NA suchthat defined(ca[ri_29]) && {80}(encode_idx_a(ri_29) = encode_idx_a(i)) then event_abort ev_abort_4 orfind u_27 = ri_28 <= NB suchthat defined(ca_2[ri_28], u_3[ri_28]) && {88}(encode_idx_a(u_3[ri_28]) = encode_idx_a(i)) then event_abort ev_abort_3 else ka_1: bool <- cst_bool; a_1));
+             kA: D <- h(gab);
+             event endA(A, hostB, ga, gb_1);
+             m_2: blocksize <- concatA(A, hostB, ga, gb_1);
+             r_4 <-R sign_seed;
+             return(sign_r2(m_2, skgen2(rkA), r_4));
+             cA5() :=
+             return(kA)
+       )
+       orfind j2_4 = j2 <= NK suchthat defined(Rkey_2[j2], Khost[j2]) && (Khost[j2] = hostB) then
+         yield
+       orfind j2_4 = j2 <= NK suchthat defined(Rkey_3[j2], Khost[j2]) && (Khost[j2] = hostB) then
+       (
+         m_5: blocksize <- concatB(A, hostB, ga, gb_1);
+         find u_21 = ri_21 <= NB suchthat defined(b_1[ri_21], gb_2[ri_21], ga_1[ri_21], hostA[ri_21]) && (A = hostA[ri_21]) && (ga = ga_1[ri_21]) && (gb_1 = gb_2[ri_21]) && check2(m_5, pkgen2(rkB), s_2) then
+         gab: G <- (encoded_jb: encoded_nb_t <- encode_idx_b(u_21); {200}find u_29 = ri_30 <= NB suchthat defined(kb[ri_30]) && {202}(encode_idx_b(ri_30) = encode_idx_b(u_21)) then exp'(g, mult(b_1[u_21], a_1)) else {216}find  else {217}find [unique] u_31 = ri_33 <= NA suchthat defined(encoded_jb[ri_33], ca[ri_33]) && {220}((encode_idx_a(ri_33) = encode_idx_a(i)) && (encoded_jb[ri_33] = encode_idx_b(u_21))) then ca[u_31] orfind u_30 = ri_32 <= NB suchthat defined(ca_2[ri_32], encoded_jb_2[ri_32], u_3[ri_32]) && {238}((encode_idx_a(u_3[ri_32]) = encode_idx_a(i)) && (encoded_jb_2[ri_32] = encode_idx_b(u_21))) then ca_2[u_30] else ca <-R G; ca);
+         kA: D <- h(gab);
+         event endA(A, hostB, ga, gb_1);
+         m_2: blocksize <- concatA(A, hostB, ga, gb_1);
+         r_6 <-R sign_seed;
+         return(sign_r2(m_2, skgen2(rkA), r_6));
+         cA5() :=
+         keyA: D <- kA
+       )
+     ) | (
+       foreach i_1 <= NB do
+       cB1(hostA: host, =B, ga_1: G) :=
+       b_1 <-R Z;
+       b: Z <- cst_Z;
+       gb_2: G <- exp'(g, b_1);
+       event beginB(hostA, B, ga_1, gb_2);
+       m_3: blocksize <- concatB(hostA, B, ga_1, gb_2);
+       r_3 <-R sign_seed;
+       return(hostA, B, gb_2, sign_r2(m_3, skgen2(rkB), r_3));
+       cB3(s_3: signature) :=
+       find j2_5 = j2_2 <= NK suchthat defined(Kkey[j2_2], Rkey_1[j2_2], Khost[j2_2]) && (Khost[j2_2] = hostA) then
+       (
+         if Kkey[j2_5] = pkgen2(rkA) then
+           yield
+         else
+           if Kkey[j2_5] = pkgen2(rkB) then
+             yield
+           else
+             m_6: blocksize <- concatA(hostA, B, ga_1, gb_2);
+             if check(m_6, Kkey[j2_5], s_3) then
+             gab_1: G <- exp(ga_1, {397}(find u_23 = ri_23 <= NA suchthat defined(encoded_jb[ri_23], ca[ri_23]) && {400}(encoded_jb[ri_23] = encode_idx_b(i_1)) then event_abort ev_abort_2 orfind u_22 = ri_22 <= NB suchthat defined(encoded_jb_2[ri_22], ca_2[ri_22]) && {408}(encoded_jb_2[ri_22] = encode_idx_b(i_1)) then event_abort ev_abort_1 else kb: bool <- cst_bool; b_1));
+             kB: D <- h(gab_1);
+             event endB(hostA, B, ga_1, gb_2);
+             return(kB)
+       )
+       orfind j2_5 = j2_2 <= NK suchthat defined(Rkey_2[j2_2], Khost[j2_2]) && (Khost[j2_2] = hostA) then
+       (
+         m1_1: blocksize <- concatA(hostA, B, ga_1, gb_2);
+         find u_3 = ri_3 <= NA suchthat defined(a_1[ri_3], u_21[ri_3]) && (i_1 = u_21[ri_3]) && check2(m1_1, pkgen2(rkA), s_3) then
+         gab_1: G <- (encoded_jb_2: encoded_nb_t <- encode_idx_b(i_1); {476}find u_24 = ri_24 <= NB suchthat defined(kb[ri_24]) && {478}(encode_idx_b(ri_24) = encode_idx_b(i_1)) then exp'(g, mult(b_1, a_1[u_3])) else {491}find  else {492}find [unique] u_26 = ri_27 <= NA suchthat defined(encoded_jb[ri_27], ca[ri_27]) && (encode_idx_a(ri_27) = encode_idx_a(u_3)) && (encoded_jb[ri_27] = encode_idx_b(i_1)) then ca[u_26] orfind u_25 = ri_26 <= NB suchthat defined(ca_2[ri_26], encoded_jb_2[ri_26], u_3[ri_26]) && {513}((encode_idx_a(u_3[ri_26]) = encode_idx_a(u_3)) && (encoded_jb_2[ri_26] = encode_idx_b(i_1))) then ca_2[u_25] else ca_2 <-R G; ca_2);
+         kB: D <- h(gab_1);
+         event endB(hostA, B, ga_1, gb_2);
+         keyB: D <- kB
+       )
+       orfind j2_5 = j2_2 <= NK suchthat defined(Rkey_3[j2_2], Khost[j2_2]) && (Khost[j2_2] = hostA) then
+         yield
+     ) | (
+       foreach i_2 <= NK do
+       cK(Khost: host, Kkey: pkey) :=
+       if Khost = B then
+         Rkey_3: pkey <- cst_pkey
+       else
+         if Khost = A then
+           Rkey_2: pkey <- cst_pkey
+         else
+           Rkey_1: pkey <- cst_pkey
+     ))
+
+
+Applying simplify (non-expanded game)
+  - Simplification pass
+    - Replaced (encode_idx_a(u_3[ri_28]) = encode_idx_a(i)) with false at 88
+    - Remove branch 2 in find at 78
+    - Replaced (encode_idx_a(ri_29) = encode_idx_a(i)) with false at 80
+    - Remove branch 1 in find at 78
+    - Find at 78 removed (else branch kept if any)
+    - Replaced (encode_idx_b(ri_30) = encode_idx_b(u_21)) with false at 202
+    - Remove branch 1 in find at 200
+    - Find at 200 removed (else branch kept if any)
+    - Find at 216 removed (else branch kept if any)
+    - Replaced ((encode_idx_a(u_3[ri_32]) = encode_idx_a(i)) && (encoded_jb_2[ri_32] = encode_idx_b(u_21))) with false at 238
+    - Remove branch 2 in find at 217
+    - Replaced ((encode_idx_a(ri_33) = encode_idx_a(i)) && (encoded_jb[ri_33] = encode_idx_b(u_21))) with false at 220
+    - Remove branch 1 in find at 217
+    - Find at 217 removed (else branch kept if any)
+    - Replaced (encoded_jb_2[ri_22] = encode_idx_b(i_1)) with false at 408
+    - Remove branch 2 in find at 397
+    - Replaced (encoded_jb[ri_23] = encode_idx_b(i_1)) with false at 400
+    - Remove branch 1 in find at 397
+    - Find at 397 removed (else branch kept if any)
+    - Replaced (encode_idx_b(ri_24) = encode_idx_b(i_1)) with false at 478
+    - Remove branch 1 in find at 476
+    - Find at 476 removed (else branch kept if any)
+    - Find at 491 removed (else branch kept if any)
+    - Replaced ((encode_idx_a(u_3[ri_26]) = encode_idx_a(u_3)) && (encoded_jb_2[ri_26] = encode_idx_b(i_1))) with false at 513
+    - Remove branch 2 in find at 492
+yields
+
+Game 25 is
+     start() :=
+     rkA <-R keyseed;
+     rkB <-R keyseed;
+     return(pkgen2(rkA), pkgen2(rkB));
+     ((
+       foreach i <= NA do
+       cA1(hostB: host) :=
+       a_1 <-R Z;
+       a: Z <- cst_Z;
+       ga: G <- exp'(g, a_1);
+       return(A, hostB, ga);
+       cA3(=A, =hostB, gb_1: G, s_2: signature) :=
+       find j2_4 = j2 <= NK suchthat defined(Kkey[j2], Rkey_1[j2], Khost[j2]) && (Khost[j2] = hostB) then
+       (
+         if Kkey[j2_4] = pkgen2(rkA) then
+           yield
+         else
+           if Kkey[j2_4] = pkgen2(rkB) then
+             yield
+           else
+             m_4: blocksize <- concatB(A, hostB, ga, gb_1);
+             if check(m_4, Kkey[j2_4], s_2) then
+             gab: G <- exp(gb_1, (ka_1: bool <- cst_bool; a_1));
+             kA: D <- h(gab);
+             event endA(A, hostB, ga, gb_1);
+             m_2: blocksize <- concatA(A, hostB, ga, gb_1);
+             r_4 <-R sign_seed;
+             return(sign_r2(m_2, skgen2(rkA), r_4));
+             cA5() :=
+             return(kA)
+       )
+       orfind j2_4 = j2 <= NK suchthat defined(Rkey_2[j2], Khost[j2]) && (Khost[j2] = hostB) then
+         yield
+       orfind j2_4 = j2 <= NK suchthat defined(Rkey_3[j2], Khost[j2]) && (Khost[j2] = hostB) then
+       (
+         m_5: blocksize <- concatB(A, hostB, ga, gb_1);
+{149}    find u_21 = ri_21 <= NB suchthat defined(b_1[ri_21], gb_2[ri_21], ga_1[ri_21], hostA[ri_21]) && (A = hostA[ri_21]) && (ga = ga_1[ri_21]) && (gb_1 = gb_2[ri_21]) && check2(m_5, pkgen2(rkB), s_2) then
+         gab: G <- (encoded_jb: encoded_nb_t <- encode_idx_b(u_21); ca <-R G; ca);
+         kA: D <- h(gab);
+         event endA(A, hostB, ga, gb_1);
+         m_2: blocksize <- concatA(A, hostB, ga, gb_1);
+         r_6 <-R sign_seed;
+         return(sign_r2(m_2, skgen2(rkA), r_6));
+         cA5() :=
+         keyA: D <- kA
+       )
+     ) | (
+       foreach i_1 <= NB do
+       cB1(hostA: host, =B, ga_1: G) :=
+       b_1 <-R Z;
+       b: Z <- cst_Z;
+       gb_2: G <- exp'(g, b_1);
+       event beginB(hostA, B, ga_1, gb_2);
+       m_3: blocksize <- concatB(hostA, B, ga_1, gb_2);
+       r_3 <-R sign_seed;
+       return(hostA, B, gb_2, sign_r2(m_3, skgen2(rkB), r_3));
+       cB3(s_3: signature) :=
+       find j2_5 = j2_2 <= NK suchthat defined(Kkey[j2_2], Rkey_1[j2_2], Khost[j2_2]) && (Khost[j2_2] = hostA) then
+       (
+         if Kkey[j2_5] = pkgen2(rkA) then
+           yield
+         else
+           if Kkey[j2_5] = pkgen2(rkB) then
+             yield
+           else
+             m_6: blocksize <- concatA(hostA, B, ga_1, gb_2);
+             if check(m_6, Kkey[j2_5], s_3) then
+             gab_1: G <- exp(ga_1, (kb: bool <- cst_bool; b_1));
+             kB: D <- h(gab_1);
+             event endB(hostA, B, ga_1, gb_2);
+             return(kB)
+       )
+       orfind j2_5 = j2_2 <= NK suchthat defined(Rkey_2[j2_2], Khost[j2_2]) && (Khost[j2_2] = hostA) then
+       (
+         m1_1: blocksize <- concatA(hostA, B, ga_1, gb_2);
+{369}    find u_3 = ri_3 <= NA suchthat defined(a_1[ri_3], u_21[ri_3]) && (i_1 = u_21[ri_3]) && check2(m1_1, pkgen2(rkA), s_3) then
+         gab_1: G <- (encoded_jb_2: encoded_nb_t <- encode_idx_b(i_1); find [unique] u_26 = ri_27 <= NA suchthat defined(encoded_jb[ri_27], ca[ri_27]) && (encode_idx_a(ri_27) = encode_idx_a(u_3)) && (encoded_jb[ri_27] = encode_idx_b(i_1)) then ca[u_26] else ca_2 <-R G; ca_2);
+         kB: D <- h(gab_1);
+         event endB(hostA, B, ga_1, gb_2);
+         keyB: D <- kB
+       )
+       orfind j2_5 = j2_2 <= NK suchthat defined(Rkey_3[j2_2], Khost[j2_2]) && (Khost[j2_2] = hostA) then
+         yield
+     ) | (
+       foreach i_2 <= NK do
+       cK(Khost: host, Kkey: pkey) :=
+       if Khost = B then
+         Rkey_3: pkey <- cst_pkey
+       else
+         if Khost = A then
+           Rkey_2: pkey <- cst_pkey
+         else
+           Rkey_1: pkey <- cst_pkey
+     ))
+
+
+Applying expand
+  - Expand if/find/let
+    - Replaced defined condition a_1[ri_3], u_21[ri_3] with u_21[ri_3] in find at 369
+    - Replaced defined condition b_1[ri_21], gb_2[ri_21], ga_1[ri_21], hostA[ri_21] with gb_2[ri_21], ga_1[ri_21], hostA[ri_21] in find at 149
+yields
+
+Game 26 is
+     start() :=
+     rkA <-R keyseed;
+     rkB <-R keyseed;
+     return(pkgen2(rkA), pkgen2(rkB));
+     ((
+       foreach i <= NA do
+       cA1(hostB: host) :=
+       a_1 <-R Z;
+       a: Z <- cst_Z;
+       ga: G <- exp'(g, a_1);
+       return(A, hostB, ga);
+       cA3(=A, =hostB, gb_1: G, s_2: signature) :=
+       find j2_4 = j2 <= NK suchthat defined(Kkey[j2], Rkey_1[j2], Khost[j2]) && (Khost[j2] = hostB) then
+       (
+         if Kkey[j2_4] = pkgen2(rkA) then
+           yield
+         else
+           if Kkey[j2_4] = pkgen2(rkB) then
+             yield
+           else
+             m_4: blocksize <- concatB(A, hostB, ga, gb_1);
+             if check(m_4, Kkey[j2_4], s_2) then
+             ka_1: bool <- cst_bool;
+             gab: G <- exp(gb_1, a_1);
+             kA: D <- h(gab);
+             event endA(A, hostB, ga, gb_1);
+             m_2: blocksize <- concatA(A, hostB, ga, gb_1);
+             r_4 <-R sign_seed;
+             return(sign_r2(m_2, skgen2(rkA), r_4));
+             cA5() :=
+             return(kA)
+       )
+       orfind j2_4 = j2 <= NK suchthat defined(Rkey_2[j2], Khost[j2]) && (Khost[j2] = hostB) then
+         yield
+       orfind j2_4 = j2 <= NK suchthat defined(Rkey_3[j2], Khost[j2]) && (Khost[j2] = hostB) then
+       (
+         m_5: blocksize <- concatB(A, hostB, ga, gb_1);
+         find u_21 = ri_21 <= NB suchthat defined(gb_2[ri_21], ga_1[ri_21], hostA[ri_21]) && (A = hostA[ri_21]) && (ga = ga_1[ri_21]) && (gb_1 = gb_2[ri_21]) && check2(m_5, pkgen2(rkB), s_2) then
+         encoded_jb: encoded_nb_t <- encode_idx_b(u_21);
+         ca <-R G;
+         gab: G <- ca;
+         kA: D <- h(gab);
+         event endA(A, hostB, ga, gb_1);
+         m_2: blocksize <- concatA(A, hostB, ga, gb_1);
+         r_6 <-R sign_seed;
+         return(sign_r2(m_2, skgen2(rkA), r_6));
+         cA5() :=
+         keyA: D <- kA
+       )
+     ) | (
+       foreach i_1 <= NB do
+       cB1(hostA: host, =B, ga_1: G) :=
+       b_1 <-R Z;
+       b: Z <- cst_Z;
+       gb_2: G <- exp'(g, b_1);
+       event beginB(hostA, B, ga_1, gb_2);
+       m_3: blocksize <- concatB(hostA, B, ga_1, gb_2);
+       r_3 <-R sign_seed;
+       return(hostA, B, gb_2, sign_r2(m_3, skgen2(rkB), r_3));
+       cB3(s_3: signature) :=
+       find j2_5 = j2_2 <= NK suchthat defined(Kkey[j2_2], Rkey_1[j2_2], Khost[j2_2]) && (Khost[j2_2] = hostA) then
+       (
+         if Kkey[j2_5] = pkgen2(rkA) then
+           yield
+         else
+           if Kkey[j2_5] = pkgen2(rkB) then
+             yield
+           else
+             m_6: blocksize <- concatA(hostA, B, ga_1, gb_2);
+             if check(m_6, Kkey[j2_5], s_3) then
+             kb: bool <- cst_bool;
+             gab_1: G <- exp(ga_1, b_1);
+             kB: D <- h(gab_1);
+             event endB(hostA, B, ga_1, gb_2);
+             return(kB)
+       )
+       orfind j2_5 = j2_2 <= NK suchthat defined(Rkey_2[j2_2], Khost[j2_2]) && (Khost[j2_2] = hostA) then
+       (
+         m1_1: blocksize <- concatA(hostA, B, ga_1, gb_2);
+         find u_3 = ri_3 <= NA suchthat defined(u_21[ri_3]) && (i_1 = u_21[ri_3]) && check2(m1_1, pkgen2(rkA), s_3) then
+         encoded_jb_2: encoded_nb_t <- encode_idx_b(i_1);
+         find [unique] u_26 = ri_27 <= NA suchthat defined(encoded_jb[ri_27], ca[ri_27]) && (encode_idx_a(ri_27) = encode_idx_a(u_3)) && (encoded_jb[ri_27] = encode_idx_b(i_1)) then
+           gab_1: G <- ca[u_26];
+           kB: D <- h(gab_1);
+           event endB(hostA, B, ga_1, gb_2);
+           keyB: D <- kB
+         else
+           ca_2 <-R G;
+           gab_1: G <- ca_2;
+           kB: D <- h(gab_1);
+           event endB(hostA, B, ga_1, gb_2);
+           keyB: D <- kB
+       )
+       orfind j2_5 = j2_2 <= NK suchthat defined(Rkey_3[j2_2], Khost[j2_2]) && (Khost[j2_2] = hostA) then
+         yield
+     ) | (
+       foreach i_2 <= NK do
+       cK(Khost: host, Kkey: pkey) :=
+       if Khost = B then
+         Rkey_3: pkey <- cst_pkey
+       else
+         if Khost = A then
+           Rkey_2: pkey <- cst_pkey
+         else
+           Rkey_1: pkey <- cst_pkey
+     ))
+
+
+Applying remove assignments of findcond
+  - Remove assignments on b (definition removed, all usages removed)
+  - Remove assignments on kb (definition removed, all usages removed)
+  - Remove assignments on encoded_jb_2 (definition removed, all usages removed)
+  - Remove assignments on gab_1 (definition removed, all usages removed)
+  - Remove assignments on gab_1 (definition removed, all usages removed)
+  - Remove assignments on a (definition removed, all usages removed)
+  - Remove assignments on ka_1 (definition removed, all usages removed)
+  - Remove assignments on gab (definition removed, all usages removed)
+yields
+
+Game 27 is
+     start() :=
+     rkA <-R keyseed;
+     rkB <-R keyseed;
+     return(pkgen2(rkA), pkgen2(rkB));
+     ((
+       foreach i <= NA do
+       cA1(hostB: host) :=
+       a_1 <-R Z;
+       ga: G <- exp'(g, a_1);
+       return(A, hostB, ga);
+       cA3(=A, =hostB, gb_1: G, s_2: signature) :=
+       find j2_4 = j2 <= NK suchthat defined(Kkey[j2], Rkey_1[j2], Khost[j2]) && (Khost[j2] = hostB) then
+       (
+         if Kkey[j2_4] = pkgen2(rkA) then
+           yield
+         else
+           if Kkey[j2_4] = pkgen2(rkB) then
+             yield
+           else
+             m_4: blocksize <- concatB(A, hostB, ga, gb_1);
+             if check(m_4, Kkey[j2_4], s_2) then
+             gab: G <- exp(gb_1, a_1);
+             kA: D <- h(gab);
+             event endA(A, hostB, ga, gb_1);
+             m_2: blocksize <- concatA(A, hostB, ga, gb_1);
+             r_4 <-R sign_seed;
+             return(sign_r2(m_2, skgen2(rkA), r_4));
+             cA5() :=
+             return(kA)
+       )
+       orfind j2_4 = j2 <= NK suchthat defined(Rkey_2[j2], Khost[j2]) && (Khost[j2] = hostB) then
+         yield
+       orfind j2_4 = j2 <= NK suchthat defined(Rkey_3[j2], Khost[j2]) && (Khost[j2] = hostB) then
+       (
+         m_5: blocksize <- concatB(A, hostB, ga, gb_1);
+         find u_21 = ri_21 <= NB suchthat defined(gb_2[ri_21], ga_1[ri_21], hostA[ri_21]) && (A = hostA[ri_21]) && (ga = ga_1[ri_21]) && (gb_1 = gb_2[ri_21]) && check2(m_5, pkgen2(rkB), s_2) then
+         encoded_jb: encoded_nb_t <- encode_idx_b(u_21);
+         ca <-R G;
+         kA: D <- h(ca);
+         event endA(A, hostB, ga, gb_1);
+         m_2: blocksize <- concatA(A, hostB, ga, gb_1);
+         r_6 <-R sign_seed;
+         return(sign_r2(m_2, skgen2(rkA), r_6));
+         cA5() :=
+         keyA: D <- kA
+       )
+     ) | (
+       foreach i_1 <= NB do
+       cB1(hostA: host, =B, ga_1: G) :=
+       b_1 <-R Z;
+       gb_2: G <- exp'(g, b_1);
+       event beginB(hostA, B, ga_1, gb_2);
+       m_3: blocksize <- concatB(hostA, B, ga_1, gb_2);
+       r_3 <-R sign_seed;
+       return(hostA, B, gb_2, sign_r2(m_3, skgen2(rkB), r_3));
+       cB3(s_3: signature) :=
+       find j2_5 = j2_2 <= NK suchthat defined(Kkey[j2_2], Rkey_1[j2_2], Khost[j2_2]) && (Khost[j2_2] = hostA) then
+       (
+         if Kkey[j2_5] = pkgen2(rkA) then
+           yield
+         else
+           if Kkey[j2_5] = pkgen2(rkB) then
+             yield
+           else
+             m_6: blocksize <- concatA(hostA, B, ga_1, gb_2);
+             if check(m_6, Kkey[j2_5], s_3) then
+             gab_1: G <- exp(ga_1, b_1);
+             kB: D <- h(gab_1);
+             event endB(hostA, B, ga_1, gb_2);
+             return(kB)
+       )
+       orfind j2_5 = j2_2 <= NK suchthat defined(Rkey_2[j2_2], Khost[j2_2]) && (Khost[j2_2] = hostA) then
+       (
+         m1_1: blocksize <- concatA(hostA, B, ga_1, gb_2);
+{356}    find u_3 = ri_3 <= NA suchthat defined(u_21[ri_3]) && (i_1 = u_21[ri_3]) && check2(m1_1, pkgen2(rkA), s_3) then
+{370}    find [unique] u_26 = ri_27 <= NA suchthat defined(encoded_jb[ri_27], ca[ri_27]) && {373}((encode_idx_a(ri_27) = encode_idx_a(u_3)) && (encoded_jb[ri_27] = encode_idx_b(i_1))) then
+           kB: D <- h(ca[u_26]);
+           event endB(hostA, B, ga_1, gb_2);
+           keyB: D <- kB
+         else
+           ca_2 <-R G;
+           kB: D <- h(ca_2);
+           event endB(hostA, B, ga_1, gb_2);
+           keyB: D <- kB
+       )
+       orfind j2_5 = j2_2 <= NK suchthat defined(Rkey_3[j2_2], Khost[j2_2]) && (Khost[j2_2] = hostA) then
+         yield
+     ) | (
+       foreach i_2 <= NK do
+       cK(Khost: host, Kkey: pkey) :=
+       if Khost = B then
+         Rkey_3: pkey <- cst_pkey
+       else
+         if Khost = A then
+           Rkey_2: pkey <- cst_pkey
+         else
+           Rkey_1: pkey <- cst_pkey
+     ))
+
+
+Applying simplify
+  - Simplification pass
+    - Remove else branch of find at 370
+    - Replaced ((encode_idx_a(ri_27) = encode_idx_a(u_3)) && (encoded_jb[ri_27] = encode_idx_b(i_1))) with (ri_27 = u_3) at 373
+    - In branch 1 of find at 370, substituting u_26 with u_3
+    - Replaced defined condition encoded_jb[ri_27], ca[ri_27] with an empty condition in find at 370
+    - A single branch always succeeds in find at 370
+    - Replaced defined condition u_21[ri_3] with ca[ri_3], u_21[ri_3] in find at 356
+yields
+
+Game 28 is
+     start() :=
+     rkA <-R keyseed;
+     rkB <-R keyseed;
+     return(pkgen2(rkA), pkgen2(rkB));
+     ((
+       foreach i <= NA do
+       cA1(hostB: host) :=
+       a_1 <-R Z;
+       ga: G <- exp'(g, a_1);
+       return(A, hostB, ga);
+       cA3(=A, =hostB, gb_1: G, s_2: signature) :=
+       find j2_4 = j2 <= NK suchthat defined(Kkey[j2], Rkey_1[j2], Khost[j2]) && (Khost[j2] = hostB) then
+       (
+         if Kkey[j2_4] = pkgen2(rkA) then
+           yield
+         else
+           if Kkey[j2_4] = pkgen2(rkB) then
+             yield
+           else
+             m_4: blocksize <- concatB(A, hostB, ga, gb_1);
+             if check(m_4, Kkey[j2_4], s_2) then
+             gab: G <- exp(gb_1, a_1);
+             kA: D <- h(gab);
+             event endA(A, hostB, ga, gb_1);
+             m_2: blocksize <- concatA(A, hostB, ga, gb_1);
+             r_4 <-R sign_seed;
+             return(sign_r2(m_2, skgen2(rkA), r_4));
+             cA5() :=
+             return(kA)
+       )
+       orfind j2_4 = j2 <= NK suchthat defined(Rkey_2[j2], Khost[j2]) && (Khost[j2] = hostB) then
+         yield
+       orfind j2_4 = j2 <= NK suchthat defined(Rkey_3[j2], Khost[j2]) && (Khost[j2] = hostB) then
+       (
+         m_5: blocksize <- concatB(A, hostB, ga, gb_1);
+         find u_21 = ri_21 <= NB suchthat defined(gb_2[ri_21], ga_1[ri_21], hostA[ri_21]) && (A = hostA[ri_21]) && (ga = ga_1[ri_21]) && (gb_1 = gb_2[ri_21]) && check2(m_5, pkgen2(rkB), s_2) then
+         encoded_jb: encoded_nb_t <- encode_idx_b(u_21);
+         ca <-R G;
+         kA: D <- h(ca);
+         event endA(A, hostB, ga, gb_1);
+         m_2: blocksize <- concatA(A, hostB, ga, gb_1);
+         r_6 <-R sign_seed;
+         return(sign_r2(m_2, skgen2(rkA), r_6));
+         cA5() :=
+         keyA: D <- kA
+       )
+     ) | (
+       foreach i_1 <= NB do
+       cB1(hostA: host, =B, ga_1: G) :=
+       b_1 <-R Z;
+       gb_2: G <- exp'(g, b_1);
+       event beginB(hostA, B, ga_1, gb_2);
+       m_3: blocksize <- concatB(hostA, B, ga_1, gb_2);
+       r_3 <-R sign_seed;
+       return(hostA, B, gb_2, sign_r2(m_3, skgen2(rkB), r_3));
+       cB3(s_3: signature) :=
+       find j2_5 = j2_2 <= NK suchthat defined(Kkey[j2_2], Rkey_1[j2_2], Khost[j2_2]) && (Khost[j2_2] = hostA) then
+       (
+         if Kkey[j2_5] = pkgen2(rkA) then
+           yield
+         else
+           if Kkey[j2_5] = pkgen2(rkB) then
+             yield
+           else
+             m_6: blocksize <- concatA(hostA, B, ga_1, gb_2);
+             if check(m_6, Kkey[j2_5], s_3) then
+             gab_1: G <- exp(ga_1, b_1);
+             kB: D <- h(gab_1);
+             event endB(hostA, B, ga_1, gb_2);
+             return(kB)
+       )
+       orfind j2_5 = j2_2 <= NK suchthat defined(Rkey_2[j2_2], Khost[j2_2]) && (Khost[j2_2] = hostA) then
+       (
+         m1_1: blocksize <- concatA(hostA, B, ga_1, gb_2);
+         find u_3 = ri_3 <= NA suchthat defined(ca[ri_3], u_21[ri_3]) && (i_1 = u_21[ri_3]) && check2(m1_1, pkgen2(rkA), s_3) then
+         u_26 <= NA <- u_3;
+         kB: D <- h(ca[u_3]);
+         event endB(hostA, B, ga_1, gb_2);
+         keyB: D <- kB
+       )
+       orfind j2_5 = j2_2 <= NK suchthat defined(Rkey_3[j2_2], Khost[j2_2]) && (Khost[j2_2] = hostA) then
+         yield
+     ) | (
+       foreach i_2 <= NK do
+       cK(Khost: host, Kkey: pkey) :=
+       if Khost = B then
+         Rkey_3: pkey <- cst_pkey
+       else
+         if Khost = A then
+           Rkey_2: pkey <- cst_pkey
+         else
+           Rkey_1: pkey <- cst_pkey
+     ))
+
+
+Applying SA rename new without array accesses and remove assignments of findcond
+  - Remove assignments on u_26 (definition removed, all usages removed)
+  - Remove assignments on encoded_jb (definition removed, all usages removed)
+yields
+
+Game 29 is
+     start() :=
+     rkA <-R keyseed;
+     rkB <-R keyseed;
+     return(pkgen2(rkA), pkgen2(rkB));
+     ((
+       foreach i <= NA do
+       cA1(hostB: host) :=
+       a_1 <-R Z;
+       ga: G <- exp'(g, a_1);
+       return(A, hostB, ga);
+       cA3(=A, =hostB, gb_1: G, s_2: signature) :=
+       find j2_4 = j2 <= NK suchthat defined(Kkey[j2], Rkey_1[j2], Khost[j2]) && (Khost[j2] = hostB) then
+       (
+         if Kkey[j2_4] = pkgen2(rkA) then
+           yield
+         else
+           if Kkey[j2_4] = pkgen2(rkB) then
+             yield
+           else
+             m_4: blocksize <- concatB(A, hostB, ga, gb_1);
+             if check(m_4, Kkey[j2_4], s_2) then
+             gab: G <- exp(gb_1, a_1);
+             kA: D <- h(gab);
+             event endA(A, hostB, ga, gb_1);
+             m_2: blocksize <- concatA(A, hostB, ga, gb_1);
+             r_4 <-R sign_seed;
+             return(sign_r2(m_2, skgen2(rkA), r_4));
+             cA5() :=
+             return(kA)
+       )
+       orfind j2_4 = j2 <= NK suchthat defined(Rkey_2[j2], Khost[j2]) && (Khost[j2] = hostB) then
+         yield
+       orfind j2_4 = j2 <= NK suchthat defined(Rkey_3[j2], Khost[j2]) && (Khost[j2] = hostB) then
+       (
+         m_5: blocksize <- concatB(A, hostB, ga, gb_1);
+         find u_21 = ri_21 <= NB suchthat defined(gb_2[ri_21], ga_1[ri_21], hostA[ri_21]) && (A = hostA[ri_21]) && (ga = ga_1[ri_21]) && (gb_1 = gb_2[ri_21]) && check2(m_5, pkgen2(rkB), s_2) then
+         ca <-R G;
+         kA: D <- h(ca);
+         event endA(A, hostB, ga, gb_1);
+         m_2: blocksize <- concatA(A, hostB, ga, gb_1);
+         r_6 <-R sign_seed;
+         return(sign_r2(m_2, skgen2(rkA), r_6));
+         cA5() :=
+         keyA: D <- kA
+       )
+     ) | (
+       foreach i_1 <= NB do
+       cB1(hostA: host, =B, ga_1: G) :=
+       b_1 <-R Z;
+       gb_2: G <- exp'(g, b_1);
+       event beginB(hostA, B, ga_1, gb_2);
+       m_3: blocksize <- concatB(hostA, B, ga_1, gb_2);
+       r_3 <-R sign_seed;
+       return(hostA, B, gb_2, sign_r2(m_3, skgen2(rkB), r_3));
+       cB3(s_3: signature) :=
+       find j2_5 = j2_2 <= NK suchthat defined(Kkey[j2_2], Rkey_1[j2_2], Khost[j2_2]) && (Khost[j2_2] = hostA) then
+       (
+         if Kkey[j2_5] = pkgen2(rkA) then
+           yield
+         else
+           if Kkey[j2_5] = pkgen2(rkB) then
+             yield
+           else
+             m_6: blocksize <- concatA(hostA, B, ga_1, gb_2);
+             if check(m_6, Kkey[j2_5], s_3) then
+             gab_1: G <- exp(ga_1, b_1);
+             kB: D <- h(gab_1);
+             event endB(hostA, B, ga_1, gb_2);
+             return(kB)
+       )
+       orfind j2_5 = j2_2 <= NK suchthat defined(Rkey_2[j2_2], Khost[j2_2]) && (Khost[j2_2] = hostA) then
+       (
+         m1_1: blocksize <- concatA(hostA, B, ga_1, gb_2);
+         find u_3 = ri_3 <= NA suchthat defined(ca[ri_3], u_21[ri_3]) && (i_1 = u_21[ri_3]) && check2(m1_1, pkgen2(rkA), s_3) then
+         kB: D <- h(ca[u_3]);
+         event endB(hostA, B, ga_1, gb_2);
+         keyB: D <- kB
+       )
+       orfind j2_5 = j2_2 <= NK suchthat defined(Rkey_3[j2_2], Khost[j2_2]) && (Khost[j2_2] = hostA) then
+         yield
+     ) | (
+       foreach i_2 <= NK do
+       cK(Khost: host, Kkey: pkey) :=
+       if Khost = B then
+         Rkey_3: pkey <- cst_pkey
+       else
+         if Khost = A then
+           Rkey_2: pkey <- cst_pkey
+         else
+           Rkey_1: pkey <- cst_pkey
+     ))
+
+
+Proved event(ev_abort_4) ==> false with public variables keyB, keyA in game 29
+Proved event(ev_abort_3) ==> false with public variables keyB, keyA in game 29
+Proved event(ev_abort_2) ==> false with public variables keyB, keyA in game 29
+Proved event(ev_abort_1) ==> false with public variables keyB, keyA in game 29
+Proved forall y, x: G; inj-event(endB(A, B, x, y)) ==> inj-event(endA(A, B, x, y)) with public variables keyA, keyB in game 29
+Proved forall y, x: G; inj-event(endA(A, B, x, y)) ==> inj-event(beginB(A, B, x, y)) with public variables keyA, keyB in game 29 up to probability NA^2 * PCollKey1
+
+Applying equivalence equiv
+  foreach i <= N do x <-R G; OH() := return(h(x))
+<=(N * pH(time + (N - 1) * time(h)))=>
+  foreach i <= N do X <-R D; OH() := return(X)
+ [probability NA * pH(time_4)]
+  - Equivalence equiv
+  foreach i <= N do x <-R G; OH() := return(h(x))
+<=(N * pH(time + (N - 1) * time(h)))=>
+  foreach i <= N do X <-R D; OH() := return(X)
+ with variables: ca -> x
+yields
+
+Game 30 is
+     start() :=
+     rkA <-R keyseed;
+     rkB <-R keyseed;
+     return(pkgen2(rkA), pkgen2(rkB));
+     ((
+       foreach i <= NA do
+       cA1(hostB: host) :=
+       a_1 <-R Z;
+       ga: G <- exp'(g, a_1);
+       return(A, hostB, ga);
+       cA3(=A, =hostB, gb_1: G, s_2: signature) :=
+       find j2_4 = j2 <= NK suchthat defined(Kkey[j2], Rkey_1[j2], Khost[j2]) && (Khost[j2] = hostB) then
+       (
+         if Kkey[j2_4] = pkgen2(rkA) then
+           yield
+         else
+           if Kkey[j2_4] = pkgen2(rkB) then
+             yield
+           else
+             m_4: blocksize <- concatB(A, hostB, ga, gb_1);
+             if check(m_4, Kkey[j2_4], s_2) then
+             gab: G <- exp(gb_1, a_1);
+             kA: D <- h(gab);
+             event endA(A, hostB, ga, gb_1);
+             m_2: blocksize <- concatA(A, hostB, ga, gb_1);
+             r_4 <-R sign_seed;
+             return(sign_r2(m_2, skgen2(rkA), r_4));
+             cA5() :=
+             return(kA)
+       )
+       orfind j2_4 = j2 <= NK suchthat defined(Rkey_2[j2], Khost[j2]) && (Khost[j2] = hostB) then
+         yield
+       orfind j2_4 = j2 <= NK suchthat defined(Rkey_3[j2], Khost[j2]) && (Khost[j2] = hostB) then
+       (
+         m_5: blocksize <- concatB(A, hostB, ga, gb_1);
+         find u_21 = ri_21 <= NB suchthat defined(gb_2[ri_21], ga_1[ri_21], hostA[ri_21]) && (A = hostA[ri_21]) && (ga = ga_1[ri_21]) && (gb_1 = gb_2[ri_21]) && check2(m_5, pkgen2(rkB), s_2) then
+         X <-R D;
+         ca: G <- cst_G;
+         kA: D <- X;
+         event endA(A, hostB, ga, gb_1);
+         m_2: blocksize <- concatA(A, hostB, ga, gb_1);
+         r_6 <-R sign_seed;
+         return(sign_r2(m_2, skgen2(rkA), r_6));
+         cA5() :=
+         keyA: D <- kA
+       )
+     ) | (
+       foreach i_1 <= NB do
+       cB1(hostA: host, =B, ga_1: G) :=
+       b_1 <-R Z;
+       gb_2: G <- exp'(g, b_1);
+       event beginB(hostA, B, ga_1, gb_2);
+       m_3: blocksize <- concatB(hostA, B, ga_1, gb_2);
+       r_3 <-R sign_seed;
+       return(hostA, B, gb_2, sign_r2(m_3, skgen2(rkB), r_3));
+       cB3(s_3: signature) :=
+       find j2_5 = j2_2 <= NK suchthat defined(Kkey[j2_2], Rkey_1[j2_2], Khost[j2_2]) && (Khost[j2_2] = hostA) then
+       (
+         if Kkey[j2_5] = pkgen2(rkA) then
+           yield
+         else
+           if Kkey[j2_5] = pkgen2(rkB) then
+             yield
+           else
+             m_6: blocksize <- concatA(hostA, B, ga_1, gb_2);
+             if check(m_6, Kkey[j2_5], s_3) then
+             gab_1: G <- exp(ga_1, b_1);
+             kB: D <- h(gab_1);
+             event endB(hostA, B, ga_1, gb_2);
+             return(kB)
+       )
+       orfind j2_5 = j2_2 <= NK suchthat defined(Rkey_2[j2_2], Khost[j2_2]) && (Khost[j2_2] = hostA) then
+       (
+         m1_1: blocksize <- concatA(hostA, B, ga_1, gb_2);
+         find u_3 = ri_3 <= NA suchthat defined(X[ri_3], u_21[ri_3]) && (i_1 = u_21[ri_3]) && check2(m1_1, pkgen2(rkA), s_3) then
+         kB: D <- X[u_3];
+         event endB(hostA, B, ga_1, gb_2);
+         keyB: D <- kB
+       )
+       orfind j2_5 = j2_2 <= NK suchthat defined(Rkey_3[j2_2], Khost[j2_2]) && (Khost[j2_2] = hostA) then
+         yield
+     ) | (
+       foreach i_2 <= NK do
+       cK(Khost: host, Kkey: pkey) :=
+       if Khost = B then
+         Rkey_3: pkey <- cst_pkey
+       else
+         if Khost = A then
+           Rkey_2: pkey <- cst_pkey
+         else
+           Rkey_1: pkey <- cst_pkey
+     ))
+
+
+Applying remove assignments of findcond
+  - Remove assignments on kB (definition removed, all usages removed)
+  - Remove assignments on ca (definition removed, all usages removed)
+  - Remove assignments on kA (definition removed, all usages removed)
+yields
+
+Game 31 is
+     start() :=
+     rkA <-R keyseed;
+     rkB <-R keyseed;
+     return(pkgen2(rkA), pkgen2(rkB));
+     ((
+       foreach i <= NA do
+       cA1(hostB: host) :=
+       a_1 <-R Z;
+       ga: G <- exp'(g, a_1);
+       return(A, hostB, ga);
+       cA3(=A, =hostB, gb_1: G, s_2: signature) :=
+       find j2_4 = j2 <= NK suchthat defined(Kkey[j2], Rkey_1[j2], Khost[j2]) && (Khost[j2] = hostB) then
+       (
+         if Kkey[j2_4] = pkgen2(rkA) then
+           yield
+         else
+           if Kkey[j2_4] = pkgen2(rkB) then
+             yield
+           else
+             m_4: blocksize <- concatB(A, hostB, ga, gb_1);
+             if check(m_4, Kkey[j2_4], s_2) then
+             gab: G <- exp(gb_1, a_1);
+             kA: D <- h(gab);
+ {82}        event endA(A, hostB, ga, gb_1);
+             m_2: blocksize <- concatA(A, hostB, ga, gb_1);
+             r_4 <-R sign_seed;
+             return(sign_r2(m_2, skgen2(rkA), r_4));
+             cA5() :=
+             return(kA)
+       )
+       orfind j2_4 = j2 <= NK suchthat defined(Rkey_2[j2], Khost[j2]) && (Khost[j2] = hostB) then
+         yield
+       orfind j2_4 = j2 <= NK suchthat defined(Rkey_3[j2], Khost[j2]) && (Khost[j2] = hostB) then
+       (
+         m_5: blocksize <- concatB(A, hostB, ga, gb_1);
+         find u_21 = ri_21 <= NB suchthat defined(gb_2[ri_21], ga_1[ri_21], hostA[ri_21]) && (A = hostA[ri_21]) && (ga = ga_1[ri_21]) && (gb_1 = gb_2[ri_21]) && check2(m_5, pkgen2(rkB), s_2) then
+         X <-R D;
+{174}    event endA(A, hostB, ga, gb_1);
+         m_2: blocksize <- concatA(A, hostB, ga, gb_1);
+         r_6 <-R sign_seed;
+         return(sign_r2(m_2, skgen2(rkA), r_6));
+         cA5() :=
+         keyA: D <- X
+       )
+     ) | (
+       foreach i_1 <= NB do
+       cB1(hostA: host, =B, ga_1: G) :=
+       b_1 <-R Z;
+       gb_2: G <- exp'(g, b_1);
+{223}  event beginB(hostA, B, ga_1, gb_2);
+       m_3: blocksize <- concatB(hostA, B, ga_1, gb_2);
+       r_3 <-R sign_seed;
+       return(hostA, B, gb_2, sign_r2(m_3, skgen2(rkB), r_3));
+       cB3(s_3: signature) :=
+       find j2_5 = j2_2 <= NK suchthat defined(Kkey[j2_2], Rkey_1[j2_2], Khost[j2_2]) && (Khost[j2_2] = hostA) then
+       (
+         if Kkey[j2_5] = pkgen2(rkA) then
+           yield
+         else
+           if Kkey[j2_5] = pkgen2(rkB) then
+             yield
+           else
+             m_6: blocksize <- concatA(hostA, B, ga_1, gb_2);
+             if check(m_6, Kkey[j2_5], s_3) then
+             gab_1: G <- exp(ga_1, b_1);
+             kB: D <- h(gab_1);
+{311}        event endB(hostA, B, ga_1, gb_2);
+             return(kB)
+       )
+       orfind j2_5 = j2_2 <= NK suchthat defined(Rkey_2[j2_2], Khost[j2_2]) && (Khost[j2_2] = hostA) then
+       (
+         m1_1: blocksize <- concatA(hostA, B, ga_1, gb_2);
+         find u_3 = ri_3 <= NA suchthat defined(X[ri_3], u_21[ri_3]) && (i_1 = u_21[ri_3]) && check2(m1_1, pkgen2(rkA), s_3) then
+{361}    event endB(hostA, B, ga_1, gb_2);
+         keyB: D <- X[u_3]
+       )
+       orfind j2_5 = j2_2 <= NK suchthat defined(Rkey_3[j2_2], Khost[j2_2]) && (Khost[j2_2] = hostA) then
+         yield
+     ) | (
+       foreach i_2 <= NK do
+       cK(Khost: host, Kkey: pkey) :=
+       if Khost = B then
+         Rkey_3: pkey <- cst_pkey
+       else
+         if Khost = A then
+           Rkey_2: pkey <- cst_pkey
+         else
+           Rkey_1: pkey <- cst_pkey
+     ))
+
+
+Applying simplify
+  - Simplification pass
+    - Removed event at 223 (no longer used in queries)
+    - Removed event at 361 (no longer used in queries)
+    - Removed event at 311 (no longer used in queries)
+    - Removed event at 174 (no longer used in queries)
+    - Removed event at 82 (no longer used in queries)
+yields
+
+Game 32 is
+     start() :=
+     rkA <-R keyseed;
+     rkB <-R keyseed;
+     return(pkgen2(rkA), pkgen2(rkB));
+     ((
+       foreach i <= NA do
+       cA1(hostB: host) :=
+       a_1 <-R Z;
+       ga: G <- exp'(g, a_1);
+       return(A, hostB, ga);
+       cA3(=A, =hostB, gb_1: G, s_2: signature) :=
+       find j2_4 = j2 <= NK suchthat defined(Kkey[j2], Rkey_1[j2], Khost[j2]) && (Khost[j2] = hostB) then
+       (
+         if Kkey[j2_4] = pkgen2(rkA) then
+           yield
+         else
+           if Kkey[j2_4] = pkgen2(rkB) then
+             yield
+           else
+             m_4: blocksize <- concatB(A, hostB, ga, gb_1);
+             if check(m_4, Kkey[j2_4], s_2) then
+             gab: G <- exp(gb_1, a_1);
+             kA: D <- h(gab);
+             m_2: blocksize <- concatA(A, hostB, ga, gb_1);
+             r_4 <-R sign_seed;
+             return(sign_r2(m_2, skgen2(rkA), r_4));
+             cA5() :=
+             return(kA)
+       )
+       orfind j2_4 = j2 <= NK suchthat defined(Rkey_2[j2], Khost[j2]) && (Khost[j2] = hostB) then
+         yield
+       orfind j2_4 = j2 <= NK suchthat defined(Rkey_3[j2], Khost[j2]) && (Khost[j2] = hostB) then
+       (
+         m_5: blocksize <- concatB(A, hostB, ga, gb_1);
+         find u_21 = ri_21 <= NB suchthat defined(gb_2[ri_21], ga_1[ri_21], hostA[ri_21]) && (A = hostA[ri_21]) && (ga = ga_1[ri_21]) && (gb_1 = gb_2[ri_21]) && check2(m_5, pkgen2(rkB), s_2) then
+         X <-R D;
+         m_2: blocksize <- concatA(A, hostB, ga, gb_1);
+         r_6 <-R sign_seed;
+         return(sign_r2(m_2, skgen2(rkA), r_6));
+         cA5() :=
+         keyA: D <- X
+       )
+     ) | (
+       foreach i_1 <= NB do
+       cB1(hostA: host, =B, ga_1: G) :=
+       b_1 <-R Z;
+       gb_2: G <- exp'(g, b_1);
+       m_3: blocksize <- concatB(hostA, B, ga_1, gb_2);
+       r_3 <-R sign_seed;
+       return(hostA, B, gb_2, sign_r2(m_3, skgen2(rkB), r_3));
+       cB3(s_3: signature) :=
+       find j2_5 = j2_2 <= NK suchthat defined(Kkey[j2_2], Rkey_1[j2_2], Khost[j2_2]) && (Khost[j2_2] = hostA) then
+       (
+         if Kkey[j2_5] = pkgen2(rkA) then
+           yield
+         else
+           if Kkey[j2_5] = pkgen2(rkB) then
+             yield
+           else
+             m_6: blocksize <- concatA(hostA, B, ga_1, gb_2);
+             if check(m_6, Kkey[j2_5], s_3) then
+             gab_1: G <- exp(ga_1, b_1);
+             kB: D <- h(gab_1);
+             return(kB)
+       )
+       orfind j2_5 = j2_2 <= NK suchthat defined(Rkey_2[j2_2], Khost[j2_2]) && (Khost[j2_2] = hostA) then
+       (
+         m1_1: blocksize <- concatA(hostA, B, ga_1, gb_2);
+         find u_3 = ri_3 <= NA suchthat defined(X[ri_3], u_21[ri_3]) && (i_1 = u_21[ri_3]) && check2(m1_1, pkgen2(rkA), s_3) then
+         keyB: D <- X[u_3]
+       )
+       orfind j2_5 = j2_2 <= NK suchthat defined(Rkey_3[j2_2], Khost[j2_2]) && (Khost[j2_2] = hostA) then
+         yield
+     ) | (
+       foreach i_2 <= NK do
+       cK(Khost: host, Kkey: pkey) :=
+       if Khost = B then
+         Rkey_3: pkey <- cst_pkey
+       else
+         if Khost = A then
+           Rkey_2: pkey <- cst_pkey
+         else
+           Rkey_1: pkey <- cst_pkey
+     ))
+
+
+Proved secrecy of keyB in game 32
+Proved secrecy of keyA in game 32
+Adv[Game 1: forall y, x: G; inj-event(endB(A, B, x, y)) ==> inj-event(endA(A, B, x, y)) with public variables keyA, keyB] <= NB^2 * PCollKey1 + Psign(time_2, NB, maxlength(game 17: m_3)) + Psigncoll + Psign(time_1, NA, maxlength(game 9: m_2)) + Adv[Game 23: forall y, x: G; inj-event(endB(A, B, x, y)) ==> inj-event(endA(A, B, x, y)) with public variables keyA, keyB]
+Adv[Game 23: forall y, x: G; inj-event(endB(A, B, x, y)) ==> inj-event(endA(A, B, x, y)) with public variables keyA, keyB] <= NA * NB * pDDH(time_3) + Adv[Game 24: forall y, x: G; inj-event(endB(A, B, x, y)) ==> inj-event(endA(A, B, x, y)) with public variables keyA, keyB, ev_abort_4 || ev_abort_3 || ev_abort_2 || ev_abort_1]
+Adv[Game 24: forall y, x: G; inj-event(endB(A, B, x, y)) ==> inj-event(endA(A, B, x, y)) with public variables keyA, keyB, ev_abort_4 || ev_abort_3 || ev_abort_2 || ev_abort_1] <= Pr[Game 29: ev_abort_1] + Pr[Game 29: ev_abort_2] + Pr[Game 29: ev_abort_3] + Pr[Game 29: ev_abort_4] + Adv[Game 29: forall y, x: G; inj-event(endB(A, B, x, y)) ==> inj-event(endA(A, B, x, y)) with public variables keyA, keyB]
+Pr[Game 29: ev_abort_1] <= 0
+Pr[Game 29: ev_abort_2] <= 0
+Pr[Game 29: ev_abort_3] <= 0
+Pr[Game 29: ev_abort_4] <= 0
+Adv[Game 29: forall y, x: G; inj-event(endB(A, B, x, y)) ==> inj-event(endA(A, B, x, y)) with public variables keyA, keyB] <= 0
+RESULT Proved forall y, x: G; inj-event(endB(A, B, x, y)) ==> inj-event(endA(A, B, x, y)) with public variables keyA, keyB up to probability NB^2 * PCollKey1 + Psign(time_2, NB, maxlength(game 17: m_3)) + Psigncoll + Psign(time_1, NA, maxlength(game 9: m_2)) + NA * NB * pDDH(time_3)
+Adv[Game 1: forall y, x: G; inj-event(endA(A, B, x, y)) ==> inj-event(beginB(A, B, x, y)) with public variables keyA, keyB] <= NB^2 * PCollKey1 + Psign(time_2, NB, maxlength(game 17: m_3)) + Psigncoll + Psign(time_1, NA, maxlength(game 9: m_2)) + Adv[Game 23: forall y, x: G; inj-event(endA(A, B, x, y)) ==> inj-event(beginB(A, B, x, y)) with public variables keyA, keyB]
+Adv[Game 23: forall y, x: G; inj-event(endA(A, B, x, y)) ==> inj-event(beginB(A, B, x, y)) with public variables keyA, keyB] <= NA * NB * pDDH(time_3) + Adv[Game 24: forall y, x: G; inj-event(endA(A, B, x, y)) ==> inj-event(beginB(A, B, x, y)) with public variables keyA, keyB, ev_abort_4 || ev_abort_3 || ev_abort_2 || ev_abort_1]
+Adv[Game 24: forall y, x: G; inj-event(endA(A, B, x, y)) ==> inj-event(beginB(A, B, x, y)) with public variables keyA, keyB, ev_abort_4 || ev_abort_3 || ev_abort_2 || ev_abort_1] <= Pr[Game 29: ev_abort_1] + Pr[Game 29: ev_abort_2] + Pr[Game 29: ev_abort_3] + Pr[Game 29: ev_abort_4] + Adv[Game 29: forall y, x: G; inj-event(endA(A, B, x, y)) ==> inj-event(beginB(A, B, x, y)) with public variables keyA, keyB]
+Pr[Game 29: ev_abort_1] <= 0
+Pr[Game 29: ev_abort_2] <= 0
+Pr[Game 29: ev_abort_3] <= 0
+Pr[Game 29: ev_abort_4] <= 0
+Adv[Game 29: forall y, x: G; inj-event(endA(A, B, x, y)) ==> inj-event(beginB(A, B, x, y)) with public variables keyA, keyB] <= NA^2 * PCollKey1
+RESULT Proved forall y, x: G; inj-event(endA(A, B, x, y)) ==> inj-event(beginB(A, B, x, y)) with public variables keyA, keyB up to probability (NB^2 + NA^2) * PCollKey1 + Psign(time_2, NB, maxlength(game 17: m_3)) + Psigncoll + Psign(time_1, NA, maxlength(game 9: m_2)) + NA * NB * pDDH(time_3)
+Adv[Game 1: secrecy of keyB] <= 2 * NB^2 * PCollKey1 + 2 * Psign(time_2, NB, maxlength(game 17: m_3)) + 2 * Psigncoll + 2 * Psign(time_1, NA, maxlength(game 9: m_2)) + Adv[Game 23: secrecy of keyB]
+Adv[Game 23: secrecy of keyB] <= 2 * NA * NB * pDDH(time_3) + Adv[Game 24: secrecy of keyB, ev_abort_4 || ev_abort_3 || ev_abort_2 || ev_abort_1]
+Adv[Game 24: secrecy of keyB, ev_abort_4 || ev_abort_3 || ev_abort_2 || ev_abort_1] <= Pr[Game 29: ev_abort_1] + Pr[Game 29: ev_abort_2] + Pr[Game 29: ev_abort_3] + Pr[Game 29: ev_abort_4] + Adv[Game 29: secrecy of keyB]
+Pr[Game 29: ev_abort_1] <= 0
+Pr[Game 29: ev_abort_2] <= 0
+Pr[Game 29: ev_abort_3] <= 0
+Pr[Game 29: ev_abort_4] <= 0
+Adv[Game 29: secrecy of keyB] <= 2 * NA * pH(time_4) + Adv[Game 32: secrecy of keyB]
+Adv[Game 32: secrecy of keyB] <= 0
+RESULT Proved secrecy of keyB up to probability 2 * NB^2 * PCollKey1 + 2 * Psign(time_2, NB, maxlength(game 17: m_3)) + 2 * Psigncoll + 2 * Psign(time_1, NA, maxlength(game 9: m_2)) + 2 * NA * NB * pDDH(time_3) + 2 * NA * pH(time_4)
+Adv[Game 1: secrecy of keyA] <= 2 * NB^2 * PCollKey1 + 2 * Psign(time_2, NB, maxlength(game 17: m_3)) + 2 * Psigncoll + 2 * Psign(time_1, NA, maxlength(game 9: m_2)) + Adv[Game 23: secrecy of keyA]
+Adv[Game 23: secrecy of keyA] <= 2 * NA * NB * pDDH(time_3) + Adv[Game 24: secrecy of keyA, ev_abort_4 || ev_abort_3 || ev_abort_2 || ev_abort_1]
+Adv[Game 24: secrecy of keyA, ev_abort_4 || ev_abort_3 || ev_abort_2 || ev_abort_1] <= Pr[Game 29: ev_abort_1] + Pr[Game 29: ev_abort_2] + Pr[Game 29: ev_abort_3] + Pr[Game 29: ev_abort_4] + Adv[Game 29: secrecy of keyA]
+Pr[Game 29: ev_abort_1] <= 0
+Pr[Game 29: ev_abort_2] <= 0
+Pr[Game 29: ev_abort_3] <= 0
+Pr[Game 29: ev_abort_4] <= 0
+Adv[Game 29: secrecy of keyA] <= 2 * NA * pH(time_4) + Adv[Game 32: secrecy of keyA]
+Adv[Game 32: secrecy of keyA] <= 0
+RESULT Proved secrecy of keyA up to probability 2 * NB^2 * PCollKey1 + 2 * Psign(time_2, NB, maxlength(game 17: m_3)) + 2 * Psigncoll + 2 * Psign(time_1, NA, maxlength(game 9: m_2)) + 2 * NA * NB * pDDH(time_3) + 2 * NA * pH(time_4)
+RESULT time_1 = time(skgen) + time(pkgen) + NA * time(= host, maxlength(game 9: hostB)) + NA * time(= host, length(A)) + 3 * NA * NK * time(= host, maxlength(game 9: Khost), maxlength(game 9: hostB)) + NA * time(concatB, length(A), maxlength(game 9: hostB)) + (2 * NA + 2 * NB) * time(exp) + (NA + NB) * time(h) + NA * time(([1,NA])) + NA * time(concatA, length(A), maxlength(game 9: hostB)) + NB * time(= host, length(B)) + NB * time(concatB, maxlength(game 9: hostA), length(B)) + NB * time(sign_r, maxlength(game 9: m_3)) + 3 * NB * NK * time(= host, maxlength(game 9: Khost), maxlength(game 9: hostA)) + NB * time(concatA, maxlength(game 9: hostA), length(B)) + 2 * NB * time(([1,NB])) + NK * time(= host, maxlength(game 9: Khost), length(B)) + NK * time(= host, maxlength(game 9: Khost), length(A)) + time + (2 * NA + 2 * NB - 1) * time(check, max(length(concatA, maxlength(game 9: hostA), length(B)), length(concatB, length(A), maxlength(game 9: hostB))), max(maxlength(game 9: s_3), maxlength(game 9: s_2)))
+RESULT time_2 = (1 + NA + NB + NB * NA) * time(pkgen) + NA * time(= host, maxlength(game 17: hostB)) + NA * time(= host, length(A)) + 3 * NA * NK * time(= host, maxlength(game 17: Khost), maxlength(game 17: hostB)) + NA * time(concatB, length(A), maxlength(game 17: hostB)) + (2 * NA + 2 * NB) * time(exp) + (NA + NB) * time(h) + NA * time(([1,NA])) + NA * time(concatA, length(A), maxlength(game 17: hostB)) + NA * time(sign_r, maxlength(game 17: m_2)) + NA * time(skgen) + NB * time(= host, length(B)) + NB * time(concatB, maxlength(game 17: hostA), length(B)) + 3 * NB * NK * time(= host, maxlength(game 17: Khost), maxlength(game 17: hostA)) + NB * NA * time(check, maxlength(game 17: m1_1), maxlength(game 17: s_3)) + NB * time(mult) + NB * time(concatA, maxlength(game 17: hostA), length(B)) + 2 * NB * time(([1,NB])) + NK * time(= host, maxlength(game 17: Khost), length(B)) + NK * time(= host, maxlength(game 17: Khost), length(A)) + time + (2 * NA + 2 * NB - 1) * time(check, max(maxlength(game 17: m_7), maxlength(game 17: m_5), maxlength(game 17: m_6), maxlength(game 17: m_4)), max(maxlength(game 17: s_3), maxlength(game 17: s_2)))
+RESULT time_3 = (2 + 2 * NA + 2 * NB + 2 * NB * NA) * time(pkgen) + NA * time(= host, maxlength(game 23: hostB)) + NA * time(= host, length(A)) + 3 * NA * NK * time(= host, maxlength(game 23: Khost), maxlength(game 23: hostB)) + NA * time(check, maxlength(game 23: m_4), maxlength(game 23: s_2)) + NA * time(concatB, length(A), maxlength(game 23: hostB)) + NA * NB * time(= host, length(A), maxlength(game 23: hostA)) + NA * NB * time(check, maxlength(game 23: m_5), maxlength(game 23: s_2)) + (NA + NB) * time(h) + NA * time(([1,NA])) + NA * time(concatA, length(A), maxlength(game 23: hostB)) + NA * time(sign_r, maxlength(game 23: m_2)) + (NA + NB) * time(skgen) + NB * time(= host, length(B)) + NB * time(concatB, maxlength(game 23: hostA), length(B)) + NB * time(sign_r, maxlength(game 23: m_3)) + 3 * NB * NK * time(= host, maxlength(game 23: Khost), maxlength(game 23: hostA)) + NB * time(check, maxlength(game 23: m_6), maxlength(game 23: s_3)) + NB * time(concatA, maxlength(game 23: hostA), length(B)) + NB * NA * time(check, maxlength(game 23: m1_1), maxlength(game 23: s_3)) + 2 * NB * time(([1,NB])) + NK * time(= host, maxlength(game 23: Khost), length(B)) + NK * time(= host, maxlength(game 23: Khost), length(A)) + time + (3 * NA + 2 * NB - 3) * time(exp)
+RESULT time_4 = (2 + 2 * NA + 2 * NB + 2 * NB * NA) * time(pkgen) + NA * time(= host, maxlength(game 29: hostB)) + NA * time(= host, length(A)) + 3 * NA * NK * time(= host, maxlength(game 29: Khost), maxlength(game 29: hostB)) + NA * time(check, maxlength(game 29: m_4), maxlength(game 29: s_2)) + (2 * NA + 2 * NB) * time(exp) + NA * time(concatB, length(A), maxlength(game 29: hostB)) + NA * NB * time(= host, length(A), maxlength(game 29: hostA)) + NA * NB * time(check, maxlength(game 29: m_5), maxlength(game 29: s_2)) + NA * time(([1,NA])) + NA * time(concatA, length(A), maxlength(game 29: hostB)) + NA * time(sign_r, maxlength(game 29: m_2)) + (NA + NB) * time(skgen) + NB * time(= host, length(B)) + NB * time(concatB, maxlength(game 29: hostA), length(B)) + NB * time(sign_r, maxlength(game 29: m_3)) + 3 * NB * NK * time(= host, maxlength(game 29: Khost), maxlength(game 29: hostA)) + NB * time(check, maxlength(game 29: m_6), maxlength(game 29: s_3)) + (NB + 2 * NA - 1) * time(h) + NB * time(concatA, maxlength(game 29: hostA), length(B)) + NB * NA * time(check, maxlength(game 29: m1_1), maxlength(game 29: s_3)) + 2 * NB * time(([1,NB])) + NK * time(= host, maxlength(game 29: Khost), length(B)) + NK * time(= host, maxlength(game 29: Khost), length(A)) + time
+All queries proved.

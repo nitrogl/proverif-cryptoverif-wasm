@@ -1,0 +1,678 @@
+Doing expand get, insert and prove unique annotations... No change.
+Doing simplify (non-expanded game)... No change.
+Doing expand... Done.
+Doing remove assignments of findcond... Done.
+Doing simplify... Run simplify 1 time(s). Fixpoint reached.
+No change.
+Doing move all binders... No change.
+Doing SA rename new without array accesses and remove assignments of findcond... No change.
+Doing merge branches... No change.
+Doing expand get, insert and prove unique annotations... No change.
+Doing simplify (non-expanded game)... No change.
+Doing expand... No change.
+Doing remove assignments of findcond... No change.
+Doing simplify... Run simplify 1 time(s). Fixpoint reached.
+No change.
+Doing move all binders... No change.
+Doing SA rename new without array accesses and remove assignments of findcond... No change.
+Doing merge branches... No change.
+At 10 in this process and at 10 on the other end, could not find a matching if, let, or find.
+Doing insert instruction let corrupt = true in at occurrence 30... Done.
+Doing insert instruction let z = enc_r(x,k,r) in at occurrence 10... Done.
+Doing use variable(s) z... Done.
+Doing insert instruction if defined(corrupt) then else find j <= N suchthat defined(x[j],z[j]) && z[j] = y then else if dec(y,k) <> bottom then event_abort distinguish else at occurrence 27... Done.
+Doing simplify... Run simplify 2 time(s). Fixpoint reached.
+Done.
+Doing replace term at occurrence 58 with bottom... Done.
+Doing remove assignments of useless... Done.
+Doing insert instruction if dec(y, k) <> bottom then event_abort distinguish else at occurrence 49... Done.
+Proof of event(distinguish) ==> false failed:
+  Found distinguish at 56
+  but could not prove false
+Proved query indistinguishability from game 1
+Sorry, the following queries remain unproved:
+- event(distinguish) ==> false
+Proof of event(distinguish) ==> false failed:
+  Found distinguish at 56
+  but could not prove false
+Sorry, the following queries remain unproved:
+- event(distinguish) ==> false
+Doing simplify eliminating code unreachable when queries fail... Run simplify 2 time(s). Maximum reached.
+Done.
+Proof of event(distinguish) ==> false failed:
+  Found distinguish at 48
+  but could not prove false
+Trying equivalence int_ctxt(enc)... Transf. OK Proba. computed Transf. done Succeeded.
+Doing simplify (non-expanded game)... No change.
+Doing expand... Done.
+Doing remove assignments of findcond... Done.
+Doing simplify... Run simplify 2 time(s). Fixpoint reached.
+Done.
+Doing move all binders... No change.
+Doing SA rename new without array accesses and remove assignments of findcond... No change.
+Doing merge branches... No change.
+Proved query event(distinguish) ==> false
+===================== Proof starts =======================
+Initial state
+Game 1 is
+     O_2() :=
+     k <-R key;
+     return();
+     ((
+       foreach i <= N do
+       O() :=
+       r <-R enc_seed;
+       return();
+       Oenc(x: cleartext) :=
+       return(enc_r(x, k, r))
+     ) | (
+       foreach i' <= N' do
+       O_1() :=
+       return();
+       Odec(y: ciphertext) :=
+       return(dec(y, k))
+     ) | (
+       Ocorrupt() :=
+ {30}  return(k)
+     ))
+
+
+Applying insert instruction let corrupt = true in at occurrence 30
+yields
+
+Game 2 is
+     O_2() :=
+     k <-R key;
+     return();
+     ((
+       foreach i <= N do
+       O() :=
+       r <-R enc_seed;
+       return();
+       Oenc(x: cleartext) :=
+ {10}  return(enc_r(x, k, r))
+     ) | (
+       foreach i' <= N' do
+       O_1() :=
+       return();
+       Odec(y: ciphertext) :=
+       return(dec(y, k))
+     ) | (
+       Ocorrupt() :=
+       corrupt: bool <- true;
+       return(k)
+     ))
+
+
+Applying insert instruction let z = enc_r(x,k,r) in at occurrence 10
+yields
+
+Game 3 is
+     O_2() :=
+     k <-R key;
+     return();
+     ((
+       foreach i <= N do
+       O() :=
+       r <-R enc_seed;
+       return();
+       Oenc(x: cleartext) :=
+       z: ciphertext <- enc_r(x, k, r);
+       return({18}enc_r(x, k, r))
+     ) | (
+       foreach i' <= N' do
+       O_1() :=
+       return();
+       Odec(y: ciphertext) :=
+       return(dec(y, k))
+     ) | (
+       Ocorrupt() :=
+       corrupt: bool <- true;
+       return(k)
+     ))
+
+
+Applying use variable(s) z
+  - Use variable z
+    - enc_r(x, k, r) replaced with z at 18
+yields
+
+Game 4 is
+     O_2() :=
+     k <-R key;
+     return();
+     ((
+       foreach i <= N do
+       O() :=
+       r <-R enc_seed;
+       return();
+       Oenc(x: cleartext) :=
+       z: ciphertext <- enc_r(x, k, r);
+       return(z)
+     ) | (
+       foreach i' <= N' do
+       O_1() :=
+       return();
+       Odec(y: ciphertext) :=
+ {27}  return(dec(y, k))
+     ) | (
+       Ocorrupt() :=
+       corrupt: bool <- true;
+       return(k)
+     ))
+
+
+Applying insert instruction if defined(corrupt) then else find j <= N suchthat defined(x[j],z[j]) && z[j] = y then else if dec(y,k) <> bottom then event_abort distinguish else at occurrence 27 [probability Pr[event distinguish in game 5]]
+yields
+
+Game 5 is
+     O_2() :=
+     k <-R key;
+     return();
+     ((
+       foreach i <= N do
+       O() :=
+       r <-R enc_seed;
+       return();
+       Oenc(x: cleartext) :=
+       z: ciphertext <- enc_r(x, k, r);
+       return(z)
+     ) | (
+       foreach i' <= N' do
+       O_1() :=
+       return();
+       Odec(y: ciphertext) :=
+       if defined(corrupt) then
+         return(dec(y, k))
+       else
+         find j = j_1 <= N suchthat defined(x[j_1], z[j_1]) && (z[j_1] = y) then
+           return({44}dec(y, k))
+         else
+           if dec(y, k) <> bottom then
+             event_abort distinguish
+           else
+             return(dec(y, k))
+     ) | (
+       Ocorrupt() :=
+       corrupt: bool <- true;
+       return(k)
+     ))
+
+
+Applying simplify
+  - Simplification pass
+    - Replaced dec(y, k) with injbot(x[j]) at 44
+yields
+
+Game 6 is
+     O_2() :=
+     k <-R key;
+     return();
+     ((
+       foreach i <= N do
+       O() :=
+       r <-R enc_seed;
+       return();
+       Oenc(x: cleartext) :=
+       z: ciphertext <- enc_r(x, k, r);
+       return(z)
+     ) | (
+       foreach i' <= N' do
+       O_1() :=
+       return();
+       Odec(y: ciphertext) :=
+       if defined(corrupt) then
+         return(dec(y, k))
+       else
+         find j = j_1 <= N suchthat defined(x[j_1], z[j_1]) && (z[j_1] = y) then
+           return(injbot(x[j]))
+         else
+           if dec(y, k) <> bottom then
+             event_abort distinguish
+           else
+             return({58}dec(y, k))
+     ) | (
+       Ocorrupt() :=
+       corrupt: bool <- true;
+       return(k)
+     ))
+
+
+Applying replace term at occurrence 58 with bottom
+yields
+
+Game 7 is
+     O_2() :=
+     k <-R key;
+     return();
+     ((
+       foreach i <= N do
+       O() :=
+       r <-R enc_seed;
+       return();
+       Oenc(x: cleartext) :=
+       z: ciphertext <- enc_r(x, k, r);
+       return(z)
+     ) | (
+       foreach i' <= N' do
+       O_1() :=
+       return();
+       Odec(y: ciphertext) :=
+       if defined(corrupt) then
+         return(dec(y, k))
+       else
+         find j = j_1 <= N suchthat defined(x[j_1], z[j_1]) && (z[j_1] = y) then
+           return(injbot(x[j]))
+         else
+           if dec(y, k) <> bottom then
+             event_abort distinguish
+           else
+             return(bottom)
+     ) | (
+       Ocorrupt() :=
+       corrupt: bool <- true;
+       return(k)
+     ))
+
+
+Applying remove assignments of useless
+  - Remove assignments on corrupt (definition point kept, all usages removed)
+yields
+
+Game 8 is
+     O_2() :=
+     k <-R key;
+     return();
+     ((
+       foreach i <= N do
+       O() :=
+       r <-R enc_seed;
+       return();
+       Oenc(x: cleartext) :=
+       z: ciphertext <- enc_r(x, k, r);
+       return(z)
+     ) | (
+       foreach i' <= N' do
+       O_1() :=
+       return();
+       Odec(y: ciphertext) :=
+       if defined(corrupt) then
+         return(dec(y, k))
+       else
+         find j = j_1 <= N suchthat defined(x[j_1], z[j_1]) && (z[j_1] = y) then
+           return(injbot(x[j]))
+         else
+           if dec(y, k) <> bottom then
+             event_abort distinguish
+           else
+             return(bottom)
+     ) | (
+       Ocorrupt() :=
+       corrupt: bool <- cst_bool;
+       return(k)
+     ))
+
+Initial state
+Game 9 is
+     O_2() :=
+     k <-R key;
+     return();
+     ((
+       foreach i <= N do
+       O() :=
+       r <-R enc_seed;
+       return();
+       Oenc(x: cleartext) :=
+       return((z: ciphertext <- enc_r(x, k, r); z))
+     ) | (
+       foreach i' <= N' do
+       O_1() :=
+       return();
+       Odec(y: ciphertext) :=
+       return((if defined(corrupt) then dec(y, k) else find j_1 = j <= N suchthat defined(x[j], z[j]) && (z[j] = y) then injbot(x[j_1]) else bottom))
+     ) | (
+       Ocorrupt() :=
+       return((corrupt: bool <- true; k))
+     ))
+
+
+Applying expand
+  - Expand if/find/let
+yields
+
+Game 10 is
+     O_2() :=
+     k <-R key;
+     return();
+     ((
+       foreach i <= N do
+       O() :=
+       r <-R enc_seed;
+       return();
+       Oenc(x: cleartext) :=
+       z: ciphertext <- enc_r(x, k, r);
+       return(z)
+     ) | (
+       foreach i' <= N' do
+       O_1() :=
+       return();
+       Odec(y: ciphertext) :=
+       if defined(corrupt) then
+         return(dec(y, k))
+       else
+         find j_1 = j <= N suchthat defined(x[j], z[j]) && (z[j] = y) then
+           return(injbot(x[j_1]))
+         else
+           return(bottom)
+     ) | (
+       Ocorrupt() :=
+       corrupt: bool <- true;
+       return(k)
+     ))
+
+
+Applying remove assignments of findcond
+  - Remove assignments on corrupt (definition point kept, all usages removed)
+yields
+
+Game 11 is
+     O_2() :=
+     k <-R key;
+     return();
+     ((
+       foreach i <= N do
+       O() :=
+       r <-R enc_seed;
+       return();
+       Oenc(x: cleartext) :=
+       z: ciphertext <- enc_r(x, k, r);
+       return(z)
+     ) | (
+       foreach i' <= N' do
+       O_1() :=
+       return();
+       Odec(y: ciphertext) :=
+       if defined(corrupt) then
+         return(dec(y, k))
+       else
+         find j_1 = j <= N suchthat defined(x[j], z[j]) && (z[j] = y) then
+           return(injbot(x[j_1]))
+         else
+ {49}      return(bottom)
+     ) | (
+       Ocorrupt() :=
+       corrupt: bool <- cst_bool;
+       return(k)
+     ))
+
+
+Applying insert instruction if dec(y, k) <> bottom then event_abort distinguish else at occurrence 49 [probability Pr[event distinguish in game 12]]
+yields
+
+Game 12 is
+     O_2() :=
+     k <-R key;
+     return();
+     ((
+       foreach i <= N do
+       O() :=
+       r <-R enc_seed;
+       return();
+       Oenc(x: cleartext) :=
+       z: ciphertext <- enc_r(x, k, r);
+       return(z)
+     ) | (
+       foreach i' <= N' do
+       O_1() :=
+       return();
+       Odec(y: ciphertext) :=
+       if defined(corrupt) then
+ {29}    return(dec(y, k))
+       else
+         find j_1 = j <= N suchthat defined(x[j], z[j]) && (z[j] = y) then
+           return(injbot(x[j_1]))
+         else
+           if dec(y, k) <> bottom then
+             event_abort distinguish
+           else
+             return(bottom)
+     ) | (
+       Ocorrupt() :=
+       corrupt: bool <- cst_bool;
+ {63}  return(k)
+     ))
+
+
+Proved indistinguishability between game 12 and game 1
+
+Applying simplify eliminating code unreachable when queries fail
+  - Simplification pass
+    - Adversary always loses at 63
+    - Adversary always loses at 29
+yields
+
+Game 13 is
+     O_2() :=
+     k <-R key;
+     return();
+     ((
+       foreach i <= N do
+       O() :=
+       r <-R enc_seed;
+       return();
+       Oenc(x: cleartext) :=
+       z: ciphertext <- enc_r(x, k, r);
+       return(z)
+     ) | (
+       foreach i' <= N' do
+       O_1() :=
+       return();
+       Odec(y: ciphertext) :=
+ {27}  if defined(corrupt) then
+         event_abort adv_loses
+       else
+         find j_1 = j <= N suchthat defined(x[j], z[j]) && (z[j] = y) then
+           return(injbot(x[j_1]))
+         else
+           if dec(y, k) <> bottom then
+             event_abort distinguish
+           else
+             return(bottom)
+     ) | (
+       Ocorrupt() :=
+       corrupt: bool <- cst_bool;
+       event_abort adv_loses
+     ))
+
+
+Applying simplify
+  - Simplification pass
+    - Remove branch 1 in find at 27
+    - Find at 27 removed (else branch kept if any)
+yields
+
+Game 14 is
+     O_2() :=
+     k <-R key;
+     return();
+     ((
+       foreach i <= N do
+       O() :=
+       r <-R enc_seed;
+       return();
+       Oenc(x: cleartext) :=
+       z: ciphertext <- enc_r(x, k, r);
+       return(z)
+     ) | (
+       foreach i' <= N' do
+       O_1() :=
+       return();
+       Odec(y: ciphertext) :=
+       find j_1 = j <= N suchthat defined(x[j], z[j]) && (z[j] = y) then
+         return(injbot(x[j_1]))
+       else
+         if dec(y, k) <> bottom then
+           event_abort distinguish
+         else
+           return(bottom)
+     ) | (
+       Ocorrupt() :=
+       event_abort adv_loses
+     ))
+
+
+Applying equivalence int_ctxt(enc) [probability Advintctxt(time_1, N, N', maxlength(game 14: x), maxlength(game 14: y))]
+  - Equivalence int_ctxt(enc) with variables: k -> k_1, r -> r_1
+yields
+
+Game 15 is
+     O_2() :=
+     k <-R key;
+     return();
+     ((
+       foreach i <= N do
+       O() :=
+       r <-R enc_seed;
+       return();
+       Oenc(x: cleartext) :=
+       z: ciphertext <- (x: cleartext <- x; z_1: ciphertext <- enc_r(x, k, r); z_1);
+       return(z)
+     ) | (
+       foreach i' <= N' do
+       O_1() :=
+       return();
+       Odec(y: ciphertext) :=
+       find j_1 = j <= N suchthat defined(x[j], z[j]) && (z[j] = y) then
+         return(injbot(x[j_1]))
+       else
+ {47}    if (y: ciphertext <- y; {52}find u = ri <= N suchthat defined(x[ri], z_1[ri]) && (z_1[ri] = y) then injbot(x[u]) else bottom) <> bottom then
+           event_abort distinguish
+         else
+           return(bottom)
+     ) | (
+       Ocorrupt() :=
+       event_abort adv_loses
+     ))
+
+
+Applying expand
+  - Expand if/find/let
+    - Test at 47 always false
+    - Test at 47 always true
+    - Replaced defined condition x[ri], z_1[ri] with z_1[ri] in find at 52
+yields
+
+Game 16 is
+     O_2() :=
+     k <-R key;
+     return();
+     ((
+       foreach i <= N do
+       O() :=
+       r <-R enc_seed;
+       return();
+       Oenc(x: cleartext) :=
+       x: cleartext <- x;
+       z_1: ciphertext <- enc_r(x, k, r);
+       z: ciphertext <- z_1;
+       return(z)
+     ) | (
+       foreach i' <= N' do
+       O_1() :=
+       return();
+       Odec(y: ciphertext) :=
+       find j_1 = j <= N suchthat defined(x[j], z[j]) && (z[j] = y) then
+         return(injbot(x[j_1]))
+       else
+         y: ciphertext <- y;
+         find u = ri <= N suchthat defined(z_1[ri]) && (z_1[ri] = y) then
+           event_abort distinguish
+         else
+           return(bottom)
+     ) | (
+       Ocorrupt() :=
+       event_abort adv_loses
+     ))
+
+
+Applying remove assignments of findcond
+  - Remove assignments on y (definition removed, all usages removed)
+  - Remove assignments on x (definition removed, all usages removed)
+  - Remove assignments on z (definition removed, all usages removed)
+yields
+
+Game 17 is
+     O_2() :=
+     k <-R key;
+     return();
+     ((
+       foreach i <= N do
+       O() :=
+       r <-R enc_seed;
+       return();
+       Oenc(x: cleartext) :=
+       z_1: ciphertext <- enc_r(x, k, r);
+       return(z_1)
+     ) | (
+       foreach i' <= N' do
+       O_1() :=
+       return();
+       Odec(y: ciphertext) :=
+       find j_1 = j <= N suchthat defined(z_1[j], x[j]) && (z_1[j] = y) then
+         return(injbot(x[j_1]))
+       else
+ {41}    find u = ri <= N suchthat defined(z_1[ri]) && (z_1[ri] = y) then
+           event_abort distinguish
+         else
+           return(bottom)
+     ) | (
+       Ocorrupt() :=
+       event_abort adv_loses
+     ))
+
+
+Applying simplify
+  - Simplification pass
+    - Remove branch 1 in find at 41
+    - Find at 41 removed (else branch kept if any)
+yields
+
+Game 18 is
+     O_2() :=
+     k <-R key;
+     return();
+     ((
+       foreach i <= N do
+       O() :=
+       r <-R enc_seed;
+       return();
+       Oenc(x: cleartext) :=
+       z_1: ciphertext <- enc_r(x, k, r);
+       return(z_1)
+     ) | (
+       foreach i' <= N' do
+       O_1() :=
+       return();
+       Odec(y: ciphertext) :=
+       find j_1 = j <= N suchthat defined(z_1[j], x[j]) && (z_1[j] = y) then
+         return(injbot(x[j_1]))
+       else
+         return(bottom)
+     ) | (
+       Ocorrupt() :=
+       event_abort adv_loses
+     ))
+
+
+Proved event(distinguish) ==> false in game 18
+Game 12 is the same as game 8.
+Adv[Game 1: indistinguishability from game 8] <= Adv[Game 4: indistinguishability from game 8]
+Adv[Game 4: indistinguishability from game 8] <= Adv[Game 5: indistinguishability from game 8, distinguish]
+Adv[Game 5: indistinguishability from game 8, distinguish] <= Adv[Game 8: indistinguishability from game 8, distinguish]
+Adv[Game 9: indistinguishability from game 12] <= Adv[Game 11: indistinguishability from game 12]
+Adv[Game 11: indistinguishability from game 12] <= Adv[Game 12: indistinguishability from game 12, distinguish]
+Pr[Game 12: distinguish] <= Advintctxt(time_1, N, N', maxlength(game 14: x), maxlength(game 14: y)) + Pr[Game 18: distinguish]
+Pr[Game 18: distinguish] <= 0
+RESULT Proved indistinguishability between game 9 and game 1 up to probability Advintctxt(time_1, N, N', maxlength(game 14: x), maxlength(game 14: y))
+RESULT time_1 = N' * N * time(= ciphertext, maxlength(game 14: z), maxlength(game 14: y)) + N' * time(injbot, maxlength(game 14: x)) + N' * time(<> bitstringbot, length(dec, maxlength(game 14: y)), length(bottom)) + time
+All queries proved.

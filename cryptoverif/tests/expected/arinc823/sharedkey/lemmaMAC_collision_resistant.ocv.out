@@ -1,0 +1,941 @@
+Doing expand get, insert and prove unique annotations... No change.
+Doing simplify (non-expanded game)... No change.
+Doing expand... No change.
+Doing remove assignments of findcond... No change.
+Doing simplify... Run simplify 1 time(s). Fixpoint reached.
+No change.
+Doing move all binders... No change.
+Doing SA rename new without array accesses and remove assignments of findcond... No change.
+Doing merge branches... No change.
+Proof of (one-session) secrecy of b0 failed:
+  at 22, bad usage(s) of b0.
+  {1}Ostart() :=
+  {2}b0 <-R bool;
+  {3}return();
+  {4}foreach ik <= N do
+  {5}Ogen() :=
+  {6}k0 <-R mac_key;
+  {7}return();
+  {8}((
+  {9}  foreach i <= qMAC do
+ {10}  O_MAC(m: bitstring) :=
+ {11}  return({12}MAC({13}k0, {15}m))
+     ) | (
+ {19}  foreach i_1 <= qColl do
+ {20}  O_Coll(m1: bitstring, m2: bitstring) :=
+ {21}  if {22}b0 then
+ {23}    return({24}({25}m1 = {28}m2))
+       else
+ {32}    return({33}({34}MAC({35}k0, {37}m1) = {40}MAC({41}k0, {43}m2)))
+     ))
+
+Doing insert instruction if m1 = m2 then at occurrence 21... Done.
+  {1}Ostart() :=
+  {2}b0 <-R bool;
+  {3}return();
+  {4}foreach ik <= N do
+  {5}Ogen() :=
+  {6}k0 <-R mac_key;
+  {7}return();
+  {8}((
+  {9}  foreach i <= qMAC do
+ {10}  O_MAC(m: bitstring) :=
+ {11}  return({12}MAC({13}k0, {15}m))
+     ) | (
+ {19}  foreach i_1 <= qColl do
+ {20}  O_Coll(m1: bitstring, m2: bitstring) :=
+ {21}  if {22}({23}m1 = {26}m2) then
+ {29}    if {30}b0 then
+ {31}      return({32}({33}m1 = {36}m2))
+         else
+ {40}      return({41}({42}MAC({43}k0, {45}m1) = {48}MAC({49}k0, {51}m2)))
+       else
+ {55}    if {56}b0 then
+ {57}      return({58}({59}m1 = {62}m2))
+         else
+ {66}      return({67}({68}MAC({69}k0, {71}m1) = {74}MAC({75}k0, {77}m2)))
+     ))
+
+Doing insert instruction if MAC(k0,m1) = MAC(k0,m2) then at occurrence 55... Done.
+Doing simplify... Run simplify 2 time(s). Fixpoint reached.
+Done.
+Proof of (one-session) secrecy of b0 failed:
+  at 30, bad usage(s) of b0.
+Trying equivalence equiv
+  foreach i <= q do k <-R mac_key; (
+    foreach i_1 <= qMAC do O_MAC(m: bitstring) := return(MAC(k, m)) |
+    foreach i_2 <= qKDF256 do O_KDF256(X_1: t_SHA256_out, U_1: t_id, V_1: t_id) := return(KDF256(k, X_1, U_1, V_1)) |
+    foreach i_3 <= qKDF128 do O_KDF128(X_2: t_SHA256_out, U_2: t_id, V_2: t_id) := return(KDF128(k, X_2, U_2, V_2)))
+<=(q * PPRF(time + (q - 1) * (qMAC * time(MAC, maxlength(LHS: m)) + qKDF256 * time(KDF256) + qKDF128 * time(KDF128)), qMAC, maxlength(LHS: m), qKDF256, qKDF128))=>
+  foreach i <= q do (
+    foreach i_1 <= qMAC do O_MAC(m_1: bitstring) := m: bitstring <- m_1; find [unique] j1_1 = j1 <= qMAC suchthat defined(m[j1], r1[j1]) && (m = m[j1]) then return(r1[j1_1]) else r1 <-R t_SHA256_out; return(r1) |
+    foreach i_2 <= qKDF256 do O_KDF256(X_3: t_SHA256_out, U_3: t_id, V_3: t_id) := X_1: t_SHA256_out <- X_3; U_1: t_id <- U_3; V_1: t_id <- V_3; find [unique] j2_1 = j2 <= qKDF256 suchthat defined(X_1[j2], U_1[j2], V_1[j2], r2[j2]) && (X_1 = X_1[j2]) && (U_1 = U_1[j2]) && (V_1 = V_1[j2]) then return(r2[j2_1]) else r2 <-R mac_key; return(r2) |
+    foreach i_3 <= qKDF128 do O_KDF128(X_4: t_SHA256_out, U_4: t_id, V_4: t_id) := X_2: t_SHA256_out <- X_4; U_2: t_id <- U_4; V_2: t_id <- V_4; find [unique] j3_1 = j3 <= qKDF128 suchthat defined(X_2[j3], U_2[j3], V_2[j3], r3[j3]) && (X_2 = X_2[j3]) && (U_2 = U_2[j3]) && (V_2 = V_2[j3]) then return(r3[j3_1]) else r3 <-R enc_key; return(r3))
+... Transf. OK Proba. computed Transf. done Succeeded.
+Doing simplify (non-expanded game)... No change.
+Doing expand... Eliminated collisions between r1 and r1 Probability: 0.5 / |t_SHA256_out| * #O_MAC * #O_MAC
+Eliminated collisions between r1_1 and r1 Probability: #O_Coll * #O_MAC / |t_SHA256_out|
+Eliminated collisions between r1_1 and r1_1 Probability: 0.5 / |t_SHA256_out| * #O_Coll * #O_Coll
+Eliminated collisions between r1_2 and r1 Probability: #O_Coll * #O_MAC / |t_SHA256_out|
+Eliminated collisions between r1_2 and r1_2 Probability: 0.5 / |t_SHA256_out| * #O_Coll * #O_Coll
+Eliminated collisions between r1_2 and r1_1 Probability: #O_Coll * #O_Coll / |t_SHA256_out|
+Done.
+Doing remove assignments of findcond... Done.
+Doing simplify... Run simplify 2 time(s). Fixpoint reached.
+Done.
+Doing move all binders... Done.
+Doing SA rename new without array accesses and remove assignments of findcond... No change.
+Doing merge branches... Done.
+Proved one-session secrecy of b0
+===================== Proof starts =======================
+Initial state
+Game 1 is
+     Ostart() :=
+     b0 <-R bool;
+     return();
+     foreach ik <= N do
+     Ogen() :=
+     k0 <-R mac_key;
+     return();
+     ((
+       foreach i <= qMAC do
+       O_MAC(m: bitstring) :=
+       return(MAC(k0, m))
+     ) | (
+       foreach i_1 <= qColl do
+       O_Coll(m1: bitstring, m2: bitstring) :=
+ {21}  if b0 then
+         return((m1 = m2))
+       else
+         return((MAC(k0, m1) = MAC(k0, m2)))
+     ))
+
+
+Applying insert instruction if m1 = m2 then at occurrence 21
+yields
+
+Game 2 is
+     Ostart() :=
+     b0 <-R bool;
+     return();
+     foreach ik <= N do
+     Ogen() :=
+     k0 <-R mac_key;
+     return();
+     ((
+       foreach i <= qMAC do
+       O_MAC(m: bitstring) :=
+       return(MAC(k0, m))
+     ) | (
+       foreach i_1 <= qColl do
+       O_Coll(m1: bitstring, m2: bitstring) :=
+       if m1 = m2 then
+         if b0 then
+           return((m1 = m2))
+         else
+           return((MAC(k0, m1) = MAC(k0, m2)))
+       else
+ {55}    if b0 then
+           return((m1 = m2))
+         else
+           return((MAC(k0, m1) = MAC(k0, m2)))
+     ))
+
+
+Applying insert instruction if MAC(k0,m1) = MAC(k0,m2) then at occurrence 55
+yields
+
+Game 3 is
+     Ostart() :=
+     b0 <-R bool;
+     return();
+     foreach ik <= N do
+     Ogen() :=
+     k0 <-R mac_key;
+     return();
+     ((
+       foreach i <= qMAC do
+       O_MAC(m: bitstring) :=
+       return(MAC(k0, m))
+     ) | (
+       foreach i_1 <= qColl do
+       O_Coll(m1: bitstring, m2: bitstring) :=
+       if m1 = m2 then
+         if b0 then
+           return({32}(m1 = m2))
+         else
+           return({41}(MAC(k0, m1) = MAC(k0, m2)))
+       else
+         if MAC(k0, m1) = MAC(k0, m2) then
+           if b0 then
+             return({72}(m1 = m2))
+           else
+             return({81}(MAC(k0, m1) = MAC(k0, m2)))
+         else
+           if b0 then
+             return({98}(m1 = m2))
+           else
+             return({107}(MAC(k0, m1) = MAC(k0, m2)))
+     ))
+
+
+Applying simplify
+  - Simplification pass
+    - Replaced (MAC(k0, m1) = MAC(k0, m2)) with false at 107
+    - Replaced (m1 = m2) with false at 98
+    - Replaced (MAC(k0, m1) = MAC(k0, m2)) with true at 81
+    - Replaced (m1 = m2) with false at 72
+    - Replaced (MAC(k0, m1) = MAC(k0, m2)) with true at 41
+    - Replaced (m1 = m2) with true at 32
+yields
+
+Game 4 is
+     Ostart() :=
+     b0 <-R bool;
+     return();
+     foreach ik <= N do
+     Ogen() :=
+     k0 <-R mac_key;
+     return();
+     ((
+       foreach i <= qMAC do
+       O_MAC(m: bitstring) :=
+       return(MAC(k0, m))
+     ) | (
+       foreach i_1 <= qColl do
+       O_Coll(m1: bitstring, m2: bitstring) :=
+       if m1 = m2 then
+         if b0 then
+           return(true)
+         else
+           return(true)
+       else
+         if MAC(k0, m1) = MAC(k0, m2) then
+           if b0 then
+             return(false)
+           else
+             return(true)
+         else
+           if b0 then
+             return(false)
+           else
+             return(false)
+     ))
+
+
+Applying equivalence equiv
+  foreach i <= q do k <-R mac_key; (
+    foreach i_1 <= qMAC do O_MAC(m: bitstring) := return(MAC(k, m)) |
+    foreach i_2 <= qKDF256 do O_KDF256(X_1: t_SHA256_out, U_1: t_id, V_1: t_id) := return(KDF256(k, X_1, U_1, V_1)) |
+    foreach i_3 <= qKDF128 do O_KDF128(X_2: t_SHA256_out, U_2: t_id, V_2: t_id) := return(KDF128(k, X_2, U_2, V_2)))
+<=(q * PPRF(time + (q - 1) * (qMAC * time(MAC, maxlength(LHS: m)) + qKDF256 * time(KDF256) + qKDF128 * time(KDF128)), qMAC, maxlength(LHS: m), qKDF256, qKDF128))=>
+  foreach i <= q do (
+    foreach i_1 <= qMAC do O_MAC(m_1: bitstring) := m: bitstring <- m_1; find [unique] j1_1 = j1 <= qMAC suchthat defined(m[j1], r1[j1]) && (m = m[j1]) then return(r1[j1_1]) else r1 <-R t_SHA256_out; return(r1) |
+    foreach i_2 <= qKDF256 do O_KDF256(X_3: t_SHA256_out, U_3: t_id, V_3: t_id) := X_1: t_SHA256_out <- X_3; U_1: t_id <- U_3; V_1: t_id <- V_3; find [unique] j2_1 = j2 <= qKDF256 suchthat defined(X_1[j2], U_1[j2], V_1[j2], r2[j2]) && (X_1 = X_1[j2]) && (U_1 = U_1[j2]) && (V_1 = V_1[j2]) then return(r2[j2_1]) else r2 <-R mac_key; return(r2) |
+    foreach i_3 <= qKDF128 do O_KDF128(X_4: t_SHA256_out, U_4: t_id, V_4: t_id) := X_2: t_SHA256_out <- X_4; U_2: t_id <- U_4; V_2: t_id <- V_4; find [unique] j3_1 = j3 <= qKDF128 suchthat defined(X_2[j3], U_2[j3], V_2[j3], r3[j3]) && (X_2 = X_2[j3]) && (U_2 = U_2[j3]) && (V_2 = V_2[j3]) then return(r3[j3_1]) else r3 <-R enc_key; return(r3))
+ [probability N * PPRF(time_1, 2 * qColl + qMAC, max(maxlength(game 4: m1), maxlength(game 4: m2), maxlength(game 4: m)), 0, 0)]
+  - Equivalence equiv
+  foreach i <= q do k <-R mac_key; (
+    foreach i_1 <= qMAC do O_MAC(m: bitstring) := return(MAC(k, m)) |
+    foreach i_2 <= qKDF256 do O_KDF256(X_1: t_SHA256_out, U_1: t_id, V_1: t_id) := return(KDF256(k, X_1, U_1, V_1)) |
+    foreach i_3 <= qKDF128 do O_KDF128(X_2: t_SHA256_out, U_2: t_id, V_2: t_id) := return(KDF128(k, X_2, U_2, V_2)))
+<=(q * PPRF(time + (q - 1) * (qMAC * time(MAC, maxlength(LHS: m)) + qKDF256 * time(KDF256) + qKDF128 * time(KDF128)), qMAC, maxlength(LHS: m), qKDF256, qKDF128))=>
+  foreach i <= q do (
+    foreach i_1 <= qMAC do O_MAC(m_1: bitstring) := m: bitstring <- m_1; find [unique] j1_1 = j1 <= qMAC suchthat defined(m[j1], r1[j1]) && (m = m[j1]) then return(r1[j1_1]) else r1 <-R t_SHA256_out; return(r1) |
+    foreach i_2 <= qKDF256 do O_KDF256(X_3: t_SHA256_out, U_3: t_id, V_3: t_id) := X_1: t_SHA256_out <- X_3; U_1: t_id <- U_3; V_1: t_id <- V_3; find [unique] j2_1 = j2 <= qKDF256 suchthat defined(X_1[j2], U_1[j2], V_1[j2], r2[j2]) && (X_1 = X_1[j2]) && (U_1 = U_1[j2]) && (V_1 = V_1[j2]) then return(r2[j2_1]) else r2 <-R mac_key; return(r2) |
+    foreach i_3 <= qKDF128 do O_KDF128(X_4: t_SHA256_out, U_4: t_id, V_4: t_id) := X_2: t_SHA256_out <- X_4; U_2: t_id <- U_4; V_2: t_id <- V_4; find [unique] j3_1 = j3 <= qKDF128 suchthat defined(X_2[j3], U_2[j3], V_2[j3], r3[j3]) && (X_2 = X_2[j3]) && (U_2 = U_2[j3]) && (V_2 = V_2[j3]) then return(r3[j3_1]) else r3 <-R enc_key; return(r3))
+ with variables: k0 -> k
+yields
+
+Game 5 is
+     Ostart() :=
+     b0 <-R bool;
+     return();
+     foreach ik <= N do
+     Ogen() :=
+     return();
+     ((
+       foreach i <= qMAC do
+       O_MAC(m: bitstring) :=
+       return((m_1: bitstring <- m; find [unique] u_8 = ri_16 <= qMAC suchthat defined(m_1[ri_16], r1[ri_16]) && (m_1 = m_1[ri_16]) then r1[u_8] orfind u_7 = ri_14 <= qColl suchthat defined(m_2[ri_14], r1_1[ri_14]) && (m_1 = m_2[ri_14]) then r1_1[u_7] orfind u_6 = ri_12 <= qColl suchthat defined(m_3[ri_12], r1_2[ri_12]) && (m_1 = m_3[ri_12]) then r1_2[u_6] else r1 <-R t_SHA256_out; r1))
+     ) | (
+       foreach i_1 <= qColl do
+       O_Coll(m1: bitstring, m2: bitstring) :=
+       if m1 = m2 then
+         if b0 then
+           return(true)
+         else
+           return(true)
+       else
+ {87}    if (m_3: bitstring <- m1; find [unique] u_2 = ri_4 <= qMAC suchthat defined(m_1[ri_4], r1[ri_4]) && (m_3 = m_1[ri_4]) then r1[u_2] orfind u_1 = ri_2 <= qColl suchthat defined(m_2[ri_2], r1_1[ri_2]) && (m_3 = m_2[ri_2]) then r1_1[u_1] orfind u = ri <= qColl suchthat defined(m_3[ri], r1_2[ri]) && (m_3 = m_3[ri]) then r1_2[u] else r1_2 <-R t_SHA256_out; r1_2) = (m_2: bitstring <- m2; find [unique] u_5 = ri_10 <= qMAC suchthat defined(m_1[ri_10], r1[ri_10]) && (m_2 = m_1[ri_10]) then r1[u_5] orfind u_4 = ri_8 <= qColl suchthat defined(m_2[ri_8], r1_1[ri_8]) && (m_2 = m_2[ri_8]) then r1_1[u_4] orfind u_3 = ri_6 <= qColl suchthat defined(m_3[ri_6], r1_2[ri_6]) && (m_2 = m_3[ri_6]) then r1_2[u_3] else r1_1 <-R t_SHA256_out; r1_1) then
+           if b0 then
+             return(false)
+           else
+             return(true)
+         else
+           if b0 then
+             return(false)
+           else
+             return(false)
+     ))
+
+
+Applying expand [probability (0.5 * #O_MAC^2 + 2 * #O_Coll * #O_MAC + 2 * #O_Coll^2) / |t_SHA256_out|]
+  - Expand if/find/let
+    - Test at 87 always false
+    - Test at 87 always false
+    - Test at 87 always false
+    - Test at 87 always false
+    - Test at 87 always false
+    - Test at 87 always false
+    - Test at 87 always false
+    - Test at 87 always false
+    - Test at 87 always false
+    - Test at 87 always false
+    - Test at 87 always false
+    - Test at 87 always false
+    - Test at 87 always false
+    - Test at 87 always false
+    - Test at 87 always false
+    - Test at 87 always false
+yields
+
+Game 6 is
+     Ostart() :=
+     b0 <-R bool;
+     return();
+     foreach ik <= N do
+     Ogen() :=
+     return();
+     ((
+       foreach i <= qMAC do
+       O_MAC(m: bitstring) :=
+       m_1: bitstring <- m;
+       find [unique] u_8 = ri_16 <= qMAC suchthat defined(m_1[ri_16], r1[ri_16]) && (m_1 = m_1[ri_16]) then
+         return(r1[u_8])
+       orfind u_7 = ri_14 <= qColl suchthat defined(m_2[ri_14], r1_1[ri_14]) && (m_1 = m_2[ri_14]) then
+         return(r1_1[u_7])
+       orfind u_6 = ri_12 <= qColl suchthat defined(m_3[ri_12], r1_2[ri_12]) && (m_1 = m_3[ri_12]) then
+         return(r1_2[u_6])
+       else
+         r1 <-R t_SHA256_out;
+         return(r1)
+     ) | (
+       foreach i_1 <= qColl do
+       O_Coll(m1: bitstring, m2: bitstring) :=
+       if m1 = m2 then
+         if b0 then
+           return(true)
+         else
+           return(true)
+       else
+         m_3: bitstring <- m1;
+         find [unique] u_2 = ri_4 <= qMAC suchthat defined(m_1[ri_4], r1[ri_4]) && (m_3 = m_1[ri_4]) then
+           m_2: bitstring <- m2;
+           find [unique] u_5 = ri_10 <= qMAC suchthat defined(m_1[ri_10], r1[ri_10]) && (m_2 = m_1[ri_10]) then
+             if b0 then
+               return(false)
+             else
+               return(false)
+           orfind u_4 = ri_8 <= qColl suchthat defined(m_2[ri_8], r1_1[ri_8]) && (m_2 = m_2[ri_8]) then
+             if b0 then
+               return(false)
+             else
+               return(false)
+           orfind u_3 = ri_6 <= qColl suchthat defined(m_3[ri_6], r1_2[ri_6]) && (m_2 = m_3[ri_6]) then
+             if b0 then
+               return(false)
+             else
+               return(false)
+           else
+             r1_1 <-R t_SHA256_out;
+             if b0 then
+               return(false)
+             else
+               return(false)
+         orfind u_1 = ri_2 <= qColl suchthat defined(m_2[ri_2], r1_1[ri_2]) && (m_3 = m_2[ri_2]) then
+           m_2: bitstring <- m2;
+           find [unique] u_5 = ri_10 <= qMAC suchthat defined(m_1[ri_10], r1[ri_10]) && (m_2 = m_1[ri_10]) then
+             if b0 then
+               return(false)
+             else
+               return(false)
+           orfind u_4 = ri_8 <= qColl suchthat defined(m_2[ri_8], r1_1[ri_8]) && (m_2 = m_2[ri_8]) then
+             if b0 then
+               return(false)
+             else
+               return(false)
+           orfind u_3 = ri_6 <= qColl suchthat defined(m_3[ri_6], r1_2[ri_6]) && (m_2 = m_3[ri_6]) then
+             if b0 then
+               return(false)
+             else
+               return(false)
+           else
+             r1_1 <-R t_SHA256_out;
+             if b0 then
+               return(false)
+             else
+               return(false)
+         orfind u = ri <= qColl suchthat defined(m_3[ri], r1_2[ri]) && (m_3 = m_3[ri]) then
+           m_2: bitstring <- m2;
+           find [unique] u_5 = ri_10 <= qMAC suchthat defined(m_1[ri_10], r1[ri_10]) && (m_2 = m_1[ri_10]) then
+             if b0 then
+               return(false)
+             else
+               return(false)
+           orfind u_4 = ri_8 <= qColl suchthat defined(m_2[ri_8], r1_1[ri_8]) && (m_2 = m_2[ri_8]) then
+             if b0 then
+               return(false)
+             else
+               return(false)
+           orfind u_3 = ri_6 <= qColl suchthat defined(m_3[ri_6], r1_2[ri_6]) && (m_2 = m_3[ri_6]) then
+             if b0 then
+               return(false)
+             else
+               return(false)
+           else
+             r1_1 <-R t_SHA256_out;
+             if b0 then
+               return(false)
+             else
+               return(false)
+         else
+           r1_2 <-R t_SHA256_out;
+           m_2: bitstring <- m2;
+           find [unique] u_5 = ri_10 <= qMAC suchthat defined(m_1[ri_10], r1[ri_10]) && (m_2 = m_1[ri_10]) then
+             if b0 then
+               return(false)
+             else
+               return(false)
+           orfind u_4 = ri_8 <= qColl suchthat defined(m_2[ri_8], r1_1[ri_8]) && (m_2 = m_2[ri_8]) then
+             if b0 then
+               return(false)
+             else
+               return(false)
+           orfind u_3 = ri_6 <= qColl suchthat defined(m_3[ri_6], r1_2[ri_6]) && (m_2 = m_3[ri_6]) then
+             if b0 then
+               return(false)
+             else
+               return(false)
+           else
+             r1_1 <-R t_SHA256_out;
+             if b0 then
+               return(false)
+             else
+               return(false)
+     ))
+
+
+Applying remove assignments of findcond
+  - Remove assignments on m_3 (definition point kept, all usages removed)
+  - Remove assignments on m_2 (definition kept, array references kept)
+  - Remove assignments on m_2 (definition kept, array references kept)
+  - Remove assignments on m_2 (definition kept, array references kept)
+  - Remove assignments on m_2 (definition kept, array references kept)
+  - Remove assignments on m_1 (definition point kept, all usages removed)
+yields
+
+Game 7 is
+     Ostart() :=
+     b0 <-R bool;
+     return();
+     foreach ik <= N do
+     Ogen() :=
+     return();
+     ((
+       foreach i <= qMAC do
+       O_MAC(m: bitstring) :=
+       m_1: bitstring <- cst_bitstring;
+ {12}  find [unique] u_8 = ri_16 <= qMAC suchthat defined(m[ri_16], m_1[ri_16], r1[ri_16]) && (m = m[ri_16]) then
+         return(r1[u_8])
+       orfind u_7 = ri_14 <= qColl suchthat defined(m_2[ri_14], r1_1[ri_14]) && (m = m_2[ri_14]) then
+         return(r1_1[u_7])
+       orfind u_6 = ri_12 <= qColl suchthat defined(m1[ri_12], m_3[ri_12], r1_2[ri_12]) && (m = m1[ri_12]) then
+         return(r1_2[u_6])
+       else
+         r1 <-R t_SHA256_out;
+         return(r1)
+     ) | (
+       foreach i_1 <= qColl do
+       O_Coll(m1: bitstring, m2: bitstring) :=
+       if m1 = m2 then
+         if b0 then
+           return(true)
+         else
+           return(true)
+       else
+         m_3: bitstring <- cst_bitstring;
+ {98}    find [unique] u_2 = ri_4 <= qMAC suchthat defined(m[ri_4], m_1[ri_4], r1[ri_4]) && (m1 = m[ri_4]) then
+           m_2: bitstring <- m2;
+{116}      find [unique] u_5 = ri_10 <= qMAC suchthat defined(m[ri_10], m_1[ri_10], r1[ri_10]) && (m2 = m[ri_10]) then
+             if b0 then
+               return(false)
+             else
+               return(false)
+           orfind u_4 = ri_8 <= qColl suchthat defined(m_2[ri_8], r1_1[ri_8]) && (m2 = m_2[ri_8]) then
+             if b0 then
+               return(false)
+             else
+               return(false)
+           orfind u_3 = ri_6 <= qColl suchthat defined(m1[ri_6], m_3[ri_6], r1_2[ri_6]) && (m2 = m1[ri_6]) then
+             if b0 then
+               return(false)
+             else
+               return(false)
+           else
+             r1_1 <-R t_SHA256_out;
+             if b0 then
+               return(false)
+             else
+               return(false)
+         orfind u_1 = ri_2 <= qColl suchthat defined(m_2[ri_2], r1_1[ri_2]) && (m1 = m_2[ri_2]) then
+           m_2: bitstring <- m2;
+{203}      find [unique] u_5 = ri_10 <= qMAC suchthat defined(m[ri_10], m_1[ri_10], r1[ri_10]) && (m2 = m[ri_10]) then
+             if b0 then
+               return(false)
+             else
+               return(false)
+           orfind u_4 = ri_8 <= qColl suchthat defined(m_2[ri_8], r1_1[ri_8]) && (m2 = m_2[ri_8]) then
+             if b0 then
+               return(false)
+             else
+               return(false)
+           orfind u_3 = ri_6 <= qColl suchthat defined(m1[ri_6], m_3[ri_6], r1_2[ri_6]) && (m2 = m1[ri_6]) then
+             if b0 then
+               return(false)
+             else
+               return(false)
+           else
+             r1_1 <-R t_SHA256_out;
+             if b0 then
+               return(false)
+             else
+               return(false)
+         orfind u = ri <= qColl suchthat defined(m1[ri], m_3[ri], r1_2[ri]) && (m1 = m1[ri]) then
+           m_2: bitstring <- m2;
+{292}      find [unique] u_5 = ri_10 <= qMAC suchthat defined(m[ri_10], m_1[ri_10], r1[ri_10]) && (m2 = m[ri_10]) then
+             if b0 then
+               return(false)
+             else
+               return(false)
+           orfind u_4 = ri_8 <= qColl suchthat defined(m_2[ri_8], r1_1[ri_8]) && (m2 = m_2[ri_8]) then
+             if b0 then
+               return(false)
+             else
+               return(false)
+           orfind u_3 = ri_6 <= qColl suchthat defined(m1[ri_6], m_3[ri_6], r1_2[ri_6]) && (m2 = m1[ri_6]) then
+             if b0 then
+               return(false)
+             else
+               return(false)
+           else
+             r1_1 <-R t_SHA256_out;
+             if b0 then
+               return(false)
+             else
+               return(false)
+         else
+           r1_2 <-R t_SHA256_out;
+           m_2: bitstring <- m2;
+{369}      find [unique] u_5 = ri_10 <= qMAC suchthat defined(m[ri_10], m_1[ri_10], r1[ri_10]) && (m2 = m[ri_10]) then
+             if b0 then
+               return(false)
+             else
+               return(false)
+           orfind u_4 = ri_8 <= qColl suchthat defined(m_2[ri_8], r1_1[ri_8]) && (m2 = m_2[ri_8]) then
+             if b0 then
+               return(false)
+             else
+               return(false)
+           orfind u_3 = ri_6 <= qColl suchthat defined(m1[ri_6], m_3[ri_6], r1_2[ri_6]) && (m2 = m1[ri_6]) then
+             if b0 then
+               return(false)
+             else
+               return(false)
+           else
+             r1_1 <-R t_SHA256_out;
+             if b0 then
+               return(false)
+             else
+               return(false)
+     ))
+
+
+Applying simplify
+  - Simplification pass
+    - Replaced defined condition m1[ri_6], m_3[ri_6], r1_2[ri_6] with r1_2[ri_6], m1[ri_6] in find at 369
+    - Replaced defined condition m[ri_10], m_1[ri_10], r1[ri_10] with r1[ri_10], m[ri_10] in find at 369
+    - Replaced defined condition m1[ri_6], m_3[ri_6], r1_2[ri_6] with r1_2[ri_6], m1[ri_6] in find at 292
+    - Replaced defined condition m[ri_10], m_1[ri_10], r1[ri_10] with r1[ri_10], m[ri_10] in find at 292
+    - Replaced defined condition m1[ri], m_3[ri], r1_2[ri] with r1_2[ri], m1[ri] in find at 98
+    - Replaced defined condition m1[ri_6], m_3[ri_6], r1_2[ri_6] with r1_2[ri_6], m1[ri_6] in find at 203
+    - Replaced defined condition m[ri_10], m_1[ri_10], r1[ri_10] with r1[ri_10], m[ri_10] in find at 203
+    - Replaced defined condition m1[ri_6], m_3[ri_6], r1_2[ri_6] with r1_2[ri_6], m1[ri_6] in find at 116
+    - Replaced defined condition m[ri_10], m_1[ri_10], r1[ri_10] with r1[ri_10], m[ri_10] in find at 116
+    - Replaced defined condition m[ri_4], m_1[ri_4], r1[ri_4] with r1[ri_4], m[ri_4] in find at 98
+    - Replaced defined condition m1[ri_12], m_3[ri_12], r1_2[ri_12] with r1_2[ri_12], m1[ri_12] in find at 12
+    - Replaced defined condition m[ri_16], m_1[ri_16], r1[ri_16] with r1[ri_16], m[ri_16] in find at 12
+yields
+
+Game 8 is
+     Ostart() :=
+     b0 <-R bool;
+     return();
+     foreach ik <= N do
+     Ogen() :=
+     return();
+     ((
+       foreach i <= qMAC do
+       O_MAC(m: bitstring) :=
+       m_1: bitstring <- cst_bitstring;
+       find [unique] u_8 = ri_16 <= qMAC suchthat defined(r1[ri_16], m[ri_16]) && (m = m[ri_16]) then
+         return(r1[u_8])
+       orfind u_7 = ri_14 <= qColl suchthat defined(m_2[ri_14], r1_1[ri_14]) && (m = m_2[ri_14]) then
+         return(r1_1[u_7])
+       orfind u_6 = ri_12 <= qColl suchthat defined(r1_2[ri_12], m1[ri_12]) && (m = m1[ri_12]) then
+         return(r1_2[u_6])
+       else
+         r1 <-R t_SHA256_out;
+         return(r1)
+     ) | (
+       foreach i_1 <= qColl do
+       O_Coll(m1: bitstring, m2: bitstring) :=
+       if m1 = m2 then
+         if b0 then
+           return(true)
+         else
+           return(true)
+       else
+         m_3: bitstring <- cst_bitstring;
+         find [unique] u_2 = ri_4 <= qMAC suchthat defined(r1[ri_4], m[ri_4]) && (m1 = m[ri_4]) then
+           m_2: bitstring <- m2;
+           find [unique] u_5 = ri_10 <= qMAC suchthat defined(r1[ri_10], m[ri_10]) && (m2 = m[ri_10]) then
+             if b0 then
+               return(false)
+             else
+               return(false)
+           orfind u_4 = ri_8 <= qColl suchthat defined(m_2[ri_8], r1_1[ri_8]) && (m2 = m_2[ri_8]) then
+             if b0 then
+               return(false)
+             else
+               return(false)
+           orfind u_3 = ri_6 <= qColl suchthat defined(r1_2[ri_6], m1[ri_6]) && (m2 = m1[ri_6]) then
+             if b0 then
+               return(false)
+             else
+               return(false)
+           else
+             r1_1 <-R t_SHA256_out;
+             if b0 then
+               return(false)
+             else
+               return(false)
+         orfind u_1 = ri_2 <= qColl suchthat defined(m_2[ri_2], r1_1[ri_2]) && (m1 = m_2[ri_2]) then
+           m_2: bitstring <- m2;
+           find [unique] u_5 = ri_10 <= qMAC suchthat defined(r1[ri_10], m[ri_10]) && (m2 = m[ri_10]) then
+             if b0 then
+               return(false)
+             else
+               return(false)
+           orfind u_4 = ri_8 <= qColl suchthat defined(m_2[ri_8], r1_1[ri_8]) && (m2 = m_2[ri_8]) then
+             if b0 then
+               return(false)
+             else
+               return(false)
+           orfind u_3 = ri_6 <= qColl suchthat defined(r1_2[ri_6], m1[ri_6]) && (m2 = m1[ri_6]) then
+             if b0 then
+               return(false)
+             else
+               return(false)
+           else
+             r1_1 <-R t_SHA256_out;
+             if b0 then
+               return(false)
+             else
+               return(false)
+         orfind u = ri <= qColl suchthat defined(r1_2[ri], m1[ri]) && (m1 = m1[ri]) then
+           m_2: bitstring <- m2;
+           find [unique] u_5 = ri_10 <= qMAC suchthat defined(r1[ri_10], m[ri_10]) && (m2 = m[ri_10]) then
+             if b0 then
+               return(false)
+             else
+               return(false)
+           orfind u_4 = ri_8 <= qColl suchthat defined(m_2[ri_8], r1_1[ri_8]) && (m2 = m_2[ri_8]) then
+             if b0 then
+               return(false)
+             else
+               return(false)
+           orfind u_3 = ri_6 <= qColl suchthat defined(r1_2[ri_6], m1[ri_6]) && (m2 = m1[ri_6]) then
+             if b0 then
+               return(false)
+             else
+               return(false)
+           else
+             r1_1 <-R t_SHA256_out;
+             if b0 then
+               return(false)
+             else
+               return(false)
+         else
+           r1_2 <-R t_SHA256_out;
+           m_2: bitstring <- m2;
+           find [unique] u_5 = ri_10 <= qMAC suchthat defined(r1[ri_10], m[ri_10]) && (m2 = m[ri_10]) then
+             if b0 then
+               return(false)
+             else
+               return(false)
+           orfind u_4 = ri_8 <= qColl suchthat defined(m_2[ri_8], r1_1[ri_8]) && (m2 = m_2[ri_8]) then
+             if b0 then
+               return(false)
+             else
+               return(false)
+           orfind u_3 = ri_6 <= qColl suchthat defined(r1_2[ri_6], m1[ri_6]) && (m2 = m1[ri_6]) then
+             if b0 then
+               return(false)
+             else
+               return(false)
+           else
+             r1_1 <-R t_SHA256_out;
+             if b0 then
+               return(false)
+             else
+               return(false)
+     ))
+
+
+Applying move all binders
+  - Move random number generation r1_1
+  - Move random number generation r1_1
+  - Move random number generation r1_1
+  - Move random number generation r1_1
+  - Move assignment to m_3
+  - Move assignment to m_1
+yields
+
+Game 9 is
+     Ostart() :=
+     b0 <-R bool;
+     return();
+     foreach ik <= N do
+     Ogen() :=
+     return();
+     ((
+       foreach i <= qMAC do
+       O_MAC(m: bitstring) :=
+       find [unique] u_8 = ri_16 <= qMAC suchthat defined(r1[ri_16], m[ri_16]) && (m = m[ri_16]) then
+         return(r1[u_8])
+       orfind u_7 = ri_14 <= qColl suchthat defined(m_2[ri_14], r1_1[ri_14]) && (m = m_2[ri_14]) then
+         return(r1_1[u_7])
+       orfind u_6 = ri_12 <= qColl suchthat defined(r1_2[ri_12], m1[ri_12]) && (m = m1[ri_12]) then
+         return(r1_2[u_6])
+       else
+         r1 <-R t_SHA256_out;
+         return(r1)
+     ) | (
+       foreach i_1 <= qColl do
+       O_Coll(m1: bitstring, m2: bitstring) :=
+       if m1 = m2 then
+ {81}    if b0 then
+           return(true)
+         else
+           return(true)
+       else
+         find [unique] u_2 = ri_4 <= qMAC suchthat defined(r1[ri_4], m[ri_4]) && (m1 = m[ri_4]) then
+           m_2: bitstring <- m2;
+           find [unique] u_5 = ri_10 <= qMAC suchthat defined(r1[ri_10], m[ri_10]) && (m2 = m[ri_10]) then
+{117}        if b0 then
+               return(false)
+             else
+               return(false)
+           orfind u_4 = ri_8 <= qColl suchthat defined(m_2[ri_8], r1_1[ri_8]) && (m2 = m_2[ri_8]) then
+{136}        if b0 then
+               return(false)
+             else
+               return(false)
+           orfind u_3 = ri_6 <= qColl suchthat defined(r1_2[ri_6], m1[ri_6]) && (m2 = m1[ri_6]) then
+{155}        if b0 then
+               return(false)
+             else
+               return(false)
+           else
+{163}        if b0 then
+               r1_1 <-R t_SHA256_out;
+               return(false)
+             else
+               r1_1 <-R t_SHA256_out;
+               return(false)
+         orfind u_1 = ri_2 <= qColl suchthat defined(m_2[ri_2], r1_1[ri_2]) && (m1 = m_2[ri_2]) then
+           m_2: bitstring <- m2;
+           find [unique] u_5 = ri_10 <= qMAC suchthat defined(r1[ri_10], m[ri_10]) && (m2 = m[ri_10]) then
+{201}        if b0 then
+               return(false)
+             else
+               return(false)
+           orfind u_4 = ri_8 <= qColl suchthat defined(m_2[ri_8], r1_1[ri_8]) && (m2 = m_2[ri_8]) then
+{220}        if b0 then
+               return(false)
+             else
+               return(false)
+           orfind u_3 = ri_6 <= qColl suchthat defined(r1_2[ri_6], m1[ri_6]) && (m2 = m1[ri_6]) then
+{239}        if b0 then
+               return(false)
+             else
+               return(false)
+           else
+{247}        if b0 then
+               r1_1 <-R t_SHA256_out;
+               return(false)
+             else
+               r1_1 <-R t_SHA256_out;
+               return(false)
+         orfind u = ri <= qColl suchthat defined(r1_2[ri], m1[ri]) && (m1 = m1[ri]) then
+           m_2: bitstring <- m2;
+           find [unique] u_5 = ri_10 <= qMAC suchthat defined(r1[ri_10], m[ri_10]) && (m2 = m[ri_10]) then
+{285}        if b0 then
+               return(false)
+             else
+               return(false)
+           orfind u_4 = ri_8 <= qColl suchthat defined(m_2[ri_8], r1_1[ri_8]) && (m2 = m_2[ri_8]) then
+{304}        if b0 then
+               return(false)
+             else
+               return(false)
+           orfind u_3 = ri_6 <= qColl suchthat defined(r1_2[ri_6], m1[ri_6]) && (m2 = m1[ri_6]) then
+{323}        if b0 then
+               return(false)
+             else
+               return(false)
+           else
+{331}        if b0 then
+               r1_1 <-R t_SHA256_out;
+               return(false)
+             else
+               r1_1 <-R t_SHA256_out;
+               return(false)
+         else
+           r1_2 <-R t_SHA256_out;
+           m_2: bitstring <- m2;
+           find [unique] u_5 = ri_10 <= qMAC suchthat defined(r1[ri_10], m[ri_10]) && (m2 = m[ri_10]) then
+{359}        if b0 then
+               return(false)
+             else
+               return(false)
+           orfind u_4 = ri_8 <= qColl suchthat defined(m_2[ri_8], r1_1[ri_8]) && (m2 = m_2[ri_8]) then
+{378}        if b0 then
+               return(false)
+             else
+               return(false)
+           orfind u_3 = ri_6 <= qColl suchthat defined(r1_2[ri_6], m1[ri_6]) && (m2 = m1[ri_6]) then
+{397}        if b0 then
+               return(false)
+             else
+               return(false)
+           else
+{405}        if b0 then
+               r1_1 <-R t_SHA256_out;
+               return(false)
+             else
+               r1_1 <-R t_SHA256_out;
+               return(false)
+     ))
+
+
+Applying merge branches
+  - Merge branches of test at 81
+  - Merge branches of test at 405
+  - Merge branches of test at 359
+  - Merge branches of test at 378
+  - Merge branches of test at 397
+  - Merge branches of test at 163
+  - Merge branches of test at 117
+  - Merge branches of test at 136
+  - Merge branches of test at 155
+  - Merge branches of test at 247
+  - Merge branches of test at 201
+  - Merge branches of test at 220
+  - Merge branches of test at 239
+  - Merge branches of test at 331
+  - Merge branches of test at 285
+  - Merge branches of test at 304
+  - Merge branches of test at 323
+yields
+
+Game 10 is
+     Ostart() :=
+     b0 <-R bool;
+     return();
+     foreach ik <= N do
+     Ogen() :=
+     return();
+     ((
+       foreach i <= qMAC do
+       O_MAC(m: bitstring) :=
+       find [unique] u_8 = ri_16 <= qMAC suchthat defined(r1[ri_16], m[ri_16]) && (m = m[ri_16]) then
+         return(r1[u_8])
+       orfind u_7 = ri_14 <= qColl suchthat defined(m_2[ri_14], r1_1[ri_14]) && (m = m_2[ri_14]) then
+         return(r1_1[u_7])
+       orfind u_6 = ri_12 <= qColl suchthat defined(r1_2[ri_12], m1[ri_12]) && (m = m1[ri_12]) then
+         return(r1_2[u_6])
+       else
+         r1 <-R t_SHA256_out;
+         return(r1)
+     ) | (
+       foreach i_1 <= qColl do
+       O_Coll(m1: bitstring, m2: bitstring) :=
+       if m1 = m2 then
+         return(true)
+       else
+         find [unique] u_2 = ri_4 <= qMAC suchthat defined(r1[ri_4], m[ri_4]) && (m1 = m[ri_4]) then
+           m_2: bitstring <- m2;
+           find [unique] u_5 = ri_10 <= qMAC suchthat defined(r1[ri_10], m[ri_10]) && (m2 = m[ri_10]) then
+             return(false)
+           orfind u_4 = ri_8 <= qColl suchthat defined(m_2[ri_8], r1_1[ri_8]) && (m2 = m_2[ri_8]) then
+             return(false)
+           orfind u_3 = ri_6 <= qColl suchthat defined(r1_2[ri_6], m1[ri_6]) && (m2 = m1[ri_6]) then
+             return(false)
+           else
+             r1_1 <-R t_SHA256_out;
+             return(false)
+         orfind u_1 = ri_2 <= qColl suchthat defined(m_2[ri_2], r1_1[ri_2]) && (m1 = m_2[ri_2]) then
+           m_2: bitstring <- m2;
+           find [unique] u_5 = ri_10 <= qMAC suchthat defined(r1[ri_10], m[ri_10]) && (m2 = m[ri_10]) then
+             return(false)
+           orfind u_4 = ri_8 <= qColl suchthat defined(m_2[ri_8], r1_1[ri_8]) && (m2 = m_2[ri_8]) then
+             return(false)
+           orfind u_3 = ri_6 <= qColl suchthat defined(r1_2[ri_6], m1[ri_6]) && (m2 = m1[ri_6]) then
+             return(false)
+           else
+             r1_1 <-R t_SHA256_out;
+             return(false)
+         orfind u = ri <= qColl suchthat defined(r1_2[ri], m1[ri]) && (m1 = m1[ri]) then
+           m_2: bitstring <- m2;
+           find [unique] u_5 = ri_10 <= qMAC suchthat defined(r1[ri_10], m[ri_10]) && (m2 = m[ri_10]) then
+             return(false)
+           orfind u_4 = ri_8 <= qColl suchthat defined(m_2[ri_8], r1_1[ri_8]) && (m2 = m_2[ri_8]) then
+             return(false)
+           orfind u_3 = ri_6 <= qColl suchthat defined(r1_2[ri_6], m1[ri_6]) && (m2 = m1[ri_6]) then
+             return(false)
+           else
+             r1_1 <-R t_SHA256_out;
+             return(false)
+         else
+           r1_2 <-R t_SHA256_out;
+           m_2: bitstring <- m2;
+           find [unique] u_5 = ri_10 <= qMAC suchthat defined(r1[ri_10], m[ri_10]) && (m2 = m[ri_10]) then
+             return(false)
+           orfind u_4 = ri_8 <= qColl suchthat defined(m_2[ri_8], r1_1[ri_8]) && (m2 = m_2[ri_8]) then
+             return(false)
+           orfind u_3 = ri_6 <= qColl suchthat defined(r1_2[ri_6], m1[ri_6]) && (m2 = m1[ri_6]) then
+             return(false)
+           else
+             r1_1 <-R t_SHA256_out;
+             return(false)
+     ))
+
+
+Proved bit secrecy of b0 in game 10
+Adv[Game 1: bit secrecy of b0] <= (#O_MAC^2 + 4 * #O_Coll * #O_MAC + 4 * #O_Coll^2) / |t_SHA256_out| + 2 * N * PPRF(time_1, 2 * qColl + qMAC, max(maxlength(game 4: m1), maxlength(game 4: m2), maxlength(game 4: m)), 0, 0) + Adv[Game 10: bit secrecy of b0]
+Adv[Game 10: bit secrecy of b0] <= 0
+RESULT Proved bit secrecy of b0 up to probability (4 * #O_Coll^2 + 4 * #O_Coll * #O_MAC + #O_MAC^2) / |t_SHA256_out| + 2 * N * PPRF(time_1, 2 * qColl + qMAC, max(maxlength(game 4: m1), maxlength(game 4: m2), maxlength(game 4: m)), 0, 0)
+RESULT time_1 = #O_Coll * time(= bitstring, maxlength(game 4: m1), maxlength(game 4: m2)) + time + (2 * N * qColl + N * qMAC - 2 * qColl - qMAC) * time(MAC, max(maxlength(game 4: m1), maxlength(game 4: m2), maxlength(game 4: m)))
+All queries proved.

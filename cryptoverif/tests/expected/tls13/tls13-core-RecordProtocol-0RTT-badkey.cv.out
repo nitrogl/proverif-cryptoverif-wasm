@@ -1,0 +1,407 @@
+Doing expand get, insert and prove unique annotations... Done.
+Doing simplify (non-expanded game)... No change.
+Doing expand... Eliminated collisions between sessionid and sessionid Probability: 0.5 / |nocolltype| * NSr * NSr
+Done.
+Doing remove assignments of findcond... Done.
+Doing simplify... Eliminated collisions between sessionid and sessionid Probability: 0.5 / |nocolltype| * NSr * NSr
+Run simplify 2 time(s). Maximum reached.
+Done.
+Doing move all binders... No change.
+Doing SA rename new without array accesses and remove assignments of findcond... No change.
+Doing merge branches... No change.
+Proof of forall msg: bitstring, count: seqn; event(received(count, msg)) ==> false with public variables traffic_secret_Nplus1 failed:
+  Found received(count, clear) at 48
+  but could not prove false
+Proof of (one-session) secrecy of traffic_secret_Nplus1 failed:
+  traffic_secret_Nplus1 is not defined only by restrictions or assignments.
+Trying equivalence int_ctxt(enc)... Failed:
+At 4, term HKDF_expand_upd_label(traffic_secret_N) could not be discharged
+Trying equivalence ind_cpa(enc)... Failed:
+At 4, term HKDF_expand_upd_label(traffic_secret_N) could not be discharged
+Trying equivalence prf_upd_key_iv... Transf. OK Proba. computed Transf. done Succeeded.
+Doing simplify (non-expanded game)... No change.
+Doing expand... No change.
+Doing remove assignments of findcond... Done.
+Doing simplify... Run simplify 1 time(s). Fixpoint reached.
+No change.
+Doing move all binders... No change.
+Doing SA rename new without array accesses and remove assignments of findcond... No change.
+Doing merge branches... No change.
+Proof of forall msg: bitstring, count: seqn; event(received(count, msg)) ==> false with public variables traffic_secret_Nplus1 failed:
+  Found received(count, clear) at 43
+  but could not prove false
+Proved one-session secrecy of traffic_secret_Nplus1
+Proved secrecy of traffic_secret_Nplus1
+Trying equivalence int_ctxt(enc)... Transf. OK Proba. computed Transf. done Succeeded.
+Doing simplify (non-expanded game)... Done.
+Doing expand... Done.
+Doing remove assignments of findcond... Done.
+Doing simplify... Run simplify 2 time(s). Fixpoint reached.
+Done.
+Doing move all binders... No change.
+Doing SA rename new without array accesses and remove assignments of findcond... No change.
+Doing merge branches... Done.
+Proved query forall msg: bitstring, count: seqn; event(received(count, msg)) ==> false with public variables traffic_secret_Nplus1
+===================== Proof starts =======================
+Initial state
+Game 1 is
+     io1() :=
+     traffic_secret_N <-R key;
+     traffic_secret_Nplus1: key <- HKDF_expand_upd_label(traffic_secret_N);
+     k_1: key <- HKDF_expand_key_label(traffic_secret_N);
+     iv: key <- HKDF_expand_iv_label(traffic_secret_N);
+     return();
+     foreach isr <= NSr do
+     io3() :=
+     sessionid <-R nocolltype;
+     return();
+     foreach i <= Nr do
+     io7(cipher: bitstring, count: seqn) :=
+     get table_count_recv(=sessionid, =count) in
+       yield
+     else
+       insert table_count_recv(sessionid, count);
+       nonce: nonce_t <- xor(iv, count);
+       let injbot(clear: bitstring) = (n: nonce_t <- nonce; c: bitstring <- cipher; dec(c, nil, k_1, n)) in
+       event received(count, clear)
+
+
+Applying expand get, insert and prove unique annotations
+  - Expand get/insert for table table_count_recv
+yields
+
+Game 2 is
+     io1() :=
+     traffic_secret_N <-R key;
+     traffic_secret_Nplus1: key <- HKDF_expand_upd_label(traffic_secret_N);
+     k_1: key <- HKDF_expand_key_label(traffic_secret_N);
+     iv: key <- HKDF_expand_iv_label(traffic_secret_N);
+     return();
+     foreach isr <= NSr do
+     io3() :=
+     sessionid <-R nocolltype;
+     return();
+     foreach i <= Nr do
+     io7(cipher: bitstring, count: seqn) :=
+     find u = u_2 <= Nr, u_1 = u_3 <= NSr suchthat defined(table_count_recv_1[u_2, u_3], table_count_recv_2[u_2, u_3]) && (table_count_recv_1[u_2, u_3] = sessionid) && (table_count_recv_2[u_2, u_3] = count) then
+       yield
+     else
+       table_count_recv_1: nocolltype <- sessionid;
+       table_count_recv_2: seqn <- count;
+       nonce: nonce_t <- xor(iv, count);
+       let injbot(clear: bitstring) = (n: nonce_t <- nonce; c: bitstring <- cipher; dec(c, nil, k_1, n)) in
+       event received(count, clear)
+
+
+Applying expand [probability 0.5 * NSr^2 / |nocolltype|]
+  - Expand if/find/let
+yields
+
+Game 3 is
+     io1() :=
+     traffic_secret_N <-R key;
+     traffic_secret_Nplus1: key <- HKDF_expand_upd_label(traffic_secret_N);
+     k_1: key <- HKDF_expand_key_label(traffic_secret_N);
+     iv: key <- HKDF_expand_iv_label(traffic_secret_N);
+     return();
+     foreach isr <= NSr do
+     io3() :=
+     sessionid <-R nocolltype;
+     return();
+     foreach i <= Nr do
+     io7(cipher: bitstring, count: seqn) :=
+     find u = u_2 <= Nr, u_1 = u_3 <= NSr suchthat defined(table_count_recv_1[u_2, u_3], table_count_recv_2[u_2, u_3]) && (table_count_recv_1[u_2, u_3] = sessionid) && (table_count_recv_2[u_2, u_3] = count) then
+       yield
+     else
+       table_count_recv_1: nocolltype <- sessionid;
+       table_count_recv_2: seqn <- count;
+       nonce: nonce_t <- xor(iv, count);
+       n: nonce_t <- nonce;
+       c: bitstring <- cipher;
+       let injbot(clear: bitstring) = dec(c, nil, k_1, n) in
+       event received(count, clear)
+
+
+Applying remove assignments of findcond
+  - Remove assignments on table_count_recv_1 (definition removed, all usages removed)
+  - Remove assignments on table_count_recv_2 (definition removed, all usages removed)
+  - Remove assignments on n (definition removed, all usages removed)
+  - Remove assignments on c (definition removed, all usages removed)
+yields
+
+Game 4 is
+     io1() :=
+     traffic_secret_N <-R key;
+     traffic_secret_Nplus1: key <- HKDF_expand_upd_label(traffic_secret_N);
+     k_1: key <- HKDF_expand_key_label(traffic_secret_N);
+     iv: key <- HKDF_expand_iv_label(traffic_secret_N);
+     return();
+     foreach isr <= NSr do
+     io3() :=
+     sessionid <-R nocolltype;
+     return();
+     foreach i <= Nr do
+     io7(cipher: bitstring, count: seqn) :=
+ {19}find u = u_2 <= Nr, u_1 = u_3 <= NSr suchthat defined(sessionid[u_3], count[u_2, u_3], nonce[u_2, u_3]) && {25}((sessionid[u_3] = sessionid) && (count[u_2, u_3] = count)) then
+       yield
+     else
+       nonce: nonce_t <- xor(iv, count);
+       let injbot(clear: bitstring) = dec(cipher, nil, k_1, nonce) in
+       event received(count, clear)
+
+
+Applying simplify [probability 0.5 * NSr^2 / |nocolltype|]
+  - Simplification pass
+    - Replaced ((sessionid[u_3] = sessionid) && (count[u_2, u_3] = count)) with ((u_3 = isr) && (count[u_2, u_3] = count)) at 25
+    - In branch 1 of find at 19, substituting u_1 with isr
+    - Replaced defined condition sessionid[u_3], count[u_2, u_3], nonce[u_2, u_3] with nonce[u_2], count[u_2] in find at 19
+yields
+
+Game 5 is
+     io1() :=
+     traffic_secret_N <-R key;
+     traffic_secret_Nplus1: key <- HKDF_expand_upd_label(traffic_secret_N);
+     k_1: key <- HKDF_expand_key_label(traffic_secret_N);
+     iv: key <- HKDF_expand_iv_label(traffic_secret_N);
+     return();
+     foreach isr <= NSr do
+     io3() :=
+ {15}sessionid <-R nocolltype;
+     return();
+     foreach i <= Nr do
+     io7(cipher: bitstring, count: seqn) :=
+     find u = u_2 <= Nr suchthat defined(nonce[u_2], count[u_2]) && {24}((isr = isr) && (count[u_2] = count)) then
+ {35}  u_1 <= NSr <- isr
+     else
+       nonce: nonce_t <- xor(iv, count);
+       let injbot(clear: bitstring) = dec(cipher, nil, k_1, nonce) in
+       event received(count, clear)
+
+
+Applying simplify
+  - Simplification pass
+    - Replaced ((isr = isr) && (count[u_2] = count)) with (count[u_2] = count) at 24
+    - Remove let at 35
+    - Remove random number generation at 15
+yields
+
+Game 6 is
+     io1() :=
+     traffic_secret_N <-R key;
+     traffic_secret_Nplus1: key <- HKDF_expand_upd_label(traffic_secret_N);
+     k_1: key <- HKDF_expand_key_label(traffic_secret_N);
+     iv: key <- HKDF_expand_iv_label(traffic_secret_N);
+     return();
+     foreach isr <= NSr do
+     io3() :=
+     return();
+     foreach i <= Nr do
+     io7(cipher: bitstring, count: seqn) :=
+     find u = u_2 <= Nr suchthat defined(nonce[u_2], count[u_2]) && (count[u_2] = count) then
+       yield
+     else
+       nonce: nonce_t <- xor(iv, count);
+       let injbot(clear: bitstring) = dec(cipher, nil, k_1, nonce) in
+       event received(count, clear)
+
+
+Applying equivalence prf_upd_key_iv [probability Pprf_upd_key_iv(time_1)]
+  - Equivalence prf_upd_key_iv with variables: traffic_secret_N -> r
+yields
+
+Game 7 is
+     io1() :=
+     r3 <-R key;
+     r2 <-R key;
+     r1 <-R key;
+     traffic_secret_Nplus1: key <- r1;
+     k_1: key <- r2;
+     iv: key <- r3;
+     return();
+     foreach isr <= NSr do
+     io3() :=
+     return();
+     foreach i <= Nr do
+     io7(cipher: bitstring, count: seqn) :=
+     find u = u_2 <= Nr suchthat defined(nonce[u_2], count[u_2]) && (count[u_2] = count) then
+       yield
+     else
+       nonce: nonce_t <- xor(iv, count);
+       let injbot(clear: bitstring) = dec(cipher, nil, k_1, nonce) in
+       event received(count, clear)
+
+
+Applying remove assignments of findcond
+  - Remove assignments on k_1 (definition removed, all usages removed)
+  - Remove assignments on iv (definition removed, all usages removed)
+yields
+
+Game 8 is
+     io1() :=
+     r3 <-R key;
+     r2 <-R key;
+     r1 <-R key;
+     traffic_secret_Nplus1: key <- r1;
+     return();
+     foreach isr <= NSr do
+     io3() :=
+     return();
+     foreach i <= Nr do
+     io7(cipher: bitstring, count: seqn) :=
+     find u = u_2 <= Nr suchthat defined(nonce[u_2], count[u_2]) && (count[u_2] = count) then
+       yield
+     else
+       nonce: nonce_t <- xor(r3, count);
+       let injbot(clear: bitstring) = dec(cipher, nil, r2, nonce) in
+       event received(count, clear)
+
+
+Proved secrecy of traffic_secret_Nplus1 in game 8
+
+Applying equivalence int_ctxt(enc) [probability Pencctxt(time_2, 0, #io7, -inf, maxlength(game 8: cipher), -inf, length(nil))]
+  - Equivalence int_ctxt(enc) with variables: r2 -> k_1
+yields
+
+Game 9 is
+     io1() :=
+     r3 <-R key;
+     r2 <-R key;
+     r1 <-R key;
+     traffic_secret_Nplus1: key <- r1;
+     return();
+     foreach isr <= NSr do
+     io3() :=
+     return();
+     foreach i <= Nr do
+     io7(cipher: bitstring, count: seqn) :=
+     find u = u_2 <= Nr suchthat defined(nonce[u_2], count[u_2]) && (count[u_2] = count) then
+       yield
+     else
+       nonce: nonce_t <- xor(r3, count);
+       let injbot(clear: bitstring) = (y: bitstring <- cipher; c_d: add_data <- nil; c_n: nonce_t <- nonce; {43}find  else bottom) in
+       event received(count, clear)
+
+
+Applying simplify (non-expanded game)
+  - Simplification pass
+    - Find at 43 removed (else branch kept if any)
+yields
+
+Game 10 is
+     io1() :=
+     r3 <-R key;
+     r2 <-R key;
+     r1 <-R key;
+     traffic_secret_Nplus1: key <- r1;
+     return();
+     foreach isr <= NSr do
+     io3() :=
+     return();
+     foreach i <= Nr do
+     io7(cipher: bitstring, count: seqn) :=
+     find u = u_2 <= Nr suchthat defined(nonce[u_2], count[u_2]) && (count[u_2] = count) then
+       yield
+     else
+       nonce: nonce_t <- xor(r3, count);
+ {32}  let injbot(clear: bitstring) = {33}(y: bitstring <- cipher; {37}c_d: add_data <- nil; {39}c_n: nonce_t <- nonce; bottom) in
+       event received(count, clear)
+
+
+Applying expand
+  - Expand if/find/let
+    - Remove let at 32
+    - Remove let at 39
+    - Remove let at 37
+    - Remove let at 33
+yields
+
+Game 11 is
+     io1() :=
+     r3 <-R key;
+     r2 <-R key;
+     r1 <-R key;
+     traffic_secret_Nplus1: key <- r1;
+     return();
+     foreach isr <= NSr do
+     io3() :=
+     return();
+     foreach i <= Nr do
+     io7(cipher: bitstring, count: seqn) :=
+     find u = u_2 <= Nr suchthat defined(nonce[u_2], count[u_2]) && (count[u_2] = count) then
+       yield
+     else
+       nonce: nonce_t <- xor(r3, count)
+
+
+Applying remove assignments of findcond
+  - Remove assignments on nonce (definition point kept, all usages removed)
+yields
+
+Game 12 is
+     io1() :=
+  {2}r3 <-R key;
+  {3}r2 <-R key;
+     r1 <-R key;
+     traffic_secret_Nplus1: key <- r1;
+     return();
+     foreach isr <= NSr do
+     io3() :=
+     return();
+     foreach i <= Nr do
+     io7(cipher: bitstring, count: seqn) :=
+     find u = u_2 <= Nr suchthat defined(nonce[u_2], count[u_2]) && (count[u_2] = count) then
+       yield
+     else
+       nonce: nonce_t <- cst_nonce_t
+
+
+Applying simplify
+  - Simplification pass
+    - Remove random number generation at 3
+    - Remove random number generation at 2
+yields
+
+Game 13 is
+     io1() :=
+     r1 <-R key;
+     traffic_secret_Nplus1: key <- r1;
+     return();
+     foreach isr <= NSr do
+     io3() :=
+     return();
+     foreach i <= Nr do
+     io7(cipher: bitstring, count: seqn) :=
+ {11}find u = u_2 <= Nr suchthat defined(nonce[u_2], count[u_2]) && (count[u_2] = count) then
+       yield
+     else
+ {24}  nonce: nonce_t <- cst_nonce_t
+
+
+Applying merge branches
+  - Merge branches of let at 24
+  - Merge all branches of find at 11
+yields
+
+Game 14 is
+     io1() :=
+     r1 <-R key;
+     traffic_secret_Nplus1: key <- r1;
+     return();
+     foreach isr <= NSr do
+     io3() :=
+     return();
+     foreach i <= Nr do
+     io7(cipher: bitstring, count: seqn) :=
+     yield
+
+
+Proved forall msg: bitstring, count: seqn; event(received(count, msg)) ==> false with public variables traffic_secret_Nplus1 in game 14
+Adv[Game 1: secrecy of traffic_secret_Nplus1] <= 2 * Pprf_upd_key_iv(time_1) + 2 * NSr^2 / |nocolltype| + Adv[Game 8: secrecy of traffic_secret_Nplus1]
+Adv[Game 8: secrecy of traffic_secret_Nplus1] <= 0
+RESULT Proved secrecy of traffic_secret_Nplus1 up to probability 2 * Pprf_upd_key_iv(time_1) + 2 * NSr^2 / |nocolltype|
+Adv[Game 1: forall msg: bitstring, count: seqn; event(received(count, msg)) ==> false with public variables traffic_secret_Nplus1] <= Pencctxt(time_2, 0, #io7, -inf, maxlength(game 8: cipher), -inf, length(nil)) + Pprf_upd_key_iv(time_1) + NSr^2 / |nocolltype| + Adv[Game 14: forall msg: bitstring, count: seqn; event(received(count, msg)) ==> false with public variables traffic_secret_Nplus1]
+Adv[Game 14: forall msg: bitstring, count: seqn; event(received(count, msg)) ==> false with public variables traffic_secret_Nplus1] <= 0
+RESULT Proved forall msg: bitstring, count: seqn; event(received(count, msg)) ==> false with public variables traffic_secret_Nplus1 up to probability Pencctxt(time_2, 0, #io7, -inf, maxlength(game 8: cipher), -inf, length(nil)) + Pprf_upd_key_iv(time_1) + NSr^2 / |nocolltype|
+RESULT time_1 = #io7 * time(xor) + #io7 * time(dec, maxlength(game 6: cipher), length(nil)) + #io7 * time(let injbot, maxlength(game 6: clear)) + #io7 * time(([1,Nr], [1,NSr])) + time
+RESULT time_2 = #io7 * time(xor) + #io7 * time(let injbot, maxlength(game 8: clear)) + #io7 * time(([1,Nr], [1,NSr])) + time
+All queries proved.

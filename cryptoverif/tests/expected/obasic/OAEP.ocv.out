@@ -1,0 +1,5015 @@
+File "OAEP.ocv", line 211, characters 3-4:
+Warning: identifier r rebound
+Doing expand get, insert and prove unique annotations... No change.
+Doing simplify (non-expanded game)... No change.
+Doing expand... No change.
+Doing remove assignments of findcond... No change.
+Doing simplify... Run simplify 1 time(s). Fixpoint reached.
+No change.
+Doing move all binders... No change.
+Doing SA rename new without array accesses and remove assignments of findcond... No change.
+Doing merge branches... No change.
+Proof of (one-session) secrecy of b1 failed:
+  at 61, bad usage(s) of cT, which may depend on b1.
+Doing insert instruction if second(mz) = zeroDz then at occurrence 96... Done.
+Trying equivalence rom(G)... Transf. OK Proba. computed Transf. done Succeeded.
+Doing simplify (non-expanded game)... No change.
+Doing expand... Done.
+Doing remove assignments of findcond... Done.
+Doing simplify... Doing global dependency analysis on r_6 inside simplify... At 48, returned message r_6[u_4] depends on r_6.
+No change
+Doing global dependency analysis on r_3 inside simplify... At 158, returned message cT depends on r_3.
+No change
+Doing global dependency analysis on r_5 inside simplify... At 158, returned message cT depends on r_5.
+No change
+Doing global dependency analysis on r_4 inside simplify... At 54, returned message r_4 depends on r_4.
+No change
+Eliminated collisions between r_3 and x1[ri_3] Probability: qG / |Dr|
+(r_3 collides with a value independent of r_3 with probability at most 1 / |Dr|;
+ x1[ri_3] does not depend on r_3)
+Eliminated collisions between r_3 and r'[ri_2] Probability: qD / |Dr|
+(r_3 collides with a value independent of r_3 with probability at most 1 / |Dr|;
+ r'[ri_2] does not depend on r_3)
+Eliminated collisions between second(r_6) and second(s') Probability: qD / |Dz|
+(second(r_6) collides with a value independent of r_6 with probability at most 1 / |Dz|;
+ second(s') does not depend on r_6)
+Doing global dependency analysis on r_6 inside simplify... At 47, returned message r_6[u_4] depends on r_6.
+No change
+Doing global dependency analysis on r_3 inside simplify... At 93, returned message cT depends on r_3.
+No change
+Doing global dependency analysis on r_5 inside simplify... At 93, returned message cT depends on r_5.
+No change
+Doing global dependency analysis on r_4 inside simplify... At 53, returned message r_4 depends on r_4.
+No change
+Run simplify 2 time(s). Fixpoint reached.
+Done.
+Doing move all binders... Done.
+Doing SA rename new without array accesses and remove assignments of findcond... No change.
+Doing merge branches... No change.
+Doing insert event bad1 at occurrence 34... Done.
+Doing insert event bad3 at occurrence 154... Done.
+Trying equivalence remove_xor(xorDow) with r_5... Transf. OK Proba. computed Transf. done Succeeded.
+Doing simplify (non-expanded game)... No change.
+Doing expand... Done.
+Doing remove assignments of findcond... Done.
+Doing simplify... Doing global dependency analysis on r_6 inside simplify... At 43, returned message r_6[u_4] depends on r_6.
+No change
+Doing global dependency analysis on r_3 inside simplify... At 77, returned message cT depends on r_3.
+No change
+Doing global dependency analysis on r_4 inside simplify... At 49, returned message r_4 depends on r_4.
+No change
+Doing global dependency analysis on r_7 inside simplify... At 77, returned message cT depends on r_7.
+No change
+Run simplify 1 time(s). Fixpoint reached.
+No change.
+Doing move all binders... No change.
+Doing SA rename new without array accesses and remove assignments of findcond... No change.
+Doing merge branches... No change.
+Proved one-session secrecy of b1
+Proof of event(bad1) ==> false with public variables b1 failed:
+  Found bad1 at 34
+  but could not prove false
+Proof of event(bad3) ==> false with public variables b1 failed:
+  Found bad3 at 141
+  but could not prove false
+Sorry, the following queries remain unproved:
+- event(bad3) ==> false with public variables b1
+- event(bad1) ==> false with public variables b1
+Eliminated collisions between second(X) and X' Probability: 1 / |Dz|
+(second(X) collides with a value independent of X with probability at most 1 / |Dz|;
+ X' does not depend on X)
+Trying equivalence move_array(Dow) with r_6.... Transf. OK Proba. computed Transf. done Succeeded.
+Doing simplify (non-expanded game)... No change.
+Doing expand... Eliminated collisions between r_7 and s' Probability: qD / |Dow|
+(r_7 collides with a value independent of r_7 with probability at most 1 / |Dow|;
+ s' does not depend on r_7)
+Eliminated collisions between second(Y[i2_114]) and second(Y[i2_115]) Probability: qG * qG / |Dz|
+(assuming (u_7 <> i2_115), second(Y[i2_114]) collides with a value independent of Y[i2_114] with probability at most 1 / |Dz|;
+ second(Y[i2_115]) does not depend on Y[i2_114])
+Eliminated collisions between second(Y_1) and second(Y[i2_101]) Probability: qG * qD / |Dz|
+(second(Y_1) collides with a value independent of Y_1 with probability at most 1 / |Dz|;
+ second(Y[i2_101]) does not depend on Y_1)
+Eliminated collisions between second(Y_1[i2_89]) and second(Y_1[i2_90]) Probability: qD * qD / |Dz|
+(assuming (u_6 <> i2_90), second(Y_1[i2_89]) collides with a value independent of Y_1[i2_89] with probability at most 1 / |Dz|;
+ second(Y_1[i2_90]) does not depend on Y_1[i2_89])
+Eliminated collisions between second(Y_1) and second(Y_1[i2_80]) Probability: qD * qD / |Dz|
+(assuming (iD <> i2_80), second(Y_1) collides with a value independent of Y_1 with probability at most 1 / |Dz|;
+ second(Y_1[i2_80]) does not depend on Y_1)
+Done.
+Doing remove assignments of findcond... No change.
+Doing simplify... Doing global dependency analysis on Y_1 inside simplify... At 63, returned message Y_1[u_10] depends on Y_1.
+No change
+Doing global dependency analysis on Y inside simplify... At 69, returned message Y depends on Y.
+No change
+Doing global dependency analysis on r_3 inside simplify... At 102, returned message cT depends on r_3.
+No change
+Doing global dependency analysis on r_4 inside simplify... At 74, returned message r_4 depends on r_4.
+No change
+Doing global dependency analysis on r_7 inside simplify... At 102, returned message cT depends on r_7.
+No change
+Eliminated collisions between r_7 and s' Probability: qD / |Dow|
+(r_7 collides with a value independent of r_7 with probability at most 1 / |Dow|;
+ s' does not depend on r_7)
+Eliminated collisions between second(Y_1[i2_146]) and second(Y_1[i2_147]) Probability: qD * qD / |Dz|
+(assuming (u_6 <> i2_147), second(Y_1[i2_146]) collides with a value independent of Y_1[i2_146] with probability at most 1 / |Dz|;
+ second(Y_1[i2_147]) does not depend on Y_1[i2_146])
+Doing global dependency analysis on Y inside simplify... At 104, returned message Y depends on Y.
+No change
+Doing global dependency analysis on r_3 inside simplify... At 137, returned message cT depends on r_3.
+No change
+Doing global dependency analysis on r_4 inside simplify... At 109, returned message r_4 depends on r_4.
+No change
+Doing global dependency analysis on r_7 inside simplify... At 137, returned message cT depends on r_7.
+No change
+Eliminated collisions between r_7 and s' Probability: qD / |Dow|
+(r_7 collides with a value independent of r_7 with probability at most 1 / |Dow|;
+ s' does not depend on r_7)
+Run simplify 2 time(s). Maximum reached.
+Done.
+Doing SA rename u_4... Done.
+Doing SA rename new without array accesses and remove assignments of findcond... Done.
+Doing simplify... Doing global dependency analysis on Y inside simplify... At 64, returned message Y depends on Y.
+No change
+Doing global dependency analysis on r_3 inside simplify... At 97, returned message cT depends on r_3.
+No change
+Doing global dependency analysis on r_4 inside simplify... At 69, returned message r_4 depends on r_4.
+No change
+Doing global dependency analysis on r_7 inside simplify... At 97, returned message cT depends on r_7.
+No change
+Eliminated collisions between r_7 and s' Probability: qD / |Dow|
+(r_7 collides with a value independent of r_7 with probability at most 1 / |Dow|;
+ s' does not depend on r_7)
+Doing global dependency analysis on Y inside simplify... At 70, returned message Y depends on Y.
+No change
+Doing global dependency analysis on r_3 inside simplify... At 103, returned message cT depends on r_3.
+No change
+Doing global dependency analysis on r_4 inside simplify... At 75, returned message r_4 depends on r_4.
+No change
+Doing global dependency analysis on r_7 inside simplify... At 103, returned message cT depends on r_7.
+No change
+Eliminated collisions between r_7 and s' Probability: qD / |Dow|
+(r_7 collides with a value independent of r_7 with probability at most 1 / |Dow|;
+ s' does not depend on r_7)
+Run simplify 2 time(s). Maximum reached.
+Done.
+Doing simplify... Doing global dependency analysis on Y inside simplify... At 64, returned message Y depends on Y.
+No change
+Doing global dependency analysis on r_3 inside simplify... At 97, returned message cT depends on r_3.
+No change
+Doing global dependency analysis on r_4 inside simplify... At 69, returned message r_4 depends on r_4.
+No change
+Doing global dependency analysis on r_7 inside simplify... At 97, returned message cT depends on r_7.
+No change
+Run simplify 1 time(s). Fixpoint reached.
+No change.
+Doing move all binders... Done.
+Doing SA rename new without array accesses and remove assignments of findcond... Done.
+Doing merge branches... No change.
+Doing simplify... Doing global dependency analysis on r_7 inside simplify... At 92, returned message cT depends on r_7.
+No change
+Doing global dependency analysis on r_3 inside simplify... At 92, returned message cT depends on r_3.
+No change
+Doing global dependency analysis on Y inside simplify... At 59, returned message Y depends on Y.
+No change
+Doing global dependency analysis on r_3 inside simplify... At 92, returned message cT depends on r_3.
+No change
+Doing global dependency analysis on r_4 inside simplify... At 64, returned message r_4 depends on r_4.
+No change
+Doing global dependency analysis on r_7 inside simplify... At 92, returned message cT depends on r_7.
+No change
+Eliminated collisions between r_7 and s' Probability: qD / |Dow|
+(r_7 collides with a value independent of r_7 with probability at most 1 / |Dow|;
+ s' does not depend on r_7)
+Run simplify 2 time(s). Maximum reached.
+Done.
+Doing SA rename u... Done.
+Doing SA rename new without array accesses and remove assignments of findcond... Done.
+Doing simplify... Doing global dependency analysis on Y inside simplify... At 59, returned message Y depends on Y.
+No change
+Doing global dependency analysis on r_3 inside simplify... At 92, returned message cT depends on r_3.
+No change
+Doing global dependency analysis on r_4 inside simplify... At 64, returned message r_4 depends on r_4.
+No change
+Doing global dependency analysis on r_7 inside simplify... At 92, returned message cT depends on r_7.
+No change
+Eliminated collisions between r_7 and s' Probability: qD / |Dow|
+(r_7 collides with a value independent of r_7 with probability at most 1 / |Dow|;
+ s' does not depend on r_7)
+Doing global dependency analysis on Y inside simplify... At 59, returned message Y depends on Y.
+No change
+Doing global dependency analysis on r_3 inside simplify... At 92, returned message cT depends on r_3.
+No change
+Doing global dependency analysis on r_4 inside simplify... At 64, returned message r_4 depends on r_4.
+No change
+Doing global dependency analysis on r_7 inside simplify... At 92, returned message cT depends on r_7.
+No change
+Run simplify 2 time(s). Fixpoint reached.
+Done.
+Doing simplify... Doing global dependency analysis on Y inside simplify... At 59, returned message Y depends on Y.
+No change
+Doing global dependency analysis on r_3 inside simplify... At 92, returned message cT depends on r_3.
+No change
+Doing global dependency analysis on r_4 inside simplify... At 64, returned message r_4 depends on r_4.
+No change
+Doing global dependency analysis on r_7 inside simplify... At 92, returned message cT depends on r_7.
+No change
+Run simplify 1 time(s). Fixpoint reached.
+No change.
+Doing merge variables (r_4, Y)... Done.
+Doing merge branches... Done.
+Trying equivalence rom(H)... Transf. OK Proba. computed Transf. done Succeeded.
+Doing simplify (non-expanded game)... No change.
+Doing expand... Eliminated collisions between second(r_7) and second(r_4[i2_385]) Probability: qG / |Dz|
+(second(r_7) collides with a value independent of r_7 with probability at most 1 / |Dz|;
+ second(r_4[i2_385]) does not depend on r_7)
+Eliminated collisions between r_7 and s' Probability: qD / |Dow|
+(r_7 collides with a value independent of r_7 with probability at most 1 / |Dow|;
+ s' does not depend on r_7)
+Done.
+Doing remove assignments of findcond... Done.
+Doing simplify... Doing global dependency analysis on r_11 inside simplify... At 73, returned message r_11[u_20] depends on r_11.
+No change
+Doing global dependency analysis on r_3 inside simplify... At 107, returned message cT depends on r_3.
+No change
+Doing global dependency analysis on r_4 inside simplify... At 36, returned message r_4 depends on r_4.
+No change
+Doing global dependency analysis on r_7 inside simplify... At 146, returned message cT depends on r_7.
+No change
+Doing global dependency analysis on r_10 inside simplify... At 146, returned message cT depends on r_10.
+No change
+Doing global dependency analysis on r_9 inside simplify... At 79, returned message r_9 depends on r_9.
+No change
+Eliminated collisions between r_7 and x1_1[ri_15] Probability: qH / |Dow|
+(r_7 collides with a value independent of r_7 with probability at most 1 / |Dow|;
+ x1_1[ri_15] does not depend on r_7)
+Eliminated collisions between r_3 and x1[ri_1] Probability: qG / |Dr|
+(r_3 collides with a value independent of r_3 with probability at most 1 / |Dr|;
+ x1[ri_1] does not depend on r_3)
+Eliminated collisions between r_7 and s' Probability: qD / |Dow|
+(r_7 collides with a value independent of r_7 with probability at most 1 / |Dow|;
+ s' does not depend on r_7)
+Eliminated collisions between xorDr(t', r_11) and x1[ri_1] Probability: qG * qD / |Dr|
+(xorDr(t', r_11) collides with a value independent of r_11 with probability at most 1 / |Dr|;
+ x1[ri_1] does not depend on r_11)
+Eliminated collisions between xorDr(t', r_11) and r_3 Probability: qD / |Dr|
+(xorDr(t', r_11) collides with a value independent of r_11 with probability at most 1 / |Dr|;
+ r_3 does not depend on r_11)
+Doing global dependency analysis on r_11 inside simplify... At 71, returned message r_11[u_20] depends on r_11.
+No change
+Doing global dependency analysis on r_3 inside simplify... At 97, returned message cT depends on r_3.
+No change
+Doing global dependency analysis on r_4 inside simplify... At 36, returned message r_4 depends on r_4.
+No change
+Doing global dependency analysis on r_7 inside simplify... At 97, returned message cT depends on r_7.
+No change
+Doing global dependency analysis on r_9 inside simplify... At 77, returned message r_9 depends on r_9.
+No change
+Eliminated collisions between r_7 and x1_1[u_17] Probability: qD / |Dow|
+(r_7 collides with a value independent of r_7 with probability at most 1 / |Dow|;
+ x1_1[u_17] does not depend on r_7)
+Eliminated collisions between r_7 and s' Probability: qD / |Dow|
+(r_7 collides with a value independent of r_7 with probability at most 1 / |Dow|;
+ s' does not depend on r_7)
+Run simplify 2 time(s). Maximum reached.
+Done.
+Doing move all binders... Done.
+Doing SA rename new without array accesses and remove assignments of findcond... No change.
+Doing merge branches... No change.
+Doing insert event bad2 at occurrence 58... Done.
+Trying equivalence remove_xor(xorDr) with r_10... Transf. OK Proba. computed Transf. done Succeeded.
+Doing simplify (non-expanded game)... No change.
+Doing expand... Eliminated collisions between r_7 and x1_1[u_17] Probability: qD / |Dow|
+(r_7 collides with a value independent of r_7 with probability at most 1 / |Dow|;
+ x1_1[u_17] does not depend on r_7)
+Eliminated collisions between r_7 and s' Probability: qD / |Dow|
+(r_7 collides with a value independent of r_7 with probability at most 1 / |Dow|;
+ s' does not depend on r_7)
+Done.
+Doing remove assignments of findcond... Done.
+Doing simplify... Doing global dependency analysis on r_11 inside simplify... At 67, returned message r_11[u_20] depends on r_11.
+No change
+Doing global dependency analysis on r_3 inside simplify... Done. Restarting simplify
+Eliminated collisions between r_3 and r' Probability: qD / |Dr|
+(r_3 collides with a value independent of r_3[...] with probability at most 1 / |Dr|;
+ r' does not depend on r_3[...])
+Eliminated collisions between r_3 and x1 Probability: qG / |Dr|
+(r_3 collides with a value independent of r_3[...] with probability at most 1 / |Dr|;
+ x1 does not depend on r_3[...])
+Doing global dependency analysis on r_11 inside simplify... At 62, returned message r_11[u_20] depends on r_11.
+No change
+Doing global dependency analysis on r_4 inside simplify... At 31, returned message r_4 depends on r_4.
+No change
+Doing global dependency analysis on r_7 inside simplify... At 83, returned message cT depends on r_7.
+No change
+Doing global dependency analysis on r_9 inside simplify... At 68, returned message r_9 depends on r_9.
+No change
+Doing global dependency analysis on r_12 inside simplify... At 83, returned message cT depends on r_12.
+No change
+Eliminated collisions between r_7 and s' Probability: qD / |Dow|
+(r_7 collides with a value independent of r_7 with probability at most 1 / |Dow|;
+ s' does not depend on r_7)
+Doing global dependency analysis on r_11 inside simplify... At 62, returned message r_11[u_20] depends on r_11.
+No change
+Doing global dependency analysis on r_4 inside simplify... At 31, returned message r_4 depends on r_4.
+No change
+Doing global dependency analysis on r_7 inside simplify... At 82, returned message cT depends on r_7.
+No change
+Doing global dependency analysis on r_9 inside simplify... At 68, returned message r_9 depends on r_9.
+No change
+Doing global dependency analysis on r_12 inside simplify... At 82, returned message cT depends on r_12.
+No change
+Run simplify 2 time(s). Fixpoint reached.
+Done.
+Doing move all binders... No change.
+Doing SA rename new without array accesses and remove assignments of findcond... No change.
+Doing merge branches... No change.
+Doing remove assignments of binder r'... Done.
+Trying equivalence move_array(Dr) with r_11.... Transf. OK Proba. computed Transf. done Succeeded.
+Doing simplify (non-expanded game)... No change.
+Doing expand... Eliminated collisions between r_7 and s' Probability: qD / |Dow|
+(r_7 collides with a value independent of r_7 with probability at most 1 / |Dow|;
+ s' does not depend on r_7)
+Done.
+Doing remove assignments of findcond... Done.
+Doing simplify... Doing global dependency analysis on r_7 inside simplify... At 95, returned message cT depends on r_7.
+No change
+Doing global dependency analysis on r_12 inside simplify... At 95, returned message cT depends on r_12.
+No change
+Doing global dependency analysis on r_7 inside simplify... At 123, returned message cT depends on r_7.
+No change
+Doing global dependency analysis on r_9 inside simplify... At 109, returned message r_9 depends on r_9.
+No change
+Doing global dependency analysis on r_4 inside simplify... At 31, returned message r_4 depends on r_4.
+No change
+Doing global dependency analysis on r_12 inside simplify... At 123, returned message cT depends on r_12.
+No change
+Eliminated collisions between r_7 and s' Probability: qD / |Dow|
+(r_7 collides with a value independent of r_7 with probability at most 1 / |Dow|;
+ s' does not depend on r_7)
+Run simplify 2 time(s). Maximum reached.
+Done.
+Doing SA rename u_20... Done.
+Doing SA rename new without array accesses and remove assignments of findcond... No change.
+Doing simplify... Doing global dependency analysis on r_7 inside simplify... At 102, returned message cT depends on r_7.
+No change
+Doing global dependency analysis on r_12 inside simplify... At 102, returned message cT depends on r_12.
+No change
+Doing global dependency analysis on Y_3 inside simplify... At 89, returned message Y_3 depends on Y_3.
+No change
+Doing global dependency analysis on r_4 inside simplify... At 31, returned message r_4 depends on r_4.
+No change
+Doing global dependency analysis on r_7 inside simplify... At 108, returned message cT depends on r_7.
+No change
+Doing global dependency analysis on r_9 inside simplify... At 94, returned message r_9 depends on r_9.
+No change
+Doing global dependency analysis on r_12 inside simplify... At 108, returned message cT depends on r_12.
+No change
+Eliminated collisions between r_7 and s' Probability: qD / |Dow|
+(r_7 collides with a value independent of r_7 with probability at most 1 / |Dow|;
+ s' does not depend on r_7)
+Run simplify 2 time(s). Maximum reached.
+Done.
+Doing SA rename u_16... Done.
+Doing SA rename new without array accesses and remove assignments of findcond... Done.
+Doing simplify... Doing global dependency analysis on Y_3 inside simplify... At 78, returned message Y_3 depends on Y_3.
+No change
+Doing global dependency analysis on r_4 inside simplify... At 31, returned message r_4 depends on r_4.
+No change
+Doing global dependency analysis on r_7 inside simplify... At 97, returned message cT depends on r_7.
+No change
+Doing global dependency analysis on r_9 inside simplify... At 83, returned message r_9 depends on r_9.
+No change
+Doing global dependency analysis on r_12 inside simplify... At 97, returned message cT depends on r_12.
+No change
+Eliminated collisions between r_7 and s' Probability: qD / |Dow|
+(r_7 collides with a value independent of r_7 with probability at most 1 / |Dow|;
+ s' does not depend on r_7)
+Doing global dependency analysis on Y_3 inside simplify... At 78, returned message Y_3 depends on Y_3.
+No change
+Doing global dependency analysis on r_4 inside simplify... At 31, returned message r_4 depends on r_4.
+No change
+Doing global dependency analysis on r_7 inside simplify... At 97, returned message cT depends on r_7.
+No change
+Doing global dependency analysis on r_9 inside simplify... At 83, returned message r_9 depends on r_9.
+No change
+Doing global dependency analysis on r_12 inside simplify... At 97, returned message cT depends on r_12.
+No change
+Run simplify 2 time(s). Fixpoint reached.
+Done.
+Doing SA rename u_20... No change.
+Doing SA rename u_17... Done.
+Doing SA rename new without array accesses and remove assignments of findcond... No change.
+Doing simplify... Doing global dependency analysis on Y_3 inside simplify... At 78, returned message Y_3 depends on Y_3.
+No change
+Doing global dependency analysis on r_4 inside simplify... At 31, returned message r_4 depends on r_4.
+No change
+Doing global dependency analysis on r_7 inside simplify... At 97, returned message cT depends on r_7.
+No change
+Doing global dependency analysis on r_9 inside simplify... At 83, returned message r_9 depends on r_9.
+No change
+Doing global dependency analysis on r_12 inside simplify... At 97, returned message cT depends on r_12.
+No change
+Run simplify 1 time(s). Fixpoint reached.
+No change.
+Doing simplify... Doing global dependency analysis on Y_3 inside simplify... At 78, returned message Y_3 depends on Y_3.
+No change
+Doing global dependency analysis on r_4 inside simplify... At 31, returned message r_4 depends on r_4.
+No change
+Doing global dependency analysis on r_7 inside simplify... At 97, returned message cT depends on r_7.
+No change
+Doing global dependency analysis on r_9 inside simplify... At 83, returned message r_9 depends on r_9.
+No change
+Doing global dependency analysis on r_12 inside simplify... At 97, returned message cT depends on r_12.
+No change
+Run simplify 1 time(s). Fixpoint reached.
+No change.
+Doing move all binders... No change.
+Doing SA rename new without array accesses and remove assignments of findcond... No change.
+Doing merge branches... No change.
+Doing merge variables (r_9, Y_3)... Done.
+Doing merge branches... Done.
+Doing insert instruction find [unique] u30 = ri_13 <= qH, u1 = ri_1 <= qG suchthat defined(r_9[ri_13], x1_1[ri_13], r_4[ri_1], x1[ri_1]) && c = f(pk, concat(x1_1[ri_13], xorDr(r_9[ri_13], x1[ri_1]))) then at occurrence 84... Done.
+Doing simplify... Doing global dependency analysis on r_9 inside simplify... At 58, returned message r_9 depends on r_9.
+No change
+Doing global dependency analysis on r_4 inside simplify... At 31, returned message r_4 depends on r_4.
+No change
+Doing global dependency analysis on r_7 inside simplify... At 73, returned message cT depends on r_7.
+No change
+Doing global dependency analysis on r_12 inside simplify... At 73, returned message cT depends on r_12.
+No change
+Doing global dependency analysis on r_4 inside simplify... At 31, returned message r_4 depends on r_4.
+No change
+Doing global dependency analysis on r_7 inside simplify... At 73, returned message cT depends on r_7.
+No change
+Doing global dependency analysis on r_12 inside simplify... At 73, returned message cT depends on r_12.
+No change
+Run simplify 2 time(s). Fixpoint reached.
+Done.
+Doing remove assignments of useless... Done.
+Trying equivalence pd_ow(f) with r_12, r_7, r_2... Failed.
+Doing remove assignments of binder pk... Done.
+Trying equivalence pd_ow(f) with r_12, r_7, r_2... Transf. OK Proba. computed Transf. done Succeeded.
+Doing simplify (non-expanded game)... Done.
+Doing expand... Done.
+Doing remove assignments of findcond... No change.
+Doing simplify... Doing global dependency analysis on r_4 inside simplify... At 26, returned message r_4 depends on r_4.
+No change
+Doing global dependency analysis on r_7 inside simplify... At 61, returned message cT depends on r_7.
+No change
+Doing global dependency analysis on r_12 inside simplify... At 61, returned message cT depends on r_12.
+No change
+Run simplify 1 time(s). Fixpoint reached.
+No change.
+Doing move all binders... No change.
+Doing SA rename new without array accesses and remove assignments of findcond... No change.
+Doing merge branches... No change.
+Proved query event(bad1) ==> false with public variables b1
+Proved query event(bad3) ==> false with public variables b1
+Proved query event(bad2) ==> false with public variables b1
+Proved query event(non_unique) ==> false with public variables b1
+===================== Proof starts =======================
+Initial state
+Game 1 is
+     Ogen() :=
+     hkh <-R hashkey;
+     hkg <-R hashkey;
+     r_2 <-R seed;
+     pk: pkey <- pkgen(r_2);
+     sk: skey <- skgen(r_2);
+     return(pk);
+     ((
+       foreach iH <= qG do
+       OH(x1: Dr) :=
+       return(G(hkg, x1))
+     ) | (
+       foreach iH_1 <= qH do
+       OH_1(x1_1: Dow) :=
+       return(H(hkh, x1_1))
+     ) | (
+       OT(m1: Dm, m2: Dm) :=
+       b1 <-R bool;
+       menc: Dm <- if_fun(b1, m1, m2);
+       r_3 <-R Dr;
+       s: Dow <- xorDow(concatm(menc, zeroDz), G(hkg, r_3));
+       t: Dr <- xorDr(r_3, H(hkh, s));
+       cT: D <- f(pk, concat(s, t));
+       return(cT)
+     ) | (
+       foreach iD <= qD do
+       OD(c: D) :=
+       if defined(cT) && (c = cT) then
+         yield
+       else
+         let concat(s': Dow, t': Dr) = invf(sk, c) in
+         r': Dr <- xorDr(t', H(hkh, s'));
+         mz: Dow <- xorDow(s', G(hkg, r'));
+ {96}    let concatm(m: Dm, =zeroDz) = mz in
+         return(m)
+     ))
+
+
+Applying insert instruction if second(mz) = zeroDz then at occurrence 96
+yields
+
+Game 2 is
+     Ogen() :=
+     hkh <-R hashkey;
+     hkg <-R hashkey;
+     r_2 <-R seed;
+     pk: pkey <- pkgen(r_2);
+     sk: skey <- skgen(r_2);
+     return(pk);
+     ((
+       foreach iH <= qG do
+       OH(x1: Dr) :=
+       return(G(hkg, x1))
+     ) | (
+       foreach iH_1 <= qH do
+       OH_1(x1_1: Dow) :=
+       return(H(hkh, x1_1))
+     ) | (
+       OT(m1: Dm, m2: Dm) :=
+       b1 <-R bool;
+       menc: Dm <- if_fun(b1, m1, m2);
+       r_3 <-R Dr;
+       s: Dow <- xorDow(concatm(menc, zeroDz), G(hkg, r_3));
+       t: Dr <- xorDr(r_3, H(hkh, s));
+       cT: D <- f(pk, concat(s, t));
+       return(cT)
+     ) | (
+       foreach iD <= qD do
+       OD(c: D) :=
+       if defined(cT) && (c = cT) then
+         yield
+       else
+         let concat(s': Dow, t': Dr) = invf(sk, c) in
+         r': Dr <- xorDr(t', H(hkh, s'));
+         mz: Dow <- xorDow(s', G(hkg, r'));
+         if second(mz) = zeroDz then
+         (
+           let concatm(m: Dm, =zeroDz) = mz in
+           return(m)
+         )
+         else
+           let concatm(m: Dm, =zeroDz) = mz in
+           return(m)
+     ))
+
+
+Applying equivalence rom(G)
+  - Equivalence rom(G) with variables: hkg -> hk
+yields
+
+Game 3 is
+     Ogen() :=
+     hkh <-R hashkey;
+     r_2 <-R seed;
+     pk: pkey <- pkgen(r_2);
+     sk: skey <- skgen(r_2);
+     return(pk);
+     ((
+       foreach iH <= qG do
+       OH(x1: Dr) :=
+       return((x_O: Dr <- x1; find [unique] u_5 = ri_5 <= qG suchthat defined(x_O[ri_5], r_4[ri_5]) && (x_O = x_O[ri_5]) then r_4[u_5] orfind  suchthat defined(x_O_1, r_5) && (x_O = x_O_1) then r_5 orfind u_4 = ri_4 <= qD suchthat defined(x_O_2[ri_4], r_6[ri_4]) && (x_O = x_O_2[ri_4]) then r_6[u_4] else r_4 <-R Dow; r_4))
+     ) | (
+       foreach iH_1 <= qH do
+       OH_1(x1_1: Dow) :=
+       return(H(hkh, x1_1))
+     ) | (
+       OT(m1: Dm, m2: Dm) :=
+       b1 <-R bool;
+       menc: Dm <- if_fun(b1, m1, m2);
+       r_3 <-R Dr;
+       s: Dow <- xorDow(concatm(menc, zeroDz), (x_O_1: Dr <- r_3; find [unique] u_3 = ri_3 <= qG suchthat defined(x_O[ri_3], r_4[ri_3]) && (x_O_1 = x_O[ri_3]) then r_4[u_3] orfind u_2 = ri_2 <= qD suchthat defined(x_O_2[ri_2], r_6[ri_2]) && (x_O_1 = x_O_2[ri_2]) then r_6[u_2] else r_5 <-R Dow; r_5));
+       t: Dr <- xorDr(r_3, H(hkh, s));
+       cT: D <- f(pk, concat(s, t));
+       return(cT)
+     ) | (
+       foreach iD <= qD do
+       OD(c: D) :=
+       if defined(cT) && (c = cT) then
+         yield
+       else
+         let concat(s': Dow, t': Dr) = invf(sk, c) in
+         r': Dr <- xorDr(t', H(hkh, s'));
+         mz: Dow <- xorDow(s', (x_O_2: Dr <- r'; find [unique] u_1 = ri_1 <= qG suchthat defined(x_O[ri_1], r_4[ri_1]) && (x_O_2 = x_O[ri_1]) then r_4[u_1] orfind  suchthat defined(x_O_1, r_5) && (x_O_2 = x_O_1) then r_5 orfind u = ri <= qD suchthat defined(x_O_2[ri], r_6[ri]) && (x_O_2 = x_O_2[ri]) then r_6[u] else r_6 <-R Dow; r_6));
+         if second(mz) = zeroDz then
+         (
+           let concatm(m: Dm, =zeroDz) = mz in
+           return(m)
+         )
+         else
+{184}      let concatm(m: Dm, =zeroDz) = mz in
+           return(m)
+     ))
+
+
+Applying expand
+  - Expand if/find/let
+    - Remove let at 184
+    - Remove let at 184
+    - Remove let at 184
+    - Remove let at 184
+yields
+
+Game 4 is
+     Ogen() :=
+     hkh <-R hashkey;
+     r_2 <-R seed;
+     pk: pkey <- pkgen(r_2);
+     sk: skey <- skgen(r_2);
+     return(pk);
+     ((
+       foreach iH <= qG do
+       OH(x1: Dr) :=
+       x_O: Dr <- x1;
+       find [unique] u_5 = ri_5 <= qG suchthat defined(x_O[ri_5], r_4[ri_5]) && (x_O = x_O[ri_5]) then
+         return(r_4[u_5])
+       orfind  suchthat defined(x_O_1, r_5) && (x_O = x_O_1) then
+         return(r_5)
+       orfind u_4 = ri_4 <= qD suchthat defined(x_O_2[ri_4], r_6[ri_4]) && (x_O = x_O_2[ri_4]) then
+         return(r_6[u_4])
+       else
+         r_4 <-R Dow;
+         return(r_4)
+     ) | (
+       foreach iH_1 <= qH do
+       OH_1(x1_1: Dow) :=
+       return(H(hkh, x1_1))
+     ) | (
+       OT(m1: Dm, m2: Dm) :=
+       b1 <-R bool;
+       menc: Dm <- if_fun(b1, m1, m2);
+       r_3 <-R Dr;
+       x_O_1: Dr <- r_3;
+       find [unique] u_3 = ri_3 <= qG suchthat defined(x_O[ri_3], r_4[ri_3]) && (x_O_1 = x_O[ri_3]) then
+         s: Dow <- xorDow(concatm(menc, zeroDz), r_4[u_3]);
+         t: Dr <- xorDr(r_3, H(hkh, s));
+         cT: D <- f(pk, concat(s, t));
+         return(cT)
+       orfind u_2 = ri_2 <= qD suchthat defined(x_O_2[ri_2], r_6[ri_2]) && (x_O_1 = x_O_2[ri_2]) then
+         s: Dow <- xorDow(concatm(menc, zeroDz), r_6[u_2]);
+         t: Dr <- xorDr(r_3, H(hkh, s));
+         cT: D <- f(pk, concat(s, t));
+         return(cT)
+       else
+         r_5 <-R Dow;
+         s: Dow <- xorDow(concatm(menc, zeroDz), r_5);
+         t: Dr <- xorDr(r_3, H(hkh, s));
+         cT: D <- f(pk, concat(s, t));
+         return(cT)
+     ) | (
+       foreach iD <= qD do
+       OD(c: D) :=
+       if defined(cT) && (c = cT) then
+         yield
+       else
+         let concat(s': Dow, t': Dr) = invf(sk, c) in
+         r': Dr <- xorDr(t', H(hkh, s'));
+         x_O_2: Dr <- r';
+         find [unique] u_1 = ri_1 <= qG suchthat defined(x_O[ri_1], r_4[ri_1]) && (x_O_2 = x_O[ri_1]) then
+         (
+           mz: Dow <- xorDow(s', r_4[u_1]);
+           if second(mz) = zeroDz then
+           let concatm(m: Dm, =zeroDz) = mz in
+           return(m)
+         )
+         orfind  suchthat defined(x_O_1, r_5) && (x_O_2 = x_O_1) then
+         (
+           mz: Dow <- xorDow(s', r_5);
+           if second(mz) = zeroDz then
+           let concatm(m: Dm, =zeroDz) = mz in
+           return(m)
+         )
+         orfind u = ri <= qD suchthat defined(x_O_2[ri], r_6[ri]) && (x_O_2 = x_O_2[ri]) then
+         (
+           mz: Dow <- xorDow(s', r_6[u]);
+           if second(mz) = zeroDz then
+           let concatm(m: Dm, =zeroDz) = mz in
+           return(m)
+         )
+         else
+           r_6 <-R Dow;
+           mz: Dow <- xorDow(s', r_6);
+           if second(mz) = zeroDz then
+           let concatm(m: Dm, =zeroDz) = mz in
+           return(m)
+     ))
+
+
+Applying remove assignments of findcond
+  - Remove assignments on x_O_2 (definition removed, all usages removed)
+  - Remove assignments on x_O_1 (definition removed, all usages removed)
+  - Remove assignments on x_O (definition point kept, all usages removed)
+yields
+
+Game 5 is
+     Ogen() :=
+     hkh <-R hashkey;
+     r_2 <-R seed;
+     pk: pkey <- pkgen(r_2);
+     sk: skey <- skgen(r_2);
+     return(pk);
+     ((
+       foreach iH <= qG do
+       OH(x1: Dr) :=
+       x_O: Dr <- cst_Dr;
+ {19}  find [unique] u_5 = ri_5 <= qG suchthat defined(x1[ri_5], x_O[ri_5], r_4[ri_5]) && (x1 = x1[ri_5]) then
+         return(r_4[u_5])
+       orfind  suchthat defined(r_3, r_5) && (x1 = r_3) then
+         return(r_5)
+       orfind u_4 = ri_4 <= qD suchthat defined(r'[ri_4], r_6[ri_4]) && (x1 = r'[ri_4]) then
+         return(r_6[u_4])
+       else
+         r_4 <-R Dow;
+         return(r_4)
+     ) | (
+       foreach iH_1 <= qH do
+       OH_1(x1_1: Dow) :=
+       return(H(hkh, x1_1))
+     ) | (
+       OT(m1: Dm, m2: Dm) :=
+       b1 <-R bool;
+       menc: Dm <- if_fun(b1, m1, m2);
+       r_3 <-R Dr;
+ {74}  find [unique] u_3 = ri_3 <= qG suchthat defined(x1[ri_3], x_O[ri_3], r_4[ri_3]) && {78}(r_3 = x1[ri_3]) then
+         s: Dow <- xorDow(concatm(menc, zeroDz), r_4[u_3]);
+         t: Dr <- xorDr(r_3, H(hkh, s));
+         cT: D <- f(pk, concat(s, t));
+         return(cT)
+       orfind u_2 = ri_2 <= qD suchthat defined(r'[ri_2], r_6[ri_2]) && {109}(r_3 = r'[ri_2]) then
+         s: Dow <- xorDow(concatm(menc, zeroDz), r_6[u_2]);
+         t: Dr <- xorDr(r_3, H(hkh, s));
+         cT: D <- f(pk, concat(s, t));
+         return(cT)
+       else
+         r_5 <-R Dow;
+         s: Dow <- xorDow(concatm(menc, zeroDz), r_5);
+         t: Dr <- xorDr(r_3, H(hkh, s));
+         cT: D <- f(pk, concat(s, t));
+         return(cT)
+     ) | (
+       foreach iD <= qD do
+       OD(c: D) :=
+       if defined(cT) && (c = cT) then
+         yield
+       else
+         let concat(s': Dow, t': Dr) = invf(sk, c) in
+         r': Dr <- xorDr(t', H(hkh, s'));
+{185}    find [unique] u_1 = ri_1 <= qG suchthat defined(x1[ri_1], x_O[ri_1], r_4[ri_1]) && (r' = x1[ri_1]) then
+         (
+           mz: Dow <- xorDow(s', r_4[u_1]);
+           if {202}(second(mz) = zeroDz) then
+           let concatm(m: Dm, =zeroDz) = mz in
+           return(m)
+         )
+         orfind  suchthat defined(r_3, r_5) && (r' = r_3) then
+         (
+           mz: Dow <- xorDow(s', r_5);
+           if {228}(second(mz) = zeroDz) then
+           let concatm(m: Dm, =zeroDz) = mz in
+           return(m)
+         )
+         orfind u = ri <= qD suchthat defined(r'[ri], r_6[ri]) && (r' = r'[ri]) then
+         (
+           mz: Dow <- xorDow(s', r_6[u]);
+           if {259}(second(mz) = zeroDz) then
+           let concatm(m: Dm, =zeroDz) = mz in
+           return(m)
+         )
+         else
+           r_6 <-R Dow;
+{276}      mz: Dow <- xorDow(s', r_6);
+{282}      if {283}(second(mz) = zeroDz) then
+           let concatm(m: Dm, =zeroDz) = mz in
+           return(m)
+     ))
+
+
+Applying simplify [probability (qG + qD) / |Dr| + qD / |Dz|]
+  - Simplification pass
+    - Replaced (second(mz) = zeroDz) with false at 283
+    - Test at 282 always false
+    - Remove let at 276
+    - Replaced (second(mz) = zeroDz) with (second(s') = second(r_6[u])) at 259
+    - Replaced (second(mz) = zeroDz) with (second(s') = second(r_5)) at 228
+    - Replaced (second(mz) = zeroDz) with (second(s') = second(r_4[u_1])) at 202
+    - Replaced defined condition x1[ri_1], x_O[ri_1], r_4[ri_1] with r_4[ri_1], x1[ri_1] in find at 185
+    - Replaced (r_3 = r'[ri_2]) with false at 109
+    - Remove branch 2 in find at 74
+    - Replaced (r_3 = x1[ri_3]) with false at 78
+    - Remove branch 1 in find at 74
+    - Find at 74 removed (else branch kept if any)
+    - Replaced defined condition x1[ri_5], x_O[ri_5], r_4[ri_5] with r_4[ri_5], x1[ri_5] in find at 19
+yields
+
+Game 6 is
+     Ogen() :=
+     hkh <-R hashkey;
+     r_2 <-R seed;
+     pk: pkey <- pkgen(r_2);
+     sk: skey <- skgen(r_2);
+     return(pk);
+     ((
+       foreach iH <= qG do
+       OH(x1: Dr) :=
+       x_O: Dr <- cst_Dr;
+       find [unique] u_5 = ri_5 <= qG suchthat defined(r_4[ri_5], x1[ri_5]) && (x1 = x1[ri_5]) then
+         return(r_4[u_5])
+       orfind  suchthat defined(r_3, r_5) && (x1 = r_3) then
+         return(r_5)
+       orfind u_4 = ri_4 <= qD suchthat defined(r'[ri_4], r_6[ri_4]) && (x1 = r'[ri_4]) then
+         return(r_6[u_4])
+       else
+         r_4 <-R Dow;
+         return(r_4)
+     ) | (
+       foreach iH_1 <= qH do
+       OH_1(x1_1: Dow) :=
+       return(H(hkh, x1_1))
+     ) | (
+       OT(m1: Dm, m2: Dm) :=
+       b1 <-R bool;
+       menc: Dm <- if_fun(b1, m1, m2);
+       r_3 <-R Dr;
+       r_5 <-R Dow;
+       s: Dow <- xorDow(concatm(menc, zeroDz), r_5);
+       t: Dr <- xorDr(r_3, H(hkh, s));
+       cT: D <- f(pk, concat(s, t));
+       return(cT)
+     ) | (
+       foreach iD <= qD do
+       OD(c: D) :=
+       if defined(cT) && (c = cT) then
+         yield
+       else
+         let concat(s': Dow, t': Dr) = invf(sk, c) in
+         r': Dr <- xorDr(t', H(hkh, s'));
+         find [unique] u_1 = ri_1 <= qG suchthat defined(r_4[ri_1], x1[ri_1]) && (r' = x1[ri_1]) then
+         (
+           mz: Dow <- xorDow(s', r_4[u_1]);
+           if second(s') = second(r_4[u_1]) then
+           let concatm(m: Dm, =zeroDz) = mz in
+           return(m)
+         )
+         orfind  suchthat defined(r_3, r_5) && (r' = r_3) then
+         (
+           mz: Dow <- xorDow(s', r_5);
+           if second(s') = second(r_5) then
+           let concatm(m: Dm, =zeroDz) = mz in
+           return(m)
+         )
+         orfind u = ri <= qD suchthat defined(r'[ri], r_6[ri]) && (r' = r'[ri]) then
+         (
+           mz: Dow <- xorDow(s', r_6[u]);
+           if second(s') = second(r_6[u]) then
+           let concatm(m: Dm, =zeroDz) = mz in
+           return(m)
+         )
+         else
+           r_6 <-R Dow
+     ))
+
+
+Applying move all binders
+  - Move assignment to mz
+  - Move assignment to mz
+  - Move assignment to mz
+  - Move assignment to x_O
+yields
+
+Game 7 is
+     Ogen() :=
+     hkh <-R hashkey;
+     r_2 <-R seed;
+     pk: pkey <- pkgen(r_2);
+     sk: skey <- skgen(r_2);
+     return(pk);
+     ((
+       foreach iH <= qG do
+       OH(x1: Dr) :=
+       find [unique] u_5 = ri_5 <= qG suchthat defined(r_4[ri_5], x1[ri_5]) && (x1 = x1[ri_5]) then
+         return(r_4[u_5])
+       orfind  suchthat defined(r_3, r_5) && (x1 = r_3) then
+ {34}    return(r_5)
+       orfind u_4 = ri_4 <= qD suchthat defined(r'[ri_4], r_6[ri_4]) && (x1 = r'[ri_4]) then
+         return(r_6[u_4])
+       else
+         r_4 <-R Dow;
+         return(r_4)
+     ) | (
+       foreach iH_1 <= qH do
+       OH_1(x1_1: Dow) :=
+       return(H(hkh, x1_1))
+     ) | (
+       OT(m1: Dm, m2: Dm) :=
+       b1 <-R bool;
+       menc: Dm <- if_fun(b1, m1, m2);
+       r_3 <-R Dr;
+       r_5 <-R Dow;
+       s: Dow <- xorDow(concatm(menc, zeroDz), r_5);
+       t: Dr <- xorDr(r_3, H(hkh, s));
+       cT: D <- f(pk, concat(s, t));
+       return(cT)
+     ) | (
+       foreach iD <= qD do
+       OD(c: D) :=
+       if defined(cT) && (c = cT) then
+         yield
+       else
+         let concat(s': Dow, t': Dr) = invf(sk, c) in
+         r': Dr <- xorDr(t', H(hkh, s'));
+         find [unique] u_1 = ri_1 <= qG suchthat defined(r_4[ri_1], x1[ri_1]) && (r' = x1[ri_1]) then
+         (
+           if second(s') = second(r_4[u_1]) then
+           mz: Dow <- xorDow(s', r_4[u_1]);
+           let concatm(m: Dm, =zeroDz) = mz in
+           return(m)
+         )
+         orfind  suchthat defined(r_3, r_5) && (r' = r_3) then
+         (
+           if second(s') = second(r_5) then
+           mz: Dow <- xorDow(s', r_5);
+           let concatm(m: Dm, =zeroDz) = mz in
+           return(m)
+         )
+         orfind u = ri <= qD suchthat defined(r'[ri], r_6[ri]) && (r' = r'[ri]) then
+         (
+           if second(s') = second(r_6[u]) then
+           mz: Dow <- xorDow(s', r_6[u]);
+           let concatm(m: Dm, =zeroDz) = mz in
+           return(m)
+         )
+         else
+           r_6 <-R Dow
+     ))
+
+
+Applying insert event bad1 at occurrence 34 [probability Pr[event bad1 in game 8 with public variables b1]]
+yields
+
+Game 8 is
+     Ogen() :=
+     hkh <-R hashkey;
+     r_2 <-R seed;
+     pk: pkey <- pkgen(r_2);
+     sk: skey <- skgen(r_2);
+     return(pk);
+     ((
+       foreach iH <= qG do
+       OH(x1: Dr) :=
+       find [unique] u_5 = ri_5 <= qG suchthat defined(r_4[ri_5], x1[ri_5]) && (x1 = x1[ri_5]) then
+         return(r_4[u_5])
+       orfind  suchthat defined(r_3, r_5) && (x1 = r_3) then
+         event_abort bad1
+       orfind u_4 = ri_4 <= qD suchthat defined(r'[ri_4], r_6[ri_4]) && (x1 = r'[ri_4]) then
+         return(r_6[u_4])
+       else
+         r_4 <-R Dow;
+         return(r_4)
+     ) | (
+       foreach iH_1 <= qH do
+       OH_1(x1_1: Dow) :=
+       return(H(hkh, x1_1))
+     ) | (
+       OT(m1: Dm, m2: Dm) :=
+       b1 <-R bool;
+       menc: Dm <- if_fun(b1, m1, m2);
+       r_3 <-R Dr;
+       r_5 <-R Dow;
+       s: Dow <- xorDow(concatm(menc, zeroDz), r_5);
+       t: Dr <- xorDr(r_3, H(hkh, s));
+       cT: D <- f(pk, concat(s, t));
+       return(cT)
+     ) | (
+       foreach iD <= qD do
+       OD(c: D) :=
+       if defined(cT) && (c = cT) then
+         yield
+       else
+         let concat(s': Dow, t': Dr) = invf(sk, c) in
+         r': Dr <- xorDr(t', H(hkh, s'));
+         find [unique] u_1 = ri_1 <= qG suchthat defined(r_4[ri_1], x1[ri_1]) && (r' = x1[ri_1]) then
+         (
+           if second(s') = second(r_4[u_1]) then
+           mz: Dow <- xorDow(s', r_4[u_1]);
+           let concatm(m: Dm, =zeroDz) = mz in
+           return(m)
+         )
+         orfind  suchthat defined(r_3, r_5) && (r' = r_3) then
+         (
+{154}      if second(s') = second(r_5) then
+           mz: Dow <- xorDow(s', r_5);
+           let concatm(m: Dm, =zeroDz) = mz in
+           return(m)
+         )
+         orfind u = ri <= qD suchthat defined(r'[ri], r_6[ri]) && (r' = r'[ri]) then
+         (
+           if second(s') = second(r_6[u]) then
+           mz: Dow <- xorDow(s', r_6[u]);
+           let concatm(m: Dm, =zeroDz) = mz in
+           return(m)
+         )
+         else
+           r_6 <-R Dow
+     ))
+
+
+Applying insert event bad3 at occurrence 154 [probability Pr[event bad3 in game 9 with public variables b1]]
+yields
+
+Game 9 is
+     Ogen() :=
+     hkh <-R hashkey;
+     r_2 <-R seed;
+     pk: pkey <- pkgen(r_2);
+     sk: skey <- skgen(r_2);
+     return(pk);
+     ((
+       foreach iH <= qG do
+       OH(x1: Dr) :=
+       find [unique] u_5 = ri_5 <= qG suchthat defined(r_4[ri_5], x1[ri_5]) && (x1 = x1[ri_5]) then
+         return(r_4[u_5])
+       orfind  suchthat defined(r_3, r_5) && (x1 = r_3) then
+         event_abort bad1
+       orfind u_4 = ri_4 <= qD suchthat defined(r'[ri_4], r_6[ri_4]) && (x1 = r'[ri_4]) then
+         return(r_6[u_4])
+       else
+         r_4 <-R Dow;
+         return(r_4)
+     ) | (
+       foreach iH_1 <= qH do
+       OH_1(x1_1: Dow) :=
+       return(H(hkh, x1_1))
+     ) | (
+       OT(m1: Dm, m2: Dm) :=
+       b1 <-R bool;
+       menc: Dm <- if_fun(b1, m1, m2);
+       r_3 <-R Dr;
+       r_5 <-R Dow;
+       s: Dow <- xorDow(concatm(menc, zeroDz), r_5);
+       t: Dr <- xorDr(r_3, H(hkh, s));
+       cT: D <- f(pk, concat(s, t));
+       return(cT)
+     ) | (
+       foreach iD <= qD do
+       OD(c: D) :=
+       if defined(cT) && (c = cT) then
+         yield
+       else
+         let concat(s': Dow, t': Dr) = invf(sk, c) in
+         r': Dr <- xorDr(t', H(hkh, s'));
+         find [unique] u_1 = ri_1 <= qG suchthat defined(r_4[ri_1], x1[ri_1]) && (r' = x1[ri_1]) then
+         (
+           if second(s') = second(r_4[u_1]) then
+           mz: Dow <- xorDow(s', r_4[u_1]);
+           let concatm(m: Dm, =zeroDz) = mz in
+           return(m)
+         )
+         orfind  suchthat defined(r_3, r_5) && (r' = r_3) then
+           event_abort bad3
+         orfind u = ri <= qD suchthat defined(r'[ri], r_6[ri]) && (r' = r'[ri]) then
+         (
+           if second(s') = second(r_6[u]) then
+           mz: Dow <- xorDow(s', r_6[u]);
+           let concatm(m: Dm, =zeroDz) = mz in
+           return(m)
+         )
+         else
+           r_6 <-R Dow
+     ))
+
+
+Applying equivalence remove_xor(xorDow) with r_5
+  - Equivalence remove_xor(xorDow) with variables: r_5 -> a
+yields
+
+Game 10 is
+     Ogen() :=
+     hkh <-R hashkey;
+     r_2 <-R seed;
+     pk: pkey <- pkgen(r_2);
+     sk: skey <- skgen(r_2);
+     return(pk);
+     ((
+       foreach iH <= qG do
+       OH(x1: Dr) :=
+       find [unique] u_5 = ri_5 <= qG suchthat defined(r_4[ri_5], x1[ri_5]) && (x1 = x1[ri_5]) then
+         return(r_4[u_5])
+       orfind  suchthat defined(r_3) && (x1 = r_3) then
+         event_abort bad1
+       orfind u_4 = ri_4 <= qD suchthat defined(r'[ri_4], r_6[ri_4]) && (x1 = r'[ri_4]) then
+         return(r_6[u_4])
+       else
+         r_4 <-R Dow;
+         return(r_4)
+     ) | (
+       foreach iH_1 <= qH do
+       OH_1(x1_1: Dow) :=
+       return(H(hkh, x1_1))
+     ) | (
+       OT(m1: Dm, m2: Dm) :=
+       b1 <-R bool;
+       menc: Dm <- if_fun(b1, m1, m2);
+       r_3 <-R Dr;
+       r_7 <-R Dow;
+       r_5: Dow <- cst_Dow;
+       s: Dow <- (x: Dow <- concatm(menc, zeroDz); r_7);
+       t: Dr <- xorDr(r_3, H(hkh, s));
+       cT: D <- f(pk, concat(s, t));
+       return(cT)
+     ) | (
+       foreach iD <= qD do
+       OD(c: D) :=
+       if defined(cT) && (c = cT) then
+         yield
+       else
+         let concat(s': Dow, t': Dr) = invf(sk, c) in
+         r': Dr <- xorDr(t', H(hkh, s'));
+         find [unique] u_1 = ri_1 <= qG suchthat defined(r_4[ri_1], x1[ri_1]) && (r' = x1[ri_1]) then
+         (
+           if second(s') = second(r_4[u_1]) then
+           mz: Dow <- xorDow(s', r_4[u_1]);
+           let concatm(m: Dm, =zeroDz) = mz in
+           return(m)
+         )
+         orfind  suchthat defined(r_3) && (r' = r_3) then
+           event_abort bad3
+         orfind u = ri <= qD suchthat defined(r'[ri], r_6[ri]) && (r' = r'[ri]) then
+         (
+           if second(s') = second(r_6[u]) then
+           mz: Dow <- xorDow(s', r_6[u]);
+           let concatm(m: Dm, =zeroDz) = mz in
+           return(m)
+         )
+         else
+           r_6 <-R Dow
+     ))
+
+
+Applying expand
+  - Expand if/find/let
+yields
+
+Game 11 is
+     Ogen() :=
+     hkh <-R hashkey;
+     r_2 <-R seed;
+     pk: pkey <- pkgen(r_2);
+     sk: skey <- skgen(r_2);
+     return(pk);
+     ((
+       foreach iH <= qG do
+       OH(x1: Dr) :=
+       find [unique] u_5 = ri_5 <= qG suchthat defined(r_4[ri_5], x1[ri_5]) && (x1 = x1[ri_5]) then
+         return(r_4[u_5])
+       orfind  suchthat defined(r_3) && (x1 = r_3) then
+         event_abort bad1
+       orfind u_4 = ri_4 <= qD suchthat defined(r'[ri_4], r_6[ri_4]) && (x1 = r'[ri_4]) then
+         return(r_6[u_4])
+       else
+         r_4 <-R Dow;
+         return(r_4)
+     ) | (
+       foreach iH_1 <= qH do
+       OH_1(x1_1: Dow) :=
+       return(H(hkh, x1_1))
+     ) | (
+       OT(m1: Dm, m2: Dm) :=
+       b1 <-R bool;
+       menc: Dm <- if_fun(b1, m1, m2);
+       r_3 <-R Dr;
+       r_7 <-R Dow;
+       r_5: Dow <- cst_Dow;
+       x: Dow <- concatm(menc, zeroDz);
+       s: Dow <- r_7;
+       t: Dr <- xorDr(r_3, H(hkh, s));
+       cT: D <- f(pk, concat(s, t));
+       return(cT)
+     ) | (
+       foreach iD <= qD do
+       OD(c: D) :=
+       if defined(cT) && (c = cT) then
+         yield
+       else
+         let concat(s': Dow, t': Dr) = invf(sk, c) in
+         r': Dr <- xorDr(t', H(hkh, s'));
+         find [unique] u_1 = ri_1 <= qG suchthat defined(r_4[ri_1], x1[ri_1]) && (r' = x1[ri_1]) then
+         (
+           if second(s') = second(r_4[u_1]) then
+           mz: Dow <- xorDow(s', r_4[u_1]);
+           let concatm(m: Dm, =zeroDz) = mz in
+           return(m)
+         )
+         orfind  suchthat defined(r_3) && (r' = r_3) then
+           event_abort bad3
+         orfind u = ri <= qD suchthat defined(r'[ri], r_6[ri]) && (r' = r'[ri]) then
+         (
+           if second(s') = second(r_6[u]) then
+           mz: Dow <- xorDow(s', r_6[u]);
+           let concatm(m: Dm, =zeroDz) = mz in
+           return(m)
+         )
+         else
+           r_6 <-R Dow
+     ))
+
+
+Applying remove assignments of findcond
+  - Remove assignments on r_5 (definition removed, all usages removed)
+  - Remove assignments on x (definition removed, all usages removed)
+  - Remove assignments on s (definition removed, all usages removed)
+  - Remove assignments on menc (definition removed, all usages removed)
+yields
+
+Game 12 is
+     Ogen() :=
+     hkh <-R hashkey;
+     r_2 <-R seed;
+     pk: pkey <- pkgen(r_2);
+     sk: skey <- skgen(r_2);
+     return(pk);
+     ((
+       foreach iH <= qG do
+       OH(x1: Dr) :=
+       find [unique] u_5 = ri_5 <= qG suchthat defined(r_4[ri_5], x1[ri_5]) && (x1 = x1[ri_5]) then
+         return(r_4[u_5])
+       orfind  suchthat defined(r_3) && (x1 = r_3) then
+         event_abort bad1
+       orfind u_4 = ri_4 <= qD suchthat defined(r'[ri_4], r_6[ri_4]) && (x1 = r'[ri_4]) then
+         return(r_6[u_4])
+       else
+         r_4 <-R Dow;
+         return(r_4)
+     ) | (
+       foreach iH_1 <= qH do
+       OH_1(x1_1: Dow) :=
+       return(H(hkh, x1_1))
+     ) | (
+       OT(m1: Dm, m2: Dm) :=
+       b1 <-R bool;
+       r_3 <-R Dr;
+       r_7 <-R Dow;
+       t: Dr <- xorDr(r_3, H(hkh, r_7));
+       cT: D <- f(pk, concat(r_7, t));
+       return(cT)
+     ) | (
+       foreach iD <= qD do
+       OD(c: D) :=
+       if defined(cT) && (c = cT) then
+         yield
+       else
+         let concat(s': Dow, t': Dr) = invf(sk, c) in
+         r': Dr <- xorDr(t', H(hkh, s'));
+         find [unique] u_1 = ri_1 <= qG suchthat defined(r_4[ri_1], x1[ri_1]) && (r' = x1[ri_1]) then
+         (
+           if second(s') = second(r_4[u_1]) then
+           mz: Dow <- xorDow(s', r_4[u_1]);
+           let concatm(m: Dm, =zeroDz) = mz in
+           return(m)
+         )
+         orfind  suchthat defined(r_3) && (r' = r_3) then
+           event_abort bad3
+         orfind u = ri <= qD suchthat defined(r'[ri], r_6[ri]) && (r' = r'[ri]) then
+         (
+           if second(s') = second(r_6[u]) then
+           mz: Dow <- xorDow(s', r_6[u]);
+           let concatm(m: Dm, =zeroDz) = mz in
+           return(m)
+         )
+         else
+           r_6 <-R Dow
+     ))
+
+
+Proved bit secrecy of b1 in game 12
+
+Applying equivalence move_array(Dow) with r_6. [probability qD / |Dz|]
+  - Equivalence move_array(Dow) with variables: r_6 -> X.
+yields
+
+Game 13 is
+     Ogen() :=
+     hkh <-R hashkey;
+     r_2 <-R seed;
+     pk: pkey <- pkgen(r_2);
+     sk: skey <- skgen(r_2);
+     return(pk);
+     ((
+       foreach iH <= qG do
+       OH(x1: Dr) :=
+       find [unique] u_5 = ri_5 <= qG suchthat defined(r_4[ri_5], x1[ri_5]) && (x1 = x1[ri_5]) then
+         return(r_4[u_5])
+       orfind  suchthat defined(r_3) && (x1 = r_3) then
+         event_abort bad1
+       orfind u_4 = ri_4 <= qD suchthat defined(r'[ri_4], r_6[ri_4]) && (x1 = r'[ri_4]) then
+         return((find [unique] u_11 = ri_11 <= qG suchthat defined(Y[ri_11], u_4[ri_11]) && (u_4[ri_11] = u_4) then Y[u_11] orfind u_10 = ri_10 <= qD suchthat defined(Y_1[ri_10], u[ri_10]) && (u[ri_10] = u_4) then Y_1[u_10] else Y <-R Dow; Y))
+       else
+         r_4 <-R Dow;
+         return(r_4)
+     ) | (
+       foreach iH_1 <= qH do
+       OH_1(x1_1: Dow) :=
+       return(H(hkh, x1_1))
+     ) | (
+       OT(m1: Dm, m2: Dm) :=
+       b1 <-R bool;
+       r_3 <-R Dr;
+       r_7 <-R Dow;
+       t: Dr <- xorDr(r_3, H(hkh, r_7));
+       cT: D <- f(pk, concat(r_7, t));
+       return(cT)
+     ) | (
+       foreach iD <= qD do
+       OD(c: D) :=
+       if defined(cT) && (c = cT) then
+         yield
+       else
+         let concat(s': Dow, t': Dr) = invf(sk, c) in
+         r': Dr <- xorDr(t', H(hkh, s'));
+         find [unique] u_1 = ri_1 <= qG suchthat defined(r_4[ri_1], x1[ri_1]) && (r' = x1[ri_1]) then
+         (
+           if second(s') = second(r_4[u_1]) then
+           mz: Dow <- xorDow(s', r_4[u_1]);
+           let concatm(m: Dm, =zeroDz) = mz in
+           return(m)
+         )
+         orfind  suchthat defined(r_3) && (r' = r_3) then
+           event_abort bad3
+         orfind u = ri <= qD suchthat defined(r'[ri], r_6[ri]) && (r' = r'[ri]) then
+         (
+{170}      if (X': Dz <- second(s'); find [unique] u_9 = ri_9 <= qG suchthat defined(Y[ri_9], u_4[ri_9]) && (u_4[ri_9] = u) then (second(Y[u_9]) = X') orfind u_8 = ri_8 <= qD suchthat defined(Y_1[ri_8], u[ri_8]) && (u[ri_8] = u) then (second(Y_1[u_8]) = X') else false) then
+{205}      mz: Dow <- xorDow(s', {209}(find [unique] u_7 = ri_7 <= qG suchthat defined(Y[ri_7], u_4[ri_7]) && (u_4[ri_7] = u) then Y[u_7] orfind u_6 = ri_6 <= qD suchthat defined(Y_1[ri_6], u[ri_6]) && (u[ri_6] = u) then Y_1[u_6] else Y_1 <-R Dow; Y_1));
+{233}      let concatm(m: Dm, =zeroDz) = mz in
+           return(m)
+         )
+         else
+           r_6: Dow <- cst_Dow
+     ))
+
+
+Applying expand [probability qD / |Dow| + (qG^2 + qG * qD + 2 * qD^2) / |Dz|]
+  - Expand if/find/let
+    - Test at 170 always false
+    - Remove let at 233
+    - Remove let at 205
+    - Remove branch 1 in find at 209
+    - Remove let at 233
+    - Remove let at 205
+    - Remove branch 2 in find at 209
+yields
+
+Game 14 is
+     Ogen() :=
+     hkh <-R hashkey;
+     r_2 <-R seed;
+     pk: pkey <- pkgen(r_2);
+     sk: skey <- skgen(r_2);
+     return(pk);
+     ((
+       foreach iH <= qG do
+       OH(x1: Dr) :=
+ {17}  find [unique] u_5 = ri_5 <= qG suchthat defined(r_4[ri_5], x1[ri_5]) && (x1 = x1[ri_5]) then
+         return(r_4[u_5])
+       orfind  suchthat defined(r_3) && (x1 = r_3) then
+         event_abort bad1
+       orfind u_4 = ri_4 <= qD suchthat defined(r'[ri_4], r_6[ri_4]) && (x1 = r'[ri_4]) then
+ {42}    find [unique] u_11 = ri_11 <= qG suchthat defined(Y[ri_11], u_4[ri_11]) && (u_4[ri_11] = u_4) then
+           return(Y[u_11])
+         orfind u_10 = ri_10 <= qD suchthat defined(Y_1[ri_10], u[ri_10]) && (u[ri_10] = u_4) then
+           return(Y_1[u_10])
+         else
+           Y <-R Dow;
+           return(Y)
+       else
+         r_4 <-R Dow;
+         return(r_4)
+     ) | (
+       foreach iH_1 <= qH do
+       OH_1(x1_1: Dow) :=
+       return(H(hkh, x1_1))
+     ) | (
+       OT(m1: Dm, m2: Dm) :=
+       b1 <-R bool;
+       r_3 <-R Dr;
+       r_7 <-R Dow;
+       t: Dr <- xorDr(r_3, H(hkh, r_7));
+       cT: D <- f(pk, concat(r_7, t));
+       return(cT)
+     ) | (
+       foreach iD <= qD do
+       OD(c: D) :=
+       if defined(cT) && (c = cT) then
+         yield
+       else
+         let concat(s': Dow, t': Dr) = invf(sk, c) in
+         r': Dr <- xorDr(t', H(hkh, s'));
+         find [unique] u_1 = ri_1 <= qG suchthat defined(r_4[ri_1], x1[ri_1]) && (r' = x1[ri_1]) then
+         (
+           if second(s') = second(r_4[u_1]) then
+           mz: Dow <- xorDow(s', r_4[u_1]);
+           let concatm(m: Dm, =zeroDz) = mz in
+           return(m)
+         )
+         orfind  suchthat defined(r_3) && (r' = r_3) then
+           event_abort bad3
+         orfind u = ri <= qD suchthat defined(r'[ri], r_6[ri]) && (r' = r'[ri]) then
+         (
+           X': Dz <- second(s');
+           find [unique] u_9 = ri_9 <= qG suchthat defined(Y[ri_9], u_4[ri_9]) && (u_4[ri_9] = u) then
+           (
+             if second(Y[u_9]) = X' then
+{194}        find [unique] u_7 = ri_7 <= qG suchthat defined(Y[ri_7], u_4[ri_7]) && (u_4[ri_7] = u) then
+             (
+               mz: Dow <- xorDow(s', Y[u_7]);
+               let concatm(m: Dm, =zeroDz) = mz in
+               return(m)
+             )
+             else
+               Y_1 <-R Dow
+           )
+           orfind u_8 = ri_8 <= qD suchthat defined(Y_1[ri_8], u[ri_8]) && (u[ri_8] = u) then
+           (
+             if second(Y_1[u_8]) = X' then
+{237}        find [unique] u_6 = ri_6 <= qD suchthat defined(Y_1[ri_6], u[ri_6]) && (u[ri_6] = u) then
+             (
+               mz: Dow <- xorDow(s', Y_1[u_6]);
+               let concatm(m: Dm, =zeroDz) = mz in
+               return(m)
+             )
+             else
+               Y_1 <-R Dow
+           )
+         )
+         else
+           r_6: Dow <- cst_Dow
+     ))
+
+
+Applying simplify [probability qD / |Dow| + qD^2 / |Dz|]
+  - Simplification pass
+    - Remove else branch of find at 237
+    - In branch 1 of find at 237, substituting u_6 with u_8
+    - A single branch always succeeds in find at 237
+    - Remove else branch of find at 194
+    - In branch 1 of find at 194, substituting u_7 with u_9
+    - Replaced defined condition Y[ri_7], u_4[ri_7] with an empty condition in find at 194
+    - A single branch always succeeds in find at 194
+    - Simplified find at 42 in branch of find at 17
+yields
+
+Game 15 is
+     Ogen() :=
+     hkh <-R hashkey;
+     r_2 <-R seed;
+     pk: pkey <- pkgen(r_2);
+     sk: skey <- skgen(r_2);
+     return(pk);
+     ((
+       foreach iH <= qG do
+       OH(x1: Dr) :=
+ {17}  find [unique] u_5 = ri_5 <= qG suchthat defined(r_4[ri_5], x1[ri_5]) && (x1 = x1[ri_5]) then
+         return(r_4[u_5])
+       orfind  suchthat defined(r_3) && (x1 = r_3) then
+         event_abort bad1
+       orfind u_4 = ri_4 <= qD, u_11 = ri_11 <= qG suchthat defined(r'[ri_4], r_6[ri_4], Y[ri_11]) && {38}((x1 = r'[ri_4]) && (ri_4 = ri_4) && (ri_11 = iH)) then
+         return(Y[u_11])
+       orfind u_4 = ri_4 <= qD, u_11 = ri_11 <= qG suchthat defined(r'[ri_4], r_6[ri_4], Y[ri_11], u_4[ri_11]) && (x1 = r'[ri_4]) && (u_4[ri_11] = ri_4) then
+         return(Y[u_11])
+       orfind u_4 = ri_4 <= qD, u_10 = ri_10 <= qD suchthat defined(r'[ri_4], r_6[ri_4], Y_1[ri_10], u[ri_10]) && (x1 = r'[ri_4]) && (u[ri_10] = ri_4) then
+         return(Y_1[u_10])
+       else
+         find [unique] u_4 = ri_4 <= qD suchthat defined(r'[ri_4], r_6[ri_4]) && (x1 = r'[ri_4]) then
+           Y <-R Dow;
+           return(Y)
+         else
+           r_4 <-R Dow;
+           return(r_4)
+     ) | (
+       foreach iH_1 <= qH do
+       OH_1(x1_1: Dow) :=
+       return(H(hkh, x1_1))
+     ) | (
+       OT(m1: Dm, m2: Dm) :=
+       b1 <-R bool;
+       r_3 <-R Dr;
+       r_7 <-R Dow;
+       t: Dr <- xorDr(r_3, H(hkh, r_7));
+       cT: D <- f(pk, concat(r_7, t));
+       return(cT)
+     ) | (
+       foreach iD <= qD do
+       OD(c: D) :=
+       if defined(cT) && (c = cT) then
+         yield
+       else
+         let concat(s': Dow, t': Dr) = invf(sk, c) in
+         r': Dr <- xorDr(t', H(hkh, s'));
+         find [unique] u_1 = ri_1 <= qG suchthat defined(r_4[ri_1], x1[ri_1]) && (r' = x1[ri_1]) then
+         (
+           if second(s') = second(r_4[u_1]) then
+           mz: Dow <- xorDow(s', r_4[u_1]);
+           let concatm(m: Dm, =zeroDz) = mz in
+           return(m)
+         )
+         orfind  suchthat defined(r_3) && (r' = r_3) then
+           event_abort bad3
+         orfind u = ri <= qD suchthat defined(r'[ri], r_6[ri]) && (r' = r'[ri]) then
+         (
+           X': Dz <- second(s');
+{213}      find [unique] u_9 = ri_9 <= qG suchthat defined(Y[ri_9], u_4[ri_9]) && (u_4[ri_9] = u) then
+           (
+             if second(Y[u_9]) = X' then
+             u_7 <= qG <- u_9;
+             mz: Dow <- xorDow(s', Y[u_9]);
+             let concatm(m: Dm, =zeroDz) = mz in
+             return(m)
+           )
+           orfind u_8 = ri_8 <= qD suchthat defined(Y_1[ri_8], u[ri_8]) && (u[ri_8] = u) then
+           (
+             if second(Y_1[u_8]) = X' then
+             if defined(u[u_8], Y_1[u_8]) && (u[u_8] = u) then
+             u_6 <= qD <- u_8;
+             mz: Dow <- xorDow(s', Y_1[u_8]);
+             let concatm(m: Dm, =zeroDz) = mz in
+             return(m)
+           )
+         )
+         else
+           r_6: Dow <- cst_Dow
+     ))
+
+
+Applying simplify [probability qD / |Dow|]
+  - Simplification pass
+    - Remove branch 2 in find at 213
+    - Remove branch 5 in find at 17
+    - Replaced ((x1 = r'[ri_4]) && (ri_4 = ri_4) && (ri_11 = iH)) with false at 38
+    - Remove branch 3 in find at 17
+yields
+
+Game 16 is
+     Ogen() :=
+     hkh <-R hashkey;
+     r_2 <-R seed;
+     pk: pkey <- pkgen(r_2);
+     sk: skey <- skgen(r_2);
+     return(pk);
+     ((
+       foreach iH <= qG do
+       OH(x1: Dr) :=
+       find [unique] u_5 = ri_5 <= qG suchthat defined(r_4[ri_5], x1[ri_5]) && (x1 = x1[ri_5]) then
+         return(r_4[u_5])
+       orfind  suchthat defined(r_3) && (x1 = r_3) then
+         event_abort bad1
+       orfind u_4 = ri_4 <= qD, u_11 = ri_11 <= qG suchthat defined(r'[ri_4], r_6[ri_4], Y[ri_11], u_4[ri_11]) && (x1 = r'[ri_4]) && (u_4[ri_11] = ri_4) then
+         return(Y[u_11])
+       else
+         find [unique] u_4 = ri_4 <= qD suchthat defined(r'[ri_4], r_6[ri_4]) && (x1 = r'[ri_4]) then
+           Y <-R Dow;
+           return(Y)
+         else
+           r_4 <-R Dow;
+           return(r_4)
+     ) | (
+       foreach iH_1 <= qH do
+       OH_1(x1_1: Dow) :=
+       return(H(hkh, x1_1))
+     ) | (
+       OT(m1: Dm, m2: Dm) :=
+       b1 <-R bool;
+       r_3 <-R Dr;
+       r_7 <-R Dow;
+       t: Dr <- xorDr(r_3, H(hkh, r_7));
+       cT: D <- f(pk, concat(r_7, t));
+       return(cT)
+     ) | (
+       foreach iD <= qD do
+       OD(c: D) :=
+       if defined(cT) && (c = cT) then
+         yield
+       else
+         let concat(s': Dow, t': Dr) = invf(sk, c) in
+         r': Dr <- xorDr(t', H(hkh, s'));
+         find [unique] u_1 = ri_1 <= qG suchthat defined(r_4[ri_1], x1[ri_1]) && (r' = x1[ri_1]) then
+         (
+           if second(s') = second(r_4[u_1]) then
+           mz: Dow <- xorDow(s', r_4[u_1]);
+           let concatm(m: Dm, =zeroDz) = mz in
+           return(m)
+         )
+         orfind  suchthat defined(r_3) && (r' = r_3) then
+           event_abort bad3
+         orfind u = ri <= qD suchthat defined(r'[ri], r_6[ri]) && (r' = r'[ri]) then
+         (
+           X': Dz <- second(s');
+           find [unique] u_9 = ri_9 <= qG suchthat defined(Y[ri_9], u_4[ri_9]) && (u_4[ri_9] = u) then
+           if second(Y[u_9]) = X' then
+           u_7 <= qG <- u_9;
+           mz: Dow <- xorDow(s', Y[u_9]);
+           let concatm(m: Dm, =zeroDz) = mz in
+           return(m)
+         )
+         else
+           r_6: Dow <- cst_Dow
+     ))
+
+
+Applying SA rename u_4
+  - Rename variable u_4 into u_13, u_12
+yields
+
+Game 17 is
+     Ogen() :=
+     hkh <-R hashkey;
+     r_2 <-R seed;
+     pk: pkey <- pkgen(r_2);
+     sk: skey <- skgen(r_2);
+     return(pk);
+     ((
+       foreach iH <= qG do
+       OH(x1: Dr) :=
+       find [unique] u_5 = ri_5 <= qG suchthat defined(r_4[ri_5], x1[ri_5]) && (x1 = x1[ri_5]) then
+         return(r_4[u_5])
+       orfind  suchthat defined(r_3) && (x1 = r_3) then
+         event_abort bad1
+       orfind u_12 = ri_4 <= qD, u_11 = ri_11 <= qG suchthat defined(r'[ri_4], r_6[ri_4], Y[ri_11], u_13[ri_11]) && (x1 = r'[ri_4]) && (u_13[ri_11] = ri_4) then
+         return(Y[u_11])
+       else
+         find [unique] u_13 = ri_4 <= qD suchthat defined(r'[ri_4], r_6[ri_4]) && (x1 = r'[ri_4]) then
+           Y <-R Dow;
+           return(Y)
+         else
+           r_4 <-R Dow;
+           return(r_4)
+     ) | (
+       foreach iH_1 <= qH do
+       OH_1(x1_1: Dow) :=
+       return(H(hkh, x1_1))
+     ) | (
+       OT(m1: Dm, m2: Dm) :=
+       b1 <-R bool;
+       r_3 <-R Dr;
+       r_7 <-R Dow;
+       t: Dr <- xorDr(r_3, H(hkh, r_7));
+       cT: D <- f(pk, concat(r_7, t));
+       return(cT)
+     ) | (
+       foreach iD <= qD do
+       OD(c: D) :=
+       if defined(cT) && (c = cT) then
+         yield
+       else
+         let concat(s': Dow, t': Dr) = invf(sk, c) in
+         r': Dr <- xorDr(t', H(hkh, s'));
+         find [unique] u_1 = ri_1 <= qG suchthat defined(r_4[ri_1], x1[ri_1]) && (r' = x1[ri_1]) then
+         (
+           if second(s') = second(r_4[u_1]) then
+           mz: Dow <- xorDow(s', r_4[u_1]);
+           let concatm(m: Dm, =zeroDz) = mz in
+           return(m)
+         )
+         orfind  suchthat defined(r_3) && (r' = r_3) then
+           event_abort bad3
+         orfind u = ri <= qD suchthat defined(r'[ri], r_6[ri]) && (r' = r'[ri]) then
+         (
+           X': Dz <- second(s');
+           find [unique] u_9 = ri_9 <= qG suchthat defined(Y[ri_9], u_13[ri_9]) && (u_13[ri_9] = u) then
+           if second(Y[u_9]) = X' then
+           u_7 <= qG <- u_9;
+           mz: Dow <- xorDow(s', Y[u_9]);
+           let concatm(m: Dm, =zeroDz) = mz in
+           return(m)
+         )
+         else
+           r_6: Dow <- cst_Dow
+     ))
+
+
+Applying SA rename new without array accesses and remove assignments of findcond
+  - Remove assignments on u_7 (definition removed, all usages removed)
+yields
+
+Game 18 is
+     Ogen() :=
+     hkh <-R hashkey;
+     r_2 <-R seed;
+     pk: pkey <- pkgen(r_2);
+     sk: skey <- skgen(r_2);
+     return(pk);
+     ((
+       foreach iH <= qG do
+       OH(x1: Dr) :=
+ {17}  find [unique] u_5 = ri_5 <= qG suchthat defined(r_4[ri_5], x1[ri_5]) && (x1 = x1[ri_5]) then
+         return(r_4[u_5])
+       orfind  suchthat defined(r_3) && (x1 = r_3) then
+         event_abort bad1
+       orfind u_12 = ri_4 <= qD, u_11 = ri_11 <= qG suchthat defined(r'[ri_4], r_6[ri_4], Y[ri_11], u_13[ri_11]) && (x1 = r'[ri_4]) && (u_13[ri_11] = ri_4) then
+         return(Y[u_11])
+       else
+         find [unique] u_13 = ri_4 <= qD suchthat defined(r'[ri_4], r_6[ri_4]) && (x1 = r'[ri_4]) then
+           Y <-R Dow;
+           return(Y)
+         else
+           r_4 <-R Dow;
+           return(r_4)
+     ) | (
+       foreach iH_1 <= qH do
+       OH_1(x1_1: Dow) :=
+       return(H(hkh, x1_1))
+     ) | (
+       OT(m1: Dm, m2: Dm) :=
+       b1 <-R bool;
+       r_3 <-R Dr;
+       r_7 <-R Dow;
+       t: Dr <- xorDr(r_3, H(hkh, r_7));
+       cT: D <- f(pk, concat(r_7, t));
+       return(cT)
+     ) | (
+       foreach iD <= qD do
+       OD(c: D) :=
+       if defined(cT) && (c = cT) then
+         yield
+       else
+         let concat(s': Dow, t': Dr) = invf(sk, c) in
+         r': Dr <- xorDr(t', H(hkh, s'));
+         find [unique] u_1 = ri_1 <= qG suchthat defined(r_4[ri_1], x1[ri_1]) && (r' = x1[ri_1]) then
+         (
+           if second(s') = second(r_4[u_1]) then
+           mz: Dow <- xorDow(s', r_4[u_1]);
+           let concatm(m: Dm, =zeroDz) = mz in
+           return(m)
+         )
+         orfind  suchthat defined(r_3) && (r' = r_3) then
+           event_abort bad3
+         orfind u = ri <= qD suchthat defined(r'[ri], r_6[ri]) && (r' = r'[ri]) then
+         (
+           X': Dz <- second(s');
+           find [unique] u_9 = ri_9 <= qG suchthat defined(Y[ri_9], u_13[ri_9]) && (u_13[ri_9] = u) then
+           if second(Y[u_9]) = X' then
+           mz: Dow <- xorDow(s', Y[u_9]);
+           let concatm(m: Dm, =zeroDz) = mz in
+           return(m)
+         )
+         else
+           r_6: Dow <- cst_Dow
+     ))
+
+
+Applying simplify [probability qD / |Dow|]
+  - Simplification pass
+    - In branch 3 of find at 17, substituting u_12 with u_13[u_11]
+    - Replaced defined condition r'[ri_4], r_6[ri_4], Y[ri_11], u_13[ri_11] with Y[ri_11], r'[u_13[ri_11]] in find at 17
+yields
+
+Game 19 is
+     Ogen() :=
+     hkh <-R hashkey;
+     r_2 <-R seed;
+     pk: pkey <- pkgen(r_2);
+     sk: skey <- skgen(r_2);
+     return(pk);
+     ((
+       foreach iH <= qG do
+       OH(x1: Dr) :=
+       find [unique] u_5 = ri_5 <= qG suchthat defined(r_4[ri_5], x1[ri_5]) && (x1 = x1[ri_5]) then
+         return(r_4[u_5])
+       orfind  suchthat defined(r_3) && (x1 = r_3) then
+         event_abort bad1
+       orfind u_11 = ri_11 <= qG suchthat defined(Y[ri_11], r'[u_13[ri_11]]) && {38}((x1 = r'[u_13[ri_11]]) && (u_13[ri_11] = u_13[ri_11])) then
+         u_12 <= qD <- u_13[u_11];
+         return(Y[u_11])
+       else
+         find [unique] u_13 = ri_4 <= qD suchthat defined(r'[ri_4], r_6[ri_4]) && (x1 = r'[ri_4]) then
+           Y <-R Dow;
+           return(Y)
+         else
+           r_4 <-R Dow;
+           return(r_4)
+     ) | (
+       foreach iH_1 <= qH do
+       OH_1(x1_1: Dow) :=
+       return(H(hkh, x1_1))
+     ) | (
+       OT(m1: Dm, m2: Dm) :=
+       b1 <-R bool;
+       r_3 <-R Dr;
+       r_7 <-R Dow;
+       t: Dr <- xorDr(r_3, H(hkh, r_7));
+       cT: D <- f(pk, concat(r_7, t));
+       return(cT)
+     ) | (
+       foreach iD <= qD do
+       OD(c: D) :=
+       if defined(cT) && (c = cT) then
+         yield
+       else
+         let concat(s': Dow, t': Dr) = invf(sk, c) in
+         r': Dr <- xorDr(t', H(hkh, s'));
+         find [unique] u_1 = ri_1 <= qG suchthat defined(r_4[ri_1], x1[ri_1]) && (r' = x1[ri_1]) then
+         (
+           if second(s') = second(r_4[u_1]) then
+           mz: Dow <- xorDow(s', r_4[u_1]);
+           let concatm(m: Dm, =zeroDz) = mz in
+           return(m)
+         )
+         orfind  suchthat defined(r_3) && (r' = r_3) then
+           event_abort bad3
+         orfind u = ri <= qD suchthat defined(r'[ri], r_6[ri]) && (r' = r'[ri]) then
+         (
+           X': Dz <- second(s');
+           find [unique] u_9 = ri_9 <= qG suchthat defined(Y[ri_9], u_13[ri_9]) && (u_13[ri_9] = u) then
+           if second(Y[u_9]) = X' then
+           mz: Dow <- xorDow(s', Y[u_9]);
+           let concatm(m: Dm, =zeroDz) = mz in
+           return(m)
+         )
+         else
+           r_6: Dow <- cst_Dow
+     ))
+
+
+Applying simplify [probability qD / |Dow|]
+  - Simplification pass
+    - Replaced ((x1 = r'[u_13[ri_11]]) && (u_13[ri_11] = u_13[ri_11])) with (x1 = r'[u_13[ri_11]]) at 38
+yields
+
+Game 20 is
+     Ogen() :=
+     hkh <-R hashkey;
+     r_2 <-R seed;
+     pk: pkey <- pkgen(r_2);
+     sk: skey <- skgen(r_2);
+     return(pk);
+     ((
+       foreach iH <= qG do
+       OH(x1: Dr) :=
+       find [unique] u_5 = ri_5 <= qG suchthat defined(r_4[ri_5], x1[ri_5]) && (x1 = x1[ri_5]) then
+         return(r_4[u_5])
+       orfind  suchthat defined(r_3) && (x1 = r_3) then
+         event_abort bad1
+       orfind u_11 = ri_11 <= qG suchthat defined(Y[ri_11], r'[u_13[ri_11]]) && (x1 = r'[u_13[ri_11]]) then
+         u_12 <= qD <- u_13[u_11];
+         return(Y[u_11])
+       else
+         find [unique] u_13 = ri_4 <= qD suchthat defined(r'[ri_4], r_6[ri_4]) && (x1 = r'[ri_4]) then
+           Y <-R Dow;
+           return(Y)
+         else
+           r_4 <-R Dow;
+           return(r_4)
+     ) | (
+       foreach iH_1 <= qH do
+       OH_1(x1_1: Dow) :=
+       return(H(hkh, x1_1))
+     ) | (
+       OT(m1: Dm, m2: Dm) :=
+       b1 <-R bool;
+       r_3 <-R Dr;
+       r_7 <-R Dow;
+       t: Dr <- xorDr(r_3, H(hkh, r_7));
+       cT: D <- f(pk, concat(r_7, t));
+       return(cT)
+     ) | (
+       foreach iD <= qD do
+       OD(c: D) :=
+       if defined(cT) && (c = cT) then
+         yield
+       else
+         let concat(s': Dow, t': Dr) = invf(sk, c) in
+         r': Dr <- xorDr(t', H(hkh, s'));
+         find [unique] u_1 = ri_1 <= qG suchthat defined(r_4[ri_1], x1[ri_1]) && (r' = x1[ri_1]) then
+         (
+           if second(s') = second(r_4[u_1]) then
+           mz: Dow <- xorDow(s', r_4[u_1]);
+           let concatm(m: Dm, =zeroDz) = mz in
+           return(m)
+         )
+         orfind  suchthat defined(r_3) && (r' = r_3) then
+           event_abort bad3
+         orfind u = ri <= qD suchthat defined(r'[ri], r_6[ri]) && (r' = r'[ri]) then
+         (
+           X': Dz <- second(s');
+           find [unique] u_9 = ri_9 <= qG suchthat defined(Y[ri_9], u_13[ri_9]) && (u_13[ri_9] = u) then
+           if second(Y[u_9]) = X' then
+           mz: Dow <- xorDow(s', Y[u_9]);
+           let concatm(m: Dm, =zeroDz) = mz in
+           return(m)
+         )
+         else
+           r_6: Dow <- cst_Dow
+     ))
+
+
+Applying move all binders
+  - Move assignment to X'
+yields
+
+Game 21 is
+     Ogen() :=
+     hkh <-R hashkey;
+     r_2 <-R seed;
+     pk: pkey <- pkgen(r_2);
+     sk: skey <- skgen(r_2);
+     return(pk);
+     ((
+       foreach iH <= qG do
+       OH(x1: Dr) :=
+       find [unique] u_5 = ri_5 <= qG suchthat defined(r_4[ri_5], x1[ri_5]) && (x1 = x1[ri_5]) then
+         return(r_4[u_5])
+       orfind  suchthat defined(r_3) && (x1 = r_3) then
+         event_abort bad1
+       orfind u_11 = ri_11 <= qG suchthat defined(Y[ri_11], r'[u_13[ri_11]]) && (x1 = r'[u_13[ri_11]]) then
+         u_12 <= qD <- u_13[u_11];
+         return(Y[u_11])
+       else
+         find [unique] u_13 = ri_4 <= qD suchthat defined(r'[ri_4], r_6[ri_4]) && (x1 = r'[ri_4]) then
+           Y <-R Dow;
+           return(Y)
+         else
+           r_4 <-R Dow;
+           return(r_4)
+     ) | (
+       foreach iH_1 <= qH do
+       OH_1(x1_1: Dow) :=
+       return(H(hkh, x1_1))
+     ) | (
+       OT(m1: Dm, m2: Dm) :=
+       b1 <-R bool;
+       r_3 <-R Dr;
+       r_7 <-R Dow;
+       t: Dr <- xorDr(r_3, H(hkh, r_7));
+       cT: D <- f(pk, concat(r_7, t));
+       return(cT)
+     ) | (
+       foreach iD <= qD do
+       OD(c: D) :=
+       if defined(cT) && (c = cT) then
+         yield
+       else
+         let concat(s': Dow, t': Dr) = invf(sk, c) in
+         r': Dr <- xorDr(t', H(hkh, s'));
+         find [unique] u_1 = ri_1 <= qG suchthat defined(r_4[ri_1], x1[ri_1]) && (r' = x1[ri_1]) then
+         (
+           if second(s') = second(r_4[u_1]) then
+           mz: Dow <- xorDow(s', r_4[u_1]);
+           let concatm(m: Dm, =zeroDz) = mz in
+           return(m)
+         )
+         orfind  suchthat defined(r_3) && (r' = r_3) then
+           event_abort bad3
+         orfind u = ri <= qD suchthat defined(r'[ri], r_6[ri]) && (r' = r'[ri]) then
+         (
+           find [unique] u_9 = ri_9 <= qG suchthat defined(Y[ri_9], u_13[ri_9]) && (u_13[ri_9] = u) then
+           X': Dz <- second(s');
+           if second(Y[u_9]) = X' then
+           mz: Dow <- xorDow(s', Y[u_9]);
+           let concatm(m: Dm, =zeroDz) = mz in
+           return(m)
+         )
+         else
+           r_6: Dow <- cst_Dow
+     ))
+
+
+Applying SA rename new without array accesses and remove assignments of findcond
+  - Remove assignments on u_12 (definition removed, all usages removed)
+yields
+
+Game 22 is
+     Ogen() :=
+     hkh <-R hashkey;
+     r_2 <-R seed;
+     pk: pkey <- pkgen(r_2);
+     sk: skey <- skgen(r_2);
+     return(pk);
+     ((
+       foreach iH <= qG do
+       OH(x1: Dr) :=
+       find [unique] u_5 = ri_5 <= qG suchthat defined(r_4[ri_5], x1[ri_5]) && (x1 = x1[ri_5]) then
+         return(r_4[u_5])
+       orfind  suchthat defined(r_3) && (x1 = r_3) then
+         event_abort bad1
+       orfind u_11 = ri_11 <= qG suchthat defined(Y[ri_11], r'[u_13[ri_11]]) && (x1 = r'[u_13[ri_11]]) then
+         return(Y[u_11])
+       else
+         find [unique] u_13 = ri_4 <= qD suchthat defined(r'[ri_4], r_6[ri_4]) && (x1 = r'[ri_4]) then
+           Y <-R Dow;
+           return(Y)
+         else
+           r_4 <-R Dow;
+           return(r_4)
+     ) | (
+       foreach iH_1 <= qH do
+       OH_1(x1_1: Dow) :=
+       return(H(hkh, x1_1))
+     ) | (
+       OT(m1: Dm, m2: Dm) :=
+       b1 <-R bool;
+       r_3 <-R Dr;
+       r_7 <-R Dow;
+       t: Dr <- xorDr(r_3, H(hkh, r_7));
+       cT: D <- f(pk, concat(r_7, t));
+       return(cT)
+     ) | (
+       foreach iD <= qD do
+       OD(c: D) :=
+       if defined(cT) && (c = cT) then
+         yield
+       else
+         let concat(s': Dow, t': Dr) = invf(sk, c) in
+         r': Dr <- xorDr(t', H(hkh, s'));
+{117}    find [unique] u_1 = ri_1 <= qG suchthat defined(r_4[ri_1], x1[ri_1]) && (r' = x1[ri_1]) then
+         (
+           if second(s') = second(r_4[u_1]) then
+           mz: Dow <- xorDow(s', r_4[u_1]);
+           let concatm(m: Dm, =zeroDz) = mz in
+           return(m)
+         )
+         orfind  suchthat defined(r_3) && (r' = r_3) then
+           event_abort bad3
+         orfind u = ri <= qD suchthat defined(r'[ri], r_6[ri]) && (r' = r'[ri]) then
+         (
+{164}      find [unique] u_9 = ri_9 <= qG suchthat defined(Y[ri_9], u_13[ri_9]) && (u_13[ri_9] = u) then
+           X': Dz <- second(s');
+           if second(Y[u_9]) = X' then
+           mz: Dow <- xorDow(s', Y[u_9]);
+           let concatm(m: Dm, =zeroDz) = mz in
+           return(m)
+         )
+         else
+           r_6: Dow <- cst_Dow
+     ))
+
+
+Applying simplify
+  - Simplification pass
+    - Simplified find at 164 in branch of find at 117
+yields
+
+Game 23 is
+     Ogen() :=
+     hkh <-R hashkey;
+     r_2 <-R seed;
+     pk: pkey <- pkgen(r_2);
+     sk: skey <- skgen(r_2);
+     return(pk);
+     ((
+       foreach iH <= qG do
+       OH(x1: Dr) :=
+       find [unique] u_5 = ri_5 <= qG suchthat defined(r_4[ri_5], x1[ri_5]) && (x1 = x1[ri_5]) then
+         return(r_4[u_5])
+       orfind  suchthat defined(r_3) && (x1 = r_3) then
+         event_abort bad1
+       orfind u_11 = ri_11 <= qG suchthat defined(Y[ri_11], r'[u_13[ri_11]]) && (x1 = r'[u_13[ri_11]]) then
+         return(Y[u_11])
+       else
+         find [unique] u_13 = ri_4 <= qD suchthat defined(r'[ri_4], r_6[ri_4]) && (x1 = r'[ri_4]) then
+           Y <-R Dow;
+           return(Y)
+         else
+           r_4 <-R Dow;
+           return(r_4)
+     ) | (
+       foreach iH_1 <= qH do
+       OH_1(x1_1: Dow) :=
+       return(H(hkh, x1_1))
+     ) | (
+       OT(m1: Dm, m2: Dm) :=
+       b1 <-R bool;
+       r_3 <-R Dr;
+       r_7 <-R Dow;
+       t: Dr <- xorDr(r_3, H(hkh, r_7));
+       cT: D <- f(pk, concat(r_7, t));
+       return(cT)
+     ) | (
+       foreach iD <= qD do
+       OD(c: D) :=
+       if defined(cT) && (c = cT) then
+         yield
+       else
+         let concat(s': Dow, t': Dr) = invf(sk, c) in
+         r': Dr <- xorDr(t', H(hkh, s'));
+{117}    find [unique] u_1 = ri_1 <= qG suchthat defined(r_4[ri_1], x1[ri_1]) && (r' = x1[ri_1]) then
+         (
+           if second(s') = second(r_4[u_1]) then
+           mz: Dow <- xorDow(s', r_4[u_1]);
+           let concatm(m: Dm, =zeroDz) = mz in
+           return(m)
+         )
+         orfind  suchthat defined(r_3) && (r' = r_3) then
+           event_abort bad3
+         orfind u = ri <= qD, u_9 = ri_9 <= qG suchthat defined(r'[ri], r_6[ri], Y[ri_9], u_13[ri_9]) && (r' = r'[ri]) && (u_13[ri_9] = ri) then
+         (
+           X': Dz <- second(s');
+           if second(Y[u_9]) = X' then
+           mz: Dow <- xorDow(s', Y[u_9]);
+           let concatm(m: Dm, =zeroDz) = mz in
+           return(m)
+         )
+         else
+           find [unique] u = ri <= qD suchthat defined(r'[ri], r_6[ri]) && (r' = r'[ri]) then
+             yield
+           else
+             r_6: Dow <- cst_Dow
+     ))
+
+
+Applying simplify [probability qD / |Dow|]
+  - Simplification pass
+    - In branch 3 of find at 117, substituting u with u_13[u_9]
+    - Replaced defined condition r'[ri], r_6[ri], Y[ri_9], u_13[ri_9] with Y[ri_9], r'[u_13[ri_9]] in find at 117
+yields
+
+Game 24 is
+     Ogen() :=
+     hkh <-R hashkey;
+     r_2 <-R seed;
+     pk: pkey <- pkgen(r_2);
+     sk: skey <- skgen(r_2);
+     return(pk);
+     ((
+       foreach iH <= qG do
+       OH(x1: Dr) :=
+       find [unique] u_5 = ri_5 <= qG suchthat defined(r_4[ri_5], x1[ri_5]) && (x1 = x1[ri_5]) then
+         return(r_4[u_5])
+       orfind  suchthat defined(r_3) && (x1 = r_3) then
+         event_abort bad1
+       orfind u_11 = ri_11 <= qG suchthat defined(Y[ri_11], r'[u_13[ri_11]]) && (x1 = r'[u_13[ri_11]]) then
+         return(Y[u_11])
+       else
+         find [unique] u_13 = ri_4 <= qD suchthat defined(r'[ri_4], r_6[ri_4]) && (x1 = r'[ri_4]) then
+           Y <-R Dow;
+           return(Y)
+         else
+           r_4 <-R Dow;
+           return(r_4)
+     ) | (
+       foreach iH_1 <= qH do
+       OH_1(x1_1: Dow) :=
+       return(H(hkh, x1_1))
+     ) | (
+       OT(m1: Dm, m2: Dm) :=
+       b1 <-R bool;
+       r_3 <-R Dr;
+       r_7 <-R Dow;
+       t: Dr <- xorDr(r_3, H(hkh, r_7));
+       cT: D <- f(pk, concat(r_7, t));
+       return(cT)
+     ) | (
+       foreach iD <= qD do
+       OD(c: D) :=
+       if defined(cT) && (c = cT) then
+         yield
+       else
+         let concat(s': Dow, t': Dr) = invf(sk, c) in
+         r': Dr <- xorDr(t', H(hkh, s'));
+         find [unique] u_1 = ri_1 <= qG suchthat defined(r_4[ri_1], x1[ri_1]) && (r' = x1[ri_1]) then
+         (
+           if second(s') = second(r_4[u_1]) then
+           mz: Dow <- xorDow(s', r_4[u_1]);
+           let concatm(m: Dm, =zeroDz) = mz in
+           return(m)
+         )
+         orfind  suchthat defined(r_3) && (r' = r_3) then
+           event_abort bad3
+         orfind u_9 = ri_9 <= qG suchthat defined(Y[ri_9], r'[u_13[ri_9]]) && (r' = r'[u_13[ri_9]]) && (u_13[ri_9] = u_13[ri_9]) then
+         (
+           u <= qD <- u_13[u_9];
+           X': Dz <- second(s');
+           if second(Y[u_9]) = X' then
+           mz: Dow <- xorDow(s', Y[u_9]);
+           let concatm(m: Dm, =zeroDz) = mz in
+           return(m)
+         )
+         else
+           find [unique] u = ri <= qD suchthat defined(r'[ri], r_6[ri]) && (r' = r'[ri]) then
+             yield
+           else
+             r_6: Dow <- cst_Dow
+     ))
+
+
+Applying SA rename u
+  - Rename variable u into u_15, u_14
+yields
+
+Game 25 is
+     Ogen() :=
+     hkh <-R hashkey;
+     r_2 <-R seed;
+     pk: pkey <- pkgen(r_2);
+     sk: skey <- skgen(r_2);
+     return(pk);
+     ((
+       foreach iH <= qG do
+       OH(x1: Dr) :=
+       find [unique] u_5 = ri_5 <= qG suchthat defined(r_4[ri_5], x1[ri_5]) && (x1 = x1[ri_5]) then
+         return(r_4[u_5])
+       orfind  suchthat defined(r_3) && (x1 = r_3) then
+         event_abort bad1
+       orfind u_11 = ri_11 <= qG suchthat defined(Y[ri_11], r'[u_13[ri_11]]) && (x1 = r'[u_13[ri_11]]) then
+         return(Y[u_11])
+       else
+         find [unique] u_13 = ri_4 <= qD suchthat defined(r'[ri_4], r_6[ri_4]) && (x1 = r'[ri_4]) then
+           Y <-R Dow;
+           return(Y)
+         else
+           r_4 <-R Dow;
+           return(r_4)
+     ) | (
+       foreach iH_1 <= qH do
+       OH_1(x1_1: Dow) :=
+       return(H(hkh, x1_1))
+     ) | (
+       OT(m1: Dm, m2: Dm) :=
+       b1 <-R bool;
+       r_3 <-R Dr;
+       r_7 <-R Dow;
+       t: Dr <- xorDr(r_3, H(hkh, r_7));
+       cT: D <- f(pk, concat(r_7, t));
+       return(cT)
+     ) | (
+       foreach iD <= qD do
+       OD(c: D) :=
+       if defined(cT) && (c = cT) then
+         yield
+       else
+         let concat(s': Dow, t': Dr) = invf(sk, c) in
+         r': Dr <- xorDr(t', H(hkh, s'));
+         find [unique] u_1 = ri_1 <= qG suchthat defined(r_4[ri_1], x1[ri_1]) && (r' = x1[ri_1]) then
+         (
+           if second(s') = second(r_4[u_1]) then
+           mz: Dow <- xorDow(s', r_4[u_1]);
+           let concatm(m: Dm, =zeroDz) = mz in
+           return(m)
+         )
+         orfind  suchthat defined(r_3) && (r' = r_3) then
+           event_abort bad3
+         orfind u_9 = ri_9 <= qG suchthat defined(Y[ri_9], r'[u_13[ri_9]]) && (r' = r'[u_13[ri_9]]) && (u_13[ri_9] = u_13[ri_9]) then
+         (
+           u_14 <= qD <- u_13[u_9];
+           X': Dz <- second(s');
+           if second(Y[u_9]) = X' then
+           mz: Dow <- xorDow(s', Y[u_9]);
+           let concatm(m: Dm, =zeroDz) = mz in
+           return(m)
+         )
+         else
+           find [unique] u_15 = ri <= qD suchthat defined(r'[ri], r_6[ri]) && (r' = r'[ri]) then
+             yield
+           else
+             r_6: Dow <- cst_Dow
+     ))
+
+
+Applying SA rename new without array accesses and remove assignments of findcond
+  - Remove assignments on u_14 (definition removed, all usages removed)
+yields
+
+Game 26 is
+     Ogen() :=
+     hkh <-R hashkey;
+     r_2 <-R seed;
+     pk: pkey <- pkgen(r_2);
+     sk: skey <- skgen(r_2);
+     return(pk);
+     ((
+       foreach iH <= qG do
+       OH(x1: Dr) :=
+       find [unique] u_5 = ri_5 <= qG suchthat defined(r_4[ri_5], x1[ri_5]) && (x1 = x1[ri_5]) then
+         return(r_4[u_5])
+       orfind  suchthat defined(r_3) && (x1 = r_3) then
+         event_abort bad1
+       orfind u_11 = ri_11 <= qG suchthat defined(Y[ri_11], r'[u_13[ri_11]]) && (x1 = r'[u_13[ri_11]]) then
+         return(Y[u_11])
+       else
+         find [unique] u_13 = ri_4 <= qD suchthat defined(r'[ri_4], r_6[ri_4]) && (x1 = r'[ri_4]) then
+           Y <-R Dow;
+           return(Y)
+         else
+           r_4 <-R Dow;
+           return(r_4)
+     ) | (
+       foreach iH_1 <= qH do
+       OH_1(x1_1: Dow) :=
+       return(H(hkh, x1_1))
+     ) | (
+       OT(m1: Dm, m2: Dm) :=
+       b1 <-R bool;
+       r_3 <-R Dr;
+       r_7 <-R Dow;
+       t: Dr <- xorDr(r_3, H(hkh, r_7));
+       cT: D <- f(pk, concat(r_7, t));
+       return(cT)
+     ) | (
+       foreach iD <= qD do
+       OD(c: D) :=
+       if defined(cT) && (c = cT) then
+         yield
+       else
+         let concat(s': Dow, t': Dr) = invf(sk, c) in
+         r': Dr <- xorDr(t', H(hkh, s'));
+         find [unique] u_1 = ri_1 <= qG suchthat defined(r_4[ri_1], x1[ri_1]) && (r' = x1[ri_1]) then
+         (
+           if second(s') = second(r_4[u_1]) then
+           mz: Dow <- xorDow(s', r_4[u_1]);
+           let concatm(m: Dm, =zeroDz) = mz in
+           return(m)
+         )
+         orfind  suchthat defined(r_3) && (r' = r_3) then
+           event_abort bad3
+         orfind u_9 = ri_9 <= qG suchthat defined(Y[ri_9], r'[u_13[ri_9]]) && {160}((r' = r'[u_13[ri_9]]) && (u_13[ri_9] = u_13[ri_9])) then
+         (
+           X': Dz <- second(s');
+           if second(Y[u_9]) = X' then
+           mz: Dow <- xorDow(s', Y[u_9]);
+           let concatm(m: Dm, =zeroDz) = mz in
+           return(m)
+         )
+         else
+           find [unique] u_15 = ri <= qD suchthat defined(r'[ri], r_6[ri]) && (r' = r'[ri]) then
+             yield
+           else
+             r_6: Dow <- cst_Dow
+     ))
+
+
+Applying simplify [probability qD / |Dow|]
+  - Simplification pass
+    - Replaced ((r' = r'[u_13[ri_9]]) && (u_13[ri_9] = u_13[ri_9])) with (r' = r'[u_13[ri_9]]) at 160
+yields
+
+Game 27 is
+     Ogen() :=
+     hkh <-R hashkey;
+     r_2 <-R seed;
+     pk: pkey <- pkgen(r_2);
+     sk: skey <- skgen(r_2);
+     return(pk);
+     ((
+       foreach iH <= qG do
+       OH(x1: Dr) :=
+       find [unique] u_5 = ri_5 <= qG suchthat defined(r_4[ri_5], x1[ri_5]) && (x1 = x1[ri_5]) then
+         return(r_4[u_5])
+       orfind  suchthat defined(r_3) && (x1 = r_3) then
+         event_abort bad1
+       orfind u_11 = ri_11 <= qG suchthat defined(Y[ri_11], r'[u_13[ri_11]]) && (x1 = r'[u_13[ri_11]]) then
+         return(Y[u_11])
+       else
+         find [unique] u_13 = ri_4 <= qD suchthat defined(r'[ri_4], r_6[ri_4]) && (x1 = r'[ri_4]) then
+           Y <-R Dow;
+           return(Y)
+         else
+           r_4 <-R Dow;
+           return(r_4)
+     ) | (
+       foreach iH_1 <= qH do
+       OH_1(x1_1: Dow) :=
+       return(H(hkh, x1_1))
+     ) | (
+       OT(m1: Dm, m2: Dm) :=
+       b1 <-R bool;
+       r_3 <-R Dr;
+       r_7 <-R Dow;
+       t: Dr <- xorDr(r_3, H(hkh, r_7));
+       cT: D <- f(pk, concat(r_7, t));
+       return(cT)
+     ) | (
+       foreach iD <= qD do
+       OD(c: D) :=
+       if defined(cT) && (c = cT) then
+         yield
+       else
+         let concat(s': Dow, t': Dr) = invf(sk, c) in
+         r': Dr <- xorDr(t', H(hkh, s'));
+         find [unique] u_1 = ri_1 <= qG suchthat defined(r_4[ri_1], x1[ri_1]) && (r' = x1[ri_1]) then
+         (
+           if second(s') = second(r_4[u_1]) then
+           mz: Dow <- xorDow(s', r_4[u_1]);
+           let concatm(m: Dm, =zeroDz) = mz in
+           return(m)
+         )
+         orfind  suchthat defined(r_3) && (r' = r_3) then
+           event_abort bad3
+         orfind u_9 = ri_9 <= qG suchthat defined(Y[ri_9], r'[u_13[ri_9]]) && (r' = r'[u_13[ri_9]]) then
+         (
+           X': Dz <- second(s');
+           if second(Y[u_9]) = X' then
+           mz: Dow <- xorDow(s', Y[u_9]);
+           let concatm(m: Dm, =zeroDz) = mz in
+           return(m)
+         )
+         else
+           find [unique] u_15 = ri <= qD suchthat defined(r'[ri], r_6[ri]) && (r' = r'[ri]) then
+             yield
+           else
+             r_6: Dow <- cst_Dow
+     ))
+
+
+Applying merge variables (r_4, Y)
+yields
+
+Game 28 is
+     Ogen() :=
+     hkh <-R hashkey;
+     r_2 <-R seed;
+     pk: pkey <- pkgen(r_2);
+     sk: skey <- skgen(r_2);
+     return(pk);
+     ((
+       foreach iH <= qG do
+       OH(x1: Dr) :=
+       find [unique] u_5 = ri_5 <= qG suchthat defined(r_4[ri_5], x1[ri_5]) && (x1 = x1[ri_5]) then
+         return(r_4[u_5])
+       orfind  suchthat defined(r_3) && (x1 = r_3) then
+         event_abort bad1
+       else
+ {35}    find [unique] u_13 = ri_4 <= qD suchthat defined(r'[ri_4], r_6[ri_4]) && (x1 = r'[ri_4]) then
+           r_4 <-R Dow;
+           Y_2: Dow <- cst_Dow;
+           return(r_4)
+         else
+           r_4 <-R Dow;
+           r_8: Dow <- cst_Dow;
+           return(r_4)
+     ) | (
+       foreach iH_1 <= qH do
+       OH_1(x1_1: Dow) :=
+       return(H(hkh, x1_1))
+     ) | (
+       OT(m1: Dm, m2: Dm) :=
+       b1 <-R bool;
+       r_3 <-R Dr;
+       r_7 <-R Dow;
+       t: Dr <- xorDr(r_3, H(hkh, r_7));
+       cT: D <- f(pk, concat(r_7, t));
+       return(cT)
+     ) | (
+       foreach iD <= qD do
+       OD(c: D) :=
+       if defined(cT) && (c = cT) then
+         yield
+       else
+         let concat(s': Dow, t': Dr) = invf(sk, c) in
+         r': Dr <- xorDr(t', H(hkh, s'));
+         find [unique] u_1 = ri_1 <= qG suchthat defined(r_4[ri_1], x1[ri_1]) && (r' = x1[ri_1]) then
+         (
+           if second(s') = second(r_4[u_1]) then
+           mz: Dow <- xorDow(s', r_4[u_1]);
+           let concatm(m: Dm, =zeroDz) = mz in
+           return(m)
+         )
+         orfind  suchthat defined(r_3) && (r' = r_3) then
+           event_abort bad3
+         else
+{149}      find [unique] u_15 = ri <= qD suchthat defined(r'[ri], r_6[ri]) && (r' = r'[ri]) then
+             yield
+           else
+{158}        r_6: Dow <- cst_Dow
+     ))
+
+
+Applying merge branches
+  - Merge all branches of find at 35
+  - Merge branches of let at 158
+  - Merge all branches of find at 149
+yields
+
+Game 29 is
+     Ogen() :=
+     hkh <-R hashkey;
+     r_2 <-R seed;
+     pk: pkey <- pkgen(r_2);
+     sk: skey <- skgen(r_2);
+     return(pk);
+     ((
+       foreach iH <= qG do
+       OH(x1: Dr) :=
+       find [unique] u_5 = ri_5 <= qG suchthat defined(r_4[ri_5], x1[ri_5]) && (x1 = x1[ri_5]) then
+         return(r_4[u_5])
+       orfind  suchthat defined(r_3) && (x1 = r_3) then
+         event_abort bad1
+       else
+         r_4 <-R Dow;
+         r_8: Dow <- cst_Dow;
+         return(r_4)
+     ) | (
+       foreach iH_1 <= qH do
+       OH_1(x1_1: Dow) :=
+       return(H(hkh, x1_1))
+     ) | (
+       OT(m1: Dm, m2: Dm) :=
+       b1 <-R bool;
+       r_3 <-R Dr;
+       r_7 <-R Dow;
+       t: Dr <- xorDr(r_3, H(hkh, r_7));
+       cT: D <- f(pk, concat(r_7, t));
+       return(cT)
+     ) | (
+       foreach iD <= qD do
+       OD(c: D) :=
+       if defined(cT) && (c = cT) then
+         yield
+       else
+         let concat(s': Dow, t': Dr) = invf(sk, c) in
+         r': Dr <- xorDr(t', H(hkh, s'));
+         find [unique] u_1 = ri_1 <= qG suchthat defined(r_4[ri_1], x1[ri_1]) && (r' = x1[ri_1]) then
+         (
+           if second(s') = second(r_4[u_1]) then
+           mz: Dow <- xorDow(s', r_4[u_1]);
+           let concatm(m: Dm, =zeroDz) = mz in
+           return(m)
+         )
+         orfind  suchthat defined(r_3) && (r' = r_3) then
+           event_abort bad3
+     ))
+
+
+Applying equivalence rom(H)
+  - Equivalence rom(H) with variables: hkh -> hk
+yields
+
+Game 30 is
+     Ogen() :=
+     r_2 <-R seed;
+     pk: pkey <- pkgen(r_2);
+     sk: skey <- skgen(r_2);
+     return(pk);
+     ((
+       foreach iH <= qG do
+       OH(x1: Dr) :=
+       find [unique] u_5 = ri_5 <= qG suchthat defined(r_4[ri_5], x1[ri_5]) && (x1 = x1[ri_5]) then
+         return(r_4[u_5])
+       orfind  suchthat defined(r_3) && (x1 = r_3) then
+         event_abort bad1
+       else
+         r_4 <-R Dow;
+         r_8: Dow <- cst_Dow;
+         return(r_4)
+     ) | (
+       foreach iH_1 <= qH do
+       OH_1(x1_1: Dow) :=
+       return((x_O_3: Dow <- x1_1; find [unique] u_21 = ri_17 <= qH suchthat defined(x_O_3[ri_17], r_9[ri_17]) && (x_O_3 = x_O_3[ri_17]) then r_9[u_21] orfind  suchthat defined(x_O_4, r_10) && (x_O_3 = x_O_4) then r_10 orfind u_20 = ri_16 <= qD suchthat defined(x_O_5[ri_16], r_11[ri_16]) && (x_O_3 = x_O_5[ri_16]) then r_11[u_20] else r_9 <-R Dr; r_9))
+     ) | (
+       OT(m1: Dm, m2: Dm) :=
+       b1 <-R bool;
+       r_3 <-R Dr;
+       r_7 <-R Dow;
+       t: Dr <- xorDr(r_3, (x_O_4: Dow <- r_7; find [unique] u_19 = ri_15 <= qH suchthat defined(x_O_3[ri_15], r_9[ri_15]) && (x_O_4 = x_O_3[ri_15]) then r_9[u_19] orfind u_18 = ri_14 <= qD suchthat defined(x_O_5[ri_14], r_11[ri_14]) && (x_O_4 = x_O_5[ri_14]) then r_11[u_18] else r_10 <-R Dr; r_10));
+       cT: D <- f(pk, concat(r_7, t));
+       return(cT)
+     ) | (
+       foreach iD <= qD do
+       OD(c: D) :=
+       if defined(cT) && (c = cT) then
+         yield
+       else
+         let concat(s': Dow, t': Dr) = invf(sk, c) in
+         r': Dr <- xorDr(t', (x_O_5: Dow <- s'; find [unique] u_17 = ri_13 <= qH suchthat defined(x_O_3[ri_13], r_9[ri_13]) && (x_O_5 = x_O_3[ri_13]) then r_9[u_17] orfind  suchthat defined(x_O_4, r_10) && (x_O_5 = x_O_4) then r_10 orfind u_16 = ri_12 <= qD suchthat defined(x_O_5[ri_12], r_11[ri_12]) && (x_O_5 = x_O_5[ri_12]) then r_11[u_16] else r_11 <-R Dr; r_11));
+         find [unique] u_1 = ri_1 <= qG suchthat defined(r_4[ri_1], x1[ri_1]) && (r' = x1[ri_1]) then
+         (
+{174}      if second(s') = second(r_4[u_1]) then
+           mz: Dow <- xorDow(s', r_4[u_1]);
+           let concatm(m: Dm, =zeroDz) = mz in
+           return(m)
+         )
+         orfind  suchthat defined(r_3) && (r' = r_3) then
+           event_abort bad3
+     ))
+
+
+Applying expand [probability qG / |Dz| + qD / |Dow|]
+  - Expand if/find/let
+    - Test at 174 always false
+yields
+
+Game 31 is
+     Ogen() :=
+     r_2 <-R seed;
+     pk: pkey <- pkgen(r_2);
+     sk: skey <- skgen(r_2);
+     return(pk);
+     ((
+       foreach iH <= qG do
+       OH(x1: Dr) :=
+       find [unique] u_5 = ri_5 <= qG suchthat defined(r_4[ri_5], x1[ri_5]) && (x1 = x1[ri_5]) then
+         return(r_4[u_5])
+       orfind  suchthat defined(r_3) && (x1 = r_3) then
+         event_abort bad1
+       else
+         r_4 <-R Dow;
+         r_8: Dow <- cst_Dow;
+         return(r_4)
+     ) | (
+       foreach iH_1 <= qH do
+       OH_1(x1_1: Dow) :=
+       x_O_3: Dow <- x1_1;
+       find [unique] u_21 = ri_17 <= qH suchthat defined(x_O_3[ri_17], r_9[ri_17]) && (x_O_3 = x_O_3[ri_17]) then
+         return(r_9[u_21])
+       orfind  suchthat defined(x_O_4, r_10) && (x_O_3 = x_O_4) then
+         return(r_10)
+       orfind u_20 = ri_16 <= qD suchthat defined(x_O_5[ri_16], r_11[ri_16]) && (x_O_3 = x_O_5[ri_16]) then
+         return(r_11[u_20])
+       else
+         r_9 <-R Dr;
+         return(r_9)
+     ) | (
+       OT(m1: Dm, m2: Dm) :=
+       b1 <-R bool;
+       r_3 <-R Dr;
+       r_7 <-R Dow;
+       x_O_4: Dow <- r_7;
+       find [unique] u_19 = ri_15 <= qH suchthat defined(x_O_3[ri_15], r_9[ri_15]) && (x_O_4 = x_O_3[ri_15]) then
+         t: Dr <- xorDr(r_3, r_9[u_19]);
+         cT: D <- f(pk, concat(r_7, t));
+         return(cT)
+       orfind u_18 = ri_14 <= qD suchthat defined(x_O_5[ri_14], r_11[ri_14]) && (x_O_4 = x_O_5[ri_14]) then
+         t: Dr <- xorDr(r_3, r_11[u_18]);
+         cT: D <- f(pk, concat(r_7, t));
+         return(cT)
+       else
+         r_10 <-R Dr;
+         t: Dr <- xorDr(r_3, r_10);
+         cT: D <- f(pk, concat(r_7, t));
+         return(cT)
+     ) | (
+       foreach iD <= qD do
+       OD(c: D) :=
+       if defined(cT) && (c = cT) then
+         yield
+       else
+         let concat(s': Dow, t': Dr) = invf(sk, c) in
+         x_O_5: Dow <- s';
+         find [unique] u_17 = ri_13 <= qH suchthat defined(x_O_3[ri_13], r_9[ri_13]) && (x_O_5 = x_O_3[ri_13]) then
+         (
+           r': Dr <- xorDr(t', r_9[u_17]);
+           find [unique] u_1 = ri_1 <= qG suchthat defined(r_4[ri_1], x1[ri_1]) && (r' = x1[ri_1]) then
+           (
+             if second(s') = second(r_4[u_1]) then
+             mz: Dow <- xorDow(s', r_4[u_1]);
+             let concatm(m: Dm, =zeroDz) = mz in
+             return(m)
+           )
+           orfind  suchthat defined(r_3) && (r' = r_3) then
+             event_abort bad3
+         )
+         orfind  suchthat defined(x_O_4, r_10) && (x_O_5 = x_O_4) then
+         (
+           r': Dr <- xorDr(t', r_10);
+           find [unique] u_1 = ri_1 <= qG suchthat defined(r_4[ri_1], x1[ri_1]) && (r' = x1[ri_1]) then
+             yield
+           orfind  suchthat defined(r_3) && (r' = r_3) then
+             event_abort bad3
+         )
+         orfind u_16 = ri_12 <= qD suchthat defined(x_O_5[ri_12], r_11[ri_12]) && (x_O_5 = x_O_5[ri_12]) then
+         (
+           r': Dr <- xorDr(t', r_11[u_16]);
+           find [unique] u_1 = ri_1 <= qG suchthat defined(r_4[ri_1], x1[ri_1]) && (r' = x1[ri_1]) then
+           (
+             if second(s') = second(r_4[u_1]) then
+             mz: Dow <- xorDow(s', r_4[u_1]);
+             let concatm(m: Dm, =zeroDz) = mz in
+             return(m)
+           )
+           orfind  suchthat defined(r_3) && (r' = r_3) then
+             event_abort bad3
+         )
+         else
+           r_11 <-R Dr;
+           r': Dr <- xorDr(t', r_11);
+           find [unique] u_1 = ri_1 <= qG suchthat defined(r_4[ri_1], x1[ri_1]) && (r' = x1[ri_1]) then
+           (
+             if second(s') = second(r_4[u_1]) then
+             mz: Dow <- xorDow(s', r_4[u_1]);
+             let concatm(m: Dm, =zeroDz) = mz in
+             return(m)
+           )
+           orfind  suchthat defined(r_3) && (r' = r_3) then
+             event_abort bad3
+     ))
+
+
+Applying remove assignments of findcond
+  - Remove assignments on x_O_5 (definition point kept, all usages removed)
+  - Remove assignments on x_O_4 (definition removed, all usages removed)
+  - Remove assignments on x_O_3 (definition point kept, all usages removed)
+  - Remove assignments on r_8 (definition removed, all usages removed)
+yields
+
+Game 32 is
+     Ogen() :=
+     r_2 <-R seed;
+     pk: pkey <- pkgen(r_2);
+     sk: skey <- skgen(r_2);
+     return(pk);
+     ((
+       foreach iH <= qG do
+       OH(x1: Dr) :=
+       find [unique] u_5 = ri_5 <= qG suchthat defined(r_4[ri_5], x1[ri_5]) && (x1 = x1[ri_5]) then
+         return(r_4[u_5])
+       orfind  suchthat defined(r_3) && (x1 = r_3) then
+         event_abort bad1
+       else
+         r_4 <-R Dow;
+         return(r_4)
+     ) | (
+       foreach iH_1 <= qH do
+       OH_1(x1_1: Dow) :=
+       x_O_3: Dow <- cst_Dow;
+ {43}  find [unique] u_21 = ri_17 <= qH suchthat defined(x1_1[ri_17], x_O_3[ri_17], r_9[ri_17]) && (x1_1 = x1_1[ri_17]) then
+         return(r_9[u_21])
+       orfind  suchthat defined(r_7, r_10) && (x1_1 = r_7) then
+         return(r_10)
+       orfind u_20 = ri_16 <= qD suchthat defined(s'[ri_16], x_O_5[ri_16], r_11[ri_16]) && (x1_1 = s'[ri_16]) then
+         return(r_11[u_20])
+       else
+         r_9 <-R Dr;
+         return(r_9)
+     ) | (
+       OT(m1: Dm, m2: Dm) :=
+       b1 <-R bool;
+       r_3 <-R Dr;
+       r_7 <-R Dow;
+ {87}  find [unique] u_19 = ri_15 <= qH suchthat defined(x1_1[ri_15], x_O_3[ri_15], r_9[ri_15]) && {91}(r_7 = x1_1[ri_15]) then
+         t: Dr <- xorDr(r_3, r_9[u_19]);
+         cT: D <- f(pk, concat(r_7, t));
+         return(cT)
+       orfind u_18 = ri_14 <= qD suchthat defined(s'[ri_14], x_O_5[ri_14], r_11[ri_14]) && {114}(r_7 = s'[ri_14]) then
+         t: Dr <- xorDr(r_3, r_11[u_18]);
+         cT: D <- f(pk, concat(r_7, t));
+         return(cT)
+       else
+         r_10 <-R Dr;
+         t: Dr <- xorDr(r_3, r_10);
+         cT: D <- f(pk, concat(r_7, t));
+         return(cT)
+     ) | (
+       foreach iD <= qD do
+       OD(c: D) :=
+       if defined(cT) && (c = cT) then
+         yield
+       else
+         let concat(s': Dow, t': Dr) = invf(sk, c) in
+         x_O_5: Dow <- cst_Dow;
+{165}    find [unique] u_17 = ri_13 <= qH suchthat defined(x1_1[ri_13], x_O_3[ri_13], r_9[ri_13]) && (s' = x1_1[ri_13]) then
+         (
+           r': Dr <- xorDr(t', r_9[u_17]);
+           find [unique] u_1 = ri_1 <= qG suchthat defined(r_4[ri_1], x1[ri_1]) && (r' = x1[ri_1]) then
+           (
+             if second(s') = second(r_4[u_1]) then
+             mz: Dow <- xorDow(s', r_4[u_1]);
+             let concatm(m: Dm, =zeroDz) = mz in
+             return(m)
+           )
+           orfind  suchthat defined(r_3) && (r' = r_3) then
+             event_abort bad3
+         )
+         orfind  suchthat defined(r_7, r_10) && (s' = r_7) then
+         (
+{227}      r': Dr <- xorDr(t', r_10);
+{232}      find [unique] u_1 = ri_1 <= qG suchthat defined(r_4[ri_1], x1[ri_1]) && (r' = x1[ri_1]) then
+             yield
+           orfind  suchthat defined(r_3) && {241}(r' = r_3) then
+             event_abort bad3
+         )
+         orfind u_16 = ri_12 <= qD suchthat defined(s'[ri_12], x_O_5[ri_12], r_11[ri_12]) && (s' = s'[ri_12]) then
+         (
+           r': Dr <- xorDr(t', r_11[u_16]);
+           find [unique] u_1 = ri_1 <= qG suchthat defined(r_4[ri_1], x1[ri_1]) && (r' = x1[ri_1]) then
+           (
+             if second(s') = second(r_4[u_1]) then
+             mz: Dow <- xorDow(s', r_4[u_1]);
+             let concatm(m: Dm, =zeroDz) = mz in
+             return(m)
+           )
+           orfind  suchthat defined(r_3) && (r' = r_3) then
+             event_abort bad3
+         )
+         else
+           r_11 <-R Dr;
+{306}      r': Dr <- xorDr(t', r_11);
+{312}      find [unique] u_1 = ri_1 <= qG suchthat defined(r_4[ri_1], x1[ri_1]) && {315}(r' = x1[ri_1]) then
+           (
+             if second(s') = second(r_4[u_1]) then
+             mz: Dow <- xorDow(s', r_4[u_1]);
+             let concatm(m: Dm, =zeroDz) = mz in
+             return(m)
+           )
+           orfind  suchthat defined(r_3) && {347}(r' = r_3) then
+             event_abort bad3
+     ))
+
+
+Applying simplify [probability (qH + qD) / |Dow| + (qG + qG * qD + qD) / |Dr|]
+  - Simplification pass
+    - Replaced (r' = r_3) with false at 347
+    - Remove branch 2 in find at 312
+    - Replaced (r' = x1[ri_1]) with false at 315
+    - Remove branch 1 in find at 312
+    - Find at 312 removed (else branch kept if any)
+    - Remove let at 306
+    - Replaced defined condition s'[ri_12], x_O_5[ri_12], r_11[ri_12] with r_11[ri_12], s'[ri_12] in find at 165
+    - Replaced (r' = r_3) with false at 241
+    - Remove branch 2 in find at 232
+    - Find at 232 removed (else branch kept if any)
+    - Remove let at 227
+    - Replaced defined condition x1_1[ri_13], x_O_3[ri_13], r_9[ri_13] with r_9[ri_13], x1_1[ri_13] in find at 165
+    - Replaced (r_7 = s'[ri_14]) with false at 114
+    - Remove branch 2 in find at 87
+    - Replaced (r_7 = x1_1[ri_15]) with false at 91
+    - Remove branch 1 in find at 87
+    - Find at 87 removed (else branch kept if any)
+    - Replaced defined condition s'[ri_16], x_O_5[ri_16], r_11[ri_16] with r_11[ri_16], s'[ri_16] in find at 43
+    - Replaced defined condition x1_1[ri_17], x_O_3[ri_17], r_9[ri_17] with r_9[ri_17], x1_1[ri_17] in find at 43
+yields
+
+Game 33 is
+     Ogen() :=
+     r_2 <-R seed;
+     pk: pkey <- pkgen(r_2);
+     sk: skey <- skgen(r_2);
+     return(pk);
+     ((
+       foreach iH <= qG do
+       OH(x1: Dr) :=
+       find [unique] u_5 = ri_5 <= qG suchthat defined(r_4[ri_5], x1[ri_5]) && (x1 = x1[ri_5]) then
+         return(r_4[u_5])
+       orfind  suchthat defined(r_3) && (x1 = r_3) then
+         event_abort bad1
+       else
+         r_4 <-R Dow;
+         return(r_4)
+     ) | (
+       foreach iH_1 <= qH do
+       OH_1(x1_1: Dow) :=
+       x_O_3: Dow <- cst_Dow;
+       find [unique] u_21 = ri_17 <= qH suchthat defined(r_9[ri_17], x1_1[ri_17]) && (x1_1 = x1_1[ri_17]) then
+         return(r_9[u_21])
+       orfind  suchthat defined(r_7, r_10) && (x1_1 = r_7) then
+         return(r_10)
+       orfind u_20 = ri_16 <= qD suchthat defined(r_11[ri_16], s'[ri_16]) && (x1_1 = s'[ri_16]) then
+         return(r_11[u_20])
+       else
+         r_9 <-R Dr;
+         return(r_9)
+     ) | (
+       OT(m1: Dm, m2: Dm) :=
+       b1 <-R bool;
+       r_3 <-R Dr;
+       r_7 <-R Dow;
+       r_10 <-R Dr;
+       t: Dr <- xorDr(r_3, r_10);
+       cT: D <- f(pk, concat(r_7, t));
+       return(cT)
+     ) | (
+       foreach iD <= qD do
+       OD(c: D) :=
+       if defined(cT) && (c = cT) then
+         yield
+       else
+         let concat(s': Dow, t': Dr) = invf(sk, c) in
+         x_O_5: Dow <- cst_Dow;
+{116}    find [unique] u_17 = ri_13 <= qH suchthat defined(r_9[ri_13], x1_1[ri_13]) && (s' = x1_1[ri_13]) then
+         (
+           r': Dr <- xorDr(t', r_9[u_17]);
+           find [unique] u_1 = ri_1 <= qG suchthat defined(r_4[ri_1], x1[ri_1]) && (r' = x1[ri_1]) then
+           (
+             if second(s') = second(r_4[u_1]) then
+             mz: Dow <- xorDow(s', r_4[u_1]);
+             let concatm(m: Dm, =zeroDz) = mz in
+             return(m)
+           )
+           orfind  suchthat defined(r_3) && (r' = r_3) then
+             event_abort bad3
+         )
+         orfind  suchthat defined(r_7, r_10) && (s' = r_7) then
+           yield
+         orfind u_16 = ri_12 <= qD suchthat defined(r_11[ri_12], s'[ri_12]) && (s' = s'[ri_12]) then
+         (
+           r': Dr <- xorDr(t', r_11[u_16]);
+           find [unique] u_1 = ri_1 <= qG suchthat defined(r_4[ri_1], x1[ri_1]) && (r' = x1[ri_1]) then
+           (
+             if second(s') = second(r_4[u_1]) then
+             mz: Dow <- xorDow(s', r_4[u_1]);
+             let concatm(m: Dm, =zeroDz) = mz in
+             return(m)
+           )
+           orfind  suchthat defined(r_3) && (r' = r_3) then
+             event_abort bad3
+         )
+         else
+           r_11 <-R Dr
+     ))
+
+
+Applying simplify [probability 2 * qD / |Dow|]
+  - Simplification pass
+    - Replaced defined condition r_7, r_10 with r_7 in find at 116
+yields
+
+Game 34 is
+     Ogen() :=
+     r_2 <-R seed;
+     pk: pkey <- pkgen(r_2);
+     sk: skey <- skgen(r_2);
+     return(pk);
+     ((
+       foreach iH <= qG do
+       OH(x1: Dr) :=
+       find [unique] u_5 = ri_5 <= qG suchthat defined(r_4[ri_5], x1[ri_5]) && (x1 = x1[ri_5]) then
+         return(r_4[u_5])
+       orfind  suchthat defined(r_3) && (x1 = r_3) then
+         event_abort bad1
+       else
+         r_4 <-R Dow;
+         return(r_4)
+     ) | (
+       foreach iH_1 <= qH do
+       OH_1(x1_1: Dow) :=
+       x_O_3: Dow <- cst_Dow;
+       find [unique] u_21 = ri_17 <= qH suchthat defined(r_9[ri_17], x1_1[ri_17]) && (x1_1 = x1_1[ri_17]) then
+         return(r_9[u_21])
+       orfind  suchthat defined(r_7, r_10) && (x1_1 = r_7) then
+         return(r_10)
+       orfind u_20 = ri_16 <= qD suchthat defined(r_11[ri_16], s'[ri_16]) && (x1_1 = s'[ri_16]) then
+         return(r_11[u_20])
+       else
+         r_9 <-R Dr;
+         return(r_9)
+     ) | (
+       OT(m1: Dm, m2: Dm) :=
+       b1 <-R bool;
+       r_3 <-R Dr;
+       r_7 <-R Dow;
+       r_10 <-R Dr;
+       t: Dr <- xorDr(r_3, r_10);
+       cT: D <- f(pk, concat(r_7, t));
+       return(cT)
+     ) | (
+       foreach iD <= qD do
+       OD(c: D) :=
+       if defined(cT) && (c = cT) then
+         yield
+       else
+         let concat(s': Dow, t': Dr) = invf(sk, c) in
+         x_O_5: Dow <- cst_Dow;
+         find [unique] u_17 = ri_13 <= qH suchthat defined(r_9[ri_13], x1_1[ri_13]) && (s' = x1_1[ri_13]) then
+         (
+           r': Dr <- xorDr(t', r_9[u_17]);
+           find [unique] u_1 = ri_1 <= qG suchthat defined(r_4[ri_1], x1[ri_1]) && (r' = x1[ri_1]) then
+           (
+             if second(s') = second(r_4[u_1]) then
+             mz: Dow <- xorDow(s', r_4[u_1]);
+             let concatm(m: Dm, =zeroDz) = mz in
+             return(m)
+           )
+           orfind  suchthat defined(r_3) && (r' = r_3) then
+             event_abort bad3
+         )
+         orfind  suchthat defined(r_7) && (s' = r_7) then
+           yield
+         orfind u_16 = ri_12 <= qD suchthat defined(r_11[ri_12], s'[ri_12]) && (s' = s'[ri_12]) then
+         (
+           r': Dr <- xorDr(t', r_11[u_16]);
+           find [unique] u_1 = ri_1 <= qG suchthat defined(r_4[ri_1], x1[ri_1]) && (r' = x1[ri_1]) then
+           (
+             if second(s') = second(r_4[u_1]) then
+             mz: Dow <- xorDow(s', r_4[u_1]);
+             let concatm(m: Dm, =zeroDz) = mz in
+             return(m)
+           )
+           orfind  suchthat defined(r_3) && (r' = r_3) then
+             event_abort bad3
+         )
+         else
+           r_11 <-R Dr
+     ))
+
+
+Applying move all binders
+  - Move assignment to x_O_5
+  - Move assignment to x_O_3
+yields
+
+Game 35 is
+     Ogen() :=
+     r_2 <-R seed;
+     pk: pkey <- pkgen(r_2);
+     sk: skey <- skgen(r_2);
+     return(pk);
+     ((
+       foreach iH <= qG do
+       OH(x1: Dr) :=
+       find [unique] u_5 = ri_5 <= qG suchthat defined(r_4[ri_5], x1[ri_5]) && (x1 = x1[ri_5]) then
+         return(r_4[u_5])
+       orfind  suchthat defined(r_3) && (x1 = r_3) then
+         event_abort bad1
+       else
+         r_4 <-R Dow;
+         return(r_4)
+     ) | (
+       foreach iH_1 <= qH do
+       OH_1(x1_1: Dow) :=
+       find [unique] u_21 = ri_17 <= qH suchthat defined(r_9[ri_17], x1_1[ri_17]) && (x1_1 = x1_1[ri_17]) then
+         return(r_9[u_21])
+       orfind  suchthat defined(r_7, r_10) && (x1_1 = r_7) then
+ {58}    return(r_10)
+       orfind u_20 = ri_16 <= qD suchthat defined(r_11[ri_16], s'[ri_16]) && (x1_1 = s'[ri_16]) then
+         return(r_11[u_20])
+       else
+         r_9 <-R Dr;
+         return(r_9)
+     ) | (
+       OT(m1: Dm, m2: Dm) :=
+       b1 <-R bool;
+       r_3 <-R Dr;
+       r_7 <-R Dow;
+       r_10 <-R Dr;
+       t: Dr <- xorDr(r_3, r_10);
+       cT: D <- f(pk, concat(r_7, t));
+       return(cT)
+     ) | (
+       foreach iD <= qD do
+       OD(c: D) :=
+       if defined(cT) && (c = cT) then
+         yield
+       else
+         let concat(s': Dow, t': Dr) = invf(sk, c) in
+         find [unique] u_17 = ri_13 <= qH suchthat defined(r_9[ri_13], x1_1[ri_13]) && (s' = x1_1[ri_13]) then
+         (
+           r': Dr <- xorDr(t', r_9[u_17]);
+           find [unique] u_1 = ri_1 <= qG suchthat defined(r_4[ri_1], x1[ri_1]) && (r' = x1[ri_1]) then
+           (
+             if second(s') = second(r_4[u_1]) then
+             mz: Dow <- xorDow(s', r_4[u_1]);
+             let concatm(m: Dm, =zeroDz) = mz in
+             return(m)
+           )
+           orfind  suchthat defined(r_3) && (r' = r_3) then
+             event_abort bad3
+         )
+         orfind  suchthat defined(r_7) && (s' = r_7) then
+           yield
+         orfind u_16 = ri_12 <= qD suchthat defined(r_11[ri_12], s'[ri_12]) && (s' = s'[ri_12]) then
+         (
+           r': Dr <- xorDr(t', r_11[u_16]);
+           find [unique] u_1 = ri_1 <= qG suchthat defined(r_4[ri_1], x1[ri_1]) && (r' = x1[ri_1]) then
+           (
+             if second(s') = second(r_4[u_1]) then
+             mz: Dow <- xorDow(s', r_4[u_1]);
+             let concatm(m: Dm, =zeroDz) = mz in
+             return(m)
+           )
+           orfind  suchthat defined(r_3) && (r' = r_3) then
+             event_abort bad3
+         )
+         else
+           r_11 <-R Dr
+     ))
+
+
+Applying insert event bad2 at occurrence 58 [probability Pr[event bad2 in game 36 with public variables b1]]
+yields
+
+Game 36 is
+     Ogen() :=
+     r_2 <-R seed;
+     pk: pkey <- pkgen(r_2);
+     sk: skey <- skgen(r_2);
+     return(pk);
+     ((
+       foreach iH <= qG do
+       OH(x1: Dr) :=
+       find [unique] u_5 = ri_5 <= qG suchthat defined(r_4[ri_5], x1[ri_5]) && (x1 = x1[ri_5]) then
+         return(r_4[u_5])
+       orfind  suchthat defined(r_3) && (x1 = r_3) then
+         event_abort bad1
+       else
+         r_4 <-R Dow;
+         return(r_4)
+     ) | (
+       foreach iH_1 <= qH do
+       OH_1(x1_1: Dow) :=
+       find [unique] u_21 = ri_17 <= qH suchthat defined(r_9[ri_17], x1_1[ri_17]) && (x1_1 = x1_1[ri_17]) then
+         return(r_9[u_21])
+       orfind  suchthat defined(r_7, r_10) && (x1_1 = r_7) then
+         event_abort bad2
+       orfind u_20 = ri_16 <= qD suchthat defined(r_11[ri_16], s'[ri_16]) && (x1_1 = s'[ri_16]) then
+         return(r_11[u_20])
+       else
+         r_9 <-R Dr;
+         return(r_9)
+     ) | (
+       OT(m1: Dm, m2: Dm) :=
+       b1 <-R bool;
+       r_3 <-R Dr;
+       r_7 <-R Dow;
+       r_10 <-R Dr;
+       t: Dr <- xorDr(r_3, r_10);
+       cT: D <- f(pk, concat(r_7, t));
+       return(cT)
+     ) | (
+       foreach iD <= qD do
+       OD(c: D) :=
+       if defined(cT) && (c = cT) then
+         yield
+       else
+         let concat(s': Dow, t': Dr) = invf(sk, c) in
+         find [unique] u_17 = ri_13 <= qH suchthat defined(r_9[ri_13], x1_1[ri_13]) && (s' = x1_1[ri_13]) then
+         (
+           r': Dr <- xorDr(t', r_9[u_17]);
+           find [unique] u_1 = ri_1 <= qG suchthat defined(r_4[ri_1], x1[ri_1]) && (r' = x1[ri_1]) then
+           (
+             if second(s') = second(r_4[u_1]) then
+             mz: Dow <- xorDow(s', r_4[u_1]);
+             let concatm(m: Dm, =zeroDz) = mz in
+             return(m)
+           )
+           orfind  suchthat defined(r_3) && (r' = r_3) then
+             event_abort bad3
+         )
+         orfind  suchthat defined(r_7) && (s' = r_7) then
+           yield
+         orfind u_16 = ri_12 <= qD suchthat defined(r_11[ri_12], s'[ri_12]) && (s' = s'[ri_12]) then
+         (
+           r': Dr <- xorDr(t', r_11[u_16]);
+           find [unique] u_1 = ri_1 <= qG suchthat defined(r_4[ri_1], x1[ri_1]) && (r' = x1[ri_1]) then
+           (
+             if second(s') = second(r_4[u_1]) then
+             mz: Dow <- xorDow(s', r_4[u_1]);
+             let concatm(m: Dm, =zeroDz) = mz in
+             return(m)
+           )
+           orfind  suchthat defined(r_3) && (r' = r_3) then
+             event_abort bad3
+         )
+         else
+           r_11 <-R Dr
+     ))
+
+
+Applying equivalence remove_xor(xorDr) with r_10
+  - Equivalence remove_xor(xorDr) with variables: r_10 -> a
+yields
+
+Game 37 is
+     Ogen() :=
+     r_2 <-R seed;
+     pk: pkey <- pkgen(r_2);
+     sk: skey <- skgen(r_2);
+     return(pk);
+     ((
+       foreach iH <= qG do
+       OH(x1: Dr) :=
+       find [unique] u_5 = ri_5 <= qG suchthat defined(r_4[ri_5], x1[ri_5]) && (x1 = x1[ri_5]) then
+         return(r_4[u_5])
+       orfind  suchthat defined(r_3) && (x1 = r_3) then
+         event_abort bad1
+       else
+         r_4 <-R Dow;
+         return(r_4)
+     ) | (
+       foreach iH_1 <= qH do
+       OH_1(x1_1: Dow) :=
+       find [unique] u_21 = ri_17 <= qH suchthat defined(r_9[ri_17], x1_1[ri_17]) && (x1_1 = x1_1[ri_17]) then
+         return(r_9[u_21])
+       orfind  suchthat defined(r_7) && (x1_1 = r_7) then
+         event_abort bad2
+       orfind u_20 = ri_16 <= qD suchthat defined(r_11[ri_16], s'[ri_16]) && (x1_1 = s'[ri_16]) then
+         return(r_11[u_20])
+       else
+         r_9 <-R Dr;
+         return(r_9)
+     ) | (
+       OT(m1: Dm, m2: Dm) :=
+       b1 <-R bool;
+       r_3 <-R Dr;
+       r_7 <-R Dow;
+       r_12 <-R Dr;
+       r_10: Dr <- cst_Dr;
+       t: Dr <- (x_1: Dr <- r_3; r_12);
+       cT: D <- f(pk, concat(r_7, t));
+       return(cT)
+     ) | (
+       foreach iD <= qD do
+       OD(c: D) :=
+       if defined(cT) && (c = cT) then
+         yield
+       else
+         let concat(s': Dow, t': Dr) = invf(sk, c) in
+         find [unique] u_17 = ri_13 <= qH suchthat defined(r_9[ri_13], x1_1[ri_13]) && (s' = x1_1[ri_13]) then
+         (
+           r': Dr <- xorDr(t', r_9[u_17]);
+           find [unique] u_1 = ri_1 <= qG suchthat defined(r_4[ri_1], x1[ri_1]) && (r' = x1[ri_1]) then
+           (
+             if second(s') = second(r_4[u_1]) then
+             mz: Dow <- xorDow(s', r_4[u_1]);
+             let concatm(m: Dm, =zeroDz) = mz in
+             return(m)
+           )
+           orfind  suchthat defined(r_3) && (r' = r_3) then
+             event_abort bad3
+         )
+         orfind  suchthat defined(r_7) && (s' = r_7) then
+           yield
+         orfind u_16 = ri_12 <= qD suchthat defined(r_11[ri_12], s'[ri_12]) && (s' = s'[ri_12]) then
+         (
+           r': Dr <- xorDr(t', r_11[u_16]);
+           find [unique] u_1 = ri_1 <= qG suchthat defined(r_4[ri_1], x1[ri_1]) && (r' = x1[ri_1]) then
+           (
+             if second(s') = second(r_4[u_1]) then
+             mz: Dow <- xorDow(s', r_4[u_1]);
+             let concatm(m: Dm, =zeroDz) = mz in
+             return(m)
+           )
+           orfind  suchthat defined(r_3) && (r' = r_3) then
+             event_abort bad3
+         )
+         else
+           r_11 <-R Dr
+     ))
+
+
+Applying expand [probability 2 * qD / |Dow|]
+  - Expand if/find/let
+yields
+
+Game 38 is
+     Ogen() :=
+     r_2 <-R seed;
+     pk: pkey <- pkgen(r_2);
+     sk: skey <- skgen(r_2);
+     return(pk);
+     ((
+       foreach iH <= qG do
+       OH(x1: Dr) :=
+       find [unique] u_5 = ri_5 <= qG suchthat defined(r_4[ri_5], x1[ri_5]) && (x1 = x1[ri_5]) then
+         return(r_4[u_5])
+       orfind  suchthat defined(r_3) && (x1 = r_3) then
+         event_abort bad1
+       else
+         r_4 <-R Dow;
+         return(r_4)
+     ) | (
+       foreach iH_1 <= qH do
+       OH_1(x1_1: Dow) :=
+       find [unique] u_21 = ri_17 <= qH suchthat defined(r_9[ri_17], x1_1[ri_17]) && (x1_1 = x1_1[ri_17]) then
+         return(r_9[u_21])
+       orfind  suchthat defined(r_7) && (x1_1 = r_7) then
+         event_abort bad2
+       orfind u_20 = ri_16 <= qD suchthat defined(r_11[ri_16], s'[ri_16]) && (x1_1 = s'[ri_16]) then
+         return(r_11[u_20])
+       else
+         r_9 <-R Dr;
+         return(r_9)
+     ) | (
+       OT(m1: Dm, m2: Dm) :=
+       b1 <-R bool;
+       r_3 <-R Dr;
+       r_7 <-R Dow;
+       r_12 <-R Dr;
+       r_10: Dr <- cst_Dr;
+       x_1: Dr <- r_3;
+       t: Dr <- r_12;
+       cT: D <- f(pk, concat(r_7, t));
+       return(cT)
+     ) | (
+       foreach iD <= qD do
+       OD(c: D) :=
+       if defined(cT) && (c = cT) then
+         yield
+       else
+         let concat(s': Dow, t': Dr) = invf(sk, c) in
+         find [unique] u_17 = ri_13 <= qH suchthat defined(r_9[ri_13], x1_1[ri_13]) && (s' = x1_1[ri_13]) then
+         (
+           r': Dr <- xorDr(t', r_9[u_17]);
+           find [unique] u_1 = ri_1 <= qG suchthat defined(r_4[ri_1], x1[ri_1]) && (r' = x1[ri_1]) then
+           (
+             if second(s') = second(r_4[u_1]) then
+             mz: Dow <- xorDow(s', r_4[u_1]);
+             let concatm(m: Dm, =zeroDz) = mz in
+             return(m)
+           )
+           orfind  suchthat defined(r_3) && (r' = r_3) then
+             event_abort bad3
+         )
+         orfind  suchthat defined(r_7) && (s' = r_7) then
+           yield
+         orfind u_16 = ri_12 <= qD suchthat defined(r_11[ri_12], s'[ri_12]) && (s' = s'[ri_12]) then
+         (
+           r': Dr <- xorDr(t', r_11[u_16]);
+           find [unique] u_1 = ri_1 <= qG suchthat defined(r_4[ri_1], x1[ri_1]) && (r' = x1[ri_1]) then
+           (
+             if second(s') = second(r_4[u_1]) then
+             mz: Dow <- xorDow(s', r_4[u_1]);
+             let concatm(m: Dm, =zeroDz) = mz in
+             return(m)
+           )
+           orfind  suchthat defined(r_3) && (r' = r_3) then
+             event_abort bad3
+         )
+         else
+           r_11 <-R Dr
+     ))
+
+
+Applying remove assignments of findcond
+  - Remove assignments on r_10 (definition removed, all usages removed)
+  - Remove assignments on x_1 (definition removed, all usages removed)
+  - Remove assignments on t (definition removed, all usages removed)
+yields
+
+Game 39 is
+     Ogen() :=
+     r_2 <-R seed;
+     pk: pkey <- pkgen(r_2);
+     sk: skey <- skgen(r_2);
+     return(pk);
+     ((
+       foreach iH <= qG do
+       OH(x1: Dr) :=
+       find [unique] u_5 = ri_5 <= qG suchthat defined(r_4[ri_5], x1[ri_5]) && (x1 = x1[ri_5]) then
+         return(r_4[u_5])
+       orfind  suchthat defined(r_3) && (x1 = r_3) then
+         event_abort bad1
+       else
+         r_4 <-R Dow;
+         return(r_4)
+     ) | (
+       foreach iH_1 <= qH do
+       OH_1(x1_1: Dow) :=
+       find [unique] u_21 = ri_17 <= qH suchthat defined(r_9[ri_17], x1_1[ri_17]) && (x1_1 = x1_1[ri_17]) then
+         return(r_9[u_21])
+       orfind  suchthat defined(r_7) && (x1_1 = r_7) then
+         event_abort bad2
+       orfind u_20 = ri_16 <= qD suchthat defined(r_11[ri_16], s'[ri_16]) && (x1_1 = s'[ri_16]) then
+         return(r_11[u_20])
+       else
+         r_9 <-R Dr;
+         return(r_9)
+     ) | (
+       OT(m1: Dm, m2: Dm) :=
+       b1 <-R bool;
+       r_3 <-R Dr;
+       r_7 <-R Dow;
+       r_12 <-R Dr;
+       cT: D <- f(pk, concat(r_7, r_12));
+       return(cT)
+     ) | (
+       foreach iD <= qD do
+       OD(c: D) :=
+       if defined(cT) && (c = cT) then
+         yield
+       else
+         let concat(s': Dow, t': Dr) = invf(sk, c) in
+         find [unique] u_17 = ri_13 <= qH suchthat defined(r_9[ri_13], x1_1[ri_13]) && (s' = x1_1[ri_13]) then
+         (
+           r': Dr <- xorDr(t', r_9[u_17]);
+           find [unique] u_1 = ri_1 <= qG suchthat defined(r_4[ri_1], x1[ri_1]) && (r' = x1[ri_1]) then
+           (
+             if second(s') = second(r_4[u_1]) then
+             mz: Dow <- xorDow(s', r_4[u_1]);
+             let concatm(m: Dm, =zeroDz) = mz in
+             return(m)
+           )
+           orfind  suchthat defined(r_3) && (r' = r_3) then
+             event_abort bad3
+         )
+         orfind  suchthat defined(r_7) && (s' = r_7) then
+           yield
+         orfind u_16 = ri_12 <= qD suchthat defined(r_11[ri_12], s'[ri_12]) && (s' = s'[ri_12]) then
+         (
+           r': Dr <- xorDr(t', r_11[u_16]);
+           find [unique] u_1 = ri_1 <= qG suchthat defined(r_4[ri_1], x1[ri_1]) && (r' = x1[ri_1]) then
+           (
+             if second(s') = second(r_4[u_1]) then
+             mz: Dow <- xorDow(s', r_4[u_1]);
+             let concatm(m: Dm, =zeroDz) = mz in
+             return(m)
+           )
+           orfind  suchthat defined(r_3) && (r' = r_3) then
+             event_abort bad3
+         )
+         else
+           r_11 <-R Dr
+     ))
+
+
+Applying simplify [probability (qD + qG) / |Dr|]
+  - Global dependency analysis on r_3
+yields
+
+Game 40 is
+     Ogen() :=
+     r_2 <-R seed;
+     pk: pkey <- pkgen(r_2);
+     sk: skey <- skgen(r_2);
+     return(pk);
+     ((
+       foreach iH <= qG do
+       OH(x1: Dr) :=
+       find [unique] u_5 = ri_5 <= qG suchthat defined(r_4[ri_5], x1[ri_5]) && (x1 = x1[ri_5]) then
+         return(r_4[u_5])
+       else
+         r_4 <-R Dow;
+         return(r_4)
+     ) | (
+       foreach iH_1 <= qH do
+       OH_1(x1_1: Dow) :=
+       find [unique] u_21 = ri_17 <= qH suchthat defined(r_9[ri_17], x1_1[ri_17]) && (x1_1 = x1_1[ri_17]) then
+         return(r_9[u_21])
+       orfind  suchthat defined(r_7) && (x1_1 = r_7) then
+         event_abort bad2
+       orfind u_20 = ri_16 <= qD suchthat defined(r_11[ri_16], s'[ri_16]) && (x1_1 = s'[ri_16]) then
+         return(r_11[u_20])
+       else
+         r_9 <-R Dr;
+         return(r_9)
+     ) | (
+       OT(m1: Dm, m2: Dm) :=
+       b1 <-R bool;
+ {73}  r_3 <-R Dr;
+       r_7 <-R Dow;
+       r_12 <-R Dr;
+       cT: D <- f(pk, concat(r_7, r_12));
+       return(cT)
+     ) | (
+       foreach iD <= qD do
+       OD(c: D) :=
+       if defined(cT) && (c = cT) then
+         yield
+       else
+         let concat(s': Dow, t': Dr) = invf(sk, c) in
+         find [unique] u_17 = ri_13 <= qH suchthat defined(r_9[ri_13], x1_1[ri_13]) && (s' = x1_1[ri_13]) then
+         (
+           r': Dr <- xorDr(t', r_9[u_17]);
+           find [unique] u_1 = ri_1 <= qG suchthat defined(r_4[ri_1], x1[ri_1]) && (r' = x1[ri_1]) then
+           if second(s') = second(r_4[u_1]) then
+           mz: Dow <- xorDow(s', r_4[u_1]);
+           let concatm(m: Dm, =zeroDz) = mz in
+           return(m)
+         )
+         orfind  suchthat defined(r_7) && (s' = r_7) then
+           yield
+         orfind u_16 = ri_12 <= qD suchthat defined(r_11[ri_12], s'[ri_12]) && (s' = s'[ri_12]) then
+         (
+           r': Dr <- xorDr(t', r_11[u_16]);
+           find [unique] u_1 = ri_1 <= qG suchthat defined(r_4[ri_1], x1[ri_1]) && (r' = x1[ri_1]) then
+           if second(s') = second(r_4[u_1]) then
+           mz: Dow <- xorDow(s', r_4[u_1]);
+           let concatm(m: Dm, =zeroDz) = mz in
+           return(m)
+         )
+         else
+           r_11 <-R Dr
+     ))
+
+
+Applying simplify [probability qD / |Dow|]
+  - Simplification pass
+    - Remove random number generation at 73
+yields
+
+Game 41 is
+     Ogen() :=
+     r_2 <-R seed;
+     pk: pkey <- pkgen(r_2);
+     sk: skey <- skgen(r_2);
+     return(pk);
+     ((
+       foreach iH <= qG do
+       OH(x1: Dr) :=
+       find [unique] u_5 = ri_5 <= qG suchthat defined(r_4[ri_5], x1[ri_5]) && (x1 = x1[ri_5]) then
+         return(r_4[u_5])
+       else
+         r_4 <-R Dow;
+         return(r_4)
+     ) | (
+       foreach iH_1 <= qH do
+       OH_1(x1_1: Dow) :=
+       find [unique] u_21 = ri_17 <= qH suchthat defined(r_9[ri_17], x1_1[ri_17]) && (x1_1 = x1_1[ri_17]) then
+         return(r_9[u_21])
+       orfind  suchthat defined(r_7) && (x1_1 = r_7) then
+         event_abort bad2
+       orfind u_20 = ri_16 <= qD suchthat defined(r_11[ri_16], s'[ri_16]) && (x1_1 = s'[ri_16]) then
+         return(r_11[u_20])
+       else
+         r_9 <-R Dr;
+         return(r_9)
+     ) | (
+       OT(m1: Dm, m2: Dm) :=
+       b1 <-R bool;
+       r_7 <-R Dow;
+       r_12 <-R Dr;
+       cT: D <- f(pk, concat(r_7, r_12));
+       return(cT)
+     ) | (
+       foreach iD <= qD do
+       OD(c: D) :=
+       if defined(cT) && (c = cT) then
+         yield
+       else
+         let concat(s': Dow, t': Dr) = invf(sk, c) in
+         find [unique] u_17 = ri_13 <= qH suchthat defined(r_9[ri_13], x1_1[ri_13]) && (s' = x1_1[ri_13]) then
+         (
+           r': Dr <- xorDr(t', r_9[u_17]);
+           find [unique] u_1 = ri_1 <= qG suchthat defined(r_4[ri_1], x1[ri_1]) && (r' = x1[ri_1]) then
+           if second(s') = second(r_4[u_1]) then
+           mz: Dow <- xorDow(s', r_4[u_1]);
+           let concatm(m: Dm, =zeroDz) = mz in
+           return(m)
+         )
+         orfind  suchthat defined(r_7) && (s' = r_7) then
+           yield
+         orfind u_16 = ri_12 <= qD suchthat defined(r_11[ri_12], s'[ri_12]) && (s' = s'[ri_12]) then
+         (
+           r': Dr <- xorDr(t', r_11[u_16]);
+           find [unique] u_1 = ri_1 <= qG suchthat defined(r_4[ri_1], x1[ri_1]) && (r' = x1[ri_1]) then
+           if second(s') = second(r_4[u_1]) then
+           mz: Dow <- xorDow(s', r_4[u_1]);
+           let concatm(m: Dm, =zeroDz) = mz in
+           return(m)
+         )
+         else
+           r_11 <-R Dr
+     ))
+
+
+Applying remove assignments of binder r'
+  - Remove assignments on r' (definition removed, all usages removed)
+  - Remove assignments on r' (definition removed, all usages removed)
+yields
+
+Game 42 is
+     Ogen() :=
+     r_2 <-R seed;
+     pk: pkey <- pkgen(r_2);
+     sk: skey <- skgen(r_2);
+     return(pk);
+     ((
+       foreach iH <= qG do
+       OH(x1: Dr) :=
+       find [unique] u_5 = ri_5 <= qG suchthat defined(r_4[ri_5], x1[ri_5]) && (x1 = x1[ri_5]) then
+         return(r_4[u_5])
+       else
+         r_4 <-R Dow;
+         return(r_4)
+     ) | (
+       foreach iH_1 <= qH do
+       OH_1(x1_1: Dow) :=
+       find [unique] u_21 = ri_17 <= qH suchthat defined(r_9[ri_17], x1_1[ri_17]) && (x1_1 = x1_1[ri_17]) then
+         return(r_9[u_21])
+       orfind  suchthat defined(r_7) && (x1_1 = r_7) then
+         event_abort bad2
+       orfind u_20 = ri_16 <= qD suchthat defined(r_11[ri_16], s'[ri_16]) && (x1_1 = s'[ri_16]) then
+         return(r_11[u_20])
+       else
+         r_9 <-R Dr;
+         return(r_9)
+     ) | (
+       OT(m1: Dm, m2: Dm) :=
+       b1 <-R bool;
+       r_7 <-R Dow;
+       r_12 <-R Dr;
+       cT: D <- f(pk, concat(r_7, r_12));
+       return(cT)
+     ) | (
+       foreach iD <= qD do
+       OD(c: D) :=
+       if defined(cT) && (c = cT) then
+         yield
+       else
+         let concat(s': Dow, t': Dr) = invf(sk, c) in
+         find [unique] u_17 = ri_13 <= qH suchthat defined(r_9[ri_13], x1_1[ri_13]) && (s' = x1_1[ri_13]) then
+         (
+           find [unique] u_1 = ri_1 <= qG suchthat defined(r_4[ri_1], x1[ri_1]) && (xorDr(t', r_9[u_17]) = x1[ri_1]) then
+           if second(s') = second(r_4[u_1]) then
+           mz: Dow <- xorDow(s', r_4[u_1]);
+           let concatm(m: Dm, =zeroDz) = mz in
+           return(m)
+         )
+         orfind  suchthat defined(r_7) && (s' = r_7) then
+           yield
+         orfind u_16 = ri_12 <= qD suchthat defined(r_11[ri_12], s'[ri_12]) && (s' = s'[ri_12]) then
+         (
+           find [unique] u_1 = ri_1 <= qG suchthat defined(r_4[ri_1], x1[ri_1]) && (xorDr(t', r_11[u_16]) = x1[ri_1]) then
+           if second(s') = second(r_4[u_1]) then
+           mz: Dow <- xorDow(s', r_4[u_1]);
+           let concatm(m: Dm, =zeroDz) = mz in
+           return(m)
+         )
+         else
+           r_11 <-R Dr
+     ))
+
+
+Applying equivalence move_array(Dr) with r_11. [probability qD * qG / |Dr|]
+  - Equivalence move_array(Dr) with variables: r_11 -> X.
+yields
+
+Game 43 is
+     Ogen() :=
+     r_2 <-R seed;
+     pk: pkey <- pkgen(r_2);
+     sk: skey <- skgen(r_2);
+     return(pk);
+     ((
+       foreach iH <= qG do
+       OH(x1: Dr) :=
+       find [unique] u_5 = ri_5 <= qG suchthat defined(r_4[ri_5], x1[ri_5]) && (x1 = x1[ri_5]) then
+         return(r_4[u_5])
+       else
+         r_4 <-R Dow;
+         return(r_4)
+     ) | (
+       foreach iH_1 <= qH do
+       OH_1(x1_1: Dow) :=
+       find [unique] u_21 = ri_17 <= qH suchthat defined(r_9[ri_17], x1_1[ri_17]) && (x1_1 = x1_1[ri_17]) then
+         return(r_9[u_21])
+       orfind  suchthat defined(r_7) && (x1_1 = r_7) then
+         event_abort bad2
+       orfind u_20 = ri_16 <= qD suchthat defined(r_11[ri_16], s'[ri_16]) && (x1_1 = s'[ri_16]) then
+         return((find [unique] u_23 = ri_19 <= qH suchthat defined(Y_3[ri_19], u_20[ri_19]) && (u_20[ri_19] = u_20) then Y_3[u_23] else Y_3 <-R Dr; Y_3))
+       else
+         r_9 <-R Dr;
+         return(r_9)
+     ) | (
+       OT(m1: Dm, m2: Dm) :=
+       b1 <-R bool;
+       r_7 <-R Dow;
+       r_12 <-R Dr;
+       cT: D <- f(pk, concat(r_7, r_12));
+       return(cT)
+     ) | (
+       foreach iD <= qD do
+       OD(c: D) :=
+       if defined(cT) && (c = cT) then
+         yield
+       else
+         let concat(s': Dow, t': Dr) = invf(sk, c) in
+         find [unique] u_17 = ri_13 <= qH suchthat defined(r_9[ri_13], x1_1[ri_13]) && (s' = x1_1[ri_13]) then
+         (
+           find [unique] u_1 = ri_1 <= qG suchthat defined(r_4[ri_1], x1[ri_1]) && (xorDr(t', r_9[u_17]) = x1[ri_1]) then
+           if second(s') = second(r_4[u_1]) then
+           mz: Dow <- xorDow(s', r_4[u_1]);
+           let concatm(m: Dm, =zeroDz) = mz in
+           return(m)
+         )
+         orfind  suchthat defined(r_7) && (s' = r_7) then
+           yield
+         orfind u_16 = ri_12 <= qD suchthat defined(r_11[ri_12], s'[ri_12]) && (s' = s'[ri_12]) then
+         (
+           find [unique] u_1 = ri_1 <= qG suchthat defined(r_4[ri_1], x1[ri_1]) && (X'_1: Dr <- xorDr(t', x1[ri_1]); find [unique] u_22 = ri_18 <= qH suchthat defined(Y_3[ri_18], u_20[ri_18]) && (u_20[ri_18] = u_16) then (X'_1 = Y_3[u_22]) else false) then
+           if second(s') = second(r_4[u_1]) then
+           mz: Dow <- xorDow(s', r_4[u_1]);
+           let concatm(m: Dm, =zeroDz) = mz in
+           return(m)
+         )
+         else
+           r_11: Dr <- cst_Dr
+     ))
+
+
+Applying expand [probability qD / |Dow|]
+  - Expand if/find/let
+yields
+
+Game 44 is
+     Ogen() :=
+     r_2 <-R seed;
+     pk: pkey <- pkgen(r_2);
+     sk: skey <- skgen(r_2);
+     return(pk);
+     ((
+       foreach iH <= qG do
+       OH(x1: Dr) :=
+       find [unique] u_5 = ri_5 <= qG suchthat defined(r_4[ri_5], x1[ri_5]) && (x1 = x1[ri_5]) then
+         return(r_4[u_5])
+       else
+         r_4 <-R Dow;
+         return(r_4)
+     ) | (
+       foreach iH_1 <= qH do
+       OH_1(x1_1: Dow) :=
+       find [unique] u_21 = ri_17 <= qH suchthat defined(r_9[ri_17], x1_1[ri_17]) && (x1_1 = x1_1[ri_17]) then
+         return(r_9[u_21])
+       orfind  suchthat defined(r_7) && (x1_1 = r_7) then
+         event_abort bad2
+       orfind u_20 = ri_16 <= qD suchthat defined(r_11[ri_16], s'[ri_16]) && (x1_1 = s'[ri_16]) then
+         find [unique] u_23 = ri_19 <= qH suchthat defined(Y_3[ri_19], u_20[ri_19]) && (u_20[ri_19] = u_20) then
+           return(Y_3[u_23])
+         else
+           Y_3 <-R Dr;
+           return(Y_3)
+       else
+         r_9 <-R Dr;
+         return(r_9)
+     ) | (
+       OT(m1: Dm, m2: Dm) :=
+       b1 <-R bool;
+       r_7 <-R Dow;
+       r_12 <-R Dr;
+       cT: D <- f(pk, concat(r_7, r_12));
+       return(cT)
+     ) | (
+       foreach iD <= qD do
+       OD(c: D) :=
+       if defined(cT) && (c = cT) then
+         yield
+       else
+         let concat(s': Dow, t': Dr) = invf(sk, c) in
+         find [unique] u_17 = ri_13 <= qH suchthat defined(r_9[ri_13], x1_1[ri_13]) && (s' = x1_1[ri_13]) then
+         (
+           find [unique] u_1 = ri_1 <= qG suchthat defined(r_4[ri_1], x1[ri_1]) && (xorDr(t', r_9[u_17]) = x1[ri_1]) then
+           if second(s') = second(r_4[u_1]) then
+           mz: Dow <- xorDow(s', r_4[u_1]);
+           let concatm(m: Dm, =zeroDz) = mz in
+           return(m)
+         )
+         orfind  suchthat defined(r_7) && (s' = r_7) then
+           yield
+         orfind u_16 = ri_12 <= qD suchthat defined(r_11[ri_12], s'[ri_12]) && (s' = s'[ri_12]) then
+         (
+           find [unique] u_1 = ri_1 <= qG suchthat defined(r_4[ri_1], x1[ri_1]) && (X'_1: Dr <- xorDr(t', x1[ri_1]); find [unique] u_22 = ri_18 <= qH suchthat defined(Y_3[ri_18], u_20[ri_18]) && (u_20[ri_18] = u_16) then (X'_1 = Y_3[u_22]) else false) then
+           if second(s') = second(r_4[u_1]) then
+           mz: Dow <- xorDow(s', r_4[u_1]);
+           let concatm(m: Dm, =zeroDz) = mz in
+           return(m)
+         )
+         else
+           r_11: Dr <- cst_Dr
+     ))
+
+
+Applying remove assignments of findcond
+  - Remove assignments on X'_1 (definition removed, all usages removed)
+yields
+
+Game 45 is
+     Ogen() :=
+     r_2 <-R seed;
+     pk: pkey <- pkgen(r_2);
+     sk: skey <- skgen(r_2);
+     return(pk);
+     ((
+       foreach iH <= qG do
+       OH(x1: Dr) :=
+       find [unique] u_5 = ri_5 <= qG suchthat defined(r_4[ri_5], x1[ri_5]) && (x1 = x1[ri_5]) then
+         return(r_4[u_5])
+       else
+         r_4 <-R Dow;
+         return(r_4)
+     ) | (
+       foreach iH_1 <= qH do
+       OH_1(x1_1: Dow) :=
+ {36}  find [unique] u_21 = ri_17 <= qH suchthat defined(r_9[ri_17], x1_1[ri_17]) && (x1_1 = x1_1[ri_17]) then
+         return(r_9[u_21])
+       orfind  suchthat defined(r_7) && (x1_1 = r_7) then
+         event_abort bad2
+       orfind u_20 = ri_16 <= qD suchthat defined(r_11[ri_16], s'[ri_16]) && (x1_1 = s'[ri_16]) then
+ {61}    find [unique] u_23 = ri_19 <= qH suchthat defined(Y_3[ri_19], u_20[ri_19]) && (u_20[ri_19] = u_20) then
+           return(Y_3[u_23])
+         else
+           Y_3 <-R Dr;
+           return(Y_3)
+       else
+         r_9 <-R Dr;
+         return(r_9)
+     ) | (
+       OT(m1: Dm, m2: Dm) :=
+       b1 <-R bool;
+       r_7 <-R Dow;
+       r_12 <-R Dr;
+       cT: D <- f(pk, concat(r_7, r_12));
+       return(cT)
+     ) | (
+       foreach iD <= qD do
+       OD(c: D) :=
+       if defined(cT) && (c = cT) then
+         yield
+       else
+         let concat(s': Dow, t': Dr) = invf(sk, c) in
+{111}    find [unique] u_17 = ri_13 <= qH suchthat defined(r_9[ri_13], x1_1[ri_13]) && (s' = x1_1[ri_13]) then
+         (
+{119}      find [unique] u_1 = ri_1 <= qG suchthat defined(r_4[ri_1], x1[ri_1]) && (xorDr(t', r_9[u_17]) = x1[ri_1]) then
+           if second(s') = second(r_4[u_1]) then
+           mz: Dow <- xorDow(s', r_4[u_1]);
+           let concatm(m: Dm, =zeroDz) = mz in
+           return(m)
+         )
+         orfind  suchthat defined(r_7) && (s' = r_7) then
+           yield
+         orfind u_16 = ri_12 <= qD suchthat defined(r_11[ri_12], s'[ri_12]) && (s' = s'[ri_12]) then
+         (
+           find [unique] u_1 = ri_1 <= qG suchthat defined(r_4[ri_1], x1[ri_1]) && (find [unique] u_22 = ri_18 <= qH suchthat defined(Y_3[ri_18], u_20[ri_18]) && (u_20[ri_18] = u_16) then (xorDr(t', x1[ri_1]) = Y_3[u_22]) else false) then
+           if second(s') = second(r_4[u_1]) then
+           mz: Dow <- xorDow(s', r_4[u_1]);
+           let concatm(m: Dm, =zeroDz) = mz in
+           return(m)
+         )
+         else
+           r_11: Dr <- cst_Dr
+     ))
+
+
+Applying simplify
+  - Simplification pass
+    - Simplified find at 119 in branch of find at 111
+    - Simplified find at 61 in branch of find at 36
+yields
+
+Game 46 is
+     Ogen() :=
+     r_2 <-R seed;
+     pk: pkey <- pkgen(r_2);
+     sk: skey <- skgen(r_2);
+     return(pk);
+     ((
+       foreach iH <= qG do
+       OH(x1: Dr) :=
+       find [unique] u_5 = ri_5 <= qG suchthat defined(r_4[ri_5], x1[ri_5]) && (x1 = x1[ri_5]) then
+         return(r_4[u_5])
+       else
+         r_4 <-R Dow;
+         return(r_4)
+     ) | (
+       foreach iH_1 <= qH do
+       OH_1(x1_1: Dow) :=
+ {36}  find [unique] u_21 = ri_17 <= qH suchthat defined(r_9[ri_17], x1_1[ri_17]) && (x1_1 = x1_1[ri_17]) then
+         return(r_9[u_21])
+       orfind  suchthat defined(r_7) && (x1_1 = r_7) then
+         event_abort bad2
+       orfind u_20 = ri_16 <= qD, u_23 = ri_19 <= qH suchthat defined(r_11[ri_16], s'[ri_16], Y_3[ri_19]) && {57}((x1_1 = s'[ri_16]) && (ri_16 = ri_16) && (ri_19 = iH_1)) then
+         return(Y_3[u_23])
+       orfind u_20 = ri_16 <= qD, u_23 = ri_19 <= qH suchthat defined(r_11[ri_16], s'[ri_16], Y_3[ri_19], u_20[ri_19]) && (x1_1 = s'[ri_16]) && (u_20[ri_19] = ri_16) then
+         return(Y_3[u_23])
+       else
+         find [unique] u_20 = ri_16 <= qD suchthat defined(r_11[ri_16], s'[ri_16]) && (x1_1 = s'[ri_16]) then
+           Y_3 <-R Dr;
+           return(Y_3)
+         else
+           r_9 <-R Dr;
+           return(r_9)
+     ) | (
+       OT(m1: Dm, m2: Dm) :=
+       b1 <-R bool;
+       r_7 <-R Dow;
+       r_12 <-R Dr;
+       cT: D <- f(pk, concat(r_7, r_12));
+       return(cT)
+     ) | (
+       foreach iD <= qD do
+       OD(c: D) :=
+       if defined(cT) && (c = cT) then
+         yield
+       else
+         let concat(s': Dow, t': Dr) = invf(sk, c) in
+         find [unique] u_17 = ri_13 <= qH, u_1 = ri_1 <= qG suchthat defined(r_9[ri_13], x1_1[ri_13], r_4[ri_1], x1[ri_1]) && (s' = x1_1[ri_13]) && (xorDr(t', r_9[ri_13]) = x1[ri_1]) then
+         (
+           if second(s') = second(r_4[u_1]) then
+           mz: Dow <- xorDow(s', r_4[u_1]);
+           let concatm(m: Dm, =zeroDz) = mz in
+           return(m)
+         )
+         orfind  suchthat defined(r_7) && (s' = r_7) then
+           yield
+         orfind u_16 = ri_12 <= qD suchthat defined(r_11[ri_12], s'[ri_12]) && (s' = s'[ri_12]) then
+         (
+{197}      find [unique] u_1 = ri_1 <= qG suchthat defined(r_4[ri_1], x1[ri_1]) && {200}(find [unique] u_22 = ri_18 <= qH suchthat defined(Y_3[ri_18], u_20[ri_18]) && (u_20[ri_18] = u_16) then (xorDr(t', x1[ri_1]) = Y_3[u_22]) else false) then
+           if second(s') = second(r_4[u_1]) then
+           mz: Dow <- xorDow(s', r_4[u_1]);
+           let concatm(m: Dm, =zeroDz) = mz in
+           return(m)
+         )
+         else
+           find [unique] u_17 = ri_13 <= qH suchthat defined(r_9[ri_13], x1_1[ri_13]) && (s' = x1_1[ri_13]) then
+             yield
+           else
+             r_11: Dr <- cst_Dr
+     ))
+
+
+Applying simplify [probability qD / |Dow|]
+  - Simplification pass
+    - Simplified find at 200 in condition of find at 197
+    - Replaced ((x1_1 = s'[ri_16]) && (ri_16 = ri_16) && (ri_19 = iH_1)) with false at 57
+    - Remove branch 3 in find at 36
+yields
+
+Game 47 is
+     Ogen() :=
+     r_2 <-R seed;
+     pk: pkey <- pkgen(r_2);
+     sk: skey <- skgen(r_2);
+     return(pk);
+     ((
+       foreach iH <= qG do
+       OH(x1: Dr) :=
+       find [unique] u_5 = ri_5 <= qG suchthat defined(r_4[ri_5], x1[ri_5]) && (x1 = x1[ri_5]) then
+         return(r_4[u_5])
+       else
+         r_4 <-R Dow;
+         return(r_4)
+     ) | (
+       foreach iH_1 <= qH do
+       OH_1(x1_1: Dow) :=
+       find [unique] u_21 = ri_17 <= qH suchthat defined(r_9[ri_17], x1_1[ri_17]) && (x1_1 = x1_1[ri_17]) then
+         return(r_9[u_21])
+       orfind  suchthat defined(r_7) && (x1_1 = r_7) then
+         event_abort bad2
+       orfind u_20 = ri_16 <= qD, u_23 = ri_19 <= qH suchthat defined(r_11[ri_16], s'[ri_16], Y_3[ri_19], u_20[ri_19]) && (x1_1 = s'[ri_16]) && (u_20[ri_19] = ri_16) then
+         return(Y_3[u_23])
+       else
+         find [unique] u_20 = ri_16 <= qD suchthat defined(r_11[ri_16], s'[ri_16]) && (x1_1 = s'[ri_16]) then
+           Y_3 <-R Dr;
+           return(Y_3)
+         else
+           r_9 <-R Dr;
+           return(r_9)
+     ) | (
+       OT(m1: Dm, m2: Dm) :=
+       b1 <-R bool;
+       r_7 <-R Dow;
+       r_12 <-R Dr;
+       cT: D <- f(pk, concat(r_7, r_12));
+       return(cT)
+     ) | (
+       foreach iD <= qD do
+       OD(c: D) :=
+       if defined(cT) && (c = cT) then
+         yield
+       else
+         let concat(s': Dow, t': Dr) = invf(sk, c) in
+         find [unique] u_17 = ri_13 <= qH, u_1 = ri_1 <= qG suchthat defined(r_9[ri_13], x1_1[ri_13], r_4[ri_1], x1[ri_1]) && (s' = x1_1[ri_13]) && (xorDr(t', r_9[ri_13]) = x1[ri_1]) then
+         (
+           if second(s') = second(r_4[u_1]) then
+           mz: Dow <- xorDow(s', r_4[u_1]);
+           let concatm(m: Dm, =zeroDz) = mz in
+           return(m)
+         )
+         orfind  suchthat defined(r_7) && (s' = r_7) then
+           yield
+         orfind u_16 = ri_12 <= qD suchthat defined(r_11[ri_12], s'[ri_12]) && (s' = s'[ri_12]) then
+         (
+           find [unique] u_1 = ri_1 <= qG, u_24 = ri_18 <= qH suchthat defined(r_4[ri_1], x1[ri_1], Y_3[ri_18], u_20[ri_18]) && (u_20[ri_18] = u_16) && (xorDr(t', x1[ri_1]) = Y_3[ri_18]) then
+           if second(s') = second(r_4[u_1]) then
+           mz: Dow <- xorDow(s', r_4[u_1]);
+           let concatm(m: Dm, =zeroDz) = mz in
+           return(m)
+         )
+         else
+           find [unique] u_17 = ri_13 <= qH suchthat defined(r_9[ri_13], x1_1[ri_13]) && (s' = x1_1[ri_13]) then
+             yield
+           else
+             r_11: Dr <- cst_Dr
+     ))
+
+
+Applying SA rename u_20
+  - Rename variable u_20 into u_26, u_25
+yields
+
+Game 48 is
+     Ogen() :=
+     r_2 <-R seed;
+     pk: pkey <- pkgen(r_2);
+     sk: skey <- skgen(r_2);
+     return(pk);
+     ((
+       foreach iH <= qG do
+       OH(x1: Dr) :=
+       find [unique] u_5 = ri_5 <= qG suchthat defined(r_4[ri_5], x1[ri_5]) && (x1 = x1[ri_5]) then
+         return(r_4[u_5])
+       else
+         r_4 <-R Dow;
+         return(r_4)
+     ) | (
+       foreach iH_1 <= qH do
+       OH_1(x1_1: Dow) :=
+ {36}  find [unique] u_21 = ri_17 <= qH suchthat defined(r_9[ri_17], x1_1[ri_17]) && (x1_1 = x1_1[ri_17]) then
+         return(r_9[u_21])
+       orfind  suchthat defined(r_7) && (x1_1 = r_7) then
+         event_abort bad2
+       orfind u_25 = ri_16 <= qD, u_23 = ri_19 <= qH suchthat defined(r_11[ri_16], s'[ri_16], Y_3[ri_19], u_26[ri_19]) && (x1_1 = s'[ri_16]) && (u_26[ri_19] = ri_16) then
+         return(Y_3[u_23])
+       else
+         find [unique] u_26 = ri_16 <= qD suchthat defined(r_11[ri_16], s'[ri_16]) && (x1_1 = s'[ri_16]) then
+           Y_3 <-R Dr;
+           return(Y_3)
+         else
+           r_9 <-R Dr;
+           return(r_9)
+     ) | (
+       OT(m1: Dm, m2: Dm) :=
+       b1 <-R bool;
+       r_7 <-R Dow;
+       r_12 <-R Dr;
+       cT: D <- f(pk, concat(r_7, r_12));
+       return(cT)
+     ) | (
+       foreach iD <= qD do
+       OD(c: D) :=
+       if defined(cT) && (c = cT) then
+         yield
+       else
+         let concat(s': Dow, t': Dr) = invf(sk, c) in
+{118}    find [unique] u_17 = ri_13 <= qH, u_1 = ri_1 <= qG suchthat defined(r_9[ri_13], x1_1[ri_13], r_4[ri_1], x1[ri_1]) && (s' = x1_1[ri_13]) && (xorDr(t', r_9[ri_13]) = x1[ri_1]) then
+         (
+           if second(s') = second(r_4[u_1]) then
+           mz: Dow <- xorDow(s', r_4[u_1]);
+           let concatm(m: Dm, =zeroDz) = mz in
+           return(m)
+         )
+         orfind  suchthat defined(r_7) && (s' = r_7) then
+           yield
+         orfind u_16 = ri_12 <= qD suchthat defined(r_11[ri_12], s'[ri_12]) && (s' = s'[ri_12]) then
+         (
+{176}      find [unique] u_1 = ri_1 <= qG, u_24 = ri_18 <= qH suchthat defined(r_4[ri_1], x1[ri_1], Y_3[ri_18], u_26[ri_18]) && (u_26[ri_18] = u_16) && (xorDr(t', x1[ri_1]) = Y_3[ri_18]) then
+           if second(s') = second(r_4[u_1]) then
+           mz: Dow <- xorDow(s', r_4[u_1]);
+           let concatm(m: Dm, =zeroDz) = mz in
+           return(m)
+         )
+         else
+           find [unique] u_17 = ri_13 <= qH suchthat defined(r_9[ri_13], x1_1[ri_13]) && (s' = x1_1[ri_13]) then
+             yield
+           else
+             r_11: Dr <- cst_Dr
+     ))
+
+
+Applying simplify
+  - Simplification pass
+    - Simplified find at 176 in branch of find at 118
+    - In branch 3 of find at 36, substituting u_25 with u_26[u_23]
+    - Replaced defined condition r_11[ri_16], s'[ri_16], Y_3[ri_19], u_26[ri_19] with Y_3[ri_19], s'[u_26[ri_19]] in find at 36
+yields
+
+Game 49 is
+     Ogen() :=
+     r_2 <-R seed;
+     pk: pkey <- pkgen(r_2);
+     sk: skey <- skgen(r_2);
+     return(pk);
+     ((
+       foreach iH <= qG do
+       OH(x1: Dr) :=
+       find [unique] u_5 = ri_5 <= qG suchthat defined(r_4[ri_5], x1[ri_5]) && (x1 = x1[ri_5]) then
+         return(r_4[u_5])
+       else
+         r_4 <-R Dow;
+         return(r_4)
+     ) | (
+       foreach iH_1 <= qH do
+       OH_1(x1_1: Dow) :=
+       find [unique] u_21 = ri_17 <= qH suchthat defined(r_9[ri_17], x1_1[ri_17]) && (x1_1 = x1_1[ri_17]) then
+         return(r_9[u_21])
+       orfind  suchthat defined(r_7) && (x1_1 = r_7) then
+         event_abort bad2
+       orfind u_23 = ri_19 <= qH suchthat defined(Y_3[ri_19], s'[u_26[ri_19]]) && {57}((x1_1 = s'[u_26[ri_19]]) && (u_26[ri_19] = u_26[ri_19])) then
+         u_25 <= qD <- u_26[u_23];
+         return(Y_3[u_23])
+       else
+         find [unique] u_26 = ri_16 <= qD suchthat defined(r_11[ri_16], s'[ri_16]) && (x1_1 = s'[ri_16]) then
+           Y_3 <-R Dr;
+           return(Y_3)
+         else
+           r_9 <-R Dr;
+           return(r_9)
+     ) | (
+       OT(m1: Dm, m2: Dm) :=
+       b1 <-R bool;
+       r_7 <-R Dow;
+       r_12 <-R Dr;
+       cT: D <- f(pk, concat(r_7, r_12));
+       return(cT)
+     ) | (
+       foreach iD <= qD do
+       OD(c: D) :=
+       if defined(cT) && (c = cT) then
+         yield
+       else
+         let concat(s': Dow, t': Dr) = invf(sk, c) in
+{124}    find [unique] u_17 = ri_13 <= qH, u_1 = ri_1 <= qG suchthat defined(r_9[ri_13], x1_1[ri_13], r_4[ri_1], x1[ri_1]) && (s' = x1_1[ri_13]) && (xorDr(t', r_9[ri_13]) = x1[ri_1]) then
+         (
+           if second(s') = second(r_4[u_1]) then
+           mz: Dow <- xorDow(s', r_4[u_1]);
+           let concatm(m: Dm, =zeroDz) = mz in
+           return(m)
+         )
+         orfind  suchthat defined(r_7) && (s' = r_7) then
+           yield
+         orfind u_16 = ri_12 <= qD, u_1 = ri_1 <= qG, u_24 = ri_18 <= qH suchthat defined(r_11[ri_12], s'[ri_12], r_4[ri_1], x1[ri_1], Y_3[ri_18], u_26[ri_18]) && (s' = s'[ri_12]) && (u_26[ri_18] = ri_12) && (xorDr(t', x1[ri_1]) = Y_3[ri_18]) then
+         (
+           if second(s') = second(r_4[u_1]) then
+           mz: Dow <- xorDow(s', r_4[u_1]);
+           let concatm(m: Dm, =zeroDz) = mz in
+           return(m)
+         )
+         else
+           find [unique] u_16 = ri_12 <= qD suchthat defined(r_11[ri_12], s'[ri_12]) && (s' = s'[ri_12]) then
+             yield
+           else
+             find [unique] u_17 = ri_13 <= qH suchthat defined(r_9[ri_13], x1_1[ri_13]) && (s' = x1_1[ri_13]) then
+               yield
+             else
+               r_11: Dr <- cst_Dr
+     ))
+
+
+Applying simplify [probability qD / |Dow|]
+  - Simplification pass
+    - In branch 3 of find at 124, substituting u_16 with u_26[u_24]
+    - Replaced defined condition r_11[ri_12], s'[ri_12], r_4[ri_1], x1[ri_1], Y_3[ri_18], u_26[ri_18] with r_4[ri_1], Y_3[ri_18], x1[ri_1], s'[u_26[ri_18]] in find at 124
+    - Replaced ((x1_1 = s'[u_26[ri_19]]) && (u_26[ri_19] = u_26[ri_19])) with (x1_1 = s'[u_26[ri_19]]) at 57
+yields
+
+Game 50 is
+     Ogen() :=
+     r_2 <-R seed;
+     pk: pkey <- pkgen(r_2);
+     sk: skey <- skgen(r_2);
+     return(pk);
+     ((
+       foreach iH <= qG do
+       OH(x1: Dr) :=
+       find [unique] u_5 = ri_5 <= qG suchthat defined(r_4[ri_5], x1[ri_5]) && (x1 = x1[ri_5]) then
+         return(r_4[u_5])
+       else
+         r_4 <-R Dow;
+         return(r_4)
+     ) | (
+       foreach iH_1 <= qH do
+       OH_1(x1_1: Dow) :=
+       find [unique] u_21 = ri_17 <= qH suchthat defined(r_9[ri_17], x1_1[ri_17]) && (x1_1 = x1_1[ri_17]) then
+         return(r_9[u_21])
+       orfind  suchthat defined(r_7) && (x1_1 = r_7) then
+         event_abort bad2
+       orfind u_23 = ri_19 <= qH suchthat defined(Y_3[ri_19], s'[u_26[ri_19]]) && (x1_1 = s'[u_26[ri_19]]) then
+         u_25 <= qD <- u_26[u_23];
+         return(Y_3[u_23])
+       else
+         find [unique] u_26 = ri_16 <= qD suchthat defined(r_11[ri_16], s'[ri_16]) && (x1_1 = s'[ri_16]) then
+           Y_3 <-R Dr;
+           return(Y_3)
+         else
+           r_9 <-R Dr;
+           return(r_9)
+     ) | (
+       OT(m1: Dm, m2: Dm) :=
+       b1 <-R bool;
+       r_7 <-R Dow;
+       r_12 <-R Dr;
+       cT: D <- f(pk, concat(r_7, r_12));
+       return(cT)
+     ) | (
+       foreach iD <= qD do
+       OD(c: D) :=
+       if defined(cT) && (c = cT) then
+         yield
+       else
+         let concat(s': Dow, t': Dr) = invf(sk, c) in
+         find [unique] u_17 = ri_13 <= qH, u_1 = ri_1 <= qG suchthat defined(r_9[ri_13], x1_1[ri_13], r_4[ri_1], x1[ri_1]) && (s' = x1_1[ri_13]) && (xorDr(t', r_9[ri_13]) = x1[ri_1]) then
+         (
+           if second(s') = second(r_4[u_1]) then
+           mz: Dow <- xorDow(s', r_4[u_1]);
+           let concatm(m: Dm, =zeroDz) = mz in
+           return(m)
+         )
+         orfind  suchthat defined(r_7) && (s' = r_7) then
+           yield
+         orfind u_24 = ri_18 <= qH, u_1 = ri_1 <= qG suchthat defined(r_4[ri_1], Y_3[ri_18], x1[ri_1], s'[u_26[ri_18]]) && (s' = s'[u_26[ri_18]]) && (u_26[ri_18] = u_26[ri_18]) && (xorDr(t', x1[ri_1]) = Y_3[ri_18]) then
+         (
+           u_16 <= qD <- u_26[u_24];
+           if second(s') = second(r_4[u_1]) then
+           mz: Dow <- xorDow(s', r_4[u_1]);
+           let concatm(m: Dm, =zeroDz) = mz in
+           return(m)
+         )
+         else
+           find [unique] u_16 = ri_12 <= qD suchthat defined(r_11[ri_12], s'[ri_12]) && (s' = s'[ri_12]) then
+             yield
+           else
+             find [unique] u_17 = ri_13 <= qH suchthat defined(r_9[ri_13], x1_1[ri_13]) && (s' = x1_1[ri_13]) then
+               yield
+             else
+               r_11: Dr <- cst_Dr
+     ))
+
+
+Applying SA rename u_16
+  - Rename variable u_16 into u_28, u_27
+yields
+
+Game 51 is
+     Ogen() :=
+     r_2 <-R seed;
+     pk: pkey <- pkgen(r_2);
+     sk: skey <- skgen(r_2);
+     return(pk);
+     ((
+       foreach iH <= qG do
+       OH(x1: Dr) :=
+       find [unique] u_5 = ri_5 <= qG suchthat defined(r_4[ri_5], x1[ri_5]) && (x1 = x1[ri_5]) then
+         return(r_4[u_5])
+       else
+         r_4 <-R Dow;
+         return(r_4)
+     ) | (
+       foreach iH_1 <= qH do
+       OH_1(x1_1: Dow) :=
+       find [unique] u_21 = ri_17 <= qH suchthat defined(r_9[ri_17], x1_1[ri_17]) && (x1_1 = x1_1[ri_17]) then
+         return(r_9[u_21])
+       orfind  suchthat defined(r_7) && (x1_1 = r_7) then
+         event_abort bad2
+       orfind u_23 = ri_19 <= qH suchthat defined(Y_3[ri_19], s'[u_26[ri_19]]) && (x1_1 = s'[u_26[ri_19]]) then
+         u_25 <= qD <- u_26[u_23];
+         return(Y_3[u_23])
+       else
+         find [unique] u_26 = ri_16 <= qD suchthat defined(r_11[ri_16], s'[ri_16]) && (x1_1 = s'[ri_16]) then
+           Y_3 <-R Dr;
+           return(Y_3)
+         else
+           r_9 <-R Dr;
+           return(r_9)
+     ) | (
+       OT(m1: Dm, m2: Dm) :=
+       b1 <-R bool;
+       r_7 <-R Dow;
+       r_12 <-R Dr;
+       cT: D <- f(pk, concat(r_7, r_12));
+       return(cT)
+     ) | (
+       foreach iD <= qD do
+       OD(c: D) :=
+       if defined(cT) && (c = cT) then
+         yield
+       else
+         let concat(s': Dow, t': Dr) = invf(sk, c) in
+         find [unique] u_17 = ri_13 <= qH, u_1 = ri_1 <= qG suchthat defined(r_9[ri_13], x1_1[ri_13], r_4[ri_1], x1[ri_1]) && (s' = x1_1[ri_13]) && (xorDr(t', r_9[ri_13]) = x1[ri_1]) then
+         (
+           if second(s') = second(r_4[u_1]) then
+           mz: Dow <- xorDow(s', r_4[u_1]);
+           let concatm(m: Dm, =zeroDz) = mz in
+           return(m)
+         )
+         orfind  suchthat defined(r_7) && (s' = r_7) then
+           yield
+         orfind u_24 = ri_18 <= qH, u_1 = ri_1 <= qG suchthat defined(r_4[ri_1], Y_3[ri_18], x1[ri_1], s'[u_26[ri_18]]) && (s' = s'[u_26[ri_18]]) && (u_26[ri_18] = u_26[ri_18]) && (xorDr(t', x1[ri_1]) = Y_3[ri_18]) then
+         (
+           u_27 <= qD <- u_26[u_24];
+           if second(s') = second(r_4[u_1]) then
+           mz: Dow <- xorDow(s', r_4[u_1]);
+           let concatm(m: Dm, =zeroDz) = mz in
+           return(m)
+         )
+         else
+           find [unique] u_28 = ri_12 <= qD suchthat defined(r_11[ri_12], s'[ri_12]) && (s' = s'[ri_12]) then
+             yield
+           else
+             find [unique] u_17 = ri_13 <= qH suchthat defined(r_9[ri_13], x1_1[ri_13]) && (s' = x1_1[ri_13]) then
+               yield
+             else
+               r_11: Dr <- cst_Dr
+     ))
+
+
+Applying SA rename new without array accesses and remove assignments of findcond
+  - Remove assignments on u_27 (definition removed, all usages removed)
+  - Remove assignments on u_25 (definition removed, all usages removed)
+yields
+
+Game 52 is
+     Ogen() :=
+     r_2 <-R seed;
+     pk: pkey <- pkgen(r_2);
+     sk: skey <- skgen(r_2);
+     return(pk);
+     ((
+       foreach iH <= qG do
+       OH(x1: Dr) :=
+       find [unique] u_5 = ri_5 <= qG suchthat defined(r_4[ri_5], x1[ri_5]) && (x1 = x1[ri_5]) then
+         return(r_4[u_5])
+       else
+         r_4 <-R Dow;
+         return(r_4)
+     ) | (
+       foreach iH_1 <= qH do
+       OH_1(x1_1: Dow) :=
+       find [unique] u_21 = ri_17 <= qH suchthat defined(r_9[ri_17], x1_1[ri_17]) && (x1_1 = x1_1[ri_17]) then
+         return(r_9[u_21])
+       orfind  suchthat defined(r_7) && (x1_1 = r_7) then
+         event_abort bad2
+       orfind u_23 = ri_19 <= qH suchthat defined(Y_3[ri_19], s'[u_26[ri_19]]) && (x1_1 = s'[u_26[ri_19]]) then
+         return(Y_3[u_23])
+       else
+         find [unique] u_26 = ri_16 <= qD suchthat defined(r_11[ri_16], s'[ri_16]) && (x1_1 = s'[ri_16]) then
+           Y_3 <-R Dr;
+           return(Y_3)
+         else
+           r_9 <-R Dr;
+           return(r_9)
+     ) | (
+       OT(m1: Dm, m2: Dm) :=
+       b1 <-R bool;
+       r_7 <-R Dow;
+       r_12 <-R Dr;
+       cT: D <- f(pk, concat(r_7, r_12));
+       return(cT)
+     ) | (
+       foreach iD <= qD do
+       OD(c: D) :=
+       if defined(cT) && (c = cT) then
+         yield
+       else
+         let concat(s': Dow, t': Dr) = invf(sk, c) in
+         find [unique] u_17 = ri_13 <= qH, u_1 = ri_1 <= qG suchthat defined(r_9[ri_13], x1_1[ri_13], r_4[ri_1], x1[ri_1]) && (s' = x1_1[ri_13]) && (xorDr(t', r_9[ri_13]) = x1[ri_1]) then
+         (
+           if second(s') = second(r_4[u_1]) then
+           mz: Dow <- xorDow(s', r_4[u_1]);
+           let concatm(m: Dm, =zeroDz) = mz in
+           return(m)
+         )
+         orfind  suchthat defined(r_7) && (s' = r_7) then
+           yield
+         orfind u_24 = ri_18 <= qH, u_1 = ri_1 <= qG suchthat defined(r_4[ri_1], Y_3[ri_18], x1[ri_1], s'[u_26[ri_18]]) && {169}((s' = s'[u_26[ri_18]]) && (u_26[ri_18] = u_26[ri_18]) && (xorDr(t', x1[ri_1]) = Y_3[ri_18])) then
+         (
+           if second(s') = second(r_4[u_1]) then
+           mz: Dow <- xorDow(s', r_4[u_1]);
+           let concatm(m: Dm, =zeroDz) = mz in
+           return(m)
+         )
+         else
+           find [unique] u_28 = ri_12 <= qD suchthat defined(r_11[ri_12], s'[ri_12]) && (s' = s'[ri_12]) then
+             yield
+           else
+             find [unique] u_17 = ri_13 <= qH suchthat defined(r_9[ri_13], x1_1[ri_13]) && (s' = x1_1[ri_13]) then
+               yield
+             else
+               r_11: Dr <- cst_Dr
+     ))
+
+
+Applying simplify [probability qD / |Dow|]
+  - Simplification pass
+    - Replaced ((s' = s'[u_26[ri_18]]) && (u_26[ri_18] = u_26[ri_18]) && (xorDr(t', x1[ri_1]) = Y_3[ri_18])) with ((s' = s'[u_26[ri_18]]) && (xorDr(t', x1[ri_1]) = Y_3[ri_18])) at 169
+yields
+
+Game 53 is
+     Ogen() :=
+     r_2 <-R seed;
+     pk: pkey <- pkgen(r_2);
+     sk: skey <- skgen(r_2);
+     return(pk);
+     ((
+       foreach iH <= qG do
+       OH(x1: Dr) :=
+       find [unique] u_5 = ri_5 <= qG suchthat defined(r_4[ri_5], x1[ri_5]) && (x1 = x1[ri_5]) then
+         return(r_4[u_5])
+       else
+         r_4 <-R Dow;
+         return(r_4)
+     ) | (
+       foreach iH_1 <= qH do
+       OH_1(x1_1: Dow) :=
+       find [unique] u_21 = ri_17 <= qH suchthat defined(r_9[ri_17], x1_1[ri_17]) && (x1_1 = x1_1[ri_17]) then
+         return(r_9[u_21])
+       orfind  suchthat defined(r_7) && (x1_1 = r_7) then
+         event_abort bad2
+       orfind u_23 = ri_19 <= qH suchthat defined(Y_3[ri_19], s'[u_26[ri_19]]) && (x1_1 = s'[u_26[ri_19]]) then
+         return(Y_3[u_23])
+       else
+         find [unique] u_26 = ri_16 <= qD suchthat defined(r_11[ri_16], s'[ri_16]) && (x1_1 = s'[ri_16]) then
+           Y_3 <-R Dr;
+           return(Y_3)
+         else
+           r_9 <-R Dr;
+           return(r_9)
+     ) | (
+       OT(m1: Dm, m2: Dm) :=
+       b1 <-R bool;
+       r_7 <-R Dow;
+       r_12 <-R Dr;
+       cT: D <- f(pk, concat(r_7, r_12));
+       return(cT)
+     ) | (
+       foreach iD <= qD do
+       OD(c: D) :=
+       if defined(cT) && (c = cT) then
+         yield
+       else
+         let concat(s': Dow, t': Dr) = invf(sk, c) in
+         find [unique] u_17 = ri_13 <= qH, u_1 = ri_1 <= qG suchthat defined(r_9[ri_13], x1_1[ri_13], r_4[ri_1], x1[ri_1]) && (s' = x1_1[ri_13]) && (xorDr(t', r_9[ri_13]) = x1[ri_1]) then
+         (
+           if second(s') = second(r_4[u_1]) then
+           mz: Dow <- xorDow(s', r_4[u_1]);
+           let concatm(m: Dm, =zeroDz) = mz in
+           return(m)
+         )
+         orfind  suchthat defined(r_7) && (s' = r_7) then
+           yield
+         orfind u_24 = ri_18 <= qH, u_1 = ri_1 <= qG suchthat defined(r_4[ri_1], Y_3[ri_18], x1[ri_1], s'[u_26[ri_18]]) && (s' = s'[u_26[ri_18]]) && (xorDr(t', x1[ri_1]) = Y_3[ri_18]) then
+         (
+           if second(s') = second(r_4[u_1]) then
+           mz: Dow <- xorDow(s', r_4[u_1]);
+           let concatm(m: Dm, =zeroDz) = mz in
+           return(m)
+         )
+         else
+           find [unique] u_28 = ri_12 <= qD suchthat defined(r_11[ri_12], s'[ri_12]) && (s' = s'[ri_12]) then
+             yield
+           else
+             find [unique] u_17 = ri_13 <= qH suchthat defined(r_9[ri_13], x1_1[ri_13]) && (s' = x1_1[ri_13]) then
+               yield
+             else
+               r_11: Dr <- cst_Dr
+     ))
+
+
+Applying SA rename u_17
+  - Rename variable u_17 into u_30, u_29
+yields
+
+Game 54 is
+     Ogen() :=
+     r_2 <-R seed;
+     pk: pkey <- pkgen(r_2);
+     sk: skey <- skgen(r_2);
+     return(pk);
+     ((
+       foreach iH <= qG do
+       OH(x1: Dr) :=
+       find [unique] u_5 = ri_5 <= qG suchthat defined(r_4[ri_5], x1[ri_5]) && (x1 = x1[ri_5]) then
+         return(r_4[u_5])
+       else
+         r_4 <-R Dow;
+         return(r_4)
+     ) | (
+       foreach iH_1 <= qH do
+       OH_1(x1_1: Dow) :=
+       find [unique] u_21 = ri_17 <= qH suchthat defined(r_9[ri_17], x1_1[ri_17]) && (x1_1 = x1_1[ri_17]) then
+         return(r_9[u_21])
+       orfind  suchthat defined(r_7) && (x1_1 = r_7) then
+         event_abort bad2
+       orfind u_23 = ri_19 <= qH suchthat defined(Y_3[ri_19], s'[u_26[ri_19]]) && (x1_1 = s'[u_26[ri_19]]) then
+         return(Y_3[u_23])
+       else
+         find [unique] u_26 = ri_16 <= qD suchthat defined(r_11[ri_16], s'[ri_16]) && (x1_1 = s'[ri_16]) then
+           Y_3 <-R Dr;
+           return(Y_3)
+         else
+           r_9 <-R Dr;
+           return(r_9)
+     ) | (
+       OT(m1: Dm, m2: Dm) :=
+       b1 <-R bool;
+       r_7 <-R Dow;
+       r_12 <-R Dr;
+       cT: D <- f(pk, concat(r_7, r_12));
+       return(cT)
+     ) | (
+       foreach iD <= qD do
+       OD(c: D) :=
+       if defined(cT) && (c = cT) then
+         yield
+       else
+         let concat(s': Dow, t': Dr) = invf(sk, c) in
+         find [unique] u_29 = ri_13 <= qH, u_1 = ri_1 <= qG suchthat defined(r_9[ri_13], x1_1[ri_13], r_4[ri_1], x1[ri_1]) && (s' = x1_1[ri_13]) && (xorDr(t', r_9[ri_13]) = x1[ri_1]) then
+         (
+           if second(s') = second(r_4[u_1]) then
+           mz: Dow <- xorDow(s', r_4[u_1]);
+           let concatm(m: Dm, =zeroDz) = mz in
+           return(m)
+         )
+         orfind  suchthat defined(r_7) && (s' = r_7) then
+           yield
+         orfind u_24 = ri_18 <= qH, u_1 = ri_1 <= qG suchthat defined(r_4[ri_1], Y_3[ri_18], x1[ri_1], s'[u_26[ri_18]]) && (s' = s'[u_26[ri_18]]) && (xorDr(t', x1[ri_1]) = Y_3[ri_18]) then
+         (
+           if second(s') = second(r_4[u_1]) then
+           mz: Dow <- xorDow(s', r_4[u_1]);
+           let concatm(m: Dm, =zeroDz) = mz in
+           return(m)
+         )
+         else
+           find [unique] u_28 = ri_12 <= qD suchthat defined(r_11[ri_12], s'[ri_12]) && (s' = s'[ri_12]) then
+             yield
+           else
+             find [unique] u_30 = ri_13 <= qH suchthat defined(r_9[ri_13], x1_1[ri_13]) && (s' = x1_1[ri_13]) then
+               yield
+             else
+               r_11: Dr <- cst_Dr
+     ))
+
+
+Applying merge variables (r_9, Y_3)
+yields
+
+Game 55 is
+     Ogen() :=
+     r_2 <-R seed;
+     pk: pkey <- pkgen(r_2);
+     sk: skey <- skgen(r_2);
+     return(pk);
+     ((
+       foreach iH <= qG do
+       OH(x1: Dr) :=
+       find [unique] u_5 = ri_5 <= qG suchthat defined(r_4[ri_5], x1[ri_5]) && (x1 = x1[ri_5]) then
+         return(r_4[u_5])
+       else
+         r_4 <-R Dow;
+         return(r_4)
+     ) | (
+       foreach iH_1 <= qH do
+       OH_1(x1_1: Dow) :=
+       find [unique] u_21 = ri_17 <= qH suchthat defined(r_9[ri_17], x1_1[ri_17]) && (x1_1 = x1_1[ri_17]) then
+         return(r_9[u_21])
+       orfind  suchthat defined(r_7) && (x1_1 = r_7) then
+         event_abort bad2
+       else
+ {54}    find [unique] u_26 = ri_16 <= qD suchthat defined(r_11[ri_16], s'[ri_16]) && (x1_1 = s'[ri_16]) then
+           r_9 <-R Dr;
+           Y_4: Dr <- cst_Dr;
+           return(r_9)
+         else
+           r_9 <-R Dr;
+           r_13: Dr <- cst_Dr;
+           return(r_9)
+     ) | (
+       OT(m1: Dm, m2: Dm) :=
+       b1 <-R bool;
+       r_7 <-R Dow;
+       r_12 <-R Dr;
+       cT: D <- f(pk, concat(r_7, r_12));
+       return(cT)
+     ) | (
+       foreach iD <= qD do
+       OD(c: D) :=
+       if defined(cT) && (c = cT) then
+         yield
+       else
+         let concat(s': Dow, t': Dr) = invf(sk, c) in
+{105}    find [unique] u_29 = ri_13 <= qH, u_1 = ri_1 <= qG suchthat defined(r_9[ri_13], x1_1[ri_13], r_4[ri_1], x1[ri_1]) && (s' = x1_1[ri_13]) && (xorDr(t', r_9[ri_13]) = x1[ri_1]) then
+         (
+           if second(s') = second(r_4[u_1]) then
+           mz: Dow <- xorDow(s', r_4[u_1]);
+           let concatm(m: Dm, =zeroDz) = mz in
+           return(m)
+         )
+         orfind  suchthat defined(r_7) && (s' = r_7) then
+{155}      yield
+         else
+{156}      find [unique] u_28 = ri_12 <= qD suchthat defined(r_11[ri_12], s'[ri_12]) && (s' = s'[ri_12]) then
+             yield
+           else
+{165}        find [unique] u_30 = ri_13 <= qH suchthat defined(r_13[ri_13], r_9[ri_13], x1_1[ri_13]) && (s' = x1_1[ri_13]) then
+               yield
+             else
+{175}          r_11: Dr <- cst_Dr
+     ))
+
+
+Applying merge branches
+  - Merge all branches of find at 54
+  - Merge branches of let at 175
+  - Merge all branches of find at 165
+  - Merge all branches of find at 156
+  - Merge branch(es) at 155 with else branch of find at 105
+yields
+
+Game 56 is
+     Ogen() :=
+     r_2 <-R seed;
+     pk: pkey <- pkgen(r_2);
+     sk: skey <- skgen(r_2);
+     return(pk);
+     ((
+       foreach iH <= qG do
+       OH(x1: Dr) :=
+       find [unique] u_5 = ri_5 <= qG suchthat defined(r_4[ri_5], x1[ri_5]) && (x1 = x1[ri_5]) then
+         return(r_4[u_5])
+       else
+         r_4 <-R Dow;
+         return(r_4)
+     ) | (
+       foreach iH_1 <= qH do
+       OH_1(x1_1: Dow) :=
+       find [unique] u_21 = ri_17 <= qH suchthat defined(r_9[ri_17], x1_1[ri_17]) && (x1_1 = x1_1[ri_17]) then
+         return(r_9[u_21])
+       orfind  suchthat defined(r_7) && (x1_1 = r_7) then
+         event_abort bad2
+       else
+         r_9 <-R Dr;
+         r_13: Dr <- cst_Dr;
+         return(r_9)
+     ) | (
+       OT(m1: Dm, m2: Dm) :=
+       b1 <-R bool;
+       r_7 <-R Dow;
+       r_12 <-R Dr;
+       cT: D <- f(pk, concat(r_7, r_12));
+       return(cT)
+     ) | (
+       foreach iD <= qD do
+       OD(c: D) :=
+       if defined(cT) && (c = cT) then
+         yield
+       else
+ {84}    let concat(s': Dow, t': Dr) = invf(sk, c) in
+         find [unique] u_29 = ri_13 <= qH, u_1 = ri_1 <= qG suchthat defined(r_9[ri_13], x1_1[ri_13], r_4[ri_1], x1[ri_1]) && (s' = x1_1[ri_13]) && (xorDr(t', r_9[ri_13]) = x1[ri_1]) then
+         if second(s') = second(r_4[u_1]) then
+         mz: Dow <- xorDow(s', r_4[u_1]);
+         let concatm(m: Dm, =zeroDz) = mz in
+         return(m)
+     ))
+
+
+Applying insert instruction find [unique] u30 = ri_13 <= qH, u1 = ri_1 <= qG suchthat defined(r_9[ri_13], x1_1[ri_13], r_4[ri_1], x1[ri_1]) && c = f(pk, concat(x1_1[ri_13], xorDr(r_9[ri_13], x1[ri_1]))) then at occurrence 84 [probability Pr[event non_unique in game 57 with public variables b1]]
+  - Proved that [unique] annotation at 84 is correct
+yields
+
+Game 57 is
+     Ogen() :=
+     r_2 <-R seed;
+     pk: pkey <- pkgen(r_2);
+     sk: skey <- skgen(r_2);
+     return(pk);
+     ((
+       foreach iH <= qG do
+       OH(x1: Dr) :=
+       find [unique] u_5 = ri_5 <= qG suchthat defined(r_4[ri_5], x1[ri_5]) && (x1 = x1[ri_5]) then
+         return(r_4[u_5])
+       else
+         r_4 <-R Dow;
+         return(r_4)
+     ) | (
+       foreach iH_1 <= qH do
+       OH_1(x1_1: Dow) :=
+       find [unique] u_21 = ri_17 <= qH suchthat defined(r_9[ri_17], x1_1[ri_17]) && (x1_1 = x1_1[ri_17]) then
+         return(r_9[u_21])
+       orfind  suchthat defined(r_7) && (x1_1 = r_7) then
+         event_abort bad2
+       else
+         r_9 <-R Dr;
+         r_13: Dr <- cst_Dr;
+         return(r_9)
+     ) | (
+       OT(m1: Dm, m2: Dm) :=
+       b1 <-R bool;
+       r_7 <-R Dow;
+       r_12 <-R Dr;
+       cT: D <- f(pk, concat(r_7, r_12));
+       return(cT)
+     ) | (
+       foreach iD <= qD do
+       OD(c: D) :=
+       if defined(cT) && (c = cT) then
+         yield
+       else
+         find [unique] u30 = ri_20 <= qH, u1 = ri_21 <= qG suchthat defined(r_9[ri_20], x1_1[ri_20], r_4[ri_21], x1[ri_21]) && (c = f(pk, concat(x1_1[ri_20], xorDr(r_9[ri_20], x1[ri_21])))) then
+         (
+{102}      let concat(s': Dow, t': Dr) = {103}invf(sk, c) in
+{107}      find [unique] u_29 = ri_13 <= qH, u_1 = ri_1 <= qG suchthat defined(r_9[ri_13], x1_1[ri_13], r_4[ri_1], x1[ri_1]) && {112}((s' = x1_1[ri_13]) && (xorDr(t', r_9[ri_13]) = x1[ri_1])) then
+           if second(s') = second(r_4[u_1]) then
+           mz: Dow <- xorDow(s', r_4[u_1]);
+           let concatm(m: Dm, =zeroDz) = mz in
+           return(m)
+         )
+         else
+{155}      let concat(s': Dow, t': Dr) = invf(sk, c) in
+{160}      find [unique] u_29 = ri_13 <= qH, u_1 = ri_1 <= qG suchthat defined(r_9[ri_13], x1_1[ri_13], r_4[ri_1], x1[ri_1]) && (s' = x1_1[ri_13]) && (xorDr(t', r_9[ri_13]) = x1[ri_1]) then
+           if second(s') = second(r_4[u_1]) then
+           mz: Dow <- xorDow(s', r_4[u_1]);
+           let concatm(m: Dm, =zeroDz) = mz in
+           return(m)
+     ))
+
+
+Applying simplify
+  - Simplification pass
+    - Remove branch 1 in find at 160
+    - Find at 160 removed (else branch kept if any)
+    - Remove let at 155
+    - Replaced invf(sk, c) with concat(x1_1[u30], xorDr(r_9[u30], x1[u1])) at 103
+    - Simplify pattern concat(s': Dow, t': Dr) (tuple expanded) at 102
+    - Replaced ((s' = x1_1[ri_13]) && (xorDr(t', r_9[ri_13]) = x1[ri_1])) with ((s' = x1_1[ri_13]) && (x1[u1] = x1[ri_1])) at 112
+    - In branch 1 of find at 107, substituting u_1 with u1, u_29 with u30
+    - Replaced defined condition r_9[ri_13], x1_1[ri_13], r_4[ri_1], x1[ri_1] with an empty condition in find at 107
+    - A single branch always succeeds in find at 107
+yields
+
+Game 58 is
+     Ogen() :=
+     r_2 <-R seed;
+     pk: pkey <- pkgen(r_2);
+     sk: skey <- skgen(r_2);
+     return(pk);
+     ((
+       foreach iH <= qG do
+       OH(x1: Dr) :=
+       find [unique] u_5 = ri_5 <= qG suchthat defined(r_4[ri_5], x1[ri_5]) && (x1 = x1[ri_5]) then
+         return(r_4[u_5])
+       else
+         r_4 <-R Dow;
+         return(r_4)
+     ) | (
+       foreach iH_1 <= qH do
+       OH_1(x1_1: Dow) :=
+       find [unique] u_21 = ri_17 <= qH suchthat defined(r_9[ri_17], x1_1[ri_17]) && (x1_1 = x1_1[ri_17]) then
+         return(r_9[u_21])
+       orfind  suchthat defined(r_7) && (x1_1 = r_7) then
+         event_abort bad2
+       else
+         r_9 <-R Dr;
+         r_13: Dr <- cst_Dr;
+         return(r_9)
+     ) | (
+       OT(m1: Dm, m2: Dm) :=
+       b1 <-R bool;
+       r_7 <-R Dow;
+       r_12 <-R Dr;
+       cT: D <- f(pk, concat(r_7, r_12));
+       return(cT)
+     ) | (
+       foreach iD <= qD do
+       OD(c: D) :=
+       if defined(cT) && (c = cT) then
+         yield
+       else
+         find [unique] u30 = ri_20 <= qH, u1 = ri_21 <= qG suchthat defined(r_9[ri_20], x1_1[ri_20], r_4[ri_21], x1[ri_21]) && (c = f(pk, concat(x1_1[ri_20], xorDr(r_9[ri_20], x1[ri_21])))) then
+         t': Dr <- xorDr(r_9[u30], x1[u1]);
+         s': Dow <- x1_1[u30];
+         u_1 <= qG <- u1;
+         u_29 <= qH <- u30;
+         if second(s') = second(r_4[u1]) then
+         mz: Dow <- xorDow(s', r_4[u1]);
+         let concatm(m: Dm, =zeroDz) = mz in
+         return(m)
+     ))
+
+
+Applying remove assignments of useless
+  - Remove assignments on sk (definition removed, all usages removed)
+  - Remove assignments on t' (definition removed, all usages removed)
+  - Remove assignments on s' (definition removed, all usages removed)
+  - Remove assignments on u_1 (definition removed, all usages removed)
+  - Remove assignments on u_29 (definition removed, all usages removed)
+  - Remove assignments on r_13 (definition removed, all usages removed)
+yields
+
+Game 59 is
+     Ogen() :=
+     r_2 <-R seed;
+     pk: pkey <- pkgen(r_2);
+     return(pk);
+     ((
+       foreach iH <= qG do
+       OH(x1: Dr) :=
+       find [unique] u_5 = ri_5 <= qG suchthat defined(r_4[ri_5], x1[ri_5]) && (x1 = x1[ri_5]) then
+         return(r_4[u_5])
+       else
+         r_4 <-R Dow;
+         return(r_4)
+     ) | (
+       foreach iH_1 <= qH do
+       OH_1(x1_1: Dow) :=
+       find [unique] u_21 = ri_17 <= qH suchthat defined(r_9[ri_17], x1_1[ri_17]) && (x1_1 = x1_1[ri_17]) then
+         return(r_9[u_21])
+       orfind  suchthat defined(r_7) && (x1_1 = r_7) then
+         event_abort bad2
+       else
+         r_9 <-R Dr;
+         return(r_9)
+     ) | (
+       OT(m1: Dm, m2: Dm) :=
+       b1 <-R bool;
+       r_7 <-R Dow;
+       r_12 <-R Dr;
+       cT: D <- f(pk, concat(r_7, r_12));
+       return(cT)
+     ) | (
+       foreach iD <= qD do
+       OD(c: D) :=
+       if defined(cT) && (c = cT) then
+         yield
+       else
+         find [unique] u30 = ri_20 <= qH, u1 = ri_21 <= qG suchthat defined(r_9[ri_20], x1_1[ri_20], r_4[ri_21], x1[ri_21]) && (c = f(pk, concat(x1_1[ri_20], xorDr(r_9[ri_20], x1[ri_21])))) then
+         if second(x1_1[u30]) = second(r_4[u1]) then
+         mz: Dow <- xorDow(x1_1[u30], r_4[u1]);
+         let concatm(m: Dm, =zeroDz) = mz in
+         return(m)
+     ))
+
+
+Applying remove assignments of binder pk
+  - Remove assignments on pk (definition removed, all usages removed)
+yields
+
+Game 60 is
+     Ogen() :=
+     r_2 <-R seed;
+     return(pkgen(r_2));
+     ((
+       foreach iH <= qG do
+       OH(x1: Dr) :=
+       find [unique] u_5 = ri_5 <= qG suchthat defined(r_4[ri_5], x1[ri_5]) && (x1 = x1[ri_5]) then
+         return(r_4[u_5])
+       else
+         r_4 <-R Dow;
+         return(r_4)
+     ) | (
+       foreach iH_1 <= qH do
+       OH_1(x1_1: Dow) :=
+       find [unique] u_21 = ri_17 <= qH suchthat defined(r_9[ri_17], x1_1[ri_17]) && (x1_1 = x1_1[ri_17]) then
+         return(r_9[u_21])
+       orfind  suchthat defined(r_7) && (x1_1 = r_7) then
+         event_abort bad2
+       else
+         r_9 <-R Dr;
+         return(r_9)
+     ) | (
+       OT(m1: Dm, m2: Dm) :=
+       b1 <-R bool;
+       r_7 <-R Dow;
+       r_12 <-R Dr;
+       cT: D <- f(pkgen(r_2), concat(r_7, r_12));
+       return(cT)
+     ) | (
+       foreach iD <= qD do
+       OD(c: D) :=
+       if defined(cT) && (c = cT) then
+         yield
+       else
+         find [unique] u30 = ri_20 <= qH, u1 = ri_21 <= qG suchthat defined(r_9[ri_20], x1_1[ri_20], r_4[ri_21], x1[ri_21]) && (c = f(pkgen(r_2), concat(x1_1[ri_20], xorDr(r_9[ri_20], x1[ri_21])))) then
+         if second(x1_1[u30]) = second(r_4[u1]) then
+         mz: Dow <- xorDow(x1_1[u30], r_4[u1]);
+         let concatm(m: Dm, =zeroDz) = mz in
+         return(m)
+     ))
+
+
+Applying equivalence pd_ow(f) with r_12, r_7, r_2 [probability P_PD_OW(time_1, qH)]
+  - Equivalence pd_ow(f) with variables: r_2 -> r_1, r_7 -> xow, r_12 -> xr
+yields
+
+Game 61 is
+     Ogen() :=
+     r_2 <-R seed;
+     return(pkgen'(r_2));
+     ((
+       foreach iH <= qG do
+       OH(x1: Dr) :=
+       find [unique] u_5 = ri_5 <= qG suchthat defined(r_4[ri_5], x1[ri_5]) && (x1 = x1[ri_5]) then
+         return(r_4[u_5])
+       else
+         r_4 <-R Dow;
+         return(r_4)
+     ) | (
+       foreach iH_1 <= qH do
+       OH_1(x1_1: Dow) :=
+       find [unique] u_21 = ri_17 <= qH suchthat defined(r_9[ri_17], x1_1[ri_17]) && (x1_1 = x1_1[ri_17]) then
+         return(r_9[u_21])
+       orfind  suchthat defined(r_7) && (xow': Dow <- x1_1; {47}find  else {48}find  else false) then
+         event_abort bad2
+       else
+         r_9 <-R Dr;
+         return(r_9)
+     ) | (
+       OT(m1: Dm, m2: Dm) :=
+       b1 <-R bool;
+       r_7 <-R Dow;
+       r_12 <-R Dr;
+       cT: D <- f'(pkgen'(r_2), concat(r_7, r_12));
+       return(cT)
+     ) | (
+       foreach iD <= qD do
+       OD(c: D) :=
+       if defined(cT) && (c = cT) then
+         yield
+       else
+         find [unique] u30 = ri_20 <= qH, u1 = ri_21 <= qG suchthat defined(r_9[ri_20], x1_1[ri_20], r_4[ri_21], x1[ri_21]) && (c = f(pkgen'(r_2), concat(x1_1[ri_20], xorDr(r_9[ri_20], x1[ri_21])))) then
+         if second(x1_1[u30]) = second(r_4[u1]) then
+         mz: Dow <- xorDow(x1_1[u30], r_4[u1]);
+         let concatm(m: Dm, =zeroDz) = mz in
+         return(m)
+     ))
+
+
+Applying simplify (non-expanded game)
+  - Simplification pass
+    - Find at 47 removed (else branch kept if any)
+    - Find at 48 removed (else branch kept if any)
+yields
+
+Game 62 is
+     Ogen() :=
+     r_2 <-R seed;
+     return(pkgen'(r_2));
+     ((
+       foreach iH <= qG do
+       OH(x1: Dr) :=
+       find [unique] u_5 = ri_5 <= qG suchthat defined(r_4[ri_5], x1[ri_5]) && (x1 = x1[ri_5]) then
+         return(r_4[u_5])
+       else
+         r_4 <-R Dow;
+         return(r_4)
+     ) | (
+       foreach iH_1 <= qH do
+       OH_1(x1_1: Dow) :=
+ {31}  find [unique] u_21 = ri_17 <= qH suchthat defined(r_9[ri_17], x1_1[ri_17]) && (x1_1 = x1_1[ri_17]) then
+         return(r_9[u_21])
+       orfind  suchthat defined(r_7) && (xow': Dow <- x1_1; false) then
+         event_abort bad2
+       else
+         r_9 <-R Dr;
+         return(r_9)
+     ) | (
+       OT(m1: Dm, m2: Dm) :=
+       b1 <-R bool;
+       r_7 <-R Dow;
+       r_12 <-R Dr;
+       cT: D <- f'(pkgen'(r_2), concat(r_7, r_12));
+       return(cT)
+     ) | (
+       foreach iD <= qD do
+       OD(c: D) :=
+       if defined(cT) && (c = cT) then
+         yield
+       else
+         find [unique] u30 = ri_20 <= qH, u1 = ri_21 <= qG suchthat defined(r_9[ri_20], x1_1[ri_20], r_4[ri_21], x1[ri_21]) && (c = f(pkgen'(r_2), concat(x1_1[ri_20], xorDr(r_9[ri_20], x1[ri_21])))) then
+         if second(x1_1[u30]) = second(r_4[u1]) then
+         mz: Dow <- xorDow(x1_1[u30], r_4[u1]);
+         let concatm(m: Dm, =zeroDz) = mz in
+         return(m)
+     ))
+
+
+Applying expand
+  - Expand if/find/let
+    - Remove branch 2 in find at 31
+yields
+
+Game 63 is
+     Ogen() :=
+     r_2 <-R seed;
+     return(pkgen'(r_2));
+     ((
+       foreach iH <= qG do
+       OH(x1: Dr) :=
+       find [unique] u_5 = ri_5 <= qG suchthat defined(r_4[ri_5], x1[ri_5]) && (x1 = x1[ri_5]) then
+         return(r_4[u_5])
+       else
+         r_4 <-R Dow;
+         return(r_4)
+     ) | (
+       foreach iH_1 <= qH do
+       OH_1(x1_1: Dow) :=
+       find [unique] u_21 = ri_17 <= qH suchthat defined(r_9[ri_17], x1_1[ri_17]) && (x1_1 = x1_1[ri_17]) then
+         return(r_9[u_21])
+       else
+         r_9 <-R Dr;
+         return(r_9)
+     ) | (
+       OT(m1: Dm, m2: Dm) :=
+       b1 <-R bool;
+       r_7 <-R Dow;
+       r_12 <-R Dr;
+       cT: D <- f'(pkgen'(r_2), concat(r_7, r_12));
+       return(cT)
+     ) | (
+       foreach iD <= qD do
+       OD(c: D) :=
+       if defined(cT) && (c = cT) then
+         yield
+       else
+         find [unique] u30 = ri_20 <= qH, u1 = ri_21 <= qG suchthat defined(r_9[ri_20], x1_1[ri_20], r_4[ri_21], x1[ri_21]) && (c = f(pkgen'(r_2), concat(x1_1[ri_20], xorDr(r_9[ri_20], x1[ri_21])))) then
+         if second(x1_1[u30]) = second(r_4[u1]) then
+         mz: Dow <- xorDow(x1_1[u30], r_4[u1]);
+         let concatm(m: Dm, =zeroDz) = mz in
+         return(m)
+     ))
+
+
+Proved event(non_unique) ==> false with public variables b1 in game 63
+Proved event(bad2) ==> false with public variables b1 in game 63
+Proved event(bad3) ==> false with public variables b1 in game 63
+Proved event(bad1) ==> false with public variables b1 in game 63
+Adv[Game 1: bit secrecy of b1] <= 2 * qD / |Dz| + (2 * qG + 2 * qD) / |Dr| + Adv[Game 7: bit secrecy of b1]
+Adv[Game 7: bit secrecy of b1] <= Adv[Game 8: bit secrecy of b1, bad1]
+Adv[Game 8: bit secrecy of b1, bad1] <= Adv[Game 8: bit secrecy of b1, bad1]
+Adv[Game 8: bit secrecy of b1, bad1] <= Adv[Game 9: bit secrecy of b1, bad3 || bad1]
+Adv[Game 9: bit secrecy of b1, bad3 || bad1] <= Pr[Game 12: bad3 || bad1] + Adv[Game 12: bit secrecy of b1]
+Pr[Game 12: bad3 || bad1] <= (qH + 11 * qD) / |Dow| + (qD + qG * qD + qG) / |Dr| + (qG + 3 * qD^2 + qG * qD + qG^2 + qD) / |Dz| + Pr[Game 35: bad3 || bad1]
+Pr[Game 35: bad3 || bad1] <= Pr[Game 36: bad2 || bad3 || bad1]
+Pr[Game 36: bad2 || bad3 || bad1] <= (qD * qG + qG + qD) / |Dr| + 7 * qD / |Dow| + Pr[Game 56: bad3 || bad2 || bad1]
+Pr[Game 56: bad3 || bad2 || bad1] <= Pr[Game 57: non_unique || bad3 || bad2 || bad1]
+Pr[Game 57: non_unique || bad3 || bad2 || bad1] <= P_PD_OW(time_1, qH) + Pr[Game 63: bad3] + Pr[Game 63: non_unique] + Pr[Game 63: bad2] + Pr[Game 63: bad1]
+Pr[Game 63: bad3] <= 0
+Pr[Game 63: non_unique] <= 0
+Pr[Game 63: bad2] <= 0
+Pr[Game 63: bad1] <= 0
+Adv[Game 12: bit secrecy of b1] <= 0
+RESULT Proved bit secrecy of b1 up to probability (qH + 18 * qD) / |Dow| + (3 * qD + qG^2 + qG * qD + 3 * qD^2 + qG) / |Dz| + (4 * qD + 4 * qG + 2 * qD * qG) / |Dr| + P_PD_OW(time_1, qH)
+RESULT time_1 = qD * qH * qG * time(xorDr) + qD * qH * qG * time(concat) + qD * qH * qG * time(f) + 2 * qD * time(second) + qD * time(xorDow) + qD * time(let concatm) + time
+All queries proved.

@@ -1,0 +1,489 @@
+Doing expand get, insert and prove unique annotations... No change.
+Doing simplify (non-expanded game)... No change.
+Doing expand... Done.
+Doing remove assignments of findcond... Done.
+Doing simplify... Run simplify 2 time(s). Fixpoint reached.
+Done.
+Doing move all binders... No change.
+Doing SA rename new without array accesses and remove assignments of findcond... No change.
+Doing merge branches... No change.
+Proof of event(distinguish) ==> false failed:
+  Found distinguish at 69
+  but could not prove false
+Proof of event(distinguish) ==> false failed:
+  Found distinguish at 69
+  but could not prove false
+Sorry, the following queries remain unproved:
+- event(distinguish) ==> false
+Doing simplify eliminating code unreachable when queries fail... Run simplify 2 time(s). Maximum reached.
+Done.
+Proof of event(distinguish) ==> false failed:
+  Found distinguish at 63
+  but could not prove false
+Trying equivalence int_ctxt(enc)... Transf. OK Proba. computed Transf. done Succeeded.
+Doing simplify (non-expanded game)... No change.
+Doing expand... Done.
+Doing remove assignments of findcond... Done.
+Doing simplify... Run simplify 2 time(s). Fixpoint reached.
+Done.
+Doing move all binders... No change.
+Doing SA rename new without array accesses and remove assignments of findcond... No change.
+Doing merge branches... No change.
+Proved query event(distinguish) ==> false
+===================== Proof starts =======================
+Initial state
+Game 1 is
+     O_2() :=
+     k <-R key;
+     return();
+     ((
+       foreach i <= N do
+       O() :=
+       r <-R enc_seed;
+       return();
+       Oenc(x: cleartext) :=
+       res_lhs: ciphertext <- enc_r(x, k, r);
+       res_rhs: ciphertext <- (z: ciphertext <- enc_r(x, k, r); z);
+ {27}  if res_lhs = res_rhs then
+         return(res_lhs)
+       else
+         event_abort distinguish
+     ) | (
+       foreach i' <= N' do
+       O_1() :=
+       return();
+       Odec(y: ciphertext) :=
+       res_lhs_1: bitstringbot <- dec(y, k);
+       res_rhs_1: bitstringbot <- (if defined(corrupt) then dec(y, k) else find j_1 = j <= N suchthat defined(x[j], z[j]) && (z[j] = y) then injbot(x[j_1]) else bottom);
+ {70}  if res_lhs_1 = res_rhs_1 then
+         return(res_lhs_1)
+       else
+         event_abort distinguish
+     ) | (
+       Ocorrupt() :=
+       res_lhs_2: key <- k;
+       res_rhs_2: key <- (corrupt: bool <- true; k);
+ {90}  if res_lhs_2 = res_rhs_2 then
+         return(res_lhs_2)
+       else
+         event_abort distinguish
+     ))
+
+
+Applying expand
+  - Expand if/find/let
+    - Test at 90 always true
+    - Test at 70 always true
+    - Test at 70 always true
+    - Test at 27 always true
+yields
+
+Game 2 is
+     O_2() :=
+     k <-R key;
+     return();
+     ((
+       foreach i <= N do
+       O() :=
+       r <-R enc_seed;
+       return();
+       Oenc(x: cleartext) :=
+       res_lhs: ciphertext <- enc_r(x, k, r);
+       z: ciphertext <- enc_r(x, k, r);
+       res_rhs: ciphertext <- z;
+       return(res_lhs)
+     ) | (
+       foreach i' <= N' do
+       O_1() :=
+       return();
+       Odec(y: ciphertext) :=
+       res_lhs_1: bitstringbot <- dec(y, k);
+       if defined(corrupt) then
+         res_rhs_1: bitstringbot <- dec(y, k);
+         return(res_lhs_1)
+       else
+         find j_1 = j <= N suchthat defined(x[j], z[j]) && (z[j] = y) then
+           res_rhs_1: bitstringbot <- injbot(x[j_1]);
+           return(res_lhs_1)
+         else
+           res_rhs_1: bitstringbot <- bottom;
+           if res_lhs_1 = res_rhs_1 then
+             return(res_lhs_1)
+           else
+             event_abort distinguish
+     ) | (
+       Ocorrupt() :=
+       res_lhs_2: key <- k;
+       corrupt: bool <- true;
+       res_rhs_2: key <- k;
+       return(res_lhs_2)
+     ))
+
+
+Applying remove assignments of findcond
+  - Remove assignments on res_lhs_2 (definition removed, all usages removed)
+  - Remove assignments on corrupt (definition point kept, all usages removed)
+  - Remove assignments on res_rhs_2 (definition removed, all usages removed)
+  - Remove assignments on res_rhs_1 (definition removed, all usages removed)
+  - Remove assignments on res_rhs_1 (definition removed, all usages removed)
+  - Remove assignments on res_rhs (definition removed, all usages removed)
+yields
+
+Game 3 is
+     O_2() :=
+     k <-R key;
+     return();
+     ((
+       foreach i <= N do
+       O() :=
+       r <-R enc_seed;
+       return();
+       Oenc(x: cleartext) :=
+       res_lhs: ciphertext <- enc_r(x, k, r);
+       z: ciphertext <- enc_r(x, k, r);
+       return(res_lhs)
+     ) | (
+       foreach i' <= N' do
+       O_1() :=
+       return();
+       Odec(y: ciphertext) :=
+       res_lhs_1: bitstringbot <- dec(y, k);
+       if defined(corrupt) then
+         return(res_lhs_1)
+       else
+ {46}    find j_1 = j <= N suchthat defined(x[j], z[j]) && (z[j] = y) then
+           return(res_lhs_1)
+         else
+           res_rhs_1: bitstringbot <- bottom;
+           if res_lhs_1 = res_rhs_1 then
+             return(res_lhs_1)
+           else
+             event_abort distinguish
+     ) | (
+       Ocorrupt() :=
+       corrupt: bool <- cst_bool;
+       return(k)
+     ))
+
+
+Applying simplify
+  - Simplification pass
+    - Replaced defined condition x[j], z[j] with z[j] in find at 46
+yields
+
+Game 4 is
+     O_2() :=
+     k <-R key;
+     return();
+     ((
+       foreach i <= N do
+       O() :=
+       r <-R enc_seed;
+       return();
+       Oenc(x: cleartext) :=
+       res_lhs: ciphertext <- enc_r(x, k, r);
+       z: ciphertext <- enc_r(x, k, r);
+       return(res_lhs)
+     ) | (
+       foreach i' <= N' do
+       O_1() :=
+       return();
+       Odec(y: ciphertext) :=
+       res_lhs_1: bitstringbot <- dec(y, k);
+       if defined(corrupt) then
+ {42}    return(res_lhs_1)
+       else
+         find j_1 = j <= N suchthat defined(z[j]) && (z[j] = y) then
+           return(res_lhs_1)
+         else
+           res_rhs_1: bitstringbot <- bottom;
+           if res_lhs_1 = res_rhs_1 then
+             return(res_lhs_1)
+           else
+             event_abort distinguish
+     ) | (
+       Ocorrupt() :=
+       corrupt: bool <- cst_bool;
+ {75}  return(k)
+     ))
+
+
+Applying simplify eliminating code unreachable when queries fail
+  - Simplification pass
+    - Adversary always loses at 75
+    - Adversary always loses at 42
+yields
+
+Game 5 is
+     O_2() :=
+     k <-R key;
+     return();
+     ((
+       foreach i <= N do
+       O() :=
+       r <-R enc_seed;
+       return();
+       Oenc(x: cleartext) :=
+       res_lhs: ciphertext <- enc_r(x, k, r);
+       z: ciphertext <- enc_r(x, k, r);
+       return(res_lhs)
+     ) | (
+       foreach i' <= N' do
+       O_1() :=
+       return();
+       Odec(y: ciphertext) :=
+       res_lhs_1: bitstringbot <- dec(y, k);
+ {40}  if defined(corrupt) then
+         event_abort adv_loses
+       else
+         find j_1 = j <= N suchthat defined(z[j]) && (z[j] = y) then
+           return(res_lhs_1)
+         else
+           res_rhs_1: bitstringbot <- bottom;
+           if res_lhs_1 = res_rhs_1 then
+             return(res_lhs_1)
+           else
+             event_abort distinguish
+     ) | (
+       Ocorrupt() :=
+       corrupt: bool <- cst_bool;
+       event_abort adv_loses
+     ))
+
+
+Applying simplify
+  - Simplification pass
+    - Remove branch 1 in find at 40
+    - Find at 40 removed (else branch kept if any)
+yields
+
+Game 6 is
+     O_2() :=
+     k <-R key;
+     return();
+     ((
+       foreach i <= N do
+       O() :=
+       r <-R enc_seed;
+       return();
+       Oenc(x: cleartext) :=
+       res_lhs: ciphertext <- enc_r(x, k, r);
+       z: ciphertext <- enc_r(x, k, r);
+       return(res_lhs)
+     ) | (
+       foreach i' <= N' do
+       O_1() :=
+       return();
+       Odec(y: ciphertext) :=
+       res_lhs_1: bitstringbot <- dec(y, k);
+       find j_1 = j <= N suchthat defined(z[j]) && (z[j] = y) then
+         return(res_lhs_1)
+       else
+         res_rhs_1: bitstringbot <- bottom;
+         if res_lhs_1 = res_rhs_1 then
+           return(res_lhs_1)
+         else
+           event_abort distinguish
+     ) | (
+       Ocorrupt() :=
+       event_abort adv_loses
+     ))
+
+
+Applying equivalence int_ctxt(enc) [probability Advintctxt(time_1, N, N', maxlength(game 6: x), maxlength(game 6: y))]
+  - Equivalence int_ctxt(enc) with variables: k -> k_1, r -> r_1
+yields
+
+Game 7 is
+     O_2() :=
+     k <-R key;
+     return();
+     ((
+       foreach i <= N do
+       O() :=
+       r <-R enc_seed;
+       return();
+       Oenc(x: cleartext) :=
+       res_lhs: ciphertext <- (x: cleartext <- x; z: ciphertext <- enc_r(x, k, r); z);
+       z: ciphertext <- (x_1: cleartext <- x; z_1: ciphertext <- enc_r(x_1, k, r); z_1);
+       return(res_lhs)
+     ) | (
+       foreach i' <= N' do
+       O_1() :=
+       return();
+       Odec(y: ciphertext) :=
+       res_lhs_1: bitstringbot <- (y: ciphertext <- y; find u_1 = ri <= N suchthat defined(x[ri], z[ri]) && (z[ri] = y) then injbot(x[u_1]) orfind u = ri <= N suchthat defined(x_1[ri], z_1[ri]) && (z_1[ri] = y) then injbot(x_1[u]) else bottom);
+       find j_1 = j <= N suchthat defined(z[j]) && (z[j] = y) then
+         return(res_lhs_1)
+       else
+         res_rhs_1: bitstringbot <- bottom;
+ {88}    if res_lhs_1 = res_rhs_1 then
+           return(res_lhs_1)
+         else
+           event_abort distinguish
+     ) | (
+       Ocorrupt() :=
+       event_abort adv_loses
+     ))
+
+
+Applying expand
+  - Expand if/find/let
+    - Test at 88 always true
+    - Test at 88 always false
+    - Test at 88 always false
+yields
+
+Game 8 is
+     O_2() :=
+     k <-R key;
+     return();
+     ((
+       foreach i <= N do
+       O() :=
+       r <-R enc_seed;
+       return();
+       Oenc(x: cleartext) :=
+       x: cleartext <- x;
+       z: ciphertext <- enc_r(x, k, r);
+       res_lhs: ciphertext <- z;
+       x_1: cleartext <- x;
+       z_1: ciphertext <- enc_r(x_1, k, r);
+       z: ciphertext <- z_1;
+       return(res_lhs)
+     ) | (
+       foreach i' <= N' do
+       O_1() :=
+       return();
+       Odec(y: ciphertext) :=
+       y: ciphertext <- y;
+       find u_1 = ri <= N suchthat defined(x[ri], z[ri]) && (z[ri] = y) then
+         res_lhs_1: bitstringbot <- injbot(x[u_1]);
+         find j_1 = j <= N suchthat defined(z[j]) && (z[j] = y) then
+           return(res_lhs_1)
+         else
+           res_rhs_1: bitstringbot <- bottom;
+           event_abort distinguish
+       orfind u = ri <= N suchthat defined(x_1[ri], z_1[ri]) && (z_1[ri] = y) then
+         res_lhs_1: bitstringbot <- injbot(x_1[u]);
+         find j_1 = j <= N suchthat defined(z[j]) && (z[j] = y) then
+           return(res_lhs_1)
+         else
+           res_rhs_1: bitstringbot <- bottom;
+           event_abort distinguish
+       else
+         res_lhs_1: bitstringbot <- bottom;
+         find j_1 = j <= N suchthat defined(z[j]) && (z[j] = y) then
+           return(res_lhs_1)
+         else
+           res_rhs_1: bitstringbot <- bottom;
+           return(res_lhs_1)
+     ) | (
+       Ocorrupt() :=
+       event_abort adv_loses
+     ))
+
+
+Applying remove assignments of findcond
+  - Remove assignments on y (definition removed, all usages removed)
+  - Remove assignments on res_rhs_1 (definition removed, all usages removed)
+  - Remove assignments on res_rhs_1 (definition removed, all usages removed)
+  - Remove assignments on res_rhs_1 (definition removed, all usages removed)
+  - Remove assignments on x (definition removed, all usages removed)
+  - Remove assignments on res_lhs (definition removed, all usages removed)
+  - Remove assignments on x_1 (definition removed, all usages removed)
+  - Remove assignments on z (definition removed, all usages removed)
+yields
+
+Game 9 is
+     O_2() :=
+     k <-R key;
+     return();
+     ((
+       foreach i <= N do
+       O() :=
+       r <-R enc_seed;
+       return();
+       Oenc(x: cleartext) :=
+       z: ciphertext <- enc_r(x, k, r);
+       z_1: ciphertext <- enc_r(x, k, r);
+       return(z)
+     ) | (
+       foreach i' <= N' do
+       O_1() :=
+       return();
+       Odec(y: ciphertext) :=
+ {35}  find u_1 = ri <= N suchthat defined(x[ri], z[ri]) && (z[ri] = y) then
+         res_lhs_1: bitstringbot <- injbot(x[u_1]);
+ {48}    find j_1 = j <= N suchthat defined(z_1[j]) && (z_1[j] = y) then
+           return(res_lhs_1)
+         else
+           event_abort distinguish
+       orfind u = ri <= N suchthat defined(x[ri], z[ri], z_1[ri]) && (z_1[ri] = y) then
+         res_lhs_1: bitstringbot <- injbot(x[u]);
+ {74}    find j_1 = j <= N suchthat defined(z_1[j]) && (z_1[j] = y) then
+           return(res_lhs_1)
+         else
+           event_abort distinguish
+       else
+         res_lhs_1: bitstringbot <- bottom;
+ {89}    find j_1 = j <= N suchthat defined(z_1[j]) && (z_1[j] = y) then
+           return(res_lhs_1)
+         else
+           return(res_lhs_1)
+     ) | (
+       Ocorrupt() :=
+       event_abort adv_loses
+     ))
+
+
+Applying simplify
+  - Simplification pass
+    - Remove branch 1 in find at 89
+    - Find at 89 removed (else branch kept if any)
+    - Remove else branch of find at 74
+    - A single branch always succeeds in find at 74
+    - Replaced defined condition x[ri], z[ri], z_1[ri] with x[ri], z_1[ri] in find at 35
+    - Remove else branch of find at 48
+    - A single branch always succeeds in find at 48
+yields
+
+Game 10 is
+     O_2() :=
+     k <-R key;
+     return();
+     ((
+       foreach i <= N do
+       O() :=
+       r <-R enc_seed;
+       return();
+       Oenc(x: cleartext) :=
+       z: ciphertext <- enc_r(x, k, r);
+       z_1: ciphertext <- enc_r(x, k, r);
+       return(z)
+     ) | (
+       foreach i' <= N' do
+       O_1() :=
+       return();
+       Odec(y: ciphertext) :=
+       find u_1 = ri <= N suchthat defined(x[ri], z[ri]) && (z[ri] = y) then
+         res_lhs_1: bitstringbot <- injbot(x[u_1]);
+         return(res_lhs_1)
+       orfind u = ri <= N suchthat defined(x[ri], z_1[ri]) && (z_1[ri] = y) then
+         res_lhs_1: bitstringbot <- injbot(x[u]);
+         return(res_lhs_1)
+       else
+         res_lhs_1: bitstringbot <- bottom;
+         return(res_lhs_1)
+     ) | (
+       Ocorrupt() :=
+       event_abort adv_loses
+     ))
+
+
+Proved event(distinguish) ==> false in game 10
+Pr[Game 1: distinguish] <= Advintctxt(time_1, N, N', maxlength(game 6: x), maxlength(game 6: y)) + Pr[Game 10: distinguish]
+Pr[Game 10: distinguish] <= 0
+RESULT Proved event(distinguish) ==> false up to probability Advintctxt(time_1, N, N', maxlength(game 6: x), maxlength(game 6: y))
+RESULT time_1 = N' * N * time(= ciphertext, maxlength(game 6: z), maxlength(game 6: y)) + N' * time(= bitstringbot, maxlength(game 6: res_lhs_1), maxlength(game 6: res_rhs_1)) + time
+All queries proved.

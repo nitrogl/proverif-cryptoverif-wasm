@@ -1,0 +1,200 @@
+Doing expand get, insert and prove unique annotations... No change.
+Doing simplify (non-expanded game)... No change.
+Doing expand... Done.
+Doing remove assignments of findcond... No change.
+Doing simplify... Run simplify 1 time(s). Fixpoint reached.
+No change.
+Doing move all binders... No change.
+Doing SA rename new without array accesses and remove assignments of findcond... No change.
+Doing merge branches... No change.
+Doing expand get, insert and prove unique annotations... No change.
+Doing simplify (non-expanded game)... No change.
+Doing expand... No change.
+Doing remove assignments of findcond... No change.
+Doing simplify... Run simplify 1 time(s). Fixpoint reached.
+No change.
+Doing move all binders... No change.
+Doing SA rename new without array accesses and remove assignments of findcond... No change.
+Doing merge branches... No change.
+At 25 in this process and at 21 on the other end, terms cannot be proved equal.
+Trying equivalence prf(HMAC)... Transf. OK Proba. computed Transf. done Succeeded.
+Doing simplify (non-expanded game)... Done.
+Doing expand... Done.
+Doing remove assignments of findcond... Done.
+Doing simplify... Run simplify 1 time(s). Fixpoint reached.
+No change.
+Doing move all binders... No change.
+Doing SA rename new without array accesses and remove assignments of findcond... No change.
+Doing merge branches... No change.
+Proved query indistinguishability from other input game
+===================== Proof starts =======================
+Initial state
+Game 2 is
+     foreach i <= N do
+     O() :=
+     return();
+     ((
+       O1() :=
+       return((r1 <-R key; r1))
+     ) | (
+       O2() :=
+       return((r2 <-R key; r2))
+     ) | (
+       O3() :=
+       return((r3 <-R key; r3))
+     ))
+
+
+Applying expand
+  - Expand if/find/let
+yields
+
+Game 3 is
+     foreach i <= N do
+     O() :=
+     return();
+     ((
+       O1() :=
+       r1 <-R key;
+       return(r1)
+     ) | (
+       O2() :=
+       r2 <-R key;
+       return(r2)
+     ) | (
+       O3() :=
+       r3 <-R key;
+       return(r3)
+     ))
+
+Initial state
+Game 1 is
+     foreach i <= N do
+     O() :=
+     k <-R key;
+     return();
+     ((
+       O1() :=
+       return(HMAC(k, build_arg(l1)))
+     ) | (
+       O2() :=
+       return(HMAC(k, build_arg(l2)))
+     ) | (
+       O3() :=
+       return(HMAC(k, build_arg(l3)))
+     ))
+
+
+Applying equivalence prf(HMAC) [probability N * Pprf(time_1, 3, max(length(build_arg, length(l3)), length(build_arg, length(l2)), length(build_arg, length(l1))))]
+  - Equivalence prf(HMAC) with variables: k -> k_1
+yields
+
+Game 4 is
+     foreach i <= N do
+     O() :=
+     return();
+     ((
+       O1() :=
+       return((x_O: bitstring <- build_arg(l1); {10}find [unique]  suchthat defined(x_O_1, r_1) && {13}(x_O = x_O_1) then r_1 orfind  suchthat defined(x_O_2, r_2) && {22}(x_O = x_O_2) then r_2 else r <-R key; r))
+     ) | (
+       O2() :=
+       return((x_O_1: bitstring <- build_arg(l2); {39}find [unique]  suchthat defined(x_O, r) && {42}(x_O_1 = x_O) then r orfind  suchthat defined(x_O_2, r_2) && {51}(x_O_1 = x_O_2) then r_2 else r_1 <-R key; r_1))
+     ) | (
+       O3() :=
+       return((x_O_2: bitstring <- build_arg(l3); {67}find [unique]  suchthat defined(x_O, r) && {70}(x_O_2 = x_O) then r orfind  suchthat defined(x_O_1, r_1) && {79}(x_O_2 = x_O_1) then r_1 else r_2 <-R key; r_2))
+     ))
+
+
+Applying simplify (non-expanded game)
+  - Simplification pass
+    - Replaced (x_O = x_O_2) with false at 22
+    - Remove branch 2 in find at 10
+    - Replaced (x_O = x_O_1) with false at 13
+    - Remove branch 1 in find at 10
+    - Find at 10 removed (else branch kept if any)
+    - Replaced (x_O_1 = x_O_2) with false at 51
+    - Remove branch 2 in find at 39
+    - Replaced (x_O_1 = x_O) with false at 42
+    - Remove branch 1 in find at 39
+    - Find at 39 removed (else branch kept if any)
+    - Replaced (x_O_2 = x_O_1) with false at 79
+    - Remove branch 2 in find at 67
+    - Replaced (x_O_2 = x_O) with false at 70
+    - Remove branch 1 in find at 67
+    - Find at 67 removed (else branch kept if any)
+yields
+
+Game 5 is
+     foreach i <= N do
+     O() :=
+     return();
+     ((
+       O1() :=
+       return((x_O: bitstring <- build_arg(l1); r <-R key; r))
+     ) | (
+       O2() :=
+       return((x_O_1: bitstring <- build_arg(l2); r_1 <-R key; r_1))
+     ) | (
+       O3() :=
+       return((x_O_2: bitstring <- build_arg(l3); r_2 <-R key; r_2))
+     ))
+
+
+Applying expand
+  - Expand if/find/let
+yields
+
+Game 6 is
+     foreach i <= N do
+     O() :=
+     return();
+     ((
+       O1() :=
+       x_O: bitstring <- build_arg(l1);
+       r <-R key;
+       return(r)
+     ) | (
+       O2() :=
+       x_O_1: bitstring <- build_arg(l2);
+       r_1 <-R key;
+       return(r_1)
+     ) | (
+       O3() :=
+       x_O_2: bitstring <- build_arg(l3);
+       r_2 <-R key;
+       return(r_2)
+     ))
+
+
+Applying remove assignments of findcond
+  - Remove assignments on x_O_2 (definition removed, all usages removed)
+  - Remove assignments on x_O_1 (definition removed, all usages removed)
+  - Remove assignments on x_O (definition removed, all usages removed)
+yields
+
+Game 7 is
+     foreach i <= N do
+     O() :=
+     return();
+     ((
+       O1() :=
+       r <-R key;
+       return(r)
+     ) | (
+       O2() :=
+       r_1 <-R key;
+       return(r_1)
+     ) | (
+       O3() :=
+       r_2 <-R key;
+       return(r_2)
+     ))
+
+
+Proved indistinguishability between game 7 and game 2
+Game 7 is the same as game 3.
+Adv[Game 2: indistinguishability from game 3] <= Adv[Game 3: indistinguishability from game 3]
+Adv[Game 1: indistinguishability from game 7] <= N * Pprf(time_1, 3, max(length(build_arg, length(l3)), length(build_arg, length(l2)), length(build_arg, length(l1)))) + Adv[Game 7: indistinguishability from game 7]
+RESULT Proved indistinguishability between game 1 and game 2 up to probability N * Pprf(time_1, 3, max(length(build_arg, length(l3)), length(build_arg, length(l2)), length(build_arg, length(l1))))
+RESULT time_1 = N * time(build_arg, length(l1)) + N * time(build_arg, length(l2)) + N * time(build_arg, length(l3)) + time + (3 * N - 3) * max(time(HMAC, max(length(build_arg, length(l3)), length(build_arg, length(l2)), length(build_arg, length(l1)))), 3 * time(= bitstring, max(maxlength(game 4: x_O_2), maxlength(game 4: x_O_1), maxlength(game 4: x_O)), max(maxlength(game 4: x_O_2), maxlength(game 4: x_O_1), maxlength(game 4: x_O))))
+All queries proved.

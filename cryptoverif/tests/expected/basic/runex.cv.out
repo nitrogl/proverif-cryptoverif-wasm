@@ -1,0 +1,559 @@
+Doing expand get, insert and prove unique annotations... No change.
+Doing simplify (non-expanded game)... No change.
+Doing expand... Done.
+Doing remove assignments of findcond... Done.
+Doing simplify... Run simplify 1 time(s). Fixpoint reached.
+No change.
+Doing move all binders... No change.
+Doing SA rename new without array accesses and remove assignments of findcond... No change.
+Doing merge branches... No change.
+Proof of (one-session) secrecy of k2 failed:
+  at 29, bad usage(s) of ea1, which may depend on k2.
+Proof of (one-session) secrecy of k3 failed:
+  k3 is not defined only by restrictions or assignments.
+Trying equivalence suf_cma(mac)... Failed.
+Trying equivalence keygen(mkgen)... Transf. OK Proba. computed Transf. done Succeeded.
+Doing simplify (non-expanded game)... No change.
+Doing expand... No change.
+Doing remove assignments of findcond... Done.
+Doing simplify... Run simplify 1 time(s). Fixpoint reached.
+No change.
+Doing move all binders... No change.
+Doing SA rename new without array accesses and remove assignments of findcond... No change.
+Doing merge branches... No change.
+Proof of (one-session) secrecy of k2 failed:
+  at 26, bad usage(s) of ea1, which may depend on k2.
+Proof of (one-session) secrecy of k3 failed:
+  k3 is not defined only by restrictions or assignments.
+Trying equivalence suf_cma(mac)... Transf. OK Proba. computed Transf. done Succeeded.
+Doing simplify (non-expanded game)... No change.
+Doing expand... Done.
+Doing remove assignments of findcond... Done.
+Doing simplify... Run simplify 2 time(s). Fixpoint reached.
+Done.
+Doing move all binders... No change.
+Doing SA rename new without array accesses and remove assignments of findcond... No change.
+Doing merge branches... No change.
+Proof of (one-session) secrecy of k2 failed:
+  at 35, bad usage(s) of ma2, which may depend on k2.
+Proof of (one-session) secrecy of k3 failed:
+  k3 is defined from k2; at 35, bad usage(s) of ma2, which may depend on k2.
+Trying equivalence suf_cma(mac)... Failed.
+Trying equivalence keygen(mkgen)... Failed.
+Trying equivalence ind_cpa(enc)... Failed.
+Trying equivalence keygen(kgen)... Transf. OK Proba. computed Transf. done Succeeded.
+Doing simplify (non-expanded game)... No change.
+Doing expand... No change.
+Doing remove assignments of findcond... Done.
+Doing simplify... Run simplify 1 time(s). Fixpoint reached.
+No change.
+Doing move all binders... No change.
+Doing SA rename new without array accesses and remove assignments of findcond... No change.
+Doing merge branches... No change.
+Proof of (one-session) secrecy of k2 failed:
+  at 32, bad usage(s) of ma2, which may depend on k2.
+Proof of (one-session) secrecy of k3 failed:
+  k3 is defined from k2; at 32, bad usage(s) of ma2, which may depend on k2.
+Trying equivalence suf_cma(mac)... Failed.
+Trying equivalence keygen(mkgen)... Failed.
+Trying equivalence ind_cpa(enc)... Transf. OK Proba. computed Transf. done Succeeded.
+Doing simplify (non-expanded game)... No change.
+Doing expand... Done.
+Doing remove assignments of findcond... Done.
+Doing simplify... Run simplify 2 time(s). Fixpoint reached.
+Done.
+Doing move all binders... No change.
+Doing SA rename new without array accesses and remove assignments of findcond... Done.
+Doing merge branches... No change.
+Proved one-session secrecy of k2
+Proved secrecy of k2
+Proved one-session secrecy of k3
+Proof of secrecy of k3 failed:
+  Proved one-session secrecy but not secrecy.
+Trying equivalence suf_cma(mac)... Failed.
+Trying equivalence keygen(mkgen)... Failed.
+Trying equivalence ind_cpa(enc)... Failed.
+Trying equivalence keygen(kgen)... Failed.
+Doing remove assignments of binder k3... No change.
+===================== Proof starts =======================
+Initial state
+Game 1 is
+     start() :=
+     rKab <-R keyseed;
+     Kab: key <- kgen(rKab);
+     rmKab <-R mkeyseed;
+     mKab: mkey <- mkgen(rmKab);
+     return();
+     ((
+       foreach i <= NA do
+       cA() :=
+       k2 <-R key;
+       ea1: bitstring <- (m: bitstring <- keyToBitstring(k2); k: key <- Kab; r <-R enc_seed; enc_r(m, k, r));
+       return(ea1, (m_1: bitstring <- ea1; k_1: mkey <- mKab; r_1 <-R mac_seed; mac_r(m_1, k_1, r_1)))
+     ) | (
+       foreach i_1 <= NB do
+       cB(ea: bitstring, ma: macs) :=
+       if check(ea, mKab, ma) then
+       let injbot(keyToBitstring(k3: key)) = dec(ea, Kab) in
+       return()
+     ))
+
+
+Applying expand
+  - Expand if/find/let
+yields
+
+Game 2 is
+     start() :=
+     rKab <-R keyseed;
+     Kab: key <- kgen(rKab);
+     rmKab <-R mkeyseed;
+     mKab: mkey <- mkgen(rmKab);
+     return();
+     ((
+       foreach i <= NA do
+       cA() :=
+       k2 <-R key;
+       m: bitstring <- keyToBitstring(k2);
+       k: key <- Kab;
+       r <-R enc_seed;
+       ea1: bitstring <- enc_r(m, k, r);
+       m_1: bitstring <- ea1;
+       k_1: mkey <- mKab;
+       r_1 <-R mac_seed;
+       return(ea1, mac_r(m_1, k_1, r_1))
+     ) | (
+       foreach i_1 <= NB do
+       cB(ea: bitstring, ma: macs) :=
+       if check(ea, mKab, ma) then
+       let injbot(keyToBitstring(k3: key)) = dec(ea, Kab) in
+       return()
+     ))
+
+
+Applying remove assignments of findcond
+  - Remove assignments on k (definition removed, all usages removed)
+  - Remove assignments on m_1 (definition removed, all usages removed)
+  - Remove assignments on k_1 (definition removed, all usages removed)
+yields
+
+Game 3 is
+     start() :=
+     rKab <-R keyseed;
+     Kab: key <- kgen(rKab);
+     rmKab <-R mkeyseed;
+     mKab: mkey <- mkgen(rmKab);
+     return();
+     ((
+       foreach i <= NA do
+       cA() :=
+       k2 <-R key;
+       m: bitstring <- keyToBitstring(k2);
+       r <-R enc_seed;
+       ea1: bitstring <- enc_r(m, Kab, r);
+       r_1 <-R mac_seed;
+       return(ea1, mac_r(ea1, mKab, r_1))
+     ) | (
+       foreach i_1 <= NB do
+       cB(ea: bitstring, ma: macs) :=
+       if check(ea, mKab, ma) then
+       let injbot(keyToBitstring(k3: key)) = dec(ea, Kab) in
+       return()
+     ))
+
+
+Applying equivalence keygen(mkgen)
+  - Equivalence keygen(mkgen) with variables: rmKab -> r_1
+yields
+
+Game 4 is
+     start() :=
+     rKab <-R keyseed;
+     Kab: key <- kgen(rKab);
+     k_2 <-R mkey;
+     mKab: mkey <- k_2;
+     return();
+     ((
+       foreach i <= NA do
+       cA() :=
+       k2 <-R key;
+       m: bitstring <- keyToBitstring(k2);
+       r <-R enc_seed;
+       ea1: bitstring <- enc_r(m, Kab, r);
+       r_1 <-R mac_seed;
+       return(ea1, mac_r(ea1, mKab, r_1))
+     ) | (
+       foreach i_1 <= NB do
+       cB(ea: bitstring, ma: macs) :=
+       if check(ea, mKab, ma) then
+       let injbot(keyToBitstring(k3: key)) = dec(ea, Kab) in
+       return()
+     ))
+
+
+Applying remove assignments of findcond
+  - Remove assignments on mKab (definition removed, all usages removed)
+yields
+
+Game 5 is
+     start() :=
+     rKab <-R keyseed;
+     Kab: key <- kgen(rKab);
+     k_2 <-R mkey;
+     return();
+     ((
+       foreach i <= NA do
+       cA() :=
+       k2 <-R key;
+       m: bitstring <- keyToBitstring(k2);
+       r <-R enc_seed;
+       ea1: bitstring <- enc_r(m, Kab, r);
+       r_1 <-R mac_seed;
+       return(ea1, mac_r(ea1, k_2, r_1))
+     ) | (
+       foreach i_1 <= NB do
+       cB(ea: bitstring, ma: macs) :=
+       if check(ea, k_2, ma) then
+       let injbot(keyToBitstring(k3: key)) = dec(ea, Kab) in
+       return()
+     ))
+
+
+Applying equivalence suf_cma(mac) [probability Pmac(time_1, NA, NB, 0, max(maxlength(game 5: ea1), maxlength(game 5: ea)))]
+  - Equivalence suf_cma(mac) with variables: k_2 -> k_2, r_1 -> r_2
+yields
+
+Game 6 is
+     start() :=
+     rKab <-R keyseed;
+     Kab: key <- kgen(rKab);
+     k_2 <-R mkey;
+     return();
+     ((
+       foreach i <= NA do
+       cA() :=
+       k2 <-R key;
+       m: bitstring <- keyToBitstring(k2);
+       r <-R enc_seed;
+       ea1: bitstring <- enc_r(m, Kab, r);
+       r_2 <-R mac_seed;
+       return(ea1, (x: bitstring <- ea1; ma2: macs <- mac_r'(x, k_2, r_2); ma2))
+     ) | (
+       foreach i_1 <= NB do
+       cB(ea: bitstring, ma: macs) :=
+ {45}  if (m_2: bitstring <- ea; ma_1: macs <- ma; {52}find u = ri <= NA suchthat defined(x[ri], ma2[ri]) && (m_2 = x[ri]) && (ma_1 = ma2[ri]) then true else false) then
+ {68}  let injbot(keyToBitstring(k3: key)) = dec(ea, Kab) in
+       return()
+     ))
+
+
+Applying expand
+  - Expand if/find/let
+    - Test at 45 always false
+    - Test at 45 always true
+    - Simplify pattern keyToBitstring(k3: key) (tuple expanded), pattern injbot(keyToBitstring(k3: key)) (tuple expanded) at 68
+    - Replaced defined condition x[ri], ma2[ri] with k2[ri], ma2[ri], x[ri] in find at 52
+yields
+
+Game 7 is
+     start() :=
+     rKab <-R keyseed;
+     Kab: key <- kgen(rKab);
+     k_2 <-R mkey;
+     return();
+     ((
+       foreach i <= NA do
+       cA() :=
+       k2 <-R key;
+       m: bitstring <- keyToBitstring(k2);
+       r <-R enc_seed;
+       ea1: bitstring <- enc_r(m, Kab, r);
+       r_2 <-R mac_seed;
+       x: bitstring <- ea1;
+       ma2: macs <- mac_r'(x, k_2, r_2);
+       return(ea1, ma2)
+     ) | (
+       foreach i_1 <= NB do
+       cB(ea: bitstring, ma: macs) :=
+       m_2: bitstring <- ea;
+       ma_1: macs <- ma;
+       find u = ri <= NA suchthat defined(k2[ri], ma2[ri], x[ri]) && (m_2 = x[ri]) && (ma_1 = ma2[ri]) then
+       k3: key <- k2[u];
+       return()
+     ))
+
+
+Applying remove assignments of findcond
+  - Remove assignments on m_2 (definition removed, all usages removed)
+  - Remove assignments on ma_1 (definition removed, all usages removed)
+  - Remove assignments on x (definition removed, all usages removed)
+yields
+
+Game 8 is
+     start() :=
+     rKab <-R keyseed;
+     Kab: key <- kgen(rKab);
+     k_2 <-R mkey;
+     return();
+     ((
+       foreach i <= NA do
+       cA() :=
+       k2 <-R key;
+       m: bitstring <- keyToBitstring(k2);
+       r <-R enc_seed;
+       ea1: bitstring <- enc_r(m, Kab, r);
+       r_2 <-R mac_seed;
+       ma2: macs <- mac_r'(ea1, k_2, r_2);
+       return(ea1, ma2)
+     ) | (
+       foreach i_1 <= NB do
+       cB(ea: bitstring, ma: macs) :=
+ {43}  find u = ri <= NA suchthat defined(ea1[ri], r_2[ri], k2[ri], ma2[ri]) && (ea = ea1[ri]) && (ma = ma2[ri]) then
+       k3: key <- k2[u];
+       return()
+     ))
+
+
+Applying simplify
+  - Simplification pass
+    - Replaced defined condition ea1[ri], r_2[ri], k2[ri], ma2[ri] with k2[ri], ma2[ri], ea1[ri] in find at 43
+yields
+
+Game 9 is
+     start() :=
+     rKab <-R keyseed;
+     Kab: key <- kgen(rKab);
+     k_2 <-R mkey;
+     return();
+     ((
+       foreach i <= NA do
+       cA() :=
+       k2 <-R key;
+       m: bitstring <- keyToBitstring(k2);
+       r <-R enc_seed;
+       ea1: bitstring <- enc_r(m, Kab, r);
+       r_2 <-R mac_seed;
+       ma2: macs <- mac_r'(ea1, k_2, r_2);
+       return(ea1, ma2)
+     ) | (
+       foreach i_1 <= NB do
+       cB(ea: bitstring, ma: macs) :=
+       find u = ri <= NA suchthat defined(k2[ri], ma2[ri], ea1[ri]) && (ea = ea1[ri]) && (ma = ma2[ri]) then
+       k3: key <- k2[u];
+       return()
+     ))
+
+
+Applying equivalence keygen(kgen)
+  - Equivalence keygen(kgen) with variables: rKab -> r
+yields
+
+Game 10 is
+     start() :=
+     k_3 <-R key;
+     Kab: key <- k_3;
+     k_2 <-R mkey;
+     return();
+     ((
+       foreach i <= NA do
+       cA() :=
+       k2 <-R key;
+       m: bitstring <- keyToBitstring(k2);
+       r <-R enc_seed;
+       ea1: bitstring <- enc_r(m, Kab, r);
+       r_2 <-R mac_seed;
+       ma2: macs <- mac_r'(ea1, k_2, r_2);
+       return(ea1, ma2)
+     ) | (
+       foreach i_1 <= NB do
+       cB(ea: bitstring, ma: macs) :=
+       find u = ri <= NA suchthat defined(k2[ri], ma2[ri], ea1[ri]) && (ea = ea1[ri]) && (ma = ma2[ri]) then
+       k3: key <- k2[u];
+       return()
+     ))
+
+
+Applying remove assignments of findcond
+  - Remove assignments on Kab (definition removed, all usages removed)
+yields
+
+Game 11 is
+     start() :=
+     k_3 <-R key;
+     k_2 <-R mkey;
+     return();
+     ((
+       foreach i <= NA do
+       cA() :=
+       k2 <-R key;
+       m: bitstring <- keyToBitstring(k2);
+       r <-R enc_seed;
+       ea1: bitstring <- enc_r(m, k_3, r);
+       r_2 <-R mac_seed;
+       ma2: macs <- mac_r'(ea1, k_2, r_2);
+       return(ea1, ma2)
+     ) | (
+       foreach i_1 <= NB do
+       cB(ea: bitstring, ma: macs) :=
+       find u = ri <= NA suchthat defined(k2[ri], ma2[ri], ea1[ri]) && (ea = ea1[ri]) && (ma = ma2[ri]) then
+       k3: key <- k2[u];
+       return()
+     ))
+
+
+Applying equivalence ind_cpa(enc) [probability Penc(time_2, NA, maxlength(game 11: m))]
+  - Equivalence ind_cpa(enc) with variables: k_3 -> k_1, r -> r_1
+yields
+
+Game 12 is
+     start() :=
+     k_4 <-R key;
+     k_2 <-R mkey;
+     return();
+     ((
+       foreach i <= NA do
+       cA() :=
+       k2 <-R key;
+       m: bitstring <- keyToBitstring(k2);
+       r_3 <-R enc_seed;
+       ea1: bitstring <- (x_1: bitstring <- m; enc_r'(Z(x_1), k_4, r_3));
+       r_2 <-R mac_seed;
+       ma2: macs <- mac_r'(ea1, k_2, r_2);
+       return(ea1, ma2)
+     ) | (
+       foreach i_1 <= NB do
+       cB(ea: bitstring, ma: macs) :=
+       find u = ri <= NA suchthat defined(k2[ri], ma2[ri], ea1[ri]) && (ea = ea1[ri]) && (ma = ma2[ri]) then
+       k3: key <- k2[u];
+       return()
+     ))
+
+
+Applying expand
+  - Expand if/find/let
+yields
+
+Game 13 is
+     start() :=
+     k_4 <-R key;
+     k_2 <-R mkey;
+     return();
+     ((
+       foreach i <= NA do
+       cA() :=
+       k2 <-R key;
+       m: bitstring <- keyToBitstring(k2);
+       r_3 <-R enc_seed;
+       x_1: bitstring <- m;
+       ea1: bitstring <- enc_r'(Z(x_1), k_4, r_3);
+       r_2 <-R mac_seed;
+       ma2: macs <- mac_r'(ea1, k_2, r_2);
+       return(ea1, ma2)
+     ) | (
+       foreach i_1 <= NB do
+       cB(ea: bitstring, ma: macs) :=
+       find u = ri <= NA suchthat defined(k2[ri], ma2[ri], ea1[ri]) && (ea = ea1[ri]) && (ma = ma2[ri]) then
+       k3: key <- k2[u];
+       return()
+     ))
+
+
+Applying remove assignments of findcond
+  - Remove assignments on x_1 (definition removed, all usages removed)
+yields
+
+Game 14 is
+     start() :=
+     k_4 <-R key;
+     k_2 <-R mkey;
+     return();
+     ((
+       foreach i <= NA do
+       cA() :=
+       k2 <-R key;
+       m: bitstring <- keyToBitstring(k2);
+       r_3 <-R enc_seed;
+       ea1: bitstring <- {15}enc_r'(Z(m), k_4, r_3);
+       r_2 <-R mac_seed;
+       ma2: macs <- mac_r'(ea1, k_2, r_2);
+       return(ea1, ma2)
+     ) | (
+       foreach i_1 <= NB do
+       cB(ea: bitstring, ma: macs) :=
+       find u = ri <= NA suchthat defined(k2[ri], ma2[ri], ea1[ri]) && (ea = ea1[ri]) && (ma = ma2[ri]) then
+       k3: key <- k2[u];
+       return()
+     ))
+
+
+Applying simplify
+  - Simplification pass
+    - Replaced enc_r'(Z(m), k_4, r_3) with enc_r'(Zkey, k_4, r_3) at 15
+yields
+
+Game 15 is
+     start() :=
+     k_4 <-R key;
+     k_2 <-R mkey;
+     return();
+     ((
+       foreach i <= NA do
+       cA() :=
+       k2 <-R key;
+       m: bitstring <- keyToBitstring(k2);
+       r_3 <-R enc_seed;
+       ea1: bitstring <- enc_r'(Zkey, k_4, r_3);
+       r_2 <-R mac_seed;
+       ma2: macs <- mac_r'(ea1, k_2, r_2);
+       return(ea1, ma2)
+     ) | (
+       foreach i_1 <= NB do
+       cB(ea: bitstring, ma: macs) :=
+       find u = ri <= NA suchthat defined(k2[ri], ma2[ri], ea1[ri]) && (ea = ea1[ri]) && (ma = ma2[ri]) then
+       k3: key <- k2[u];
+       return()
+     ))
+
+
+Applying SA rename new without array accesses and remove assignments of findcond
+  - Remove assignments on m (definition removed, all usages removed)
+yields
+
+Game 16 is
+     start() :=
+     k_4 <-R key;
+     k_2 <-R mkey;
+     return();
+     ((
+       foreach i <= NA do
+       cA() :=
+       k2 <-R key;
+       r_3 <-R enc_seed;
+       ea1: bitstring <- enc_r'(Zkey, k_4, r_3);
+       r_2 <-R mac_seed;
+       ma2: macs <- mac_r'(ea1, k_2, r_2);
+       return(ea1, ma2)
+     ) | (
+       foreach i_1 <= NB do
+       cB(ea: bitstring, ma: macs) :=
+       find u = ri <= NA suchthat defined(k2[ri], ma2[ri], ea1[ri]) && (ea = ea1[ri]) && (ma = ma2[ri]) then
+       k3: key <- k2[u];
+       return()
+     ))
+
+
+Proved secrecy of k2 in game 16
+Proved one-session secrecy of k3 in game 16
+Proved one-session secrecy of k2 in game 16
+Adv[Game 1: secrecy of k2] <= 2 * Penc(time_2, NA, maxlength(game 11: m)) + 2 * Pmac(time_1, NA, NB, 0, max(maxlength(game 5: ea1), maxlength(game 5: ea))) + Adv[Game 16: secrecy of k2]
+Adv[Game 16: secrecy of k2] <= 0
+RESULT Proved secrecy of k2 up to probability 2 * Penc(time_2, NA, maxlength(game 11: m)) + 2 * Pmac(time_1, NA, NB, 0, max(maxlength(game 5: ea1), maxlength(game 5: ea)))
+Adv[Game 1: one-session secrecy of k3] <= 2 * Penc(time_2, NA, maxlength(game 11: m)) + 2 * Pmac(time_1, NA, NB, 0, max(maxlength(game 5: ea1), maxlength(game 5: ea))) + Adv[Game 16: one-session secrecy of k3]
+Adv[Game 16: one-session secrecy of k3] <= 0
+RESULT Proved one-session secrecy of k3 up to probability 2 * Penc(time_2, NA, maxlength(game 11: m)) + 2 * Pmac(time_1, NA, NB, 0, max(maxlength(game 5: ea1), maxlength(game 5: ea)))
+Adv[Game 1: one-session secrecy of k2] <= 2 * Penc(time_2, NA, maxlength(game 11: m)) + 2 * Pmac(time_1, NA, NB, 0, max(maxlength(game 5: ea1), maxlength(game 5: ea))) + Adv[Game 16: one-session secrecy of k2]
+Adv[Game 16: one-session secrecy of k2] <= 0
+RESULT Proved one-session secrecy of k2 up to probability 2 * Penc(time_2, NA, maxlength(game 11: m)) + 2 * Pmac(time_1, NA, NB, 0, max(maxlength(game 5: ea1), maxlength(game 5: ea)))
+RESULT time_1 = time(kgen) + NA * time(keyToBitstring) + NA * time(enc_r, maxlength(game 5: m)) + NB * time(dec, maxlength(game 5: ea)) + NB * time(let injbot, length(keyToBitstring)) + NB * time(let keyToBitstring) + time
+RESULT time_2 = NA * time(keyToBitstring) + NA * time(mac_r, maxlength(game 11: ea1)) + NB * NA * time(= bitstring, maxlength(game 11: ea), maxlength(game 11: ea1)) + time
+RESULT Could not prove secrecy of k3.

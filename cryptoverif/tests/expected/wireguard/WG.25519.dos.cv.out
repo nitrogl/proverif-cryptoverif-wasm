@@ -1,0 +1,1731 @@
+Doing expand get, insert and prove unique annotations... No change.
+Doing simplify (non-expanded game)... No change.
+Doing expand... No change.
+Doing remove assignments of findcond... No change.
+Doing simplify... Run simplify 2 time(s). Fixpoint reached.
+Done.
+Doing move all binders... No change.
+Doing SA rename new without array accesses and remove assignments of findcond... No change.
+Doing merge branches... No change.
+Proof of forall mac2, tau: key_t, msgbeta, Am: bitstring, iRm <= N_Resp_R; event(accepted_cookie(Am, iRm, tau, msgbeta, mac2)) ==> event(generated_cookie(Am, iRm, tau)) failed:
+  Found accepted_cookie(Am2', i_Resp_R, tau2', msgbeta, mac2) at 54
+  but could not prove event(generated_cookie(Am, iRm, tau))
+Proof of forall mac2, tau: key_t, msgbeta, Am: bitstring, iRm <= N_Resp_R; event(accepted_cookie(Am, iRm, tau, msgbeta, mac2)) ==> event(generated_cookie(Am, iRm, tau)) failed:
+  Found accepted_cookie(Am2', i_Resp_R, tau2', msgbeta, mac2) at 54
+  but could not prove event(generated_cookie(Am, iRm, tau))
+Trying equivalence suf_cma(mac2f)... Failed:
+At 9, term mac(Rm, Am') could not be discharged
+Trying equivalence prf(mac)... Transf. OK Proba. computed Transf. done Succeeded.
+Doing simplify (non-expanded game)... No change.
+Doing expand... Done.
+Doing remove assignments of findcond... Done.
+Doing simplify... Run simplify 2 time(s). Fixpoint reached.
+Done.
+Doing move all binders... Done.
+Doing SA rename new without array accesses and remove assignments of findcond... No change.
+Doing merge branches... No change.
+Proof of forall mac2, tau: key_t, msgbeta, Am: bitstring, iRm <= N_Resp_R; event(accepted_cookie(Am, iRm, tau, msgbeta, mac2)) ==> event(generated_cookie(Am, iRm, tau)) failed:
+  Found accepted_cookie(Am2', i_Resp_R, r_1[u], msgbeta, mac2) at 164
+  but could not prove event(generated_cookie(Am, iRm, tau))
+Trying equivalence suf_cma(mac2f)... Failed.
+Trying equivalence prf(mac)... Failed.
+Trying equivalence suf_cma_corrupt(mac2f) with r_1... Transf. OK Proba. computed Transf. done Succeeded.
+Doing simplify (non-expanded game)... Done.
+Doing expand... Done.
+Doing remove assignments of findcond... Done.
+Doing simplify... Run simplify 2 time(s). Maximum reached.
+Done.
+Doing move all binders... Done.
+Doing SA rename new without array accesses and remove assignments of findcond... Done.
+Doing merge branches... No change.
+Trying equivalence move_array(key_t) with r_1.... Transf. OK Proba. computed Transf. done Succeeded.
+Doing simplify (non-expanded game)... No change.
+Doing expand... Done.
+Doing remove assignments of findcond... No change.
+Doing simplify... Run simplify 2 time(s). Maximum reached.
+Done.
+Doing SA rename u_2... Done.
+Doing SA rename new without array accesses and remove assignments of findcond... Done.
+Doing simplify... Run simplify 2 time(s). Maximum reached.
+Done.
+Doing simplify... Run simplify 1 time(s). Fixpoint reached.
+No change.
+Doing move all binders... Done.
+Doing SA rename new without array accesses and remove assignments of findcond... Done.
+Doing merge branches... No change.
+Proved query forall mac2, tau: key_t, msgbeta, Am: bitstring, iRm <= N_Resp_R; event(accepted_cookie(Am, iRm, tau, msgbeta, mac2)) ==> event(generated_cookie(Am, iRm, tau))
+===================== Proof starts =======================
+Initial state
+Game 1 is
+     foreach i_Resp_R <= N_Resp_R do
+     c_resp_0() :=
+     Rm <-R key_t;
+     return();
+     ((
+       foreach i_Resp_C <= N_Resp_C do
+       c_resp_2(Am': bitstring) :=
+       tau: key_t <- mac(Rm, Am');
+       event generated_cookie(Am', i_Resp_R, tau);
+       return(tau)
+     ) | (
+       foreach i_Resp_T <= N_Resp_T do
+       c_resp_4(Am2': bitstring, msgbeta: bitstring, mac2: key_t) :=
+       tau2': key_t <- mac(Rm, Am2');
+       if {43}(mac2 = mac2f(msgbeta, tau2')) then
+       event accepted_cookie(Am2', i_Resp_R, tau2', msgbeta, mac2)
+     ))
+
+
+Applying simplify
+  - Simplification pass
+    - Replaced (mac2 = mac2f(msgbeta, tau2')) with verify2f(msgbeta, tau2', mac2) at 43
+yields
+
+Game 2 is
+     foreach i_Resp_R <= N_Resp_R do
+     c_resp_0() :=
+     Rm <-R key_t;
+     return();
+     ((
+       foreach i_Resp_C <= N_Resp_C do
+       c_resp_2(Am': bitstring) :=
+       tau: key_t <- mac(Rm, Am');
+       event generated_cookie(Am', i_Resp_R, tau);
+       return(tau)
+     ) | (
+       foreach i_Resp_T <= N_Resp_T do
+       c_resp_4(Am2': bitstring, msgbeta: bitstring, mac2: key_t) :=
+       tau2': key_t <- mac(Rm, Am2');
+       if verify2f(msgbeta, tau2', mac2) then
+       event accepted_cookie(Am2', i_Resp_R, tau2', msgbeta, mac2)
+     ))
+
+
+Applying equivalence prf(mac) [probability N_Resp_R * Pprf(time_1, N_Resp_T + N_Resp_C, max(maxlength(game 2: Am2'), maxlength(game 2: Am')))]
+  - Equivalence prf(mac) with variables: Rm -> k
+yields
+
+Game 3 is
+     foreach i_Resp_R <= N_Resp_R do
+     c_resp_0() :=
+     return();
+     ((
+       foreach i_Resp_C <= N_Resp_C do
+       c_resp_2(Am': bitstring) :=
+       tau: key_t <- (x_O: bitstring <- Am'; find [unique] u_3 = ri_6 <= N_Resp_C suchthat defined(x_O[ri_6], r[ri_6]) && (x_O = x_O[ri_6]) then r[u_3] orfind u_2 = ri_4 <= N_Resp_T suchthat defined(x_O_1[ri_4], r_1[ri_4]) && (x_O = x_O_1[ri_4]) then r_1[u_2] else r <-R key_t; r);
+       event generated_cookie(Am', i_Resp_R, tau);
+       return(tau)
+     ) | (
+       foreach i_Resp_T <= N_Resp_T do
+       c_resp_4(Am2': bitstring, msgbeta: bitstring, mac2: key_t) :=
+       tau2': key_t <- (x_O_1: bitstring <- Am2'; find [unique] u_1 = ri_2 <= N_Resp_C suchthat defined(x_O[ri_2], r[ri_2]) && (x_O_1 = x_O[ri_2]) then r[u_1] orfind u = ri <= N_Resp_T suchthat defined(x_O_1[ri], r_1[ri]) && (x_O_1 = x_O_1[ri]) then r_1[u] else r_1 <-R key_t; r_1);
+       if verify2f(msgbeta, tau2', mac2) then
+       event accepted_cookie(Am2', i_Resp_R, tau2', msgbeta, mac2)
+     ))
+
+
+Applying expand
+  - Expand if/find/let
+yields
+
+Game 4 is
+     foreach i_Resp_R <= N_Resp_R do
+     c_resp_0() :=
+     return();
+     ((
+       foreach i_Resp_C <= N_Resp_C do
+       c_resp_2(Am': bitstring) :=
+       x_O: bitstring <- Am';
+       find [unique] u_3 = ri_6 <= N_Resp_C suchthat defined(x_O[ri_6], r[ri_6]) && (x_O = x_O[ri_6]) then
+         tau: key_t <- r[u_3];
+         event generated_cookie(Am', i_Resp_R, tau);
+         return(tau)
+       orfind u_2 = ri_4 <= N_Resp_T suchthat defined(x_O_1[ri_4], r_1[ri_4]) && (x_O = x_O_1[ri_4]) then
+         tau: key_t <- r_1[u_2];
+         event generated_cookie(Am', i_Resp_R, tau);
+         return(tau)
+       else
+         r <-R key_t;
+         tau: key_t <- r;
+         event generated_cookie(Am', i_Resp_R, tau);
+         return(tau)
+     ) | (
+       foreach i_Resp_T <= N_Resp_T do
+       c_resp_4(Am2': bitstring, msgbeta: bitstring, mac2: key_t) :=
+       x_O_1: bitstring <- Am2';
+       find [unique] u_1 = ri_2 <= N_Resp_C suchthat defined(x_O[ri_2], r[ri_2]) && (x_O_1 = x_O[ri_2]) then
+       (
+         tau2': key_t <- r[u_1];
+         if verify2f(msgbeta, tau2', mac2) then
+         event accepted_cookie(Am2', i_Resp_R, tau2', msgbeta, mac2)
+       )
+       orfind u = ri <= N_Resp_T suchthat defined(x_O_1[ri], r_1[ri]) && (x_O_1 = x_O_1[ri]) then
+       (
+         tau2': key_t <- r_1[u];
+         if verify2f(msgbeta, tau2', mac2) then
+         event accepted_cookie(Am2', i_Resp_R, tau2', msgbeta, mac2)
+       )
+       else
+         r_1 <-R key_t;
+         tau2': key_t <- r_1;
+         if verify2f(msgbeta, tau2', mac2) then
+         event accepted_cookie(Am2', i_Resp_R, tau2', msgbeta, mac2)
+     ))
+
+
+Applying remove assignments of findcond
+  - Remove assignments on x_O_1 (definition point kept, all usages removed)
+  - Remove assignments on tau2' (definition removed, all usages removed)
+  - Remove assignments on tau2' (definition removed, all usages removed)
+  - Remove assignments on tau2' (definition removed, all usages removed)
+  - Remove assignments on x_O (definition point kept, all usages removed)
+  - Remove assignments on tau (definition removed, all usages removed)
+  - Remove assignments on tau (definition removed, all usages removed)
+  - Remove assignments on tau (definition removed, all usages removed)
+yields
+
+Game 5 is
+     foreach i_Resp_R <= N_Resp_R do
+     c_resp_0() :=
+     return();
+     ((
+       foreach i_Resp_C <= N_Resp_C do
+       c_resp_2(Am': bitstring) :=
+       x_O: bitstring <- cst_bitstring;
+  {9}  find [unique] u_3 = ri_6 <= N_Resp_C suchthat defined(Am'[ri_6], x_O[ri_6], r[ri_6]) && (Am' = Am'[ri_6]) then
+         event generated_cookie(Am', i_Resp_R, r[u_3]);
+         return(r[u_3])
+       orfind u_2 = ri_4 <= N_Resp_T suchthat defined(Am2'[ri_4], x_O_1[ri_4], r_1[ri_4]) && (Am' = Am2'[ri_4]) then
+         event generated_cookie(Am', i_Resp_R, r_1[u_2]);
+         return(r_1[u_2])
+       else
+         r <-R key_t;
+         event generated_cookie(Am', i_Resp_R, r);
+         return(r)
+     ) | (
+       foreach i_Resp_T <= N_Resp_T do
+       c_resp_4(Am2': bitstring, msgbeta: bitstring, mac2: key_t) :=
+       x_O_1: bitstring <- cst_bitstring;
+{101}  find [unique] u_1 = ri_2 <= N_Resp_C suchthat defined(Am'[ri_2], x_O[ri_2], r[ri_2]) && (Am2' = Am'[ri_2]) then
+       (
+         if verify2f(msgbeta, r[u_1], mac2) then
+         event accepted_cookie(Am2', i_Resp_R, r[u_1], msgbeta, mac2)
+       )
+       orfind u = ri <= N_Resp_T suchthat defined(Am2'[ri], x_O_1[ri], r_1[ri]) && (Am2' = Am2'[ri]) then
+       (
+         if verify2f(msgbeta, r_1[u], mac2) then
+         event accepted_cookie(Am2', i_Resp_R, r_1[u], msgbeta, mac2)
+       )
+       else
+         r_1 <-R key_t;
+         if verify2f(msgbeta, r_1, mac2) then
+         event accepted_cookie(Am2', i_Resp_R, r_1, msgbeta, mac2)
+     ))
+
+
+Applying simplify
+  - Simplification pass
+    - Replaced defined condition Am2'[ri], x_O_1[ri], r_1[ri] with r_1[ri], Am2'[ri] in find at 101
+    - Replaced defined condition Am'[ri_2], x_O[ri_2], r[ri_2] with r[ri_2], Am'[ri_2] in find at 101
+    - Replaced defined condition Am2'[ri_4], x_O_1[ri_4], r_1[ri_4] with r_1[ri_4], Am2'[ri_4] in find at 9
+    - Replaced defined condition Am'[ri_6], x_O[ri_6], r[ri_6] with r[ri_6], Am'[ri_6] in find at 9
+yields
+
+Game 6 is
+     foreach i_Resp_R <= N_Resp_R do
+     c_resp_0() :=
+     return();
+     ((
+       foreach i_Resp_C <= N_Resp_C do
+       c_resp_2(Am': bitstring) :=
+       x_O: bitstring <- cst_bitstring;
+       find [unique] u_3 = ri_6 <= N_Resp_C suchthat defined(r[ri_6], Am'[ri_6]) && (Am' = Am'[ri_6]) then
+         event generated_cookie(Am', i_Resp_R, r[u_3]);
+         return(r[u_3])
+       orfind u_2 = ri_4 <= N_Resp_T suchthat defined(r_1[ri_4], Am2'[ri_4]) && (Am' = Am2'[ri_4]) then
+         event generated_cookie(Am', i_Resp_R, r_1[u_2]);
+         return(r_1[u_2])
+       else
+         r <-R key_t;
+         event generated_cookie(Am', i_Resp_R, r);
+         return(r)
+     ) | (
+       foreach i_Resp_T <= N_Resp_T do
+       c_resp_4(Am2': bitstring, msgbeta: bitstring, mac2: key_t) :=
+       x_O_1: bitstring <- cst_bitstring;
+       find [unique] u_1 = ri_2 <= N_Resp_C suchthat defined(r[ri_2], Am'[ri_2]) && (Am2' = Am'[ri_2]) then
+       (
+         if verify2f(msgbeta, r[u_1], mac2) then
+         event accepted_cookie(Am2', i_Resp_R, r[u_1], msgbeta, mac2)
+       )
+       orfind u = ri <= N_Resp_T suchthat defined(r_1[ri], Am2'[ri]) && (Am2' = Am2'[ri]) then
+       (
+         if verify2f(msgbeta, r_1[u], mac2) then
+         event accepted_cookie(Am2', i_Resp_R, r_1[u], msgbeta, mac2)
+       )
+       else
+         r_1 <-R key_t;
+         if verify2f(msgbeta, r_1, mac2) then
+         event accepted_cookie(Am2', i_Resp_R, r_1, msgbeta, mac2)
+     ))
+
+
+Applying move all binders
+  - Move assignment to x_O_1
+  - Move assignment to x_O
+yields
+
+Game 7 is
+     foreach i_Resp_R <= N_Resp_R do
+     c_resp_0() :=
+     return();
+     ((
+       foreach i_Resp_C <= N_Resp_C do
+       c_resp_2(Am': bitstring) :=
+       find [unique] u_3 = ri_6 <= N_Resp_C suchthat defined(r[ri_6], Am'[ri_6]) && (Am' = Am'[ri_6]) then
+         event generated_cookie(Am', i_Resp_R, r[u_3]);
+         return(r[u_3])
+       orfind u_2 = ri_4 <= N_Resp_T suchthat defined(r_1[ri_4], Am2'[ri_4]) && (Am' = Am2'[ri_4]) then
+         event generated_cookie(Am', i_Resp_R, r_1[u_2]);
+         return(r_1[u_2])
+       else
+         r <-R key_t;
+         event generated_cookie(Am', i_Resp_R, r);
+         return(r)
+     ) | (
+       foreach i_Resp_T <= N_Resp_T do
+       c_resp_4(Am2': bitstring, msgbeta: bitstring, mac2: key_t) :=
+       find [unique] u_1 = ri_2 <= N_Resp_C suchthat defined(r[ri_2], Am'[ri_2]) && (Am2' = Am'[ri_2]) then
+       (
+         if verify2f(msgbeta, r[u_1], mac2) then
+         event accepted_cookie(Am2', i_Resp_R, r[u_1], msgbeta, mac2)
+       )
+       orfind u = ri <= N_Resp_T suchthat defined(r_1[ri], Am2'[ri]) && (Am2' = Am2'[ri]) then
+       (
+         if verify2f(msgbeta, r_1[u], mac2) then
+         event accepted_cookie(Am2', i_Resp_R, r_1[u], msgbeta, mac2)
+       )
+       else
+         r_1 <-R key_t;
+         if verify2f(msgbeta, r_1, mac2) then
+         event accepted_cookie(Am2', i_Resp_R, r_1, msgbeta, mac2)
+     ))
+
+
+Applying equivalence suf_cma_corrupt(mac2f) with r_1 [probability #c_resp_4 * Pmac(time_2, 0, 1 + N_Resp_T, 0, maxlength(game 7: msgbeta))]
+  - Equivalence suf_cma_corrupt(mac2f) with variables: r_1 -> k
+yields
+
+Game 8 is
+     foreach i_Resp_R <= N_Resp_R do
+     c_resp_0() :=
+     return();
+     ((
+       foreach i_Resp_C <= N_Resp_C do
+       c_resp_2(Am': bitstring) :=
+       find [unique] u_3 = ri_6 <= N_Resp_C suchthat defined(r[ri_6], Am'[ri_6]) && (Am' = Am'[ri_6]) then
+         event generated_cookie(Am', i_Resp_R, r[u_3]);
+         return(r[u_3])
+       orfind u_2 = ri_4 <= N_Resp_T suchthat defined(r_1[ri_4], Am2'[ri_4]) && (Am' = Am2'[ri_4]) then
+         event generated_cookie(Am', i_Resp_R, r_1[u_2]);
+         return((corrupt: bool <- cst_bool; r_1[u_2]))
+       else
+         r <-R key_t;
+         event generated_cookie(Am', i_Resp_R, r);
+         return(r)
+     ) | (
+       foreach i_Resp_T <= N_Resp_T do
+       c_resp_4(Am2': bitstring, msgbeta: bitstring, mac2: key_t) :=
+       find [unique] u_1 = ri_2 <= N_Resp_C suchthat defined(r[ri_2], Am'[ri_2]) && (Am2' = Am'[ri_2]) then
+       (
+         if verify2f(msgbeta, r[u_1], mac2) then
+         event accepted_cookie(Am2', i_Resp_R, r[u_1], msgbeta, mac2)
+       )
+       orfind u = ri <= N_Resp_T suchthat defined(r_1[ri], Am2'[ri]) && (Am2' = Am2'[ri]) then
+       (
+         if (m_1: bitstring <- msgbeta; ma_1: key_t <- mac2; find u_6 = ri_14 <= N_Resp_C, u_7 = ri_15 <= N_Resp_R suchthat defined(corrupt[ri_14, ri_15], u_2[ri_14, ri_15]) && (u = u_2[ri_14, ri_15]) && (i_Resp_R = ri_15) then verify2f(m_1, r_1[u], ma_1) else {189}find  else false) then
+         event accepted_cookie(Am2', i_Resp_R, r_1[u], msgbeta, mac2)
+       )
+       else
+         r_1 <-R key_t;
+         if (m: bitstring <- msgbeta; ma: key_t <- mac2; {223}find u_4 = ri_10 <= N_Resp_C, u_5 = ri_11 <= N_Resp_R suchthat defined(u_2[ri_10, ri_11], corrupt[ri_10, ri_11]) && {228}((i_Resp_T = u_2[ri_10, ri_11]) && (i_Resp_R = ri_11)) then verify2f(m, r_1, ma) else {247}find  else false) then
+         event accepted_cookie(Am2', i_Resp_R, r_1, msgbeta, mac2)
+     ))
+
+
+Applying simplify (non-expanded game)
+  - Simplification pass
+    - Find at 189 removed (else branch kept if any)
+    - Replaced ((i_Resp_T = u_2[ri_10, ri_11]) && (i_Resp_R = ri_11)) with false at 228
+    - Remove branch 1 in find at 223
+    - Find at 223 removed (else branch kept if any)
+    - Find at 247 removed (else branch kept if any)
+yields
+
+Game 9 is
+     foreach i_Resp_R <= N_Resp_R do
+     c_resp_0() :=
+     return();
+     ((
+       foreach i_Resp_C <= N_Resp_C do
+       c_resp_2(Am': bitstring) :=
+       find [unique] u_3 = ri_6 <= N_Resp_C suchthat defined(r[ri_6], Am'[ri_6]) && (Am' = Am'[ri_6]) then
+         event generated_cookie(Am', i_Resp_R, r[u_3]);
+         return(r[u_3])
+       orfind u_2 = ri_4 <= N_Resp_T suchthat defined(r_1[ri_4], Am2'[ri_4]) && (Am' = Am2'[ri_4]) then
+         event generated_cookie(Am', i_Resp_R, r_1[u_2]);
+         return((corrupt: bool <- cst_bool; r_1[u_2]))
+       else
+         r <-R key_t;
+         event generated_cookie(Am', i_Resp_R, r);
+         return(r)
+     ) | (
+       foreach i_Resp_T <= N_Resp_T do
+       c_resp_4(Am2': bitstring, msgbeta: bitstring, mac2: key_t) :=
+       find [unique] u_1 = ri_2 <= N_Resp_C suchthat defined(r[ri_2], Am'[ri_2]) && (Am2' = Am'[ri_2]) then
+       (
+         if verify2f(msgbeta, r[u_1], mac2) then
+         event accepted_cookie(Am2', i_Resp_R, r[u_1], msgbeta, mac2)
+       )
+       orfind u = ri <= N_Resp_T suchthat defined(r_1[ri], Am2'[ri]) && (Am2' = Am2'[ri]) then
+       (
+{152}    if (m_1: bitstring <- msgbeta; ma_1: key_t <- mac2; find u_6 = ri_14 <= N_Resp_C, u_7 = ri_15 <= N_Resp_R suchthat defined(corrupt[ri_14, ri_15], u_2[ri_14, ri_15]) && (u = u_2[ri_14, ri_15]) && (i_Resp_R = ri_15) then verify2f(m_1, r_1[u], ma_1) else false) then
+         event accepted_cookie(Am2', i_Resp_R, r_1[u], msgbeta, mac2)
+       )
+       else
+         r_1 <-R key_t;
+{213}    if {214}(m: bitstring <- msgbeta; {218}ma: key_t <- mac2; false) then
+         event accepted_cookie(Am2', i_Resp_R, r_1, msgbeta, mac2)
+     ))
+
+
+Applying expand
+  - Expand if/find/let
+    - Test at 213 always false
+    - Remove let at 218
+    - Remove let at 214
+    - Test at 152 always false
+yields
+
+Game 10 is
+     foreach i_Resp_R <= N_Resp_R do
+     c_resp_0() :=
+     return();
+     ((
+       foreach i_Resp_C <= N_Resp_C do
+       c_resp_2(Am': bitstring) :=
+       find [unique] u_3 = ri_6 <= N_Resp_C suchthat defined(r[ri_6], Am'[ri_6]) && (Am' = Am'[ri_6]) then
+         event generated_cookie(Am', i_Resp_R, r[u_3]);
+         return(r[u_3])
+       orfind u_2 = ri_4 <= N_Resp_T suchthat defined(r_1[ri_4], Am2'[ri_4]) && (Am' = Am2'[ri_4]) then
+         event generated_cookie(Am', i_Resp_R, r_1[u_2]);
+         corrupt: bool <- cst_bool;
+         return(r_1[u_2])
+       else
+         r <-R key_t;
+         event generated_cookie(Am', i_Resp_R, r);
+         return(r)
+     ) | (
+       foreach i_Resp_T <= N_Resp_T do
+       c_resp_4(Am2': bitstring, msgbeta: bitstring, mac2: key_t) :=
+       find [unique] u_1 = ri_2 <= N_Resp_C suchthat defined(r[ri_2], Am'[ri_2]) && (Am2' = Am'[ri_2]) then
+       (
+         if verify2f(msgbeta, r[u_1], mac2) then
+         event accepted_cookie(Am2', i_Resp_R, r[u_1], msgbeta, mac2)
+       )
+       orfind u = ri <= N_Resp_T suchthat defined(r_1[ri], Am2'[ri]) && (Am2' = Am2'[ri]) then
+       (
+         m_1: bitstring <- msgbeta;
+         ma_1: key_t <- mac2;
+         find u_6 = ri_14 <= N_Resp_C, u_7 = ri_15 <= N_Resp_R suchthat defined(corrupt[ri_14, ri_15], u_2[ri_14, ri_15]) && (u = u_2[ri_14, ri_15]) && (i_Resp_R = ri_15) then
+         if verify2f(m_1, r_1[u], ma_1) then
+         event accepted_cookie(Am2', i_Resp_R, r_1[u], msgbeta, mac2)
+       )
+       else
+         r_1 <-R key_t
+     ))
+
+
+Applying remove assignments of findcond
+  - Remove assignments on m_1 (definition removed, all usages removed)
+  - Remove assignments on ma_1 (definition removed, all usages removed)
+yields
+
+Game 11 is
+     foreach i_Resp_R <= N_Resp_R do
+     c_resp_0() :=
+     return();
+     ((
+       foreach i_Resp_C <= N_Resp_C do
+       c_resp_2(Am': bitstring) :=
+       find [unique] u_3 = ri_6 <= N_Resp_C suchthat defined(r[ri_6], Am'[ri_6]) && (Am' = Am'[ri_6]) then
+         event generated_cookie(Am', i_Resp_R, r[u_3]);
+         return(r[u_3])
+       orfind u_2 = ri_4 <= N_Resp_T suchthat defined(r_1[ri_4], Am2'[ri_4]) && (Am' = Am2'[ri_4]) then
+         event generated_cookie(Am', i_Resp_R, r_1[u_2]);
+         corrupt: bool <- cst_bool;
+         return(r_1[u_2])
+       else
+         r <-R key_t;
+         event generated_cookie(Am', i_Resp_R, r);
+         return(r)
+     ) | (
+       foreach i_Resp_T <= N_Resp_T do
+       c_resp_4(Am2': bitstring, msgbeta: bitstring, mac2: key_t) :=
+       find [unique] u_1 = ri_2 <= N_Resp_C suchthat defined(r[ri_2], Am'[ri_2]) && (Am2' = Am'[ri_2]) then
+       (
+         if verify2f(msgbeta, r[u_1], mac2) then
+         event accepted_cookie(Am2', i_Resp_R, r[u_1], msgbeta, mac2)
+       )
+       orfind u = ri <= N_Resp_T suchthat defined(r_1[ri], Am2'[ri]) && (Am2' = Am2'[ri]) then
+       (
+{153}    find u_6 = ri_14 <= N_Resp_C, u_7 = ri_15 <= N_Resp_R suchthat defined(corrupt[ri_14, ri_15], u_2[ri_14, ri_15]) && (u = u_2[ri_14, ri_15]) && (i_Resp_R = ri_15) then
+         if verify2f(msgbeta, r_1[u], mac2) then
+         event accepted_cookie(Am2', i_Resp_R, r_1[u], msgbeta, mac2)
+       )
+       else
+         r_1 <-R key_t
+     ))
+
+
+Applying simplify
+  - Simplification pass
+    - In branch 1 of find at 153, substituting u_7 with i_Resp_R
+    - Replaced defined condition corrupt[ri_14, ri_15], u_2[ri_14, ri_15] with u_2[ri_14] in find at 153
+yields
+
+Game 12 is
+     foreach i_Resp_R <= N_Resp_R do
+     c_resp_0() :=
+     return();
+     ((
+       foreach i_Resp_C <= N_Resp_C do
+       c_resp_2(Am': bitstring) :=
+       find [unique] u_3 = ri_6 <= N_Resp_C suchthat defined(r[ri_6], Am'[ri_6]) && (Am' = Am'[ri_6]) then
+         event generated_cookie(Am', i_Resp_R, r[u_3]);
+         return(r[u_3])
+       orfind u_2 = ri_4 <= N_Resp_T suchthat defined(r_1[ri_4], Am2'[ri_4]) && (Am' = Am2'[ri_4]) then
+         event generated_cookie(Am', i_Resp_R, r_1[u_2]);
+         corrupt: bool <- cst_bool;
+         return(r_1[u_2])
+       else
+         r <-R key_t;
+         event generated_cookie(Am', i_Resp_R, r);
+         return(r)
+     ) | (
+       foreach i_Resp_T <= N_Resp_T do
+       c_resp_4(Am2': bitstring, msgbeta: bitstring, mac2: key_t) :=
+       find [unique] u_1 = ri_2 <= N_Resp_C suchthat defined(r[ri_2], Am'[ri_2]) && (Am2' = Am'[ri_2]) then
+       (
+         if verify2f(msgbeta, r[u_1], mac2) then
+         event accepted_cookie(Am2', i_Resp_R, r[u_1], msgbeta, mac2)
+       )
+       orfind u = ri <= N_Resp_T suchthat defined(r_1[ri], Am2'[ri]) && (Am2' = Am2'[ri]) then
+       (
+         find u_6 = ri_14 <= N_Resp_C suchthat defined(u_2[ri_14]) && {156}((u = u_2[ri_14]) && (i_Resp_R = i_Resp_R)) then
+         u_7 <= N_Resp_R <- i_Resp_R;
+         if verify2f(msgbeta, r_1[u], mac2) then
+         event accepted_cookie(Am2', i_Resp_R, r_1[u], msgbeta, mac2)
+       )
+       else
+         r_1 <-R key_t
+     ))
+
+
+Applying simplify
+  - Simplification pass
+    - Replaced ((u = u_2[ri_14]) && (i_Resp_R = i_Resp_R)) with (u = u_2[ri_14]) at 156
+yields
+
+Game 13 is
+     foreach i_Resp_R <= N_Resp_R do
+     c_resp_0() :=
+     return();
+     ((
+       foreach i_Resp_C <= N_Resp_C do
+       c_resp_2(Am': bitstring) :=
+       find [unique] u_3 = ri_6 <= N_Resp_C suchthat defined(r[ri_6], Am'[ri_6]) && (Am' = Am'[ri_6]) then
+         event generated_cookie(Am', i_Resp_R, r[u_3]);
+         return(r[u_3])
+       orfind u_2 = ri_4 <= N_Resp_T suchthat defined(r_1[ri_4], Am2'[ri_4]) && (Am' = Am2'[ri_4]) then
+         event generated_cookie(Am', i_Resp_R, r_1[u_2]);
+         corrupt: bool <- cst_bool;
+         return(r_1[u_2])
+       else
+         r <-R key_t;
+         event generated_cookie(Am', i_Resp_R, r);
+         return(r)
+     ) | (
+       foreach i_Resp_T <= N_Resp_T do
+       c_resp_4(Am2': bitstring, msgbeta: bitstring, mac2: key_t) :=
+       find [unique] u_1 = ri_2 <= N_Resp_C suchthat defined(r[ri_2], Am'[ri_2]) && (Am2' = Am'[ri_2]) then
+       (
+         if verify2f(msgbeta, r[u_1], mac2) then
+         event accepted_cookie(Am2', i_Resp_R, r[u_1], msgbeta, mac2)
+       )
+       orfind u = ri <= N_Resp_T suchthat defined(r_1[ri], Am2'[ri]) && (Am2' = Am2'[ri]) then
+       (
+         find u_6 = ri_14 <= N_Resp_C suchthat defined(u_2[ri_14]) && (u = u_2[ri_14]) then
+         u_7 <= N_Resp_R <- i_Resp_R;
+         if verify2f(msgbeta, r_1[u], mac2) then
+         event accepted_cookie(Am2', i_Resp_R, r_1[u], msgbeta, mac2)
+       )
+       else
+         r_1 <-R key_t
+     ))
+
+
+Applying move all binders
+  - Move assignment to u_7
+yields
+
+Game 14 is
+     foreach i_Resp_R <= N_Resp_R do
+     c_resp_0() :=
+     return();
+     ((
+       foreach i_Resp_C <= N_Resp_C do
+       c_resp_2(Am': bitstring) :=
+       find [unique] u_3 = ri_6 <= N_Resp_C suchthat defined(r[ri_6], Am'[ri_6]) && (Am' = Am'[ri_6]) then
+         event generated_cookie(Am', i_Resp_R, r[u_3]);
+         return(r[u_3])
+       orfind u_2 = ri_4 <= N_Resp_T suchthat defined(r_1[ri_4], Am2'[ri_4]) && (Am' = Am2'[ri_4]) then
+         event generated_cookie(Am', i_Resp_R, r_1[u_2]);
+         corrupt: bool <- cst_bool;
+         return(r_1[u_2])
+       else
+         r <-R key_t;
+         event generated_cookie(Am', i_Resp_R, r);
+         return(r)
+     ) | (
+       foreach i_Resp_T <= N_Resp_T do
+       c_resp_4(Am2': bitstring, msgbeta: bitstring, mac2: key_t) :=
+       find [unique] u_1 = ri_2 <= N_Resp_C suchthat defined(r[ri_2], Am'[ri_2]) && (Am2' = Am'[ri_2]) then
+       (
+         if verify2f(msgbeta, r[u_1], mac2) then
+         event accepted_cookie(Am2', i_Resp_R, r[u_1], msgbeta, mac2)
+       )
+       orfind u = ri <= N_Resp_T suchthat defined(r_1[ri], Am2'[ri]) && (Am2' = Am2'[ri]) then
+       (
+         find u_6 = ri_14 <= N_Resp_C suchthat defined(u_2[ri_14]) && (u = u_2[ri_14]) then
+         if verify2f(msgbeta, r_1[u], mac2) then
+         event accepted_cookie(Am2', i_Resp_R, r_1[u], msgbeta, mac2)
+       )
+       else
+         r_1 <-R key_t
+     ))
+
+
+Applying SA rename new without array accesses and remove assignments of findcond
+  - Remove assignments on corrupt (definition removed, all usages removed)
+yields
+
+Game 15 is
+     foreach i_Resp_R <= N_Resp_R do
+     c_resp_0() :=
+     return();
+     ((
+       foreach i_Resp_C <= N_Resp_C do
+       c_resp_2(Am': bitstring) :=
+       find [unique] u_3 = ri_6 <= N_Resp_C suchthat defined(r[ri_6], Am'[ri_6]) && (Am' = Am'[ri_6]) then
+         event generated_cookie(Am', i_Resp_R, r[u_3]);
+         return(r[u_3])
+       orfind u_2 = ri_4 <= N_Resp_T suchthat defined(r_1[ri_4], Am2'[ri_4]) && (Am' = Am2'[ri_4]) then
+         event generated_cookie(Am', i_Resp_R, r_1[u_2]);
+         return(r_1[u_2])
+       else
+         r <-R key_t;
+         event generated_cookie(Am', i_Resp_R, r);
+         return(r)
+     ) | (
+       foreach i_Resp_T <= N_Resp_T do
+       c_resp_4(Am2': bitstring, msgbeta: bitstring, mac2: key_t) :=
+       find [unique] u_1 = ri_2 <= N_Resp_C suchthat defined(r[ri_2], Am'[ri_2]) && (Am2' = Am'[ri_2]) then
+       (
+         if verify2f(msgbeta, r[u_1], mac2) then
+         event accepted_cookie(Am2', i_Resp_R, r[u_1], msgbeta, mac2)
+       )
+       orfind u = ri <= N_Resp_T suchthat defined(r_1[ri], Am2'[ri]) && (Am2' = Am2'[ri]) then
+       (
+         find u_6 = ri_14 <= N_Resp_C suchthat defined(u_2[ri_14]) && (u = u_2[ri_14]) then
+         if verify2f(msgbeta, r_1[u], mac2) then
+         event accepted_cookie(Am2', i_Resp_R, r_1[u], msgbeta, mac2)
+       )
+       else
+         r_1 <-R key_t
+     ))
+
+
+Applying equivalence move_array(key_t) with r_1.
+  - Equivalence move_array(key_t) with variables: r_1 -> X.
+yields
+
+Game 16 is
+     foreach i_Resp_R <= N_Resp_R do
+     c_resp_0() :=
+     return();
+     ((
+       foreach i_Resp_C <= N_Resp_C do
+       c_resp_2(Am': bitstring) :=
+       find [unique] u_3 = ri_6 <= N_Resp_C suchthat defined(r[ri_6], Am'[ri_6]) && (Am' = Am'[ri_6]) then
+         event generated_cookie(Am', i_Resp_R, r[u_3]);
+         return(r[u_3])
+       orfind u_2 = ri_4 <= N_Resp_T suchthat defined(r_1[ri_4], Am2'[ri_4]) && (Am' = Am2'[ri_4]) then
+         event generated_cookie(Am', i_Resp_R, (find [unique] u_38 = ri_46 <= N_Resp_C, u_39 = ri_47 <= N_Resp_R suchthat defined(Y[ri_46, ri_47], u_2[ri_46, ri_47]) && (u_2[ri_46, ri_47] = u_2) && (ri_47 = i_Resp_R) then Y[u_38, u_39] orfind u_36 = ri_44 <= N_Resp_C, u_37 = ri_45 <= N_Resp_R suchthat defined(Y_1[ri_44, ri_45], u_2[ri_44, ri_45]) && (u_2[ri_44, ri_45] = u_2) && (ri_45 = i_Resp_R) then Y_1[u_36, u_37] orfind u_34 = ri_42 <= N_Resp_T, u_35 = ri_43 <= N_Resp_R suchthat defined(Y_2[ri_42, ri_43], u[ri_42, ri_43]) && (u[ri_42, ri_43] = u_2) && (ri_43 = i_Resp_R) then Y_2[u_34, u_35] orfind u_32 = ri_40 <= N_Resp_T, u_33 = ri_41 <= N_Resp_R suchthat defined(Y_3[ri_40, ri_41], u[ri_40, ri_41]) && (u[ri_40, ri_41] = u_2) && (ri_41 = i_Resp_R) then Y_3[u_32, u_33] else Y <-R key_t; Y));
+         return({154}(find [unique] u_30 = ri_38 <= N_Resp_C, u_31 = ri_39 <= N_Resp_R suchthat defined(Y[ri_38, ri_39], u_2[ri_38, ri_39]) && (u_2[ri_38, ri_39] = u_2) && (ri_39 = i_Resp_R) then Y[u_30, u_31] orfind u_28 = ri_36 <= N_Resp_C, u_29 = ri_37 <= N_Resp_R suchthat defined(Y_1[ri_36, ri_37], u_2[ri_36, ri_37]) && (u_2[ri_36, ri_37] = u_2) && (ri_37 = i_Resp_R) then Y_1[u_28, u_29] orfind u_26 = ri_34 <= N_Resp_T, u_27 = ri_35 <= N_Resp_R suchthat defined(Y_2[ri_34, ri_35], u[ri_34, ri_35]) && (u[ri_34, ri_35] = u_2) && (ri_35 = i_Resp_R) then Y_2[u_26, u_27] orfind u_24 = ri_32 <= N_Resp_T, u_25 = ri_33 <= N_Resp_R suchthat defined(Y_3[ri_32, ri_33], u[ri_32, ri_33]) && (u[ri_32, ri_33] = u_2) && (ri_33 = i_Resp_R) then Y_3[u_24, u_25] else Y_1 <-R key_t; Y_1))
+       else
+         r <-R key_t;
+         event generated_cookie(Am', i_Resp_R, r);
+         return(r)
+     ) | (
+       foreach i_Resp_T <= N_Resp_T do
+       c_resp_4(Am2': bitstring, msgbeta: bitstring, mac2: key_t) :=
+       find [unique] u_1 = ri_2 <= N_Resp_C suchthat defined(r[ri_2], Am'[ri_2]) && (Am2' = Am'[ri_2]) then
+       (
+         if verify2f(msgbeta, r[u_1], mac2) then
+         event accepted_cookie(Am2', i_Resp_R, r[u_1], msgbeta, mac2)
+       )
+       orfind u = ri <= N_Resp_T suchthat defined(r_1[ri], Am2'[ri]) && (Am2' = Am2'[ri]) then
+       (
+         find u_6 = ri_14 <= N_Resp_C suchthat defined(u_2[ri_14]) && (u = u_2[ri_14]) then
+         if verify2f(msgbeta, (find [unique] u_22 = ri_30 <= N_Resp_C, u_23 = ri_31 <= N_Resp_R suchthat defined(Y[ri_30, ri_31], u_2[ri_30, ri_31]) && (u_2[ri_30, ri_31] = u) && (ri_31 = i_Resp_R) then Y[u_22, u_23] orfind u_20 = ri_28 <= N_Resp_C, u_21 = ri_29 <= N_Resp_R suchthat defined(Y_1[ri_28, ri_29], u_2[ri_28, ri_29]) && (u_2[ri_28, ri_29] = u) && (ri_29 = i_Resp_R) then Y_1[u_20, u_21] orfind u_18 = ri_26 <= N_Resp_T, u_19 = ri_27 <= N_Resp_R suchthat defined(Y_2[ri_26, ri_27], u[ri_26, ri_27]) && (u[ri_26, ri_27] = u) && (ri_27 = i_Resp_R) then Y_2[u_18, u_19] orfind u_16 = ri_24 <= N_Resp_T, u_17 = ri_25 <= N_Resp_R suchthat defined(Y_3[ri_24, ri_25], u[ri_24, ri_25]) && (u[ri_24, ri_25] = u) && (ri_25 = i_Resp_R) then Y_3[u_16, u_17] else Y_2 <-R key_t; Y_2), mac2) then
+         event accepted_cookie(Am2', i_Resp_R, {446}(find [unique] u_14 = ri_22 <= N_Resp_C, u_15 = ri_23 <= N_Resp_R suchthat defined(Y[ri_22, ri_23], u_2[ri_22, ri_23]) && (u_2[ri_22, ri_23] = u) && (ri_23 = i_Resp_R) then Y[u_14, u_15] orfind u_12 = ri_20 <= N_Resp_C, u_13 = ri_21 <= N_Resp_R suchthat defined(Y_1[ri_20, ri_21], u_2[ri_20, ri_21]) && (u_2[ri_20, ri_21] = u) && (ri_21 = i_Resp_R) then Y_1[u_12, u_13] orfind u_10 = ri_18 <= N_Resp_T, u_11 = ri_19 <= N_Resp_R suchthat defined(Y_2[ri_18, ri_19], u[ri_18, ri_19]) && (u[ri_18, ri_19] = u) && (ri_19 = i_Resp_R) then Y_2[u_10, u_11] orfind u_8 = ri_16 <= N_Resp_T, u_9 = ri_17 <= N_Resp_R suchthat defined(Y_3[ri_16, ri_17], u[ri_16, ri_17]) && (u[ri_16, ri_17] = u) && (ri_17 = i_Resp_R) then Y_3[u_8, u_9] else Y_3 <-R key_t; Y_3), msgbeta, mac2)
+       )
+       else
+         r_1: key_t <- cst_key_t
+     ))
+
+
+Applying expand
+  - Expand if/find/let
+    - Remove branch 4 in find at 446
+    - Remove branch 2 in find at 446
+    - Remove branch 1 in find at 446
+    - Remove branch 3 in find at 446
+    - Remove branch 2 in find at 446
+    - Remove branch 1 in find at 446
+    - Remove branch 4 in find at 446
+    - Remove branch 2 in find at 446
+    - Remove branch 1 in find at 446
+    - Remove branch 4 in find at 446
+    - Remove branch 3 in find at 446
+    - Remove branch 1 in find at 446
+    - Remove branch 4 in find at 446
+    - Remove branch 3 in find at 446
+    - Remove branch 2 in find at 446
+    - Remove branch 4 in find at 154
+    - Remove branch 3 in find at 154
+    - Remove branch 2 in find at 154
+    - Remove branch 3 in find at 154
+    - Remove branch 2 in find at 154
+    - Remove branch 1 in find at 154
+    - Remove branch 4 in find at 154
+    - Remove branch 2 in find at 154
+    - Remove branch 1 in find at 154
+    - Remove branch 4 in find at 154
+    - Remove branch 3 in find at 154
+    - Remove branch 1 in find at 154
+    - Remove branch 4 in find at 154
+    - Remove branch 3 in find at 154
+    - Remove branch 2 in find at 154
+yields
+
+Game 17 is
+     foreach i_Resp_R <= N_Resp_R do
+     c_resp_0() :=
+     return();
+     ((
+       foreach i_Resp_C <= N_Resp_C do
+       c_resp_2(Am': bitstring) :=
+  {7}  find [unique] u_3 = ri_6 <= N_Resp_C suchthat defined(r[ri_6], Am'[ri_6]) && (Am' = Am'[ri_6]) then
+         event generated_cookie(Am', i_Resp_R, r[u_3]);
+         return(r[u_3])
+       orfind u_2 = ri_4 <= N_Resp_T suchthat defined(r_1[ri_4], Am2'[ri_4]) && (Am' = Am2'[ri_4]) then
+ {51}    find [unique] u_38 = ri_46 <= N_Resp_C, u_39 = ri_47 <= N_Resp_R suchthat defined(Y[ri_46, ri_47], u_2[ri_46, ri_47]) && (u_2[ri_46, ri_47] = u_2) && (ri_47 = i_Resp_R) then
+           event generated_cookie(Am', i_Resp_R, Y[u_38, u_39]);
+           find [unique] u_30 = ri_38 <= N_Resp_C, u_31 = ri_39 <= N_Resp_R suchthat defined(Y[ri_38, ri_39], u_2[ri_38, ri_39]) && (u_2[ri_38, ri_39] = u_2) && (ri_39 = i_Resp_R) then
+             return(Y[u_30, u_31])
+           else
+             Y_1 <-R key_t;
+             return(Y_1)
+         orfind u_36 = ri_44 <= N_Resp_C, u_37 = ri_45 <= N_Resp_R suchthat defined(Y_1[ri_44, ri_45], u_2[ri_44, ri_45]) && (u_2[ri_44, ri_45] = u_2) && (ri_45 = i_Resp_R) then
+           event generated_cookie(Am', i_Resp_R, Y_1[u_36, u_37]);
+           find [unique] u_28 = ri_36 <= N_Resp_C, u_29 = ri_37 <= N_Resp_R suchthat defined(Y_1[ri_36, ri_37], u_2[ri_36, ri_37]) && (u_2[ri_36, ri_37] = u_2) && (ri_37 = i_Resp_R) then
+             return(Y_1[u_28, u_29])
+           else
+             Y_1 <-R key_t;
+             return(Y_1)
+         orfind u_34 = ri_42 <= N_Resp_T, u_35 = ri_43 <= N_Resp_R suchthat defined(Y_2[ri_42, ri_43], u[ri_42, ri_43]) && (u[ri_42, ri_43] = u_2) && (ri_43 = i_Resp_R) then
+           event generated_cookie(Am', i_Resp_R, Y_2[u_34, u_35]);
+           find [unique] u_26 = ri_34 <= N_Resp_T, u_27 = ri_35 <= N_Resp_R suchthat defined(Y_2[ri_34, ri_35], u[ri_34, ri_35]) && (u[ri_34, ri_35] = u_2) && (ri_35 = i_Resp_R) then
+             return(Y_2[u_26, u_27])
+           else
+             Y_1 <-R key_t;
+             return(Y_1)
+         orfind u_32 = ri_40 <= N_Resp_T, u_33 = ri_41 <= N_Resp_R suchthat defined(Y_3[ri_40, ri_41], u[ri_40, ri_41]) && (u[ri_40, ri_41] = u_2) && (ri_41 = i_Resp_R) then
+           event generated_cookie(Am', i_Resp_R, Y_3[u_32, u_33]);
+           find [unique] u_24 = ri_32 <= N_Resp_T, u_25 = ri_33 <= N_Resp_R suchthat defined(Y_3[ri_32, ri_33], u[ri_32, ri_33]) && (u[ri_32, ri_33] = u_2) && (ri_33 = i_Resp_R) then
+             return(Y_3[u_24, u_25])
+           else
+             Y_1 <-R key_t;
+             return(Y_1)
+         else
+           Y <-R key_t;
+           event generated_cookie(Am', i_Resp_R, Y);
+           find [unique] u_30 = ri_38 <= N_Resp_C, u_31 = ri_39 <= N_Resp_R suchthat defined(Y[ri_38, ri_39], u_2[ri_38, ri_39]) && (u_2[ri_38, ri_39] = u_2) && (ri_39 = i_Resp_R) then
+             return(Y[u_30, u_31])
+           else
+             Y_1 <-R key_t;
+             return(Y_1)
+       else
+         r <-R key_t;
+         event generated_cookie(Am', i_Resp_R, r);
+         return(r)
+     ) | (
+       foreach i_Resp_T <= N_Resp_T do
+       c_resp_4(Am2': bitstring, msgbeta: bitstring, mac2: key_t) :=
+       find [unique] u_1 = ri_2 <= N_Resp_C suchthat defined(r[ri_2], Am'[ri_2]) && (Am2' = Am'[ri_2]) then
+       (
+         if verify2f(msgbeta, r[u_1], mac2) then
+         event accepted_cookie(Am2', i_Resp_R, r[u_1], msgbeta, mac2)
+       )
+       orfind u = ri <= N_Resp_T suchthat defined(r_1[ri], Am2'[ri]) && (Am2' = Am2'[ri]) then
+       (
+         find u_6 = ri_14 <= N_Resp_C suchthat defined(u_2[ri_14]) && (u = u_2[ri_14]) then
+{432}    find [unique] u_22 = ri_30 <= N_Resp_C, u_23 = ri_31 <= N_Resp_R suchthat defined(Y[ri_30, ri_31], u_2[ri_30, ri_31]) && (u_2[ri_30, ri_31] = u) && (ri_31 = i_Resp_R) then
+         (
+           if verify2f(msgbeta, Y[u_22, u_23], mac2) then
+{463}      find [unique] u_14 = ri_22 <= N_Resp_C, u_15 = ri_23 <= N_Resp_R suchthat defined(Y[ri_22, ri_23], u_2[ri_22, ri_23]) && (u_2[ri_22, ri_23] = u) && (ri_23 = i_Resp_R) then
+             event accepted_cookie(Am2', i_Resp_R, Y[u_14, u_15], msgbeta, mac2)
+           else
+             Y_3 <-R key_t;
+             event accepted_cookie(Am2', i_Resp_R, Y_3, msgbeta, mac2)
+         )
+         orfind u_20 = ri_28 <= N_Resp_C, u_21 = ri_29 <= N_Resp_R suchthat defined(Y_1[ri_28, ri_29], u_2[ri_28, ri_29]) && (u_2[ri_28, ri_29] = u) && (ri_29 = i_Resp_R) then
+         (
+           if verify2f(msgbeta, Y_1[u_20, u_21], mac2) then
+{553}      find [unique] u_12 = ri_20 <= N_Resp_C, u_13 = ri_21 <= N_Resp_R suchthat defined(Y_1[ri_20, ri_21], u_2[ri_20, ri_21]) && (u_2[ri_20, ri_21] = u) && (ri_21 = i_Resp_R) then
+             event accepted_cookie(Am2', i_Resp_R, Y_1[u_12, u_13], msgbeta, mac2)
+           else
+             Y_3 <-R key_t;
+             event accepted_cookie(Am2', i_Resp_R, Y_3, msgbeta, mac2)
+         )
+         orfind u_18 = ri_26 <= N_Resp_T, u_19 = ri_27 <= N_Resp_R suchthat defined(Y_2[ri_26, ri_27], u[ri_26, ri_27]) && (u[ri_26, ri_27] = u) && (ri_27 = i_Resp_R) then
+         (
+           if verify2f(msgbeta, Y_2[u_18, u_19], mac2) then
+{643}      find [unique] u_10 = ri_18 <= N_Resp_T, u_11 = ri_19 <= N_Resp_R suchthat defined(Y_2[ri_18, ri_19], u[ri_18, ri_19]) && (u[ri_18, ri_19] = u) && (ri_19 = i_Resp_R) then
+             event accepted_cookie(Am2', i_Resp_R, Y_2[u_10, u_11], msgbeta, mac2)
+           else
+             Y_3 <-R key_t;
+             event accepted_cookie(Am2', i_Resp_R, Y_3, msgbeta, mac2)
+         )
+         orfind u_16 = ri_24 <= N_Resp_T, u_17 = ri_25 <= N_Resp_R suchthat defined(Y_3[ri_24, ri_25], u[ri_24, ri_25]) && (u[ri_24, ri_25] = u) && (ri_25 = i_Resp_R) then
+         (
+           if verify2f(msgbeta, Y_3[u_16, u_17], mac2) then
+{733}      find [unique] u_8 = ri_16 <= N_Resp_T, u_9 = ri_17 <= N_Resp_R suchthat defined(Y_3[ri_16, ri_17], u[ri_16, ri_17]) && (u[ri_16, ri_17] = u) && (ri_17 = i_Resp_R) then
+             event accepted_cookie(Am2', i_Resp_R, Y_3[u_8, u_9], msgbeta, mac2)
+           else
+             Y_3 <-R key_t;
+             event accepted_cookie(Am2', i_Resp_R, Y_3, msgbeta, mac2)
+         )
+         else
+           Y_2 <-R key_t;
+           if verify2f(msgbeta, Y_2, mac2) then
+{805}      find [unique] u_10 = ri_18 <= N_Resp_T, u_11 = ri_19 <= N_Resp_R suchthat defined(Y_2[ri_18, ri_19], u[ri_18, ri_19]) && (u[ri_18, ri_19] = u) && (ri_19 = i_Resp_R) then
+             event accepted_cookie(Am2', i_Resp_R, Y_2[u_10, u_11], msgbeta, mac2)
+           else
+             Y_3 <-R key_t;
+             event accepted_cookie(Am2', i_Resp_R, Y_3, msgbeta, mac2)
+       )
+       else
+         r_1: key_t <- cst_key_t
+     ))
+
+
+Applying simplify
+  - Simplification pass
+    - Remove else branch of find at 805
+    - In branch 1 of find at 805, substituting u_11 with i_Resp_R, u_10 with i_Resp_T
+    - Replaced defined condition Y_2[ri_18, ri_19], u[ri_18, ri_19] with an empty condition in find at 805
+    - A single branch always succeeds in find at 805
+    - Remove else branch of find at 733
+    - In branch 1 of find at 733, substituting u_9 with i_Resp_R
+    - Replaced defined condition Y_3[ri_16, ri_17], u[ri_16, ri_17] with Y_3[ri_16], u[ri_16] in find at 733
+    - In branch 1 of find at 733, substituting u_8 with u_16
+    - A single branch always succeeds in find at 733
+    - In branch 4 of find at 432, substituting u_17 with i_Resp_R
+    - Replaced defined condition Y_3[ri_24, ri_25], u[ri_24, ri_25] with Y_3[ri_24], u[ri_24] in find at 432
+    - Remove else branch of find at 643
+    - In branch 1 of find at 643, substituting u_11 with i_Resp_R, u_10 with u_18
+    - Replaced defined condition Y_2[ri_18, ri_19], u[ri_18, ri_19] with Y_2[u_18], u[u_18] in find at 643
+    - A single branch always succeeds in find at 643
+    - In branch 3 of find at 432, substituting u_19 with i_Resp_R
+    - Replaced defined condition Y_2[ri_26, ri_27], u[ri_26, ri_27] with Y_2[ri_26], u[ri_26] in find at 432
+    - Remove else branch of find at 553
+    - In branch 1 of find at 553, substituting u_13 with i_Resp_R
+    - Replaced defined condition Y_1[ri_20, ri_21], u_2[ri_20, ri_21] with Y_1[ri_20], u_2[ri_20] in find at 553
+    - In branch 1 of find at 553, substituting u_12 with u_20
+    - A single branch always succeeds in find at 553
+    - In branch 2 of find at 432, substituting u_21 with i_Resp_R
+    - Replaced defined condition Y_1[ri_28, ri_29], u_2[ri_28, ri_29] with Y_1[ri_28], u_2[ri_28] in find at 432
+    - Remove else branch of find at 463
+    - In branch 1 of find at 463, substituting u_15 with i_Resp_R, u_14 with u_22
+    - Replaced defined condition Y[ri_22, ri_23], u_2[ri_22, ri_23] with Y[u_22], u_2[u_22] in find at 463
+    - A single branch always succeeds in find at 463
+    - In branch 1 of find at 432, substituting u_23 with i_Resp_R
+    - Replaced defined condition Y[ri_30, ri_31], u_2[ri_30, ri_31] with Y[ri_30], u_2[ri_30] in find at 432
+    - Simplified find at 51 in branch of find at 7
+yields
+
+Game 18 is
+     foreach i_Resp_R <= N_Resp_R do
+     c_resp_0() :=
+     return();
+     ((
+       foreach i_Resp_C <= N_Resp_C do
+       c_resp_2(Am': bitstring) :=
+  {7}  find [unique] u_3 = ri_6 <= N_Resp_C suchthat defined(r[ri_6], Am'[ri_6]) && (Am' = Am'[ri_6]) then
+         event generated_cookie(Am', i_Resp_R, r[u_3]);
+         return(r[u_3])
+       orfind u_2 = ri_4 <= N_Resp_T, u_38 = ri_46 <= N_Resp_C, u_39 = ri_47 <= N_Resp_R suchthat defined(r_1[ri_4], Am2'[ri_4], Y[ri_46, ri_47]) && {46}((Am' = Am2'[ri_4]) && (ri_4 = ri_4) && (ri_47 = i_Resp_R) && (ri_46 = i_Resp_C) && (ri_47 = i_Resp_R)) then
+         event generated_cookie(Am', i_Resp_R, Y[u_38, u_39]);
+         find [unique] u_30 = ri_38 <= N_Resp_C, u_31 = ri_39 <= N_Resp_R suchthat defined(Y[ri_38, ri_39], u_2[ri_38, ri_39]) && (u_2[ri_38, ri_39] = u_2) && (ri_39 = i_Resp_R) then
+           return(Y[u_30, u_31])
+         else
+           Y_1 <-R key_t;
+           return(Y_1)
+       orfind u_2 = ri_4 <= N_Resp_T, u_38 = ri_46 <= N_Resp_C, u_39 = ri_47 <= N_Resp_R suchthat defined(r_1[ri_4], Am2'[ri_4], Y[ri_46, ri_47], u_2[ri_46, ri_47]) && (Am' = Am2'[ri_4]) && (u_2[ri_46, ri_47] = ri_4) && (ri_47 = i_Resp_R) then
+         event generated_cookie(Am', i_Resp_R, Y[u_38, u_39]);
+{157}    find [unique] u_30 = ri_38 <= N_Resp_C, u_31 = ri_39 <= N_Resp_R suchthat defined(Y[ri_38, ri_39], u_2[ri_38, ri_39]) && (u_2[ri_38, ri_39] = u_2) && (ri_39 = i_Resp_R) then
+           return(Y[u_30, u_31])
+         else
+           Y_1 <-R key_t;
+           return(Y_1)
+       orfind u_2 = ri_4 <= N_Resp_T, u_36 = ri_44 <= N_Resp_C, u_37 = ri_45 <= N_Resp_R suchthat defined(r_1[ri_4], Am2'[ri_4], Y_1[ri_44, ri_45]) && {194}((Am' = Am2'[ri_4]) && (ri_4 = ri_4) && (ri_45 = i_Resp_R) && (ri_44 = i_Resp_C) && (ri_45 = i_Resp_R)) then
+         event generated_cookie(Am', i_Resp_R, Y_1[u_36, u_37]);
+         find [unique] u_28 = ri_36 <= N_Resp_C, u_29 = ri_37 <= N_Resp_R suchthat defined(Y_1[ri_36, ri_37], u_2[ri_36, ri_37]) && (u_2[ri_36, ri_37] = u_2) && (ri_37 = i_Resp_R) then
+           return(Y_1[u_28, u_29])
+         else
+           Y_1 <-R key_t;
+           return(Y_1)
+       orfind u_2 = ri_4 <= N_Resp_T, u_36 = ri_44 <= N_Resp_C, u_37 = ri_45 <= N_Resp_R suchthat defined(r_1[ri_4], Am2'[ri_4], Y_1[ri_44, ri_45], u_2[ri_44, ri_45]) && (Am' = Am2'[ri_4]) && (u_2[ri_44, ri_45] = ri_4) && (ri_45 = i_Resp_R) then
+         event generated_cookie(Am', i_Resp_R, Y_1[u_36, u_37]);
+{305}    find [unique] u_28 = ri_36 <= N_Resp_C, u_29 = ri_37 <= N_Resp_R suchthat defined(Y_1[ri_36, ri_37], u_2[ri_36, ri_37]) && (u_2[ri_36, ri_37] = u_2) && (ri_37 = i_Resp_R) then
+           return(Y_1[u_28, u_29])
+         else
+           Y_1 <-R key_t;
+           return(Y_1)
+       orfind u_2 = ri_4 <= N_Resp_T, u_34 = ri_42 <= N_Resp_T, u_35 = ri_43 <= N_Resp_R suchthat defined(r_1[ri_4], Am2'[ri_4], Y_2[ri_42, ri_43], u[ri_42, ri_43]) && (Am' = Am2'[ri_4]) && (u[ri_42, ri_43] = ri_4) && (ri_43 = i_Resp_R) then
+         event generated_cookie(Am', i_Resp_R, Y_2[u_34, u_35]);
+{377}    find [unique] u_26 = ri_34 <= N_Resp_T, u_27 = ri_35 <= N_Resp_R suchthat defined(Y_2[ri_34, ri_35], u[ri_34, ri_35]) && (u[ri_34, ri_35] = u_2) && (ri_35 = i_Resp_R) then
+           return(Y_2[u_26, u_27])
+         else
+           Y_1 <-R key_t;
+           return(Y_1)
+       orfind u_2 = ri_4 <= N_Resp_T, u_32 = ri_40 <= N_Resp_T, u_33 = ri_41 <= N_Resp_R suchthat defined(r_1[ri_4], Am2'[ri_4], Y_3[ri_40, ri_41], u[ri_40, ri_41]) && (Am' = Am2'[ri_4]) && (u[ri_40, ri_41] = ri_4) && (ri_41 = i_Resp_R) then
+         event generated_cookie(Am', i_Resp_R, Y_3[u_32, u_33]);
+         find [unique] u_24 = ri_32 <= N_Resp_T, u_25 = ri_33 <= N_Resp_R suchthat defined(Y_3[ri_32, ri_33], u[ri_32, ri_33]) && (u[ri_32, ri_33] = u_2) && (ri_33 = i_Resp_R) then
+           return(Y_3[u_24, u_25])
+         else
+           Y_1 <-R key_t;
+           return(Y_1)
+       else
+         find [unique] u_2 = ri_4 <= N_Resp_T suchthat defined(r_1[ri_4], Am2'[ri_4]) && (Am' = Am2'[ri_4]) then
+           Y <-R key_t;
+           event generated_cookie(Am', i_Resp_R, Y);
+{505}      find [unique] u_30 = ri_38 <= N_Resp_C, u_31 = ri_39 <= N_Resp_R suchthat defined(Y[ri_38, ri_39], u_2[ri_38, ri_39]) && (u_2[ri_38, ri_39] = u_2) && (ri_39 = i_Resp_R) then
+             return(Y[u_30, u_31])
+           else
+             Y_1 <-R key_t;
+             return(Y_1)
+         else
+           r <-R key_t;
+           event generated_cookie(Am', i_Resp_R, r);
+           return(r)
+     ) | (
+       foreach i_Resp_T <= N_Resp_T do
+       c_resp_4(Am2': bitstring, msgbeta: bitstring, mac2: key_t) :=
+       find [unique] u_1 = ri_2 <= N_Resp_C suchthat defined(r[ri_2], Am'[ri_2]) && (Am2' = Am'[ri_2]) then
+       (
+         if verify2f(msgbeta, r[u_1], mac2) then
+         event accepted_cookie(Am2', i_Resp_R, r[u_1], msgbeta, mac2)
+       )
+       orfind u = ri <= N_Resp_T suchthat defined(r_1[ri], Am2'[ri]) && (Am2' = Am2'[ri]) then
+       (
+         find u_6 = ri_14 <= N_Resp_C suchthat defined(u_2[ri_14]) && (u = u_2[ri_14]) then
+{624}    find [unique] u_22 = ri_30 <= N_Resp_C suchthat defined(Y[ri_30], u_2[ri_30]) && {629}((u_2[ri_30] = u) && (i_Resp_R = i_Resp_R)) then
+         (
+           u_23 <= N_Resp_R <- i_Resp_R;
+           if verify2f(msgbeta, Y[u_22], mac2) then
+{655}      if defined(u_2[u_22], Y[u_22]) then
+           u_15 <= N_Resp_R <- i_Resp_R;
+           u_14 <= N_Resp_C <- u_22;
+           event accepted_cookie(Am2', i_Resp_R, Y[u_22], msgbeta, mac2)
+         )
+         orfind u_20 = ri_28 <= N_Resp_C suchthat defined(Y_1[ri_28], u_2[ri_28]) && {701}((u_2[ri_28] = u) && (i_Resp_R = i_Resp_R)) then
+         (
+           u_21 <= N_Resp_R <- i_Resp_R;
+           if verify2f(msgbeta, Y_1[u_20], mac2) then
+{727}      if defined(u_2[u_20], Y_1[u_20]) && {736}((u_2[u_20] = u) && (i_Resp_R = i_Resp_R)) then
+           u_12 <= N_Resp_C <- u_20;
+           u_13 <= N_Resp_R <- i_Resp_R;
+           event accepted_cookie(Am2', i_Resp_R, Y_1[u_20], msgbeta, mac2)
+         )
+         orfind u_18 = ri_26 <= N_Resp_T suchthat defined(Y_2[ri_26], u[ri_26]) && {785}((u[ri_26] = u) && (i_Resp_R = i_Resp_R)) then
+         (
+           u_19 <= N_Resp_R <- i_Resp_R;
+           if verify2f(msgbeta, Y_2[u_18], mac2) then
+{811}      if defined(u[u_18], Y_2[u_18]) then
+           u_11 <= N_Resp_R <- i_Resp_R;
+           u_10 <= N_Resp_T <- u_18;
+           event accepted_cookie(Am2', i_Resp_R, Y_2[u_18], msgbeta, mac2)
+         )
+         orfind u_16 = ri_24 <= N_Resp_T suchthat defined(Y_3[ri_24], u[ri_24]) && (u[ri_24] = u) && (i_Resp_R = i_Resp_R) then
+         (
+           u_17 <= N_Resp_R <- i_Resp_R;
+           if verify2f(msgbeta, Y_3[u_16], mac2) then
+           if defined(u[u_16], Y_3[u_16]) && (u[u_16] = u) && (i_Resp_R = i_Resp_R) then
+           u_8 <= N_Resp_T <- u_16;
+           u_9 <= N_Resp_R <- i_Resp_R;
+           event accepted_cookie(Am2', i_Resp_R, Y_3[u_16], msgbeta, mac2)
+         )
+         else
+           Y_2 <-R key_t;
+           if verify2f(msgbeta, Y_2, mac2) then
+           u_11 <= N_Resp_R <- i_Resp_R;
+           u_10 <= N_Resp_T <- i_Resp_T;
+           event accepted_cookie(Am2', i_Resp_R, Y_2, msgbeta, mac2)
+       )
+       else
+         r_1: key_t <- cst_key_t
+     ))
+
+
+Applying simplify
+  - Simplification pass
+    - Remove branch 4 in find at 624
+    - Replaced ((u[ri_26] = u) && (i_Resp_R = i_Resp_R)) with (u[ri_26] = u) at 785
+    - Transformed find at 811 into a test
+    - Test at 811 always true
+    - Replaced ((u_2[ri_28] = u) && (i_Resp_R = i_Resp_R)) with (u_2[ri_28] = u) at 701
+    - Transformed find at 727 into a test
+    - Replaced ((u_2[u_20] = u) && (i_Resp_R = i_Resp_R)) with true at 736
+    - Test at 727 always true
+    - Replaced ((u_2[ri_30] = u) && (i_Resp_R = i_Resp_R)) with (u_2[ri_30] = u) at 629
+    - Transformed find at 655 into a test
+    - Test at 655 always true
+    - Remove else branch of find at 505
+    - In branch 1 of find at 505, substituting u_31 with i_Resp_R, u_30 with i_Resp_C
+    - Replaced defined condition Y[ri_38, ri_39], u_2[ri_38, ri_39] with an empty condition in find at 505
+    - A single branch always succeeds in find at 505
+    - Remove branch 7 in find at 7
+    - Remove else branch of find at 377
+    - In branch 1 of find at 377, substituting u_27 with i_Resp_R
+    - Replaced defined condition Y_2[ri_34, ri_35], u[ri_34, ri_35] with Y_2[ri_34], u[ri_34] in find at 377
+    - In branch 1 of find at 377, substituting u_26 with u_34
+    - A single branch always succeeds in find at 377
+    - In branch 6 of find at 7, substituting u_35 with i_Resp_R, u_2 with u[u_34]
+    - Replaced defined condition r_1[ri_4], Am2'[ri_4], Y_2[ri_42, ri_43], u[ri_42, ri_43] with Y_2[ri_42], Am2'[u[ri_42]] in find at 7
+    - Remove else branch of find at 305
+    - In branch 1 of find at 305, substituting u_29 with i_Resp_R
+    - Replaced defined condition Y_1[ri_36, ri_37], u_2[ri_36, ri_37] with Y_1[ri_36], u_2[ri_36] in find at 305
+    - In branch 1 of find at 305, substituting u_28 with u_36
+    - A single branch always succeeds in find at 305
+    - In branch 5 of find at 7, substituting u_37 with i_Resp_R
+    - Replaced defined condition r_1[ri_4], Am2'[ri_4], Y_1[ri_44, ri_45], u_2[ri_44, ri_45] with r_1[ri_4], Am2'[ri_4], Y_1[ri_44], u_2[ri_44] in find at 7
+    - Replaced ((Am' = Am2'[ri_4]) && (ri_4 = ri_4) && (ri_45 = i_Resp_R) && (ri_44 = i_Resp_C) && (ri_45 = i_Resp_R)) with false at 194
+    - Remove branch 4 in find at 7
+    - Remove else branch of find at 157
+    - In branch 1 of find at 157, substituting u_31 with i_Resp_R
+    - Replaced defined condition Y[ri_38, ri_39], u_2[ri_38, ri_39] with Y[ri_38], u_2[ri_38] in find at 157
+    - In branch 1 of find at 157, substituting u_30 with u_38
+    - A single branch always succeeds in find at 157
+    - In branch 3 of find at 7, substituting u_39 with i_Resp_R
+    - Replaced defined condition r_1[ri_4], Am2'[ri_4], Y[ri_46, ri_47], u_2[ri_46, ri_47] with r_1[ri_4], Am2'[ri_4], Y[ri_46], u_2[ri_46] in find at 7
+    - Replaced ((Am' = Am2'[ri_4]) && (ri_4 = ri_4) && (ri_47 = i_Resp_R) && (ri_46 = i_Resp_C) && (ri_47 = i_Resp_R)) with false at 46
+    - Remove branch 2 in find at 7
+yields
+
+Game 19 is
+     foreach i_Resp_R <= N_Resp_R do
+     c_resp_0() :=
+     return();
+     ((
+       foreach i_Resp_C <= N_Resp_C do
+       c_resp_2(Am': bitstring) :=
+       find [unique] u_3 = ri_6 <= N_Resp_C suchthat defined(r[ri_6], Am'[ri_6]) && (Am' = Am'[ri_6]) then
+         event generated_cookie(Am', i_Resp_R, r[u_3]);
+         return(r[u_3])
+       orfind u_38 = ri_46 <= N_Resp_C, u_2 = ri_4 <= N_Resp_T suchthat defined(r_1[ri_4], Am2'[ri_4], Y[ri_46], u_2[ri_46]) && (Am' = Am2'[ri_4]) && (u_2[ri_46] = ri_4) && (i_Resp_R = i_Resp_R) then
+       (
+         u_39 <= N_Resp_R <- i_Resp_R;
+         event generated_cookie(Am', i_Resp_R, Y[u_38]);
+         if defined(u_2[u_38], Y[u_38]) && (u_2[u_38] = u_2) && (i_Resp_R = i_Resp_R) then
+         u_30 <= N_Resp_C <- u_38;
+         u_31 <= N_Resp_R <- i_Resp_R;
+         return(Y[u_38])
+       )
+       orfind u_36 = ri_44 <= N_Resp_C, u_2 = ri_4 <= N_Resp_T suchthat defined(r_1[ri_4], Am2'[ri_4], Y_1[ri_44], u_2[ri_44]) && (Am' = Am2'[ri_4]) && (u_2[ri_44] = ri_4) && (i_Resp_R = i_Resp_R) then
+       (
+         u_37 <= N_Resp_R <- i_Resp_R;
+         event generated_cookie(Am', i_Resp_R, Y_1[u_36]);
+         if defined(u_2[u_36], Y_1[u_36]) && (u_2[u_36] = u_2) && (i_Resp_R = i_Resp_R) then
+         u_28 <= N_Resp_C <- u_36;
+         u_29 <= N_Resp_R <- i_Resp_R;
+         return(Y_1[u_36])
+       )
+       orfind u_34 = ri_42 <= N_Resp_T suchthat defined(Y_2[ri_42], Am2'[u[ri_42]]) && (Am' = Am2'[u[ri_42]]) && (u[ri_42] = u[ri_42]) && (i_Resp_R = i_Resp_R) then
+       (
+         u_35 <= N_Resp_R <- i_Resp_R;
+         u_2 <= N_Resp_T <- u[u_34];
+         event generated_cookie(Am', i_Resp_R, Y_2[u_34]);
+         if defined(u[u_34], Y_2[u_34]) && (u[u_34] = u[u_34]) && (i_Resp_R = i_Resp_R) then
+         u_26 <= N_Resp_T <- u_34;
+         u_27 <= N_Resp_R <- i_Resp_R;
+         return(Y_2[u_34])
+       )
+       else
+         find [unique] u_2 = ri_4 <= N_Resp_T suchthat defined(r_1[ri_4], Am2'[ri_4]) && (Am' = Am2'[ri_4]) then
+           Y <-R key_t;
+           event generated_cookie(Am', i_Resp_R, Y);
+           u_31 <= N_Resp_R <- i_Resp_R;
+           u_30 <= N_Resp_C <- i_Resp_C;
+           return(Y)
+         else
+           r <-R key_t;
+           event generated_cookie(Am', i_Resp_R, r);
+           return(r)
+     ) | (
+       foreach i_Resp_T <= N_Resp_T do
+       c_resp_4(Am2': bitstring, msgbeta: bitstring, mac2: key_t) :=
+       find [unique] u_1 = ri_2 <= N_Resp_C suchthat defined(r[ri_2], Am'[ri_2]) && (Am2' = Am'[ri_2]) then
+       (
+         if verify2f(msgbeta, r[u_1], mac2) then
+         event accepted_cookie(Am2', i_Resp_R, r[u_1], msgbeta, mac2)
+       )
+       orfind u = ri <= N_Resp_T suchthat defined(r_1[ri], Am2'[ri]) && (Am2' = Am2'[ri]) then
+       (
+         find u_6 = ri_14 <= N_Resp_C suchthat defined(u_2[ri_14]) && (u = u_2[ri_14]) then
+         find [unique] u_22 = ri_30 <= N_Resp_C suchthat defined(Y[ri_30], u_2[ri_30]) && (u_2[ri_30] = u) then
+         (
+           u_23 <= N_Resp_R <- i_Resp_R;
+           if verify2f(msgbeta, Y[u_22], mac2) then
+           u_15 <= N_Resp_R <- i_Resp_R;
+           u_14 <= N_Resp_C <- u_22;
+           event accepted_cookie(Am2', i_Resp_R, Y[u_22], msgbeta, mac2)
+         )
+         orfind u_20 = ri_28 <= N_Resp_C suchthat defined(Y_1[ri_28], u_2[ri_28]) && (u_2[ri_28] = u) then
+         (
+           u_21 <= N_Resp_R <- i_Resp_R;
+           if verify2f(msgbeta, Y_1[u_20], mac2) then
+           u_12 <= N_Resp_C <- u_20;
+           u_13 <= N_Resp_R <- i_Resp_R;
+           event accepted_cookie(Am2', i_Resp_R, Y_1[u_20], msgbeta, mac2)
+         )
+         orfind u_18 = ri_26 <= N_Resp_T suchthat defined(Y_2[ri_26], u[ri_26]) && (u[ri_26] = u) then
+         (
+           u_19 <= N_Resp_R <- i_Resp_R;
+           if verify2f(msgbeta, Y_2[u_18], mac2) then
+           u_11 <= N_Resp_R <- i_Resp_R;
+           u_10 <= N_Resp_T <- u_18;
+           event accepted_cookie(Am2', i_Resp_R, Y_2[u_18], msgbeta, mac2)
+         )
+         else
+           Y_2 <-R key_t;
+           if verify2f(msgbeta, Y_2, mac2) then
+           u_11 <= N_Resp_R <- i_Resp_R;
+           u_10 <= N_Resp_T <- i_Resp_T;
+           event accepted_cookie(Am2', i_Resp_R, Y_2, msgbeta, mac2)
+       )
+       else
+         r_1: key_t <- cst_key_t
+     ))
+
+
+Applying SA rename u_2
+  - Rename variable u_2 into u_43, u_42, u_41, u_40
+yields
+
+Game 20 is
+     foreach i_Resp_R <= N_Resp_R do
+     c_resp_0() :=
+     return();
+     ((
+       foreach i_Resp_C <= N_Resp_C do
+       c_resp_2(Am': bitstring) :=
+       find [unique] u_3 = ri_6 <= N_Resp_C suchthat defined(r[ri_6], Am'[ri_6]) && (Am' = Am'[ri_6]) then
+         event generated_cookie(Am', i_Resp_R, r[u_3]);
+         return(r[u_3])
+       orfind u_38 = ri_46 <= N_Resp_C, u_40 = ri_4 <= N_Resp_T suchthat defined(r_1[ri_4], Am2'[ri_4], Y[ri_46], u_43[ri_46]) && (Am' = Am2'[ri_4]) && (u_43[ri_46] = ri_4) && (i_Resp_R = i_Resp_R) then
+       (
+         u_39 <= N_Resp_R <- i_Resp_R;
+         event generated_cookie(Am', i_Resp_R, Y[u_38]);
+         if defined(u_43[u_38], Y[u_38]) && (u_43[u_38] = u_40) && (i_Resp_R = i_Resp_R) then
+         u_30 <= N_Resp_C <- u_38;
+         u_31 <= N_Resp_R <- i_Resp_R;
+         return(Y[u_38])
+       )
+       orfind u_34 = ri_42 <= N_Resp_T suchthat defined(Y_2[ri_42], Am2'[u[ri_42]]) && (Am' = Am2'[u[ri_42]]) && (u[ri_42] = u[ri_42]) && (i_Resp_R = i_Resp_R) then
+       (
+         u_35 <= N_Resp_R <- i_Resp_R;
+         u_42 <= N_Resp_T <- u[u_34];
+         event generated_cookie(Am', i_Resp_R, Y_2[u_34]);
+         if defined(u[u_34], Y_2[u_34]) && (u[u_34] = u[u_34]) && (i_Resp_R = i_Resp_R) then
+         u_26 <= N_Resp_T <- u_34;
+         u_27 <= N_Resp_R <- i_Resp_R;
+         return(Y_2[u_34])
+       )
+       else
+         find [unique] u_43 = ri_4 <= N_Resp_T suchthat defined(r_1[ri_4], Am2'[ri_4]) && (Am' = Am2'[ri_4]) then
+           Y <-R key_t;
+           event generated_cookie(Am', i_Resp_R, Y);
+           u_31 <= N_Resp_R <- i_Resp_R;
+           u_30 <= N_Resp_C <- i_Resp_C;
+           return(Y)
+         else
+           r <-R key_t;
+           event generated_cookie(Am', i_Resp_R, r);
+           return(r)
+     ) | (
+       foreach i_Resp_T <= N_Resp_T do
+       c_resp_4(Am2': bitstring, msgbeta: bitstring, mac2: key_t) :=
+       find [unique] u_1 = ri_2 <= N_Resp_C suchthat defined(r[ri_2], Am'[ri_2]) && (Am2' = Am'[ri_2]) then
+       (
+         if verify2f(msgbeta, r[u_1], mac2) then
+         event accepted_cookie(Am2', i_Resp_R, r[u_1], msgbeta, mac2)
+       )
+       orfind u = ri <= N_Resp_T suchthat defined(r_1[ri], Am2'[ri]) && (Am2' = Am2'[ri]) then
+       (
+         find u_6 = ri_14 <= N_Resp_C suchthat defined(u_40[ri_14]) && (u = u_40[ri_14]) then
+         (
+           find [unique] u_22 = ri_30 <= N_Resp_C suchthat defined(Y[ri_30], u_43[ri_30]) && (u_43[ri_30] = u) then
+           (
+             u_23 <= N_Resp_R <- i_Resp_R;
+             if verify2f(msgbeta, Y[u_22], mac2) then
+             u_15 <= N_Resp_R <- i_Resp_R;
+             u_14 <= N_Resp_C <- u_22;
+             event accepted_cookie(Am2', i_Resp_R, Y[u_22], msgbeta, mac2)
+           )
+           orfind u_18 = ri_26 <= N_Resp_T suchthat defined(Y_2[ri_26], u[ri_26]) && (u[ri_26] = u) then
+           (
+             u_19 <= N_Resp_R <- i_Resp_R;
+             if verify2f(msgbeta, Y_2[u_18], mac2) then
+             u_11 <= N_Resp_R <- i_Resp_R;
+             u_10 <= N_Resp_T <- u_18;
+             event accepted_cookie(Am2', i_Resp_R, Y_2[u_18], msgbeta, mac2)
+           )
+           else
+             Y_2 <-R key_t;
+             if verify2f(msgbeta, Y_2, mac2) then
+             u_11 <= N_Resp_R <- i_Resp_R;
+             u_10 <= N_Resp_T <- i_Resp_T;
+             event accepted_cookie(Am2', i_Resp_R, Y_2, msgbeta, mac2)
+         )
+         orfind u_6 = ri_14 <= N_Resp_C suchthat defined(u_41[ri_14]) && (u = u_41[ri_14]) then
+         (
+           find [unique] u_22 = ri_30 <= N_Resp_C suchthat defined(Y[ri_30], u_43[ri_30]) && (u_43[ri_30] = u) then
+           (
+             u_23 <= N_Resp_R <- i_Resp_R;
+             if verify2f(msgbeta, Y[u_22], mac2) then
+             u_15 <= N_Resp_R <- i_Resp_R;
+             u_14 <= N_Resp_C <- u_22;
+             event accepted_cookie(Am2', i_Resp_R, Y[u_22], msgbeta, mac2)
+           )
+           orfind u_18 = ri_26 <= N_Resp_T suchthat defined(Y_2[ri_26], u[ri_26]) && (u[ri_26] = u) then
+           (
+             u_19 <= N_Resp_R <- i_Resp_R;
+             if verify2f(msgbeta, Y_2[u_18], mac2) then
+             u_11 <= N_Resp_R <- i_Resp_R;
+             u_10 <= N_Resp_T <- u_18;
+             event accepted_cookie(Am2', i_Resp_R, Y_2[u_18], msgbeta, mac2)
+           )
+           else
+             Y_2 <-R key_t;
+             if verify2f(msgbeta, Y_2, mac2) then
+             u_11 <= N_Resp_R <- i_Resp_R;
+             u_10 <= N_Resp_T <- i_Resp_T;
+             event accepted_cookie(Am2', i_Resp_R, Y_2, msgbeta, mac2)
+         )
+         orfind u_6 = ri_14 <= N_Resp_C suchthat defined(u_42[ri_14]) && (u = u_42[ri_14]) then
+         (
+           find [unique] u_22 = ri_30 <= N_Resp_C suchthat defined(Y[ri_30], u_43[ri_30]) && (u_43[ri_30] = u) then
+           (
+             u_23 <= N_Resp_R <- i_Resp_R;
+             if verify2f(msgbeta, Y[u_22], mac2) then
+             u_15 <= N_Resp_R <- i_Resp_R;
+             u_14 <= N_Resp_C <- u_22;
+             event accepted_cookie(Am2', i_Resp_R, Y[u_22], msgbeta, mac2)
+           )
+           orfind u_18 = ri_26 <= N_Resp_T suchthat defined(Y_2[ri_26], u[ri_26]) && (u[ri_26] = u) then
+           (
+             u_19 <= N_Resp_R <- i_Resp_R;
+             if verify2f(msgbeta, Y_2[u_18], mac2) then
+             u_11 <= N_Resp_R <- i_Resp_R;
+             u_10 <= N_Resp_T <- u_18;
+             event accepted_cookie(Am2', i_Resp_R, Y_2[u_18], msgbeta, mac2)
+           )
+           else
+             Y_2 <-R key_t;
+             if verify2f(msgbeta, Y_2, mac2) then
+             u_11 <= N_Resp_R <- i_Resp_R;
+             u_10 <= N_Resp_T <- i_Resp_T;
+             event accepted_cookie(Am2', i_Resp_R, Y_2, msgbeta, mac2)
+         )
+         orfind u_6 = ri_14 <= N_Resp_C suchthat defined(u_43[ri_14]) && (u = u_43[ri_14]) then
+         (
+           find [unique] u_22 = ri_30 <= N_Resp_C suchthat defined(Y[ri_30], u_43[ri_30]) && (u_43[ri_30] = u) then
+           (
+             u_23 <= N_Resp_R <- i_Resp_R;
+             if verify2f(msgbeta, Y[u_22], mac2) then
+             u_15 <= N_Resp_R <- i_Resp_R;
+             u_14 <= N_Resp_C <- u_22;
+             event accepted_cookie(Am2', i_Resp_R, Y[u_22], msgbeta, mac2)
+           )
+           orfind u_18 = ri_26 <= N_Resp_T suchthat defined(Y_2[ri_26], u[ri_26]) && (u[ri_26] = u) then
+           (
+             u_19 <= N_Resp_R <- i_Resp_R;
+             if verify2f(msgbeta, Y_2[u_18], mac2) then
+             u_11 <= N_Resp_R <- i_Resp_R;
+             u_10 <= N_Resp_T <- u_18;
+             event accepted_cookie(Am2', i_Resp_R, Y_2[u_18], msgbeta, mac2)
+           )
+           else
+             Y_2 <-R key_t;
+             if verify2f(msgbeta, Y_2, mac2) then
+             u_11 <= N_Resp_R <- i_Resp_R;
+             u_10 <= N_Resp_T <- i_Resp_T;
+             event accepted_cookie(Am2', i_Resp_R, Y_2, msgbeta, mac2)
+         )
+       )
+       else
+         r_1: key_t <- cst_key_t
+     ))
+
+
+Applying SA rename new without array accesses and remove assignments of findcond
+  - Remove assignments on u_11 (definition removed, all usages removed)
+  - Remove assignments on u_10 (definition removed, all usages removed)
+  - Remove assignments on u_23 (definition removed, all usages removed)
+  - Remove assignments on u_15 (definition removed, all usages removed)
+  - Remove assignments on u_14 (definition removed, all usages removed)
+  - Remove assignments on u_19 (definition removed, all usages removed)
+  - Remove assignments on u_11 (definition removed, all usages removed)
+  - Remove assignments on u_10 (definition removed, all usages removed)
+  - Remove assignments on u_11 (definition removed, all usages removed)
+  - Remove assignments on u_10 (definition removed, all usages removed)
+  - Remove assignments on u_23 (definition removed, all usages removed)
+  - Remove assignments on u_15 (definition removed, all usages removed)
+  - Remove assignments on u_14 (definition removed, all usages removed)
+  - Remove assignments on u_19 (definition removed, all usages removed)
+  - Remove assignments on u_11 (definition removed, all usages removed)
+  - Remove assignments on u_10 (definition removed, all usages removed)
+  - Remove assignments on u_11 (definition removed, all usages removed)
+  - Remove assignments on u_10 (definition removed, all usages removed)
+  - Remove assignments on u_23 (definition removed, all usages removed)
+  - Remove assignments on u_15 (definition removed, all usages removed)
+  - Remove assignments on u_14 (definition removed, all usages removed)
+  - Remove assignments on u_19 (definition removed, all usages removed)
+  - Remove assignments on u_11 (definition removed, all usages removed)
+  - Remove assignments on u_10 (definition removed, all usages removed)
+  - Remove assignments on u_11 (definition removed, all usages removed)
+  - Remove assignments on u_10 (definition removed, all usages removed)
+  - Remove assignments on u_23 (definition removed, all usages removed)
+  - Remove assignments on u_15 (definition removed, all usages removed)
+  - Remove assignments on u_14 (definition removed, all usages removed)
+  - Remove assignments on u_19 (definition removed, all usages removed)
+  - Remove assignments on u_11 (definition removed, all usages removed)
+  - Remove assignments on u_10 (definition removed, all usages removed)
+  - Remove assignments on u_31 (definition removed, all usages removed)
+  - Remove assignments on u_30 (definition removed, all usages removed)
+  - Remove assignments on u_39 (definition removed, all usages removed)
+  - Remove assignments on u_30 (definition removed, all usages removed)
+  - Remove assignments on u_31 (definition removed, all usages removed)
+  - Remove assignments on u_35 (definition removed, all usages removed)
+  - Remove assignments on u_42 (definition point kept, all usages removed)
+  - Remove assignments on u_26 (definition removed, all usages removed)
+  - Remove assignments on u_27 (definition removed, all usages removed)
+yields
+
+Game 21 is
+     foreach i_Resp_R <= N_Resp_R do
+     c_resp_0() :=
+     return();
+     ((
+       foreach i_Resp_C <= N_Resp_C do
+       c_resp_2(Am': bitstring) :=
+  {7}  find [unique] u_3 = ri_6 <= N_Resp_C suchthat defined(r[ri_6], Am'[ri_6]) && (Am' = Am'[ri_6]) then
+         event generated_cookie(Am', i_Resp_R, r[u_3]);
+         return(r[u_3])
+       orfind u_38 = ri_46 <= N_Resp_C, u_40 = ri_4 <= N_Resp_T suchthat defined(r_1[ri_4], Am2'[ri_4], Y[ri_46], u_43[ri_46]) && {48}((Am' = Am2'[ri_4]) && (u_43[ri_46] = ri_4) && (i_Resp_R = i_Resp_R)) then
+       (
+         event generated_cookie(Am', i_Resp_R, Y[u_38]);
+ {79}    if defined(u_43[u_38], Y[u_38]) && {88}((u_43[u_38] = u_40) && (i_Resp_R = i_Resp_R)) then
+         return(Y[u_38])
+       )
+       orfind u_34 = ri_42 <= N_Resp_T suchthat defined(Y_2[ri_42], Am2'[u[ri_42]]) && {115}((Am' = Am2'[u[ri_42]]) && (u[ri_42] = u[ri_42]) && (i_Resp_R = i_Resp_R)) then
+       (
+         u_42 <= N_Resp_T <- cst_[1,N_Resp_T];
+         event generated_cookie(Am', i_Resp_R, Y_2[u_34]);
+{152}    if defined(u[u_34], Y_2[u_34]) && {161}((u[u_34] = u[u_34]) && (i_Resp_R = i_Resp_R)) then
+         return(Y_2[u_34])
+       )
+       else
+         find [unique] u_43 = ri_4 <= N_Resp_T suchthat defined(r_1[ri_4], Am2'[ri_4]) && (Am' = Am2'[ri_4]) then
+           Y <-R key_t;
+           event generated_cookie(Am', i_Resp_R, Y);
+           return(Y)
+         else
+           r <-R key_t;
+           event generated_cookie(Am', i_Resp_R, r);
+           return(r)
+     ) | (
+       foreach i_Resp_T <= N_Resp_T do
+       c_resp_4(Am2': bitstring, msgbeta: bitstring, mac2: key_t) :=
+       find [unique] u_1 = ri_2 <= N_Resp_C suchthat defined(r[ri_2], Am'[ri_2]) && (Am2' = Am'[ri_2]) then
+       (
+         if verify2f(msgbeta, r[u_1], mac2) then
+         event accepted_cookie(Am2', i_Resp_R, r[u_1], msgbeta, mac2)
+       )
+       orfind u = ri <= N_Resp_T suchthat defined(r_1[ri], Am2'[ri]) && (Am2' = Am2'[ri]) then
+       (
+{293}    find u_6 = ri_14 <= N_Resp_C suchthat defined(u_40[ri_14]) && (u = u_40[ri_14]) then
+         (
+{303}      find [unique] u_22 = ri_30 <= N_Resp_C suchthat defined(Y[ri_30], u_43[ri_30]) && (u_43[ri_30] = u) then
+           (
+             if verify2f(msgbeta, Y[u_22], mac2) then
+             event accepted_cookie(Am2', i_Resp_R, Y[u_22], msgbeta, mac2)
+           )
+           orfind u_18 = ri_26 <= N_Resp_T suchthat defined(Y_2[ri_26], u[ri_26]) && {354}(u[ri_26] = u) then
+           (
+             if verify2f(msgbeta, Y_2[u_18], mac2) then
+             event accepted_cookie(Am2', i_Resp_R, Y_2[u_18], msgbeta, mac2)
+           )
+           else
+             Y_2 <-R key_t;
+             if verify2f(msgbeta, Y_2, mac2) then
+             event accepted_cookie(Am2', i_Resp_R, Y_2, msgbeta, mac2)
+         )
+         orfind u_6 = ri_14 <= N_Resp_C suchthat defined(u_41[ri_14]) && (u = u_41[ri_14]) then
+         (
+           find [unique] u_22 = ri_30 <= N_Resp_C suchthat defined(Y[ri_30], u_43[ri_30]) && (u_43[ri_30] = u) then
+           (
+             if verify2f(msgbeta, Y[u_22], mac2) then
+             event accepted_cookie(Am2', i_Resp_R, Y[u_22], msgbeta, mac2)
+           )
+           orfind u_18 = ri_26 <= N_Resp_T suchthat defined(Y_2[ri_26], u[ri_26]) && (u[ri_26] = u) then
+           (
+             if verify2f(msgbeta, Y_2[u_18], mac2) then
+             event accepted_cookie(Am2', i_Resp_R, Y_2[u_18], msgbeta, mac2)
+           )
+           else
+             Y_2 <-R key_t;
+             if verify2f(msgbeta, Y_2, mac2) then
+             event accepted_cookie(Am2', i_Resp_R, Y_2, msgbeta, mac2)
+         )
+         orfind u_6 = ri_14 <= N_Resp_C suchthat defined(u[u_34[ri_14]], u_42[ri_14]) && (u = u[u_34[ri_14]]) then
+         (
+{577}      find [unique] u_22 = ri_30 <= N_Resp_C suchthat defined(Y[ri_30], u_43[ri_30]) && (u_43[ri_30] = u) then
+           (
+             if verify2f(msgbeta, Y[u_22], mac2) then
+             event accepted_cookie(Am2', i_Resp_R, Y[u_22], msgbeta, mac2)
+           )
+           orfind u_18 = ri_26 <= N_Resp_T suchthat defined(Y_2[ri_26], u[ri_26]) && (u[ri_26] = u) then
+           (
+             if verify2f(msgbeta, Y_2[u_18], mac2) then
+             event accepted_cookie(Am2', i_Resp_R, Y_2[u_18], msgbeta, mac2)
+           )
+           else
+             Y_2 <-R key_t;
+             if verify2f(msgbeta, Y_2, mac2) then
+             event accepted_cookie(Am2', i_Resp_R, Y_2, msgbeta, mac2)
+         )
+         orfind u_6 = ri_14 <= N_Resp_C suchthat defined(u_43[ri_14]) && (u = u_43[ri_14]) then
+         (
+{711}      find [unique] u_22 = ri_30 <= N_Resp_C suchthat defined(Y[ri_30], u_43[ri_30]) && (u_43[ri_30] = u) then
+           (
+             if verify2f(msgbeta, Y[u_22], mac2) then
+             event accepted_cookie(Am2', i_Resp_R, Y[u_22], msgbeta, mac2)
+           )
+           orfind u_18 = ri_26 <= N_Resp_T suchthat defined(Y_2[ri_26], u[ri_26]) && {762}(u[ri_26] = u) then
+           (
+             if verify2f(msgbeta, Y_2[u_18], mac2) then
+             event accepted_cookie(Am2', i_Resp_R, Y_2[u_18], msgbeta, mac2)
+           )
+           else
+             Y_2 <-R key_t;
+             if verify2f(msgbeta, Y_2, mac2) then
+             event accepted_cookie(Am2', i_Resp_R, Y_2, msgbeta, mac2)
+         )
+       )
+       else
+         r_1: key_t <- cst_key_t
+     ))
+
+
+Applying simplify
+  - Simplification pass
+    - Remove else branch of find at 711
+    - Replaced (u[ri_26] = u) with false at 762
+    - Remove branch 2 in find at 711
+    - In branch 1 of find at 711, substituting u_22 with u_6
+    - Replaced defined condition Y[ri_30], u_43[ri_30] with an empty condition in find at 711
+    - A single branch always succeeds in find at 711
+    - Replaced defined condition u_43[ri_14] with Y[ri_14], u_43[ri_14] in find at 293
+    - Remove else branch of find at 577
+    - In branch 2 of find at 577, substituting u_18 with u_34[u_6]
+    - Replaced defined condition Y_2[ri_26], u[ri_26] with an empty condition in find at 577
+    - A single branch always succeeds in find at 577
+    - Replaced defined condition u[u_34[ri_14]], u_42[ri_14] with Y_2[u_34[ri_14]], u[u_34[ri_14]] in find at 293
+    - Remove branch 2 in find at 293
+    - Remove else branch of find at 303
+    - Replaced (u[ri_26] = u) with false at 354
+    - Remove branch 2 in find at 303
+    - In branch 1 of find at 303, substituting u_22 with u_38[u_6]
+    - Replaced defined condition Y[ri_30], u_43[ri_30] with an empty condition in find at 303
+    - A single branch always succeeds in find at 303
+    - Replaced defined condition u_40[ri_14] with Y[u_38[ri_14]], u_40[ri_14] in find at 293
+    - Replaced ((Am' = Am2'[u[ri_42]]) && (u[ri_42] = u[ri_42]) && (i_Resp_R = i_Resp_R)) with (Am' = Am2'[u[ri_42]]) at 115
+    - Transformed find at 152 into a test
+    - Replaced ((u[u_34] = u[u_34]) && (i_Resp_R = i_Resp_R)) with true at 161
+    - Test at 152 always true
+    - Replaced ((Am' = Am2'[ri_4]) && (u_43[ri_46] = ri_4) && (i_Resp_R = i_Resp_R)) with ((Am' = Am2'[ri_4]) && (u_43[ri_46] = ri_4)) at 48
+    - Transformed find at 79 into a test
+    - Replaced ((u_43[u_38] = u_40) && (i_Resp_R = i_Resp_R)) with true at 88
+    - Test at 79 always true
+    - In branch 2 of find at 7, substituting u_40 with u_43[u_38]
+    - Replaced defined condition r_1[ri_4], Am2'[ri_4], Y[ri_46], u_43[ri_46] with Y[ri_46], Am2'[u_43[ri_46]] in find at 7
+yields
+
+Game 22 is
+     foreach i_Resp_R <= N_Resp_R do
+     c_resp_0() :=
+     return();
+     ((
+       foreach i_Resp_C <= N_Resp_C do
+       c_resp_2(Am': bitstring) :=
+  {7}  find [unique] u_3 = ri_6 <= N_Resp_C suchthat defined(r[ri_6], Am'[ri_6]) && (Am' = Am'[ri_6]) then
+         event generated_cookie(Am', i_Resp_R, r[u_3]);
+         return(r[u_3])
+       orfind u_38 = ri_46 <= N_Resp_C suchthat defined(Y[ri_46], Am2'[u_43[ri_46]]) && {46}((Am' = Am2'[u_43[ri_46]]) && (u_43[ri_46] = u_43[ri_46])) then
+         u_40 <= N_Resp_T <- u_43[u_38];
+         event generated_cookie(Am', i_Resp_R, Y[u_38]);
+         return(Y[u_38])
+       orfind u_34 = ri_42 <= N_Resp_T suchthat defined(Y_2[ri_42], Am2'[u[ri_42]]) && (Am' = Am2'[u[ri_42]]) then
+         u_42 <= N_Resp_T <- cst_[1,N_Resp_T];
+         event generated_cookie(Am', i_Resp_R, Y_2[u_34]);
+         return(Y_2[u_34])
+       else
+         find [unique] u_43 = ri_4 <= N_Resp_T suchthat defined(r_1[ri_4], Am2'[ri_4]) && (Am' = Am2'[ri_4]) then
+           Y <-R key_t;
+           event generated_cookie(Am', i_Resp_R, Y);
+           return(Y)
+         else
+           r <-R key_t;
+           event generated_cookie(Am', i_Resp_R, r);
+           return(r)
+     ) | (
+       foreach i_Resp_T <= N_Resp_T do
+       c_resp_4(Am2': bitstring, msgbeta: bitstring, mac2: key_t) :=
+       find [unique] u_1 = ri_2 <= N_Resp_C suchthat defined(r[ri_2], Am'[ri_2]) && (Am2' = Am'[ri_2]) then
+       (
+         if verify2f(msgbeta, r[u_1], mac2) then
+         event accepted_cookie(Am2', i_Resp_R, r[u_1], msgbeta, mac2)
+       )
+       orfind u = ri <= N_Resp_T suchthat defined(r_1[ri], Am2'[ri]) && (Am2' = Am2'[ri]) then
+       (
+{238}    find u_6 = ri_14 <= N_Resp_C suchthat defined(Y[u_38[ri_14]], u_40[ri_14]) && (u = u_40[ri_14]) then
+         (
+           u_22 <= N_Resp_C <- u_38[u_6];
+           if verify2f(msgbeta, Y[u_38[u_6]], mac2) then
+           event accepted_cookie(Am2', i_Resp_R, Y[u_38[u_6]], msgbeta, mac2)
+         )
+         orfind u_6 = ri_14 <= N_Resp_C suchthat defined(Y_2[u_34[ri_14]], u[u_34[ri_14]]) && (u = u[u_34[ri_14]]) then
+         (
+           u_18 <= N_Resp_T <- u_34[u_6];
+           if verify2f(msgbeta, Y_2[u_34[u_6]], mac2) then
+           event accepted_cookie(Am2', i_Resp_R, Y_2[u_34[u_6]], msgbeta, mac2)
+         )
+         orfind u_6 = ri_14 <= N_Resp_C suchthat defined(Y[ri_14], u_43[ri_14]) && (u = u_43[ri_14]) then
+         (
+           u_22 <= N_Resp_C <- u_6;
+           if verify2f(msgbeta, Y[u_6], mac2) then
+           event accepted_cookie(Am2', i_Resp_R, Y[u_6], msgbeta, mac2)
+         )
+       )
+       else
+         r_1: key_t <- cst_key_t
+     ))
+
+
+Applying simplify
+  - Simplification pass
+    - Remove branch 2 in find at 238
+    - Remove branch 3 in find at 7
+    - Replaced ((Am' = Am2'[u_43[ri_46]]) && (u_43[ri_46] = u_43[ri_46])) with (Am' = Am2'[u_43[ri_46]]) at 46
+yields
+
+Game 23 is
+     foreach i_Resp_R <= N_Resp_R do
+     c_resp_0() :=
+     return();
+     ((
+       foreach i_Resp_C <= N_Resp_C do
+       c_resp_2(Am': bitstring) :=
+       find [unique] u_3 = ri_6 <= N_Resp_C suchthat defined(r[ri_6], Am'[ri_6]) && (Am' = Am'[ri_6]) then
+         event generated_cookie(Am', i_Resp_R, r[u_3]);
+         return(r[u_3])
+       orfind u_38 = ri_46 <= N_Resp_C suchthat defined(Y[ri_46], Am2'[u_43[ri_46]]) && (Am' = Am2'[u_43[ri_46]]) then
+         u_40 <= N_Resp_T <- u_43[u_38];
+         event generated_cookie(Am', i_Resp_R, Y[u_38]);
+         return(Y[u_38])
+       else
+         find [unique] u_43 = ri_4 <= N_Resp_T suchthat defined(r_1[ri_4], Am2'[ri_4]) && (Am' = Am2'[ri_4]) then
+           Y <-R key_t;
+           event generated_cookie(Am', i_Resp_R, Y);
+           return(Y)
+         else
+           r <-R key_t;
+           event generated_cookie(Am', i_Resp_R, r);
+           return(r)
+     ) | (
+       foreach i_Resp_T <= N_Resp_T do
+       c_resp_4(Am2': bitstring, msgbeta: bitstring, mac2: key_t) :=
+       find [unique] u_1 = ri_2 <= N_Resp_C suchthat defined(r[ri_2], Am'[ri_2]) && (Am2' = Am'[ri_2]) then
+       (
+         if verify2f(msgbeta, r[u_1], mac2) then
+         event accepted_cookie(Am2', i_Resp_R, r[u_1], msgbeta, mac2)
+       )
+       orfind u = ri <= N_Resp_T suchthat defined(r_1[ri], Am2'[ri]) && (Am2' = Am2'[ri]) then
+       (
+         find u_6 = ri_14 <= N_Resp_C suchthat defined(Y[u_38[ri_14]], u_40[ri_14]) && (u = u_40[ri_14]) then
+         (
+           u_22 <= N_Resp_C <- u_38[u_6];
+           if verify2f(msgbeta, Y[u_38[u_6]], mac2) then
+           event accepted_cookie(Am2', i_Resp_R, Y[u_38[u_6]], msgbeta, mac2)
+         )
+         orfind u_6 = ri_14 <= N_Resp_C suchthat defined(Y[ri_14], u_43[ri_14]) && (u = u_43[ri_14]) then
+         (
+           u_22 <= N_Resp_C <- u_6;
+           if verify2f(msgbeta, Y[u_6], mac2) then
+           event accepted_cookie(Am2', i_Resp_R, Y[u_6], msgbeta, mac2)
+         )
+       )
+       else
+         r_1: key_t <- cst_key_t
+     ))
+
+
+Applying move all binders
+  - Move assignment to u_22
+  - Move assignment to u_22
+yields
+
+Game 24 is
+     foreach i_Resp_R <= N_Resp_R do
+     c_resp_0() :=
+     return();
+     ((
+       foreach i_Resp_C <= N_Resp_C do
+       c_resp_2(Am': bitstring) :=
+       find [unique] u_3 = ri_6 <= N_Resp_C suchthat defined(r[ri_6], Am'[ri_6]) && (Am' = Am'[ri_6]) then
+         event generated_cookie(Am', i_Resp_R, r[u_3]);
+         return(r[u_3])
+       orfind u_38 = ri_46 <= N_Resp_C suchthat defined(Y[ri_46], Am2'[u_43[ri_46]]) && (Am' = Am2'[u_43[ri_46]]) then
+         u_40 <= N_Resp_T <- u_43[u_38];
+         event generated_cookie(Am', i_Resp_R, Y[u_38]);
+         return(Y[u_38])
+       else
+         find [unique] u_43 = ri_4 <= N_Resp_T suchthat defined(r_1[ri_4], Am2'[ri_4]) && (Am' = Am2'[ri_4]) then
+           Y <-R key_t;
+           event generated_cookie(Am', i_Resp_R, Y);
+           return(Y)
+         else
+           r <-R key_t;
+           event generated_cookie(Am', i_Resp_R, r);
+           return(r)
+     ) | (
+       foreach i_Resp_T <= N_Resp_T do
+       c_resp_4(Am2': bitstring, msgbeta: bitstring, mac2: key_t) :=
+       find [unique] u_1 = ri_2 <= N_Resp_C suchthat defined(r[ri_2], Am'[ri_2]) && (Am2' = Am'[ri_2]) then
+       (
+         if verify2f(msgbeta, r[u_1], mac2) then
+         event accepted_cookie(Am2', i_Resp_R, r[u_1], msgbeta, mac2)
+       )
+       orfind u = ri <= N_Resp_T suchthat defined(r_1[ri], Am2'[ri]) && (Am2' = Am2'[ri]) then
+       (
+         find u_6 = ri_14 <= N_Resp_C suchthat defined(Y[u_38[ri_14]], u_40[ri_14]) && (u = u_40[ri_14]) then
+         (
+           if verify2f(msgbeta, Y[u_38[u_6]], mac2) then
+           event accepted_cookie(Am2', i_Resp_R, Y[u_38[u_6]], msgbeta, mac2)
+         )
+         orfind u_6 = ri_14 <= N_Resp_C suchthat defined(Y[ri_14], u_43[ri_14]) && (u = u_43[ri_14]) then
+         (
+           if verify2f(msgbeta, Y[u_6], mac2) then
+           event accepted_cookie(Am2', i_Resp_R, Y[u_6], msgbeta, mac2)
+         )
+       )
+       else
+         r_1: key_t <- cst_key_t
+     ))
+
+
+Applying SA rename new without array accesses and remove assignments of findcond
+  - Remove assignments on u_40 (definition point kept, all usages removed)
+yields
+
+Game 25 is
+     foreach i_Resp_R <= N_Resp_R do
+     c_resp_0() :=
+     return();
+     ((
+       foreach i_Resp_C <= N_Resp_C do
+       c_resp_2(Am': bitstring) :=
+       find [unique] u_3 = ri_6 <= N_Resp_C suchthat defined(r[ri_6], Am'[ri_6]) && (Am' = Am'[ri_6]) then
+         event generated_cookie(Am', i_Resp_R, r[u_3]);
+         return(r[u_3])
+       orfind u_38 = ri_46 <= N_Resp_C suchthat defined(Y[ri_46], Am2'[u_43[ri_46]]) && (Am' = Am2'[u_43[ri_46]]) then
+         u_40 <= N_Resp_T <- cst_[1,N_Resp_T];
+         event generated_cookie(Am', i_Resp_R, Y[u_38]);
+         return(Y[u_38])
+       else
+         find [unique] u_43 = ri_4 <= N_Resp_T suchthat defined(r_1[ri_4], Am2'[ri_4]) && (Am' = Am2'[ri_4]) then
+           Y <-R key_t;
+           event generated_cookie(Am', i_Resp_R, Y);
+           return(Y)
+         else
+           r <-R key_t;
+           event generated_cookie(Am', i_Resp_R, r);
+           return(r)
+     ) | (
+       foreach i_Resp_T <= N_Resp_T do
+       c_resp_4(Am2': bitstring, msgbeta: bitstring, mac2: key_t) :=
+       find [unique] u_1 = ri_2 <= N_Resp_C suchthat defined(r[ri_2], Am'[ri_2]) && (Am2' = Am'[ri_2]) then
+       (
+         if verify2f(msgbeta, r[u_1], mac2) then
+         event accepted_cookie(Am2', i_Resp_R, r[u_1], msgbeta, mac2)
+       )
+       orfind u = ri <= N_Resp_T suchthat defined(r_1[ri], Am2'[ri]) && (Am2' = Am2'[ri]) then
+       (
+         find u_6 = ri_14 <= N_Resp_C suchthat defined(u_43[u_38[ri_14]], u_40[ri_14], Y[u_38[ri_14]]) && (u = u_43[u_38[ri_14]]) then
+         (
+           if verify2f(msgbeta, Y[u_38[u_6]], mac2) then
+           event accepted_cookie(Am2', i_Resp_R, Y[u_38[u_6]], msgbeta, mac2)
+         )
+         orfind u_6 = ri_14 <= N_Resp_C suchthat defined(Y[ri_14], u_43[ri_14]) && (u = u_43[ri_14]) then
+         (
+           if verify2f(msgbeta, Y[u_6], mac2) then
+           event accepted_cookie(Am2', i_Resp_R, Y[u_6], msgbeta, mac2)
+         )
+       )
+       else
+         r_1: key_t <- cst_key_t
+     ))
+
+
+Proved forall mac2, tau: key_t, msgbeta, Am: bitstring, iRm <= N_Resp_R; event(accepted_cookie(Am, iRm, tau, msgbeta, mac2)) ==> event(generated_cookie(Am, iRm, tau)) in game 25
+Adv[Game 1: forall mac2, tau: key_t, msgbeta, Am: bitstring, iRm <= N_Resp_R; event(accepted_cookie(Am, iRm, tau, msgbeta, mac2)) ==> event(generated_cookie(Am, iRm, tau))] <= #c_resp_4 * Pmac(time_2, 0, 1 + N_Resp_T, 0, maxlength(game 7: msgbeta)) + N_Resp_R * Pprf(time_1, N_Resp_T + N_Resp_C, max(maxlength(game 2: Am2'), maxlength(game 2: Am'))) + Adv[Game 25: forall mac2, tau: key_t, msgbeta, Am: bitstring, iRm <= N_Resp_R; event(accepted_cookie(Am, iRm, tau, msgbeta, mac2)) ==> event(generated_cookie(Am, iRm, tau))]
+Adv[Game 25: forall mac2, tau: key_t, msgbeta, Am: bitstring, iRm <= N_Resp_R; event(accepted_cookie(Am, iRm, tau, msgbeta, mac2)) ==> event(generated_cookie(Am, iRm, tau))] <= 0
+RESULT Proved forall mac2, tau: key_t, msgbeta, Am: bitstring, iRm <= N_Resp_R; event(accepted_cookie(Am, iRm, tau, msgbeta, mac2)) ==> event(generated_cookie(Am, iRm, tau)) up to probability #c_resp_4 * Pmac(time_2, 0, 1 + N_Resp_T, 0, maxlength(game 7: msgbeta)) + N_Resp_R * Pprf(time_1, N_Resp_T + N_Resp_C, max(maxlength(game 2: Am2'), maxlength(game 2: Am')))
+RESULT time_1 = #c_resp_2 * time(([1,N_Resp_C], [1,N_Resp_R])) + #c_resp_4 * time(verify2f, maxlength(game 2: msgbeta)) + #c_resp_4 * time(([1,N_Resp_T], [1,N_Resp_R])) + time + (#c_resp_2 + #c_resp_4) * max(time(mac, max(maxlength(game 2: Am2'), maxlength(game 2: Am'))), (N_Resp_C + N_Resp_T) * time(= bitstring, max(maxlength(game 3: x_O_1), maxlength(game 3: x_O)), max(maxlength(game 3: x_O_1), maxlength(game 3: x_O))))
+RESULT time_2 = #c_resp_2 * N_Resp_C * time(= bitstring, maxlength(game 7: Am'), maxlength(game 7: Am')) + #c_resp_2 * N_Resp_T * time(= bitstring, maxlength(game 7: Am'), maxlength(game 7: Am2')) + #c_resp_2 * time(([1,N_Resp_C], [1,N_Resp_R])) + #c_resp_4 * N_Resp_C * time(= bitstring, maxlength(game 7: Am2'), maxlength(game 7: Am')) + #c_resp_4 * N_Resp_T * time(= bitstring, maxlength(game 7: Am2'), maxlength(game 7: Am2')) + #c_resp_4 * time(([1,N_Resp_T], [1,N_Resp_R])) + time + 2 * #c_resp_4 * time(verify2f, maxlength(game 7: msgbeta))
+All queries proved.

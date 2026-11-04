@@ -1,0 +1,3114 @@
+Doing expand get, insert and prove unique annotations... No change.
+Doing simplify (non-expanded game)... No change.
+Doing expand... No change.
+Doing remove assignments of findcond... No change.
+Doing simplify... Run simplify 1 time(s). Fixpoint reached.
+No change.
+Doing move all binders... No change.
+Doing SA rename new without array accesses and remove assignments of findcond... No change.
+Doing merge branches... No change.
+Trying equivalence remove_xor(xor)... Failed.
+Trying equivalence prf(AES)... Transf. OK Proba. computed Transf. done Succeeded.
+Doing simplify (non-expanded game)... Done.
+Doing expand... Eliminated collisions between r_3 and m31 Probability: 1 / |blocksize|
+(r_3 collides with a value independent of r_3 with probability at most 1 / |blocksize|;
+ m31 does not depend on r_3)
+Done.
+Doing remove assignments of findcond... Done.
+Doing simplify... Doing global dependency analysis on r inside simplify... At 445, returned message truncate(c22, l_2) depends on r.
+No change
+Doing global dependency analysis on r_3 inside simplify... At 205, returned message truncate(c22, l_2) depends on r_3.
+No change
+Doing global dependency analysis on r_2 inside simplify... At 526, returned message c21 depends on r_2.
+No change
+Doing global dependency analysis on r_1 inside simplify... At 82, returned message truncate(c1, l_1) depends on r_1.
+No change
+Doing global dependency analysis on r_6 inside simplify... At 654, returned message truncate(c33, l_3) depends on r_6.
+No change
+Doing global dependency analysis on r_5 inside simplify... At 1211, returned message c32 depends on r_5.
+No change
+Eliminated collisions between xor(r_2, m21) and x_O Probability: 1 / |blocksize|
+(xor(r_2, m21) collides with a value independent of r_2 with probability at most 1 / |blocksize|;
+ x_O does not depend on r_2)
+Eliminated collisions between xor(r_2, m21) and IV1 Probability: 1 / |blocksize|
+(xor(r_2, m21) collides with a value independent of r_2 with probability at most 1 / |blocksize|;
+ IV1 does not depend on r_2)
+Eliminated collisions between xor(r_2, m21) and IV2 Probability: 1 / |blocksize|
+(xor(r_2, m21) collides with a value independent of r_2 with probability at most 1 / |blocksize|;
+ IV2 does not depend on r_2)
+Eliminated collisions between xor(r_2, m21) and IV3 Probability: 1 / |blocksize|
+(xor(r_2, m21) collides with a value independent of r_2 with probability at most 1 / |blocksize|;
+ IV3 does not depend on r_2)
+Eliminated collisions between xor(r_2, m21) and x_O_5 Probability: 1 / |blocksize|
+(xor(r_2, m21) collides with a value independent of r_2 with probability at most 1 / |blocksize|;
+ x_O_5 does not depend on r_2)
+Eliminated collisions between xor(r_2, m21) and x_O_6 Probability: 1 / |blocksize|
+(xor(r_2, m21) collides with a value independent of r_2 with probability at most 1 / |blocksize|;
+ x_O_6 does not depend on r_2)
+Eliminated collisions between xor(r_5, m32) and x_O Probability: 1 / |blocksize|
+(xor(r_5, m32) collides with a value independent of r_5 with probability at most 1 / |blocksize|;
+ x_O does not depend on r_5)
+Eliminated collisions between xor(r_5, m32) and IV1 Probability: 1 / |blocksize|
+(xor(r_5, m32) collides with a value independent of r_5 with probability at most 1 / |blocksize|;
+ IV1 does not depend on r_5)
+Eliminated collisions between xor(r_5, m32) and IV2 Probability: 1 / |blocksize|
+(xor(r_5, m32) collides with a value independent of r_5 with probability at most 1 / |blocksize|;
+ IV2 does not depend on r_5)
+Eliminated collisions between xor(r_5, m32) and x_O_3 Probability: 1 / |blocksize|
+(xor(r_5, m32) collides with a value independent of r_5 with probability at most 1 / |blocksize|;
+ x_O_3 does not depend on r_5)
+Eliminated collisions between xor(r_5, m32) and IV3 Probability: 1 / |blocksize|
+(xor(r_5, m32) collides with a value independent of r_5 with probability at most 1 / |blocksize|;
+ IV3 does not depend on r_5)
+Eliminated collisions between xor(r_5, m32) and c31 Probability: 1 / |blocksize|
+(xor(r_5, m32) collides with a value independent of r_5 with probability at most 1 / |blocksize|;
+ c31 does not depend on r_5)
+Eliminated collisions between xor(r_4, m31) and x_O Probability: 1 / |blocksize|
+(xor(r_4, m31) collides with a value independent of r_4 with probability at most 1 / |blocksize|;
+ x_O does not depend on r_4)
+Eliminated collisions between xor(r_4, m31) and IV1 Probability: 1 / |blocksize|
+(xor(r_4, m31) collides with a value independent of r_4 with probability at most 1 / |blocksize|;
+ IV1 does not depend on r_4)
+Eliminated collisions between xor(r_4, m31) and IV2 Probability: 1 / |blocksize|
+(xor(r_4, m31) collides with a value independent of r_4 with probability at most 1 / |blocksize|;
+ IV2 does not depend on r_4)
+Eliminated collisions between xor(r_4, m31) and x_O_3 Probability: 1 / |blocksize|
+(xor(r_4, m31) collides with a value independent of r_4 with probability at most 1 / |blocksize|;
+ x_O_3 does not depend on r_4)
+Eliminated collisions between xor(r_4, m31) and IV3 Probability: 1 / |blocksize|
+(xor(r_4, m31) collides with a value independent of r_4 with probability at most 1 / |blocksize|;
+ IV3 does not depend on r_4)
+Doing global dependency analysis on r inside simplify... Done. Restarting simplify
+Eliminated collisions between IV3 and x_O_3 Probability: 1 / |blocksize|
+(IV3 collides with a value independent of r[...] with probability at most 1 / |blocksize|;
+ x_O_3 does not depend on r[...])
+Eliminated collisions between r and IVdata3 Probability: 1 / |blocksize|
+(r collides with a value independent of r[...] with probability at most 1 / |blocksize|;
+ IVdata3 does not depend on r[...])
+Eliminated collisions between IV2 and x_O_6 Probability: 1 / |blocksize|
+(IV2 collides with a value independent of r[...] with probability at most 1 / |blocksize|;
+ x_O_6 does not depend on r[...])
+Eliminated collisions between IV2 and x_O_5 Probability: 1 / |blocksize|
+(IV2 collides with a value independent of r[...] with probability at most 1 / |blocksize|;
+ x_O_5 does not depend on r[...])
+Eliminated collisions between r and IVdata2 Probability: 1 / |blocksize|
+(r collides with a value independent of r[...] with probability at most 1 / |blocksize|;
+ IVdata2 does not depend on r[...])
+Eliminated collisions between IV1 and x_O_6 Probability: 1 / |blocksize|
+(IV1 collides with a value independent of r[...] with probability at most 1 / |blocksize|;
+ x_O_6 does not depend on r[...])
+Eliminated collisions between IV1 and x_O_5 Probability: 1 / |blocksize|
+(IV1 collides with a value independent of r[...] with probability at most 1 / |blocksize|;
+ x_O_5 does not depend on r[...])
+Eliminated collisions between IV1 and x_O_3 Probability: 1 / |blocksize|
+(IV1 collides with a value independent of r[...] with probability at most 1 / |blocksize|;
+ x_O_3 does not depend on r[...])
+Eliminated collisions between r and IVdata1 Probability: 1 / |blocksize|
+(r collides with a value independent of r[...] with probability at most 1 / |blocksize|;
+ IVdata1 does not depend on r[...])
+Run simplify 2 time(s). Maximum reached.
+Done.
+Doing move all binders... No change.
+Doing SA rename new without array accesses and remove assignments of findcond... Done.
+Doing merge branches... No change.
+Trying equivalence remove_xor(xor)... Transf. OK Proba. computed Transf. done Succeeded.
+Doing simplify (non-expanded game)... No change.
+Doing expand... Done.
+Doing remove assignments of findcond... Done.
+Doing simplify... Run simplify 2 time(s). Fixpoint reached.
+Done.
+Doing move all binders... No change.
+Doing SA rename new without array accesses and remove assignments of findcond... No change.
+Doing merge branches... No change.
+Trying equivalence remove_xor(xor)... Transf. OK Proba. computed Transf. done Succeeded.
+Doing simplify (non-expanded game)... No change.
+Doing expand... Done.
+Doing remove assignments of findcond... Done.
+Doing simplify... Run simplify 1 time(s). Fixpoint reached.
+No change.
+Doing move all binders... No change.
+Doing SA rename new without array accesses and remove assignments of findcond... No change.
+Doing merge branches... No change.
+Trying equivalence remove_xor(xor)... Transf. OK Proba. computed Transf. done Succeeded.
+Doing simplify (non-expanded game)... No change.
+Doing expand... Done.
+Doing remove assignments of findcond... Done.
+Doing simplify... Run simplify 1 time(s). Fixpoint reached.
+No change.
+Doing move all binders... No change.
+Doing SA rename new without array accesses and remove assignments of findcond... No change.
+Doing merge branches... No change.
+Trying equivalence remove_xor(xor)... Transf. OK Proba. computed Transf. done Succeeded.
+Doing simplify (non-expanded game)... No change.
+Doing expand... Done.
+Doing remove assignments of findcond... Done.
+Doing simplify... Run simplify 1 time(s). Fixpoint reached.
+No change.
+Doing move all binders... No change.
+Doing SA rename new without array accesses and remove assignments of findcond... No change.
+Doing merge branches... No change.
+Trying equivalence remove_xor(xor)... Transf. OK Proba. computed Transf. done Succeeded.
+Doing simplify (non-expanded game)... No change.
+Doing expand... Done.
+Doing remove assignments of findcond... Done.
+Doing simplify... Run simplify 1 time(s). Fixpoint reached.
+No change.
+Doing move all binders... No change.
+Doing SA rename new without array accesses and remove assignments of findcond... No change.
+Doing merge branches... No change.
+Trying equivalence remove_xor(xor)... Transf. OK Proba. computed Transf. done Succeeded.
+Doing simplify (non-expanded game)... No change.
+Doing expand... Done.
+Doing remove assignments of findcond... Done.
+Doing simplify... Run simplify 1 time(s). Fixpoint reached.
+No change.
+Doing move all binders... No change.
+Doing SA rename new without array accesses and remove assignments of findcond... No change.
+Doing merge branches... No change.
+Trying equivalence remove_xor(xor)... Failed.
+Trying equivalence prf(AES)... Failed.
+===================== Proof starts =======================
+Initial state
+Game 1 is
+      Ogen() :=
+      k_1 <-R enc_key;
+      IV0: blocksize <- AES(k_1, Zero);
+      return();
+      ((
+        Oenc1(IVdata1: blocksize, m1: blocksize, l_1: len) :=
+        if defined(IVdata2) && (IVdata1 = IVdata2) then
+          event_abort repeatedIV
+        else
+          if defined(IVdata3) && (IVdata1 = IVdata3) then
+            event_abort repeatedIV
+          else
+            IV1: blocksize <- xor(IV0, IVdata1);
+            c1: blocksize <- xor(AES(k_1, IV1), m1);
+            return(truncate(c1, l_1))
+      ) | (
+        Oenc2(IVdata2: blocksize, m21: blocksize, m22: blocksize, l_2: len) :=
+        if defined(IVdata1) && (IVdata2 = IVdata1) then
+          event_abort repeatedIV
+        else
+          if defined(IVdata3) && (IVdata2 = IVdata3) then
+            event_abort repeatedIV
+          else
+            IV2: blocksize <- xor(IV0, IVdata2);
+            c21: blocksize <- xor(AES(k_1, IV2), m21);
+            c22: blocksize <- xor(AES(k_1, c21), m22);
+            return(c21, truncate(c22, l_2))
+      ) | (
+        Oenc3(IVdata3: blocksize, m31: blocksize, m32: blocksize, m33: blocksize, l_3: len) :=
+        if defined(IVdata1) && (IVdata3 = IVdata1) then
+          event_abort repeatedIV
+        else
+          if defined(IVdata2) && (IVdata3 = IVdata2) then
+            event_abort repeatedIV
+          else
+            IV3: blocksize <- xor(IV0, IVdata3);
+            c31: blocksize <- xor(AES(k_1, IV3), m31);
+            c32: blocksize <- xor(AES(k_1, c31), m32);
+            c33: blocksize <- xor(AES(k_1, c32), m33);
+            return(c31, c32, truncate(c33, l_3))
+      ))
+
+
+Applying equivalence prf(AES) [probability P_AES(time_1, 7)]
+  - Equivalence prf(AES) with variables: k_1 -> k_2
+yields
+
+Game 2 is
+      Ogen() :=
+      IV0: blocksize <- (x_O: blocksize <- Zero; {5}find [unique]  else r <-R blocksize; r);
+      return();
+      ((
+        Oenc1(IVdata1: blocksize, m1: blocksize, l_1: len) :=
+        if defined(IVdata2) && (IVdata1 = IVdata2) then
+          event_abort repeatedIV
+        else
+          if defined(IVdata3) && (IVdata1 = IVdata3) then
+            event_abort repeatedIV
+          else
+            IV1: blocksize <- xor(IV0, IVdata1);
+            c1: blocksize <- xor((x_O_1: blocksize <- IV1; find [unique]  suchthat defined(x_O, r) && (x_O_1 = x_O) then r orfind  suchthat defined(x_O_2, r_2) && (x_O_1 = x_O_2) then r_2 orfind  suchthat defined(x_O_3, r_3) && (x_O_1 = x_O_3) then r_3 orfind  suchthat defined(x_O_4, r_4) && (x_O_1 = x_O_4) then r_4 orfind  suchthat defined(x_O_5, r_5) && (x_O_1 = x_O_5) then r_5 orfind  suchthat defined(x_O_6, r_6) && (x_O_1 = x_O_6) then r_6 else r_1 <-R blocksize; r_1), m1);
+            return(truncate(c1, l_1))
+      ) | (
+        Oenc2(IVdata2: blocksize, m21: blocksize, m22: blocksize, l_2: len) :=
+        if defined(IVdata1) && (IVdata2 = IVdata1) then
+          event_abort repeatedIV
+        else
+          if defined(IVdata3) && (IVdata2 = IVdata3) then
+            event_abort repeatedIV
+          else
+            IV2: blocksize <- xor(IV0, IVdata2);
+            c21: blocksize <- xor((x_O_2: blocksize <- IV2; find [unique]  suchthat defined(x_O, r) && (x_O_2 = x_O) then r orfind  suchthat defined(x_O_1, r_1) && (x_O_2 = x_O_1) then r_1 orfind  suchthat defined(x_O_4, r_4) && (x_O_2 = x_O_4) then r_4 orfind  suchthat defined(x_O_5, r_5) && (x_O_2 = x_O_5) then r_5 orfind  suchthat defined(x_O_6, r_6) && (x_O_2 = x_O_6) then r_6 else r_2 <-R blocksize; r_2), m21);
+            c22: blocksize <- xor((x_O_3: blocksize <- c21; find [unique]  suchthat defined(x_O, r) && (x_O_3 = x_O) then r orfind  suchthat defined(x_O_1, r_1) && (x_O_3 = x_O_1) then r_1 orfind  suchthat defined(x_O_2, r_2) && (x_O_3 = x_O_2) then r_2 orfind  suchthat defined(x_O_4, r_4) && (x_O_3 = x_O_4) then r_4 orfind  suchthat defined(x_O_5, r_5) && (x_O_3 = x_O_5) then r_5 orfind  suchthat defined(x_O_6, r_6) && (x_O_3 = x_O_6) then r_6 else r_3 <-R blocksize; r_3), m22);
+            return(c21, truncate(c22, l_2))
+      ) | (
+        Oenc3(IVdata3: blocksize, m31: blocksize, m32: blocksize, m33: blocksize, l_3: len) :=
+        if defined(IVdata1) && (IVdata3 = IVdata1) then
+          event_abort repeatedIV
+        else
+          if defined(IVdata2) && (IVdata3 = IVdata2) then
+            event_abort repeatedIV
+          else
+            IV3: blocksize <- xor(IV0, IVdata3);
+            c31: blocksize <- xor((x_O_4: blocksize <- IV3; find [unique]  suchthat defined(x_O, r) && (x_O_4 = x_O) then r orfind  suchthat defined(x_O_1, r_1) && (x_O_4 = x_O_1) then r_1 orfind  suchthat defined(x_O_2, r_2) && (x_O_4 = x_O_2) then r_2 orfind  suchthat defined(x_O_3, r_3) && (x_O_4 = x_O_3) then r_3 else r_4 <-R blocksize; r_4), m31);
+            c32: blocksize <- xor((x_O_5: blocksize <- c31; find [unique]  suchthat defined(x_O, r) && (x_O_5 = x_O) then r orfind  suchthat defined(x_O_1, r_1) && (x_O_5 = x_O_1) then r_1 orfind  suchthat defined(x_O_2, r_2) && (x_O_5 = x_O_2) then r_2 orfind  suchthat defined(x_O_3, r_3) && (x_O_5 = x_O_3) then r_3 orfind  suchthat defined(x_O_4, r_4) && (x_O_5 = x_O_4) then r_4 else r_5 <-R blocksize; r_5), m32);
+            c33: blocksize <- xor((x_O_6: blocksize <- c32; find [unique]  suchthat defined(x_O, r) && (x_O_6 = x_O) then r orfind  suchthat defined(x_O_1, r_1) && (x_O_6 = x_O_1) then r_1 orfind  suchthat defined(x_O_2, r_2) && (x_O_6 = x_O_2) then r_2 orfind  suchthat defined(x_O_3, r_3) && (x_O_6 = x_O_3) then r_3 orfind  suchthat defined(x_O_4, r_4) && (x_O_6 = x_O_4) then r_4 orfind  suchthat defined(x_O_5, r_5) && (x_O_6 = x_O_5) then r_5 else r_6 <-R blocksize; r_6), m33);
+            return(c31, c32, truncate(c33, l_3))
+      ))
+
+
+Applying simplify (non-expanded game)
+  - Simplification pass
+    - Find at 5 removed (else branch kept if any)
+yields
+
+Game 3 is
+      Ogen() :=
+      IV0: blocksize <- (x_O: blocksize <- Zero; r <-R blocksize; r);
+      return();
+      ((
+        Oenc1(IVdata1: blocksize, m1: blocksize, l_1: len) :=
+        if defined(IVdata2) && (IVdata1 = IVdata2) then
+          event_abort repeatedIV
+        else
+          if defined(IVdata3) && (IVdata1 = IVdata3) then
+            event_abort repeatedIV
+          else
+            IV1: blocksize <- xor(IV0, IVdata1);
+            c1: blocksize <- xor((x_O_1: blocksize <- IV1; {29}find [unique]  suchthat defined(x_O, r) && (x_O_1 = x_O) then r orfind  suchthat defined(x_O_2, r_2) && (x_O_1 = x_O_2) then r_2 orfind  suchthat defined(x_O_3, r_3) && (x_O_1 = x_O_3) then r_3 orfind  suchthat defined(x_O_4, r_4) && (x_O_1 = x_O_4) then r_4 orfind  suchthat defined(x_O_5, r_5) && (x_O_1 = x_O_5) then r_5 orfind  suchthat defined(x_O_6, r_6) && (x_O_1 = x_O_6) then r_6 else r_1 <-R blocksize; r_1), m1);
+            return(truncate(c1, l_1))
+      ) | (
+        Oenc2(IVdata2: blocksize, m21: blocksize, m22: blocksize, l_2: len) :=
+        if defined(IVdata1) && (IVdata2 = IVdata1) then
+          event_abort repeatedIV
+        else
+          if defined(IVdata3) && (IVdata2 = IVdata3) then
+            event_abort repeatedIV
+          else
+            IV2: blocksize <- xor(IV0, IVdata2);
+            c21: blocksize <- xor((x_O_2: blocksize <- IV2; {83}find [unique]  suchthat defined(x_O, r) && (x_O_2 = x_O) then r orfind  suchthat defined(x_O_1, r_1) && (x_O_2 = x_O_1) then r_1 orfind  suchthat defined(x_O_4, r_4) && (x_O_2 = x_O_4) then r_4 orfind  suchthat defined(x_O_5, r_5) && (x_O_2 = x_O_5) then r_5 orfind  suchthat defined(x_O_6, r_6) && (x_O_2 = x_O_6) then r_6 else r_2 <-R blocksize; r_2), m21);
+            c22: blocksize <- xor((x_O_3: blocksize <- c21; find [unique]  suchthat defined(x_O, r) && (x_O_3 = x_O) then r orfind  suchthat defined(x_O_1, r_1) && (x_O_3 = x_O_1) then r_1 orfind  suchthat defined(x_O_2, r_2) && (x_O_3 = x_O_2) then r_2 orfind  suchthat defined(x_O_4, r_4) && (x_O_3 = x_O_4) then r_4 orfind  suchthat defined(x_O_5, r_5) && (x_O_3 = x_O_5) then r_5 orfind  suchthat defined(x_O_6, r_6) && (x_O_3 = x_O_6) then r_6 else r_3 <-R blocksize; r_3), m22);
+            return(c21, truncate(c22, l_2))
+      ) | (
+        Oenc3(IVdata3: blocksize, m31: blocksize, m32: blocksize, m33: blocksize, l_3: len) :=
+        if defined(IVdata1) && (IVdata3 = IVdata1) then
+          event_abort repeatedIV
+        else
+          if defined(IVdata2) && (IVdata3 = IVdata2) then
+            event_abort repeatedIV
+          else
+            IV3: blocksize <- xor(IV0, IVdata3);
+            c31: blocksize <- xor((x_O_4: blocksize <- IV3; {167}find [unique]  suchthat defined(x_O, r) && (x_O_4 = x_O) then r orfind  suchthat defined(x_O_1, r_1) && (x_O_4 = x_O_1) then r_1 orfind  suchthat defined(x_O_2, r_2) && (x_O_4 = x_O_2) then r_2 orfind  suchthat defined(x_O_3, r_3) && (x_O_4 = x_O_3) then r_3 else r_4 <-R blocksize; r_4), m31);
+            c32: blocksize <- xor((x_O_5: blocksize <- c31; find [unique]  suchthat defined(x_O, r) && (x_O_5 = x_O) then r orfind  suchthat defined(x_O_1, r_1) && (x_O_5 = x_O_1) then r_1 orfind  suchthat defined(x_O_2, r_2) && (x_O_5 = x_O_2) then r_2 orfind  suchthat defined(x_O_3, r_3) && (x_O_5 = x_O_3) then r_3 orfind  suchthat defined(x_O_4, r_4) && (x_O_5 = x_O_4) then r_4 else r_5 <-R blocksize; r_5), m32);
+            c33: blocksize <- xor((x_O_6: blocksize <- c32; {219}find [unique]  suchthat defined(x_O, r) && (x_O_6 = x_O) then r orfind  suchthat defined(x_O_1, r_1) && (x_O_6 = x_O_1) then r_1 orfind  suchthat defined(x_O_2, r_2) && (x_O_6 = x_O_2) then r_2 orfind  suchthat defined(x_O_3, r_3) && (x_O_6 = x_O_3) then r_3 orfind  suchthat defined(x_O_4, r_4) && (x_O_6 = x_O_4) then r_4 orfind  suchthat defined(x_O_5, r_5) && (x_O_6 = x_O_5) then r_5 else r_6 <-R blocksize; r_6), m33);
+            return(c31, c32, truncate(c33, l_3))
+      ))
+
+
+Applying expand [probability 1 / |blocksize|]
+  - Expand if/find/let
+    - Remove branch 4 in find at 219
+    - Remove branch 5 in find at 219
+    - Remove branch 3 in find at 167
+    - Remove branch 2 in find at 167
+    - Remove branch 1 in find at 219
+    - Remove branch 5 in find at 219
+    - Remove branch 3 in find at 83
+    - Remove branch 2 in find at 83
+    - Remove branch 4 in find at 29
+    - Remove branch 2 in find at 29
+yields
+
+Game 4 is
+      Ogen() :=
+      x_O: blocksize <- Zero;
+      r <-R blocksize;
+      IV0: blocksize <- r;
+      return();
+      ((
+        Oenc1(IVdata1: blocksize, m1: blocksize, l_1: len) :=
+        if defined(IVdata2) && (IVdata1 = IVdata2) then
+          event_abort repeatedIV
+        else
+          if defined(IVdata3) && (IVdata1 = IVdata3) then
+            event_abort repeatedIV
+          else
+            IV1: blocksize <- xor(IV0, IVdata1);
+            x_O_1: blocksize <- IV1;
+            find [unique]  suchthat defined(x_O, r) && (x_O_1 = x_O) then
+              c1: blocksize <- xor(r, m1);
+              return(truncate(c1, l_1))
+            orfind  suchthat defined(x_O_3, r_3) && (x_O_1 = x_O_3) then
+              c1: blocksize <- xor(r_3, m1);
+              return(truncate(c1, l_1))
+            orfind  suchthat defined(x_O_5, r_5) && (x_O_1 = x_O_5) then
+              c1: blocksize <- xor(r_5, m1);
+              return(truncate(c1, l_1))
+            orfind  suchthat defined(x_O_6, r_6) && (x_O_1 = x_O_6) then
+              c1: blocksize <- xor(r_6, m1);
+              return(truncate(c1, l_1))
+            else
+              r_1 <-R blocksize;
+              c1: blocksize <- xor(r_1, m1);
+              return(truncate(c1, l_1))
+      ) | (
+        Oenc2(IVdata2: blocksize, m21: blocksize, m22: blocksize, l_2: len) :=
+        if defined(IVdata1) && (IVdata2 = IVdata1) then
+          event_abort repeatedIV
+        else
+          if defined(IVdata3) && (IVdata2 = IVdata3) then
+            event_abort repeatedIV
+          else
+            IV2: blocksize <- xor(IV0, IVdata2);
+            x_O_2: blocksize <- IV2;
+            find [unique]  suchthat defined(x_O, r) && (x_O_2 = x_O) then
+              c21: blocksize <- xor(r, m21);
+              x_O_3: blocksize <- c21;
+              find [unique]  suchthat defined(x_O, r) && (x_O_3 = x_O) then
+                c22: blocksize <- xor(r, m22);
+                return(c21, truncate(c22, l_2))
+              orfind  suchthat defined(x_O_1, r_1) && (x_O_3 = x_O_1) then
+                c22: blocksize <- xor(r_1, m22);
+                return(c21, truncate(c22, l_2))
+              orfind  suchthat defined(x_O_2, r_2) && (x_O_3 = x_O_2) then
+                c22: blocksize <- xor(r_2, m22);
+                return(c21, truncate(c22, l_2))
+              orfind  suchthat defined(x_O_4, r_4) && (x_O_3 = x_O_4) then
+                c22: blocksize <- xor(r_4, m22);
+                return(c21, truncate(c22, l_2))
+              orfind  suchthat defined(x_O_5, r_5) && (x_O_3 = x_O_5) then
+                c22: blocksize <- xor(r_5, m22);
+                return(c21, truncate(c22, l_2))
+              orfind  suchthat defined(x_O_6, r_6) && (x_O_3 = x_O_6) then
+                c22: blocksize <- xor(r_6, m22);
+                return(c21, truncate(c22, l_2))
+              else
+                r_3 <-R blocksize;
+                c22: blocksize <- xor(r_3, m22);
+                return(c21, truncate(c22, l_2))
+            orfind  suchthat defined(x_O_5, r_5) && (x_O_2 = x_O_5) then
+              c21: blocksize <- xor(r_5, m21);
+              x_O_3: blocksize <- c21;
+              find [unique]  suchthat defined(x_O, r) && (x_O_3 = x_O) then
+                c22: blocksize <- xor(r, m22);
+                return(c21, truncate(c22, l_2))
+              orfind  suchthat defined(x_O_1, r_1) && (x_O_3 = x_O_1) then
+                c22: blocksize <- xor(r_1, m22);
+                return(c21, truncate(c22, l_2))
+              orfind  suchthat defined(x_O_2, r_2) && (x_O_3 = x_O_2) then
+                c22: blocksize <- xor(r_2, m22);
+                return(c21, truncate(c22, l_2))
+              orfind  suchthat defined(x_O_4, r_4) && (x_O_3 = x_O_4) then
+                c22: blocksize <- xor(r_4, m22);
+                return(c21, truncate(c22, l_2))
+              orfind  suchthat defined(x_O_5, r_5) && (x_O_3 = x_O_5) then
+                c22: blocksize <- xor(r_5, m22);
+                return(c21, truncate(c22, l_2))
+              orfind  suchthat defined(x_O_6, r_6) && (x_O_3 = x_O_6) then
+                c22: blocksize <- xor(r_6, m22);
+                return(c21, truncate(c22, l_2))
+              else
+                r_3 <-R blocksize;
+                c22: blocksize <- xor(r_3, m22);
+                return(c21, truncate(c22, l_2))
+            orfind  suchthat defined(x_O_6, r_6) && (x_O_2 = x_O_6) then
+              c21: blocksize <- xor(r_6, m21);
+              x_O_3: blocksize <- c21;
+              find [unique]  suchthat defined(x_O, r) && (x_O_3 = x_O) then
+                c22: blocksize <- xor(r, m22);
+                return(c21, truncate(c22, l_2))
+              orfind  suchthat defined(x_O_1, r_1) && (x_O_3 = x_O_1) then
+                c22: blocksize <- xor(r_1, m22);
+                return(c21, truncate(c22, l_2))
+              orfind  suchthat defined(x_O_2, r_2) && (x_O_3 = x_O_2) then
+                c22: blocksize <- xor(r_2, m22);
+                return(c21, truncate(c22, l_2))
+              orfind  suchthat defined(x_O_4, r_4) && (x_O_3 = x_O_4) then
+                c22: blocksize <- xor(r_4, m22);
+                return(c21, truncate(c22, l_2))
+              orfind  suchthat defined(x_O_5, r_5) && (x_O_3 = x_O_5) then
+                c22: blocksize <- xor(r_5, m22);
+                return(c21, truncate(c22, l_2))
+              orfind  suchthat defined(x_O_6, r_6) && (x_O_3 = x_O_6) then
+                c22: blocksize <- xor(r_6, m22);
+                return(c21, truncate(c22, l_2))
+              else
+                r_3 <-R blocksize;
+                c22: blocksize <- xor(r_3, m22);
+                return(c21, truncate(c22, l_2))
+            else
+              r_2 <-R blocksize;
+              c21: blocksize <- xor(r_2, m21);
+              x_O_3: blocksize <- c21;
+              find [unique]  suchthat defined(x_O, r) && (x_O_3 = x_O) then
+                c22: blocksize <- xor(r, m22);
+                return(c21, truncate(c22, l_2))
+              orfind  suchthat defined(x_O_1, r_1) && (x_O_3 = x_O_1) then
+                c22: blocksize <- xor(r_1, m22);
+                return(c21, truncate(c22, l_2))
+              orfind  suchthat defined(x_O_2, r_2) && (x_O_3 = x_O_2) then
+                c22: blocksize <- xor(r_2, m22);
+                return(c21, truncate(c22, l_2))
+              orfind  suchthat defined(x_O_4, r_4) && (x_O_3 = x_O_4) then
+                c22: blocksize <- xor(r_4, m22);
+                return(c21, truncate(c22, l_2))
+              orfind  suchthat defined(x_O_5, r_5) && (x_O_3 = x_O_5) then
+                c22: blocksize <- xor(r_5, m22);
+                return(c21, truncate(c22, l_2))
+              orfind  suchthat defined(x_O_6, r_6) && (x_O_3 = x_O_6) then
+                c22: blocksize <- xor(r_6, m22);
+                return(c21, truncate(c22, l_2))
+              else
+                r_3 <-R blocksize;
+                c22: blocksize <- xor(r_3, m22);
+                return(c21, truncate(c22, l_2))
+      ) | (
+        Oenc3(IVdata3: blocksize, m31: blocksize, m32: blocksize, m33: blocksize, l_3: len) :=
+        if defined(IVdata1) && (IVdata3 = IVdata1) then
+          event_abort repeatedIV
+        else
+          if defined(IVdata2) && (IVdata3 = IVdata2) then
+            event_abort repeatedIV
+          else
+            IV3: blocksize <- xor(IV0, IVdata3);
+            x_O_4: blocksize <- IV3;
+            find [unique]  suchthat defined(x_O, r) && (x_O_4 = x_O) then
+              c31: blocksize <- xor(r, m31);
+              x_O_5: blocksize <- c31;
+              find [unique]  suchthat defined(x_O, r) && (x_O_5 = x_O) then
+                c32: blocksize <- xor(r, m32);
+                x_O_6: blocksize <- c32;
+                find [unique]  suchthat defined(x_O, r) && (x_O_6 = x_O) then
+                  c33: blocksize <- xor(r, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(x_O_1, r_1) && (x_O_6 = x_O_1) then
+                  c33: blocksize <- xor(r_1, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(x_O_2, r_2) && (x_O_6 = x_O_2) then
+                  c33: blocksize <- xor(r_2, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(x_O_3, r_3) && (x_O_6 = x_O_3) then
+                  c33: blocksize <- xor(r_3, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(x_O_5, r_5) && (x_O_6 = x_O_5) then
+                  c33: blocksize <- xor(r_5, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                else
+                  r_6 <-R blocksize;
+                  c33: blocksize <- xor(r_6, m33);
+                  return(c31, c32, truncate(c33, l_3))
+              orfind  suchthat defined(x_O_1, r_1) && (x_O_5 = x_O_1) then
+                c32: blocksize <- xor(r_1, m32);
+                x_O_6: blocksize <- c32;
+                find [unique]  suchthat defined(x_O, r) && (x_O_6 = x_O) then
+                  c33: blocksize <- xor(r, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(x_O_1, r_1) && (x_O_6 = x_O_1) then
+                  c33: blocksize <- xor(r_1, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(x_O_2, r_2) && (x_O_6 = x_O_2) then
+                  c33: blocksize <- xor(r_2, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(x_O_3, r_3) && (x_O_6 = x_O_3) then
+                  c33: blocksize <- xor(r_3, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(x_O_4, r_4) && (x_O_6 = x_O_4) then
+                  c33: blocksize <- xor(r_4, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(x_O_5, r_5) && (x_O_6 = x_O_5) then
+                  c33: blocksize <- xor(r_5, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                else
+                  r_6 <-R blocksize;
+                  c33: blocksize <- xor(r_6, m33);
+                  return(c31, c32, truncate(c33, l_3))
+              orfind  suchthat defined(x_O_2, r_2) && (x_O_5 = x_O_2) then
+                c32: blocksize <- xor(r_2, m32);
+                x_O_6: blocksize <- c32;
+                find [unique]  suchthat defined(x_O, r) && (x_O_6 = x_O) then
+                  c33: blocksize <- xor(r, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(x_O_1, r_1) && (x_O_6 = x_O_1) then
+                  c33: blocksize <- xor(r_1, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(x_O_2, r_2) && (x_O_6 = x_O_2) then
+                  c33: blocksize <- xor(r_2, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(x_O_3, r_3) && (x_O_6 = x_O_3) then
+                  c33: blocksize <- xor(r_3, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(x_O_4, r_4) && (x_O_6 = x_O_4) then
+                  c33: blocksize <- xor(r_4, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(x_O_5, r_5) && (x_O_6 = x_O_5) then
+                  c33: blocksize <- xor(r_5, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                else
+                  r_6 <-R blocksize;
+                  c33: blocksize <- xor(r_6, m33);
+                  return(c31, c32, truncate(c33, l_3))
+              orfind  suchthat defined(x_O_3, r_3) && (x_O_5 = x_O_3) then
+                c32: blocksize <- xor(r_3, m32);
+                x_O_6: blocksize <- c32;
+                find [unique]  suchthat defined(x_O, r) && (x_O_6 = x_O) then
+                  c33: blocksize <- xor(r, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(x_O_1, r_1) && (x_O_6 = x_O_1) then
+                  c33: blocksize <- xor(r_1, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(x_O_2, r_2) && (x_O_6 = x_O_2) then
+                  c33: blocksize <- xor(r_2, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(x_O_3, r_3) && (x_O_6 = x_O_3) then
+                  c33: blocksize <- xor(r_3, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(x_O_4, r_4) && (x_O_6 = x_O_4) then
+                  c33: blocksize <- xor(r_4, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(x_O_5, r_5) && (x_O_6 = x_O_5) then
+                  c33: blocksize <- xor(r_5, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                else
+                  r_6 <-R blocksize;
+                  c33: blocksize <- xor(r_6, m33);
+                  return(c31, c32, truncate(c33, l_3))
+              orfind  suchthat defined(x_O_4, r_4) && (x_O_5 = x_O_4) then
+                c32: blocksize <- xor(r_4, m32);
+                x_O_6: blocksize <- c32;
+                find [unique]  suchthat defined(x_O_1, r_1) && (x_O_6 = x_O_1) then
+                  c33: blocksize <- xor(r_1, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(x_O_2, r_2) && (x_O_6 = x_O_2) then
+                  c33: blocksize <- xor(r_2, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(x_O_3, r_3) && (x_O_6 = x_O_3) then
+                  c33: blocksize <- xor(r_3, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(x_O_4, r_4) && (x_O_6 = x_O_4) then
+                  c33: blocksize <- xor(r_4, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(x_O_5, r_5) && (x_O_6 = x_O_5) then
+                  c33: blocksize <- xor(r_5, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                else
+                  r_6 <-R blocksize;
+                  c33: blocksize <- xor(r_6, m33);
+                  return(c31, c32, truncate(c33, l_3))
+              else
+                r_5 <-R blocksize;
+                c32: blocksize <- xor(r_5, m32);
+                x_O_6: blocksize <- c32;
+                find [unique]  suchthat defined(x_O, r) && (x_O_6 = x_O) then
+                  c33: blocksize <- xor(r, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(x_O_1, r_1) && (x_O_6 = x_O_1) then
+                  c33: blocksize <- xor(r_1, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(x_O_2, r_2) && (x_O_6 = x_O_2) then
+                  c33: blocksize <- xor(r_2, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(x_O_3, r_3) && (x_O_6 = x_O_3) then
+                  c33: blocksize <- xor(r_3, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(x_O_4, r_4) && (x_O_6 = x_O_4) then
+                  c33: blocksize <- xor(r_4, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(x_O_5, r_5) && (x_O_6 = x_O_5) then
+                  c33: blocksize <- xor(r_5, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                else
+                  r_6 <-R blocksize;
+                  c33: blocksize <- xor(r_6, m33);
+                  return(c31, c32, truncate(c33, l_3))
+            orfind  suchthat defined(x_O_3, r_3) && (x_O_4 = x_O_3) then
+              c31: blocksize <- xor(r_3, m31);
+              x_O_5: blocksize <- c31;
+              find [unique]  suchthat defined(x_O, r) && (x_O_5 = x_O) then
+                c32: blocksize <- xor(r, m32);
+                x_O_6: blocksize <- c32;
+                find [unique]  suchthat defined(x_O, r) && (x_O_6 = x_O) then
+                  c33: blocksize <- xor(r, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(x_O_1, r_1) && (x_O_6 = x_O_1) then
+                  c33: blocksize <- xor(r_1, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(x_O_2, r_2) && (x_O_6 = x_O_2) then
+                  c33: blocksize <- xor(r_2, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(x_O_3, r_3) && (x_O_6 = x_O_3) then
+                  c33: blocksize <- xor(r_3, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(x_O_4, r_4) && (x_O_6 = x_O_4) then
+                  c33: blocksize <- xor(r_4, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(x_O_5, r_5) && (x_O_6 = x_O_5) then
+                  c33: blocksize <- xor(r_5, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                else
+                  r_6 <-R blocksize;
+                  c33: blocksize <- xor(r_6, m33);
+                  return(c31, c32, truncate(c33, l_3))
+              orfind  suchthat defined(x_O_1, r_1) && (x_O_5 = x_O_1) then
+                c32: blocksize <- xor(r_1, m32);
+                x_O_6: blocksize <- c32;
+                find [unique]  suchthat defined(x_O, r) && (x_O_6 = x_O) then
+                  c33: blocksize <- xor(r, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(x_O_1, r_1) && (x_O_6 = x_O_1) then
+                  c33: blocksize <- xor(r_1, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(x_O_2, r_2) && (x_O_6 = x_O_2) then
+                  c33: blocksize <- xor(r_2, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(x_O_3, r_3) && (x_O_6 = x_O_3) then
+                  c33: blocksize <- xor(r_3, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(x_O_4, r_4) && (x_O_6 = x_O_4) then
+                  c33: blocksize <- xor(r_4, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(x_O_5, r_5) && (x_O_6 = x_O_5) then
+                  c33: blocksize <- xor(r_5, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                else
+                  r_6 <-R blocksize;
+                  c33: blocksize <- xor(r_6, m33);
+                  return(c31, c32, truncate(c33, l_3))
+              orfind  suchthat defined(x_O_2, r_2) && (x_O_5 = x_O_2) then
+                c32: blocksize <- xor(r_2, m32);
+                x_O_6: blocksize <- c32;
+                find [unique]  suchthat defined(x_O, r) && (x_O_6 = x_O) then
+                  c33: blocksize <- xor(r, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(x_O_1, r_1) && (x_O_6 = x_O_1) then
+                  c33: blocksize <- xor(r_1, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(x_O_2, r_2) && (x_O_6 = x_O_2) then
+                  c33: blocksize <- xor(r_2, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(x_O_3, r_3) && (x_O_6 = x_O_3) then
+                  c33: blocksize <- xor(r_3, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(x_O_4, r_4) && (x_O_6 = x_O_4) then
+                  c33: blocksize <- xor(r_4, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(x_O_5, r_5) && (x_O_6 = x_O_5) then
+                  c33: blocksize <- xor(r_5, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                else
+                  r_6 <-R blocksize;
+                  c33: blocksize <- xor(r_6, m33);
+                  return(c31, c32, truncate(c33, l_3))
+              orfind  suchthat defined(x_O_3, r_3) && (x_O_5 = x_O_3) then
+                c32: blocksize <- xor(r_3, m32);
+                x_O_6: blocksize <- c32;
+                find [unique]  suchthat defined(x_O, r) && (x_O_6 = x_O) then
+                  c33: blocksize <- xor(r, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(x_O_1, r_1) && (x_O_6 = x_O_1) then
+                  c33: blocksize <- xor(r_1, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(x_O_2, r_2) && (x_O_6 = x_O_2) then
+                  c33: blocksize <- xor(r_2, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(x_O_3, r_3) && (x_O_6 = x_O_3) then
+                  c33: blocksize <- xor(r_3, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(x_O_5, r_5) && (x_O_6 = x_O_5) then
+                  c33: blocksize <- xor(r_5, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                else
+                  r_6 <-R blocksize;
+                  c33: blocksize <- xor(r_6, m33);
+                  return(c31, c32, truncate(c33, l_3))
+              orfind  suchthat defined(x_O_4, r_4) && (x_O_5 = x_O_4) then
+                c32: blocksize <- xor(r_4, m32);
+                x_O_6: blocksize <- c32;
+                find [unique]  suchthat defined(x_O, r) && (x_O_6 = x_O) then
+                  c33: blocksize <- xor(r, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(x_O_1, r_1) && (x_O_6 = x_O_1) then
+                  c33: blocksize <- xor(r_1, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(x_O_2, r_2) && (x_O_6 = x_O_2) then
+                  c33: blocksize <- xor(r_2, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(x_O_4, r_4) && (x_O_6 = x_O_4) then
+                  c33: blocksize <- xor(r_4, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(x_O_5, r_5) && (x_O_6 = x_O_5) then
+                  c33: blocksize <- xor(r_5, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                else
+                  r_6 <-R blocksize;
+                  c33: blocksize <- xor(r_6, m33);
+                  return(c31, c32, truncate(c33, l_3))
+              else
+                r_5 <-R blocksize;
+                c32: blocksize <- xor(r_5, m32);
+                x_O_6: blocksize <- c32;
+                find [unique]  suchthat defined(x_O, r) && (x_O_6 = x_O) then
+                  c33: blocksize <- xor(r, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(x_O_1, r_1) && (x_O_6 = x_O_1) then
+                  c33: blocksize <- xor(r_1, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(x_O_2, r_2) && (x_O_6 = x_O_2) then
+                  c33: blocksize <- xor(r_2, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(x_O_3, r_3) && (x_O_6 = x_O_3) then
+                  c33: blocksize <- xor(r_3, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(x_O_4, r_4) && (x_O_6 = x_O_4) then
+                  c33: blocksize <- xor(r_4, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(x_O_5, r_5) && (x_O_6 = x_O_5) then
+                  c33: blocksize <- xor(r_5, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                else
+                  r_6 <-R blocksize;
+                  c33: blocksize <- xor(r_6, m33);
+                  return(c31, c32, truncate(c33, l_3))
+            else
+              r_4 <-R blocksize;
+              c31: blocksize <- xor(r_4, m31);
+              x_O_5: blocksize <- c31;
+              find [unique]  suchthat defined(x_O, r) && (x_O_5 = x_O) then
+                c32: blocksize <- xor(r, m32);
+                x_O_6: blocksize <- c32;
+                find [unique]  suchthat defined(x_O, r) && (x_O_6 = x_O) then
+                  c33: blocksize <- xor(r, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(x_O_1, r_1) && (x_O_6 = x_O_1) then
+                  c33: blocksize <- xor(r_1, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(x_O_2, r_2) && (x_O_6 = x_O_2) then
+                  c33: blocksize <- xor(r_2, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(x_O_3, r_3) && (x_O_6 = x_O_3) then
+                  c33: blocksize <- xor(r_3, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(x_O_4, r_4) && (x_O_6 = x_O_4) then
+                  c33: blocksize <- xor(r_4, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(x_O_5, r_5) && (x_O_6 = x_O_5) then
+                  c33: blocksize <- xor(r_5, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                else
+                  r_6 <-R blocksize;
+                  c33: blocksize <- xor(r_6, m33);
+                  return(c31, c32, truncate(c33, l_3))
+              orfind  suchthat defined(x_O_1, r_1) && (x_O_5 = x_O_1) then
+                c32: blocksize <- xor(r_1, m32);
+                x_O_6: blocksize <- c32;
+                find [unique]  suchthat defined(x_O, r) && (x_O_6 = x_O) then
+                  c33: blocksize <- xor(r, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(x_O_1, r_1) && (x_O_6 = x_O_1) then
+                  c33: blocksize <- xor(r_1, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(x_O_2, r_2) && (x_O_6 = x_O_2) then
+                  c33: blocksize <- xor(r_2, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(x_O_3, r_3) && (x_O_6 = x_O_3) then
+                  c33: blocksize <- xor(r_3, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(x_O_4, r_4) && (x_O_6 = x_O_4) then
+                  c33: blocksize <- xor(r_4, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(x_O_5, r_5) && (x_O_6 = x_O_5) then
+                  c33: blocksize <- xor(r_5, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                else
+                  r_6 <-R blocksize;
+                  c33: blocksize <- xor(r_6, m33);
+                  return(c31, c32, truncate(c33, l_3))
+              orfind  suchthat defined(x_O_2, r_2) && (x_O_5 = x_O_2) then
+                c32: blocksize <- xor(r_2, m32);
+                x_O_6: blocksize <- c32;
+                find [unique]  suchthat defined(x_O, r) && (x_O_6 = x_O) then
+                  c33: blocksize <- xor(r, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(x_O_1, r_1) && (x_O_6 = x_O_1) then
+                  c33: blocksize <- xor(r_1, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(x_O_2, r_2) && (x_O_6 = x_O_2) then
+                  c33: blocksize <- xor(r_2, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(x_O_3, r_3) && (x_O_6 = x_O_3) then
+                  c33: blocksize <- xor(r_3, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(x_O_4, r_4) && (x_O_6 = x_O_4) then
+                  c33: blocksize <- xor(r_4, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(x_O_5, r_5) && (x_O_6 = x_O_5) then
+                  c33: blocksize <- xor(r_5, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                else
+                  r_6 <-R blocksize;
+                  c33: blocksize <- xor(r_6, m33);
+                  return(c31, c32, truncate(c33, l_3))
+              orfind  suchthat defined(x_O_3, r_3) && (x_O_5 = x_O_3) then
+                c32: blocksize <- xor(r_3, m32);
+                x_O_6: blocksize <- c32;
+                find [unique]  suchthat defined(x_O, r) && (x_O_6 = x_O) then
+                  c33: blocksize <- xor(r, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(x_O_1, r_1) && (x_O_6 = x_O_1) then
+                  c33: blocksize <- xor(r_1, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(x_O_2, r_2) && (x_O_6 = x_O_2) then
+                  c33: blocksize <- xor(r_2, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(x_O_3, r_3) && (x_O_6 = x_O_3) then
+                  c33: blocksize <- xor(r_3, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(x_O_4, r_4) && (x_O_6 = x_O_4) then
+                  c33: blocksize <- xor(r_4, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(x_O_5, r_5) && (x_O_6 = x_O_5) then
+                  c33: blocksize <- xor(r_5, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                else
+                  r_6 <-R blocksize;
+                  c33: blocksize <- xor(r_6, m33);
+                  return(c31, c32, truncate(c33, l_3))
+              orfind  suchthat defined(x_O_4, r_4) && (x_O_5 = x_O_4) then
+                c32: blocksize <- xor(r_4, m32);
+                x_O_6: blocksize <- c32;
+                find [unique]  suchthat defined(x_O, r) && (x_O_6 = x_O) then
+                  c33: blocksize <- xor(r, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(x_O_1, r_1) && (x_O_6 = x_O_1) then
+                  c33: blocksize <- xor(r_1, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(x_O_2, r_2) && (x_O_6 = x_O_2) then
+                  c33: blocksize <- xor(r_2, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(x_O_3, r_3) && (x_O_6 = x_O_3) then
+                  c33: blocksize <- xor(r_3, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(x_O_4, r_4) && (x_O_6 = x_O_4) then
+                  c33: blocksize <- xor(r_4, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(x_O_5, r_5) && (x_O_6 = x_O_5) then
+                  c33: blocksize <- xor(r_5, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                else
+                  r_6 <-R blocksize;
+                  c33: blocksize <- xor(r_6, m33);
+                  return(c31, c32, truncate(c33, l_3))
+              else
+                r_5 <-R blocksize;
+                c32: blocksize <- xor(r_5, m32);
+                x_O_6: blocksize <- c32;
+                find [unique]  suchthat defined(x_O, r) && (x_O_6 = x_O) then
+                  c33: blocksize <- xor(r, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(x_O_1, r_1) && (x_O_6 = x_O_1) then
+                  c33: blocksize <- xor(r_1, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(x_O_2, r_2) && (x_O_6 = x_O_2) then
+                  c33: blocksize <- xor(r_2, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(x_O_3, r_3) && (x_O_6 = x_O_3) then
+                  c33: blocksize <- xor(r_3, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(x_O_4, r_4) && (x_O_6 = x_O_4) then
+                  c33: blocksize <- xor(r_4, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(x_O_5, r_5) && (x_O_6 = x_O_5) then
+                  c33: blocksize <- xor(r_5, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                else
+                  r_6 <-R blocksize;
+                  c33: blocksize <- xor(r_6, m33);
+                  return(c31, c32, truncate(c33, l_3))
+      ))
+
+
+Applying remove assignments of findcond
+  - Remove assignments on IV0 (definition removed, all usages removed)
+  - Remove assignments on x_O_4 (definition removed, all usages removed)
+  - Remove assignments on x_O_6 (definition kept, array references kept)
+  - Remove assignments on x_O_6 (definition kept, array references kept)
+  - Remove assignments on x_O_6 (definition kept, array references kept)
+  - Remove assignments on x_O_6 (definition kept, array references kept)
+  - Remove assignments on x_O_6 (definition kept, array references kept)
+  - Remove assignments on x_O_6 (definition kept, array references kept)
+  - Remove assignments on x_O_5 (definition kept, array references kept)
+  - Remove assignments on x_O_6 (definition kept, array references kept)
+  - Remove assignments on x_O_6 (definition kept, array references kept)
+  - Remove assignments on x_O_6 (definition kept, array references kept)
+  - Remove assignments on x_O_6 (definition kept, array references kept)
+  - Remove assignments on x_O_6 (definition kept, array references kept)
+  - Remove assignments on x_O_6 (definition kept, array references kept)
+  - Remove assignments on x_O_5 (definition kept, array references kept)
+  - Remove assignments on x_O_6 (definition kept, array references kept)
+  - Remove assignments on x_O_6 (definition kept, array references kept)
+  - Remove assignments on x_O_6 (definition kept, array references kept)
+  - Remove assignments on x_O_6 (definition kept, array references kept)
+  - Remove assignments on x_O_6 (definition kept, array references kept)
+  - Remove assignments on x_O_6 (definition kept, array references kept)
+  - Remove assignments on x_O_5 (definition kept, array references kept)
+  - Remove assignments on x_O_2 (definition removed, all usages removed)
+  - Remove assignments on x_O_3 (definition kept, array references kept)
+  - Remove assignments on x_O_3 (definition kept, array references kept)
+  - Remove assignments on x_O_3 (definition kept, array references kept)
+  - Remove assignments on x_O_3 (definition kept, array references kept)
+  - Remove assignments on x_O_1 (definition removed, all usages removed)
+yields
+
+Game 5 is
+      Ogen() :=
+      x_O: blocksize <- Zero;
+      r <-R blocksize;
+      return();
+      ((
+        Oenc1(IVdata1: blocksize, m1: blocksize, l_1: len) :=
+        if defined(IVdata2) && (IVdata1 = IVdata2) then
+          event_abort repeatedIV
+        else
+          if defined(IVdata3) && (IVdata1 = IVdata3) then
+            event_abort repeatedIV
+          else
+            IV1: blocksize <- xor(r, IVdata1);
+  {23}      find [unique]  suchthat defined(x_O, r) && {24}(IV1 = x_O) then
+              c1: blocksize <- xor(r, m1);
+              return(truncate(c1, l_1))
+            orfind  suchthat defined(x_O_3, r_3) && (IV1 = x_O_3) then
+              c1: blocksize <- xor(r_3, m1);
+              return(truncate(c1, l_1))
+            orfind  suchthat defined(x_O_5, r_5) && (IV1 = x_O_5) then
+              c1: blocksize <- xor(r_5, m1);
+              return(truncate(c1, l_1))
+            orfind  suchthat defined(x_O_6, r_6) && (IV1 = x_O_6) then
+              c1: blocksize <- xor(r_6, m1);
+              return(truncate(c1, l_1))
+            else
+              r_1 <-R blocksize;
+              c1: blocksize <- xor(r_1, m1);
+              return(truncate(c1, l_1))
+      ) | (
+        Oenc2(IVdata2: blocksize, m21: blocksize, m22: blocksize, l_2: len) :=
+        if defined(IVdata1) && (IVdata2 = IVdata1) then
+          event_abort repeatedIV
+        else
+          if defined(IVdata3) && (IVdata2 = IVdata3) then
+            event_abort repeatedIV
+          else
+            IV2: blocksize <- xor(r, IVdata2);
+ {103}      find [unique]  suchthat defined(x_O, r) && {104}(IV2 = x_O) then
+              c21: blocksize <- xor(r, m21);
+              x_O_3: blocksize <- c21;
+ {113}        find [unique]  suchthat defined(x_O, r) && {114}(c21 = x_O) then
+                c22: blocksize <- xor(r, m22);
+                return(c21, truncate(c22, l_2))
+              orfind  suchthat defined(IV1, r_1) && {128}(c21 = IV1) then
+                c22: blocksize <- xor(r_1, m22);
+                return(c21, truncate(c22, l_2))
+              orfind  suchthat defined(r_2) && (c21 = IV2) then
+                c22: blocksize <- xor(r_2, m22);
+                return(c21, truncate(c22, l_2))
+              orfind  suchthat defined(IV3, r_4) && {156}(c21 = IV3) then
+                c22: blocksize <- xor(r_4, m22);
+                return(c21, truncate(c22, l_2))
+              orfind  suchthat defined(x_O_5, r_5) && (c21 = x_O_5) then
+                c22: blocksize <- xor(r_5, m22);
+                return(c21, truncate(c22, l_2))
+              orfind  suchthat defined(x_O_6, r_6) && (c21 = x_O_6) then
+                c22: blocksize <- xor(r_6, m22);
+                return(c21, truncate(c22, l_2))
+              else
+                r_3 <-R blocksize;
+                c22: blocksize <- xor(r_3, m22);
+                return(c21, truncate(c22, l_2))
+            orfind  suchthat defined(x_O_5, r_5) && (IV2 = x_O_5) then
+              c21: blocksize <- xor(r_5, m21);
+              x_O_3: blocksize <- c21;
+ {221}        find [unique]  suchthat defined(x_O, r) && {222}(c21 = x_O) then
+                c22: blocksize <- xor(r, m22);
+                return(c21, truncate(c22, l_2))
+              orfind  suchthat defined(IV1, r_1) && (c21 = IV1) then
+                c22: blocksize <- xor(r_1, m22);
+                return(c21, truncate(c22, l_2))
+              orfind  suchthat defined(r_2) && (c21 = IV2) then
+                c22: blocksize <- xor(r_2, m22);
+                return(c21, truncate(c22, l_2))
+              orfind  suchthat defined(IV3, r_4) && (c21 = IV3) then
+                c22: blocksize <- xor(r_4, m22);
+                return(c21, truncate(c22, l_2))
+              orfind  suchthat defined(x_O_5, r_5) && (c21 = x_O_5) then
+                c22: blocksize <- xor(r_5, m22);
+                return(c21, truncate(c22, l_2))
+              orfind  suchthat defined(x_O_6, r_6) && {292}(c21 = x_O_6) then
+                c22: blocksize <- xor(r_6, m22);
+                return(c21, truncate(c22, l_2))
+              else
+                r_3 <-R blocksize;
+                c22: blocksize <- xor(r_3, m22);
+                return(c21, truncate(c22, l_2))
+            orfind  suchthat defined(x_O_6, r_6) && (IV2 = x_O_6) then
+              c21: blocksize <- xor(r_6, m21);
+              x_O_3: blocksize <- c21;
+ {329}        find [unique]  suchthat defined(x_O, r) && {330}(c21 = x_O) then
+                c22: blocksize <- xor(r, m22);
+                return(c21, truncate(c22, l_2))
+              orfind  suchthat defined(IV1, r_1) && (c21 = IV1) then
+                c22: blocksize <- xor(r_1, m22);
+                return(c21, truncate(c22, l_2))
+              orfind  suchthat defined(r_2) && (c21 = IV2) then
+                c22: blocksize <- xor(r_2, m22);
+                return(c21, truncate(c22, l_2))
+              orfind  suchthat defined(IV3, r_4) && (c21 = IV3) then
+                c22: blocksize <- xor(r_4, m22);
+                return(c21, truncate(c22, l_2))
+              orfind  suchthat defined(x_O_5, r_5) && (c21 = x_O_5) then
+                c22: blocksize <- xor(r_5, m22);
+                return(c21, truncate(c22, l_2))
+              orfind  suchthat defined(x_O_6, r_6) && (c21 = x_O_6) then
+                c22: blocksize <- xor(r_6, m22);
+                return(c21, truncate(c22, l_2))
+              else
+                r_3 <-R blocksize;
+                c22: blocksize <- xor(r_3, m22);
+                return(c21, truncate(c22, l_2))
+            else
+              r_2 <-R blocksize;
+              c21: blocksize <- xor(r_2, m21);
+              x_O_3: blocksize <- c21;
+ {435}        find [unique]  suchthat defined(x_O, r) && {436}(c21 = x_O) then
+                c22: blocksize <- xor(r, m22);
+                return(c21, truncate(c22, l_2))
+              orfind  suchthat defined(IV1, r_1) && {450}(c21 = IV1) then
+                c22: blocksize <- xor(r_1, m22);
+                return(c21, truncate(c22, l_2))
+              orfind  suchthat defined(r_2) && {464}(c21 = IV2) then
+                c22: blocksize <- xor(r_2, m22);
+                return(c21, truncate(c22, l_2))
+              orfind  suchthat defined(IV3, r_4) && {478}(c21 = IV3) then
+                c22: blocksize <- xor(r_4, m22);
+                return(c21, truncate(c22, l_2))
+              orfind  suchthat defined(x_O_5, r_5) && {492}(c21 = x_O_5) then
+                c22: blocksize <- xor(r_5, m22);
+                return(c21, truncate(c22, l_2))
+              orfind  suchthat defined(x_O_6, r_6) && {506}(c21 = x_O_6) then
+                c22: blocksize <- xor(r_6, m22);
+                return(c21, truncate(c22, l_2))
+              else
+                r_3 <-R blocksize;
+                c22: blocksize <- xor(r_3, m22);
+                return(c21, truncate(c22, l_2))
+      ) | (
+        Oenc3(IVdata3: blocksize, m31: blocksize, m32: blocksize, m33: blocksize, l_3: len) :=
+        if defined(IVdata1) && (IVdata3 = IVdata1) then
+          event_abort repeatedIV
+        else
+          if defined(IVdata2) && (IVdata3 = IVdata2) then
+            event_abort repeatedIV
+          else
+            IV3: blocksize <- xor(r, IVdata3);
+ {550}      find [unique]  suchthat defined(x_O, r) && {551}(IV3 = x_O) then
+              c31: blocksize <- xor(r, m31);
+              x_O_5: blocksize <- c31;
+ {560}        find [unique]  suchthat defined(x_O, r) && {561}(c31 = x_O) then
+                c32: blocksize <- xor(r, m32);
+                x_O_6: blocksize <- c32;
+ {570}          find [unique]  suchthat defined(x_O, r) && {571}(c32 = x_O) then
+                  c33: blocksize <- xor(r, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(IV1, r_1) && {586}(c32 = IV1) then
+                  c33: blocksize <- xor(r_1, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(IV2, r_2) && {601}(c32 = IV2) then
+                  c33: blocksize <- xor(r_2, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(x_O_3, r_3) && (c32 = x_O_3) then
+                  c33: blocksize <- xor(r_3, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(r_5) && (c32 = c31) then
+                  c33: blocksize <- xor(r_5, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                else
+                  r_6 <-R blocksize;
+                  c33: blocksize <- xor(r_6, m33);
+                  return(c31, c32, truncate(c33, l_3))
+              orfind  suchthat defined(IV1, r_1) && {661}(c31 = IV1) then
+                c32: blocksize <- xor(r_1, m32);
+                x_O_6: blocksize <- c32;
+ {670}          find [unique]  suchthat defined(x_O, r) && {671}(c32 = x_O) then
+                  c33: blocksize <- xor(r, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(IV1, r_1) && (c32 = IV1) then
+                  c33: blocksize <- xor(r_1, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(IV2, r_2) && (c32 = IV2) then
+                  c33: blocksize <- xor(r_2, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(x_O_3, r_3) && (c32 = x_O_3) then
+                  c33: blocksize <- xor(r_3, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(r_4) && (c32 = IV3) then
+                  c33: blocksize <- xor(r_4, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(r_5) && (c32 = c31) then
+                  c33: blocksize <- xor(r_5, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                else
+                  r_6 <-R blocksize;
+                  c33: blocksize <- xor(r_6, m33);
+                  return(c31, c32, truncate(c33, l_3))
+              orfind  suchthat defined(IV2, r_2) && {776}(c31 = IV2) then
+                c32: blocksize <- xor(r_2, m32);
+                x_O_6: blocksize <- c32;
+ {785}          find [unique]  suchthat defined(x_O, r) && {786}(c32 = x_O) then
+                  c33: blocksize <- xor(r, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(IV1, r_1) && (c32 = IV1) then
+                  c33: blocksize <- xor(r_1, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(IV2, r_2) && (c32 = IV2) then
+                  c33: blocksize <- xor(r_2, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(x_O_3, r_3) && {831}(c32 = x_O_3) then
+                  c33: blocksize <- xor(r_3, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(r_4) && (c32 = IV3) then
+                  c33: blocksize <- xor(r_4, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(r_5) && (c32 = c31) then
+                  c33: blocksize <- xor(r_5, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                else
+                  r_6 <-R blocksize;
+                  c33: blocksize <- xor(r_6, m33);
+                  return(c31, c32, truncate(c33, l_3))
+              orfind  suchthat defined(x_O_3, r_3) && (c31 = x_O_3) then
+                c32: blocksize <- xor(r_3, m32);
+                x_O_6: blocksize <- c32;
+ {900}          find [unique]  suchthat defined(x_O, r) && {901}(c32 = x_O) then
+                  c33: blocksize <- xor(r, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(IV1, r_1) && (c32 = IV1) then
+                  c33: blocksize <- xor(r_1, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(IV2, r_2) && (c32 = IV2) then
+                  c33: blocksize <- xor(r_2, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(x_O_3, r_3) && (c32 = x_O_3) then
+                  c33: blocksize <- xor(r_3, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(r_4) && (c32 = IV3) then
+                  c33: blocksize <- xor(r_4, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(r_5) && (c32 = c31) then
+                  c33: blocksize <- xor(r_5, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                else
+                  r_6 <-R blocksize;
+                  c33: blocksize <- xor(r_6, m33);
+                  return(c31, c32, truncate(c33, l_3))
+              orfind  suchthat defined(r_4) && (c31 = IV3) then
+                c32: blocksize <- xor(r_4, m32);
+                x_O_6: blocksize <- c32;
+                find [unique]  suchthat defined(IV1, r_1) && (c32 = IV1) then
+                  c33: blocksize <- xor(r_1, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(IV2, r_2) && (c32 = IV2) then
+                  c33: blocksize <- xor(r_2, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(x_O_3, r_3) && (c32 = x_O_3) then
+                  c33: blocksize <- xor(r_3, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(r_4) && (c32 = IV3) then
+                  c33: blocksize <- xor(r_4, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(r_5) && (c32 = c31) then
+                  c33: blocksize <- xor(r_5, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                else
+                  r_6 <-R blocksize;
+                  c33: blocksize <- xor(r_6, m33);
+                  return(c31, c32, truncate(c33, l_3))
+              else
+                r_5 <-R blocksize;
+                c32: blocksize <- xor(r_5, m32);
+                x_O_6: blocksize <- c32;
+{1113}          find [unique]  suchthat defined(x_O, r) && {1114}(c32 = x_O) then
+                  c33: blocksize <- xor(r, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(IV1, r_1) && {1129}(c32 = IV1) then
+                  c33: blocksize <- xor(r_1, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(IV2, r_2) && {1144}(c32 = IV2) then
+                  c33: blocksize <- xor(r_2, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(x_O_3, r_3) && {1159}(c32 = x_O_3) then
+                  c33: blocksize <- xor(r_3, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(r_4) && {1174}(c32 = IV3) then
+                  c33: blocksize <- xor(r_4, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(r_5) && {1189}(c32 = c31) then
+                  c33: blocksize <- xor(r_5, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                else
+                  r_6 <-R blocksize;
+                  c33: blocksize <- xor(r_6, m33);
+                  return(c31, c32, truncate(c33, l_3))
+            orfind  suchthat defined(x_O_3, r_3) && (IV3 = x_O_3) then
+              c31: blocksize <- xor(r_3, m31);
+              x_O_5: blocksize <- c31;
+{1230}        find [unique]  suchthat defined(x_O, r) && {1231}(c31 = x_O) then
+                c32: blocksize <- xor(r, m32);
+                x_O_6: blocksize <- c32;
+{1240}          find [unique]  suchthat defined(x_O, r) && {1241}(c32 = x_O) then
+                  c33: blocksize <- xor(r, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(IV1, r_1) && {1256}(c32 = IV1) then
+                  c33: blocksize <- xor(r_1, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(IV2, r_2) && {1271}(c32 = IV2) then
+                  c33: blocksize <- xor(r_2, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(x_O_3, r_3) && (c32 = x_O_3) then
+                  c33: blocksize <- xor(r_3, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(r_4) && (c32 = IV3) then
+                  c33: blocksize <- xor(r_4, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(r_5) && (c32 = c31) then
+                  c33: blocksize <- xor(r_5, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                else
+                  r_6 <-R blocksize;
+                  c33: blocksize <- xor(r_6, m33);
+                  return(c31, c32, truncate(c33, l_3))
+              orfind  suchthat defined(IV1, r_1) && (c31 = IV1) then
+                c32: blocksize <- xor(r_1, m32);
+                x_O_6: blocksize <- c32;
+{1355}          find [unique]  suchthat defined(x_O, r) && {1356}(c32 = x_O) then
+                  c33: blocksize <- xor(r, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(IV1, r_1) && (c32 = IV1) then
+                  c33: blocksize <- xor(r_1, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(IV2, r_2) && (c32 = IV2) then
+                  c33: blocksize <- xor(r_2, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(x_O_3, r_3) && (c32 = x_O_3) then
+                  c33: blocksize <- xor(r_3, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(r_4) && (c32 = IV3) then
+                  c33: blocksize <- xor(r_4, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(r_5) && (c32 = c31) then
+                  c33: blocksize <- xor(r_5, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                else
+                  r_6 <-R blocksize;
+                  c33: blocksize <- xor(r_6, m33);
+                  return(c31, c32, truncate(c33, l_3))
+              orfind  suchthat defined(IV2, r_2) && (c31 = IV2) then
+                c32: blocksize <- xor(r_2, m32);
+                x_O_6: blocksize <- c32;
+{1470}          find [unique]  suchthat defined(x_O, r) && {1471}(c32 = x_O) then
+                  c33: blocksize <- xor(r, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(IV1, r_1) && (c32 = IV1) then
+                  c33: blocksize <- xor(r_1, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(IV2, r_2) && (c32 = IV2) then
+                  c33: blocksize <- xor(r_2, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(x_O_3, r_3) && {1516}(c32 = x_O_3) then
+                  c33: blocksize <- xor(r_3, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(r_4) && (c32 = IV3) then
+                  c33: blocksize <- xor(r_4, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(r_5) && (c32 = c31) then
+                  c33: blocksize <- xor(r_5, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                else
+                  r_6 <-R blocksize;
+                  c33: blocksize <- xor(r_6, m33);
+                  return(c31, c32, truncate(c33, l_3))
+              orfind  suchthat defined(x_O_3, r_3) && (c31 = x_O_3) then
+                c32: blocksize <- xor(r_3, m32);
+                x_O_6: blocksize <- c32;
+{1585}          find [unique]  suchthat defined(x_O, r) && {1586}(c32 = x_O) then
+                  c33: blocksize <- xor(r, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(IV1, r_1) && (c32 = IV1) then
+                  c33: blocksize <- xor(r_1, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(IV2, r_2) && (c32 = IV2) then
+                  c33: blocksize <- xor(r_2, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(x_O_3, r_3) && (c32 = x_O_3) then
+                  c33: blocksize <- xor(r_3, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(r_5) && (c32 = c31) then
+                  c33: blocksize <- xor(r_5, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                else
+                  r_6 <-R blocksize;
+                  c33: blocksize <- xor(r_6, m33);
+                  return(c31, c32, truncate(c33, l_3))
+              orfind  suchthat defined(r_4) && (c31 = IV3) then
+                c32: blocksize <- xor(r_4, m32);
+                x_O_6: blocksize <- c32;
+                find [unique]  suchthat defined(x_O, r) && (c32 = x_O) then
+                  c33: blocksize <- xor(r, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(IV1, r_1) && (c32 = IV1) then
+                  c33: blocksize <- xor(r_1, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(IV2, r_2) && (c32 = IV2) then
+                  c33: blocksize <- xor(r_2, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(r_4) && (c32 = IV3) then
+                  c33: blocksize <- xor(r_4, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(r_5) && (c32 = c31) then
+                  c33: blocksize <- xor(r_5, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                else
+                  r_6 <-R blocksize;
+                  c33: blocksize <- xor(r_6, m33);
+                  return(c31, c32, truncate(c33, l_3))
+              else
+                r_5 <-R blocksize;
+                c32: blocksize <- xor(r_5, m32);
+                x_O_6: blocksize <- c32;
+{1783}          find [unique]  suchthat defined(x_O, r) && {1784}(c32 = x_O) then
+                  c33: blocksize <- xor(r, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(IV1, r_1) && {1799}(c32 = IV1) then
+                  c33: blocksize <- xor(r_1, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(IV2, r_2) && {1814}(c32 = IV2) then
+                  c33: blocksize <- xor(r_2, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(x_O_3, r_3) && {1829}(c32 = x_O_3) then
+                  c33: blocksize <- xor(r_3, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(r_4) && {1844}(c32 = IV3) then
+                  c33: blocksize <- xor(r_4, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(r_5) && {1859}(c32 = c31) then
+                  c33: blocksize <- xor(r_5, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                else
+                  r_6 <-R blocksize;
+                  c33: blocksize <- xor(r_6, m33);
+                  return(c31, c32, truncate(c33, l_3))
+            else
+              r_4 <-R blocksize;
+              c31: blocksize <- xor(r_4, m31);
+              x_O_5: blocksize <- c31;
+{1898}        find [unique]  suchthat defined(x_O, r) && {1899}(c31 = x_O) then
+                c32: blocksize <- xor(r, m32);
+                x_O_6: blocksize <- c32;
+                find [unique]  suchthat defined(x_O, r) && (c32 = x_O) then
+                  c33: blocksize <- xor(r, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(IV1, r_1) && (c32 = IV1) then
+                  c33: blocksize <- xor(r_1, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(IV2, r_2) && (c32 = IV2) then
+                  c33: blocksize <- xor(r_2, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(x_O_3, r_3) && (c32 = x_O_3) then
+                  c33: blocksize <- xor(r_3, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(r_4) && (c32 = IV3) then
+                  c33: blocksize <- xor(r_4, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(r_5) && (c32 = c31) then
+                  c33: blocksize <- xor(r_5, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                else
+                  r_6 <-R blocksize;
+                  c33: blocksize <- xor(r_6, m33);
+                  return(c31, c32, truncate(c33, l_3))
+              orfind  suchthat defined(IV1, r_1) && {2014}(c31 = IV1) then
+                c32: blocksize <- xor(r_1, m32);
+                x_O_6: blocksize <- c32;
+                find [unique]  suchthat defined(x_O, r) && (c32 = x_O) then
+                  c33: blocksize <- xor(r, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(IV1, r_1) && (c32 = IV1) then
+                  c33: blocksize <- xor(r_1, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(IV2, r_2) && (c32 = IV2) then
+                  c33: blocksize <- xor(r_2, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(x_O_3, r_3) && (c32 = x_O_3) then
+                  c33: blocksize <- xor(r_3, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(r_4) && (c32 = IV3) then
+                  c33: blocksize <- xor(r_4, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(r_5) && (c32 = c31) then
+                  c33: blocksize <- xor(r_5, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                else
+                  r_6 <-R blocksize;
+                  c33: blocksize <- xor(r_6, m33);
+                  return(c31, c32, truncate(c33, l_3))
+              orfind  suchthat defined(IV2, r_2) && {2129}(c31 = IV2) then
+                c32: blocksize <- xor(r_2, m32);
+                x_O_6: blocksize <- c32;
+                find [unique]  suchthat defined(x_O, r) && (c32 = x_O) then
+                  c33: blocksize <- xor(r, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(IV1, r_1) && (c32 = IV1) then
+                  c33: blocksize <- xor(r_1, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(IV2, r_2) && (c32 = IV2) then
+                  c33: blocksize <- xor(r_2, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(x_O_3, r_3) && (c32 = x_O_3) then
+                  c33: blocksize <- xor(r_3, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(r_4) && (c32 = IV3) then
+                  c33: blocksize <- xor(r_4, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(r_5) && (c32 = c31) then
+                  c33: blocksize <- xor(r_5, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                else
+                  r_6 <-R blocksize;
+                  c33: blocksize <- xor(r_6, m33);
+                  return(c31, c32, truncate(c33, l_3))
+              orfind  suchthat defined(x_O_3, r_3) && {2244}(c31 = x_O_3) then
+                c32: blocksize <- xor(r_3, m32);
+                x_O_6: blocksize <- c32;
+                find [unique]  suchthat defined(x_O, r) && (c32 = x_O) then
+                  c33: blocksize <- xor(r, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(IV1, r_1) && (c32 = IV1) then
+                  c33: blocksize <- xor(r_1, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(IV2, r_2) && (c32 = IV2) then
+                  c33: blocksize <- xor(r_2, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(x_O_3, r_3) && (c32 = x_O_3) then
+                  c33: blocksize <- xor(r_3, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(r_4) && (c32 = IV3) then
+                  c33: blocksize <- xor(r_4, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(r_5) && (c32 = c31) then
+                  c33: blocksize <- xor(r_5, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                else
+                  r_6 <-R blocksize;
+                  c33: blocksize <- xor(r_6, m33);
+                  return(c31, c32, truncate(c33, l_3))
+              orfind  suchthat defined(r_4) && {2359}(c31 = IV3) then
+                c32: blocksize <- xor(r_4, m32);
+                x_O_6: blocksize <- c32;
+                find [unique]  suchthat defined(x_O, r) && (c32 = x_O) then
+                  c33: blocksize <- xor(r, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(IV1, r_1) && (c32 = IV1) then
+                  c33: blocksize <- xor(r_1, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(IV2, r_2) && (c32 = IV2) then
+                  c33: blocksize <- xor(r_2, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(x_O_3, r_3) && (c32 = x_O_3) then
+                  c33: blocksize <- xor(r_3, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(r_4) && (c32 = IV3) then
+                  c33: blocksize <- xor(r_4, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(r_5) && (c32 = c31) then
+                  c33: blocksize <- xor(r_5, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                else
+                  r_6 <-R blocksize;
+                  c33: blocksize <- xor(r_6, m33);
+                  return(c31, c32, truncate(c33, l_3))
+              else
+                r_5 <-R blocksize;
+                c32: blocksize <- xor(r_5, m32);
+                x_O_6: blocksize <- c32;
+{2481}          find [unique]  suchthat defined(x_O, r) && {2482}(c32 = x_O) then
+                  c33: blocksize <- xor(r, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(IV1, r_1) && {2497}(c32 = IV1) then
+                  c33: blocksize <- xor(r_1, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(IV2, r_2) && {2512}(c32 = IV2) then
+                  c33: blocksize <- xor(r_2, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(x_O_3, r_3) && {2527}(c32 = x_O_3) then
+                  c33: blocksize <- xor(r_3, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(r_4) && {2542}(c32 = IV3) then
+                  c33: blocksize <- xor(r_4, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(r_5) && {2557}(c32 = c31) then
+                  c33: blocksize <- xor(r_5, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                else
+                  r_6 <-R blocksize;
+                  c33: blocksize <- xor(r_6, m33);
+                  return(c31, c32, truncate(c33, l_3))
+      ))
+
+
+Applying simplify [probability 17 / |blocksize|]
+  - Simplification pass
+    - Replaced (c31 = IV3) with false at 2359
+    - Remove branch 5 in find at 1898
+    - Replaced (c31 = x_O_3) with false at 2244
+    - Remove branch 4 in find at 1898
+    - Replaced (c31 = IV2) with false at 2129
+    - Remove branch 3 in find at 1898
+    - Replaced (c31 = IV1) with false at 2014
+    - Remove branch 2 in find at 1898
+    - Replaced (c31 = x_O) with false at 1899
+    - Remove branch 1 in find at 1898
+    - Find at 1898 removed (else branch kept if any)
+    - Replaced (c32 = c31) with false at 2557
+    - Remove branch 6 in find at 2481
+    - Replaced (c32 = IV3) with false at 2542
+    - Remove branch 5 in find at 2481
+    - Replaced (c32 = x_O_3) with false at 2527
+    - Remove branch 4 in find at 2481
+    - Replaced (c32 = IV2) with false at 2512
+    - Remove branch 3 in find at 2481
+    - Replaced (c32 = IV1) with false at 2497
+    - Remove branch 2 in find at 2481
+    - Replaced (c32 = x_O) with false at 2482
+    - Remove branch 1 in find at 2481
+    - Find at 2481 removed (else branch kept if any)
+    - Replaced (c32 = c31) with false at 1859
+    - Remove branch 6 in find at 1783
+    - Replaced (c32 = IV3) with false at 1844
+    - Remove branch 5 in find at 1783
+    - Replaced (c32 = x_O_3) with false at 1829
+    - Remove branch 4 in find at 1783
+    - Replaced (c32 = IV2) with false at 1814
+    - Remove branch 3 in find at 1783
+    - Replaced (c32 = IV1) with false at 1799
+    - Remove branch 2 in find at 1783
+    - Replaced (c32 = x_O) with false at 1784
+    - Remove branch 1 in find at 1783
+    - Find at 1783 removed (else branch kept if any)
+    - Remove branch 5 in find at 1230
+    - Remove branch 5 in find at 1585
+    - Replaced defined condition x_O_3, r_3 with an empty condition in find at 1585
+    - Replaced defined condition IV2, r_2 with r_2 in find at 1585
+    - Replaced (c32 = x_O) with (r_3 = m32) at 1586
+    - Replaced defined condition x_O, r with an empty condition in find at 1585
+    - Replaced defined condition x_O_3, r_3 with an empty condition in find at 1230
+    - Remove branch 6 in find at 1470
+    - Remove branch 5 in find at 1470
+    - Replaced (c32 = x_O_3) with (m32 = m21) at 1516
+    - Replaced defined condition x_O_3, r_3 with an empty condition in find at 1470
+    - Replaced defined condition IV2, r_2 with an empty condition in find at 1470
+    - Replaced (c32 = x_O) with (r_2 = m32) at 1471
+    - Replaced defined condition x_O, r with an empty condition in find at 1470
+    - Replaced defined condition IV2, r_2 with r_2 in find at 1230
+    - Remove branch 6 in find at 1355
+    - Remove branch 5 in find at 1355
+    - Replaced defined condition x_O_3, r_3 with an empty condition in find at 1355
+    - Replaced defined condition IV2, r_2 with r_2 in find at 1355
+    - Replaced defined condition IV1, r_1 with an empty condition in find at 1355
+    - Replaced (c32 = x_O) with (r_1 = m32) at 1356
+    - Replaced defined condition x_O, r with an empty condition in find at 1355
+    - Replaced (c31 = x_O) with (r_3 = m31) at 1231
+    - Remove branch 6 in find at 1240
+    - Remove branch 5 in find at 1240
+    - Replaced defined condition x_O_3, r_3 with an empty condition in find at 1240
+    - Replaced (c32 = IV2) with (m32 = IVdata2) at 1271
+    - Replaced defined condition IV2, r_2 with r_2 in find at 1240
+    - Replaced (c32 = IV1) with (m32 = IVdata1) at 1256
+    - Replaced defined condition IV1, r_1 with r_1, IVdata1 in find at 1240
+    - Replaced (c32 = x_O) with (r = m32) at 1241
+    - Replaced defined condition x_O, r with an empty condition in find at 1240
+    - Replaced defined condition x_O, r with an empty condition in find at 1230
+    - Replaced defined condition x_O_3, r_3 with m21, IV2, IVdata2, r_3, x_O_3 in find at 550
+    - Replaced (IV3 = x_O) with (r = IVdata3) at 551
+    - Replaced (c32 = c31) with false at 1189
+    - Remove branch 6 in find at 1113
+    - Replaced (c32 = IV3) with false at 1174
+    - Remove branch 5 in find at 1113
+    - Replaced (c32 = x_O_3) with false at 1159
+    - Remove branch 4 in find at 1113
+    - Replaced (c32 = IV2) with false at 1144
+    - Remove branch 3 in find at 1113
+    - Replaced (c32 = IV1) with false at 1129
+    - Remove branch 2 in find at 1113
+    - Replaced (c32 = x_O) with false at 1114
+    - Remove branch 1 in find at 1113
+    - Find at 1113 removed (else branch kept if any)
+    - Remove branch 5 in find at 560
+    - Remove branch 6 in find at 900
+    - Remove branch 5 in find at 900
+    - Replaced defined condition x_O_3, r_3 with an empty condition in find at 900
+    - Replaced defined condition IV2, r_2 with r_2 in find at 900
+    - Replaced (c32 = x_O) with (r_3 = m32) at 901
+    - Replaced defined condition x_O, r with an empty condition in find at 900
+    - Replaced defined condition x_O_3, r_3 with IV2, r_3, x_O_3 in find at 560
+    - Replaced (c31 = IV2) with (m31 = IVdata2) at 776
+    - Remove branch 6 in find at 785
+    - Remove branch 5 in find at 785
+    - Replaced (c32 = x_O_3) with (m32 = m21) at 831
+    - Replaced defined condition x_O_3, r_3 with r_3 in find at 785
+    - Replaced defined condition IV2, r_2 with an empty condition in find at 785
+    - Replaced (c32 = x_O) with (r_2 = m32) at 786
+    - Replaced defined condition x_O, r with an empty condition in find at 785
+    - Replaced defined condition IV2, r_2 with m21, IV2, r_2, IVdata2 in find at 560
+    - Replaced (c31 = IV1) with (m31 = IVdata1) at 661
+    - Remove branch 6 in find at 670
+    - Remove branch 5 in find at 670
+    - Replaced defined condition IV1, r_1 with an empty condition in find at 670
+    - Replaced (c32 = x_O) with (r_1 = m32) at 671
+    - Replaced defined condition x_O, r with an empty condition in find at 670
+    - Replaced defined condition IV1, r_1 with IV1, r_1, IVdata1 in find at 560
+    - Replaced (c31 = x_O) with (r = m31) at 561
+    - Remove branch 5 in find at 570
+    - Replaced (c32 = IV2) with (m32 = IVdata2) at 601
+    - Replaced defined condition IV2, r_2 with r_2, IVdata2 in find at 570
+    - Replaced (c32 = IV1) with (m32 = IVdata1) at 586
+    - Replaced defined condition IV1, r_1 with r_1, IVdata1 in find at 570
+    - Replaced (c32 = x_O) with (r = m32) at 571
+    - Replaced defined condition x_O, r with an empty condition in find at 570
+    - Replaced defined condition x_O, r with an empty condition in find at 560
+    - Replaced defined condition x_O, r with an empty condition in find at 550
+    - Replaced (c21 = x_O_6) with false at 506
+    - Remove branch 6 in find at 435
+    - Replaced (c21 = x_O_5) with false at 492
+    - Remove branch 5 in find at 435
+    - Replaced (c21 = IV3) with false at 478
+    - Remove branch 4 in find at 435
+    - Replaced (c21 = IV2) with false at 464
+    - Remove branch 3 in find at 435
+    - Replaced (c21 = IV1) with false at 450
+    - Remove branch 2 in find at 435
+    - Replaced (c21 = x_O) with false at 436
+    - Remove branch 1 in find at 435
+    - Find at 435 removed (else branch kept if any)
+    - Replaced defined condition x_O_6, r_6 with an empty condition in find at 329
+    - Replaced defined condition x_O_5, r_5 with r_5 in find at 329
+    - Replaced defined condition IV3, r_4 with r_4 in find at 329
+    - Remove branch 3 in find at 329
+    - Replaced (c21 = x_O) with (r_6 = m21) at 330
+    - Replaced defined condition x_O, r with an empty condition in find at 329
+    - Replaced defined condition x_O_6, r_6 with x_O_5, IV3, r_6, x_O_6 in find at 103
+    - Replaced (c21 = x_O_6) with (m21 = m32) at 292
+    - Replaced defined condition x_O_6, r_6 with r_6 in find at 221
+    - Replaced defined condition x_O_5, r_5 with an empty condition in find at 221
+    - Replaced defined condition IV3, r_4 with r_4 in find at 221
+    - Remove branch 3 in find at 221
+    - Replaced (c21 = x_O) with (r_5 = m21) at 222
+    - Replaced defined condition x_O, r with an empty condition in find at 221
+    - Replaced defined condition x_O_5, r_5 with m32, IV3, r_5, x_O_5 in find at 103
+    - Replaced (IV2 = x_O) with (r = IVdata2) at 104
+    - Replaced (c21 = IV3) with (m21 = IVdata3) at 156
+    - Replaced defined condition IV3, r_4 with r_4, IVdata3 in find at 113
+    - Remove branch 3 in find at 113
+    - Replaced (c21 = IV1) with (m21 = IVdata1) at 128
+    - Replaced defined condition IV1, r_1 with r_1, IVdata1 in find at 113
+    - Replaced (c21 = x_O) with (r = m21) at 114
+    - Replaced defined condition x_O, r with an empty condition in find at 113
+    - Replaced defined condition x_O, r with an empty condition in find at 103
+    - Replaced (IV1 = x_O) with (r = IVdata1) at 24
+    - Replaced defined condition x_O, r with an empty condition in find at 23
+yields
+
+Game 6 is
+      Ogen() :=
+      x_O: blocksize <- Zero;
+      r <-R blocksize;
+      return();
+      ((
+        Oenc1(IVdata1: blocksize, m1: blocksize, l_1: len) :=
+        if defined(IVdata2) && (IVdata1 = IVdata2) then
+          event_abort repeatedIV
+        else
+          if defined(IVdata3) && (IVdata1 = IVdata3) then
+            event_abort repeatedIV
+          else
+            IV1: blocksize <- xor(r, IVdata1);
+            find [unique]  suchthat r = IVdata1 then
+              c1: blocksize <- xor(r, m1);
+              return(truncate(c1, l_1))
+            orfind  suchthat defined(x_O_3, r_3) && (IV1 = x_O_3) then
+              c1: blocksize <- xor(r_3, m1);
+              return(truncate(c1, l_1))
+            orfind  suchthat defined(x_O_5, r_5) && (IV1 = x_O_5) then
+              c1: blocksize <- xor(r_5, m1);
+              return(truncate(c1, l_1))
+            orfind  suchthat defined(x_O_6, r_6) && (IV1 = x_O_6) then
+              c1: blocksize <- xor(r_6, m1);
+              return(truncate(c1, l_1))
+            else
+              r_1 <-R blocksize;
+              c1: blocksize <- xor(r_1, m1);
+              return(truncate(c1, l_1))
+      ) | (
+        Oenc2(IVdata2: blocksize, m21: blocksize, m22: blocksize, l_2: len) :=
+        if defined(IVdata1) && (IVdata2 = IVdata1) then
+          event_abort repeatedIV
+        else
+          if defined(IVdata3) && (IVdata2 = IVdata3) then
+            event_abort repeatedIV
+          else
+            IV2: blocksize <- xor(r, IVdata2);
+            find [unique]  suchthat r = IVdata2 then
+              c21: blocksize <- xor(r, m21);
+              x_O_3: blocksize <- c21;
+              find [unique]  suchthat r = m21 then
+                c22: blocksize <- xor(r, m22);
+                return(c21, truncate(c22, l_2))
+              orfind  suchthat defined(r_1, IVdata1) && (m21 = IVdata1) then
+                c22: blocksize <- xor(r_1, m22);
+                return(c21, truncate(c22, l_2))
+              orfind  suchthat defined(r_4, IVdata3) && (m21 = IVdata3) then
+                c22: blocksize <- xor(r_4, m22);
+                return(c21, truncate(c22, l_2))
+              orfind  suchthat defined(x_O_5, r_5) && (c21 = x_O_5) then
+                c22: blocksize <- xor(r_5, m22);
+                return(c21, truncate(c22, l_2))
+              orfind  suchthat defined(x_O_6, r_6) && (c21 = x_O_6) then
+                c22: blocksize <- xor(r_6, m22);
+                return(c21, truncate(c22, l_2))
+              else
+                r_3 <-R blocksize;
+                c22: blocksize <- xor(r_3, m22);
+                return(c21, truncate(c22, l_2))
+            orfind  suchthat defined(m32, IV3, r_5, x_O_5) && (IV2 = x_O_5) then
+              c21: blocksize <- xor(r_5, m21);
+              x_O_3: blocksize <- c21;
+              find [unique]  suchthat r_5 = m21 then
+                c22: blocksize <- xor(r, m22);
+                return(c21, truncate(c22, l_2))
+              orfind  suchthat defined(IV1, r_1) && (c21 = IV1) then
+                c22: blocksize <- xor(r_1, m22);
+                return(c21, truncate(c22, l_2))
+              orfind  suchthat defined(r_4) && (c21 = IV3) then
+                c22: blocksize <- xor(r_4, m22);
+                return(c21, truncate(c22, l_2))
+              orfind  suchthat c21 = x_O_5 then
+                c22: blocksize <- xor(r_5, m22);
+                return(c21, truncate(c22, l_2))
+              orfind  suchthat defined(r_6) && (m21 = m32) then
+                c22: blocksize <- xor(r_6, m22);
+                return(c21, truncate(c22, l_2))
+              else
+                r_3 <-R blocksize;
+                c22: blocksize <- xor(r_3, m22);
+                return(c21, truncate(c22, l_2))
+            orfind  suchthat defined(x_O_5, IV3, r_6, x_O_6) && (IV2 = x_O_6) then
+              c21: blocksize <- xor(r_6, m21);
+              x_O_3: blocksize <- c21;
+              find [unique]  suchthat r_6 = m21 then
+                c22: blocksize <- xor(r, m22);
+                return(c21, truncate(c22, l_2))
+              orfind  suchthat defined(IV1, r_1) && (c21 = IV1) then
+                c22: blocksize <- xor(r_1, m22);
+                return(c21, truncate(c22, l_2))
+              orfind  suchthat defined(r_4) && (c21 = IV3) then
+                c22: blocksize <- xor(r_4, m22);
+                return(c21, truncate(c22, l_2))
+              orfind  suchthat defined(r_5) && (c21 = x_O_5) then
+                c22: blocksize <- xor(r_5, m22);
+                return(c21, truncate(c22, l_2))
+              orfind  suchthat c21 = x_O_6 then
+                c22: blocksize <- xor(r_6, m22);
+                return(c21, truncate(c22, l_2))
+              else
+                r_3 <-R blocksize;
+                c22: blocksize <- xor(r_3, m22);
+                return(c21, truncate(c22, l_2))
+            else
+              r_2 <-R blocksize;
+              c21: blocksize <- xor(r_2, m21);
+              x_O_3: blocksize <- c21;
+              r_3 <-R blocksize;
+              c22: blocksize <- xor(r_3, m22);
+              return(c21, truncate(c22, l_2))
+      ) | (
+        Oenc3(IVdata3: blocksize, m31: blocksize, m32: blocksize, m33: blocksize, l_3: len) :=
+        if defined(IVdata1) && (IVdata3 = IVdata1) then
+          event_abort repeatedIV
+        else
+          if defined(IVdata2) && (IVdata3 = IVdata2) then
+            event_abort repeatedIV
+          else
+            IV3: blocksize <- xor(r, IVdata3);
+            find [unique]  suchthat r = IVdata3 then
+              c31: blocksize <- xor(r, m31);
+              x_O_5: blocksize <- c31;
+              find [unique]  suchthat r = m31 then
+                c32: blocksize <- xor(r, m32);
+                x_O_6: blocksize <- c32;
+                find [unique]  suchthat r = m32 then
+                  c33: blocksize <- xor(r, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(r_1, IVdata1) && (m32 = IVdata1) then
+                  c33: blocksize <- xor(r_1, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(r_2, IVdata2) && (m32 = IVdata2) then
+                  c33: blocksize <- xor(r_2, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(x_O_3, r_3) && (c32 = x_O_3) then
+                  c33: blocksize <- xor(r_3, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                else
+                  r_6 <-R blocksize;
+                  c33: blocksize <- xor(r_6, m33);
+                  return(c31, c32, truncate(c33, l_3))
+              orfind  suchthat defined(IV1, r_1, IVdata1) && (m31 = IVdata1) then
+                c32: blocksize <- xor(r_1, m32);
+                x_O_6: blocksize <- c32;
+                find [unique]  suchthat r_1 = m32 then
+                  c33: blocksize <- xor(r, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat c32 = IV1 then
+                  c33: blocksize <- xor(r_1, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(IV2, r_2) && (c32 = IV2) then
+                  c33: blocksize <- xor(r_2, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(x_O_3, r_3) && (c32 = x_O_3) then
+                  c33: blocksize <- xor(r_3, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                else
+                  r_6 <-R blocksize;
+                  c33: blocksize <- xor(r_6, m33);
+                  return(c31, c32, truncate(c33, l_3))
+              orfind  suchthat defined(m21, IV2, r_2, IVdata2) && (m31 = IVdata2) then
+                c32: blocksize <- xor(r_2, m32);
+                x_O_6: blocksize <- c32;
+                find [unique]  suchthat r_2 = m32 then
+                  c33: blocksize <- xor(r, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(IV1, r_1) && (c32 = IV1) then
+                  c33: blocksize <- xor(r_1, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat c32 = IV2 then
+                  c33: blocksize <- xor(r_2, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(r_3) && (m32 = m21) then
+                  c33: blocksize <- xor(r_3, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                else
+                  r_6 <-R blocksize;
+                  c33: blocksize <- xor(r_6, m33);
+                  return(c31, c32, truncate(c33, l_3))
+              orfind  suchthat defined(IV2, r_3, x_O_3) && (c31 = x_O_3) then
+                c32: blocksize <- xor(r_3, m32);
+                x_O_6: blocksize <- c32;
+                find [unique]  suchthat r_3 = m32 then
+                  c33: blocksize <- xor(r, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(IV1, r_1) && (c32 = IV1) then
+                  c33: blocksize <- xor(r_1, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(r_2) && (c32 = IV2) then
+                  c33: blocksize <- xor(r_2, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat c32 = x_O_3 then
+                  c33: blocksize <- xor(r_3, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                else
+                  r_6 <-R blocksize;
+                  c33: blocksize <- xor(r_6, m33);
+                  return(c31, c32, truncate(c33, l_3))
+              else
+                r_5 <-R blocksize;
+                c32: blocksize <- xor(r_5, m32);
+                x_O_6: blocksize <- c32;
+                r_6 <-R blocksize;
+                c33: blocksize <- xor(r_6, m33);
+                return(c31, c32, truncate(c33, l_3))
+            orfind  suchthat defined(m21, IV2, IVdata2, r_3, x_O_3) && (IV3 = x_O_3) then
+              c31: blocksize <- xor(r_3, m31);
+              x_O_5: blocksize <- c31;
+              find [unique]  suchthat r_3 = m31 then
+                c32: blocksize <- xor(r, m32);
+                x_O_6: blocksize <- c32;
+                find [unique]  suchthat r = m32 then
+                  c33: blocksize <- xor(r, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(r_1, IVdata1) && (m32 = IVdata1) then
+                  c33: blocksize <- xor(r_1, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(r_2) && (m32 = IVdata2) then
+                  c33: blocksize <- xor(r_2, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat c32 = x_O_3 then
+                  c33: blocksize <- xor(r_3, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                else
+                  r_6 <-R blocksize;
+                  c33: blocksize <- xor(r_6, m33);
+                  return(c31, c32, truncate(c33, l_3))
+              orfind  suchthat defined(IV1, r_1) && (c31 = IV1) then
+                c32: blocksize <- xor(r_1, m32);
+                x_O_6: blocksize <- c32;
+                find [unique]  suchthat r_1 = m32 then
+                  c33: blocksize <- xor(r, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat c32 = IV1 then
+                  c33: blocksize <- xor(r_1, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(r_2) && (c32 = IV2) then
+                  c33: blocksize <- xor(r_2, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat c32 = x_O_3 then
+                  c33: blocksize <- xor(r_3, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                else
+                  r_6 <-R blocksize;
+                  c33: blocksize <- xor(r_6, m33);
+                  return(c31, c32, truncate(c33, l_3))
+              orfind  suchthat defined(r_2) && (c31 = IV2) then
+                c32: blocksize <- xor(r_2, m32);
+                x_O_6: blocksize <- c32;
+                find [unique]  suchthat r_2 = m32 then
+                  c33: blocksize <- xor(r, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(IV1, r_1) && (c32 = IV1) then
+                  c33: blocksize <- xor(r_1, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat c32 = IV2 then
+                  c33: blocksize <- xor(r_2, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat m32 = m21 then
+                  c33: blocksize <- xor(r_3, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                else
+                  r_6 <-R blocksize;
+                  c33: blocksize <- xor(r_6, m33);
+                  return(c31, c32, truncate(c33, l_3))
+              orfind  suchthat c31 = x_O_3 then
+                c32: blocksize <- xor(r_3, m32);
+                x_O_6: blocksize <- c32;
+                find [unique]  suchthat r_3 = m32 then
+                  c33: blocksize <- xor(r, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(IV1, r_1) && (c32 = IV1) then
+                  c33: blocksize <- xor(r_1, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat defined(r_2) && (c32 = IV2) then
+                  c33: blocksize <- xor(r_2, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                orfind  suchthat c32 = x_O_3 then
+                  c33: blocksize <- xor(r_3, m33);
+                  return(c31, c32, truncate(c33, l_3))
+                else
+                  r_6 <-R blocksize;
+                  c33: blocksize <- xor(r_6, m33);
+                  return(c31, c32, truncate(c33, l_3))
+              else
+                r_5 <-R blocksize;
+                c32: blocksize <- xor(r_5, m32);
+                x_O_6: blocksize <- c32;
+                r_6 <-R blocksize;
+                c33: blocksize <- xor(r_6, m33);
+                return(c31, c32, truncate(c33, l_3))
+            else
+              r_4 <-R blocksize;
+              c31: blocksize <- xor(r_4, m31);
+              x_O_5: blocksize <- c31;
+              r_5 <-R blocksize;
+              c32: blocksize <- xor(r_5, m32);
+              x_O_6: blocksize <- c32;
+              r_6 <-R blocksize;
+              c33: blocksize <- xor(r_6, m33);
+              return(c31, c32, truncate(c33, l_3))
+      ))
+
+
+Applying simplify [probability 9 / |blocksize|]
+  - Global dependency analysis on r
+yields
+
+Game 7 is
+      Ogen() :=
+      x_O: blocksize <- Zero;
+      r <-R blocksize;
+      return();
+      ((
+        Oenc1(IVdata1: blocksize, m1: blocksize, l_1: len) :=
+        if defined(IVdata2) && (IVdata1 = IVdata2) then
+          event_abort repeatedIV
+        else
+          if defined(IVdata3) && (IVdata1 = IVdata3) then
+            event_abort repeatedIV
+          else
+            IV1: blocksize <- xor(r, IVdata1);
+  {23}      find [unique] 
+            else
+              r_1 <-R blocksize;
+              c1: blocksize <- xor(r_1, m1);
+              return(truncate(c1, l_1))
+      ) | (
+        Oenc2(IVdata2: blocksize, m21: blocksize, m22: blocksize, l_2: len) :=
+        if defined(IVdata1) && (IVdata2 = IVdata1) then
+          event_abort repeatedIV
+        else
+          if defined(IVdata3) && (IVdata2 = IVdata3) then
+            event_abort repeatedIV
+          else
+            IV2: blocksize <- xor(r, IVdata2);
+  {51}      find [unique] 
+            else
+              r_2 <-R blocksize;
+              c21: blocksize <- xor(r_2, m21);
+              x_O_3: blocksize <- c21;
+              r_3 <-R blocksize;
+              c22: blocksize <- xor(r_3, m22);
+              return(c21, truncate(c22, l_2))
+      ) | (
+        Oenc3(IVdata3: blocksize, m31: blocksize, m32: blocksize, m33: blocksize, l_3: len) :=
+        if defined(IVdata1) && (IVdata3 = IVdata1) then
+          event_abort repeatedIV
+        else
+          if defined(IVdata2) && (IVdata3 = IVdata2) then
+            event_abort repeatedIV
+          else
+            IV3: blocksize <- xor(r, IVdata3);
+  {89}      find [unique] 
+            else
+              r_4 <-R blocksize;
+              c31: blocksize <- xor(r_4, m31);
+              x_O_5: blocksize <- c31;
+              r_5 <-R blocksize;
+              c32: blocksize <- xor(r_5, m32);
+              x_O_6: blocksize <- c32;
+              r_6 <-R blocksize;
+              c33: blocksize <- xor(r_6, m33);
+              return(c31, c32, truncate(c33, l_3))
+      ))
+
+
+Applying simplify
+  - Simplification pass
+    - Find at 89 removed (else branch kept if any)
+    - Find at 51 removed (else branch kept if any)
+    - Find at 23 removed (else branch kept if any)
+yields
+
+Game 8 is
+      Ogen() :=
+      x_O: blocksize <- Zero;
+      r <-R blocksize;
+      return();
+      ((
+        Oenc1(IVdata1: blocksize, m1: blocksize, l_1: len) :=
+        if defined(IVdata2) && (IVdata1 = IVdata2) then
+          event_abort repeatedIV
+        else
+          if defined(IVdata3) && (IVdata1 = IVdata3) then
+            event_abort repeatedIV
+          else
+            IV1: blocksize <- xor(r, IVdata1);
+            r_1 <-R blocksize;
+            c1: blocksize <- xor(r_1, m1);
+            return(truncate(c1, l_1))
+      ) | (
+        Oenc2(IVdata2: blocksize, m21: blocksize, m22: blocksize, l_2: len) :=
+        if defined(IVdata1) && (IVdata2 = IVdata1) then
+          event_abort repeatedIV
+        else
+          if defined(IVdata3) && (IVdata2 = IVdata3) then
+            event_abort repeatedIV
+          else
+            IV2: blocksize <- xor(r, IVdata2);
+            r_2 <-R blocksize;
+            c21: blocksize <- xor(r_2, m21);
+            x_O_3: blocksize <- c21;
+            r_3 <-R blocksize;
+            c22: blocksize <- xor(r_3, m22);
+            return(c21, truncate(c22, l_2))
+      ) | (
+        Oenc3(IVdata3: blocksize, m31: blocksize, m32: blocksize, m33: blocksize, l_3: len) :=
+        if defined(IVdata1) && (IVdata3 = IVdata1) then
+          event_abort repeatedIV
+        else
+          if defined(IVdata2) && (IVdata3 = IVdata2) then
+            event_abort repeatedIV
+          else
+            IV3: blocksize <- xor(r, IVdata3);
+            r_4 <-R blocksize;
+            c31: blocksize <- xor(r_4, m31);
+            x_O_5: blocksize <- c31;
+            r_5 <-R blocksize;
+            c32: blocksize <- xor(r_5, m32);
+            x_O_6: blocksize <- c32;
+            r_6 <-R blocksize;
+            c33: blocksize <- xor(r_6, m33);
+            return(c31, c32, truncate(c33, l_3))
+      ))
+
+
+Applying SA rename new without array accesses and remove assignments of findcond
+  - Remove assignments on x_O (definition removed, all usages removed)
+  - Remove assignments on IV3 (definition removed, all usages removed)
+  - Remove assignments on x_O_5 (definition removed, all usages removed)
+  - Remove assignments on x_O_6 (definition removed, all usages removed)
+  - Remove assignments on IV2 (definition removed, all usages removed)
+  - Remove assignments on x_O_3 (definition removed, all usages removed)
+  - Remove assignments on IV1 (definition removed, all usages removed)
+yields
+
+Game 9 is
+      Ogen() :=
+      r <-R blocksize;
+      return();
+      ((
+        Oenc1(IVdata1: blocksize, m1: blocksize, l_1: len) :=
+        if defined(IVdata2) && (IVdata1 = IVdata2) then
+          event_abort repeatedIV
+        else
+          if defined(IVdata3) && (IVdata1 = IVdata3) then
+            event_abort repeatedIV
+          else
+            r_1 <-R blocksize;
+            c1: blocksize <- xor(r_1, m1);
+            return(truncate(c1, l_1))
+      ) | (
+        Oenc2(IVdata2: blocksize, m21: blocksize, m22: blocksize, l_2: len) :=
+        if defined(IVdata1) && (IVdata2 = IVdata1) then
+          event_abort repeatedIV
+        else
+          if defined(IVdata3) && (IVdata2 = IVdata3) then
+            event_abort repeatedIV
+          else
+            r_2 <-R blocksize;
+            c21: blocksize <- xor(r_2, m21);
+            r_3 <-R blocksize;
+            c22: blocksize <- xor(r_3, m22);
+            return(c21, truncate(c22, l_2))
+      ) | (
+        Oenc3(IVdata3: blocksize, m31: blocksize, m32: blocksize, m33: blocksize, l_3: len) :=
+        if defined(IVdata1) && (IVdata3 = IVdata1) then
+          event_abort repeatedIV
+        else
+          if defined(IVdata2) && (IVdata3 = IVdata2) then
+            event_abort repeatedIV
+          else
+            r_4 <-R blocksize;
+            c31: blocksize <- xor(r_4, m31);
+            r_5 <-R blocksize;
+            c32: blocksize <- xor(r_5, m32);
+            r_6 <-R blocksize;
+            c33: blocksize <- xor(r_6, m33);
+            return(c31, c32, truncate(c33, l_3))
+      ))
+
+
+Applying equivalence remove_xor(xor)
+  - Equivalence remove_xor(xor) with variables: r_6 -> a
+yields
+
+Game 10 is
+      Ogen() :=
+      r <-R blocksize;
+      return();
+      ((
+        Oenc1(IVdata1: blocksize, m1: blocksize, l_1: len) :=
+        if defined(IVdata2) && (IVdata1 = IVdata2) then
+          event_abort repeatedIV
+        else
+          if defined(IVdata3) && (IVdata1 = IVdata3) then
+            event_abort repeatedIV
+          else
+            r_1 <-R blocksize;
+            c1: blocksize <- xor(r_1, m1);
+            return(truncate(c1, l_1))
+      ) | (
+        Oenc2(IVdata2: blocksize, m21: blocksize, m22: blocksize, l_2: len) :=
+        if defined(IVdata1) && (IVdata2 = IVdata1) then
+          event_abort repeatedIV
+        else
+          if defined(IVdata3) && (IVdata2 = IVdata3) then
+            event_abort repeatedIV
+          else
+            r_2 <-R blocksize;
+            c21: blocksize <- xor(r_2, m21);
+            r_3 <-R blocksize;
+            c22: blocksize <- xor(r_3, m22);
+            return(c21, truncate(c22, l_2))
+      ) | (
+        Oenc3(IVdata3: blocksize, m31: blocksize, m32: blocksize, m33: blocksize, l_3: len) :=
+        if defined(IVdata1) && (IVdata3 = IVdata1) then
+          event_abort repeatedIV
+        else
+          if defined(IVdata2) && (IVdata3 = IVdata2) then
+            event_abort repeatedIV
+          else
+            r_4 <-R blocksize;
+            c31: blocksize <- xor(r_4, m31);
+            r_5 <-R blocksize;
+            c32: blocksize <- xor(r_5, m32);
+            r_7 <-R blocksize;
+            c33: blocksize <- (x: blocksize <- m33; r_7);
+            return(c31, c32, truncate(c33, l_3))
+      ))
+
+
+Applying expand
+  - Expand if/find/let
+yields
+
+Game 11 is
+      Ogen() :=
+      r <-R blocksize;
+      return();
+      ((
+        Oenc1(IVdata1: blocksize, m1: blocksize, l_1: len) :=
+        if defined(IVdata2) && (IVdata1 = IVdata2) then
+          event_abort repeatedIV
+        else
+          if defined(IVdata3) && (IVdata1 = IVdata3) then
+            event_abort repeatedIV
+          else
+            r_1 <-R blocksize;
+            c1: blocksize <- xor(r_1, m1);
+            return(truncate(c1, l_1))
+      ) | (
+        Oenc2(IVdata2: blocksize, m21: blocksize, m22: blocksize, l_2: len) :=
+        if defined(IVdata1) && (IVdata2 = IVdata1) then
+          event_abort repeatedIV
+        else
+          if defined(IVdata3) && (IVdata2 = IVdata3) then
+            event_abort repeatedIV
+          else
+            r_2 <-R blocksize;
+            c21: blocksize <- xor(r_2, m21);
+            r_3 <-R blocksize;
+            c22: blocksize <- xor(r_3, m22);
+            return(c21, truncate(c22, l_2))
+      ) | (
+        Oenc3(IVdata3: blocksize, m31: blocksize, m32: blocksize, m33: blocksize, l_3: len) :=
+        if defined(IVdata1) && (IVdata3 = IVdata1) then
+          event_abort repeatedIV
+        else
+          if defined(IVdata2) && (IVdata3 = IVdata2) then
+            event_abort repeatedIV
+          else
+            r_4 <-R blocksize;
+            c31: blocksize <- xor(r_4, m31);
+            r_5 <-R blocksize;
+            c32: blocksize <- xor(r_5, m32);
+            r_7 <-R blocksize;
+            x: blocksize <- m33;
+            c33: blocksize <- r_7;
+            return(c31, c32, truncate(c33, l_3))
+      ))
+
+
+Applying remove assignments of findcond
+  - Remove assignments on x (definition removed, all usages removed)
+  - Remove assignments on c33 (definition removed, all usages removed)
+yields
+
+Game 12 is
+      Ogen() :=
+   {2}r <-R blocksize;
+      return();
+      ((
+        Oenc1(IVdata1: blocksize, m1: blocksize, l_1: len) :=
+        if defined(IVdata2) && (IVdata1 = IVdata2) then
+          event_abort repeatedIV
+        else
+          if defined(IVdata3) && (IVdata1 = IVdata3) then
+            event_abort repeatedIV
+          else
+            r_1 <-R blocksize;
+            c1: blocksize <- xor(r_1, m1);
+            return(truncate(c1, l_1))
+      ) | (
+        Oenc2(IVdata2: blocksize, m21: blocksize, m22: blocksize, l_2: len) :=
+        if defined(IVdata1) && (IVdata2 = IVdata1) then
+          event_abort repeatedIV
+        else
+          if defined(IVdata3) && (IVdata2 = IVdata3) then
+            event_abort repeatedIV
+          else
+            r_2 <-R blocksize;
+            c21: blocksize <- xor(r_2, m21);
+            r_3 <-R blocksize;
+            c22: blocksize <- xor(r_3, m22);
+            return(c21, truncate(c22, l_2))
+      ) | (
+        Oenc3(IVdata3: blocksize, m31: blocksize, m32: blocksize, m33: blocksize, l_3: len) :=
+        if defined(IVdata1) && (IVdata3 = IVdata1) then
+          event_abort repeatedIV
+        else
+          if defined(IVdata2) && (IVdata3 = IVdata2) then
+            event_abort repeatedIV
+          else
+            r_4 <-R blocksize;
+            c31: blocksize <- xor(r_4, m31);
+            r_5 <-R blocksize;
+            c32: blocksize <- xor(r_5, m32);
+            r_7 <-R blocksize;
+            return(c31, c32, truncate(r_7, l_3))
+      ))
+
+
+Applying simplify
+  - Simplification pass
+    - Remove random number generation at 2
+yields
+
+Game 13 is
+      Ogen() :=
+      return();
+      ((
+        Oenc1(IVdata1: blocksize, m1: blocksize, l_1: len) :=
+        if defined(IVdata2) && (IVdata1 = IVdata2) then
+          event_abort repeatedIV
+        else
+          if defined(IVdata3) && (IVdata1 = IVdata3) then
+            event_abort repeatedIV
+          else
+            r_1 <-R blocksize;
+            c1: blocksize <- xor(r_1, m1);
+            return(truncate(c1, l_1))
+      ) | (
+        Oenc2(IVdata2: blocksize, m21: blocksize, m22: blocksize, l_2: len) :=
+        if defined(IVdata1) && (IVdata2 = IVdata1) then
+          event_abort repeatedIV
+        else
+          if defined(IVdata3) && (IVdata2 = IVdata3) then
+            event_abort repeatedIV
+          else
+            r_2 <-R blocksize;
+            c21: blocksize <- xor(r_2, m21);
+            r_3 <-R blocksize;
+            c22: blocksize <- xor(r_3, m22);
+            return(c21, truncate(c22, l_2))
+      ) | (
+        Oenc3(IVdata3: blocksize, m31: blocksize, m32: blocksize, m33: blocksize, l_3: len) :=
+        if defined(IVdata1) && (IVdata3 = IVdata1) then
+          event_abort repeatedIV
+        else
+          if defined(IVdata2) && (IVdata3 = IVdata2) then
+            event_abort repeatedIV
+          else
+            r_4 <-R blocksize;
+            c31: blocksize <- xor(r_4, m31);
+            r_5 <-R blocksize;
+            c32: blocksize <- xor(r_5, m32);
+            r_7 <-R blocksize;
+            return(c31, c32, truncate(r_7, l_3))
+      ))
+
+
+Applying equivalence remove_xor(xor)
+  - Equivalence remove_xor(xor) with variables: r_5 -> a
+yields
+
+Game 14 is
+      Ogen() :=
+      return();
+      ((
+        Oenc1(IVdata1: blocksize, m1: blocksize, l_1: len) :=
+        if defined(IVdata2) && (IVdata1 = IVdata2) then
+          event_abort repeatedIV
+        else
+          if defined(IVdata3) && (IVdata1 = IVdata3) then
+            event_abort repeatedIV
+          else
+            r_1 <-R blocksize;
+            c1: blocksize <- xor(r_1, m1);
+            return(truncate(c1, l_1))
+      ) | (
+        Oenc2(IVdata2: blocksize, m21: blocksize, m22: blocksize, l_2: len) :=
+        if defined(IVdata1) && (IVdata2 = IVdata1) then
+          event_abort repeatedIV
+        else
+          if defined(IVdata3) && (IVdata2 = IVdata3) then
+            event_abort repeatedIV
+          else
+            r_2 <-R blocksize;
+            c21: blocksize <- xor(r_2, m21);
+            r_3 <-R blocksize;
+            c22: blocksize <- xor(r_3, m22);
+            return(c21, truncate(c22, l_2))
+      ) | (
+        Oenc3(IVdata3: blocksize, m31: blocksize, m32: blocksize, m33: blocksize, l_3: len) :=
+        if defined(IVdata1) && (IVdata3 = IVdata1) then
+          event_abort repeatedIV
+        else
+          if defined(IVdata2) && (IVdata3 = IVdata2) then
+            event_abort repeatedIV
+          else
+            r_4 <-R blocksize;
+            c31: blocksize <- xor(r_4, m31);
+            r_8 <-R blocksize;
+            c32: blocksize <- (x_1: blocksize <- m32; r_8);
+            r_7 <-R blocksize;
+            return(c31, c32, truncate(r_7, l_3))
+      ))
+
+
+Applying expand
+  - Expand if/find/let
+yields
+
+Game 15 is
+      Ogen() :=
+      return();
+      ((
+        Oenc1(IVdata1: blocksize, m1: blocksize, l_1: len) :=
+        if defined(IVdata2) && (IVdata1 = IVdata2) then
+          event_abort repeatedIV
+        else
+          if defined(IVdata3) && (IVdata1 = IVdata3) then
+            event_abort repeatedIV
+          else
+            r_1 <-R blocksize;
+            c1: blocksize <- xor(r_1, m1);
+            return(truncate(c1, l_1))
+      ) | (
+        Oenc2(IVdata2: blocksize, m21: blocksize, m22: blocksize, l_2: len) :=
+        if defined(IVdata1) && (IVdata2 = IVdata1) then
+          event_abort repeatedIV
+        else
+          if defined(IVdata3) && (IVdata2 = IVdata3) then
+            event_abort repeatedIV
+          else
+            r_2 <-R blocksize;
+            c21: blocksize <- xor(r_2, m21);
+            r_3 <-R blocksize;
+            c22: blocksize <- xor(r_3, m22);
+            return(c21, truncate(c22, l_2))
+      ) | (
+        Oenc3(IVdata3: blocksize, m31: blocksize, m32: blocksize, m33: blocksize, l_3: len) :=
+        if defined(IVdata1) && (IVdata3 = IVdata1) then
+          event_abort repeatedIV
+        else
+          if defined(IVdata2) && (IVdata3 = IVdata2) then
+            event_abort repeatedIV
+          else
+            r_4 <-R blocksize;
+            c31: blocksize <- xor(r_4, m31);
+            r_8 <-R blocksize;
+            x_1: blocksize <- m32;
+            c32: blocksize <- r_8;
+            r_7 <-R blocksize;
+            return(c31, c32, truncate(r_7, l_3))
+      ))
+
+
+Applying remove assignments of findcond
+  - Remove assignments on x_1 (definition removed, all usages removed)
+  - Remove assignments on c32 (definition removed, all usages removed)
+yields
+
+Game 16 is
+      Ogen() :=
+      return();
+      ((
+        Oenc1(IVdata1: blocksize, m1: blocksize, l_1: len) :=
+        if defined(IVdata2) && (IVdata1 = IVdata2) then
+          event_abort repeatedIV
+        else
+          if defined(IVdata3) && (IVdata1 = IVdata3) then
+            event_abort repeatedIV
+          else
+            r_1 <-R blocksize;
+            c1: blocksize <- xor(r_1, m1);
+            return(truncate(c1, l_1))
+      ) | (
+        Oenc2(IVdata2: blocksize, m21: blocksize, m22: blocksize, l_2: len) :=
+        if defined(IVdata1) && (IVdata2 = IVdata1) then
+          event_abort repeatedIV
+        else
+          if defined(IVdata3) && (IVdata2 = IVdata3) then
+            event_abort repeatedIV
+          else
+            r_2 <-R blocksize;
+            c21: blocksize <- xor(r_2, m21);
+            r_3 <-R blocksize;
+            c22: blocksize <- xor(r_3, m22);
+            return(c21, truncate(c22, l_2))
+      ) | (
+        Oenc3(IVdata3: blocksize, m31: blocksize, m32: blocksize, m33: blocksize, l_3: len) :=
+        if defined(IVdata1) && (IVdata3 = IVdata1) then
+          event_abort repeatedIV
+        else
+          if defined(IVdata2) && (IVdata3 = IVdata2) then
+            event_abort repeatedIV
+          else
+            r_4 <-R blocksize;
+            c31: blocksize <- xor(r_4, m31);
+            r_8 <-R blocksize;
+            r_7 <-R blocksize;
+            return(c31, r_8, truncate(r_7, l_3))
+      ))
+
+
+Applying equivalence remove_xor(xor)
+  - Equivalence remove_xor(xor) with variables: r_4 -> a
+yields
+
+Game 17 is
+      Ogen() :=
+      return();
+      ((
+        Oenc1(IVdata1: blocksize, m1: blocksize, l_1: len) :=
+        if defined(IVdata2) && (IVdata1 = IVdata2) then
+          event_abort repeatedIV
+        else
+          if defined(IVdata3) && (IVdata1 = IVdata3) then
+            event_abort repeatedIV
+          else
+            r_1 <-R blocksize;
+            c1: blocksize <- xor(r_1, m1);
+            return(truncate(c1, l_1))
+      ) | (
+        Oenc2(IVdata2: blocksize, m21: blocksize, m22: blocksize, l_2: len) :=
+        if defined(IVdata1) && (IVdata2 = IVdata1) then
+          event_abort repeatedIV
+        else
+          if defined(IVdata3) && (IVdata2 = IVdata3) then
+            event_abort repeatedIV
+          else
+            r_2 <-R blocksize;
+            c21: blocksize <- xor(r_2, m21);
+            r_3 <-R blocksize;
+            c22: blocksize <- xor(r_3, m22);
+            return(c21, truncate(c22, l_2))
+      ) | (
+        Oenc3(IVdata3: blocksize, m31: blocksize, m32: blocksize, m33: blocksize, l_3: len) :=
+        if defined(IVdata1) && (IVdata3 = IVdata1) then
+          event_abort repeatedIV
+        else
+          if defined(IVdata2) && (IVdata3 = IVdata2) then
+            event_abort repeatedIV
+          else
+            r_9 <-R blocksize;
+            c31: blocksize <- (x_2: blocksize <- m31; r_9);
+            r_8 <-R blocksize;
+            r_7 <-R blocksize;
+            return(c31, r_8, truncate(r_7, l_3))
+      ))
+
+
+Applying expand
+  - Expand if/find/let
+yields
+
+Game 18 is
+      Ogen() :=
+      return();
+      ((
+        Oenc1(IVdata1: blocksize, m1: blocksize, l_1: len) :=
+        if defined(IVdata2) && (IVdata1 = IVdata2) then
+          event_abort repeatedIV
+        else
+          if defined(IVdata3) && (IVdata1 = IVdata3) then
+            event_abort repeatedIV
+          else
+            r_1 <-R blocksize;
+            c1: blocksize <- xor(r_1, m1);
+            return(truncate(c1, l_1))
+      ) | (
+        Oenc2(IVdata2: blocksize, m21: blocksize, m22: blocksize, l_2: len) :=
+        if defined(IVdata1) && (IVdata2 = IVdata1) then
+          event_abort repeatedIV
+        else
+          if defined(IVdata3) && (IVdata2 = IVdata3) then
+            event_abort repeatedIV
+          else
+            r_2 <-R blocksize;
+            c21: blocksize <- xor(r_2, m21);
+            r_3 <-R blocksize;
+            c22: blocksize <- xor(r_3, m22);
+            return(c21, truncate(c22, l_2))
+      ) | (
+        Oenc3(IVdata3: blocksize, m31: blocksize, m32: blocksize, m33: blocksize, l_3: len) :=
+        if defined(IVdata1) && (IVdata3 = IVdata1) then
+          event_abort repeatedIV
+        else
+          if defined(IVdata2) && (IVdata3 = IVdata2) then
+            event_abort repeatedIV
+          else
+            r_9 <-R blocksize;
+            x_2: blocksize <- m31;
+            c31: blocksize <- r_9;
+            r_8 <-R blocksize;
+            r_7 <-R blocksize;
+            return(c31, r_8, truncate(r_7, l_3))
+      ))
+
+
+Applying remove assignments of findcond
+  - Remove assignments on x_2 (definition removed, all usages removed)
+  - Remove assignments on c31 (definition removed, all usages removed)
+yields
+
+Game 19 is
+      Ogen() :=
+      return();
+      ((
+        Oenc1(IVdata1: blocksize, m1: blocksize, l_1: len) :=
+        if defined(IVdata2) && (IVdata1 = IVdata2) then
+          event_abort repeatedIV
+        else
+          if defined(IVdata3) && (IVdata1 = IVdata3) then
+            event_abort repeatedIV
+          else
+            r_1 <-R blocksize;
+            c1: blocksize <- xor(r_1, m1);
+            return(truncate(c1, l_1))
+      ) | (
+        Oenc2(IVdata2: blocksize, m21: blocksize, m22: blocksize, l_2: len) :=
+        if defined(IVdata1) && (IVdata2 = IVdata1) then
+          event_abort repeatedIV
+        else
+          if defined(IVdata3) && (IVdata2 = IVdata3) then
+            event_abort repeatedIV
+          else
+            r_2 <-R blocksize;
+            c21: blocksize <- xor(r_2, m21);
+            r_3 <-R blocksize;
+            c22: blocksize <- xor(r_3, m22);
+            return(c21, truncate(c22, l_2))
+      ) | (
+        Oenc3(IVdata3: blocksize, m31: blocksize, m32: blocksize, m33: blocksize, l_3: len) :=
+        if defined(IVdata1) && (IVdata3 = IVdata1) then
+          event_abort repeatedIV
+        else
+          if defined(IVdata2) && (IVdata3 = IVdata2) then
+            event_abort repeatedIV
+          else
+            r_9 <-R blocksize;
+            r_8 <-R blocksize;
+            r_7 <-R blocksize;
+            return(r_9, r_8, truncate(r_7, l_3))
+      ))
+
+
+Applying equivalence remove_xor(xor)
+  - Equivalence remove_xor(xor) with variables: r_3 -> a
+yields
+
+Game 20 is
+      Ogen() :=
+      return();
+      ((
+        Oenc1(IVdata1: blocksize, m1: blocksize, l_1: len) :=
+        if defined(IVdata2) && (IVdata1 = IVdata2) then
+          event_abort repeatedIV
+        else
+          if defined(IVdata3) && (IVdata1 = IVdata3) then
+            event_abort repeatedIV
+          else
+            r_1 <-R blocksize;
+            c1: blocksize <- xor(r_1, m1);
+            return(truncate(c1, l_1))
+      ) | (
+        Oenc2(IVdata2: blocksize, m21: blocksize, m22: blocksize, l_2: len) :=
+        if defined(IVdata1) && (IVdata2 = IVdata1) then
+          event_abort repeatedIV
+        else
+          if defined(IVdata3) && (IVdata2 = IVdata3) then
+            event_abort repeatedIV
+          else
+            r_2 <-R blocksize;
+            c21: blocksize <- xor(r_2, m21);
+            r_10 <-R blocksize;
+            c22: blocksize <- (x_3: blocksize <- m22; r_10);
+            return(c21, truncate(c22, l_2))
+      ) | (
+        Oenc3(IVdata3: blocksize, m31: blocksize, m32: blocksize, m33: blocksize, l_3: len) :=
+        if defined(IVdata1) && (IVdata3 = IVdata1) then
+          event_abort repeatedIV
+        else
+          if defined(IVdata2) && (IVdata3 = IVdata2) then
+            event_abort repeatedIV
+          else
+            r_9 <-R blocksize;
+            r_8 <-R blocksize;
+            r_7 <-R blocksize;
+            return(r_9, r_8, truncate(r_7, l_3))
+      ))
+
+
+Applying expand
+  - Expand if/find/let
+yields
+
+Game 21 is
+      Ogen() :=
+      return();
+      ((
+        Oenc1(IVdata1: blocksize, m1: blocksize, l_1: len) :=
+        if defined(IVdata2) && (IVdata1 = IVdata2) then
+          event_abort repeatedIV
+        else
+          if defined(IVdata3) && (IVdata1 = IVdata3) then
+            event_abort repeatedIV
+          else
+            r_1 <-R blocksize;
+            c1: blocksize <- xor(r_1, m1);
+            return(truncate(c1, l_1))
+      ) | (
+        Oenc2(IVdata2: blocksize, m21: blocksize, m22: blocksize, l_2: len) :=
+        if defined(IVdata1) && (IVdata2 = IVdata1) then
+          event_abort repeatedIV
+        else
+          if defined(IVdata3) && (IVdata2 = IVdata3) then
+            event_abort repeatedIV
+          else
+            r_2 <-R blocksize;
+            c21: blocksize <- xor(r_2, m21);
+            r_10 <-R blocksize;
+            x_3: blocksize <- m22;
+            c22: blocksize <- r_10;
+            return(c21, truncate(c22, l_2))
+      ) | (
+        Oenc3(IVdata3: blocksize, m31: blocksize, m32: blocksize, m33: blocksize, l_3: len) :=
+        if defined(IVdata1) && (IVdata3 = IVdata1) then
+          event_abort repeatedIV
+        else
+          if defined(IVdata2) && (IVdata3 = IVdata2) then
+            event_abort repeatedIV
+          else
+            r_9 <-R blocksize;
+            r_8 <-R blocksize;
+            r_7 <-R blocksize;
+            return(r_9, r_8, truncate(r_7, l_3))
+      ))
+
+
+Applying remove assignments of findcond
+  - Remove assignments on x_3 (definition removed, all usages removed)
+  - Remove assignments on c22 (definition removed, all usages removed)
+yields
+
+Game 22 is
+      Ogen() :=
+      return();
+      ((
+        Oenc1(IVdata1: blocksize, m1: blocksize, l_1: len) :=
+        if defined(IVdata2) && (IVdata1 = IVdata2) then
+          event_abort repeatedIV
+        else
+          if defined(IVdata3) && (IVdata1 = IVdata3) then
+            event_abort repeatedIV
+          else
+            r_1 <-R blocksize;
+            c1: blocksize <- xor(r_1, m1);
+            return(truncate(c1, l_1))
+      ) | (
+        Oenc2(IVdata2: blocksize, m21: blocksize, m22: blocksize, l_2: len) :=
+        if defined(IVdata1) && (IVdata2 = IVdata1) then
+          event_abort repeatedIV
+        else
+          if defined(IVdata3) && (IVdata2 = IVdata3) then
+            event_abort repeatedIV
+          else
+            r_2 <-R blocksize;
+            c21: blocksize <- xor(r_2, m21);
+            r_10 <-R blocksize;
+            return(c21, truncate(r_10, l_2))
+      ) | (
+        Oenc3(IVdata3: blocksize, m31: blocksize, m32: blocksize, m33: blocksize, l_3: len) :=
+        if defined(IVdata1) && (IVdata3 = IVdata1) then
+          event_abort repeatedIV
+        else
+          if defined(IVdata2) && (IVdata3 = IVdata2) then
+            event_abort repeatedIV
+          else
+            r_9 <-R blocksize;
+            r_8 <-R blocksize;
+            r_7 <-R blocksize;
+            return(r_9, r_8, truncate(r_7, l_3))
+      ))
+
+
+Applying equivalence remove_xor(xor)
+  - Equivalence remove_xor(xor) with variables: r_2 -> a
+yields
+
+Game 23 is
+      Ogen() :=
+      return();
+      ((
+        Oenc1(IVdata1: blocksize, m1: blocksize, l_1: len) :=
+        if defined(IVdata2) && (IVdata1 = IVdata2) then
+          event_abort repeatedIV
+        else
+          if defined(IVdata3) && (IVdata1 = IVdata3) then
+            event_abort repeatedIV
+          else
+            r_1 <-R blocksize;
+            c1: blocksize <- xor(r_1, m1);
+            return(truncate(c1, l_1))
+      ) | (
+        Oenc2(IVdata2: blocksize, m21: blocksize, m22: blocksize, l_2: len) :=
+        if defined(IVdata1) && (IVdata2 = IVdata1) then
+          event_abort repeatedIV
+        else
+          if defined(IVdata3) && (IVdata2 = IVdata3) then
+            event_abort repeatedIV
+          else
+            r_11 <-R blocksize;
+            c21: blocksize <- (x_4: blocksize <- m21; r_11);
+            r_10 <-R blocksize;
+            return(c21, truncate(r_10, l_2))
+      ) | (
+        Oenc3(IVdata3: blocksize, m31: blocksize, m32: blocksize, m33: blocksize, l_3: len) :=
+        if defined(IVdata1) && (IVdata3 = IVdata1) then
+          event_abort repeatedIV
+        else
+          if defined(IVdata2) && (IVdata3 = IVdata2) then
+            event_abort repeatedIV
+          else
+            r_9 <-R blocksize;
+            r_8 <-R blocksize;
+            r_7 <-R blocksize;
+            return(r_9, r_8, truncate(r_7, l_3))
+      ))
+
+
+Applying expand
+  - Expand if/find/let
+yields
+
+Game 24 is
+      Ogen() :=
+      return();
+      ((
+        Oenc1(IVdata1: blocksize, m1: blocksize, l_1: len) :=
+        if defined(IVdata2) && (IVdata1 = IVdata2) then
+          event_abort repeatedIV
+        else
+          if defined(IVdata3) && (IVdata1 = IVdata3) then
+            event_abort repeatedIV
+          else
+            r_1 <-R blocksize;
+            c1: blocksize <- xor(r_1, m1);
+            return(truncate(c1, l_1))
+      ) | (
+        Oenc2(IVdata2: blocksize, m21: blocksize, m22: blocksize, l_2: len) :=
+        if defined(IVdata1) && (IVdata2 = IVdata1) then
+          event_abort repeatedIV
+        else
+          if defined(IVdata3) && (IVdata2 = IVdata3) then
+            event_abort repeatedIV
+          else
+            r_11 <-R blocksize;
+            x_4: blocksize <- m21;
+            c21: blocksize <- r_11;
+            r_10 <-R blocksize;
+            return(c21, truncate(r_10, l_2))
+      ) | (
+        Oenc3(IVdata3: blocksize, m31: blocksize, m32: blocksize, m33: blocksize, l_3: len) :=
+        if defined(IVdata1) && (IVdata3 = IVdata1) then
+          event_abort repeatedIV
+        else
+          if defined(IVdata2) && (IVdata3 = IVdata2) then
+            event_abort repeatedIV
+          else
+            r_9 <-R blocksize;
+            r_8 <-R blocksize;
+            r_7 <-R blocksize;
+            return(r_9, r_8, truncate(r_7, l_3))
+      ))
+
+
+Applying remove assignments of findcond
+  - Remove assignments on x_4 (definition removed, all usages removed)
+  - Remove assignments on c21 (definition removed, all usages removed)
+yields
+
+Game 25 is
+      Ogen() :=
+      return();
+      ((
+        Oenc1(IVdata1: blocksize, m1: blocksize, l_1: len) :=
+        if defined(IVdata2) && (IVdata1 = IVdata2) then
+          event_abort repeatedIV
+        else
+          if defined(IVdata3) && (IVdata1 = IVdata3) then
+            event_abort repeatedIV
+          else
+            r_1 <-R blocksize;
+            c1: blocksize <- xor(r_1, m1);
+            return(truncate(c1, l_1))
+      ) | (
+        Oenc2(IVdata2: blocksize, m21: blocksize, m22: blocksize, l_2: len) :=
+        if defined(IVdata1) && (IVdata2 = IVdata1) then
+          event_abort repeatedIV
+        else
+          if defined(IVdata3) && (IVdata2 = IVdata3) then
+            event_abort repeatedIV
+          else
+            r_11 <-R blocksize;
+            r_10 <-R blocksize;
+            return(r_11, truncate(r_10, l_2))
+      ) | (
+        Oenc3(IVdata3: blocksize, m31: blocksize, m32: blocksize, m33: blocksize, l_3: len) :=
+        if defined(IVdata1) && (IVdata3 = IVdata1) then
+          event_abort repeatedIV
+        else
+          if defined(IVdata2) && (IVdata3 = IVdata2) then
+            event_abort repeatedIV
+          else
+            r_9 <-R blocksize;
+            r_8 <-R blocksize;
+            r_7 <-R blocksize;
+            return(r_9, r_8, truncate(r_7, l_3))
+      ))
+
+
+Applying equivalence remove_xor(xor)
+  - Equivalence remove_xor(xor) with variables: r_1 -> a
+yields
+
+Game 26 is
+      Ogen() :=
+      return();
+      ((
+        Oenc1(IVdata1: blocksize, m1: blocksize, l_1: len) :=
+        if defined(IVdata2) && (IVdata1 = IVdata2) then
+          event_abort repeatedIV
+        else
+          if defined(IVdata3) && (IVdata1 = IVdata3) then
+            event_abort repeatedIV
+          else
+            r_12 <-R blocksize;
+            c1: blocksize <- (x_5: blocksize <- m1; r_12);
+            return(truncate(c1, l_1))
+      ) | (
+        Oenc2(IVdata2: blocksize, m21: blocksize, m22: blocksize, l_2: len) :=
+        if defined(IVdata1) && (IVdata2 = IVdata1) then
+          event_abort repeatedIV
+        else
+          if defined(IVdata3) && (IVdata2 = IVdata3) then
+            event_abort repeatedIV
+          else
+            r_11 <-R blocksize;
+            r_10 <-R blocksize;
+            return(r_11, truncate(r_10, l_2))
+      ) | (
+        Oenc3(IVdata3: blocksize, m31: blocksize, m32: blocksize, m33: blocksize, l_3: len) :=
+        if defined(IVdata1) && (IVdata3 = IVdata1) then
+          event_abort repeatedIV
+        else
+          if defined(IVdata2) && (IVdata3 = IVdata2) then
+            event_abort repeatedIV
+          else
+            r_9 <-R blocksize;
+            r_8 <-R blocksize;
+            r_7 <-R blocksize;
+            return(r_9, r_8, truncate(r_7, l_3))
+      ))
+
+
+Applying expand
+  - Expand if/find/let
+yields
+
+Game 27 is
+      Ogen() :=
+      return();
+      ((
+        Oenc1(IVdata1: blocksize, m1: blocksize, l_1: len) :=
+        if defined(IVdata2) && (IVdata1 = IVdata2) then
+          event_abort repeatedIV
+        else
+          if defined(IVdata3) && (IVdata1 = IVdata3) then
+            event_abort repeatedIV
+          else
+            r_12 <-R blocksize;
+            x_5: blocksize <- m1;
+            c1: blocksize <- r_12;
+            return(truncate(c1, l_1))
+      ) | (
+        Oenc2(IVdata2: blocksize, m21: blocksize, m22: blocksize, l_2: len) :=
+        if defined(IVdata1) && (IVdata2 = IVdata1) then
+          event_abort repeatedIV
+        else
+          if defined(IVdata3) && (IVdata2 = IVdata3) then
+            event_abort repeatedIV
+          else
+            r_11 <-R blocksize;
+            r_10 <-R blocksize;
+            return(r_11, truncate(r_10, l_2))
+      ) | (
+        Oenc3(IVdata3: blocksize, m31: blocksize, m32: blocksize, m33: blocksize, l_3: len) :=
+        if defined(IVdata1) && (IVdata3 = IVdata1) then
+          event_abort repeatedIV
+        else
+          if defined(IVdata2) && (IVdata3 = IVdata2) then
+            event_abort repeatedIV
+          else
+            r_9 <-R blocksize;
+            r_8 <-R blocksize;
+            r_7 <-R blocksize;
+            return(r_9, r_8, truncate(r_7, l_3))
+      ))
+
+
+Applying remove assignments of findcond
+  - Remove assignments on x_5 (definition removed, all usages removed)
+  - Remove assignments on c1 (definition removed, all usages removed)
+yields
+
+Game 28 is
+      Ogen() :=
+      return();
+      ((
+        Oenc1(IVdata1: blocksize, m1: blocksize, l_1: len) :=
+        if defined(IVdata2) && (IVdata1 = IVdata2) then
+          event_abort repeatedIV
+        else
+          if defined(IVdata3) && (IVdata1 = IVdata3) then
+            event_abort repeatedIV
+          else
+            r_12 <-R blocksize;
+            return(truncate(r_12, l_1))
+      ) | (
+        Oenc2(IVdata2: blocksize, m21: blocksize, m22: blocksize, l_2: len) :=
+        if defined(IVdata1) && (IVdata2 = IVdata1) then
+          event_abort repeatedIV
+        else
+          if defined(IVdata3) && (IVdata2 = IVdata3) then
+            event_abort repeatedIV
+          else
+            r_11 <-R blocksize;
+            r_10 <-R blocksize;
+            return(r_11, truncate(r_10, l_2))
+      ) | (
+        Oenc3(IVdata3: blocksize, m31: blocksize, m32: blocksize, m33: blocksize, l_3: len) :=
+        if defined(IVdata1) && (IVdata3 = IVdata1) then
+          event_abort repeatedIV
+        else
+          if defined(IVdata2) && (IVdata3 = IVdata2) then
+            event_abort repeatedIV
+          else
+            r_9 <-R blocksize;
+            r_8 <-R blocksize;
+            r_7 <-R blocksize;
+            return(r_9, r_8, truncate(r_7, l_3))
+      ))
+
+
+Proved indistinguishability between game 28 and the final game
+Adv[Game 1: indistinguishability from game 28] <= 27 / |blocksize| + P_AES(time_1, 7) + Adv[Game 28: indistinguishability from game 28]
+Adv[Game 28: indistinguishability from game 28] <= 0
+RESULT Proved indistinguishability between the input game and the final game up to probability 27 / |blocksize| + P_AES(time_1, 7)
+RESULT time_1 = time(truncate, maxlength(game 1: l_1)) + time(truncate, maxlength(game 1: l_2)) + 9 * time(xor) + time(truncate, maxlength(game 1: l_3)) + time
+All queries proved.
