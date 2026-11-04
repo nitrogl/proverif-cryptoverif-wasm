@@ -1,0 +1,380 @@
+Biprocess 0 (that is, the initial process):
+{1}new Kas: key;
+{2}new Kbs: key;
+{3}insert keytable(A,Kas);
+{4}insert keytable(B,Kbs);
+(
+    {5}!
+    {6}in(c, (xI: host,xR: host));
+    {7}if ((xI = A) || (xI = B)) then
+    {11}get keytable(=xI,Kis: key) in
+    {8}new Kab: key;
+    {9}new r: coins;
+    {10}out(c, (xI,encrypt((c0,xR,Kab),Kis,r)))
+) | (
+    {12}!
+    {13}in(c, xR_1: host);
+    {14}if ((xR_1 = A) || (xR_1 = B)) then
+    {20}get keytable(=xR_1,Krs: key) in
+    {15}in(c, m: bitstring);
+    {16}let (=c1,a: host,kab: key) = decrypt(m,Krs) in
+    {17}if ((a = A) || (a = B)) then
+    {18}new Kab': key;
+    {19}out(c, choice[kab,Kab'])
+) | (
+    {21}!
+    {22}in(c, (a_1: host,m_1: bitstring));
+    {27}get keytable(=a_1,kas: key) in
+    {23}let (=c0,b: host,kab_1: key) = decrypt(m_1,kas) in
+    {26}get keytable(=b,kbs: key) in
+    {24}new r_1: coins;
+    {25}out(c, encrypt((c1,a_1,kab_1),kbs,r_1))
+) | (
+    {28}!
+    {29}in(c, (h: host,k: key));
+    {30}if ((h ≠ A) && (h ≠ B)) then
+    {31}insert keytable(h,k)
+)
+
+-- Observational equivalence in biprocess 0.
+Translating the process into Horn clauses...
+Termination warning: v ≠ v_1 && attacker2(v_2,v) && attacker2(v_2,v_1) -> bad
+Selecting 0
+Termination warning: v ≠ v_1 && attacker2(v,v_2) && attacker2(v_1,v_2) -> bad
+Selecting 0
+Completing...
+Termination warning: v ≠ v_1 && attacker2(v_2,v) && attacker2(v_2,v_1) -> bad
+Selecting 0
+Termination warning: v ≠ v_1 && attacker2(v,v_2) && attacker2(v_1,v_2) -> bad
+Selecting 0
+ok, secrecy assumption verified: fact unreachable attacker2(Kas[],Kas[])
+ok, secrecy assumption verified: fact unreachable attacker2(Kbs[],Kbs[])
+goal reachable: bad
+
+Derivation:
+Abbreviations:
+Kab_1 = Kab[Kis = choice[Kbs[],Kbs[]],xR = choice[B[],B[]],xI = choice[B[],B[]],!1 = @sid]
+r_2 = r[Kis = choice[Kbs[],Kbs[]],xR = choice[B[],B[]],xI = choice[B[],B[]],!1 = @sid]
+r_3 = r_1[kbs = choice[Kbs[],Kbs[]],kas = choice[Kbs[],Kbs[]],m_1 = choice[encrypt((c0[],B[],Kab_1),Kbs[],r_2),encrypt((c0[],B[],Kab_1),Kbs[],r_2)],a_1 = choice[B[],B[]],!1 = @sid_1]
+Kab'_1 = Kab'[m = choice[encrypt((c1[],B[],Kab_1),Kbs[],r_3),encrypt((c1[],B[],Kab_1),Kbs[],r_3)],Krs = choice[Kbs[],Kbs[]],xR_1 = choice[B[],B[]],!1 = @sid_2]
+r_4 = r_1[kbs = choice[Kbs[],Kbs[]],kas = choice[Kbs[],Kbs[]],m_1 = choice[encrypt((c0[],B[],Kab_1),Kbs[],r_2),encrypt((c0[],B[],Kab_1),Kbs[],r_2)],a_1 = choice[B[],B[]],!1 = @sid_3]
+Kab'_2 = Kab'[m = choice[encrypt((c1[],B[],Kab_1),Kbs[],r_4),encrypt((c1[],B[],Kab_1),Kbs[],r_4)],Krs = choice[Kbs[],Kbs[]],xR_1 = choice[B[],B[]],!1 = @sid_4]
+
+1. The attacker initially knows B[] (resp. B[]).
+attacker2(B[],B[]).
+
+2. The entry keytable(B[],Kbs[]) (resp. keytable(B[],Kbs[])) may be inserted in a table at insert {4}.
+table2(keytable(B[],Kbs[]),keytable(B[],Kbs[])).
+
+3. By 1, the attacker may know B[] (resp. B[]).
+By 1, the attacker may know B[] (resp. B[]).
+Using the function 2-tuple the attacker may obtain (B[],B[]) (resp. (B[],B[])).
+attacker2((B[],B[]),(B[],B[])).
+
+4. The message (B[],B[]) (resp. (B[],B[])) that the attacker may have by 3 may be received at input {6}.
+The entry keytable(B[],Kbs[]) (resp. keytable(B[],Kbs[])) that may be in a table by 2 may be read at get {11}.
+So the message (B[],encrypt((c0[],B[],Kab_1),Kbs[],r_2)) (resp. (B[],encrypt((c0[],B[],Kab_1),Kbs[],r_2))) may be sent to the attacker at output {10}.
+attacker2((B[],encrypt((c0[],B[],Kab_1),Kbs[],r_2)),(B[],encrypt((c0[],B[],Kab_1),Kbs[],r_2))).
+
+5. By 4, the attacker may know (B[],encrypt((c0[],B[],Kab_1),Kbs[],r_2)) (resp. (B[],encrypt((c0[],B[],Kab_1),Kbs[],r_2))).
+Using the function 2-proj-2-tuple the attacker may obtain encrypt((c0[],B[],Kab_1),Kbs[],r_2) (resp. encrypt((c0[],B[],Kab_1),Kbs[],r_2)).
+attacker2(encrypt((c0[],B[],Kab_1),Kbs[],r_2),encrypt((c0[],B[],Kab_1),Kbs[],r_2)).
+
+6. By 1, the attacker may know B[] (resp. B[]).
+By 5, the attacker may know encrypt((c0[],B[],Kab_1),Kbs[],r_2) (resp. encrypt((c0[],B[],Kab_1),Kbs[],r_2)).
+Using the function 2-tuple the attacker may obtain (B[],encrypt((c0[],B[],Kab_1),Kbs[],r_2)) (resp. (B[],encrypt((c0[],B[],Kab_1),Kbs[],r_2))).
+attacker2((B[],encrypt((c0[],B[],Kab_1),Kbs[],r_2)),(B[],encrypt((c0[],B[],Kab_1),Kbs[],r_2))).
+
+7. The message (B[],encrypt((c0[],B[],Kab_1),Kbs[],r_2)) (resp. (B[],encrypt((c0[],B[],Kab_1),Kbs[],r_2))) that the attacker may have by 6 may be received at input {22}.
+The entry keytable(B[],Kbs[]) (resp. keytable(B[],Kbs[])) that may be in a table by 2 may be read at get {27}.
+The entry keytable(B[],Kbs[]) (resp. keytable(B[],Kbs[])) that may be in a table by 2 may be read at get {26}.
+So the message encrypt((c1[],B[],Kab_1),Kbs[],r_4) (resp. encrypt((c1[],B[],Kab_1),Kbs[],r_4)) may be sent to the attacker at output {25}.
+attacker2(encrypt((c1[],B[],Kab_1),Kbs[],r_4),encrypt((c1[],B[],Kab_1),Kbs[],r_4)).
+
+8. The message B[] (resp. B[]) that the attacker may have by 1 may be received at input {13}.
+The entry keytable(B[],Kbs[]) (resp. keytable(B[],Kbs[])) that may be in a table by 2 may be read at get {20}.
+The message encrypt((c1[],B[],Kab_1),Kbs[],r_4) (resp. encrypt((c1[],B[],Kab_1),Kbs[],r_4)) that the attacker may have by 7 may be received at input {15}.
+So the message Kab_1 (resp. Kab'_2) may be sent to the attacker at output {19}.
+attacker2(Kab_1,Kab'_2).
+
+9. The message (B[],encrypt((c0[],B[],Kab_1),Kbs[],r_2)) (resp. (B[],encrypt((c0[],B[],Kab_1),Kbs[],r_2))) that the attacker may have by 6 may be received at input {22}.
+The entry keytable(B[],Kbs[]) (resp. keytable(B[],Kbs[])) that may be in a table by 2 may be read at get {27}.
+The entry keytable(B[],Kbs[]) (resp. keytable(B[],Kbs[])) that may be in a table by 2 may be read at get {26}.
+So the message encrypt((c1[],B[],Kab_1),Kbs[],r_3) (resp. encrypt((c1[],B[],Kab_1),Kbs[],r_3)) may be sent to the attacker at output {25}.
+attacker2(encrypt((c1[],B[],Kab_1),Kbs[],r_3),encrypt((c1[],B[],Kab_1),Kbs[],r_3)).
+
+10. The message B[] (resp. B[]) that the attacker may have by 1 may be received at input {13}.
+The entry keytable(B[],Kbs[]) (resp. keytable(B[],Kbs[])) that may be in a table by 2 may be read at get {20}.
+The message encrypt((c1[],B[],Kab_1),Kbs[],r_3) (resp. encrypt((c1[],B[],Kab_1),Kbs[],r_3)) that the attacker may have by 9 may be received at input {15}.
+So the message Kab_1 (resp. Kab'_1) may be sent to the attacker at output {19}.
+attacker2(Kab_1,Kab'_1).
+
+11. By 10, the attacker may know Kab_1 (resp. Kab'_1).
+By 8, the attacker may know Kab_1 (resp. Kab'_2).
+We have Kab'_1 ≠ Kab'_2.
+The attacker tests equality between the two terms he knows, which may allow it to distinguish cases.
+bad.
+
+
+A more detailed output of the traces is available with
+  set traceDisplay = long.
+
+new Kas: key creating Kas_1 at {1}
+
+new Kbs: key creating Kbs_1 at {2}
+
+insert keytable(A,Kas_1) at {3}
+
+insert keytable(B,Kbs_1) at {4}
+
+in(c, (B,B)) at {6} in copy a_2
+
+get keytable(B,Kbs_1) at {11} in copy a_2
+
+new Kab: key creating Kab_2 at {8} in copy a_2
+
+new r: coins creating r_5 at {9} in copy a_2
+
+out(c, (~M,~M_1)) with ~M = B, ~M_1 = encrypt((c0,B,Kab_2),Kbs_1,r_5) at {10} in copy a_2
+
+in(c, B) at {13} in copy a_3
+
+get keytable(B,Kbs_1) at {20} in copy a_3
+
+in(c, B) at {13} in copy a_4
+
+get keytable(B,Kbs_1) at {20} in copy a_4
+
+in(c, (B,~M_1)) with ~M_1 = encrypt((c0,B,Kab_2),Kbs_1,r_5) at {22} in copy a_5
+
+get keytable(B,Kbs_1) at {27} in copy a_5
+
+get keytable(B,Kbs_1) at {26} in copy a_5
+
+new r_1: coins creating r_6 at {24} in copy a_5
+
+out(c, ~M_2) with ~M_2 = encrypt((c1,B,Kab_2),Kbs_1,r_6) at {25} in copy a_5
+
+in(c, ~M_2) with ~M_2 = encrypt((c1,B,Kab_2),Kbs_1,r_6) at {15} in copy a_3
+
+new Kab': key creating Kab'_3 at {18} in copy a_3
+
+out(c, ~M_3) with ~M_3 = choice[Kab_2,Kab'_3] at {19} in copy a_3
+
+in(c, (B,~M_1)) with ~M_1 = encrypt((c0,B,Kab_2),Kbs_1,r_5) at {22} in copy a_6
+
+get keytable(B,Kbs_1) at {27} in copy a_6
+
+get keytable(B,Kbs_1) at {26} in copy a_6
+
+new r_1: coins creating r_7 at {24} in copy a_6
+
+out(c, ~M_4) with ~M_4 = encrypt((c1,B,Kab_2),Kbs_1,r_7) at {25} in copy a_6
+
+in(c, ~M_4) with ~M_4 = encrypt((c1,B,Kab_2),Kbs_1,r_7) at {15} in copy a_4
+
+new Kab': key creating Kab'_4 at {18} in copy a_4
+
+out(c, ~M_5) with ~M_5 = choice[Kab_2,Kab'_4] at {19} in copy a_4
+
+The attacker tests whether
+~M_3 = choice[Kab_2,Kab'_3]
+is equal to
+~M_5 = choice[Kab_2,Kab'_4].
+The result in the left-hand side is different from the result in the right-hand side.
+A trace has been found.
+RESULT Observational equivalence cannot be proved.
+Looking for simplified processes ...
+-- Observational equivalence in biprocess 1 (that is, biprocess 0, simplified):
+{1}new Kas_1: key;
+{2}new Kbs_1: key;
+{3}insert keytable(A,Kas_1);
+{4}insert keytable(B,Kbs_1);
+{5}!
+(
+    {6}in(c, v: bitstring);
+    {7}if (success?(1-proj-2-tuple(v)) && ((1-proj-2-tuple(v) = A) || (1-proj-2-tuple(v) = B))) then
+    {11}get v_1: table suchthat (success?(1-proj-keytable(v_1)) && (1-proj-2-tuple(v) =nf 1-proj-keytable(v_1))) in
+    {8}new Kab_1: key;
+    {9}new r_2: coins;
+    {10}out(c, (1-proj-2-tuple(v),encrypt((c0,2-proj-2-tuple(v),Kab_1),2-proj-keytable(v_1),r_2)))
+) | (
+    {12}in(c, xR_2: host);
+    {13}if ((xR_2 = A) || (xR_2 = B)) then
+    {19}get v_2: table suchthat (success?(1-proj-keytable(v_2)) && (xR_2 =nf 1-proj-keytable(v_2))) in
+    {14}in(c, m_2: bitstring);
+    {15}new Kab'_1: key;
+    {16}let v_3: bitstring = catch-fail(decrypt(m_2,2-proj-keytable(v_2))) in
+    {17}if ((not-caught-fail(v_3) && (success?(1-proj-3-tuple(v_3)) && (c1 =nf 1-proj-3-tuple(v_3)))) && ((2-proj-3-tuple(v_3) = A) || (2-proj-3-tuple(v_3) = B))) then
+    {18}out(c, choice[3-proj-3-tuple(v_3),Kab'_1])
+) | (
+    {20}in(c, v_4: bitstring);
+    {21}if success?(1-proj-2-tuple(v_4)) then
+    {27}get v_5: table suchthat (success?(1-proj-keytable(v_5)) && (1-proj-2-tuple(v_4) =nf 1-proj-keytable(v_5))) in
+    {22}let v_6: bitstring = catch-fail(decrypt(2-proj-2-tuple(v_4),2-proj-keytable(v_5))) in
+    {23}if (not-caught-fail(v_6) && (success?(1-proj-3-tuple(v_6)) && (c0 =nf 1-proj-3-tuple(v_6)))) then
+    {26}get v_7: table suchthat (success?(1-proj-keytable(v_7)) && (2-proj-3-tuple(v_6) =nf 1-proj-keytable(v_7))) in
+    {24}new r_3: coins;
+    {25}out(c, encrypt((c1,1-proj-2-tuple(v_4),3-proj-3-tuple(v_6)),2-proj-keytable(v_7),r_3))
+) | (
+    {28}in(c, v_8: bitstring);
+    {29}if (success?(1-proj-2-tuple(v_8)) && ((1-proj-2-tuple(v_8) ≠ A) && (1-proj-2-tuple(v_8) ≠ B))) then
+    {30}insert keytable(1-proj-2-tuple(v_8),2-proj-2-tuple(v_8))
+)
+
+Translating the process into Horn clauses...
+Termination warning: v_9 ≠ v_10 && attacker2(v_11,v_9) && attacker2(v_11,v_10) -> bad
+Selecting 0
+Termination warning: v_9 ≠ v_10 && attacker2(v_9,v_11) && attacker2(v_10,v_11) -> bad
+Selecting 0
+Completing...
+Termination warning: v_9 ≠ v_10 && attacker2(v_11,v_9) && attacker2(v_11,v_10) -> bad
+Selecting 0
+Termination warning: v_9 ≠ v_10 && attacker2(v_9,v_11) && attacker2(v_10,v_11) -> bad
+Selecting 0
+200 rules inserted. Base: 198 rules (33 with conclusion selected). Queue: 23 rules.
+ok, secrecy assumption verified: fact unreachable attacker2(Kas_1[],Kas_1[])
+ok, secrecy assumption verified: fact unreachable attacker2(Kbs_1[],Kbs_1[])
+goal reachable: bad
+
+Derivation:
+Abbreviations:
+Kab_2 = Kab_1[v_1 = choice[keytable(B[],Kbs_1[]),keytable(B[],Kbs_1[])],v = choice[(B[],B[]),(B[],B[])],!1 = @sid]
+r_4 = r_2[v_1 = choice[keytable(B[],Kbs_1[]),keytable(B[],Kbs_1[])],v = choice[(B[],B[]),(B[],B[])],!1 = @sid]
+r_5 = r_3[v_7 = choice[keytable(B[],Kbs_1[]),keytable(B[],Kbs_1[])],v_5 = choice[keytable(B[],Kbs_1[]),keytable(B[],Kbs_1[])],v_4 = choice[(B[],encrypt((c0[],B[],Kab_2),Kbs_1[],r_4)),(B[],encrypt((c0[],B[],Kab_2),Kbs_1[],r_4))],!1 = @sid_1]
+Kab'_2 = Kab'_1[m_2 = choice[encrypt((c1[],B[],Kab_2),Kbs_1[],r_5),encrypt((c1[],B[],Kab_2),Kbs_1[],r_5)],v_2 = choice[keytable(B[],Kbs_1[]),keytable(B[],Kbs_1[])],xR_2 = choice[B[],B[]],!1 = @sid_2]
+r_6 = r_3[v_7 = choice[keytable(B[],Kbs_1[]),keytable(B[],Kbs_1[])],v_5 = choice[keytable(B[],Kbs_1[]),keytable(B[],Kbs_1[])],v_4 = choice[(B[],encrypt((c0[],B[],Kab_2),Kbs_1[],r_4)),(B[],encrypt((c0[],B[],Kab_2),Kbs_1[],r_4))],!1 = @sid_3]
+Kab'_3 = Kab'_1[m_2 = choice[encrypt((c1[],B[],Kab_2),Kbs_1[],r_6),encrypt((c1[],B[],Kab_2),Kbs_1[],r_6)],v_2 = choice[keytable(B[],Kbs_1[]),keytable(B[],Kbs_1[])],xR_2 = choice[B[],B[]],!1 = @sid_4]
+
+1. The attacker initially knows B[] (resp. B[]).
+attacker2(B[],B[]).
+
+2. The entry keytable(B[],Kbs_1[]) (resp. keytable(B[],Kbs_1[])) may be inserted in a table at insert {4}.
+table2(keytable(B[],Kbs_1[]),keytable(B[],Kbs_1[])).
+
+3. By 1, the attacker may know B[] (resp. B[]).
+By 1, the attacker may know B[] (resp. B[]).
+Using the function 2-tuple the attacker may obtain (B[],B[]) (resp. (B[],B[])).
+attacker2((B[],B[]),(B[],B[])).
+
+4. The message (B[],B[]) (resp. (B[],B[])) that the attacker may have by 3 may be received at input {6}.
+The entry keytable(B[],Kbs_1[]) (resp. keytable(B[],Kbs_1[])) that may be in a table by 2 may be read at get {11}.
+So the message (B[],encrypt((c0[],B[],Kab_2),Kbs_1[],r_4)) (resp. (B[],encrypt((c0[],B[],Kab_2),Kbs_1[],r_4))) may be sent to the attacker at output {10}.
+attacker2((B[],encrypt((c0[],B[],Kab_2),Kbs_1[],r_4)),(B[],encrypt((c0[],B[],Kab_2),Kbs_1[],r_4))).
+
+5. By 4, the attacker may know (B[],encrypt((c0[],B[],Kab_2),Kbs_1[],r_4)) (resp. (B[],encrypt((c0[],B[],Kab_2),Kbs_1[],r_4))).
+Using the function 2-proj-2-tuple the attacker may obtain encrypt((c0[],B[],Kab_2),Kbs_1[],r_4) (resp. encrypt((c0[],B[],Kab_2),Kbs_1[],r_4)).
+attacker2(encrypt((c0[],B[],Kab_2),Kbs_1[],r_4),encrypt((c0[],B[],Kab_2),Kbs_1[],r_4)).
+
+6. By 1, the attacker may know B[] (resp. B[]).
+By 5, the attacker may know encrypt((c0[],B[],Kab_2),Kbs_1[],r_4) (resp. encrypt((c0[],B[],Kab_2),Kbs_1[],r_4)).
+Using the function 2-tuple the attacker may obtain (B[],encrypt((c0[],B[],Kab_2),Kbs_1[],r_4)) (resp. (B[],encrypt((c0[],B[],Kab_2),Kbs_1[],r_4))).
+attacker2((B[],encrypt((c0[],B[],Kab_2),Kbs_1[],r_4)),(B[],encrypt((c0[],B[],Kab_2),Kbs_1[],r_4))).
+
+7. The message (B[],encrypt((c0[],B[],Kab_2),Kbs_1[],r_4)) (resp. (B[],encrypt((c0[],B[],Kab_2),Kbs_1[],r_4))) that the attacker may have by 6 may be received at input {20}.
+The entry keytable(B[],Kbs_1[]) (resp. keytable(B[],Kbs_1[])) that may be in a table by 2 may be read at get {27}.
+The entry keytable(B[],Kbs_1[]) (resp. keytable(B[],Kbs_1[])) that may be in a table by 2 may be read at get {26}.
+So the message encrypt((c1[],B[],Kab_2),Kbs_1[],r_6) (resp. encrypt((c1[],B[],Kab_2),Kbs_1[],r_6)) may be sent to the attacker at output {25}.
+attacker2(encrypt((c1[],B[],Kab_2),Kbs_1[],r_6),encrypt((c1[],B[],Kab_2),Kbs_1[],r_6)).
+
+8. The message B[] (resp. B[]) that the attacker may have by 1 may be received at input {12}.
+The entry keytable(B[],Kbs_1[]) (resp. keytable(B[],Kbs_1[])) that may be in a table by 2 may be read at get {19}.
+The message encrypt((c1[],B[],Kab_2),Kbs_1[],r_6) (resp. encrypt((c1[],B[],Kab_2),Kbs_1[],r_6)) that the attacker may have by 7 may be received at input {14}.
+So the message Kab_2 (resp. Kab'_3) may be sent to the attacker at output {18}.
+attacker2(Kab_2,Kab'_3).
+
+9. The message (B[],encrypt((c0[],B[],Kab_2),Kbs_1[],r_4)) (resp. (B[],encrypt((c0[],B[],Kab_2),Kbs_1[],r_4))) that the attacker may have by 6 may be received at input {20}.
+The entry keytable(B[],Kbs_1[]) (resp. keytable(B[],Kbs_1[])) that may be in a table by 2 may be read at get {27}.
+The entry keytable(B[],Kbs_1[]) (resp. keytable(B[],Kbs_1[])) that may be in a table by 2 may be read at get {26}.
+So the message encrypt((c1[],B[],Kab_2),Kbs_1[],r_5) (resp. encrypt((c1[],B[],Kab_2),Kbs_1[],r_5)) may be sent to the attacker at output {25}.
+attacker2(encrypt((c1[],B[],Kab_2),Kbs_1[],r_5),encrypt((c1[],B[],Kab_2),Kbs_1[],r_5)).
+
+10. The message B[] (resp. B[]) that the attacker may have by 1 may be received at input {12}.
+The entry keytable(B[],Kbs_1[]) (resp. keytable(B[],Kbs_1[])) that may be in a table by 2 may be read at get {19}.
+The message encrypt((c1[],B[],Kab_2),Kbs_1[],r_5) (resp. encrypt((c1[],B[],Kab_2),Kbs_1[],r_5)) that the attacker may have by 9 may be received at input {14}.
+So the message Kab_2 (resp. Kab'_2) may be sent to the attacker at output {18}.
+attacker2(Kab_2,Kab'_2).
+
+11. By 10, the attacker may know Kab_2 (resp. Kab'_2).
+By 8, the attacker may know Kab_2 (resp. Kab'_3).
+We have Kab'_2 ≠ Kab'_3.
+The attacker tests equality between the two terms he knows, which may allow it to distinguish cases.
+bad.
+
+
+A more detailed output of the traces is available with
+  set traceDisplay = long.
+
+new Kas_1: key creating Kas_2 at {1}
+
+new Kbs_1: key creating Kbs_2 at {2}
+
+insert keytable(A,Kas_2) at {3}
+
+insert keytable(B,Kbs_2) at {4}
+
+in(c, B) at {12} in copy a_2
+
+get keytable(B,Kbs_2) at {19} in copy a_2
+
+in(c, (B,B)) at {6} in copy a_3
+
+get keytable(B,Kbs_2) at {11} in copy a_3
+
+new Kab_1: key creating Kab_3 at {8} in copy a_3
+
+new r_2: coins creating r_7 at {9} in copy a_3
+
+out(c, (~M,~M_1)) with ~M = B, ~M_1 = encrypt((c0,B,Kab_3),Kbs_2,r_7) at {10} in copy a_3
+
+in(c, (B,~M_1)) with ~M_1 = encrypt((c0,B,Kab_3),Kbs_2,r_7) at {20} in copy a_4
+
+get keytable(B,Kbs_2) at {27} in copy a_4
+
+get keytable(B,Kbs_2) at {26} in copy a_4
+
+new r_3: coins creating r_8 at {24} in copy a_4
+
+out(c, ~M_2) with ~M_2 = encrypt((c1,B,Kab_3),Kbs_2,r_8) at {25} in copy a_4
+
+in(c, ~M_2) with ~M_2 = encrypt((c1,B,Kab_3),Kbs_2,r_8) at {14} in copy a_2
+
+new Kab'_1: key creating Kab'_4 at {15} in copy a_2
+
+out(c, ~M_3) with ~M_3 = choice[Kab_3,Kab'_4] at {18} in copy a_2
+
+in(c, (B,~M_1)) with ~M_1 = encrypt((c0,B,Kab_3),Kbs_2,r_7) at {20} in copy a_5
+
+get keytable(B,Kbs_2) at {27} in copy a_5
+
+get keytable(B,Kbs_2) at {26} in copy a_5
+
+new r_3: coins creating r_9 at {24} in copy a_5
+
+out(c, ~M_4) with ~M_4 = encrypt((c1,B,Kab_3),Kbs_2,r_9) at {25} in copy a_5
+
+in(c, B) at {12} in copy a_6
+
+get keytable(B,Kbs_2) at {19} in copy a_6
+
+in(c, ~M_4) with ~M_4 = encrypt((c1,B,Kab_3),Kbs_2,r_9) at {14} in copy a_6
+
+new Kab'_1: key creating Kab'_5 at {15} in copy a_6
+
+out(c, ~M_5) with ~M_5 = choice[Kab_3,Kab'_5] at {18} in copy a_6
+
+The attacker tests whether
+~M_3 = choice[Kab_3,Kab'_4]
+is equal to
+~M_5 = choice[Kab_3,Kab'_5].
+The result in the left-hand side is different from the result in the right-hand side.
+A trace has been found.
+RESULT Observational equivalence cannot be proved.
+
+--------------------------------------------------------------
+Verification summary:
+
+Observational equivalence cannot be proved.
+
+--------------------------------------------------------------
+

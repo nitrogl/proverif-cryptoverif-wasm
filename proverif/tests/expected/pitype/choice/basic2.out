@@ -1,0 +1,68 @@
+Biprocess 0 (that is, the initial process):
+{1}new n: nonce;
+{2}new m: nonce;
+{3}out(c, (m,choice[n,hash(m)]))
+
+-- Observational equivalence in biprocess 0.
+Translating the process into Horn clauses...
+Termination warning: v ≠ v_1 && attacker2(v_2,v) && attacker2(v_2,v_1) -> bad
+Selecting 0
+Termination warning: v ≠ v_1 && attacker2(v,v_2) && attacker2(v_1,v_2) -> bad
+Selecting 0
+Completing...
+Termination warning: v ≠ v_1 && attacker2(v_2,v) && attacker2(v_2,v_1) -> bad
+Selecting 0
+Termination warning: v ≠ v_1 && attacker2(v,v_2) && attacker2(v_1,v_2) -> bad
+Selecting 0
+goal reachable: bad
+
+Derivation:
+
+1. The message (m[],n[]) (resp. (m[],hash(m[]))) may be sent to the attacker at output {3}.
+attacker2((m[],n[]),(m[],hash(m[]))).
+
+2. By 1, the attacker may know (m[],n[]) (resp. (m[],hash(m[]))).
+Using the function 2-proj-2-tuple the attacker may obtain n[] (resp. hash(m[])).
+attacker2(n[],hash(m[])).
+
+3. By 1, the attacker may know (m[],n[]) (resp. (m[],hash(m[]))).
+Using the function 1-proj-2-tuple the attacker may obtain m[] (resp. m[]).
+attacker2(m[],m[]).
+
+4. By 3, the attacker may know m[] (resp. m[]).
+Using the function hash the attacker may obtain hash(m[]) (resp. hash(m[])).
+attacker2(hash(m[]),hash(m[])).
+
+5. By 4, the attacker may know hash(m[]) (resp. hash(m[])).
+By 2, the attacker may know n[] (resp. hash(m[])).
+We have hash(m[]) ≠ n[].
+The attacker tests equality between the two terms he knows, which may allow it to distinguish cases.
+bad.
+
+
+A more detailed output of the traces is available with
+  set traceDisplay = long.
+
+new n: nonce creating n_1 at {1}
+
+new m: nonce creating m_1 at {2}
+
+out(c, (~M,~M_1)) with ~M = m_1, ~M_1 = choice[n_1,hash(m_1)] at {3}
+
+The attacker tests whether
+hash(~M) = hash(m_1)
+is equal to
+~M_1 = choice[n_1,hash(m_1)].
+The result in the left-hand side is different from the result in the right-hand side.
+A trace has been found.
+RESULT Observational equivalence cannot be proved.
+Looking for simplified processes ...
+No simplified process found.
+
+--------------------------------------------------------------
+Verification summary:
+
+Observational equivalence cannot be proved.
+
+--------------------------------------------------------------
+

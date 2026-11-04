@@ -1,0 +1,67 @@
+Biprocess 0 (that is, the initial process):
+{1}in(c, M: bitstring);
+{2}new Kas: key;
+{3}new Ksb: key;
+(
+    {4}let Kas_1: key = Kas in
+    {5}new Kab: key;
+    {6}out(c, encrypt(Kab,Kas_1));
+    {7}out(c, encrypt(M,Kab))
+) | (
+    {8}let Kas_2: key = Kas in
+    {9}let Ksb_1: key = Ksb in
+    {10}in(c, x: bitstring);
+    {11}let y: key = decrypt(x,Kas_2) in
+    {12}out(c, encrypt(y,Ksb_1))
+) | (
+    {13}let Ksb_2: key = Ksb in
+    {14}in(c, x_1: bitstring);
+    {15}let y_1: key = decrypt(x_1,Ksb_2) in
+    {16}in(c, z: bitstring);
+    {17}let w: bitstring = decrypt(z,y_1) in
+    {18}out(e, choice[w,M])
+)
+
+-- Observational equivalence in biprocess 1 (that is, biprocess 0, with let moved downwards):
+{1}in(c, M: bitstring);
+{2}new Kas: key;
+{3}new Ksb: key;
+(
+    {5}new Kab: key;
+    {4}let Kas_1: key = Kas in
+    {6}out(c, encrypt(Kab,Kas_1));
+    {7}out(c, encrypt(M,Kab))
+) | (
+    {10}in(c, x: bitstring);
+    {8}let Kas_2: key = Kas in
+    {11}let y: key = decrypt(x,Kas_2) in
+    {9}let Ksb_1: key = Ksb in
+    {12}out(c, encrypt(y,Ksb_1))
+) | (
+    {14}in(c, x_1: bitstring);
+    {13}let Ksb_2: key = Ksb in
+    {15}let y_1: key = decrypt(x_1,Ksb_2) in
+    {16}in(c, z: bitstring);
+    {17}let w: bitstring = decrypt(z,y_1) in
+    {18}out(e, choice[w,M])
+)
+
+Translating the process into Horn clauses...
+Termination warning: v ≠ v_1 && attacker2(v_2,v) && attacker2(v_2,v_1) -> bad
+Selecting 0
+Termination warning: v ≠ v_1 && attacker2(v,v_2) && attacker2(v_1,v_2) -> bad
+Selecting 0
+Completing...
+Termination warning: v ≠ v_1 && attacker2(v_2,v) && attacker2(v_2,v_1) -> bad
+Selecting 0
+Termination warning: v ≠ v_1 && attacker2(v,v_2) && attacker2(v_1,v_2) -> bad
+Selecting 0
+RESULT Observational equivalence is true.
+
+--------------------------------------------------------------
+Verification summary:
+
+Observational equivalence is true.
+
+--------------------------------------------------------------
+

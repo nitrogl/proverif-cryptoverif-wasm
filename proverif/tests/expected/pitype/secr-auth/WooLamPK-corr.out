@@ -1,0 +1,172 @@
+Process 0 (that is, the initial process):
+{1}new skA: skey;
+{2}new skB: skey;
+{3}new skS: skey;
+{4}let pkA: pkey = pk(skA) in
+{5}let pkB: pkey = pk(skB) in
+{6}let pkS: pkey = pk(skS) in
+{7}out(c, pkA);
+{8}out(c, pkB);
+{9}out(c, pkS);
+{10}insert keys(A,pkA);
+{11}insert keys(B,pkB);
+(
+    {12}!
+    {13}let skA_1: skey = skA in
+    {14}let skB_1: skey = skB in
+    {15}in(c, (xA: host,xB0: host));
+    {16}if ((xA = A) || (xA = B)) then
+    {17}let skxA: skey = (if (xA = A) then skA_1 else skB_1) in
+    {18}event beginBparam(xA,xB0);
+    {19}out(c, xA);
+    {20}in(c, n: nonce);
+    {21}event beginBfull(xA,xB0,n);
+    {22}out(c, sign((xA,xB0,n),skxA))
+) | (
+    {23}!
+    {24}in(c, xB: host);
+    {25}if ((xB = A) || (xB = B)) then
+    {26}in(c, xA0: host);
+    {27}new n_1: nonce;
+    {28}out(c, n_1);
+    {29}in(c, m: bitstring);
+    {30}out(c, xA0);
+    {31}in(c, (=xA0,m4: bitstring));
+    {32}let (=xA0,pkA2: pkey) = checksign(m4,pkS) in
+    {33}let (=xA0,=xB,=n_1) = checksign(m,pkA2) in
+    {34}if ((xA0 = A) || (xA0 = B)) then
+    {35}event endBparam(xA0,xB);
+    {36}event endBfull(xA0,xB,n_1)
+) | (
+    {37}!
+    {38}let skS_1: skey = skS in
+    {39}in(c, xA_1: host);
+    {41}get keys(=xA_1,pkA_1: pkey) in
+    {40}out(c, (xA_1,sign((xA_1,pkA_1),skS_1)))
+)
+
+--  Process 1 (that is, process 0, with let moved downwards):
+{1}new skA: skey;
+{2}new skB: skey;
+{3}new skS: skey;
+{4}let pkA: pkey = pk(skA) in
+{7}out(c, pkA);
+{5}let pkB: pkey = pk(skB) in
+{8}out(c, pkB);
+{6}let pkS: pkey = pk(skS) in
+{9}out(c, pkS);
+{10}insert keys(A,pkA);
+{11}insert keys(B,pkB);
+(
+    {12}!
+    {15}in(c, (xA: host,xB0: host));
+    {16}if ((xA = A) || (xA = B)) then
+    {18}event beginBparam(xA,xB0);
+    {19}out(c, xA);
+    {20}in(c, n: nonce);
+    {21}event beginBfull(xA,xB0,n);
+    {14}let skB_1: skey = skB in
+    {13}let skA_1: skey = skA in
+    {17}let skxA: skey = (if (xA = A) then skA_1 else skB_1) in
+    {22}out(c, sign((xA,xB0,n),skxA))
+) | (
+    {23}!
+    {24}in(c, xB: host);
+    {25}if ((xB = A) || (xB = B)) then
+    {26}in(c, xA0: host);
+    {27}new n_1: nonce;
+    {28}out(c, n_1);
+    {29}in(c, m: bitstring);
+    {30}out(c, xA0);
+    {31}in(c, (=xA0,m4: bitstring));
+    {32}let (=xA0,pkA2: pkey) = checksign(m4,pkS) in
+    {33}let (=xA0,=xB,=n_1) = checksign(m,pkA2) in
+    {34}if ((xA0 = A) || (xA0 = B)) then
+    {35}event endBparam(xA0,xB);
+    {36}event endBfull(xA0,xB,n_1)
+) | (
+    {37}!
+    {39}in(c, xA_1: host);
+    {41}get keys(=xA_1,pkA_1: pkey) in
+    {38}let skS_1: skey = skS in
+    {40}out(c, (xA_1,sign((xA_1,pkA_1),skS_1)))
+)
+
+-- Query inj-event(endBparam(x,y)) ==> inj-event(beginBparam(x,y)) in process 1.
+Translating the process into Horn clauses...
+Completing...
+ok, secrecy assumption verified: fact unreachable attacker(skA[])
+ok, secrecy assumption verified: fact unreachable attacker(skB[])
+ok, secrecy assumption verified: fact unreachable attacker(skS[])
+Starting query inj-event(endBparam(x,y)) ==> inj-event(beginBparam(x,y))
+goal reachable: b-event(@p_act(@occ20_1,n_2)) && b-inj-event(beginBparam(B[],B[]),@occ18_1) -> inj-event(endBparam(B[],B[]),@occ35_1)
+The 1st, 2nd hypotheses occur strictly before the conclusion.
+Abbreviations:
+n_2 = n_1[xA0 = B[],xB = B[],!1 = @sid]
+@occ35_1 = @occ35[m4 = sign((B[],pk(skB[])),skS[]),m = sign((B[],B[],n_2),skB[]),xA0 = B[],xB = B[],!1 = @sid]
+@occ20_1 = @occ20[!1 = @sid_1]
+@occ18_1 = @occ18[xB0 = B[],xA = B[],!1 = @sid_1]
+goal reachable: b-event(@p_act(@occ20_1,n_2)) && b-inj-event(beginBparam(B[],A[]),@occ18_1) -> inj-event(endBparam(B[],A[]),@occ35_1)
+The 1st, 2nd hypotheses occur strictly before the conclusion.
+Abbreviations:
+n_2 = n_1[xA0 = B[],xB = A[],!1 = @sid]
+@occ35_1 = @occ35[m4 = sign((B[],pk(skB[])),skS[]),m = sign((B[],A[],n_2),skB[]),xA0 = B[],xB = A[],!1 = @sid]
+@occ20_1 = @occ20[!1 = @sid_1]
+@occ18_1 = @occ18[xB0 = A[],xA = B[],!1 = @sid_1]
+goal reachable: b-event(@p_act(@occ20_1,n_2)) && b-inj-event(beginBparam(A[],B[]),@occ18_1) -> inj-event(endBparam(A[],B[]),@occ35_1)
+The 1st, 2nd hypotheses occur strictly before the conclusion.
+Abbreviations:
+n_2 = n_1[xA0 = A[],xB = B[],!1 = @sid]
+@occ35_1 = @occ35[m4 = sign((A[],pk(skA[])),skS[]),m = sign((A[],B[],n_2),skA[]),xA0 = A[],xB = B[],!1 = @sid]
+@occ20_1 = @occ20[!1 = @sid_1]
+@occ18_1 = @occ18[xB0 = B[],xA = A[],!1 = @sid_1]
+goal reachable: b-event(@p_act(@occ20_1,n_2)) && b-inj-event(beginBparam(A[],A[]),@occ18_1) -> inj-event(endBparam(A[],A[]),@occ35_1)
+The 1st, 2nd hypotheses occur strictly before the conclusion.
+Abbreviations:
+n_2 = n_1[xA0 = A[],xB = A[],!1 = @sid]
+@occ35_1 = @occ35[m4 = sign((A[],pk(skA[])),skS[]),m = sign((A[],A[],n_2),skA[]),xA0 = A[],xB = A[],!1 = @sid]
+@occ20_1 = @occ20[!1 = @sid_1]
+@occ18_1 = @occ18[xB0 = A[],xA = A[],!1 = @sid_1]
+RESULT inj-event(endBparam(x,y)) ==> inj-event(beginBparam(x,y)) is true.
+-- Query inj-event(endBfull(x,y,z)) ==> inj-event(beginBfull(x,y,z)) in process 1.
+Translating the process into Horn clauses...
+Completing...
+ok, secrecy assumption verified: fact unreachable attacker(skA[])
+ok, secrecy assumption verified: fact unreachable attacker(skB[])
+ok, secrecy assumption verified: fact unreachable attacker(skS[])
+Starting query inj-event(endBfull(x,y,z)) ==> inj-event(beginBfull(x,y,z))
+goal reachable: b-inj-event(beginBfull(B[],B[],n_2),@occ21_1) -> inj-event(endBfull(B[],B[],n_2),@occ36_1)
+The hypothesis occurs strictly before the conclusion.
+Abbreviations:
+n_2 = n_1[xA0 = B[],xB = B[],!1 = @sid]
+@occ36_1 = @occ36[m4 = sign((B[],pk(skB[])),skS[]),m = sign((B[],B[],n_2),skB[]),xA0 = B[],xB = B[],!1 = @sid]
+@occ21_1 = @occ21[n = n_2,xB0 = B[],xA = B[],!1 = @sid_1]
+goal reachable: b-inj-event(beginBfull(B[],A[],n_2),@occ21_1) -> inj-event(endBfull(B[],A[],n_2),@occ36_1)
+The hypothesis occurs strictly before the conclusion.
+Abbreviations:
+n_2 = n_1[xA0 = B[],xB = A[],!1 = @sid]
+@occ36_1 = @occ36[m4 = sign((B[],pk(skB[])),skS[]),m = sign((B[],A[],n_2),skB[]),xA0 = B[],xB = A[],!1 = @sid]
+@occ21_1 = @occ21[n = n_2,xB0 = A[],xA = B[],!1 = @sid_1]
+goal reachable: b-inj-event(beginBfull(A[],B[],n_2),@occ21_1) -> inj-event(endBfull(A[],B[],n_2),@occ36_1)
+The hypothesis occurs strictly before the conclusion.
+Abbreviations:
+n_2 = n_1[xA0 = A[],xB = B[],!1 = @sid]
+@occ36_1 = @occ36[m4 = sign((A[],pk(skA[])),skS[]),m = sign((A[],B[],n_2),skA[]),xA0 = A[],xB = B[],!1 = @sid]
+@occ21_1 = @occ21[n = n_2,xB0 = B[],xA = A[],!1 = @sid_1]
+goal reachable: b-inj-event(beginBfull(A[],A[],n_2),@occ21_1) -> inj-event(endBfull(A[],A[],n_2),@occ36_1)
+The hypothesis occurs strictly before the conclusion.
+Abbreviations:
+n_2 = n_1[xA0 = A[],xB = A[],!1 = @sid]
+@occ36_1 = @occ36[m4 = sign((A[],pk(skA[])),skS[]),m = sign((A[],A[],n_2),skA[]),xA0 = A[],xB = A[],!1 = @sid]
+@occ21_1 = @occ21[n = n_2,xB0 = A[],xA = A[],!1 = @sid_1]
+RESULT inj-event(endBfull(x,y,z)) ==> inj-event(beginBfull(x,y,z)) is true.
+
+--------------------------------------------------------------
+Verification summary:
+
+Query inj-event(endBparam(x,y)) ==> inj-event(beginBparam(x,y)) is true.
+
+Query inj-event(endBfull(x,y,z)) ==> inj-event(beginBfull(x,y,z)) is true.
+
+--------------------------------------------------------------
+

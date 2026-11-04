@@ -1,0 +1,294 @@
+Linear part: No equation.
+Convergent part:
+dec(enc(x,y),y) = x
+enc(dec(x,y),y) = x
+Completing equations...
+Completed equations:
+enc(dec(x,y),y) = x
+dec(enc(x,y),y) = x
+Biprocess 0 (that is, the initial process):
+(
+    {1}!
+    {2}let hostA: host = A in
+    {3}let hostX: host = A in
+    {4}let P: passwd = PAA in
+    {5}new sEA: skey;
+    {6}let EA: pkey = pk(sEA) in
+    {7}out(c, (hostA,enc(EA,P)));
+    {8}in(c, m2: bitstring);
+    {9}let R: key = pdec(dec(m2,P),sEA) in
+    {10}new challengeA: nonce;
+    {11}out(c, senc(challengeA,R));
+    {12}in(c, m4: bitstring);
+    {13}let (=challengeA,challengeB: nonce) = sdec(m4,R) in
+    {14}out(c, senc(challengeB,R))
+) | (
+    {15}!
+    {16}let hostB: host = A in
+    {17}let hostX_1: host = A in
+    {18}let P_1: passwd = PAA in
+    {19}in(c, (=hostX_1,m: bitstring));
+    {20}let EA_1: pkey = dec(m,P_1) in
+    {21}new R_1: key;
+    {22}out(c, enc(penc(R_1,EA_1),P_1));
+    {23}in(c, m3: bitstring);
+    {24}let challengeA_1: nonce = sdec(m3,R_1) in
+    {25}new challengeB_1: nonce;
+    {26}out(c, senc((challengeA_1,challengeB_1),R_1));
+    {27}in(c, m5: bitstring);
+    {28}if (sdec(m5,R_1) = challengeB_1) then
+    0
+) | (
+    {29}!
+    {30}let hostA_1: host = B in
+    {31}let hostX_2: host = B in
+    {32}let P_2: passwd = PBB in
+    {33}new sEA_1: skey;
+    {34}let EA_2: pkey = pk(sEA_1) in
+    {35}out(c, (hostA_1,enc(EA_2,P_2)));
+    {36}in(c, m2_1: bitstring);
+    {37}let R_2: key = pdec(dec(m2_1,P_2),sEA_1) in
+    {38}new challengeA_2: nonce;
+    {39}out(c, senc(challengeA_2,R_2));
+    {40}in(c, m4_1: bitstring);
+    {41}let (=challengeA_2,challengeB_2: nonce) = sdec(m4_1,R_2) in
+    {42}out(c, senc(challengeB_2,R_2))
+) | (
+    {43}!
+    {44}let hostB_1: host = B in
+    {45}let hostX_3: host = B in
+    {46}let P_3: passwd = PBB in
+    {47}in(c, (=hostX_3,m_1: bitstring));
+    {48}let EA_3: pkey = dec(m_1,P_3) in
+    {49}new R_3: key;
+    {50}out(c, enc(penc(R_3,EA_3),P_3));
+    {51}in(c, m3_1: bitstring);
+    {52}let challengeA_3: nonce = sdec(m3_1,R_3) in
+    {53}new challengeB_3: nonce;
+    {54}out(c, senc((challengeA_3,challengeB_3),R_3));
+    {55}in(c, m5_1: bitstring);
+    {56}if (sdec(m5_1,R_3) = challengeB_3) then
+    0
+) | (
+    {57}!
+    {58}let hostA_2: host = A in
+    {59}let hostX_4: host = B in
+    {60}let P_4: passwd = PAB in
+    {61}new sEA_2: skey;
+    {62}let EA_4: pkey = pk(sEA_2) in
+    {63}out(c, (hostA_2,enc(EA_4,P_4)));
+    {64}in(c, m2_2: bitstring);
+    {65}let R_4: key = pdec(dec(m2_2,P_4),sEA_2) in
+    {66}new challengeA_4: nonce;
+    {67}out(c, senc(challengeA_4,R_4));
+    {68}in(c, m4_2: bitstring);
+    {69}let (=challengeA_4,challengeB_4: nonce) = sdec(m4_2,R_4) in
+    {70}out(c, senc(challengeB_4,R_4))
+) | (
+    {71}!
+    {72}let hostB_2: host = A in
+    {73}let hostX_5: host = B in
+    {74}let P_5: passwd = PAB in
+    {75}in(c, (=hostX_5,m_2: bitstring));
+    {76}let EA_5: pkey = dec(m_2,P_5) in
+    {77}new R_5: key;
+    {78}out(c, enc(penc(R_5,EA_5),P_5));
+    {79}in(c, m3_2: bitstring);
+    {80}let challengeA_5: nonce = sdec(m3_2,R_5) in
+    {81}new challengeB_5: nonce;
+    {82}out(c, senc((challengeA_5,challengeB_5),R_5));
+    {83}in(c, m5_2: bitstring);
+    {84}if (sdec(m5_2,R_5) = challengeB_5) then
+    0
+) | (
+    {85}!
+    {86}let hostA_3: host = B in
+    {87}let hostX_6: host = A in
+    {88}let P_6: passwd = PAB in
+    {89}new sEA_3: skey;
+    {90}let EA_6: pkey = pk(sEA_3) in
+    {91}out(c, (hostA_3,enc(EA_6,P_6)));
+    {92}in(c, m2_3: bitstring);
+    {93}let R_6: key = pdec(dec(m2_3,P_6),sEA_3) in
+    {94}new challengeA_6: nonce;
+    {95}out(c, senc(challengeA_6,R_6));
+    {96}in(c, m4_3: bitstring);
+    {97}let (=challengeA_6,challengeB_6: nonce) = sdec(m4_3,R_6) in
+    {98}out(c, senc(challengeB_6,R_6))
+) | (
+    {99}!
+    {100}let hostB_3: host = B in
+    {101}let hostX_7: host = A in
+    {102}let P_7: passwd = PAB in
+    {103}in(c, (=hostX_7,m_3: bitstring));
+    {104}let EA_7: pkey = dec(m_3,P_7) in
+    {105}new R_7: key;
+    {106}out(c, enc(penc(R_7,EA_7),P_7));
+    {107}in(c, m3_3: bitstring);
+    {108}let challengeA_7: nonce = sdec(m3_3,R_7) in
+    {109}new challengeB_7: nonce;
+    {110}out(c, senc((challengeA_7,challengeB_7),R_7));
+    {111}in(c, m5_3: bitstring);
+    {112}if (sdec(m5_3,R_7) = challengeB_7) then
+    0
+) | (
+    {113}phase 1;
+    {114}new w: passwd;
+    {115}out(c, choice[w,PAB])
+)
+
+-- Observational equivalence in biprocess 1 (that is, biprocess 0, with let moved downwards):
+(
+    {1}!
+    {5}new sEA: skey;
+    {6}let EA: pkey = pk(sEA) in
+    {4}let P: passwd = PAA in
+    {2}let hostA: host = A in
+    {7}out(c, (hostA,enc(EA,P)));
+    {8}in(c, m2: bitstring);
+    {9}let R: key = pdec(dec(m2,P),sEA) in
+    {10}new challengeA: nonce;
+    {11}out(c, senc(challengeA,R));
+    {12}in(c, m4: bitstring);
+    {13}let (=challengeA,challengeB: nonce) = sdec(m4,R) in
+    {14}out(c, senc(challengeB,R))
+) | (
+    {15}!
+    {17}let hostX_1: host = A in
+    {19}in(c, (=hostX_1,m: bitstring));
+    {21}new R_1: key;
+    {18}let P_1: passwd = PAA in
+    {20}let EA_1: pkey = dec(m,P_1) in
+    {22}out(c, enc(penc(R_1,EA_1),P_1));
+    {23}in(c, m3: bitstring);
+    {24}let challengeA_1: nonce = sdec(m3,R_1) in
+    {25}new challengeB_1: nonce;
+    {26}out(c, senc((challengeA_1,challengeB_1),R_1));
+    {27}in(c, m5: bitstring);
+    {28}if (sdec(m5,R_1) = challengeB_1) then
+    0
+) | (
+    {29}!
+    {33}new sEA_1: skey;
+    {34}let EA_2: pkey = pk(sEA_1) in
+    {32}let P_2: passwd = PBB in
+    {30}let hostA_1: host = B in
+    {35}out(c, (hostA_1,enc(EA_2,P_2)));
+    {36}in(c, m2_1: bitstring);
+    {37}let R_2: key = pdec(dec(m2_1,P_2),sEA_1) in
+    {38}new challengeA_2: nonce;
+    {39}out(c, senc(challengeA_2,R_2));
+    {40}in(c, m4_1: bitstring);
+    {41}let (=challengeA_2,challengeB_2: nonce) = sdec(m4_1,R_2) in
+    {42}out(c, senc(challengeB_2,R_2))
+) | (
+    {43}!
+    {45}let hostX_3: host = B in
+    {47}in(c, (=hostX_3,m_1: bitstring));
+    {49}new R_3: key;
+    {46}let P_3: passwd = PBB in
+    {48}let EA_3: pkey = dec(m_1,P_3) in
+    {50}out(c, enc(penc(R_3,EA_3),P_3));
+    {51}in(c, m3_1: bitstring);
+    {52}let challengeA_3: nonce = sdec(m3_1,R_3) in
+    {53}new challengeB_3: nonce;
+    {54}out(c, senc((challengeA_3,challengeB_3),R_3));
+    {55}in(c, m5_1: bitstring);
+    {56}if (sdec(m5_1,R_3) = challengeB_3) then
+    0
+) | (
+    {57}!
+    {61}new sEA_2: skey;
+    {62}let EA_4: pkey = pk(sEA_2) in
+    {60}let P_4: passwd = PAB in
+    {58}let hostA_2: host = A in
+    {63}out(c, (hostA_2,enc(EA_4,P_4)));
+    {64}in(c, m2_2: bitstring);
+    {65}let R_4: key = pdec(dec(m2_2,P_4),sEA_2) in
+    {66}new challengeA_4: nonce;
+    {67}out(c, senc(challengeA_4,R_4));
+    {68}in(c, m4_2: bitstring);
+    {69}let (=challengeA_4,challengeB_4: nonce) = sdec(m4_2,R_4) in
+    {70}out(c, senc(challengeB_4,R_4))
+) | (
+    {71}!
+    {73}let hostX_5: host = B in
+    {75}in(c, (=hostX_5,m_2: bitstring));
+    {77}new R_5: key;
+    {74}let P_5: passwd = PAB in
+    {76}let EA_5: pkey = dec(m_2,P_5) in
+    {78}out(c, enc(penc(R_5,EA_5),P_5));
+    {79}in(c, m3_2: bitstring);
+    {80}let challengeA_5: nonce = sdec(m3_2,R_5) in
+    {81}new challengeB_5: nonce;
+    {82}out(c, senc((challengeA_5,challengeB_5),R_5));
+    {83}in(c, m5_2: bitstring);
+    {84}if (sdec(m5_2,R_5) = challengeB_5) then
+    0
+) | (
+    {85}!
+    {89}new sEA_3: skey;
+    {90}let EA_6: pkey = pk(sEA_3) in
+    {88}let P_6: passwd = PAB in
+    {86}let hostA_3: host = B in
+    {91}out(c, (hostA_3,enc(EA_6,P_6)));
+    {92}in(c, m2_3: bitstring);
+    {93}let R_6: key = pdec(dec(m2_3,P_6),sEA_3) in
+    {94}new challengeA_6: nonce;
+    {95}out(c, senc(challengeA_6,R_6));
+    {96}in(c, m4_3: bitstring);
+    {97}let (=challengeA_6,challengeB_6: nonce) = sdec(m4_3,R_6) in
+    {98}out(c, senc(challengeB_6,R_6))
+) | (
+    {99}!
+    {101}let hostX_7: host = A in
+    {103}in(c, (=hostX_7,m_3: bitstring));
+    {105}new R_7: key;
+    {102}let P_7: passwd = PAB in
+    {104}let EA_7: pkey = dec(m_3,P_7) in
+    {106}out(c, enc(penc(R_7,EA_7),P_7));
+    {107}in(c, m3_3: bitstring);
+    {108}let challengeA_7: nonce = sdec(m3_3,R_7) in
+    {109}new challengeB_7: nonce;
+    {110}out(c, senc((challengeA_7,challengeB_7),R_7));
+    {111}in(c, m5_3: bitstring);
+    {112}if (sdec(m5_3,R_7) = challengeB_7) then
+    0
+) | (
+    {113}phase 1;
+    {114}new w: passwd;
+    {115}out(c, choice[w,PAB])
+)
+
+Translating the process into Horn clauses...
+Termination warning: v ≠ v_1 && attacker2_p1(v_2,v) && attacker2_p1(v_2,v_1) -> bad
+Selecting 0
+Termination warning: v ≠ v_1 && attacker2_p1(v,v_2) && attacker2_p1(v_1,v_2) -> bad
+Selecting 0
+select attacker(enc(EA_8,PAA[]))/-5000
+select attacker(senc(challengeA_8,R_1[m = *m_4,!1 = *@sid]))/-5000
+select attacker(enc(EA_8,PBB[]))/-5000
+select attacker(senc(challengeA_8,R_3[m_1 = *m_4,!1 = *@sid]))/-5000
+select attacker(enc(EA_8,PAB[]))/-5000
+select attacker(senc(challengeA_8,R_5[m_2 = *m_4,!1 = *@sid]))/-5000
+select attacker(senc(challengeA_8,R_7[m_3 = *m_4,!1 = *@sid]))/-5000
+Completing...
+Termination warning: v ≠ v_1 && attacker2_p1(v_2,v) && attacker2_p1(v_2,v_1) -> bad
+Selecting 0
+Termination warning: v ≠ v_1 && attacker2_p1(v,v_2) && attacker2_p1(v_1,v_2) -> bad
+Selecting 0
+Termination warning: v ≠ v_1 && attacker(v) && attacker2_p1(v,v_1) -> bad
+Selecting 1
+Termination warning: v ≠ v_1 && attacker(v) && attacker2_p1(v_1,v) -> bad
+Selecting 1
+200 rules inserted. Base: 194 rules (51 with conclusion selected). Queue: 70 rules.
+400 rules inserted. Base: 383 rules (63 with conclusion selected). Queue: 62 rules.
+RESULT Observational equivalence is true.
+
+--------------------------------------------------------------
+Verification summary:
+
+Observational equivalence is true.
+
+--------------------------------------------------------------
+

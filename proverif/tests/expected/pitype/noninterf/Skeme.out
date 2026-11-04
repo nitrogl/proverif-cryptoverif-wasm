@@ -1,0 +1,261 @@
+Linear part:
+exp(exp(g,x),y) = exp(exp(g,y),x)
+Completing equations...
+Completed equations:
+exp(exp(g,x),y) = exp(exp(g,y),x)
+Convergent part: No equation.
+Process 0 (that is, the initial process):
+{1}new skA: skey;
+{2}let pkA: pkey = pk(skA) in
+{3}out(c, pkA);
+{4}new skB: skey;
+{5}let pkB: pkey = pk(skB) in
+{6}out(c, pkB);
+(
+    {7}!
+    {8}let skA_1: skey = skA in
+    {9}in(c, pkX: pkey);
+    {10}new x: exponent;
+    {11}let gx: bitstring = exp(g,x) in
+    {12}new Ka: nonce;
+    {13}out(c, (encrypt((pkA,Ka),pkX),gx));
+    {14}in(c, (m1: bitstring,m2: bitstring,m3: bitstring));
+    {15}let Kb: nonce = decrypt(m1,skA_1) in
+    {16}let K0: key = hash((Ka,Kb)) in
+    {17}if (m3 = keyhash((gx,m2,pkX,pkA),K0)) then
+    {18}let sh: key = hash(exp(m2,x)) in
+    {19}out(c, keyhash((m2,gx,pkA,pkX),K0));
+    {20}if (pkX = pkB) then
+    {21}out(c, sencrypt(secretA,sh))
+) | (
+    {22}!
+    {23}let skB_1: skey = skB in
+    {24}in(c, (m1_1: bitstring,m2_1: bitstring));
+    {25}let (pkAr: pkey,Ka_1: nonce) = decrypt(m1_1,skB_1) in
+    {26}new Kb_1: nonce;
+    {27}let K0_1: key = hash((Ka_1,Kb_1)) in
+    {28}new y: exponent;
+    {29}let gy: bitstring = exp(g,y) in
+    {30}let sh_1: key = hash(exp(m2_1,y)) in
+    {31}out(c, (encrypt(Kb_1,pkAr),gy,keyhash((m2_1,gy,pkB,pkAr),K0_1)));
+    {32}in(c, m3_1: bitstring);
+    {33}if (m3_1 = keyhash((gy,m2_1,pkAr,pkB),K0_1)) then
+    {34}if (pkAr = pkA) then
+    {35}out(c, sencrypt(secretB,sh_1))
+)
+
+--  Process 1 (that is, process 0, with let moved downwards):
+{1}new skA: skey;
+{2}let pkA: pkey = pk(skA) in
+{3}out(c, pkA);
+{4}new skB: skey;
+{5}let pkB: pkey = pk(skB) in
+{6}out(c, pkB);
+(
+    {7}!
+    {9}in(c, pkX: pkey);
+    {10}new x: exponent;
+    {12}new Ka: nonce;
+    {11}let gx: bitstring = exp(g,x) in
+    {13}out(c, (encrypt((pkA,Ka),pkX),gx));
+    {14}in(c, (m1: bitstring,m2: bitstring,m3: bitstring));
+    {8}let skA_1: skey = skA in
+    {15}let Kb: nonce = decrypt(m1,skA_1) in
+    {16}let K0: key = hash((Ka,Kb)) in
+    {17}if (m3 = keyhash((gx,m2,pkX,pkA),K0)) then
+    {19}out(c, keyhash((m2,gx,pkA,pkX),K0));
+    {20}if (pkX = pkB) then
+    {18}let sh: key = hash(exp(m2,x)) in
+    {21}out(c, sencrypt(secretA,sh))
+) | (
+    {22}!
+    {24}in(c, (m1_1: bitstring,m2_1: bitstring));
+    {23}let skB_1: skey = skB in
+    {25}let (pkAr: pkey,Ka_1: nonce) = decrypt(m1_1,skB_1) in
+    {26}new Kb_1: nonce;
+    {28}new y: exponent;
+    {29}let gy: bitstring = exp(g,y) in
+    {27}let K0_1: key = hash((Ka_1,Kb_1)) in
+    {31}out(c, (encrypt(Kb_1,pkAr),gy,keyhash((m2_1,gy,pkB,pkAr),K0_1)));
+    {32}in(c, m3_1: bitstring);
+    {33}if (m3_1 = keyhash((gy,m2_1,pkAr,pkB),K0_1)) then
+    {34}if (pkAr = pkA) then
+    {30}let sh_1: key = hash(exp(m2_1,y)) in
+    {35}out(c, sencrypt(secretB,sh_1))
+)
+
+-- Non-interference secretA, secretB in process 1.
+Warning: using "noninterf" in the presence of equations may yield many
+false attacks. If you observe false attacks, try to code the desired
+property using "choice" instead.
+Translating the process into Horn clauses...
+Completing...
+200 rules inserted. Base: 170 rules (38 with conclusion selected). Queue: 13 rules.
+ok, secrecy assumption verified: fact unreachable attacker(skA[])
+ok, secrecy assumption verified: fact unreachable attacker(skB[])
+ok, secrecy assumption verified: fact unreachable attacker(x[pkX = v,!1 = v_1])
+ok, secrecy assumption verified: fact unreachable attacker(y[m2_1 = v,m1_1 = v_1,!1 = v_2])
+goal reachable: bad
+
+Derivation:
+Abbreviations:
+x_1 = x[pkX = pk(skB[]),!1 = @sid]
+Ka_2 = Ka[pkX = pk(skB[]),!1 = @sid]
+y_1 = y[m2_1 = exp(g,x_1),m1_1 = encrypt((pk(skA[]),Ka_2),pk(skB[])),!1 = @sid_1]
+Kb_2 = Kb_1[m2_1 = exp(g,x_1),m1_1 = encrypt((pk(skA[]),Ka_2),pk(skB[])),!1 = @sid_1]
+
+1. The attacker has some term @sid_1.
+attacker(@sid_1).
+
+2. The attacker has some term @sid.
+attacker(@sid).
+
+3. The message pk(skB[]) may be sent to the attacker at output {6}.
+attacker(pk(skB[])).
+
+4. By 2, the attacker may have the session identifier @sid.
+The message pk(skB[]) that the attacker may have by 3 may be received at input {9}.
+So the message (encrypt((pk(skA[]),Ka_2),pk(skB[])),exp(g,x_1)) may be sent to the attacker at output {13}.
+attacker((encrypt((pk(skA[]),Ka_2),pk(skB[])),exp(g,x_1))).
+
+5. By 4, the attacker may know (encrypt((pk(skA[]),Ka_2),pk(skB[])),exp(g,x_1)).
+Using the function 2-proj-2-tuple the attacker may obtain exp(g,x_1).
+attacker(exp(g,x_1)).
+
+6. By 4, the attacker may know (encrypt((pk(skA[]),Ka_2),pk(skB[])),exp(g,x_1)).
+Using the function 1-proj-2-tuple the attacker may obtain encrypt((pk(skA[]),Ka_2),pk(skB[])).
+attacker(encrypt((pk(skA[]),Ka_2),pk(skB[]))).
+
+7. By 6, the attacker may know encrypt((pk(skA[]),Ka_2),pk(skB[])).
+By 5, the attacker may know exp(g,x_1).
+Using the function 2-tuple the attacker may obtain (encrypt((pk(skA[]),Ka_2),pk(skB[])),exp(g,x_1)).
+attacker((encrypt((pk(skA[]),Ka_2),pk(skB[])),exp(g,x_1))).
+
+8. By 1, the attacker may have the session identifier @sid_1.
+The message (encrypt((pk(skA[]),Ka_2),pk(skB[])),exp(g,x_1)) that the attacker may have by 7 may be received at input {24}.
+So the message (encrypt(Kb_2,pk(skA[])),exp(g,y_1),keyhash((exp(g,x_1),exp(g,y_1),pk(skB[]),pk(skA[])),hash((Ka_2,Kb_2)))) may be sent to the attacker at output {31}.
+attacker((encrypt(Kb_2,pk(skA[])),exp(g,y_1),keyhash((exp(g,x_1),exp(g,y_1),pk(skB[]),pk(skA[])),hash((Ka_2,Kb_2))))).
+
+9. By 8, the attacker may know (encrypt(Kb_2,pk(skA[])),exp(g,y_1),keyhash((exp(g,x_1),exp(g,y_1),pk(skB[]),pk(skA[])),hash((Ka_2,Kb_2)))).
+Using the function 3-proj-3-tuple the attacker may obtain keyhash((exp(g,x_1),exp(g,y_1),pk(skB[]),pk(skA[])),hash((Ka_2,Kb_2))).
+attacker(keyhash((exp(g,x_1),exp(g,y_1),pk(skB[]),pk(skA[])),hash((Ka_2,Kb_2)))).
+
+10. By 8, the attacker may know (encrypt(Kb_2,pk(skA[])),exp(g,y_1),keyhash((exp(g,x_1),exp(g,y_1),pk(skB[]),pk(skA[])),hash((Ka_2,Kb_2)))).
+Using the function 2-proj-3-tuple the attacker may obtain exp(g,y_1).
+attacker(exp(g,y_1)).
+
+11. By 8, the attacker may know (encrypt(Kb_2,pk(skA[])),exp(g,y_1),keyhash((exp(g,x_1),exp(g,y_1),pk(skB[]),pk(skA[])),hash((Ka_2,Kb_2)))).
+Using the function 1-proj-3-tuple the attacker may obtain encrypt(Kb_2,pk(skA[])).
+attacker(encrypt(Kb_2,pk(skA[]))).
+
+12. By 11, the attacker may know encrypt(Kb_2,pk(skA[])).
+By 10, the attacker may know exp(g,y_1).
+By 9, the attacker may know keyhash((exp(g,x_1),exp(g,y_1),pk(skB[]),pk(skA[])),hash((Ka_2,Kb_2))).
+Using the function 3-tuple the attacker may obtain (encrypt(Kb_2,pk(skA[])),exp(g,y_1),keyhash((exp(g,x_1),exp(g,y_1),pk(skB[]),pk(skA[])),hash((Ka_2,Kb_2)))).
+attacker((encrypt(Kb_2,pk(skA[])),exp(g,y_1),keyhash((exp(g,x_1),exp(g,y_1),pk(skB[]),pk(skA[])),hash((Ka_2,Kb_2))))).
+
+13. By 2, the attacker may have the session identifier @sid.
+The message pk(skB[]) that the attacker may have by 3 may be received at input {9}.
+The message (encrypt(Kb_2,pk(skA[])),exp(g,y_1),keyhash((exp(g,x_1),exp(g,y_1),pk(skB[]),pk(skA[])),hash((Ka_2,Kb_2)))) that the attacker may have by 12 may be received at input {14}.
+So the message keyhash((exp(g,y_1),exp(g,x_1),pk(skA[]),pk(skB[])),hash((Ka_2,Kb_2))) may be sent to the attacker at output {19}.
+attacker(keyhash((exp(g,y_1),exp(g,x_1),pk(skA[]),pk(skB[])),hash((Ka_2,Kb_2)))).
+
+14. By 1, the attacker may have the session identifier @sid_1.
+The message (encrypt((pk(skA[]),Ka_2),pk(skB[])),exp(g,x_1)) that the attacker may have by 7 may be received at input {24}.
+The message keyhash((exp(g,y_1),exp(g,x_1),pk(skA[]),pk(skB[])),hash((Ka_2,Kb_2))) that the attacker may have by 13 may be received at input {32}.
+So the message sencrypt(secretB[],hash(exp(exp(g,y_1),x_1))) may be sent to the attacker at output {35}.
+attacker(sencrypt(secretB[],hash(exp(exp(g,y_1),x_1)))).
+
+15. By 2, the attacker may have the session identifier @sid.
+The message pk(skB[]) that the attacker may have by 3 may be received at input {9}.
+The message (encrypt(Kb_2,pk(skA[])),exp(g,y_1),keyhash((exp(g,x_1),exp(g,y_1),pk(skB[]),pk(skA[])),hash((Ka_2,Kb_2)))) that the attacker may have by 12 may be received at input {14}.
+So the message sencrypt(secretA[],hash(exp(exp(g,y_1),x_1))) may be sent to the attacker at output {21}.
+attacker(sencrypt(secretA[],hash(exp(exp(g,y_1),x_1)))).
+
+16. By 15, the attacker may know sencrypt(secretA[],hash(exp(exp(g,y_1),x_1))).
+By 14, the attacker may know sencrypt(secretB[],hash(exp(exp(g,y_1),x_1))).
+The terms sencrypt(secretA[],hash(exp(exp(g,y_1),x_1))) and sencrypt(secretB[],hash(exp(exp(g,y_1),x_1))) unify for some values of the secrets and not for others.
+The attacker tests equality between the two terms he knows, which may allow it to distinguish cases.
+bad.
+
+
+A more detailed output of the traces is available with
+  set traceDisplay = long.
+
+new skA: skey creating skA_2 at {1}
+
+out(c, ~M) with ~M = pk(skA_2) at {3}
+
+new skB: skey creating skB_2 at {4}
+
+out(c, ~M_1) with ~M_1 = pk(skB_2) at {6}
+
+in(c, ~M_1) with ~M_1 = pk(skB_2) at {9} in copy a
+
+new x: exponent creating x_2 at {10} in copy a
+
+new Ka: nonce creating Ka_3 at {12} in copy a
+
+out(c, (~M_2,~M_3)) with ~M_2 = encrypt((pk(skA_2),Ka_3),pk(skB_2)), ~M_3 = exp(g,x_2) at {13} in copy a
+
+in(c, (~M_2,~M_3)) with ~M_2 = encrypt((pk(skA_2),Ka_3),pk(skB_2)), ~M_3 = exp(g,x_2) at {24} in copy a_1
+
+new Kb_1: nonce creating Kb_3 at {26} in copy a_1
+
+new y: exponent creating y_2 at {28} in copy a_1
+
+out(c, (~M_4,~M_5,~M_6)) with ~M_4 = encrypt(Kb_3,pk(skA_2)), ~M_5 = exp(g,y_2), ~M_6 = keyhash((exp(g,x_2),exp(g,y_2),pk(skB_2),pk(skA_2)),hash((Ka_3,Kb_3))) at {31} in copy a_1
+
+in(c, (~M_4,~M_5,~M_6)) with ~M_4 = encrypt(Kb_3,pk(skA_2)), ~M_5 = exp(g,y_2), ~M_6 = keyhash((exp(g,x_2),exp(g,y_2),pk(skB_2),pk(skA_2)),hash((Ka_3,Kb_3))) at {14} in copy a
+
+out(c, ~M_7) with ~M_7 = keyhash((exp(g,y_2),exp(g,x_2),pk(skA_2),pk(skB_2)),hash((Ka_3,Kb_3))) at {19} in copy a
+
+out(c, ~M_8) with ~M_8 = sencrypt(secretA,hash(exp(exp(g,y_2),x_2))) at {21} in copy a
+
+in(c, ~M_7) with ~M_7 = keyhash((exp(g,y_2),exp(g,x_2),pk(skA_2),pk(skB_2)),hash((Ka_3,Kb_3))) at {32} in copy a_1
+
+out(c, ~M_9) with ~M_9 = sencrypt(secretB,hash(exp(exp(g,x_2),y_2))) at {35} in copy a_1
+
+The attacker tests whether
+~M_8 = sencrypt(secretA,hash(exp(exp(g,y_2),x_2)))
+is equal to
+~M_9 = sencrypt(secretB,hash(exp(exp(g,y_2),x_2))).
+This gives the attacker some information on the secret.
+A trace has been found.
+RESULT Non-interference secretA, secretB cannot be proved.
+-- Non-interference secretA in process 1.
+Warning: using "noninterf" in the presence of equations may yield many
+false attacks. If you observe false attacks, try to code the desired
+property using "choice" instead.
+Translating the process into Horn clauses...
+Completing...
+200 rules inserted. Base: 170 rules (38 with conclusion selected). Queue: 13 rules.
+ok, secrecy assumption verified: fact unreachable attacker(skA[])
+ok, secrecy assumption verified: fact unreachable attacker(skB[])
+ok, secrecy assumption verified: fact unreachable attacker(x[pkX = v,!1 = v_1])
+ok, secrecy assumption verified: fact unreachable attacker(y[m2_1 = v,m1_1 = v_1,!1 = v_2])
+RESULT Non-interference secretA is true.
+-- Non-interference secretB in process 1.
+Warning: using "noninterf" in the presence of equations may yield many
+false attacks. If you observe false attacks, try to code the desired
+property using "choice" instead.
+Translating the process into Horn clauses...
+Completing...
+200 rules inserted. Base: 170 rules (38 with conclusion selected). Queue: 13 rules.
+ok, secrecy assumption verified: fact unreachable attacker(skA[])
+ok, secrecy assumption verified: fact unreachable attacker(skB[])
+ok, secrecy assumption verified: fact unreachable attacker(x[pkX = v,!1 = v_1])
+ok, secrecy assumption verified: fact unreachable attacker(y[m2_1 = v,m1_1 = v_1,!1 = v_2])
+RESULT Non-interference secretB is true.
+
+--------------------------------------------------------------
+Verification summary:
+
+Non-interference secretA, secretB cannot be proved.
+
+Non-interference secretA is true.
+
+Non-interference secretB is true.
+
+--------------------------------------------------------------
+

@@ -1,0 +1,150 @@
+Process 0 (that is, the initial process):
+{1}new Kas: key;
+{2}new Kbs: key;
+{3}insert keys(A,Kas);
+{4}insert keys(B,Kbs);
+(
+    {5}!
+    {6}in(c, xA: host);
+    {7}if ((xA = A) || (xA = B)) then
+    {19}get keys(=xA,kas: key) in
+    {8}new Na: nonce;
+    {9}out(c, (xA,Na));
+    {10}in(c, (cert1: bitstring,cert2: bitstring));
+    {11}let (b: host,k: key,=Na,nb: nonce) = decrypt(cert1,kas) in
+    {12}let x: bitstring = nonce_to_bitstring(nb) in
+    {13}new r: sseed;
+    {14}out(c, (cert2,internal_encrypt(x,k,r)));
+    {15}if ((b = A) || (b = B)) then
+    {16}let x_1: bitstring = secretA in
+    {17}new r_1: sseed;
+    {18}out(c, internal_encrypt(x_1,k,r_1))
+) | (
+    {20}!
+    {21}in(c, xB: host);
+    {22}if ((xB = A) || (xB = B)) then
+    {35}get keys(=xB,kbs: key) in
+    {23}in(c, (a: host,na: nonce));
+    {24}new Nb: nonce;
+    {25}let x_2: bitstring = (a,na,Nb) in
+    {26}new r_2: sseed;
+    {27}out(c, (xB,internal_encrypt(x_2,kbs,r_2)));
+    {28}in(c, (cert2_1: bitstring,m: bitstring));
+    {29}let (=a,k_1: key) = decrypt(cert2_1,kbs) in
+    {30}if (nonce_to_bitstring(Nb) = decrypt(m,k_1)) then
+    {31}if ((a = A) || (a = B)) then
+    {32}let x_3: bitstring = secretB in
+    {33}new r_3: sseed;
+    {34}out(c, internal_encrypt(x_3,k_1,r_3))
+) | (
+    {36}!
+    {37}in(c, (h2: host,m_1: bitstring));
+    {46}get keys(=h2,k2: key) in
+    {38}let (h1: host,n1: nonce,n2: nonce) = decrypt(m_1,k2) in
+    {45}get keys(=h1,k1: key) in
+    {39}new k_2: key;
+    {40}let x_4: bitstring = (h2,k_2,n1,n2) in
+    {41}new r_4: sseed;
+    {42}let x_5: bitstring = (h1,k_2) in
+    {43}new r_5: sseed;
+    {44}out(c, (internal_encrypt(x_4,k1,r_5),internal_encrypt(x_5,k2,r_5)))
+) | (
+    {47}!
+    {48}in(c, (h: host,k_3: key));
+    {49}if ((h ≠ A) && (h ≠ B)) then
+    {50}insert keys(h,k_3)
+)
+
+--  Process 1 (that is, process 0, with let moved downwards):
+{1}new Kas: key;
+{2}new Kbs: key;
+{3}insert keys(A,Kas);
+{4}insert keys(B,Kbs);
+(
+    {5}!
+    {6}in(c, xA: host);
+    {7}if ((xA = A) || (xA = B)) then
+    {19}get keys(=xA,kas: key) in
+    {8}new Na: nonce;
+    {9}out(c, (xA,Na));
+    {10}in(c, (cert1: bitstring,cert2: bitstring));
+    {11}let (b: host,k: key,=Na,nb: nonce) = decrypt(cert1,kas) in
+    {13}new r: sseed;
+    {12}let x: bitstring = nonce_to_bitstring(nb) in
+    {14}out(c, (cert2,internal_encrypt(x,k,r)));
+    {15}if ((b = A) || (b = B)) then
+    {17}new r_1: sseed;
+    {16}let x_1: bitstring = secretA in
+    {18}out(c, internal_encrypt(x_1,k,r_1))
+) | (
+    {20}!
+    {21}in(c, xB: host);
+    {22}if ((xB = A) || (xB = B)) then
+    {35}get keys(=xB,kbs: key) in
+    {23}in(c, (a: host,na: nonce));
+    {24}new Nb: nonce;
+    {26}new r_2: sseed;
+    {25}let x_2: bitstring = (a,na,Nb) in
+    {27}out(c, (xB,internal_encrypt(x_2,kbs,r_2)));
+    {28}in(c, (cert2_1: bitstring,m: bitstring));
+    {29}let (=a,k_1: key) = decrypt(cert2_1,kbs) in
+    {30}if (nonce_to_bitstring(Nb) = decrypt(m,k_1)) then
+    {31}if ((a = A) || (a = B)) then
+    {33}new r_3: sseed;
+    {32}let x_3: bitstring = secretB in
+    {34}out(c, internal_encrypt(x_3,k_1,r_3))
+) | (
+    {36}!
+    {37}in(c, (h2: host,m_1: bitstring));
+    {46}get keys(=h2,k2: key) in
+    {38}let (h1: host,n1: nonce,n2: nonce) = decrypt(m_1,k2) in
+    {45}get keys(=h1,k1: key) in
+    {39}new k_2: key;
+    {41}new r_4: sseed;
+    {43}new r_5: sseed;
+    {42}let x_5: bitstring = (h1,k_2) in
+    {40}let x_4: bitstring = (h2,k_2,n1,n2) in
+    {44}out(c, (internal_encrypt(x_4,k1,r_5),internal_encrypt(x_5,k2,r_5)))
+) | (
+    {47}!
+    {48}in(c, (h: host,k_3: key));
+    {49}if ((h ≠ A) && (h ≠ B)) then
+    {50}insert keys(h,k_3)
+)
+
+-- Non-interference secretA, secretB in process 1.
+Translating the process into Horn clauses...
+Completing...
+200 rules inserted. Base: 196 rules (65 with conclusion selected). Queue: 11 rules.
+400 rules inserted. Base: 372 rules (100 with conclusion selected). Queue: 34 rules.
+ok, secrecy assumption verified: fact unreachable attacker_key(Kas[])
+ok, secrecy assumption verified: fact unreachable attacker_key(Kbs[])
+RESULT Non-interference secretA, secretB is true.
+-- Non-interference secretA in process 1.
+Translating the process into Horn clauses...
+Completing...
+200 rules inserted. Base: 196 rules (65 with conclusion selected). Queue: 11 rules.
+400 rules inserted. Base: 372 rules (100 with conclusion selected). Queue: 34 rules.
+ok, secrecy assumption verified: fact unreachable attacker_key(Kas[])
+ok, secrecy assumption verified: fact unreachable attacker_key(Kbs[])
+RESULT Non-interference secretA is true.
+-- Non-interference secretB in process 1.
+Translating the process into Horn clauses...
+Completing...
+200 rules inserted. Base: 196 rules (65 with conclusion selected). Queue: 11 rules.
+400 rules inserted. Base: 372 rules (100 with conclusion selected). Queue: 30 rules.
+ok, secrecy assumption verified: fact unreachable attacker_key(Kas[])
+ok, secrecy assumption verified: fact unreachable attacker_key(Kbs[])
+RESULT Non-interference secretB is true.
+
+--------------------------------------------------------------
+Verification summary:
+
+Non-interference secretA, secretB is true.
+
+Non-interference secretA is true.
+
+Non-interference secretB is true.
+
+--------------------------------------------------------------
+

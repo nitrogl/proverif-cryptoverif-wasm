@@ -1,0 +1,135 @@
+Process 0 (that is, the initial process):
+{1}new Kas: key;
+{2}new Kbs: key;
+{3}insert keys(A,Kas);
+{4}insert keys(B,Kbs);
+(
+    {5}!
+    {6}in(c, (xI: host,xR: host));
+    {7}if ((xI = A) || (xI = B)) then
+    {18}get keys(=xI,Kis: key) in
+    {8}new Kab: key;
+    {9}event beginBkey(xI,xR,Kab);
+    {10}let x: bitstring = (c0,xR,Kab) in
+    {11}new r: coins;
+    {12}out(c, (xI,internal_encrypt(x,Kis,r)));
+    {13}if ((xR = A) || (xR = B)) then
+    {14}let x_1: bitstring = secretInit in
+    {15}let k: key = Kab in
+    {16}new r_1: coins;
+    {17}out(c, internal_encrypt(x_1,k,r_1))
+) | (
+    {19}!
+    {20}in(c, xR_1: host);
+    {21}if ((xR_1 = A) || (xR_1 = B)) then
+    {29}get keys(=xR_1,Krs: key) in
+    {22}in(c, m: bitstring);
+    {23}let (=c1,a: host,kab: key) = decrypt(m,Krs) in
+    {24}if ((a = A) || (a = B)) then
+    {25}event endBkey(a,xR_1,kab);
+    {26}let x_2: bitstring = secretResp in
+    {27}new r_2: coins;
+    {28}out(c, internal_encrypt(x_2,kab,r_2))
+) | (
+    {30}!
+    {31}in(c, (a_1: host,m_1: bitstring));
+    {37}get keys(=a_1,kas: key) in
+    {32}let (=c0,b: host,kab_1: key) = decrypt(m_1,kas) in
+    {36}get keys(=b,kbs: key) in
+    {33}let x_3: bitstring = (c1,a_1,kab_1) in
+    {34}new r_3: coins;
+    {35}out(c, internal_encrypt(x_3,kbs,r_3))
+) | (
+    {38}!
+    {39}in(c, (h: host,k_1: key));
+    {40}if ((h ≠ A) && (h ≠ B)) then
+    {41}insert keys(h,k_1)
+)
+
+--  Process 1 (that is, process 0, with let moved downwards):
+{1}new Kas: key;
+{2}new Kbs: key;
+{3}insert keys(A,Kas);
+{4}insert keys(B,Kbs);
+(
+    {5}!
+    {6}in(c, (xI: host,xR: host));
+    {7}if ((xI = A) || (xI = B)) then
+    {18}get keys(=xI,Kis: key) in
+    {8}new Kab: key;
+    {9}event beginBkey(xI,xR,Kab);
+    {11}new r: coins;
+    {10}let x: bitstring = (c0,xR,Kab) in
+    {12}out(c, (xI,internal_encrypt(x,Kis,r)));
+    {13}if ((xR = A) || (xR = B)) then
+    {16}new r_1: coins;
+    {15}let k: key = Kab in
+    {14}let x_1: bitstring = secretInit in
+    {17}out(c, internal_encrypt(x_1,k,r_1))
+) | (
+    {19}!
+    {20}in(c, xR_1: host);
+    {21}if ((xR_1 = A) || (xR_1 = B)) then
+    {29}get keys(=xR_1,Krs: key) in
+    {22}in(c, m: bitstring);
+    {23}let (=c1,a: host,kab: key) = decrypt(m,Krs) in
+    {24}if ((a = A) || (a = B)) then
+    {25}event endBkey(a,xR_1,kab);
+    {27}new r_2: coins;
+    {26}let x_2: bitstring = secretResp in
+    {28}out(c, internal_encrypt(x_2,kab,r_2))
+) | (
+    {30}!
+    {31}in(c, (a_1: host,m_1: bitstring));
+    {37}get keys(=a_1,kas: key) in
+    {32}let (=c0,b: host,kab_1: key) = decrypt(m_1,kas) in
+    {36}get keys(=b,kbs: key) in
+    {34}new r_3: coins;
+    {33}let x_3: bitstring = (c1,a_1,kab_1) in
+    {35}out(c, internal_encrypt(x_3,kbs,r_3))
+) | (
+    {38}!
+    {39}in(c, (h: host,k_1: key));
+    {40}if ((h ≠ A) && (h ≠ B)) then
+    {41}insert keys(h,k_1)
+)
+
+-- Query event(endBkey(xA,xB,xkAB)) ==> event(beginBkey(xA,xB,xkAB)) in process 1.
+Translating the process into Horn clauses...
+Completing...
+Starting query event(endBkey(xA,xB,xkAB)) ==> event(beginBkey(xA,xB,xkAB))
+goal reachable: b-event(beginBkey(B[],B[],Kab_1)) -> event(endBkey(B[],B[],Kab_1))
+Abbreviations:
+Kab_1 = Kab[Kis = Kbs[],xR = B[],xI = B[],!1 = @sid]
+goal reachable: b-event(beginBkey(B[],A[],Kab_1)) -> event(endBkey(B[],A[],Kab_1))
+Abbreviations:
+Kab_1 = Kab[Kis = Kbs[],xR = A[],xI = B[],!1 = @sid]
+goal reachable: b-event(beginBkey(A[],B[],Kab_1)) -> event(endBkey(A[],B[],Kab_1))
+Abbreviations:
+Kab_1 = Kab[Kis = Kas[],xR = B[],xI = A[],!1 = @sid]
+goal reachable: b-event(beginBkey(A[],A[],Kab_1)) -> event(endBkey(A[],A[],Kab_1))
+Abbreviations:
+Kab_1 = Kab[Kis = Kas[],xR = A[],xI = A[],!1 = @sid]
+RESULT event(endBkey(xA,xB,xkAB)) ==> event(beginBkey(xA,xB,xkAB)) is true.
+-- Non-interference secretInit in process 1.
+Translating the process into Horn clauses...
+Completing...
+200 rules inserted. Base: 192 rules (44 with conclusion selected). Queue: 5 rules.
+RESULT Non-interference secretInit is true.
+-- Non-interference secretResp in process 1.
+Translating the process into Horn clauses...
+Completing...
+200 rules inserted. Base: 192 rules (44 with conclusion selected). Queue: 5 rules.
+RESULT Non-interference secretResp is true.
+
+--------------------------------------------------------------
+Verification summary:
+
+Query event(endBkey(xA,xB,xkAB)) ==> event(beginBkey(xA,xB,xkAB)) is true.
+
+Non-interference secretInit is true.
+
+Non-interference secretResp is true.
+
+--------------------------------------------------------------
+

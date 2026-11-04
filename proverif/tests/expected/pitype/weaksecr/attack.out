@@ -1,0 +1,85 @@
+File "attack.pv", line 59, characters 6-7:
+Warning: identifier pk rebound.
+Process 0 (that is, the initial process):
+{1}new s: skey;
+{2}let pk_1: pkey = pk(s) in
+{3}out(c, pk_1);
+{4}out(c, encrypt(hash(w),pk_1))
+
+-- Weak secret w in process 0.
+Translating the process into Horn clauses...
+Termination warning: v ≠ v_1 && attacker_guess(v_2,v) && attacker_guess(v_2,v_1) -> bad
+Selecting 0
+Termination warning: v ≠ v_1 && attacker_guess(v,v_2) && attacker_guess(v_1,v_2) -> bad
+Selecting 0
+Completing...
+Termination warning: v ≠ v_1 && attacker_guess(v_2,v) && attacker_guess(v_2,v_1) -> bad
+Selecting 0
+Termination warning: v ≠ v_1 && attacker_guess(v,v_2) && attacker_guess(v_1,v_2) -> bad
+Selecting 0
+Termination warning: v ≠ v_1 && attacker(v) && attacker_guess(v,v_1) -> bad
+Selecting 1
+Termination warning: v ≠ v_1 && attacker(v) && attacker_guess(v_1,v) -> bad
+Selecting 1
+goal reachable: bad
+
+Derivation:
+
+1. The message pk(s[]) may be sent to the attacker at output {3}.
+attacker(pk(s[])).
+
+2. By 1, the attacker may know pk(s[]).
+So the attacker may know pk(s[]) (resp. pk(s[])) in off-line phase.
+attacker_guess(pk(s[]),pk(s[])).
+
+3. The attacker has the weak secret w[] in the first component, a guess @weaksecretcst in the second.
+attacker_guess(w[],@weaksecretcst).
+
+4. By 3, the attacker may know w[] (resp. @weaksecretcst) in off-line phase.
+Using the function hash the attacker may obtain hash(w[]) (resp. hash(@weaksecretcst)) in off-line phase.
+attacker_guess(hash(w[]),hash(@weaksecretcst)).
+
+5. By 4, the attacker may know hash(w[]) (resp. hash(@weaksecretcst)) in off-line phase.
+By 2, the attacker may know pk(s[]) (resp. pk(s[])) in off-line phase.
+Using the function encrypt the attacker may obtain encrypt(hash(w[]),pk(s[])) (resp. encrypt(hash(@weaksecretcst),pk(s[]))) in off-line phase.
+attacker_guess(encrypt(hash(w[]),pk(s[])),encrypt(hash(@weaksecretcst),pk(s[]))).
+
+6. The message encrypt(hash(w[]),pk(s[])) may be sent to the attacker at output {4}.
+attacker(encrypt(hash(w[]),pk(s[]))).
+
+7. By 6, the attacker may know encrypt(hash(w[]),pk(s[])).
+So the attacker may know encrypt(hash(w[]),pk(s[])) (resp. encrypt(hash(w[]),pk(s[]))) in off-line phase.
+attacker_guess(encrypt(hash(w[]),pk(s[])),encrypt(hash(w[]),pk(s[]))).
+
+8. By 7, the attacker may know encrypt(hash(w[]),pk(s[])) (resp. encrypt(hash(w[]),pk(s[]))) in off-line phase.
+By 5, the attacker may know encrypt(hash(w[]),pk(s[])) (resp. encrypt(hash(@weaksecretcst),pk(s[]))) in off-line phase.
+We have encrypt(hash(w[]),pk(s[])) ≠ encrypt(hash(@weaksecretcst),pk(s[])).
+The attacker tests equality between the two terms he knows, which may allow it to distinguish cases.
+bad.
+
+
+A more detailed output of the traces is available with
+  set traceDisplay = long.
+
+new s: skey creating s_1 at {1}
+
+out(c, ~M) with ~M = pk(s_1) at {3}
+
+out(c, ~M_1) with ~M_1 = encrypt(hash(w),pk(s_1)) at {4}
+
+The attacker tests whether 
+~M_1 = encrypt(hash(@weaksecretcst),~M)
+knowing
+~M = pk(s_1),
+~M_1 = encrypt(hash(w),pk(s_1)).
+This allows the attacker to know whether @weaksecretcst = w.
+A trace has been found.
+RESULT Weak secret w is false.
+
+--------------------------------------------------------------
+Verification summary:
+
+Weak secret w is false.
+
+--------------------------------------------------------------
+

@@ -1,0 +1,55 @@
+Linear part: No equation.
+Convergent part:
+impl(k,x) = f(k,f(k,x))
+h(f(x,y),z) = f(x,(y,z))
+Completing equations...
+Completed equations:
+h(f(x,y),z) = f(x,(y,z))
+impl(k,x) = f(k,f(k,x))
+Biprocess 0 (that is, the initial process):
+{1}new k: key;
+(
+    {2}!
+    {3}in(c1, x: bitstring);
+    {4}out(c, (x,choice[mac(k,x),impl(k,x)]))
+) | (
+    {5}in(c, (x_1: bitstring,m: bitstring));
+    {6}if (choice[mac(k,x_1),impl(k,x_1)] = m) then
+    {7}out(c2, x_1)
+)
+
+-- Observational equivalence in biprocess 0.
+Translating the process into Horn clauses...
+select attacker2(v,f(*x_2,y))/-5000
+select attacker2(f(*x_2,y),v)/-5000
+select attacker2(f(*x_2,y),f(*x_3,y_1))/-5000
+Termination warning: v ≠ v_1 && attacker2(v_2,v) && attacker2(v_2,v_1) -> bad
+Selecting 0
+Termination warning: v ≠ v_1 && attacker2(v,v_2) && attacker2(v_1,v_2) -> bad
+Selecting 0
+Completing...
+Termination warning: v ≠ v_1 && attacker2(v_2,v) && attacker2(v_2,v_1) -> bad
+Selecting 0
+Termination warning: v ≠ v_1 && attacker2(v,v_2) && attacker2(v_1,v_2) -> bad
+Selecting 0
+Termination warning: v ≠ f(v_1,v_2) && attacker2(v_3,v_1) && attacker2(v_4,v_2) && attacker2(f(v_3,v_4),v) -> bad
+Selecting 2
+Termination warning: v ≠ f(v_1,v_2) && attacker2(v_1,v_3) && attacker2(v_2,v_4) && attacker2(v,f(v_3,v_4)) -> bad
+Selecting 2
+Termination warning: v ≠ f(v_1,v_2) && attacker2(x_2,v_1) && attacker2(y,v_2) && attacker2(f(x_2,y),v) -> bad
+Selecting 2
+Termination warning: (v ≠ y | v_1 ≠ x_2) && attacker2(f(x_3,y_1),f(x_2,y)) && attacker2(x_3,v_1) && attacker2(y_1,v) -> bad
+Selecting 0
+Termination warning: v ≠ f(v_1,v_2) && attacker2(v_1,x_2) && attacker2(v_2,y) && attacker2(v,f(x_2,y)) -> bad
+Selecting 2
+Termination warning: (v ≠ y | v_1 ≠ x_2) && attacker2(f(x_2,y),f(x_3,y_1)) && attacker2(v_1,x_3) && attacker2(v,y_1) -> bad
+Selecting 0
+RESULT Observational equivalence is true.
+
+--------------------------------------------------------------
+Verification summary:
+
+Observational equivalence is true.
+
+--------------------------------------------------------------
+

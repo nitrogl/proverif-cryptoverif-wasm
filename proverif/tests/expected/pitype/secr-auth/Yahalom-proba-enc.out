@@ -1,0 +1,479 @@
+Process 0 (that is, the initial process):
+{1}new Kas: key;
+{2}new Kbs: key;
+{3}insert keys(A,Kas);
+{4}insert keys(B,Kbs);
+(
+    {5}!
+    {6}in(c, xA: host);
+    {7}if ((xA = A) || (xA = B)) then
+    {23}get keys(=xA,kas: key) in
+    {8}new Na: nonce;
+    {9}out(c, (xA,Na));
+    {10}in(c, (cert1: bitstring,cert2: bitstring));
+    {11}let (b: host,k: key,=Na,nb: nonce) = decrypt(cert1,kas) in
+    {12}event beginBparam(xA,b);
+    {13}event beginBkey(xA,b,k);
+    {14}let x: bitstring = nonce_to_bitstring(nb) in
+    {15}new r: seed;
+    {16}out(c, (cert2,internal_encrypt(x,k,r)));
+    {17}if ((b = A) || (b = B)) then
+    {18}event endAparam(xA,b);
+    {19}event endAkey(xA,b,k);
+    {20}let x_1: bitstring = secretA in
+    {21}new r_1: seed;
+    {22}out(c, internal_encrypt(x_1,k,r_1))
+) | (
+    {24}!
+    {25}in(c, xB: host);
+    {26}if ((xB = A) || (xB = B)) then
+    {43}get keys(=xB,kbs: key) in
+    {27}in(c, (a: host,na: nonce));
+    {28}event beginAparam(a,xB);
+    {29}new Nb: nonce;
+    {30}let x_2: bitstring = (a,na,Nb) in
+    {31}new r_2: seed;
+    {32}out(c, (xB,internal_encrypt(x_2,kbs,r_2)));
+    {33}in(c, (cert2_1: bitstring,m: bitstring));
+    {34}let (=a,k_1: key) = decrypt(cert2_1,kbs) in
+    {35}event beginAkey(a,xB,k_1);
+    {36}if (nonce_to_bitstring(Nb) = decrypt(m,k_1)) then
+    {37}if ((a = A) || (a = B)) then
+    {38}event endBparam(a,xB);
+    {39}event endBkey(a,xB,k_1);
+    {40}let x_3: bitstring = secretB in
+    {41}new r_3: seed;
+    {42}out(c, internal_encrypt(x_3,k_1,r_3))
+) | (
+    {44}!
+    {45}in(c, (h2: host,m_1: bitstring));
+    {54}get keys(=h2,k2: key) in
+    {46}let (h1: host,n1: nonce,n2: nonce) = decrypt(m_1,k2) in
+    {53}get keys(=h1,k1: key) in
+    {47}new k_2: key;
+    {48}let x_4: bitstring = (h2,k_2,n1,n2) in
+    {49}new r_4: seed;
+    {50}let x_5: bitstring = (h1,k_2) in
+    {51}new r_5: seed;
+    {52}out(c, (internal_encrypt(x_4,k1,r_5),internal_encrypt(x_5,k2,r_5)))
+) | (
+    {55}!
+    {56}in(c, (h: host,k_3: key));
+    {57}if ((h ≠ A) && (h ≠ B)) then
+    {58}insert keys(h,k_3)
+)
+
+--  Process 1 (that is, process 0, with let moved downwards):
+{1}new Kas: key;
+{2}new Kbs: key;
+{3}insert keys(A,Kas);
+{4}insert keys(B,Kbs);
+(
+    {5}!
+    {6}in(c, xA: host);
+    {7}if ((xA = A) || (xA = B)) then
+    {23}get keys(=xA,kas: key) in
+    {8}new Na: nonce;
+    {9}out(c, (xA,Na));
+    {10}in(c, (cert1: bitstring,cert2: bitstring));
+    {11}let (b: host,k: key,=Na,nb: nonce) = decrypt(cert1,kas) in
+    {12}event beginBparam(xA,b);
+    {13}event beginBkey(xA,b,k);
+    {15}new r: seed;
+    {14}let x: bitstring = nonce_to_bitstring(nb) in
+    {16}out(c, (cert2,internal_encrypt(x,k,r)));
+    {17}if ((b = A) || (b = B)) then
+    {18}event endAparam(xA,b);
+    {19}event endAkey(xA,b,k);
+    {21}new r_1: seed;
+    {20}let x_1: bitstring = secretA in
+    {22}out(c, internal_encrypt(x_1,k,r_1))
+) | (
+    {24}!
+    {25}in(c, xB: host);
+    {26}if ((xB = A) || (xB = B)) then
+    {43}get keys(=xB,kbs: key) in
+    {27}in(c, (a: host,na: nonce));
+    {28}event beginAparam(a,xB);
+    {29}new Nb: nonce;
+    {31}new r_2: seed;
+    {30}let x_2: bitstring = (a,na,Nb) in
+    {32}out(c, (xB,internal_encrypt(x_2,kbs,r_2)));
+    {33}in(c, (cert2_1: bitstring,m: bitstring));
+    {34}let (=a,k_1: key) = decrypt(cert2_1,kbs) in
+    {35}event beginAkey(a,xB,k_1);
+    {36}if (nonce_to_bitstring(Nb) = decrypt(m,k_1)) then
+    {37}if ((a = A) || (a = B)) then
+    {38}event endBparam(a,xB);
+    {39}event endBkey(a,xB,k_1);
+    {41}new r_3: seed;
+    {40}let x_3: bitstring = secretB in
+    {42}out(c, internal_encrypt(x_3,k_1,r_3))
+) | (
+    {44}!
+    {45}in(c, (h2: host,m_1: bitstring));
+    {54}get keys(=h2,k2: key) in
+    {46}let (h1: host,n1: nonce,n2: nonce) = decrypt(m_1,k2) in
+    {53}get keys(=h1,k1: key) in
+    {47}new k_2: key;
+    {49}new r_4: seed;
+    {51}new r_5: seed;
+    {50}let x_5: bitstring = (h1,k_2) in
+    {48}let x_4: bitstring = (h2,k_2,n1,n2) in
+    {52}out(c, (internal_encrypt(x_4,k1,r_5),internal_encrypt(x_5,k2,r_5)))
+) | (
+    {55}!
+    {56}in(c, (h: host,k_3: key));
+    {57}if ((h ≠ A) && (h ≠ B)) then
+    {58}insert keys(h,k_3)
+)
+
+-- Query 
+   not attacker_bitstring(secretA[])
+   not attacker_bitstring(secretB[])
+ in process 1.
+Translating the process into Horn clauses...
+Completing...
+200 rules inserted. Base: 184 rules (80 with conclusion selected). Queue: 12 rules.
+ok, secrecy assumption verified: fact unreachable attacker_key(Kas[])
+ok, secrecy assumption verified: fact unreachable attacker_key(Kbs[])
+Starting query not attacker_bitstring(secretA[])
+RESULT not attacker_bitstring(secretA[]) is true.
+Starting query not attacker_bitstring(secretB[])
+RESULT not attacker_bitstring(secretB[]) is true.
+-- Query inj-event(endAparam(x_6,y)) ==> inj-event(beginAparam(x_6,y)) in process 1.
+Translating the process into Horn clauses...
+Completing...
+200 rules inserted. Base: 188 rules (78 with conclusion selected). Queue: 28 rules.
+ok, secrecy assumption verified: fact unreachable attacker_key(Kas[])
+ok, secrecy assumption verified: fact unreachable attacker_key(Kbs[])
+Starting query inj-event(endAparam(x_6,y)) ==> inj-event(beginAparam(x_6,y))
+goal reachable: b-inj-event(beginAparam(B[],B[]),@occ28_1) && attacker_bitstring(cert2_2) -> inj-event(endAparam(B[],B[]),@occ18_1)
+The 1st hypothesis occurs strictly before the conclusion.
+The 2nd hypothesis occurs before the conclusion.
+Abbreviations:
+Na_1 = Na[kas = Kbs[],xA = B[],!1 = @sid]
+Nb_1 = Nb[na = Na_1,a = B[],kbs = Kbs[],xB = B[],!1 = @sid_1]
+r_6 = r_2[na = Na_1,a = B[],kbs = Kbs[],xB = B[],!1 = @sid_1]
+k_4 = k_2[k1 = Kbs[],k2 = Kbs[],m_1 = internal_encrypt((B[],Na_1,Nb_1),Kbs[],r_6),h2 = B[],!1 = @sid_2]
+r_7 = r_5[k1 = Kbs[],k2 = Kbs[],m_1 = internal_encrypt((B[],Na_1,Nb_1),Kbs[],r_6),h2 = B[],!1 = @sid_2]
+@occ18_1 = @occ18[cert2 = cert2_2,cert1 = internal_encrypt((B[],k_4,Na_1,Nb_1),Kbs[],r_7),kas = Kbs[],xA = B[],!1 = @sid]
+@occ28_1 = @occ28[na = Na_1,a = B[],kbs = Kbs[],xB = B[],!1 = @sid_1]
+goal reachable: b-inj-event(beginAparam(B[],A[]),@occ28_1) && attacker_bitstring(cert2_2) -> inj-event(endAparam(B[],A[]),@occ18_1)
+The 1st hypothesis occurs strictly before the conclusion.
+The 2nd hypothesis occurs before the conclusion.
+Abbreviations:
+Na_1 = Na[kas = Kbs[],xA = B[],!1 = @sid]
+Nb_1 = Nb[na = Na_1,a = B[],kbs = Kas[],xB = A[],!1 = @sid_1]
+r_6 = r_2[na = Na_1,a = B[],kbs = Kas[],xB = A[],!1 = @sid_1]
+k_4 = k_2[k1 = Kbs[],k2 = Kas[],m_1 = internal_encrypt((B[],Na_1,Nb_1),Kas[],r_6),h2 = A[],!1 = @sid_2]
+r_7 = r_5[k1 = Kbs[],k2 = Kas[],m_1 = internal_encrypt((B[],Na_1,Nb_1),Kas[],r_6),h2 = A[],!1 = @sid_2]
+@occ18_1 = @occ18[cert2 = cert2_2,cert1 = internal_encrypt((A[],k_4,Na_1,Nb_1),Kbs[],r_7),kas = Kbs[],xA = B[],!1 = @sid]
+@occ28_1 = @occ28[na = Na_1,a = B[],kbs = Kas[],xB = A[],!1 = @sid_1]
+goal reachable: b-inj-event(beginAparam(A[],B[]),@occ28_1) && attacker_bitstring(cert2_2) -> inj-event(endAparam(A[],B[]),@occ18_1)
+The 1st hypothesis occurs strictly before the conclusion.
+The 2nd hypothesis occurs before the conclusion.
+Abbreviations:
+Na_1 = Na[kas = Kas[],xA = A[],!1 = @sid]
+Nb_1 = Nb[na = Na_1,a = A[],kbs = Kbs[],xB = B[],!1 = @sid_1]
+r_6 = r_2[na = Na_1,a = A[],kbs = Kbs[],xB = B[],!1 = @sid_1]
+k_4 = k_2[k1 = Kas[],k2 = Kbs[],m_1 = internal_encrypt((A[],Na_1,Nb_1),Kbs[],r_6),h2 = B[],!1 = @sid_2]
+r_7 = r_5[k1 = Kas[],k2 = Kbs[],m_1 = internal_encrypt((A[],Na_1,Nb_1),Kbs[],r_6),h2 = B[],!1 = @sid_2]
+@occ18_1 = @occ18[cert2 = cert2_2,cert1 = internal_encrypt((B[],k_4,Na_1,Nb_1),Kas[],r_7),kas = Kas[],xA = A[],!1 = @sid]
+@occ28_1 = @occ28[na = Na_1,a = A[],kbs = Kbs[],xB = B[],!1 = @sid_1]
+goal reachable: b-inj-event(beginAparam(A[],A[]),@occ28_1) && attacker_bitstring(cert2_2) -> inj-event(endAparam(A[],A[]),@occ18_1)
+The 1st hypothesis occurs strictly before the conclusion.
+The 2nd hypothesis occurs before the conclusion.
+Abbreviations:
+Na_1 = Na[kas = Kas[],xA = A[],!1 = @sid]
+Nb_1 = Nb[na = Na_1,a = A[],kbs = Kas[],xB = A[],!1 = @sid_1]
+r_6 = r_2[na = Na_1,a = A[],kbs = Kas[],xB = A[],!1 = @sid_1]
+k_4 = k_2[k1 = Kas[],k2 = Kas[],m_1 = internal_encrypt((A[],Na_1,Nb_1),Kas[],r_6),h2 = A[],!1 = @sid_2]
+r_7 = r_5[k1 = Kas[],k2 = Kas[],m_1 = internal_encrypt((A[],Na_1,Nb_1),Kas[],r_6),h2 = A[],!1 = @sid_2]
+@occ18_1 = @occ18[cert2 = cert2_2,cert1 = internal_encrypt((A[],k_4,Na_1,Nb_1),Kas[],r_7),kas = Kas[],xA = A[],!1 = @sid]
+@occ28_1 = @occ28[na = Na_1,a = A[],kbs = Kas[],xB = A[],!1 = @sid_1]
+RESULT inj-event(endAparam(x_6,y)) ==> inj-event(beginAparam(x_6,y)) is true.
+-- Query inj-event(endAkey(x_6,y,z)) ==> inj-event(beginAkey(x_6,y,z)) in process 1.
+Translating the process into Horn clauses...
+Completing...
+200 rules inserted. Base: 188 rules (78 with conclusion selected). Queue: 28 rules.
+ok, secrecy assumption verified: fact unreachable attacker_key(Kas[])
+ok, secrecy assumption verified: fact unreachable attacker_key(Kbs[])
+Starting query inj-event(endAkey(x_6,y,z)) ==> inj-event(beginAkey(x_6,y,z))
+goal reachable: attacker_bitstring(cert2_2) -> inj-event(endAkey(B[],B[],k_4),@occ19_1)
+Abbreviations:
+Na_1 = Na[kas = Kbs[],xA = B[],!1 = @sid]
+Nb_1 = Nb[na = Na_1,a = B[],kbs = Kbs[],xB = B[],!1 = @sid_1]
+r_6 = r_2[na = Na_1,a = B[],kbs = Kbs[],xB = B[],!1 = @sid_1]
+k_4 = k_2[k1 = Kbs[],k2 = Kbs[],m_1 = internal_encrypt((B[],Na_1,Nb_1),Kbs[],r_6),h2 = B[],!1 = @sid_2]
+r_7 = r_5[k1 = Kbs[],k2 = Kbs[],m_1 = internal_encrypt((B[],Na_1,Nb_1),Kbs[],r_6),h2 = B[],!1 = @sid_2]
+@occ19_1 = @occ19[cert2 = cert2_2,cert1 = internal_encrypt((B[],k_4,Na_1,Nb_1),Kbs[],r_7),kas = Kbs[],xA = B[],!1 = @sid]
+
+Derivation:
+Abbreviations:
+Na_1 = Na[kas = Kbs[],xA = B[],!1 = @sid]
+Nb_1 = Nb[na = Na_1,a = B[],kbs = Kbs[],xB = B[],!1 = @sid_1]
+r_6 = r_2[na = Na_1,a = B[],kbs = Kbs[],xB = B[],!1 = @sid_1]
+k_4 = k_2[k1 = Kbs[],k2 = Kbs[],m_1 = internal_encrypt((B[],Na_1,Nb_1),Kbs[],r_6),h2 = B[],!1 = @sid_2]
+r_7 = r_5[k1 = Kbs[],k2 = Kbs[],m_1 = internal_encrypt((B[],Na_1,Nb_1),Kbs[],r_6),h2 = B[],!1 = @sid_2]
+@occ19_1 = @occ19[cert2 = cert2_2,cert1 = internal_encrypt((B[],k_4,Na_1,Nb_1),Kbs[],r_7),kas = Kbs[],xA = B[],!1 = @sid]
+
+1. The attacker initially knows B[].
+attacker_host(B[]).
+
+2. The entry keys(B[],Kbs[]) may be inserted in a table at insert {4}.
+table(keys(B[],Kbs[])).
+
+3. We assume as hypothesis that
+attacker_bitstring(cert2_2).
+
+4. The message B[] that the attacker may have by 1 may be received at input {6}.
+The entry keys(B[],Kbs[]) that may be in a table by 2 may be read at get {23}.
+So the message (B[],Na_1) may be sent to the attacker at output {9}.
+attacker_bitstring((B[],Na_1)).
+
+5. By 4, the attacker may know (B[],Na_1).
+Using the function 2-proj-host-nonce-tuple the attacker may obtain Na_1.
+attacker_nonce(Na_1).
+
+6. By 1, the attacker may know B[].
+By 5, the attacker may know Na_1.
+Using the function host-nonce-tuple the attacker may obtain (B[],Na_1).
+attacker_bitstring((B[],Na_1)).
+
+7. The message B[] that the attacker may have by 1 may be received at input {25}.
+The entry keys(B[],Kbs[]) that may be in a table by 2 may be read at get {43}.
+The message (B[],Na_1) that the attacker may have by 6 may be received at input {27}.
+So the message (B[],internal_encrypt((B[],Na_1,Nb_1),Kbs[],r_6)) may be sent to the attacker at output {32}.
+attacker_bitstring((B[],internal_encrypt((B[],Na_1,Nb_1),Kbs[],r_6))).
+
+8. By 7, the attacker may know (B[],internal_encrypt((B[],Na_1,Nb_1),Kbs[],r_6)).
+Using the function 2-proj-host-bitstring-tuple the attacker may obtain internal_encrypt((B[],Na_1,Nb_1),Kbs[],r_6).
+attacker_bitstring(internal_encrypt((B[],Na_1,Nb_1),Kbs[],r_6)).
+
+9. By 1, the attacker may know B[].
+By 8, the attacker may know internal_encrypt((B[],Na_1,Nb_1),Kbs[],r_6).
+Using the function host-bitstring-tuple the attacker may obtain (B[],internal_encrypt((B[],Na_1,Nb_1),Kbs[],r_6)).
+attacker_bitstring((B[],internal_encrypt((B[],Na_1,Nb_1),Kbs[],r_6))).
+
+10. The message (B[],internal_encrypt((B[],Na_1,Nb_1),Kbs[],r_6)) that the attacker may have by 9 may be received at input {45}.
+The entry keys(B[],Kbs[]) that may be in a table by 2 may be read at get {54}.
+The entry keys(B[],Kbs[]) that may be in a table by 2 may be read at get {53}.
+So the message (internal_encrypt((B[],k_4,Na_1,Nb_1),Kbs[],r_7),internal_encrypt((B[],k_4),Kbs[],r_7)) may be sent to the attacker at output {52}.
+attacker_bitstring((internal_encrypt((B[],k_4,Na_1,Nb_1),Kbs[],r_7),internal_encrypt((B[],k_4),Kbs[],r_7))).
+
+11. By 10, the attacker may know (internal_encrypt((B[],k_4,Na_1,Nb_1),Kbs[],r_7),internal_encrypt((B[],k_4),Kbs[],r_7)).
+Using the function 1-proj-bitstring-bitstring-tuple the attacker may obtain internal_encrypt((B[],k_4,Na_1,Nb_1),Kbs[],r_7).
+attacker_bitstring(internal_encrypt((B[],k_4,Na_1,Nb_1),Kbs[],r_7)).
+
+12. By 11, the attacker may know internal_encrypt((B[],k_4,Na_1,Nb_1),Kbs[],r_7).
+By 3, the attacker may know cert2_2.
+Using the function bitstring-bitstring-tuple the attacker may obtain (internal_encrypt((B[],k_4,Na_1,Nb_1),Kbs[],r_7),cert2_2).
+attacker_bitstring((internal_encrypt((B[],k_4,Na_1,Nb_1),Kbs[],r_7),cert2_2)).
+
+13. The message B[] that the attacker may have by 1 may be received at input {6}.
+The entry keys(B[],Kbs[]) that may be in a table by 2 may be read at get {23}.
+The message (internal_encrypt((B[],k_4,Na_1,Nb_1),Kbs[],r_7),cert2_2) that the attacker may have by 12 may be received at input {10}.
+So event endAkey(B[],B[],k_4) may be executed at {19} in session @sid.
+inj-event(endAkey(B[],B[],k_4),@occ19_1).
+
+14. By 13, inj-event(endAkey(B[],B[],k_4),@occ19_1).
+The goal is reached, represented in the following fact:
+inj-event(endAkey(B[],B[],k_4),@occ19_1).
+
+
+A more detailed output of the traces is available with
+  set traceDisplay = long.
+
+new Kas: key creating Kas_1 at {1}
+
+new Kbs: key creating Kbs_1 at {2}
+
+insert keys(A,Kas_1) at {3}
+
+insert keys(B,Kbs_1) at {4}
+
+in(c, B) at {6} in copy a_1
+
+get keys(B,Kbs_1) at {23} in copy a_1
+
+new Na: nonce creating Na_2 at {8} in copy a_1
+
+out(c, (~M,~M_1)) with ~M = B, ~M_1 = Na_2 at {9} in copy a_1
+
+in(c, B) at {25} in copy a_2
+
+get keys(B,Kbs_1) at {43} in copy a_2
+
+in(c, (B,~M_1)) with ~M_1 = Na_2 at {27} in copy a_2
+
+event beginAparam(B,B) at {28} in copy a_2
+
+new Nb: nonce creating Nb_2 at {29} in copy a_2
+
+new r_2: seed creating r_8 at {31} in copy a_2
+
+out(c, (~M_2,~M_3)) with ~M_2 = B, ~M_3 = internal_encrypt((B,Na_2,Nb_2),Kbs_1,r_8) at {32} in copy a_2
+
+in(c, (B,~M_3)) with ~M_3 = internal_encrypt((B,Na_2,Nb_2),Kbs_1,r_8) at {45} in copy a_3
+
+get keys(B,Kbs_1) at {54} in copy a_3
+
+get keys(B,Kbs_1) at {53} in copy a_3
+
+new k_2: key creating k_5 at {47} in copy a_3
+
+new r_4: seed creating r_9 at {49} in copy a_3
+
+new r_5: seed creating r_10 at {51} in copy a_3
+
+out(c, (~M_4,~M_5)) with ~M_4 = internal_encrypt((B,k_5,Na_2,Nb_2),Kbs_1,r_10), ~M_5 = internal_encrypt((B,k_5),Kbs_1,r_10) at {52} in copy a_3
+
+in(c, (~M_4,a_4)) with ~M_4 = internal_encrypt((B,k_5,Na_2,Nb_2),Kbs_1,r_10) at {10} in copy a_1
+
+event beginBparam(B,B) at {12} in copy a_1
+
+event beginBkey(B,B,k_5) at {13} in copy a_1
+
+new r: seed creating r_11 at {15} in copy a_1
+
+out(c, (~M_6,~M_7)) with ~M_6 = a_4, ~M_7 = internal_encrypt(nonce_to_bitstring(Nb_2),k_5,r_11) at {16} in copy a_1
+
+event endAparam(B,B) at {18} in copy a_1
+
+event endAkey(B,B,k_5) at {19} in copy a_1 (goal)
+
+The event endAkey(B,B,k_5) is executed at {19} in copy a_1.
+A trace has been found.
+RESULT inj-event(endAkey(x_6,y,z)) ==> inj-event(beginAkey(x_6,y,z)) is false.
+RESULT (even event(endAkey(x_6,y,z)) ==> event(beginAkey(x_6,y,z)) is false.)
+-- Query inj-event(endBparam(x_6,y)) ==> inj-event(beginBparam(x_6,y)) in process 1.
+Translating the process into Horn clauses...
+Completing...
+200 rules inserted. Base: 186 rules (78 with conclusion selected). Queue: 34 rules.
+ok, secrecy assumption verified: fact unreachable attacker_key(Kas[])
+ok, secrecy assumption verified: fact unreachable attacker_key(Kbs[])
+Starting query inj-event(endBparam(x_6,y)) ==> inj-event(beginBparam(x_6,y))
+goal reachable: b-inj-event(beginBparam(B[],B[]),@occ12_1) && attacker_bitstring(cert2_2) -> inj-event(endBparam(B[],B[]),@occ38_1)
+The 1st hypothesis occurs strictly before the conclusion.
+The 2nd hypothesis occurs before the conclusion.
+Abbreviations:
+Na_1 = Na[kas = Kbs[],xA = B[],!1 = @sid]
+Nb_1 = Nb[na = Na_1,a = B[],kbs = Kbs[],xB = B[],!1 = @sid_1]
+r_6 = r_2[na = Na_1,a = B[],kbs = Kbs[],xB = B[],!1 = @sid_1]
+k_4 = k_2[k1 = Kbs[],k2 = Kbs[],m_1 = internal_encrypt((B[],Na_1,Nb_1),Kbs[],r_6),h2 = B[],!1 = @sid_2]
+r_7 = r_5[k1 = Kbs[],k2 = Kbs[],m_1 = internal_encrypt((B[],Na_1,Nb_1),Kbs[],r_6),h2 = B[],!1 = @sid_2]
+r_8 = r[cert2 = cert2_2,cert1 = internal_encrypt((B[],k_4,Na_1,Nb_1),Kbs[],r_7),kas = Kbs[],xA = B[],!1 = @sid]
+@occ38_1 = @occ38[m = internal_encrypt(nonce_to_bitstring(Nb_1),k_4,r_8),cert2_1 = internal_encrypt((B[],k_4),Kbs[],r_7),na = Na_1,a = B[],kbs = Kbs[],xB = B[],!1 = @sid_1]
+@occ12_1 = @occ12[cert2 = cert2_2,cert1 = internal_encrypt((B[],k_4,Na_1,Nb_1),Kbs[],r_7),kas = Kbs[],xA = B[],!1 = @sid]
+goal reachable: b-inj-event(beginBparam(B[],A[]),@occ12_1) && attacker_bitstring(cert2_2) -> inj-event(endBparam(B[],A[]),@occ38_1)
+The 1st hypothesis occurs strictly before the conclusion.
+The 2nd hypothesis occurs before the conclusion.
+Abbreviations:
+Na_1 = Na[kas = Kbs[],xA = B[],!1 = @sid]
+Nb_1 = Nb[na = Na_1,a = B[],kbs = Kas[],xB = A[],!1 = @sid_1]
+r_6 = r_2[na = Na_1,a = B[],kbs = Kas[],xB = A[],!1 = @sid_1]
+k_4 = k_2[k1 = Kbs[],k2 = Kas[],m_1 = internal_encrypt((B[],Na_1,Nb_1),Kas[],r_6),h2 = A[],!1 = @sid_2]
+r_7 = r_5[k1 = Kbs[],k2 = Kas[],m_1 = internal_encrypt((B[],Na_1,Nb_1),Kas[],r_6),h2 = A[],!1 = @sid_2]
+r_8 = r[cert2 = cert2_2,cert1 = internal_encrypt((A[],k_4,Na_1,Nb_1),Kbs[],r_7),kas = Kbs[],xA = B[],!1 = @sid]
+@occ38_1 = @occ38[m = internal_encrypt(nonce_to_bitstring(Nb_1),k_4,r_8),cert2_1 = internal_encrypt((B[],k_4),Kas[],r_7),na = Na_1,a = B[],kbs = Kas[],xB = A[],!1 = @sid_1]
+@occ12_1 = @occ12[cert2 = cert2_2,cert1 = internal_encrypt((A[],k_4,Na_1,Nb_1),Kbs[],r_7),kas = Kbs[],xA = B[],!1 = @sid]
+goal reachable: b-inj-event(beginBparam(A[],B[]),@occ12_1) && attacker_bitstring(cert2_2) -> inj-event(endBparam(A[],B[]),@occ38_1)
+The 1st hypothesis occurs strictly before the conclusion.
+The 2nd hypothesis occurs before the conclusion.
+Abbreviations:
+Na_1 = Na[kas = Kas[],xA = A[],!1 = @sid]
+Nb_1 = Nb[na = Na_1,a = A[],kbs = Kbs[],xB = B[],!1 = @sid_1]
+r_6 = r_2[na = Na_1,a = A[],kbs = Kbs[],xB = B[],!1 = @sid_1]
+k_4 = k_2[k1 = Kas[],k2 = Kbs[],m_1 = internal_encrypt((A[],Na_1,Nb_1),Kbs[],r_6),h2 = B[],!1 = @sid_2]
+r_7 = r_5[k1 = Kas[],k2 = Kbs[],m_1 = internal_encrypt((A[],Na_1,Nb_1),Kbs[],r_6),h2 = B[],!1 = @sid_2]
+r_8 = r[cert2 = cert2_2,cert1 = internal_encrypt((B[],k_4,Na_1,Nb_1),Kas[],r_7),kas = Kas[],xA = A[],!1 = @sid]
+@occ38_1 = @occ38[m = internal_encrypt(nonce_to_bitstring(Nb_1),k_4,r_8),cert2_1 = internal_encrypt((A[],k_4),Kbs[],r_7),na = Na_1,a = A[],kbs = Kbs[],xB = B[],!1 = @sid_1]
+@occ12_1 = @occ12[cert2 = cert2_2,cert1 = internal_encrypt((B[],k_4,Na_1,Nb_1),Kas[],r_7),kas = Kas[],xA = A[],!1 = @sid]
+goal reachable: b-inj-event(beginBparam(A[],A[]),@occ12_1) && attacker_bitstring(cert2_2) -> inj-event(endBparam(A[],A[]),@occ38_1)
+The 1st hypothesis occurs strictly before the conclusion.
+The 2nd hypothesis occurs before the conclusion.
+Abbreviations:
+Na_1 = Na[kas = Kas[],xA = A[],!1 = @sid]
+Nb_1 = Nb[na = Na_1,a = A[],kbs = Kas[],xB = A[],!1 = @sid_1]
+r_6 = r_2[na = Na_1,a = A[],kbs = Kas[],xB = A[],!1 = @sid_1]
+k_4 = k_2[k1 = Kas[],k2 = Kas[],m_1 = internal_encrypt((A[],Na_1,Nb_1),Kas[],r_6),h2 = A[],!1 = @sid_2]
+r_7 = r_5[k1 = Kas[],k2 = Kas[],m_1 = internal_encrypt((A[],Na_1,Nb_1),Kas[],r_6),h2 = A[],!1 = @sid_2]
+r_8 = r[cert2 = cert2_2,cert1 = internal_encrypt((A[],k_4,Na_1,Nb_1),Kas[],r_7),kas = Kas[],xA = A[],!1 = @sid]
+@occ38_1 = @occ38[m = internal_encrypt(nonce_to_bitstring(Nb_1),k_4,r_8),cert2_1 = internal_encrypt((A[],k_4),Kas[],r_7),na = Na_1,a = A[],kbs = Kas[],xB = A[],!1 = @sid_1]
+@occ12_1 = @occ12[cert2 = cert2_2,cert1 = internal_encrypt((A[],k_4,Na_1,Nb_1),Kas[],r_7),kas = Kas[],xA = A[],!1 = @sid]
+RESULT inj-event(endBparam(x_6,y)) ==> inj-event(beginBparam(x_6,y)) is true.
+-- Query inj-event(endBkey(x_6,y,z)) ==> inj-event(beginBkey(x_6,y,z)) in process 1.
+Translating the process into Horn clauses...
+Completing...
+200 rules inserted. Base: 186 rules (78 with conclusion selected). Queue: 34 rules.
+ok, secrecy assumption verified: fact unreachable attacker_key(Kas[])
+ok, secrecy assumption verified: fact unreachable attacker_key(Kbs[])
+Starting query inj-event(endBkey(x_6,y,z)) ==> inj-event(beginBkey(x_6,y,z))
+goal reachable: b-inj-event(beginBkey(B[],B[],k_4),@occ13_1) && attacker_bitstring(cert2_2) -> inj-event(endBkey(B[],B[],k_4),@occ39_1)
+The 1st hypothesis occurs strictly before the conclusion.
+The 2nd hypothesis occurs before the conclusion.
+Abbreviations:
+Na_1 = Na[kas = Kbs[],xA = B[],!1 = @sid]
+Nb_1 = Nb[na = Na_1,a = B[],kbs = Kbs[],xB = B[],!1 = @sid_1]
+r_6 = r_2[na = Na_1,a = B[],kbs = Kbs[],xB = B[],!1 = @sid_1]
+k_4 = k_2[k1 = Kbs[],k2 = Kbs[],m_1 = internal_encrypt((B[],Na_1,Nb_1),Kbs[],r_6),h2 = B[],!1 = @sid_2]
+r_7 = r_5[k1 = Kbs[],k2 = Kbs[],m_1 = internal_encrypt((B[],Na_1,Nb_1),Kbs[],r_6),h2 = B[],!1 = @sid_2]
+r_8 = r[cert2 = cert2_2,cert1 = internal_encrypt((B[],k_4,Na_1,Nb_1),Kbs[],r_7),kas = Kbs[],xA = B[],!1 = @sid]
+@occ39_1 = @occ39[m = internal_encrypt(nonce_to_bitstring(Nb_1),k_4,r_8),cert2_1 = internal_encrypt((B[],k_4),Kbs[],r_7),na = Na_1,a = B[],kbs = Kbs[],xB = B[],!1 = @sid_1]
+@occ13_1 = @occ13[cert2 = cert2_2,cert1 = internal_encrypt((B[],k_4,Na_1,Nb_1),Kbs[],r_7),kas = Kbs[],xA = B[],!1 = @sid]
+goal reachable: b-inj-event(beginBkey(B[],A[],k_4),@occ13_1) && attacker_bitstring(cert2_2) -> inj-event(endBkey(B[],A[],k_4),@occ39_1)
+The 1st hypothesis occurs strictly before the conclusion.
+The 2nd hypothesis occurs before the conclusion.
+Abbreviations:
+Na_1 = Na[kas = Kbs[],xA = B[],!1 = @sid]
+Nb_1 = Nb[na = Na_1,a = B[],kbs = Kas[],xB = A[],!1 = @sid_1]
+r_6 = r_2[na = Na_1,a = B[],kbs = Kas[],xB = A[],!1 = @sid_1]
+k_4 = k_2[k1 = Kbs[],k2 = Kas[],m_1 = internal_encrypt((B[],Na_1,Nb_1),Kas[],r_6),h2 = A[],!1 = @sid_2]
+r_7 = r_5[k1 = Kbs[],k2 = Kas[],m_1 = internal_encrypt((B[],Na_1,Nb_1),Kas[],r_6),h2 = A[],!1 = @sid_2]
+r_8 = r[cert2 = cert2_2,cert1 = internal_encrypt((A[],k_4,Na_1,Nb_1),Kbs[],r_7),kas = Kbs[],xA = B[],!1 = @sid]
+@occ39_1 = @occ39[m = internal_encrypt(nonce_to_bitstring(Nb_1),k_4,r_8),cert2_1 = internal_encrypt((B[],k_4),Kas[],r_7),na = Na_1,a = B[],kbs = Kas[],xB = A[],!1 = @sid_1]
+@occ13_1 = @occ13[cert2 = cert2_2,cert1 = internal_encrypt((A[],k_4,Na_1,Nb_1),Kbs[],r_7),kas = Kbs[],xA = B[],!1 = @sid]
+goal reachable: b-inj-event(beginBkey(A[],B[],k_4),@occ13_1) && attacker_bitstring(cert2_2) -> inj-event(endBkey(A[],B[],k_4),@occ39_1)
+The 1st hypothesis occurs strictly before the conclusion.
+The 2nd hypothesis occurs before the conclusion.
+Abbreviations:
+Na_1 = Na[kas = Kas[],xA = A[],!1 = @sid]
+Nb_1 = Nb[na = Na_1,a = A[],kbs = Kbs[],xB = B[],!1 = @sid_1]
+r_6 = r_2[na = Na_1,a = A[],kbs = Kbs[],xB = B[],!1 = @sid_1]
+k_4 = k_2[k1 = Kas[],k2 = Kbs[],m_1 = internal_encrypt((A[],Na_1,Nb_1),Kbs[],r_6),h2 = B[],!1 = @sid_2]
+r_7 = r_5[k1 = Kas[],k2 = Kbs[],m_1 = internal_encrypt((A[],Na_1,Nb_1),Kbs[],r_6),h2 = B[],!1 = @sid_2]
+r_8 = r[cert2 = cert2_2,cert1 = internal_encrypt((B[],k_4,Na_1,Nb_1),Kas[],r_7),kas = Kas[],xA = A[],!1 = @sid]
+@occ39_1 = @occ39[m = internal_encrypt(nonce_to_bitstring(Nb_1),k_4,r_8),cert2_1 = internal_encrypt((A[],k_4),Kbs[],r_7),na = Na_1,a = A[],kbs = Kbs[],xB = B[],!1 = @sid_1]
+@occ13_1 = @occ13[cert2 = cert2_2,cert1 = internal_encrypt((B[],k_4,Na_1,Nb_1),Kas[],r_7),kas = Kas[],xA = A[],!1 = @sid]
+goal reachable: b-inj-event(beginBkey(A[],A[],k_4),@occ13_1) && attacker_bitstring(cert2_2) -> inj-event(endBkey(A[],A[],k_4),@occ39_1)
+The 1st hypothesis occurs strictly before the conclusion.
+The 2nd hypothesis occurs before the conclusion.
+Abbreviations:
+Na_1 = Na[kas = Kas[],xA = A[],!1 = @sid]
+Nb_1 = Nb[na = Na_1,a = A[],kbs = Kas[],xB = A[],!1 = @sid_1]
+r_6 = r_2[na = Na_1,a = A[],kbs = Kas[],xB = A[],!1 = @sid_1]
+k_4 = k_2[k1 = Kas[],k2 = Kas[],m_1 = internal_encrypt((A[],Na_1,Nb_1),Kas[],r_6),h2 = A[],!1 = @sid_2]
+r_7 = r_5[k1 = Kas[],k2 = Kas[],m_1 = internal_encrypt((A[],Na_1,Nb_1),Kas[],r_6),h2 = A[],!1 = @sid_2]
+r_8 = r[cert2 = cert2_2,cert1 = internal_encrypt((A[],k_4,Na_1,Nb_1),Kas[],r_7),kas = Kas[],xA = A[],!1 = @sid]
+@occ39_1 = @occ39[m = internal_encrypt(nonce_to_bitstring(Nb_1),k_4,r_8),cert2_1 = internal_encrypt((A[],k_4),Kas[],r_7),na = Na_1,a = A[],kbs = Kas[],xB = A[],!1 = @sid_1]
+@occ13_1 = @occ13[cert2 = cert2_2,cert1 = internal_encrypt((A[],k_4,Na_1,Nb_1),Kas[],r_7),kas = Kas[],xA = A[],!1 = @sid]
+RESULT inj-event(endBkey(x_6,y,z)) ==> inj-event(beginBkey(x_6,y,z)) is true.
+
+--------------------------------------------------------------
+Verification summary:
+
+Query not attacker_bitstring(secretA[]) is true.
+
+Query not attacker_bitstring(secretB[]) is true.
+
+Query inj-event(endAparam(x_6,y)) ==> inj-event(beginAparam(x_6,y)) is true.
+
+Query inj-event(endAkey(x_6,y,z)) ==> inj-event(beginAkey(x_6,y,z)) is false.
+
+Query inj-event(endBparam(x_6,y)) ==> inj-event(beginBparam(x_6,y)) is true.
+
+Query inj-event(endBkey(x_6,y,z)) ==> inj-event(beginBkey(x_6,y,z)) is true.
+
+--------------------------------------------------------------
+

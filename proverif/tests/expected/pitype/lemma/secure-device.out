@@ -1,0 +1,78 @@
+Process 0 (that is, the initial process):
+{1}!
+{2}new cell: channel;
+{3}new k: bitstring;
+(
+    {4}out(c, pk(k))
+) | (
+    {5}out(cell, (0,init))
+) | (
+    {6}!
+    {7}in(c, x: bitstring);
+    {8}in(cell, (i: nat,y: bitstring));
+    {9}event VCell_bitstring(cell,(i,y));
+    {10}let test: bool = ((y = init) && ((x = left) || (x = right))) in
+    {11}if test then
+        {12}new st[]: stamp;
+        {13}event Counter(cell,id,st,i);
+        {14}event VCell_bitstring(cell,(i + 1,x));
+        {15}out(cell, (i + 1,x))
+    else
+        {16}out(cell, (i,y))
+) | (
+    {17}!
+    {18}in(c, x_1: bitstring);
+    {19}let (xl: bitstring,xr: bitstring) = adec(x_1,k) in
+    {20}in(cell, (i_1: nat,y_1: bitstring));
+    {21}event VCell_bitstring(cell,(i_1,y_1));
+    {22}if (y_1 = left) then
+        {23}out(c, xl);
+        {24}out(cell, (i_1,y_1))
+    else
+        {25}if (y_1 = right) then
+            {26}out(c, xr);
+            {27}out(cell, (i_1,y_1))
+        else
+            {28}out(cell, (i_1,y_1))
+) | (
+    {29}!
+    {30}in(cell, (i_2: nat,x_2: bitstring));
+    {31}event VCell_bitstring(cell,(i_2,x_2));
+    {32}out(cell, (i_2,x_2))
+) | (
+    {33}!
+    {34}new sl: bitstring;
+    {35}new sr: bitstring;
+    (
+        {36}out(c, aenc((sl,sr),pk(k)))
+    ) | (
+        {37}in(c, (=sl,=sr));
+        {38}event Attack
+    )
+)
+
+-- Axiom 
+   event(VCell_bitstring(d,(i_3,x1))) && event(VCell_bitstring(d,(i_3,x_3))) ==> x1 = x_3
+   event(Counter(d,st2,st_1,i1)) && event(Counter(d,st2,st_1,i_3)) ==> i1 = i_3
+   event(Counter(d,st2,st_1,i1)) && event(Counter(d,st2,st1,i1)) ==> st_1 = st1
+ in process 0.
+-- Query not event(Attack) in process 0.
+Translating the process into Horn clauses...
+Completing...
+Starting query not event(Attack)
+RESULT not event(Attack) is true.
+
+--------------------------------------------------------------
+Verification summary:
+
+Query(ies):
+ - Query not event(Attack) is true.
+Associated axiom(s):
+ - Axiom 
+   event(VCell_bitstring(d,(i_3,x1))) && event(VCell_bitstring(d,(i_3,x_3))) ==> x1 = x_3
+   event(Counter(d,st2,st_1,i1)) && event(Counter(d,st2,st_1,i_3)) ==> i1 = i_3
+   event(Counter(d,st2,st_1,i1)) && event(Counter(d,st2,st1,i1)) ==> st_1 = st1
+ in process 0.
+
+--------------------------------------------------------------
+

@@ -1,0 +1,222 @@
+Process 0 (that is, the initial process):
+{1}new d: channel;
+(
+    {2}out(d, 0)
+) | (
+    {3}!
+    {4}new skS: bitstring;
+    {5}out(c, pk(skS));
+    (
+        {6}!
+        {7}let d_1: channel = d in
+        {8}let skS_1: bitstring = skS in
+        {9}in(c, (A: agent,pkA: bitstring));
+        {10}in(c, sig: bitstring);
+        {11}in(d_1, i: nat);
+        {30}get db_server_valid(=skS_1,=A,=pkA) in
+        {12}let (=renew,=A,new_pkA: bitstring) = checksign(sig,pkA) in
+        {29}get db_server_valid(x: bitstring,y: agent,=new_pkA) in
+            {13}out(c, error)
+        else
+            {28}get db_server_revoked(x': bitstring,y': agent,=new_pkA) in
+                {14}out(c, error)
+            else
+                {27}get db_server_revoked(x'_1: bitstring,y'_1: agent,=pkA) in
+                    {15}out(c, error)
+                else
+                    {16}event TestValid(i,new_pkA);
+                    {17}event TestRevoked(i,id1,pkA);
+                    {18}event TestRevoked(i,id2,new_pkA);
+                    {19}event InRevoked(i + 1,skS_1,A,pkA);
+                    {20}insert db_server_revoked(skS_1,A,pkA);
+                    {21}event InValid(i + 1,skS_1,A,new_pkA);
+                    {22}insert db_server_valid(skS_1,A,new_pkA);
+                    {23}event Honest(new_pkA);
+                    {24}event Revoked(pkA);
+                    {25}out(c, sign((confirm,sig),skS_1));
+                    {26}out(d_1, i + 1)
+    ) | (
+        {31}!
+        {32}new A_1: agent;
+        {33}new cellA: channel;
+        (
+            {34}out(c, A_1)
+        ) | (
+            {35}let d_2: channel = d in
+            {36}let A_2: agent = A_1 in
+            {37}let cellA_1: channel = cellA in
+            {38}let skS_2: bitstring = skS in
+            {39}new k: bitstring;
+            {40}out(cellA_1, k);
+            {41}in(d_2, i_1: nat);
+            {42}event Honest(pk(k));
+            {43}event InValid(i_1 + 1,skS_2,A_2,pk(k));
+            {44}insert db_server_valid(skS_2,A_2,pk(k));
+            {45}out(d_2, i_1 + 1);
+            {46}out(c, pk(k))
+        ) | (
+            {47}!
+            {48}let A_3: agent = A_1 in
+            {49}let cellA_2: channel = cellA in
+            {50}let pkS: bitstring = pk(skS) in
+            {51}new k': bitstring;
+            {52}in(cellA_2, k_1: bitstring);
+            {53}out(c, (A_3,pk(k_1)));
+            {54}let sig_1: bitstring = sign((renew,A_3,pk(k')),k_1) in
+            {55}out(c, sig_1);
+            {56}in(c, sig': bitstring);
+            {57}let (=confirm,=sig_1) = checksign(sig',pkS) in
+            {58}out(c, k_1);
+            {59}out(cellA_2, k')
+        )
+    )
+)
+
+--  Process 1 (that is, process 0, with let moved downwards):
+{1}new d: channel;
+(
+    {2}out(d, 0)
+) | (
+    {3}!
+    {4}new skS: bitstring;
+    {5}out(c, pk(skS));
+    (
+        {6}!
+        {9}in(c, (A: agent,pkA: bitstring));
+        {10}in(c, sig: bitstring);
+        {7}let d_1: channel = d in
+        {11}in(d_1, i: nat);
+        {8}let skS_1: bitstring = skS in
+        {30}get db_server_valid(=skS_1,=A,=pkA) in
+        {12}let (=renew,=A,new_pkA: bitstring) = checksign(sig,pkA) in
+        {29}get db_server_valid(x: bitstring,y: agent,=new_pkA) in
+            {13}out(c, error)
+        else
+            {28}get db_server_revoked(x': bitstring,y': agent,=new_pkA) in
+                {14}out(c, error)
+            else
+                {27}get db_server_revoked(x'_1: bitstring,y'_1: agent,=pkA) in
+                    {15}out(c, error)
+                else
+                    {16}event TestValid(i,new_pkA);
+                    {17}event TestRevoked(i,id1,pkA);
+                    {18}event TestRevoked(i,id2,new_pkA);
+                    {19}event InRevoked(i + 1,skS_1,A,pkA);
+                    {20}insert db_server_revoked(skS_1,A,pkA);
+                    {21}event InValid(i + 1,skS_1,A,new_pkA);
+                    {22}insert db_server_valid(skS_1,A,new_pkA);
+                    {23}event Honest(new_pkA);
+                    {24}event Revoked(pkA);
+                    {25}out(c, sign((confirm,sig),skS_1));
+                    {26}out(d_1, i + 1)
+    ) | (
+        {31}!
+        {32}new A_1: agent;
+        {33}new cellA: channel;
+        (
+            {34}out(c, A_1)
+        ) | (
+            {39}new k: bitstring;
+            {37}let cellA_1: channel = cellA in
+            {40}out(cellA_1, k);
+            {35}let d_2: channel = d in
+            {41}in(d_2, i_1: nat);
+            {42}event Honest(pk(k));
+            {38}let skS_2: bitstring = skS in
+            {36}let A_2: agent = A_1 in
+            {43}event InValid(i_1 + 1,skS_2,A_2,pk(k));
+            {44}insert db_server_valid(skS_2,A_2,pk(k));
+            {45}out(d_2, i_1 + 1);
+            {46}out(c, pk(k))
+        ) | (
+            {47}!
+            {51}new k': bitstring;
+            {49}let cellA_2: channel = cellA in
+            {52}in(cellA_2, k_1: bitstring);
+            {48}let A_3: agent = A_1 in
+            {53}out(c, (A_3,pk(k_1)));
+            {54}let sig_1: bitstring = sign((renew,A_3,pk(k')),k_1) in
+            {55}out(c, sig_1);
+            {56}in(c, sig': bitstring);
+            {50}let pkS: bitstring = pk(skS) in
+            {57}let (=confirm,=sig_1) = checksign(sig',pkS) in
+            {58}out(c, k_1);
+            {59}out(cellA_2, k')
+        )
+    )
+)
+
+Declared: select mess(d[],i_2)/-6000 [inductionOn = {i_2},hypothesis]
+-- Axiom 
+   event(TestValid(i',k_2)) && event(InValid(i_2,sks,A_4,k_2)) ==> i_2 ≥ i' + 1
+   event(TestRevoked(i',id,k_2)) && event(InRevoked(i_2,sks,A_4,k_2)) ==> i_2 ≥ i' + 1
+   event(InValid(i_2,sks,A_4,k_2)) && event(InValid(i_2,sks',A',k'_1)) ==> (sks,A_4,k_2) = (sks',A',k'_1)
+   event(InRevoked(i_2,sks,A_4,k_2)) && event(InRevoked(i_2,sks',A',k'_1)) ==> (sks,A_4,k_2) = (sks',A',k'_1)
+ in process 1.
+-- Query 
+   event(Honest(pk(ky))) && attacker(ky) ==> event(Revoked(pk(ky)))
+   event(Honest(pk(ky))) ==> ky = k[!2 = v,!1 = v_1] || ky = k'[!3 = v_2,!2 = v_3,!1 = v_4]
+ in process 1.
+Translating the process into Horn clauses...
+Completing...
+Termination warning: Selecting an hypothesis matching the conclusion.
+In case of non-termination, try a noselect declaration implying the following one:
+   noselect @sid:sid, @sid_1:sid, @sid_2:sid; mess(cellA[!2 = *@sid_2,!1 = *@sid_1],k'[!3 = *@sid,!2 = *@sid_2,!1 = *@sid_1]).
+Starting query event(Honest(pk(ky))) && attacker(ky) ==> event(Revoked(pk(ky)))
+goal reachable: i_2 ≥ i_3 && b-event(InValid(i_3 + 1,skS_3,A_4,pk(k'_1))) && b-event(InRevoked(i_3 + 1,skS_3,A_4,pk(k_2))) && b-event(TestRevoked(i_3,id2[],pk(k'_1))) && b-event(TestRevoked(i_3,id1[],pk(k_2))) && b-event(TestValid(i_3,pk(k'_1))) && mess(d[],i_3) && b-event(Revoked(pk(k'_1))) && b-event(InValid(i_2 + 1,skS_3,A_4,pk(k'_2))) && b-event(InRevoked(i_2 + 1,skS_3,A_4,pk(k'_1))) && b-event(TestRevoked(i_2,id2[],pk(k'_2))) && b-event(TestRevoked(i_2,id1[],pk(k'_1))) && b-event(TestValid(i_2,pk(k'_2))) && mess(d[],i_2) && b-event(Revoked(pk(k_2))) && b-event(InValid(i_4 + 1,skS_3,A_4,pk(k_2))) && mess(d[],i_4) -> event(Honest(pk(k'_1))) && attacker(k'_1)
+Abbreviations:
+k'_1 = k'[!3 = @sid,!2 = @sid_1,!1 = @sid_2]
+skS_3 = skS[!1 = @sid_2]
+A_4 = A_1[!2 = @sid_1,!1 = @sid_2]
+k_2 = k[!2 = @sid_1,!1 = @sid_2]
+k'_2 = k'[!3 = @sid_3,!2 = @sid_1,!1 = @sid_2]
+goal reachable: i_2 ≥ i_3 && b-event(InValid(i_3 + 1,skS_3,A_4,pk(k'_1))) && b-event(InRevoked(i_3 + 1,skS_3,A_4,pk(k'_2))) && b-event(TestRevoked(i_3,id2[],pk(k'_1))) && b-event(TestRevoked(i_3,id1[],pk(k'_2))) && b-event(TestValid(i_3,pk(k'_1))) && mess(d[],i_3) && b-event(Revoked(pk(k'_1))) && b-event(InValid(i_2 + 1,skS_3,A_4,pk(k'_3))) && b-event(InRevoked(i_2 + 1,skS_3,A_4,pk(k'_1))) && b-event(TestRevoked(i_2,id2[],pk(k'_3))) && b-event(TestRevoked(i_2,id1[],pk(k'_1))) && b-event(TestValid(i_2,pk(k'_3))) && mess(d[],i_2) && b-event(Revoked(pk(k_2))) && b-event(InValid(i_4 + 1,skS_3,A_4,pk(k_2))) && mess(d[],i_4) -> event(Honest(pk(k'_1))) && attacker(k'_1)
+Abbreviations:
+k'_1 = k'[!3 = @sid,!2 = @sid_1,!1 = @sid_2]
+skS_3 = skS[!1 = @sid_2]
+A_4 = A_1[!2 = @sid_1,!1 = @sid_2]
+k'_2 = k'[!3 = @sid_3,!2 = @sid_1,!1 = @sid_2]
+k'_3 = k'[!3 = @sid_4,!2 = @sid_1,!1 = @sid_2]
+k_2 = k[!2 = @sid_1,!1 = @sid_2]
+goal reachable: is_nat(i_2) && b-event(Revoked(pk(k_2))) && b-event(InValid(i_2 + 1,skS_3,A_4,pk(k'_1))) && b-event(InRevoked(i_2 + 1,skS_3,A_4,pk(k_2))) && b-event(TestRevoked(i_2,id2[],pk(k'_1))) && b-event(TestRevoked(i_2,id1[],pk(k_2))) && b-event(TestValid(i_2,pk(k'_1))) && b-event(InValid(i_3 + 1,skS_3,A_4,pk(k_2))) && mess(d[],i_3) && mess(d[],i_2) -> event(Honest(pk(k_2))) && attacker(k_2)
+Abbreviations:
+k_2 = k[!2 = @sid,!1 = @sid_1]
+skS_3 = skS[!1 = @sid_1]
+A_4 = A_1[!2 = @sid,!1 = @sid_1]
+k'_1 = k'[!3 = @sid_2,!2 = @sid,!1 = @sid_1]
+RESULT event(Honest(pk(ky))) && attacker(ky) ==> event(Revoked(pk(ky))) is true.
+Starting query event(Honest(pk(ky))) ==> ky = k[!2 = v,!1 = v_1] || ky = k'[!3 = v_2,!2 = v_3,!1 = v_4]
+goal reachable: is_nat(i_2) && b-event(InValid(i_2 + 1,skS_3,A_4,pk(k'_1))) && b-event(InRevoked(i_2 + 1,skS_3,A_4,pk(k_2))) && b-event(TestRevoked(i_2,id2[],pk(k'_1))) && b-event(TestRevoked(i_2,id1[],pk(k_2))) && b-event(TestValid(i_2,pk(k'_1))) && b-event(InValid(i_3 + 1,skS_3,A_4,pk(k_2))) && mess(d[],i_3) && mess(d[],i_2) -> event(Honest(pk(k'_1)))
+Abbreviations:
+k'_1 = k'[!3 = @sid,!2 = @sid_1,!1 = @sid_2]
+skS_3 = skS[!1 = @sid_2]
+A_4 = A_1[!2 = @sid_1,!1 = @sid_2]
+k_2 = k[!2 = @sid_1,!1 = @sid_2]
+goal reachable: is_nat(i_2) && b-event(InValid(i_2 + 1,skS_3,A_4,pk(k'_1))) && b-event(InRevoked(i_2 + 1,skS_3,A_4,pk(k'_2))) && b-event(TestRevoked(i_2,id2[],pk(k'_1))) && b-event(TestRevoked(i_2,id1[],pk(k'_2))) && b-event(TestValid(i_2,pk(k'_1))) && mess(d[],i_2) && b-event(Revoked(pk(k_2))) && b-event(InValid(i_3 + 1,skS_3,A_4,pk(k_2))) && mess(d[],i_3) -> event(Honest(pk(k'_1)))
+Abbreviations:
+k'_1 = k'[!3 = @sid,!2 = @sid_1,!1 = @sid_2]
+skS_3 = skS[!1 = @sid_2]
+A_4 = A_1[!2 = @sid_1,!1 = @sid_2]
+k'_2 = k'[!3 = @sid_3,!2 = @sid_1,!1 = @sid_2]
+k_2 = k[!2 = @sid_1,!1 = @sid_2]
+goal reachable: mess(d[],i_2) -> event(Honest(pk(k_2)))
+Abbreviations:
+k_2 = k[!2 = @sid,!1 = @sid_1]
+RESULT event(Honest(pk(ky))) ==> ky = k[!2 = v,!1 = v_1] || ky = k'[!3 = v_2,!2 = v_3,!1 = v_4] is true.
+
+--------------------------------------------------------------
+Verification summary:
+
+Query(ies):
+ - Query event(Honest(pk(ky))) && attacker(ky) ==> event(Revoked(pk(ky))) is true.
+ - Query event(Honest(pk(ky))) ==> ky = k[!2 = v,!1 = v_1] || ky = k'[!3 = v_2,!2 = v_3,!1 = v_4] is true.
+Associated axiom(s):
+ - Axiom 
+   event(TestValid(i',k_2)) && event(InValid(i_2,sks,A_4,k_2)) ==> i_2 ≥ i' + 1
+   event(TestRevoked(i',id,k_2)) && event(InRevoked(i_2,sks,A_4,k_2)) ==> i_2 ≥ i' + 1
+   event(InValid(i_2,sks,A_4,k_2)) && event(InValid(i_2,sks',A',k'_1)) ==> (sks,A_4,k_2) = (sks',A',k'_1)
+   event(InRevoked(i_2,sks,A_4,k_2)) && event(InRevoked(i_2,sks',A',k'_1)) ==> (sks,A_4,k_2) = (sks',A',k'_1)
+ in process 1.
+
+--------------------------------------------------------------
+

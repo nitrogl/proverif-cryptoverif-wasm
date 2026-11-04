@@ -1,0 +1,581 @@
+File "DenningSacco-corr.pv", line 100, characters 6-9:
+Warning: identifier sskA rebound.
+File "DenningSacco-corr.pv", line 120, characters 6-8:
+Warning: identifier skB rebound.
+File "DenningSacco-corr.pv", line 144, characters 25-26:
+Warning: identifier pk rebound.
+File "DenningSacco-corr.pv", line 150, characters 25-26:
+Warning: identifier pk rebound.
+Process 0 (that is, the initial process):
+{1}new sskA: sskey;
+{2}let spkA: spkey = spk(sskA) in
+{3}out(c, spkA);
+{4}insert sign_keys(A,spkA);
+{5}new skA: skey;
+{6}let pkA: pkey = pk(skA) in
+{7}out(c, pkA);
+{8}insert enc_keys(A,pkA);
+{9}new sskB: sskey;
+{10}let spkB: spkey = spk(sskB) in
+{11}out(c, spkB);
+{12}insert sign_keys(B,spkB);
+{13}new skB: skey;
+{14}let pkB: pkey = pk(skB) in
+{15}out(c, pkB);
+{16}insert enc_keys(B,pkB);
+{17}new skS: sskey;
+{18}let pkS: spkey = spk(skS) in
+{19}out(c, pkS);
+(
+    {20}!
+    {21}let sskA_1: sskey = sskA in
+    {22}let sskB_1: sskey = sskB in
+    {23}in(c, xA: host);
+    {24}if ((xA = A) || (xA = B)) then
+    {25}let sskA_2: sskey = (if (xA = A) then sskA_1 else sskB_1) in
+    {26}let spkA_1: spkey = spk(sskA_2) in
+    {27}in(c, (cert1: bitstring,cert2: bitstring));
+    {28}let (=xA,=spkA_1) = checksign(cert1,pkS) in
+    {29}let (h2: host,pk2: pkey) = checksign(cert2,pkS) in
+    {30}event beginBparam(xA,h2);
+    {31}new k: key;
+    {32}event beginBkey(xA,h2,k);
+    {33}out(c, (cert1,cert2,encrypt(sign((xA,h2,k),sskA_2),pk2)));
+    {34}if (h2 = B) then
+    {35}out(c, sencrypt(secretA,k))
+) | (
+    {36}!
+    {37}let skA_1: skey = skA in
+    {38}let skB_1: skey = skB in
+    {39}in(c, xB: host);
+    {40}if ((xB = A) || (xB = B)) then
+    {41}let skB_2: skey = (if (xB = A) then skA_1 else skB_1) in
+    {42}let pkB_1: pkey = pk(skB_2) in
+    {43}in(c, (cert1_1: bitstring,cert2_1: bitstring,km: bitstring));
+    {44}let (h1: host,pk1: spkey) = checksign(cert1_1,pkS) in
+    {45}let (=xB,=pkB_1) = checksign(cert2_1,pkS) in
+    {46}let ks: bitstring = decrypt(km,skB_2) in
+    {47}let (=h1,=xB,k_1: key) = checksign(ks,pk1) in
+    {48}if (h1 = A) then
+    {49}event endBparam(h1,xB);
+    {50}event endBkey(h1,xB,k_1);
+    {51}out(c, sencrypt(secretB,k_1))
+) | (
+    {52}!
+    {53}let skS_1: sskey = skS in
+    {54}in(c, (h1_1: host,h2_1: host));
+    {57}get sign_keys(=h1_1,pk1_1: spkey) in
+    {56}get enc_keys(=h2_1,pk2_1: pkey) in
+    {55}out(c, (sign((h1_1,pk1_1),skS_1),sign((h2_1,pk2_1),skS_1)))
+) | (
+    {58}!
+    {59}in(c, (h: host,pk_1: spkey));
+    {60}if ((h ≠ A) && (h ≠ B)) then
+    {61}insert sign_keys(h,pk_1)
+) | (
+    {62}!
+    {63}in(c, (h_1: host,pk_2: pkey));
+    {64}if ((h_1 ≠ A) && (h_1 ≠ B)) then
+    {65}insert enc_keys(h_1,pk_2)
+)
+
+--  Process 1 (that is, process 0, with let moved downwards):
+{1}new sskA: sskey;
+{2}let spkA: spkey = spk(sskA) in
+{3}out(c, spkA);
+{4}insert sign_keys(A,spkA);
+{5}new skA: skey;
+{6}let pkA: pkey = pk(skA) in
+{7}out(c, pkA);
+{8}insert enc_keys(A,pkA);
+{9}new sskB: sskey;
+{10}let spkB: spkey = spk(sskB) in
+{11}out(c, spkB);
+{12}insert sign_keys(B,spkB);
+{13}new skB: skey;
+{14}let pkB: pkey = pk(skB) in
+{15}out(c, pkB);
+{16}insert enc_keys(B,pkB);
+{17}new skS: sskey;
+{18}let pkS: spkey = spk(skS) in
+{19}out(c, pkS);
+(
+    {20}!
+    {23}in(c, xA: host);
+    {24}if ((xA = A) || (xA = B)) then
+    {27}in(c, (cert1: bitstring,cert2: bitstring));
+    {22}let sskB_1: sskey = sskB in
+    {21}let sskA_1: sskey = sskA in
+    {25}let sskA_2: sskey = (if (xA = A) then sskA_1 else sskB_1) in
+    {26}let spkA_1: spkey = spk(sskA_2) in
+    {28}let (=xA,=spkA_1) = checksign(cert1,pkS) in
+    {29}let (h2: host,pk2: pkey) = checksign(cert2,pkS) in
+    {30}event beginBparam(xA,h2);
+    {31}new k: key;
+    {32}event beginBkey(xA,h2,k);
+    {33}out(c, (cert1,cert2,encrypt(sign((xA,h2,k),sskA_2),pk2)));
+    {34}if (h2 = B) then
+    {35}out(c, sencrypt(secretA,k))
+) | (
+    {36}!
+    {39}in(c, xB: host);
+    {40}if ((xB = A) || (xB = B)) then
+    {43}in(c, (cert1_1: bitstring,cert2_1: bitstring,km: bitstring));
+    {44}let (h1: host,pk1: spkey) = checksign(cert1_1,pkS) in
+    {38}let skB_1: skey = skB in
+    {37}let skA_1: skey = skA in
+    {41}let skB_2: skey = (if (xB = A) then skA_1 else skB_1) in
+    {42}let pkB_1: pkey = pk(skB_2) in
+    {45}let (=xB,=pkB_1) = checksign(cert2_1,pkS) in
+    {46}let ks: bitstring = decrypt(km,skB_2) in
+    {47}let (=h1,=xB,k_1: key) = checksign(ks,pk1) in
+    {48}if (h1 = A) then
+    {49}event endBparam(h1,xB);
+    {50}event endBkey(h1,xB,k_1);
+    {51}out(c, sencrypt(secretB,k_1))
+) | (
+    {52}!
+    {54}in(c, (h1_1: host,h2_1: host));
+    {57}get sign_keys(=h1_1,pk1_1: spkey) in
+    {56}get enc_keys(=h2_1,pk2_1: pkey) in
+    {53}let skS_1: sskey = skS in
+    {55}out(c, (sign((h1_1,pk1_1),skS_1),sign((h2_1,pk2_1),skS_1)))
+) | (
+    {58}!
+    {59}in(c, (h: host,pk_1: spkey));
+    {60}if ((h ≠ A) && (h ≠ B)) then
+    {61}insert sign_keys(h,pk_1)
+) | (
+    {62}!
+    {63}in(c, (h_1: host,pk_2: pkey));
+    {64}if ((h_1 ≠ A) && (h_1 ≠ B)) then
+    {65}insert enc_keys(h_1,pk_2)
+)
+
+-- Query 
+   not attacker(secretA[])
+   not attacker(secretB[])
+ in process 1.
+Translating the process into Horn clauses...
+Completing...
+ok, secrecy assumption verified: fact unreachable attacker(sskA[])
+ok, secrecy assumption verified: fact unreachable attacker(skB[])
+ok, secrecy assumption verified: fact unreachable attacker(skS[])
+Starting query not attacker(secretA[])
+RESULT not attacker(secretA[]) is true.
+Starting query not attacker(secretB[])
+RESULT not attacker(secretB[]) is true.
+-- Query inj-event(endBparam(x,y)) ==> inj-event(beginBparam(x,y)) in process 1.
+Translating the process into Horn clauses...
+Completing...
+ok, secrecy assumption verified: fact unreachable attacker(sskA[])
+ok, secrecy assumption verified: fact unreachable attacker(skB[])
+ok, secrecy assumption verified: fact unreachable attacker(skS[])
+Starting query inj-event(endBparam(x,y)) ==> inj-event(beginBparam(x,y))
+goal reachable: @sid ≠ @sid_1 && b-inj-event(beginBparam(A[],B[]),@occ30_1) -> inj-event(endBparam(A[],B[]),@occ49_1) && inj-event(endBparam(A[],B[]),@occ49_2)
+Abbreviations:
+k_2 = k[cert2 = sign((B[],pk(skB[])),skS[]),cert1 = sign((A[],spk(sskA[])),skS[]),xA = A[],!1 = @sid_2]
+@occ49_1 = @occ49[km = encrypt(sign((A[],B[],k_2),sskA[]),pk(skB[])),cert2_1 = sign((B[],pk(skB[])),skS[]),cert1_1 = sign((A[],spk(sskA[])),skS[]),xB = B[],!1 = @sid]
+@occ49_2 = @occ49[km = encrypt(sign((A[],B[],k_2),sskA[]),pk(skB[])),cert2_1 = sign((B[],pk(skB[])),skS[]),cert1_1 = sign((A[],spk(sskA[])),skS[]),xB = B[],!1 = @sid_1]
+@occ30_1 = @occ30[cert2 = sign((B[],pk(skB[])),skS[]),cert1 = sign((A[],spk(sskA[])),skS[]),xA = A[],!1 = @sid_2]
+
+Derivation:
+Abbreviations:
+k_2 = k[cert2 = sign((B[],pk(skB[])),skS[]),cert1 = sign((A[],spk(sskA[])),skS[]),xA = A[],!1 = @sid]
+@occ49_1 = @occ49[km = encrypt(sign((A[],B[],k_2),sskA[]),pk(skB[])),cert2_1 = sign((B[],pk(skB[])),skS[]),cert1_1 = sign((A[],spk(sskA[])),skS[]),xB = B[],!1 = @sid_1]
+@occ49_2 = @occ49[km = encrypt(sign((A[],B[],k_2),sskA[]),pk(skB[])),cert2_1 = sign((B[],pk(skB[])),skS[]),cert1_1 = sign((A[],spk(sskA[])),skS[]),xB = B[],!1 = @sid_2]
+@occ30_1 = @occ30[cert2 = sign((B[],pk(skB[])),skS[]),cert1 = sign((A[],spk(sskA[])),skS[]),xA = A[],!1 = @sid]
+
+1. The attacker initially knows B[].
+attacker(B[]).
+
+2. The attacker initially knows A[].
+attacker(A[]).
+
+3. The attacker has some term h1_2.
+attacker(h1_2).
+
+4. By 3, the attacker may know h1_2.
+By 1, the attacker may know B[].
+Using the function 2-tuple the attacker may obtain (h1_2,B[]).
+attacker((h1_2,B[])).
+
+5. The attacker has some term pk1_2.
+attacker(pk1_2).
+
+6. By 3, the attacker may know h1_2.
+By 5, the attacker may know pk1_2.
+Using the function 2-tuple the attacker may obtain (h1_2,pk1_2).
+attacker((h1_2,pk1_2)).
+
+7. The message (h1_2,pk1_2) that the attacker may have by 6 may be received at input {59}.
+We have h1_2 ≠ B[] && h1_2 ≠ A[].
+So the entry sign_keys(h1_2,pk1_2) may be inserted in a table at insert {61}.
+table(sign_keys(h1_2,pk1_2)).
+
+8. The entry enc_keys(B[],pk(skB[])) may be inserted in a table at insert {16}.
+table(enc_keys(B[],pk(skB[]))).
+
+9. The message (h1_2,B[]) that the attacker may have by 4 may be received at input {54}.
+The entry sign_keys(h1_2,pk1_2) that may be in a table by 7 may be read at get {57}.
+The entry enc_keys(B[],pk(skB[])) that may be in a table by 8 may be read at get {56}.
+So the message (sign((h1_2,pk1_2),skS[]),sign((B[],pk(skB[])),skS[])) may be sent to the attacker at output {55}.
+attacker((sign((h1_2,pk1_2),skS[]),sign((B[],pk(skB[])),skS[]))).
+
+10. By 9, the attacker may know (sign((h1_2,pk1_2),skS[]),sign((B[],pk(skB[])),skS[])).
+Using the function 2-proj-2-tuple the attacker may obtain sign((B[],pk(skB[])),skS[]).
+attacker(sign((B[],pk(skB[])),skS[])).
+
+11. By 2, the attacker may know A[].
+By 1, the attacker may know B[].
+Using the function 2-tuple the attacker may obtain (A[],B[]).
+attacker((A[],B[])).
+
+12. The entry sign_keys(A[],spk(sskA[])) may be inserted in a table at insert {4}.
+table(sign_keys(A[],spk(sskA[]))).
+
+13. The message (A[],B[]) that the attacker may have by 11 may be received at input {54}.
+The entry sign_keys(A[],spk(sskA[])) that may be in a table by 12 may be read at get {57}.
+The entry enc_keys(B[],pk(skB[])) that may be in a table by 8 may be read at get {56}.
+So the message (sign((A[],spk(sskA[])),skS[]),sign((B[],pk(skB[])),skS[])) may be sent to the attacker at output {55}.
+attacker((sign((A[],spk(sskA[])),skS[]),sign((B[],pk(skB[])),skS[]))).
+
+14. By 13, the attacker may know (sign((A[],spk(sskA[])),skS[]),sign((B[],pk(skB[])),skS[])).
+Using the function 1-proj-2-tuple the attacker may obtain sign((A[],spk(sskA[])),skS[]).
+attacker(sign((A[],spk(sskA[])),skS[])).
+
+15. By 14, the attacker may know sign((A[],spk(sskA[])),skS[]).
+By 10, the attacker may know sign((B[],pk(skB[])),skS[]).
+Using the function 2-tuple the attacker may obtain (sign((A[],spk(sskA[])),skS[]),sign((B[],pk(skB[])),skS[])).
+attacker((sign((A[],spk(sskA[])),skS[]),sign((B[],pk(skB[])),skS[]))).
+
+16. The message A[] that the attacker may have by 2 may be received at input {23}.
+The message (sign((A[],spk(sskA[])),skS[]),sign((B[],pk(skB[])),skS[])) that the attacker may have by 15 may be received at input {27}.
+The event beginBparam(A[],B[]) (with occurrence name @occ30_1) may be executed at {30}.
+So the message (sign((A[],spk(sskA[])),skS[]),sign((B[],pk(skB[])),skS[]),encrypt(sign((A[],B[],k_2),sskA[]),pk(skB[]))) may be sent to the attacker at output {33}.
+attacker((sign((A[],spk(sskA[])),skS[]),sign((B[],pk(skB[])),skS[]),encrypt(sign((A[],B[],k_2),sskA[]),pk(skB[])))).
+
+17. By 16, the attacker may know (sign((A[],spk(sskA[])),skS[]),sign((B[],pk(skB[])),skS[]),encrypt(sign((A[],B[],k_2),sskA[]),pk(skB[]))).
+Using the function 3-proj-3-tuple the attacker may obtain encrypt(sign((A[],B[],k_2),sskA[]),pk(skB[])).
+attacker(encrypt(sign((A[],B[],k_2),sskA[]),pk(skB[]))).
+
+18. By 14, the attacker may know sign((A[],spk(sskA[])),skS[]).
+By 10, the attacker may know sign((B[],pk(skB[])),skS[]).
+By 17, the attacker may know encrypt(sign((A[],B[],k_2),sskA[]),pk(skB[])).
+Using the function 3-tuple the attacker may obtain (sign((A[],spk(sskA[])),skS[]),sign((B[],pk(skB[])),skS[]),encrypt(sign((A[],B[],k_2),sskA[]),pk(skB[]))).
+attacker((sign((A[],spk(sskA[])),skS[]),sign((B[],pk(skB[])),skS[]),encrypt(sign((A[],B[],k_2),sskA[]),pk(skB[])))).
+
+19. The message B[] that the attacker may have by 1 may be received at input {39}.
+The message (sign((A[],spk(sskA[])),skS[]),sign((B[],pk(skB[])),skS[]),encrypt(sign((A[],B[],k_2),sskA[]),pk(skB[]))) that the attacker may have by 18 may be received at input {43}.
+So event endBparam(A[],B[]) may be executed at {49} in session @sid_2.
+inj-event(endBparam(A[],B[]),@occ49_2).
+
+20. By 19, inj-event(endBparam(A[],B[]),@occ49_2).
+The goal is reached, represented in the following fact:
+inj-event(endBparam(A[],B[]),@occ49_2).
+
+21. The message B[] that the attacker may have by 1 may be received at input {39}.
+The message (sign((A[],spk(sskA[])),skS[]),sign((B[],pk(skB[])),skS[]),encrypt(sign((A[],B[],k_2),sskA[]),pk(skB[]))) that the attacker may have by 18 may be received at input {43}.
+So event endBparam(A[],B[]) may be executed at {49} in session @sid_1.
+inj-event(endBparam(A[],B[]),@occ49_1).
+
+22. By 21, inj-event(endBparam(A[],B[]),@occ49_1).
+The goal is reached, represented in the following fact:
+inj-event(endBparam(A[],B[]),@occ49_1).
+
+23. By 22, inj-event(endBparam(A[],B[]),@occ49_1).
+By 20, inj-event(endBparam(A[],B[]),@occ49_2).
+We have @occ49_1 ≠ @occ49_2.
+The goals for injectivity are reached, combined in the following fact:
+inj-event(endBparam(A[],B[]),@occ49_1) && inj-event(endBparam(A[],B[]),@occ49_2).
+
+
+A more detailed output of the traces is available with
+  set traceDisplay = long.
+
+new sskA: sskey creating sskA_3 at {1}
+
+out(c, ~M) with ~M = spk(sskA_3) at {3}
+
+insert sign_keys(A,spk(sskA_3)) at {4}
+
+new skA: skey creating skA_2 at {5}
+
+out(c, ~M_1) with ~M_1 = pk(skA_2) at {7}
+
+insert enc_keys(A,pk(skA_2)) at {8}
+
+new sskB: sskey creating sskB_2 at {9}
+
+out(c, ~M_2) with ~M_2 = spk(sskB_2) at {11}
+
+insert sign_keys(B,spk(sskB_2)) at {12}
+
+new skB: skey creating skB_3 at {13}
+
+out(c, ~M_3) with ~M_3 = pk(skB_3) at {15}
+
+insert enc_keys(B,pk(skB_3)) at {16}
+
+new skS: sskey creating skS_2 at {17}
+
+out(c, ~M_4) with ~M_4 = spk(skS_2) at {19}
+
+in(c, A) at {23} in copy a
+
+in(c, B) at {39} in copy a_1
+
+in(c, B) at {39} in copy a_2
+
+in(c, (A,B)) at {54} in copy a_3
+
+get sign_keys(A,spk(sskA_3)) at {57} in copy a_3
+
+get enc_keys(B,pk(skB_3)) at {56} in copy a_3
+
+out(c, (~M_5,~M_6)) with ~M_5 = sign((A,spk(sskA_3)),skS_2), ~M_6 = sign((B,pk(skB_3)),skS_2) at {55} in copy a_3
+
+in(c, (~M_5,~M_6)) with ~M_5 = sign((A,spk(sskA_3)),skS_2), ~M_6 = sign((B,pk(skB_3)),skS_2) at {27} in copy a
+
+event beginBparam(A,B) at {30} in copy a
+
+new k: key creating k_3 at {31} in copy a
+
+event beginBkey(A,B,k_3) at {32} in copy a
+
+out(c, (~M_7,~M_8,~M_9)) with ~M_7 = sign((A,spk(sskA_3)),skS_2), ~M_8 = sign((B,pk(skB_3)),skS_2), ~M_9 = encrypt(sign((A,B,k_3),sskA_3),pk(skB_3)) at {33} in copy a
+
+out(c, ~M_10) with ~M_10 = sencrypt(secretA,k_3) at {35} in copy a
+
+in(c, (~M_5,~M_6,~M_9)) with ~M_5 = sign((A,spk(sskA_3)),skS_2), ~M_6 = sign((B,pk(skB_3)),skS_2), ~M_9 = encrypt(sign((A,B,k_3),sskA_3),pk(skB_3)) at {43} in copy a_1
+
+event endBparam(A,B) at {49} in copy a_1 (goal)
+
+event endBkey(A,B,k_3) at {50} in copy a_1
+
+out(c, ~M_11) with ~M_11 = sencrypt(secretB,k_3) at {51} in copy a_1
+
+in(c, (~M_5,~M_6,~M_9)) with ~M_5 = sign((A,spk(sskA_3)),skS_2), ~M_6 = sign((B,pk(skB_3)),skS_2), ~M_9 = encrypt(sign((A,B,k_3),sskA_3),pk(skB_3)) at {43} in copy a_2
+
+event endBparam(A,B) at {49} in copy a_2 (goal)
+
+The event endBparam(A,B) is executed at {49} in copy a_1.
+The event endBparam(A,B) is executed at {49} in copy a_2.
+A trace has been found.
+RESULT inj-event(endBparam(x,y)) ==> inj-event(beginBparam(x,y)) is false.
+RESULT (but event(endBparam(x,y)) ==> event(beginBparam(x,y)) is true.)
+-- Query inj-event(endBkey(x,y,z)) ==> inj-event(beginBkey(x,y,z)) in process 1.
+Translating the process into Horn clauses...
+Completing...
+ok, secrecy assumption verified: fact unreachable attacker(sskA[])
+ok, secrecy assumption verified: fact unreachable attacker(skB[])
+ok, secrecy assumption verified: fact unreachable attacker(skS[])
+Starting query inj-event(endBkey(x,y,z)) ==> inj-event(beginBkey(x,y,z))
+goal reachable: @sid ≠ @sid_1 && b-inj-event(beginBkey(A[],B[],k_2),@occ32_1) -> inj-event(endBkey(A[],B[],k_2),@occ50_1) && inj-event(endBkey(A[],B[],k_2),@occ50_2)
+Abbreviations:
+k_2 = k[cert2 = sign((B[],pk(skB[])),skS[]),cert1 = sign((A[],spk(sskA[])),skS[]),xA = A[],!1 = @sid_2]
+@occ50_1 = @occ50[km = encrypt(sign((A[],B[],k_2),sskA[]),pk(skB[])),cert2_1 = sign((B[],pk(skB[])),skS[]),cert1_1 = sign((A[],spk(sskA[])),skS[]),xB = B[],!1 = @sid]
+@occ50_2 = @occ50[km = encrypt(sign((A[],B[],k_2),sskA[]),pk(skB[])),cert2_1 = sign((B[],pk(skB[])),skS[]),cert1_1 = sign((A[],spk(sskA[])),skS[]),xB = B[],!1 = @sid_1]
+@occ32_1 = @occ32[cert2 = sign((B[],pk(skB[])),skS[]),cert1 = sign((A[],spk(sskA[])),skS[]),xA = A[],!1 = @sid_2]
+
+Derivation:
+Abbreviations:
+k_2 = k[cert2 = sign((B[],pk(skB[])),skS[]),cert1 = sign((A[],spk(sskA[])),skS[]),xA = A[],!1 = @sid]
+@occ50_1 = @occ50[km = encrypt(sign((A[],B[],k_2),sskA[]),pk(skB[])),cert2_1 = sign((B[],pk(skB[])),skS[]),cert1_1 = sign((A[],spk(sskA[])),skS[]),xB = B[],!1 = @sid_1]
+@occ50_2 = @occ50[km = encrypt(sign((A[],B[],k_2),sskA[]),pk(skB[])),cert2_1 = sign((B[],pk(skB[])),skS[]),cert1_1 = sign((A[],spk(sskA[])),skS[]),xB = B[],!1 = @sid_2]
+@occ32_1 = @occ32[cert2 = sign((B[],pk(skB[])),skS[]),cert1 = sign((A[],spk(sskA[])),skS[]),xA = A[],!1 = @sid]
+
+1. The attacker initially knows B[].
+attacker(B[]).
+
+2. The attacker initially knows A[].
+attacker(A[]).
+
+3. The attacker has some term h1_2.
+attacker(h1_2).
+
+4. By 3, the attacker may know h1_2.
+By 1, the attacker may know B[].
+Using the function 2-tuple the attacker may obtain (h1_2,B[]).
+attacker((h1_2,B[])).
+
+5. The attacker has some term pk1_2.
+attacker(pk1_2).
+
+6. By 3, the attacker may know h1_2.
+By 5, the attacker may know pk1_2.
+Using the function 2-tuple the attacker may obtain (h1_2,pk1_2).
+attacker((h1_2,pk1_2)).
+
+7. The message (h1_2,pk1_2) that the attacker may have by 6 may be received at input {59}.
+We have h1_2 ≠ B[] && h1_2 ≠ A[].
+So the entry sign_keys(h1_2,pk1_2) may be inserted in a table at insert {61}.
+table(sign_keys(h1_2,pk1_2)).
+
+8. The entry enc_keys(B[],pk(skB[])) may be inserted in a table at insert {16}.
+table(enc_keys(B[],pk(skB[]))).
+
+9. The message (h1_2,B[]) that the attacker may have by 4 may be received at input {54}.
+The entry sign_keys(h1_2,pk1_2) that may be in a table by 7 may be read at get {57}.
+The entry enc_keys(B[],pk(skB[])) that may be in a table by 8 may be read at get {56}.
+So the message (sign((h1_2,pk1_2),skS[]),sign((B[],pk(skB[])),skS[])) may be sent to the attacker at output {55}.
+attacker((sign((h1_2,pk1_2),skS[]),sign((B[],pk(skB[])),skS[]))).
+
+10. By 9, the attacker may know (sign((h1_2,pk1_2),skS[]),sign((B[],pk(skB[])),skS[])).
+Using the function 2-proj-2-tuple the attacker may obtain sign((B[],pk(skB[])),skS[]).
+attacker(sign((B[],pk(skB[])),skS[])).
+
+11. By 2, the attacker may know A[].
+By 1, the attacker may know B[].
+Using the function 2-tuple the attacker may obtain (A[],B[]).
+attacker((A[],B[])).
+
+12. The entry sign_keys(A[],spk(sskA[])) may be inserted in a table at insert {4}.
+table(sign_keys(A[],spk(sskA[]))).
+
+13. The message (A[],B[]) that the attacker may have by 11 may be received at input {54}.
+The entry sign_keys(A[],spk(sskA[])) that may be in a table by 12 may be read at get {57}.
+The entry enc_keys(B[],pk(skB[])) that may be in a table by 8 may be read at get {56}.
+So the message (sign((A[],spk(sskA[])),skS[]),sign((B[],pk(skB[])),skS[])) may be sent to the attacker at output {55}.
+attacker((sign((A[],spk(sskA[])),skS[]),sign((B[],pk(skB[])),skS[]))).
+
+14. By 13, the attacker may know (sign((A[],spk(sskA[])),skS[]),sign((B[],pk(skB[])),skS[])).
+Using the function 1-proj-2-tuple the attacker may obtain sign((A[],spk(sskA[])),skS[]).
+attacker(sign((A[],spk(sskA[])),skS[])).
+
+15. By 14, the attacker may know sign((A[],spk(sskA[])),skS[]).
+By 10, the attacker may know sign((B[],pk(skB[])),skS[]).
+Using the function 2-tuple the attacker may obtain (sign((A[],spk(sskA[])),skS[]),sign((B[],pk(skB[])),skS[])).
+attacker((sign((A[],spk(sskA[])),skS[]),sign((B[],pk(skB[])),skS[]))).
+
+16. The message A[] that the attacker may have by 2 may be received at input {23}.
+The message (sign((A[],spk(sskA[])),skS[]),sign((B[],pk(skB[])),skS[])) that the attacker may have by 15 may be received at input {27}.
+The event beginBkey(A[],B[],k_2) (with occurrence name @occ32_1) may be executed at {32}.
+So the message (sign((A[],spk(sskA[])),skS[]),sign((B[],pk(skB[])),skS[]),encrypt(sign((A[],B[],k_2),sskA[]),pk(skB[]))) may be sent to the attacker at output {33}.
+attacker((sign((A[],spk(sskA[])),skS[]),sign((B[],pk(skB[])),skS[]),encrypt(sign((A[],B[],k_2),sskA[]),pk(skB[])))).
+
+17. By 16, the attacker may know (sign((A[],spk(sskA[])),skS[]),sign((B[],pk(skB[])),skS[]),encrypt(sign((A[],B[],k_2),sskA[]),pk(skB[]))).
+Using the function 3-proj-3-tuple the attacker may obtain encrypt(sign((A[],B[],k_2),sskA[]),pk(skB[])).
+attacker(encrypt(sign((A[],B[],k_2),sskA[]),pk(skB[]))).
+
+18. By 14, the attacker may know sign((A[],spk(sskA[])),skS[]).
+By 10, the attacker may know sign((B[],pk(skB[])),skS[]).
+By 17, the attacker may know encrypt(sign((A[],B[],k_2),sskA[]),pk(skB[])).
+Using the function 3-tuple the attacker may obtain (sign((A[],spk(sskA[])),skS[]),sign((B[],pk(skB[])),skS[]),encrypt(sign((A[],B[],k_2),sskA[]),pk(skB[]))).
+attacker((sign((A[],spk(sskA[])),skS[]),sign((B[],pk(skB[])),skS[]),encrypt(sign((A[],B[],k_2),sskA[]),pk(skB[])))).
+
+19. The message B[] that the attacker may have by 1 may be received at input {39}.
+The message (sign((A[],spk(sskA[])),skS[]),sign((B[],pk(skB[])),skS[]),encrypt(sign((A[],B[],k_2),sskA[]),pk(skB[]))) that the attacker may have by 18 may be received at input {43}.
+So event endBkey(A[],B[],k_2) may be executed at {50} in session @sid_2.
+inj-event(endBkey(A[],B[],k_2),@occ50_2).
+
+20. By 19, inj-event(endBkey(A[],B[],k_2),@occ50_2).
+The goal is reached, represented in the following fact:
+inj-event(endBkey(A[],B[],k_2),@occ50_2).
+
+21. The message B[] that the attacker may have by 1 may be received at input {39}.
+The message (sign((A[],spk(sskA[])),skS[]),sign((B[],pk(skB[])),skS[]),encrypt(sign((A[],B[],k_2),sskA[]),pk(skB[]))) that the attacker may have by 18 may be received at input {43}.
+So event endBkey(A[],B[],k_2) may be executed at {50} in session @sid_1.
+inj-event(endBkey(A[],B[],k_2),@occ50_1).
+
+22. By 21, inj-event(endBkey(A[],B[],k_2),@occ50_1).
+The goal is reached, represented in the following fact:
+inj-event(endBkey(A[],B[],k_2),@occ50_1).
+
+23. By 22, inj-event(endBkey(A[],B[],k_2),@occ50_1).
+By 20, inj-event(endBkey(A[],B[],k_2),@occ50_2).
+We have @occ50_1 ≠ @occ50_2.
+The goals for injectivity are reached, combined in the following fact:
+inj-event(endBkey(A[],B[],k_2),@occ50_1) && inj-event(endBkey(A[],B[],k_2),@occ50_2).
+
+
+A more detailed output of the traces is available with
+  set traceDisplay = long.
+
+new sskA: sskey creating sskA_3 at {1}
+
+out(c, ~M) with ~M = spk(sskA_3) at {3}
+
+insert sign_keys(A,spk(sskA_3)) at {4}
+
+new skA: skey creating skA_2 at {5}
+
+out(c, ~M_1) with ~M_1 = pk(skA_2) at {7}
+
+insert enc_keys(A,pk(skA_2)) at {8}
+
+new sskB: sskey creating sskB_2 at {9}
+
+out(c, ~M_2) with ~M_2 = spk(sskB_2) at {11}
+
+insert sign_keys(B,spk(sskB_2)) at {12}
+
+new skB: skey creating skB_3 at {13}
+
+out(c, ~M_3) with ~M_3 = pk(skB_3) at {15}
+
+insert enc_keys(B,pk(skB_3)) at {16}
+
+new skS: sskey creating skS_2 at {17}
+
+out(c, ~M_4) with ~M_4 = spk(skS_2) at {19}
+
+in(c, A) at {23} in copy a
+
+in(c, B) at {39} in copy a_1
+
+in(c, B) at {39} in copy a_2
+
+in(c, (A,B)) at {54} in copy a_3
+
+get sign_keys(A,spk(sskA_3)) at {57} in copy a_3
+
+get enc_keys(B,pk(skB_3)) at {56} in copy a_3
+
+out(c, (~M_5,~M_6)) with ~M_5 = sign((A,spk(sskA_3)),skS_2), ~M_6 = sign((B,pk(skB_3)),skS_2) at {55} in copy a_3
+
+in(c, (~M_5,~M_6)) with ~M_5 = sign((A,spk(sskA_3)),skS_2), ~M_6 = sign((B,pk(skB_3)),skS_2) at {27} in copy a
+
+event beginBparam(A,B) at {30} in copy a
+
+new k: key creating k_3 at {31} in copy a
+
+event beginBkey(A,B,k_3) at {32} in copy a
+
+out(c, (~M_7,~M_8,~M_9)) with ~M_7 = sign((A,spk(sskA_3)),skS_2), ~M_8 = sign((B,pk(skB_3)),skS_2), ~M_9 = encrypt(sign((A,B,k_3),sskA_3),pk(skB_3)) at {33} in copy a
+
+out(c, ~M_10) with ~M_10 = sencrypt(secretA,k_3) at {35} in copy a
+
+in(c, (~M_5,~M_6,~M_9)) with ~M_5 = sign((A,spk(sskA_3)),skS_2), ~M_6 = sign((B,pk(skB_3)),skS_2), ~M_9 = encrypt(sign((A,B,k_3),sskA_3),pk(skB_3)) at {43} in copy a_1
+
+event endBparam(A,B) at {49} in copy a_1
+
+event endBkey(A,B,k_3) at {50} in copy a_1 (goal)
+
+out(c, ~M_11) with ~M_11 = sencrypt(secretB,k_3) at {51} in copy a_1
+
+in(c, (~M_5,~M_6,~M_9)) with ~M_5 = sign((A,spk(sskA_3)),skS_2), ~M_6 = sign((B,pk(skB_3)),skS_2), ~M_9 = encrypt(sign((A,B,k_3),sskA_3),pk(skB_3)) at {43} in copy a_2
+
+event endBparam(A,B) at {49} in copy a_2
+
+event endBkey(A,B,k_3) at {50} in copy a_2 (goal)
+
+The event endBkey(A,B,k_3) is executed at {50} in copy a_1.
+The event endBkey(A,B,k_3) is executed at {50} in copy a_2.
+A trace has been found.
+RESULT inj-event(endBkey(x,y,z)) ==> inj-event(beginBkey(x,y,z)) is false.
+RESULT (but event(endBkey(x,y,z)) ==> event(beginBkey(x,y,z)) is true.)
+
+--------------------------------------------------------------
+Verification summary:
+
+Query not attacker(secretA[]) is true.
+
+Query not attacker(secretB[]) is true.
+
+Query inj-event(endBparam(x,y)) ==> inj-event(beginBparam(x,y)) is false.
+
+Query inj-event(endBkey(x,y,z)) ==> inj-event(beginBkey(x,y,z)) is false.
+
+--------------------------------------------------------------
+

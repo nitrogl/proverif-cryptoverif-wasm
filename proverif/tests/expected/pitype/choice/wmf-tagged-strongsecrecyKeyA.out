@@ -1,0 +1,61 @@
+Biprocess 0 (that is, the initial process):
+{1}new Kas: key;
+{2}new Kbs: key;
+{3}insert keytable(A,Kas);
+{4}insert keytable(B,Kbs);
+(
+    {5}!
+    {6}in(c, (xI: host,xR: host));
+    {7}if ((xI = A) || (xI = B)) then
+    {14}get keytable(=xI,Kis: key) in
+    {8}new Kab: key;
+    {9}new r: coins;
+    {10}out(c, (xI,encrypt((c0,xR,Kab),Kis,r)));
+    {11}if ((xR = A) || (xR = B)) then
+    {12}new Kab': key;
+    {13}out(c, choice[Kab,Kab'])
+) | (
+    {15}!
+    {16}in(c, xR_1: host);
+    {17}if ((xR_1 = A) || (xR_1 = B)) then
+    {20}get keytable(=xR_1,Krs: key) in
+    {18}in(c, m: bitstring);
+    {19}let (=c1,a: host,kab: key) = decrypt(m,Krs) in
+    0
+) | (
+    {21}!
+    {22}in(c, (a_1: host,m_1: bitstring));
+    {27}get keytable(=a_1,kas: key) in
+    {23}let (=c0,b: host,kab_1: key) = decrypt(m_1,kas) in
+    {26}get keytable(=b,kbs: key) in
+    {24}new r_1: coins;
+    {25}out(c, encrypt((c1,a_1,kab_1),kbs,r_1))
+) | (
+    {28}!
+    {29}in(c, (h: host,k: key));
+    {30}if ((h ≠ A) && (h ≠ B)) then
+    {31}insert keytable(h,k)
+)
+
+-- Observational equivalence in biprocess 0.
+Translating the process into Horn clauses...
+Termination warning: v ≠ v_1 && attacker2(v_2,v) && attacker2(v_2,v_1) -> bad
+Selecting 0
+Termination warning: v ≠ v_1 && attacker2(v,v_2) && attacker2(v_1,v_2) -> bad
+Selecting 0
+Completing...
+Termination warning: v ≠ v_1 && attacker2(v_2,v) && attacker2(v_2,v_1) -> bad
+Selecting 0
+Termination warning: v ≠ v_1 && attacker2(v,v_2) && attacker2(v_1,v_2) -> bad
+Selecting 0
+ok, secrecy assumption verified: fact unreachable attacker2(Kas[],Kas[])
+ok, secrecy assumption verified: fact unreachable attacker2(Kbs[],Kbs[])
+RESULT Observational equivalence is true.
+
+--------------------------------------------------------------
+Verification summary:
+
+Observational equivalence is true.
+
+--------------------------------------------------------------
+

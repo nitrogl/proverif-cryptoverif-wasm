@@ -1,0 +1,339 @@
+Process 0 (that is, the initial process):
+{1}new skA: skey;
+{2}let pkA: pkey = pk(skA) in
+{3}out(c, pkA);
+{4}insert keys(A,pkA);
+{5}new skB: skey;
+{6}let pkB: pkey = pk(skB) in
+{7}out(c, pkB);
+{8}insert keys(B,pkB);
+{9}new skS: sskey;
+{10}let pkS: spkey = spk(skS) in
+{11}out(c, pkS);
+(
+    {12}!
+    {13}let skA_1: skey = skA in
+    {14}let skB_1: skey = skB in
+    {15}in(c, (xA: host,hostX: host));
+    {16}if ((xA = A) || (xA = B)) then
+    {17}let skxA: skey = (if (xA = A) then skA_1 else skB_1) in
+    {18}let pkxA: pkey = pk(skxA) in
+    {19}out(c, (xA,hostX));
+    {20}in(c, ms: bitstring);
+    {21}let (pkX: pkey,=hostX) = checksign(ms,pkS) in
+    {22}new Na: nonce;
+    {23}out(c, encrypt((Na,xA),pkX));
+    {24}in(c, m: bitstring);
+    {25}let (=Na,NX2: nonce,=hostX) = decrypt(m,skA_1) in
+    {26}out(c, encrypt(NX2,pkX));
+    {27}if ((hostX = B) || (hostX = A)) then
+    {28}out(c, sencrypt(secretANa,Na));
+    {29}out(c, sencrypt(secretANb,NX2))
+) | (
+    {30}!
+    {31}let skA_2: skey = skA in
+    {32}let skB_2: skey = skB in
+    {33}in(c, xB: host);
+    {34}if ((xB = A) || (xB = B)) then
+    {35}let skxB: skey = (if (xB = A) then skA_2 else skB_2) in
+    {36}let pkxB: pkey = pk(skxB) in
+    {37}in(c, m_1: bitstring);
+    {38}let (NY: nonce,hostY: host) = decrypt(m_1,skxB) in
+    {39}out(c, (xB,hostY));
+    {40}in(c, ms_1: bitstring);
+    {41}let (pkY: pkey,=hostY) = checksign(ms_1,pkS) in
+    {42}new Nb: nonce;
+    {43}out(c, encrypt((NY,Nb,xB),pkY));
+    {44}in(c, m3: bitstring);
+    {45}if (Nb = decrypt(m3,skB_2)) then
+    {46}if ((hostY = A) || (hostY = B)) then
+    {47}out(c, sencrypt(secretBNa,NY));
+    {48}out(c, sencrypt(secretBNb,Nb))
+) | (
+    {49}!
+    {50}let skS_1: sskey = skS in
+    {51}in(c, (a: host,b: host));
+    {53}get keys(=b,sb: pkey) in
+    {52}out(c, sign((sb,b),skS_1))
+) | (
+    {54}!
+    {55}in(c, (h: host,k: pkey));
+    {56}if ((h ≠ A) && (h ≠ B)) then
+    {57}insert keys(h,k)
+)
+
+--  Process 1 (that is, process 0, with let moved downwards):
+{1}new skA: skey;
+{2}let pkA: pkey = pk(skA) in
+{3}out(c, pkA);
+{4}insert keys(A,pkA);
+{5}new skB: skey;
+{6}let pkB: pkey = pk(skB) in
+{7}out(c, pkB);
+{8}insert keys(B,pkB);
+{9}new skS: sskey;
+{10}let pkS: spkey = spk(skS) in
+{11}out(c, pkS);
+(
+    {12}!
+    {15}in(c, (xA: host,hostX: host));
+    {16}if ((xA = A) || (xA = B)) then
+    {19}out(c, (xA,hostX));
+    {20}in(c, ms: bitstring);
+    {21}let (pkX: pkey,=hostX) = checksign(ms,pkS) in
+    {22}new Na: nonce;
+    {23}out(c, encrypt((Na,xA),pkX));
+    {24}in(c, m: bitstring);
+    {13}let skA_1: skey = skA in
+    {25}let (=Na,NX2: nonce,=hostX) = decrypt(m,skA_1) in
+    {26}out(c, encrypt(NX2,pkX));
+    {27}if ((hostX = B) || (hostX = A)) then
+    {28}out(c, sencrypt(secretANa,Na));
+    {29}out(c, sencrypt(secretANb,NX2))
+) | (
+    {30}!
+    {33}in(c, xB: host);
+    {34}if ((xB = A) || (xB = B)) then
+    {37}in(c, m_1: bitstring);
+    {32}let skB_2: skey = skB in
+    {31}let skA_2: skey = skA in
+    {35}let skxB: skey = (if (xB = A) then skA_2 else skB_2) in
+    {38}let (NY: nonce,hostY: host) = decrypt(m_1,skxB) in
+    {39}out(c, (xB,hostY));
+    {40}in(c, ms_1: bitstring);
+    {41}let (pkY: pkey,=hostY) = checksign(ms_1,pkS) in
+    {42}new Nb: nonce;
+    {43}out(c, encrypt((NY,Nb,xB),pkY));
+    {44}in(c, m3: bitstring);
+    {45}if (Nb = decrypt(m3,skB_2)) then
+    {46}if ((hostY = A) || (hostY = B)) then
+    {47}out(c, sencrypt(secretBNa,NY));
+    {48}out(c, sencrypt(secretBNb,Nb))
+) | (
+    {49}!
+    {51}in(c, (a: host,b: host));
+    {53}get keys(=b,sb: pkey) in
+    {50}let skS_1: sskey = skS in
+    {52}out(c, sign((sb,b),skS_1))
+) | (
+    {54}!
+    {55}in(c, (h: host,k: pkey));
+    {56}if ((h ≠ A) && (h ≠ B)) then
+    {57}insert keys(h,k)
+)
+
+-- Non-interference secretANa, secretANb, secretBNa, secretBNb in process 1.
+Translating the process into Horn clauses...
+Completing...
+200 rules inserted. Base: 187 rules (43 with conclusion selected). Queue: 66 rules.
+ok, secrecy assumption verified: fact unreachable attacker(skA[])
+ok, secrecy assumption verified: fact unreachable attacker(skB[])
+ok, secrecy assumption verified: fact unreachable attacker(skS[])
+goal reachable: bad
+
+Derivation:
+Abbreviations:
+Na_1 = Na[ms = sign((pk(skB[]),B[]),skS[]),hostX = B[],xA = A[],!1 = @sid]
+Nb_1 = Nb[ms_1 = sign((pk(skA[]),A[]),skS[]),m_1 = encrypt((Na_1,A[]),pk(skB[])),xB = B[],!1 = @sid_1]
+
+1. The attacker has some term @sid_1.
+attacker(@sid_1).
+
+2. The attacker initially knows B[].
+attacker(B[]).
+
+3. The attacker has some term @sid.
+attacker(@sid).
+
+4. The attacker initially knows A[].
+attacker(A[]).
+
+5. By 4, the attacker may know A[].
+By 2, the attacker may know B[].
+Using the function 2-tuple the attacker may obtain (A[],B[]).
+attacker((A[],B[])).
+
+6. The attacker has some term @sid_2.
+attacker(@sid_2).
+
+7. The attacker has some term a_1.
+attacker(a_1).
+
+8. By 7, the attacker may know a_1.
+By 2, the attacker may know B[].
+Using the function 2-tuple the attacker may obtain (a_1,B[]).
+attacker((a_1,B[])).
+
+9. The entry keys(B[],pk(skB[])) may be inserted in a table at insert {8}.
+table(keys(B[],pk(skB[]))).
+
+10. By 6, the attacker may have the session identifier @sid_2.
+The message (a_1,B[]) that the attacker may have by 8 may be received at input {51}.
+The entry keys(B[],pk(skB[])) that may be in a table by 9 may be read at get {53}.
+So the message sign((pk(skB[]),B[]),skS[]) may be sent to the attacker at output {52}.
+attacker(sign((pk(skB[]),B[]),skS[])).
+
+11. By 3, the attacker may have the session identifier @sid.
+The message (A[],B[]) that the attacker may have by 5 may be received at input {15}.
+The message sign((pk(skB[]),B[]),skS[]) that the attacker may have by 10 may be received at input {20}.
+So the message encrypt((Na_1,A[]),pk(skB[])) may be sent to the attacker at output {23}.
+attacker(encrypt((Na_1,A[]),pk(skB[]))).
+
+12. The attacker has some term @sid_3.
+attacker(@sid_3).
+
+13. The attacker has some term a_2.
+attacker(a_2).
+
+14. By 13, the attacker may know a_2.
+By 4, the attacker may know A[].
+Using the function 2-tuple the attacker may obtain (a_2,A[]).
+attacker((a_2,A[])).
+
+15. The entry keys(A[],pk(skA[])) may be inserted in a table at insert {4}.
+table(keys(A[],pk(skA[]))).
+
+16. By 12, the attacker may have the session identifier @sid_3.
+The message (a_2,A[]) that the attacker may have by 14 may be received at input {51}.
+The entry keys(A[],pk(skA[])) that may be in a table by 15 may be read at get {53}.
+So the message sign((pk(skA[]),A[]),skS[]) may be sent to the attacker at output {52}.
+attacker(sign((pk(skA[]),A[]),skS[])).
+
+17. By 1, the attacker may have the session identifier @sid_1.
+The message B[] that the attacker may have by 2 may be received at input {33}.
+The message encrypt((Na_1,A[]),pk(skB[])) that the attacker may have by 11 may be received at input {37}.
+The message sign((pk(skA[]),A[]),skS[]) that the attacker may have by 16 may be received at input {40}.
+So the message encrypt((Na_1,Nb_1,B[]),pk(skA[])) may be sent to the attacker at output {43}.
+attacker(encrypt((Na_1,Nb_1,B[]),pk(skA[]))).
+
+18. By 3, the attacker may have the session identifier @sid.
+The message (A[],B[]) that the attacker may have by 5 may be received at input {15}.
+The message sign((pk(skB[]),B[]),skS[]) that the attacker may have by 10 may be received at input {20}.
+The message encrypt((Na_1,Nb_1,B[]),pk(skA[])) that the attacker may have by 17 may be received at input {24}.
+So the message encrypt(Nb_1,pk(skB[])) may be sent to the attacker at output {26}.
+attacker(encrypt(Nb_1,pk(skB[]))).
+
+19. By 1, the attacker may have the session identifier @sid_1.
+The message B[] that the attacker may have by 2 may be received at input {33}.
+The message encrypt((Na_1,A[]),pk(skB[])) that the attacker may have by 11 may be received at input {37}.
+The message sign((pk(skA[]),A[]),skS[]) that the attacker may have by 16 may be received at input {40}.
+The message encrypt(Nb_1,pk(skB[])) that the attacker may have by 18 may be received at input {44}.
+So the message sencrypt(secretBNb[],Nb_1) may be sent to the attacker at output {48}.
+attacker(sencrypt(secretBNb[],Nb_1)).
+
+20. By 3, the attacker may have the session identifier @sid.
+The message (A[],B[]) that the attacker may have by 5 may be received at input {15}.
+The message sign((pk(skB[]),B[]),skS[]) that the attacker may have by 10 may be received at input {20}.
+The message encrypt((Na_1,Nb_1,B[]),pk(skA[])) that the attacker may have by 17 may be received at input {24}.
+So the message sencrypt(secretANb[],Nb_1) may be sent to the attacker at output {29}.
+attacker(sencrypt(secretANb[],Nb_1)).
+
+21. By 20, the attacker may know sencrypt(secretANb[],Nb_1).
+By 19, the attacker may know sencrypt(secretBNb[],Nb_1).
+The terms sencrypt(secretANb[],Nb_1) and sencrypt(secretBNb[],Nb_1) unify for some values of the secrets and not for others.
+The attacker tests equality between the two terms he knows, which may allow it to distinguish cases.
+bad.
+
+
+A more detailed output of the traces is available with
+  set traceDisplay = long.
+
+new skA: skey creating skA_3 at {1}
+
+out(c, ~M) with ~M = pk(skA_3) at {3}
+
+insert keys(A,pk(skA_3)) at {4}
+
+new skB: skey creating skB_3 at {5}
+
+out(c, ~M_1) with ~M_1 = pk(skB_3) at {7}
+
+insert keys(B,pk(skB_3)) at {8}
+
+new skS: sskey creating skS_2 at {9}
+
+out(c, ~M_2) with ~M_2 = spk(skS_2) at {11}
+
+in(c, (A,B)) at {15} in copy a_3
+
+out(c, (~M_3,~M_4)) with ~M_3 = A, ~M_4 = B at {19} in copy a_3
+
+in(c, B) at {33} in copy a_4
+
+in(c, (a_5,A)) at {51} in copy a_6
+
+get keys(A,pk(skA_3)) at {53} in copy a_6
+
+out(c, ~M_5) with ~M_5 = sign((pk(skA_3),A),skS_2) at {52} in copy a_6
+
+in(c, (a_7,B)) at {51} in copy a_8
+
+get keys(B,pk(skB_3)) at {53} in copy a_8
+
+out(c, ~M_6) with ~M_6 = sign((pk(skB_3),B),skS_2) at {52} in copy a_8
+
+in(c, ~M_6) with ~M_6 = sign((pk(skB_3),B),skS_2) at {20} in copy a_3
+
+new Na: nonce creating Na_2 at {22} in copy a_3
+
+out(c, ~M_7) with ~M_7 = encrypt((Na_2,A),pk(skB_3)) at {23} in copy a_3
+
+in(c, ~M_7) with ~M_7 = encrypt((Na_2,A),pk(skB_3)) at {37} in copy a_4
+
+out(c, (~M_8,~M_9)) with ~M_8 = B, ~M_9 = A at {39} in copy a_4
+
+in(c, ~M_5) with ~M_5 = sign((pk(skA_3),A),skS_2) at {40} in copy a_4
+
+new Nb: nonce creating Nb_2 at {42} in copy a_4
+
+out(c, ~M_10) with ~M_10 = encrypt((Na_2,Nb_2,B),pk(skA_3)) at {43} in copy a_4
+
+in(c, ~M_10) with ~M_10 = encrypt((Na_2,Nb_2,B),pk(skA_3)) at {24} in copy a_3
+
+out(c, ~M_11) with ~M_11 = encrypt(Nb_2,pk(skB_3)) at {26} in copy a_3
+
+out(c, ~M_12) with ~M_12 = sencrypt(secretANa,Na_2) at {28} in copy a_3
+
+out(c, ~M_13) with ~M_13 = sencrypt(secretANb,Nb_2) at {29} in copy a_3
+
+in(c, ~M_11) with ~M_11 = encrypt(Nb_2,pk(skB_3)) at {44} in copy a_4
+
+out(c, ~M_14) with ~M_14 = sencrypt(secretBNa,Na_2) at {47} in copy a_4
+
+out(c, ~M_15) with ~M_15 = sencrypt(secretBNb,Nb_2) at {48} in copy a_4
+
+The attacker tests whether
+~M_13 = sencrypt(secretANb,Nb_2)
+is equal to
+~M_15 = sencrypt(secretBNb,Nb_2).
+This gives the attacker some information on the secret.
+A trace has been found.
+RESULT Non-interference secretANa, secretANb, secretBNa, secretBNb cannot be proved.
+-- Non-interference secretANa, secretANb in process 1.
+Translating the process into Horn clauses...
+Completing...
+200 rules inserted. Base: 187 rules (43 with conclusion selected). Queue: 66 rules.
+ok, secrecy assumption verified: fact unreachable attacker(skA[])
+ok, secrecy assumption verified: fact unreachable attacker(skB[])
+ok, secrecy assumption verified: fact unreachable attacker(skS[])
+RESULT Non-interference secretANa, secretANb is true.
+-- Non-interference secretBNa, secretBNb in process 1.
+Translating the process into Horn clauses...
+Completing...
+200 rules inserted. Base: 187 rules (43 with conclusion selected). Queue: 66 rules.
+ok, secrecy assumption verified: fact unreachable attacker(skA[])
+ok, secrecy assumption verified: fact unreachable attacker(skB[])
+ok, secrecy assumption verified: fact unreachable attacker(skS[])
+RESULT Non-interference secretBNa, secretBNb is true.
+
+--------------------------------------------------------------
+Verification summary:
+
+Non-interference secretANa, secretANb, secretBNa, secretBNb cannot be proved.
+
+Non-interference secretANa, secretANb is true.
+
+Non-interference secretBNa, secretBNb is true.
+
+--------------------------------------------------------------
+

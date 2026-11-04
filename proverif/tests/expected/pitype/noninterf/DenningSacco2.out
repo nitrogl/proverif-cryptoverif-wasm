@@ -1,0 +1,68 @@
+Process 0 (that is, the initial process):
+{1}new skA: sskey;
+{2}let pkA: spkey = spk(skA) in
+{3}out(c, pkA);
+{4}new skB: skey;
+{5}let pkB: pkey = pk(skB) in
+{6}out(c, pkB);
+(
+    {7}!
+    {8}let skA_1: sskey = skA in
+    {9}in(c, pk2: pkey);
+    {10}new k: key;
+    {11}let x: bitstring = sign((pkA,pk2,k),skA_1) in
+    {12}new r: seed;
+    {13}out(c, internal_encrypt(x,pk2,r));
+    {14}in(c, m: bitstring);
+    {15}let s: bitstring = sdecrypt(m,k) in
+    0
+) | (
+    {16}!
+    {17}let skB_1: skey = skB in
+    {18}in(c, km: bitstring);
+    {19}let ks: bitstring = decrypt(km,skB_1) in
+    {20}let (=pkA,=pkB,k_1: key) = checksign(ks,pkA) in
+    {21}out(c, sencrypt(secretB,k_1))
+)
+
+--  Process 1 (that is, process 0, with let moved downwards):
+{1}new skA: sskey;
+{2}let pkA: spkey = spk(skA) in
+{3}out(c, pkA);
+{4}new skB: skey;
+{5}let pkB: pkey = pk(skB) in
+{6}out(c, pkB);
+(
+    {7}!
+    {9}in(c, pk2: pkey);
+    {10}new k: key;
+    {12}new r: seed;
+    {8}let skA_1: sskey = skA in
+    {11}let x: bitstring = sign((pkA,pk2,k),skA_1) in
+    {13}out(c, internal_encrypt(x,pk2,r));
+    {14}in(c, m: bitstring);
+    {15}let s: bitstring = sdecrypt(m,k) in
+    0
+) | (
+    {16}!
+    {18}in(c, km: bitstring);
+    {17}let skB_1: skey = skB in
+    {19}let ks: bitstring = decrypt(km,skB_1) in
+    {20}let (=pkA,=pkB,k_1: key) = checksign(ks,pkA) in
+    {21}out(c, sencrypt(secretB,k_1))
+)
+
+-- Non-interference secretB in process 1.
+Translating the process into Horn clauses...
+Completing...
+ok, secrecy assumption verified: fact unreachable attacker(skA[])
+ok, secrecy assumption verified: fact unreachable attacker(skB[])
+RESULT Non-interference secretB is true.
+
+--------------------------------------------------------------
+Verification summary:
+
+Non-interference secretB is true.
+
+--------------------------------------------------------------
+

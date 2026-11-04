@@ -1,0 +1,256 @@
+Process 0 (that is, the initial process):
+{1}new Kas: key;
+{2}new Kbs: key;
+{3}insert keys(A,Kas);
+{4}insert keys(B,Kbs);
+(
+    {5}!
+    {6}in(c, xA: host);
+    {7}if ((xA = A) || (xA = B)) then
+    {15}get keys(=xA,kas: key) in
+    {8}new Na: nonce;
+    {9}out(c, (xA,Na));
+    {10}in(c, (cert1: bitstring,cert2: bitstring));
+    {11}let (b: host,k: key,=Na,nb: nonce) = decrypt(cert1,kas) in
+    {12}out(c, (cert2,encrypt(nb,k)));
+    {13}if ((b = A) || (b = B)) then
+    {14}out(c, encrypt(secretA,k))
+) | (
+    {16}!
+    {17}in(c, xB: host);
+    {18}if ((xB = A) || (xB = B)) then
+    {27}get keys(=xB,kbs: key) in
+    {19}in(c, (a: host,na: nonce));
+    {20}new Nb: nonce;
+    {21}out(c, (xB,encrypt((a,na,Nb),kbs)));
+    {22}in(c, (cert2_1: bitstring,m: bitstring));
+    {23}let (=a,k_1: key) = decrypt(cert2_1,kbs) in
+    {24}if (Nb = decrypt(m,k_1)) then
+    {25}if ((a = A) || (a = B)) then
+    {26}out(c, encrypt(secretB,k_1))
+) | (
+    {28}!
+    {29}in(c, (h2: host,m_1: bitstring));
+    {34}get keys(=h2,k2: key) in
+    {30}let (h1: host,n1: nonce,n2: nonce) = decrypt(m_1,k2) in
+    {33}get keys(=h1,k1: key) in
+    {31}new k_2: key;
+    {32}out(c, (encrypt((h2,k_2,n1,n2),k1),encrypt((h1,k_2),k2)))
+) | (
+    {35}!
+    {36}in(c, (h: host,k_3: key));
+    {37}if ((h ≠ A) && (h ≠ B)) then
+    {38}insert keys(h,k_3)
+)
+
+-- Non-interference secretA, secretB in process 0.
+Translating the process into Horn clauses...
+Completing...
+200 rules inserted. Base: 190 rules (49 with conclusion selected). Queue: 38 rules.
+ok, secrecy assumption verified: fact unreachable attacker(Kas[])
+ok, secrecy assumption verified: fact unreachable attacker(Kbs[])
+goal reachable: bad
+
+Derivation:
+Abbreviations:
+Na_1 = Na[kas = Kbs[],xA = B[],!1 = @sid]
+Nb_1 = Nb[na = Na_1,a = B[],kbs = Kbs[],xB = B[],!1 = @sid_1]
+k_4 = k_2[k1 = Kbs[],k2 = Kbs[],m_1 = encrypt((B[],Na_1,Nb_1),Kbs[]),h2 = B[],!1 = @sid_2]
+
+1. The attacker has some term @sid_1.
+attacker(@sid_1).
+
+2. The attacker initially knows B[].
+attacker(B[]).
+
+3. The entry keys(B[],Kbs[]) may be inserted in a table at insert {4}.
+table(keys(B[],Kbs[])).
+
+4. The attacker has some term @sid.
+attacker(@sid).
+
+5. By 4, the attacker may have the session identifier @sid.
+The message B[] that the attacker may have by 2 may be received at input {6}.
+The entry keys(B[],Kbs[]) that may be in a table by 3 may be read at get {15}.
+So the message (B[],Na_1) may be sent to the attacker at output {9}.
+attacker((B[],Na_1)).
+
+6. By 5, the attacker may know (B[],Na_1).
+Using the function 2-proj-2-tuple the attacker may obtain Na_1.
+attacker(Na_1).
+
+7. By 2, the attacker may know B[].
+By 6, the attacker may know Na_1.
+Using the function 2-tuple the attacker may obtain (B[],Na_1).
+attacker((B[],Na_1)).
+
+8. The attacker has some term cert2_2.
+attacker(cert2_2).
+
+9. The attacker has some term @sid_2.
+attacker(@sid_2).
+
+10. By 1, the attacker may have the session identifier @sid_1.
+The message B[] that the attacker may have by 2 may be received at input {17}.
+The entry keys(B[],Kbs[]) that may be in a table by 3 may be read at get {27}.
+The message (B[],Na_1) that the attacker may have by 7 may be received at input {19}.
+So the message (B[],encrypt((B[],Na_1,Nb_1),Kbs[])) may be sent to the attacker at output {21}.
+attacker((B[],encrypt((B[],Na_1,Nb_1),Kbs[]))).
+
+11. By 10, the attacker may know (B[],encrypt((B[],Na_1,Nb_1),Kbs[])).
+Using the function 2-proj-2-tuple the attacker may obtain encrypt((B[],Na_1,Nb_1),Kbs[]).
+attacker(encrypt((B[],Na_1,Nb_1),Kbs[])).
+
+12. By 2, the attacker may know B[].
+By 11, the attacker may know encrypt((B[],Na_1,Nb_1),Kbs[]).
+Using the function 2-tuple the attacker may obtain (B[],encrypt((B[],Na_1,Nb_1),Kbs[])).
+attacker((B[],encrypt((B[],Na_1,Nb_1),Kbs[]))).
+
+13. By 9, the attacker may have the session identifier @sid_2.
+The message (B[],encrypt((B[],Na_1,Nb_1),Kbs[])) that the attacker may have by 12 may be received at input {29}.
+The entry keys(B[],Kbs[]) that may be in a table by 3 may be read at get {34}.
+The entry keys(B[],Kbs[]) that may be in a table by 3 may be read at get {33}.
+So the message (encrypt((B[],k_4,Na_1,Nb_1),Kbs[]),encrypt((B[],k_4),Kbs[])) may be sent to the attacker at output {32}.
+attacker((encrypt((B[],k_4,Na_1,Nb_1),Kbs[]),encrypt((B[],k_4),Kbs[]))).
+
+14. By 13, the attacker may know (encrypt((B[],k_4,Na_1,Nb_1),Kbs[]),encrypt((B[],k_4),Kbs[])).
+Using the function 1-proj-2-tuple the attacker may obtain encrypt((B[],k_4,Na_1,Nb_1),Kbs[]).
+attacker(encrypt((B[],k_4,Na_1,Nb_1),Kbs[])).
+
+15. By 14, the attacker may know encrypt((B[],k_4,Na_1,Nb_1),Kbs[]).
+By 8, the attacker may know cert2_2.
+Using the function 2-tuple the attacker may obtain (encrypt((B[],k_4,Na_1,Nb_1),Kbs[]),cert2_2).
+attacker((encrypt((B[],k_4,Na_1,Nb_1),Kbs[]),cert2_2)).
+
+16. By 4, the attacker may have the session identifier @sid.
+The message B[] that the attacker may have by 2 may be received at input {6}.
+The entry keys(B[],Kbs[]) that may be in a table by 3 may be read at get {15}.
+The message (encrypt((B[],k_4,Na_1,Nb_1),Kbs[]),cert2_2) that the attacker may have by 15 may be received at input {10}.
+So the message (cert2_2,encrypt(Nb_1,k_4)) may be sent to the attacker at output {12}.
+attacker((cert2_2,encrypt(Nb_1,k_4))).
+
+17. By 16, the attacker may know (cert2_2,encrypt(Nb_1,k_4)).
+Using the function 2-proj-2-tuple the attacker may obtain encrypt(Nb_1,k_4).
+attacker(encrypt(Nb_1,k_4)).
+
+18. By 13, the attacker may know (encrypt((B[],k_4,Na_1,Nb_1),Kbs[]),encrypt((B[],k_4),Kbs[])).
+Using the function 2-proj-2-tuple the attacker may obtain encrypt((B[],k_4),Kbs[]).
+attacker(encrypt((B[],k_4),Kbs[])).
+
+19. By 18, the attacker may know encrypt((B[],k_4),Kbs[]).
+By 17, the attacker may know encrypt(Nb_1,k_4).
+Using the function 2-tuple the attacker may obtain (encrypt((B[],k_4),Kbs[]),encrypt(Nb_1,k_4)).
+attacker((encrypt((B[],k_4),Kbs[]),encrypt(Nb_1,k_4))).
+
+20. By 1, the attacker may have the session identifier @sid_1.
+The message B[] that the attacker may have by 2 may be received at input {17}.
+The entry keys(B[],Kbs[]) that may be in a table by 3 may be read at get {27}.
+The message (B[],Na_1) that the attacker may have by 7 may be received at input {19}.
+The message (encrypt((B[],k_4),Kbs[]),encrypt(Nb_1,k_4)) that the attacker may have by 19 may be received at input {22}.
+So the message encrypt(secretB[],k_4) may be sent to the attacker at output {26}.
+attacker(encrypt(secretB[],k_4)).
+
+21. The attacker has some term cert2_3.
+attacker(cert2_3).
+
+22. By 14, the attacker may know encrypt((B[],k_4,Na_1,Nb_1),Kbs[]).
+By 21, the attacker may know cert2_3.
+Using the function 2-tuple the attacker may obtain (encrypt((B[],k_4,Na_1,Nb_1),Kbs[]),cert2_3).
+attacker((encrypt((B[],k_4,Na_1,Nb_1),Kbs[]),cert2_3)).
+
+23. By 4, the attacker may have the session identifier @sid.
+The message B[] that the attacker may have by 2 may be received at input {6}.
+The entry keys(B[],Kbs[]) that may be in a table by 3 may be read at get {15}.
+The message (encrypt((B[],k_4,Na_1,Nb_1),Kbs[]),cert2_3) that the attacker may have by 22 may be received at input {10}.
+So the message encrypt(secretA[],k_4) may be sent to the attacker at output {14}.
+attacker(encrypt(secretA[],k_4)).
+
+24. By 23, the attacker may know encrypt(secretA[],k_4).
+By 20, the attacker may know encrypt(secretB[],k_4).
+The terms encrypt(secretA[],k_4) and encrypt(secretB[],k_4) unify for some values of the secrets and not for others.
+The attacker tests equality between the two terms he knows, which may allow it to distinguish cases.
+bad.
+
+
+A more detailed output of the traces is available with
+  set traceDisplay = long.
+
+new Kas: key creating Kas_1 at {1}
+
+new Kbs: key creating Kbs_1 at {2}
+
+insert keys(A,Kas_1) at {3}
+
+insert keys(B,Kbs_1) at {4}
+
+in(c, B) at {6} in copy a_1
+
+get keys(B,Kbs_1) at {15} in copy a_1
+
+new Na: nonce creating Na_2 at {8} in copy a_1
+
+out(c, (~M,~M_1)) with ~M = B, ~M_1 = Na_2 at {9} in copy a_1
+
+in(c, B) at {17} in copy a_2
+
+get keys(B,Kbs_1) at {27} in copy a_2
+
+in(c, (B,~M_1)) with ~M_1 = Na_2 at {19} in copy a_2
+
+new Nb: nonce creating Nb_2 at {20} in copy a_2
+
+out(c, (~M_2,~M_3)) with ~M_2 = B, ~M_3 = encrypt((B,Na_2,Nb_2),Kbs_1) at {21} in copy a_2
+
+in(c, (B,~M_3)) with ~M_3 = encrypt((B,Na_2,Nb_2),Kbs_1) at {29} in copy a_3
+
+get keys(B,Kbs_1) at {34} in copy a_3
+
+get keys(B,Kbs_1) at {33} in copy a_3
+
+new k_2: key creating k_5 at {31} in copy a_3
+
+out(c, (~M_4,~M_5)) with ~M_4 = encrypt((B,k_5,Na_2,Nb_2),Kbs_1), ~M_5 = encrypt((B,k_5),Kbs_1) at {32} in copy a_3
+
+in(c, (~M_4,a_4)) with ~M_4 = encrypt((B,k_5,Na_2,Nb_2),Kbs_1) at {10} in copy a_1
+
+out(c, (~M_6,~M_7)) with ~M_6 = a_4, ~M_7 = encrypt(Nb_2,k_5) at {12} in copy a_1
+
+out(c, ~M_8) with ~M_8 = encrypt(secretA,k_5) at {14} in copy a_1
+
+in(c, (~M_5,~M_7)) with ~M_5 = encrypt((B,k_5),Kbs_1), ~M_7 = encrypt(Nb_2,k_5) at {22} in copy a_2
+
+out(c, ~M_9) with ~M_9 = encrypt(secretB,k_5) at {26} in copy a_2
+
+The attacker tests whether
+~M_8 = encrypt(secretA,k_5)
+is equal to
+~M_9 = encrypt(secretB,k_5).
+This gives the attacker some information on the secret.
+A trace has been found.
+RESULT Non-interference secretA, secretB cannot be proved.
+-- Non-interference secretA in process 0.
+Translating the process into Horn clauses...
+Completing...
+200 rules inserted. Base: 190 rules (49 with conclusion selected). Queue: 38 rules.
+ok, secrecy assumption verified: fact unreachable attacker(Kas[])
+ok, secrecy assumption verified: fact unreachable attacker(Kbs[])
+RESULT Non-interference secretA is true.
+-- Non-interference secretB in process 0.
+Translating the process into Horn clauses...
+Completing...
+200 rules inserted. Base: 190 rules (49 with conclusion selected). Queue: 38 rules.
+ok, secrecy assumption verified: fact unreachable attacker(Kas[])
+ok, secrecy assumption verified: fact unreachable attacker(Kbs[])
+RESULT Non-interference secretB is true.
+
+--------------------------------------------------------------
+Verification summary:
+
+Non-interference secretA, secretB cannot be proved.
+
+Non-interference secretA is true.
+
+Non-interference secretB is true.
+
+--------------------------------------------------------------
+

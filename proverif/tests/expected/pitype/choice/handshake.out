@@ -1,0 +1,119 @@
+Linear part: No equation.
+Convergent part:
+decrypt(encrypt(x,y),y) = x
+encrypt(decrypt(x,y),y) = x
+Completing equations...
+Completed equations:
+encrypt(decrypt(x,y),y) = x
+decrypt(encrypt(x,y),y) = x
+Biprocess 0 (that is, the initial process):
+(
+    {1}!
+    {2}new N: nonce;
+    {3}out(c, encrypt(N,pw))
+) | (
+    {4}!
+    {5}in(c, x: nonce);
+    {6}let y: nonce = decrypt(x,pw) in
+    {7}out(c, encrypt(incr(y),pw))
+) | (
+    {8}phase 1;
+    {9}new w: passwd;
+    {10}out(c, choice[w,pw])
+)
+
+-- Observational equivalence in biprocess 0.
+Translating the process into Horn clauses...
+Termination warning: v ≠ v_1 && attacker2_p1(v_2,v) && attacker2_p1(v_2,v_1) -> bad
+Selecting 0
+Termination warning: v ≠ v_1 && attacker2_p1(v,v_2) && attacker2_p1(v_1,v_2) -> bad
+Selecting 0
+select attacker(encrypt(y_1,pw[]))/-5000
+Completing...
+Termination warning: v ≠ v_1 && attacker2_p1(v_2,v) && attacker2_p1(v_2,v_1) -> bad
+Selecting 0
+Termination warning: v ≠ v_1 && attacker2_p1(v,v_2) && attacker2_p1(v_1,v_2) -> bad
+Selecting 0
+Termination warning: v ≠ v_1 && attacker(v) && attacker2_p1(v,v_1) -> bad
+Selecting 1
+Termination warning: v ≠ v_1 && attacker(v) && attacker2_p1(v_1,v) -> bad
+Selecting 1
+Termination warning: attacker2_p1(v,y_1) && attacker(encrypt(y_1,pw[])) -> bad
+Selecting 1
+goal reachable: bad
+
+Derivation:
+Abbreviations:
+N_1 = N[!1 = @sid]
+
+1. The message w[] (resp. pw[]) may be sent to the attacker in phase 1 at output {10}.
+attacker2_p1(w[],pw[]).
+
+2. The message encrypt(N_1,pw[]) may be sent to the attacker at output {3}.
+attacker(encrypt(N_1,pw[])).
+
+3. The message encrypt(N_1,pw[]) that the attacker may have by 2 may be received at input {5}.
+So the message encrypt(incr(N_1),pw[]) may be sent to the attacker at output {7}.
+attacker(encrypt(incr(N_1),pw[])).
+
+4. By 3, the attacker may know encrypt(incr(N_1),pw[]).
+So the attacker may know encrypt(incr(N_1),pw[]) (resp. encrypt(incr(N_1),pw[])) in phase 1.
+attacker2_p1(encrypt(incr(N_1),pw[]),encrypt(incr(N_1),pw[])).
+
+5. By 4, the attacker may know encrypt(incr(N_1),pw[]) (resp. encrypt(incr(N_1),pw[])) in phase 1.
+By 1, the attacker may know w[] (resp. pw[]) in phase 1.
+Using the function decrypt the attacker may obtain decrypt(encrypt(incr(N_1),pw[]),w[]) (resp. incr(N_1)) in phase 1.
+attacker2_p1(decrypt(encrypt(incr(N_1),pw[]),w[]),incr(N_1)).
+
+6. By 2, the attacker may know encrypt(N_1,pw[]).
+So the attacker may know encrypt(N_1,pw[]) (resp. encrypt(N_1,pw[])) in phase 1.
+attacker2_p1(encrypt(N_1,pw[]),encrypt(N_1,pw[])).
+
+7. By 6, the attacker may know encrypt(N_1,pw[]) (resp. encrypt(N_1,pw[])) in phase 1.
+By 1, the attacker may know w[] (resp. pw[]) in phase 1.
+Using the function decrypt the attacker may obtain decrypt(encrypt(N_1,pw[]),w[]) (resp. N_1) in phase 1.
+attacker2_p1(decrypt(encrypt(N_1,pw[]),w[]),N_1).
+
+8. By 7, the attacker may know decrypt(encrypt(N_1,pw[]),w[]) (resp. N_1) in phase 1.
+Using the function incr the attacker may obtain incr(decrypt(encrypt(N_1,pw[]),w[])) (resp. incr(N_1)) in phase 1.
+attacker2_p1(incr(decrypt(encrypt(N_1,pw[]),w[])),incr(N_1)).
+
+9. By 8, the attacker may know incr(decrypt(encrypt(N_1,pw[]),w[])) (resp. incr(N_1)) in phase 1.
+By 5, the attacker may know decrypt(encrypt(incr(N_1),pw[]),w[]) (resp. incr(N_1)) in phase 1.
+We have incr(decrypt(encrypt(N_1,pw[]),w[])) ≠ decrypt(encrypt(incr(N_1),pw[]),w[]).
+The attacker tests equality between the two terms he knows, which may allow it to distinguish cases.
+bad.
+
+
+A more detailed output of the traces is available with
+  set traceDisplay = long.
+
+new N: nonce creating N_2 at {2} in copy a
+
+out(c, ~M) with ~M = encrypt(N_2,pw) at {3} in copy a
+
+in(c, ~M) with ~M = encrypt(N_2,pw) at {5} in copy a_1
+
+out(c, ~M_1) with ~M_1 = encrypt(incr(decrypt(encrypt(N_2,pw),pw)),pw) at {7} in copy a_1
+
+new w: passwd creating w_1 at {9}
+
+out(c, ~M_2) with ~M_2 = choice[w_1,pw] at {10}
+
+The attacker tests whether
+incr(decrypt(~M,~M_2)) = incr(choice[decrypt(encrypt(N_2,pw),w_1),N_2])
+is equal to
+decrypt(~M_1,~M_2) = choice[decrypt(encrypt(incr(N_2),pw),w_1),incr(N_2)].
+The result in the left-hand side is different from the result in the right-hand side.
+A trace has been found.
+RESULT Observational equivalence cannot be proved.
+Looking for simplified processes ...
+No simplified process found.
+
+--------------------------------------------------------------
+Verification summary:
+
+Observational equivalence cannot be proved.
+
+--------------------------------------------------------------
+

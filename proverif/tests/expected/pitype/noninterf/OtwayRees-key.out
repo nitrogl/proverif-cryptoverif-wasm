@@ -1,0 +1,64 @@
+Process 0 (that is, the initial process):
+{1}new Kas: key;
+{2}new Kbs: key;
+{3}insert keys(A,Kas);
+{4}insert keys(B,Kbs);
+(
+    {5}!
+    {6}in(c, (xA: host,xB0: host));
+    {7}if ((xA = A) || (xA = B)) then
+    {13}get keys(=xA,kA: key) in
+    {8}new C: nonce;
+    {9}new Na: nonce;
+    {10}out(c, (C,xA,xB0,encrypt((Na,C,xA,xB0),kA)));
+    {11}in(c, (=C,m2: bitstring));
+    {12}let (=Na,k: key) = decrypt(m2,kA) in
+    0
+) | (
+    {14}!
+    {15}in(c, xB: host);
+    {16}if ((xB = A) || (xB = B)) then
+    {23}get keys(=xB,kB: key) in
+    {17}in(c, (C1: nonce,xA1: host,=xB,m2_1: bitstring));
+    {18}new Nb: nonce;
+    {19}out(c, (C1,xA1,xB,m2_1,encrypt((Nb,C1,xA1,xB),kB)));
+    {20}in(c, (=C1,m3: bitstring,m4: bitstring));
+    {21}let (=Nb,k_1: key) = decrypt(m4,kB) in
+    {22}out(c, (C1,m3))
+) | (
+    {24}!
+    {25}in(c, (C1_1: nonce,xA1_1: host,xB1: host,m2_2: bitstring,m3_1: bitstring));
+    {34}get keys(=xA1_1,kA1: key) in
+    {33}get keys(=xB1,kB1: key) in
+    {26}let (Na1: nonce,=C1_1,=xA1_1,=xB1) = decrypt(m2_2,kA1) in
+    {27}let (Nb1: nonce,=C1_1,=xA1_1,=xB1) = decrypt(m3_1,kB1) in
+    {28}if ((xA1_1,xB1) = (A,B)) then
+    (
+        {29}let k_2: key = secretkey in
+        {30}out(c, (C1_1,encrypt((Na1,k_2),kA1),encrypt((Nb1,k_2),kB1)))
+    )
+    else
+        {31}new k_3: key;
+        {32}out(c, (C1_1,encrypt((Na1,k_3),kA1),encrypt((Nb1,k_3),kB1)))
+) | (
+    {35}!
+    {36}in(c, (h: host,k_4: key));
+    {37}if ((h ≠ A) && (h ≠ B)) then
+    {38}insert keys(h,k_4)
+)
+
+-- Non-interference secretkey in process 0.
+Translating the process into Horn clauses...
+Completing...
+200 rules inserted. Base: 152 rules (29 with conclusion selected). Queue: 45 rules.
+ok, secrecy assumption verified: fact unreachable attacker(Kas[])
+ok, secrecy assumption verified: fact unreachable attacker(Kbs[])
+RESULT Non-interference secretkey is true.
+
+--------------------------------------------------------------
+Verification summary:
+
+Non-interference secretkey is true.
+
+--------------------------------------------------------------
+

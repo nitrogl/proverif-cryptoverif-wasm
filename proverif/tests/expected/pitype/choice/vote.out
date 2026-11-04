@@ -1,0 +1,91 @@
+Biprocess 0 (that is, the initial process):
+(
+    {1}new skS: skey;
+    {2}let pkS: pkey = pk(skS) in
+    {3}out(c, pkS);
+    {4}!
+    {5}out(c, encrypt(v,pkS))
+) | (
+    {6}phase 1;
+    {7}new w: bitstring;
+    {8}out(c, choice[w,v])
+)
+
+-- Observational equivalence in biprocess 0.
+Translating the process into Horn clauses...
+Termination warning: v_1 ≠ v_2 && attacker2_p1(v_3,v_1) && attacker2_p1(v_3,v_2) -> bad
+Selecting 0
+Termination warning: v_1 ≠ v_2 && attacker2_p1(v_1,v_3) && attacker2_p1(v_2,v_3) -> bad
+Selecting 0
+Completing...
+Termination warning: v_1 ≠ v_2 && attacker2_p1(v_3,v_1) && attacker2_p1(v_3,v_2) -> bad
+Selecting 0
+Termination warning: v_1 ≠ v_2 && attacker2_p1(v_1,v_3) && attacker2_p1(v_2,v_3) -> bad
+Selecting 0
+Termination warning: v_1 ≠ v_2 && attacker(v_1) && attacker2_p1(v_1,v_2) -> bad
+Selecting 1
+Termination warning: v_1 ≠ v_2 && attacker(v_1) && attacker2_p1(v_2,v_1) -> bad
+Selecting 1
+goal reachable: bad
+
+Derivation:
+
+1. The message pk(skS[]) may be sent to the attacker at output {3}.
+attacker(pk(skS[])).
+
+2. By 1, the attacker may know pk(skS[]).
+So the attacker may know pk(skS[]) (resp. pk(skS[])) in phase 1.
+attacker2_p1(pk(skS[]),pk(skS[])).
+
+3. The message w[] (resp. v[]) may be sent to the attacker in phase 1 at output {8}.
+attacker2_p1(w[],v[]).
+
+4. By 3, the attacker may know w[] (resp. v[]) in phase 1.
+By 2, the attacker may know pk(skS[]) (resp. pk(skS[])) in phase 1.
+Using the function encrypt the attacker may obtain encrypt(w[],pk(skS[])) (resp. encrypt(v[],pk(skS[]))) in phase 1.
+attacker2_p1(encrypt(w[],pk(skS[])),encrypt(v[],pk(skS[]))).
+
+5. The message encrypt(v[],pk(skS[])) may be sent to the attacker at output {5}.
+attacker(encrypt(v[],pk(skS[]))).
+
+6. By 5, the attacker may know encrypt(v[],pk(skS[])).
+So the attacker may know encrypt(v[],pk(skS[])) (resp. encrypt(v[],pk(skS[]))) in phase 1.
+attacker2_p1(encrypt(v[],pk(skS[])),encrypt(v[],pk(skS[]))).
+
+7. By 6, the attacker may know encrypt(v[],pk(skS[])) (resp. encrypt(v[],pk(skS[]))) in phase 1.
+By 4, the attacker may know encrypt(w[],pk(skS[])) (resp. encrypt(v[],pk(skS[]))) in phase 1.
+We have encrypt(v[],pk(skS[])) ≠ encrypt(w[],pk(skS[])).
+The attacker tests equality between the two terms he knows, which may allow it to distinguish cases.
+bad.
+
+
+A more detailed output of the traces is available with
+  set traceDisplay = long.
+
+new skS: skey creating skS_1 at {1}
+
+out(c, ~M) with ~M = pk(skS_1) at {3}
+
+out(c, ~M_1) with ~M_1 = encrypt(v,pk(skS_1)) at {5} in copy a
+
+new w: bitstring creating w_1 at {7}
+
+out(c, ~M_2) with ~M_2 = choice[w_1,v] at {8}
+
+The attacker tests whether
+~M_1 = encrypt(v,pk(skS_1))
+is equal to
+encrypt(~M_2,~M) = encrypt(choice[w_1,v],pk(skS_1)).
+The result in the left-hand side is different from the result in the right-hand side.
+A trace has been found.
+RESULT Observational equivalence cannot be proved.
+Looking for simplified processes ...
+No simplified process found.
+
+--------------------------------------------------------------
+Verification summary:
+
+Observational equivalence cannot be proved.
+
+--------------------------------------------------------------
+

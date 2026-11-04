@@ -1,0 +1,26 @@
+Process 0 (that is, the initial process):
+(
+    {1}out(d, 0)
+) | (
+    {2}!
+    {3}in(d, x: nat);
+    {4}out(d, x + 1)
+)
+
+-- Query mess(d[],x_1) ==> is_nat(x_1) in process 0.
+Translating the process into Horn clauses...
+select mess(d[],x_1)/-5000
+Completing...
+Starting query mess(d[],x_1) ==> is_nat(x_1)
+goal reachable: is_nat(x_1) && mess(d[],x_1) -> mess(d[],x_1 + 1)
+The hypothesis occurs strictly before the conclusion.
+goal reachable: mess(d[],0)
+RESULT mess(d[],x_1) ==> is_nat(x_1) is true.
+
+--------------------------------------------------------------
+Verification summary:
+
+Query mess(d[],x_1) ==> is_nat(x_1) is true.
+
+--------------------------------------------------------------
+

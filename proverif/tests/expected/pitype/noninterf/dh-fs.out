@@ -1,0 +1,56 @@
+Linear part:
+exp(exp(g,x_1),y) = exp(exp(g,y),x_1)
+Completing equations...
+Completed equations:
+exp(exp(g,x_1),y) = exp(exp(g,y),x_1)
+Convergent part: No equation.
+Process 0 (that is, the initial process):
+{1}out(c, (exp(g,m),exp(g,n),x))
+
+-- Non-interference x among (exp(exp(g,m[]),n[]), exp(g,s[])) in process 0.
+Warning: using "noninterf" in the presence of equations may yield many
+false attacks. If you observe false attacks, try to code the desired
+property using "choice" instead.
+Translating the process into Horn clauses...
+Completing...
+goal reachable: bad
+
+Derivation:
+
+1. The attacker has some term @mayfail_v.
+attacker(@mayfail_v).
+
+2. The message (exp(g,m[]),exp(g,n[]),x[]) may be sent to the attacker at output {1}.
+attacker((exp(g,m[]),exp(g,n[]),x[])).
+
+3. By 2, the attacker may know (exp(g,m[]),exp(g,n[]),x[]).
+Using the function 3-proj-3-tuple the attacker may obtain x[].
+attacker(x[]).
+
+4. The terms (x[],@mayfail_v) and (exp(g,@gen),@gen_1) unify for some values of the secrets and not for others.
+By 3, the attacker may know x[].
+By 1, the attacker may know @mayfail_v.
+The attacker tests whether exp is applicable, which may allow it to distinguish cases.
+bad.
+
+
+A more detailed output of the traces is available with
+  set traceDisplay = long.
+
+out(c, (~M,~M_1,~M_2)) with ~M = exp(g,m), ~M_1 = exp(g,n), ~M_2 = x at {1}
+
+The attacker tries to apply exp to the message(s)
+~M_2 = x
+a
+that he has.
+This gives the attacker some information on the secret.
+A trace has been found.
+RESULT Non-interference x among (exp(exp(g,m[]),n[]), exp(g,s[])) cannot be proved.
+
+--------------------------------------------------------------
+Verification summary:
+
+Non-interference x among (exp(exp(g,m[]),n[]), exp(g,s[])) cannot be proved.
+
+--------------------------------------------------------------
+

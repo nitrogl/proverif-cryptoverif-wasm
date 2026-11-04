@@ -1,0 +1,175 @@
+Process 0 (that is, the initial process):
+{1}new Kas: key;
+{2}new Kbs: key;
+{3}insert keys(A,Kas);
+{4}insert keys(B,Kbs);
+(
+    {5}!
+    {6}let xA: host = A in
+    {7}let kas: key = Kas in
+    {8}new Na: nonce;
+    {9}out(c, (xA,Na));
+    {10}in(c, (nb: nonce,m1: bitstring,m2: bitstring));
+    {11}let (b: host,kab: key,na2: nonce) = decrypt(m1,kas) in
+    {12}event beginBparam(b,xA);
+    {13}event beginBkey(b,xA,nb,kab);
+    {14}if (na2 = Na) then
+    {15}out(c, (m2,encrypt(nb,kab)));
+    {16}if ((b = A) || (b = B)) then
+    {17}event endAparam(xA,b);
+    {18}out(c, encrypt(secretA,kab))
+) | (
+    {19}!
+    {20}let xB: host = B in
+    {21}let kbs: key = Kbs in
+    {22}in(c, (a: host,na: nonce));
+    {23}event beginAparam(a,xB);
+    {24}new Nb: nonce;
+    {25}out(c, (xB,Nb,encrypt((a,na),kbs)));
+    {26}in(c, (m3: bitstring,m4: bitstring));
+    {27}let (=a,kab_1: key,=Nb) = decrypt(m3,kbs) in
+    {28}if (Nb = decrypt(m4,kab_1)) then
+    {29}if ((a = A) || (a = B)) then
+    {30}event endBparam(xB,a);
+    {31}event endBkey(xB,a,Nb,kab_1);
+    {32}out(c, encrypt(secretB,kab_1))
+) | (
+    {33}!
+    {34}in(c, (b_1: host,nb_1: nonce,m5: bitstring));
+    {39}get keys(=b_1,kbs2: key) in
+    {35}let (a_1: host,na_1: nonce) = decrypt(m5,kbs2) in
+    {38}get keys(=a_1,kas2: key) in
+    {36}new kab_2: key;
+    {37}out(c, (nb_1,encrypt((b_1,kab_2,na_1),kas2),encrypt((a_1,kab_2,nb_1),kbs2)))
+) | (
+    {40}!
+    {41}in(c, (h: host,k: key));
+    {42}if ((h ≠ A) && (h ≠ B)) then
+    {43}insert keys(h,k)
+)
+
+--  Process 1 (that is, process 0, with let moved downwards):
+{1}new Kas: key;
+{2}new Kbs: key;
+{3}insert keys(A,Kas);
+{4}insert keys(B,Kbs);
+(
+    {5}!
+    {8}new Na: nonce;
+    {6}let xA: host = A in
+    {9}out(c, (xA,Na));
+    {10}in(c, (nb: nonce,m1: bitstring,m2: bitstring));
+    {7}let kas: key = Kas in
+    {11}let (b: host,kab: key,na2: nonce) = decrypt(m1,kas) in
+    {12}event beginBparam(b,xA);
+    {13}event beginBkey(b,xA,nb,kab);
+    {14}if (na2 = Na) then
+    {15}out(c, (m2,encrypt(nb,kab)));
+    {16}if ((b = A) || (b = B)) then
+    {17}event endAparam(xA,b);
+    {18}out(c, encrypt(secretA,kab))
+) | (
+    {19}!
+    {22}in(c, (a: host,na: nonce));
+    {20}let xB: host = B in
+    {23}event beginAparam(a,xB);
+    {24}new Nb: nonce;
+    {21}let kbs: key = Kbs in
+    {25}out(c, (xB,Nb,encrypt((a,na),kbs)));
+    {26}in(c, (m3: bitstring,m4: bitstring));
+    {27}let (=a,kab_1: key,=Nb) = decrypt(m3,kbs) in
+    {28}if (Nb = decrypt(m4,kab_1)) then
+    {29}if ((a = A) || (a = B)) then
+    {30}event endBparam(xB,a);
+    {31}event endBkey(xB,a,Nb,kab_1);
+    {32}out(c, encrypt(secretB,kab_1))
+) | (
+    {33}!
+    {34}in(c, (b_1: host,nb_1: nonce,m5: bitstring));
+    {39}get keys(=b_1,kbs2: key) in
+    {35}let (a_1: host,na_1: nonce) = decrypt(m5,kbs2) in
+    {38}get keys(=a_1,kas2: key) in
+    {36}new kab_2: key;
+    {37}out(c, (nb_1,encrypt((b_1,kab_2,na_1),kas2),encrypt((a_1,kab_2,nb_1),kbs2)))
+) | (
+    {40}!
+    {41}in(c, (h: host,k: key));
+    {42}if ((h ≠ A) && (h ≠ B)) then
+    {43}insert keys(h,k)
+)
+
+-- Query 
+   not attacker(secretA[])
+   not attacker(secretB[])
+ in process 1.
+Translating the process into Horn clauses...
+Completing...
+ok, secrecy assumption verified: fact unreachable attacker(Kas[])
+ok, secrecy assumption verified: fact unreachable attacker(Kbs[])
+Starting query not attacker(secretA[])
+RESULT not attacker(secretA[]) is true.
+Starting query not attacker(secretB[])
+RESULT not attacker(secretB[]) is true.
+-- Query inj-event(endAparam(x,y)) ==> inj-event(beginAparam(x,y)) in process 1.
+Translating the process into Horn clauses...
+Completing...
+ok, secrecy assumption verified: fact unreachable attacker(Kas[])
+ok, secrecy assumption verified: fact unreachable attacker(Kbs[])
+Starting query inj-event(endAparam(x,y)) ==> inj-event(beginAparam(x,y))
+goal reachable: attacker(nb_2) && attacker(nb_3) && b-inj-event(beginAparam(A[],B[]),@occ23_1) && attacker(m2_1) -> inj-event(endAparam(A[],B[]),@occ17_1)
+The 1st, 2nd, 4th hypotheses occur before the conclusion.
+The 3rd hypothesis occurs strictly before the conclusion.
+Abbreviations:
+Na_1 = Na[!1 = @sid]
+kab_3 = kab_2[kas2 = Kas[],kbs2 = Kbs[],m5 = encrypt((A[],Na_1),Kbs[]),nb_1 = nb_3,b_1 = B[],!1 = @sid_1]
+@occ17_1 = @occ17[m2 = m2_1,m1 = encrypt((B[],kab_3,Na_1),Kas[]),nb = nb_2,!1 = @sid]
+@occ23_1 = @occ23[na = Na_1,a = A[],!1 = @sid_2]
+RESULT inj-event(endAparam(x,y)) ==> inj-event(beginAparam(x,y)) is true.
+-- Query inj-event(endBparam(x,y)) ==> inj-event(beginBparam(x,y)) in process 1.
+Translating the process into Horn clauses...
+Completing...
+ok, secrecy assumption verified: fact unreachable attacker(Kas[])
+ok, secrecy assumption verified: fact unreachable attacker(Kbs[])
+Starting query inj-event(endBparam(x,y)) ==> inj-event(beginBparam(x,y))
+goal reachable: b-inj-event(beginBparam(B[],A[]),@occ12_1) && attacker(m2_1) && attacker(na_2) -> inj-event(endBparam(B[],A[]),@occ30_1)
+The 1st hypothesis occurs strictly before the conclusion.
+The 2nd, 3rd hypotheses occur before the conclusion.
+Abbreviations:
+Nb_1 = Nb[na = na_2,a = A[],!1 = @sid]
+Na_1 = Na[!1 = @sid_1]
+kab_3 = kab_2[kas2 = Kas[],kbs2 = Kbs[],m5 = encrypt((A[],Na_1),Kbs[]),nb_1 = Nb_1,b_1 = B[],!1 = @sid_2]
+@occ30_1 = @occ30[m4 = encrypt(Nb_1,kab_3),m3 = encrypt((A[],kab_3,Nb_1),Kbs[]),na = na_2,a = A[],!1 = @sid]
+@occ12_1 = @occ12[m2 = m2_1,m1 = encrypt((B[],kab_3,Na_1),Kas[]),nb = Nb_1,!1 = @sid_1]
+RESULT inj-event(endBparam(x,y)) ==> inj-event(beginBparam(x,y)) is true.
+-- Query inj-event(endBkey(x,y,z,t)) ==> inj-event(beginBkey(x,y,z,t)) in process 1.
+Translating the process into Horn clauses...
+Completing...
+ok, secrecy assumption verified: fact unreachable attacker(Kas[])
+ok, secrecy assumption verified: fact unreachable attacker(Kbs[])
+Starting query inj-event(endBkey(x,y,z,t)) ==> inj-event(beginBkey(x,y,z,t))
+goal reachable: b-inj-event(beginBkey(B[],A[],Nb_1,kab_3),@occ13_1) && attacker(m2_1) && attacker(na_2) -> inj-event(endBkey(B[],A[],Nb_1,kab_3),@occ31_1)
+The 1st hypothesis occurs strictly before the conclusion.
+The 2nd, 3rd hypotheses occur before the conclusion.
+Abbreviations:
+Nb_1 = Nb[na = na_2,a = A[],!1 = @sid]
+Na_1 = Na[!1 = @sid_1]
+kab_3 = kab_2[kas2 = Kas[],kbs2 = Kbs[],m5 = encrypt((A[],Na_1),Kbs[]),nb_1 = Nb_1,b_1 = B[],!1 = @sid_2]
+@occ31_1 = @occ31[m4 = encrypt(Nb_1,kab_3),m3 = encrypt((A[],kab_3,Nb_1),Kbs[]),na = na_2,a = A[],!1 = @sid]
+@occ13_1 = @occ13[m2 = m2_1,m1 = encrypt((B[],kab_3,Na_1),Kas[]),nb = Nb_1,!1 = @sid_1]
+RESULT inj-event(endBkey(x,y,z,t)) ==> inj-event(beginBkey(x,y,z,t)) is true.
+
+--------------------------------------------------------------
+Verification summary:
+
+Query not attacker(secretA[]) is true.
+
+Query not attacker(secretB[]) is true.
+
+Query inj-event(endAparam(x,y)) ==> inj-event(beginAparam(x,y)) is true.
+
+Query inj-event(endBparam(x,y)) ==> inj-event(beginBparam(x,y)) is true.
+
+Query inj-event(endBkey(x,y,z,t)) ==> inj-event(beginBkey(x,y,z,t)) is true.
+
+--------------------------------------------------------------
+

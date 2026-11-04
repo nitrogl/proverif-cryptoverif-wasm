@@ -1,0 +1,197 @@
+Process 0 (that is, the initial process):
+{1}!
+{2}new k: bitstring;
+{3}new pid: bitstring;
+{4}new secretid: bitstring;
+{5}new d_usr: channel;
+{6}new d_srv: channel;
+(
+    {7}out(d_srv, (0,(secretid,k,0)))
+) | (
+    {8}out(d_usr, 1)
+) | (
+    {9}!
+    {10}in(d_srv, x: bitstring);
+    {11}out(d_srv, x)
+) | (
+    {12}!
+    {13}in(d_usr, x_1: nat);
+    {14}out(d_usr, x_1)
+) | (
+    {15}out(c, pid)
+) | (
+    {16}let d: channel = d_srv in
+    {17}let pid_1: bitstring = pid in
+    {18}let secretid_1: bitstring = secretid in
+    {19}let k_1: bitstring = k in
+    {20}!
+    {21}in(c, (=pid_1,nonce: bitstring,otp: bitstring));
+    {22}in(d, (i: nat,(=secretid_1,=k_1,otc: nat)));
+    {23}event VCell_bitstring(d,(i,(secretid_1,k_1,otc)));
+    {24}let (=secretid_1,tc: nat,npr: bitstring) = sdec(otp,k_1) in
+    (
+        {25}if (otc < tc) then
+            {26}new st1[]: stamp;
+            {27}event Counter(d,id1,st1,otc);
+            {28}event Counter(d,id,st1,i);
+            {29}event VCell_bitstring(d,(i + 1,(secretid_1,k_1,tc)));
+            {30}event Login(pid_1,k_1,i + 1,tc);
+            {31}out(d, (i + 1,(secretid_1,k_1,tc)))
+        else
+            {32}out(d, (i,(secretid_1,k_1,otc)))
+    )
+    else
+        {33}out(d, (i,(secretid_1,k_1,otc)))
+) | (
+    {34}!
+    {35}let cell: channel = d_usr in
+    {36}let pid_2: bitstring = pid in
+    {37}let secretid_2: bitstring = secretid in
+    {38}let k_2: bitstring = k in
+    {39}in(cell, tc_1: nat);
+    {40}new st[]: stamp;
+    {41}event Counter(cell,id,st,tc_1);
+    {42}new nonce_1: bitstring;
+    {43}new npr_1: bitstring;
+    {44}event YubiPress(pid_2,secretid_2,k_2,tc_1);
+    {45}out(c, (pid_2,nonce_1,senc((secretid_2,tc_1,npr_1),k_2)));
+    {46}out(cell, tc_1 + 1)
+)
+
+--  Process 1 (that is, process 0, with let moved downwards):
+{1}!
+{2}new k: bitstring;
+{3}new pid: bitstring;
+{4}new secretid: bitstring;
+{5}new d_usr: channel;
+{6}new d_srv: channel;
+(
+    {7}out(d_srv, (0,(secretid,k,0)))
+) | (
+    {8}out(d_usr, 1)
+) | (
+    {9}!
+    {10}in(d_srv, x: bitstring);
+    {11}out(d_srv, x)
+) | (
+    {12}!
+    {13}in(d_usr, x_1: nat);
+    {14}out(d_usr, x_1)
+) | (
+    {15}out(c, pid)
+) | (
+    {20}!
+    {17}let pid_1: bitstring = pid in
+    {21}in(c, (=pid_1,nonce: bitstring,otp: bitstring));
+    {19}let k_1: bitstring = k in
+    {18}let secretid_1: bitstring = secretid in
+    {16}let d: channel = d_srv in
+    {22}in(d, (i: nat,(=secretid_1,=k_1,otc: nat)));
+    {23}event VCell_bitstring(d,(i,(secretid_1,k_1,otc)));
+    {24}let (=secretid_1,tc: nat,npr: bitstring) = sdec(otp,k_1) in
+    (
+        {25}if (otc < tc) then
+            {26}new st1[]: stamp;
+            {27}event Counter(d,id1,st1,otc);
+            {28}event Counter(d,id,st1,i);
+            {29}event VCell_bitstring(d,(i + 1,(secretid_1,k_1,tc)));
+            {30}event Login(pid_1,k_1,i + 1,tc);
+            {31}out(d, (i + 1,(secretid_1,k_1,tc)))
+        else
+            {32}out(d, (i,(secretid_1,k_1,otc)))
+    )
+    else
+        {33}out(d, (i,(secretid_1,k_1,otc)))
+) | (
+    {34}!
+    {35}let cell: channel = d_usr in
+    {39}in(cell, tc_1: nat);
+    {40}new st[]: stamp;
+    {41}event Counter(cell,id,st,tc_1);
+    {42}new nonce_1: bitstring;
+    {43}new npr_1: bitstring;
+    {38}let k_2: bitstring = k in
+    {37}let secretid_2: bitstring = secretid in
+    {36}let pid_2: bitstring = pid in
+    {44}event YubiPress(pid_2,secretid_2,k_2,tc_1);
+    {45}out(c, (pid_2,nonce_1,senc((secretid_2,tc_1,npr_1),k_2)));
+    {46}out(cell, tc_1 + 1)
+)
+
+-- Axiom 
+   event(VCell_bitstring(d_1,(i4,(x3,x_2,i1)))) && event(VCell_bitstring(d_1,(i2,(x1,x2,i1)))) ==> (i4,x3,x_2) = (i2,x1,x2)
+   event(VCell_bitstring(d_1,(i2,(x3,x_2,i1)))) && event(VCell_bitstring(d_1,(i2,(x1,x2,i3)))) ==> (x3,x_2,i1) = (x1,x2,i3)
+   event(Counter(d_1,st1_1,st2,i1)) && event(Counter(d_1,st1_1,st2,i2)) ==> i2 = i1
+   event(Counter(d_1,st1_1,st2,i1)) && event(Counter(d_1,st1_1,st3,i1)) ==> st2 = st3
+ in process 1.
+-- Query event(Login(pid_3,k_3,i_1,tc_2)) ==> event(YubiPress(pid_3,secretid_3,k_3,tc_2)) in process 1.
+Translating the process into Horn clauses...
+select mess(d_usr[!1 = *@sid],tc_2)/-5000
+Completing...
+select mess(d_srv[!1 = *@sid],(i_1,(secretid[!1 = *@sid],k[!1 = *@sid],*otc_1)))/-5000
+Starting query event(Login(pid_3,k_3,i_1,tc_2)) ==> event(YubiPress(pid_3,secretid_3,k_3,tc_2))
+goal reachable: otc_1 ≥ otc_2 + 1 && tc_2 ≥ otc_1 + 1 && b-event(VCell_bitstring(d_srv_1,(i_1 + 2,(secretid_3,k_3,tc_2)))) && b-event(Counter(d_srv_1,id[],st1_1,i_1 + 1)) && b-event(Counter(d_srv_1,id1[],st1_1,otc_1)) && b-event(VCell_bitstring(d_srv_1,(i_1 + 1,(secretid_3,k_3,otc_1)))) && b-event(Counter(d_srv_1,id[],st1_2,i_1)) && b-event(Counter(d_srv_1,id1[],st1_2,otc_2)) && b-event(VCell_bitstring(d_srv_1,(i_1,(secretid_3,k_3,otc_2)))) && mess(d_srv_1,(i_1,(secretid_3,k_3,otc_2))) && b-event(YubiPress(pid_3,secretid_3,k_3,otc_1)) && b-event(Counter(d_usr_1,id[],st_1,otc_1)) && mess(d_usr_1,otc_1) && b-event(YubiPress(pid_3,secretid_3,k_3,tc_2)) && b-event(Counter(d_usr_1,id[],st_2,tc_2)) && mess(d_usr_1,tc_2) -> event(Login(pid_3,k_3,i_1 + 2,tc_2))
+Abbreviations:
+pid_3 = pid[!1 = @sid]
+k_3 = k[!1 = @sid]
+d_srv_1 = d_srv[!1 = @sid]
+secretid_3 = secretid[!1 = @sid]
+st1_1 = st1[!2 = @sid_1,!1 = @sid]
+st1_2 = st1[!2 = @sid_2,!1 = @sid]
+d_usr_1 = d_usr[!1 = @sid]
+st_1 = st[!2 = @sid_3,!1 = @sid]
+st_2 = st[!2 = @sid_4,!1 = @sid]
+goal reachable: tc_2 ≥ 1 && b-event(VCell_bitstring(d_srv_1,(1,(secretid_3,k_3,tc_2)))) && b-event(Counter(d_srv_1,id[],st1_1,0)) && b-event(Counter(d_srv_1,id1[],st1_1,0)) && b-event(VCell_bitstring(d_srv_1,(0,(secretid_3,k_3,0)))) && b-event(YubiPress(pid_3,secretid_3,k_3,tc_2)) && b-event(Counter(d_usr_1,id[],st_1,tc_2)) && mess(d_usr_1,tc_2) -> event(Login(pid_3,k_3,1,tc_2))
+Abbreviations:
+pid_3 = pid[!1 = @sid]
+k_3 = k[!1 = @sid]
+d_srv_1 = d_srv[!1 = @sid]
+secretid_3 = secretid[!1 = @sid]
+st1_1 = st1[!2 = @sid_1,!1 = @sid]
+d_usr_1 = d_usr[!1 = @sid]
+st_1 = st[!2 = @sid_2,!1 = @sid]
+RESULT event(Login(pid_3,k_3,i_1,tc_2)) ==> event(YubiPress(pid_3,secretid_3,k_3,tc_2)) is true.
+-- Query event(Login(pid_3,k_3,i_1,x_2)) && event(Login(pid_3,k_3,i',x_2)) ==> i_1 = i' in process 1.
+Translating the process into Horn clauses...
+select mess(d_usr[!1 = *@sid],tc_2)/-5000
+Completing...
+select mess(d_srv[!1 = *@sid],(i_1,(secretid[!1 = *@sid],k[!1 = *@sid],*otc_1)))/-5000
+Starting query event(Login(pid_3,k_3,i_1,x_2)) && event(Login(pid_3,k_3,i',x_2)) ==> i_1 = i'
+goal reachable: otc_1 ≥ otc_2 + 1 && x_2 ≥ otc_1 + 1 && b-event(VCell_bitstring(d_srv_1,(i_1 + 2,(secretid_3,k_3,x_2)))) && b-event(Counter(d_srv_1,id[],st1_1,i_1 + 1)) && b-event(Counter(d_srv_1,id1[],st1_1,otc_1)) && b-event(VCell_bitstring(d_srv_1,(i_1 + 1,(secretid_3,k_3,otc_1)))) && b-event(Counter(d_srv_1,id[],st1_2,i_1)) && b-event(Counter(d_srv_1,id1[],st1_2,otc_2)) && b-event(VCell_bitstring(d_srv_1,(i_1,(secretid_3,k_3,otc_2)))) && mess(d_srv_1,(i_1,(secretid_3,k_3,otc_2))) && b-event(Counter(d_usr_1,id[],st_1,otc_1)) && mess(d_usr_1,otc_1) && b-event(Counter(d_usr_1,id[],st_2,x_2)) && mess(d_usr_1,x_2) -> event(Login(pid_3,k_3,i_1 + 2,x_2)) && event(Login(pid_3,k_3,i_1 + 2,x_2))
+Abbreviations:
+pid_3 = pid[!1 = @sid]
+k_3 = k[!1 = @sid]
+d_srv_1 = d_srv[!1 = @sid]
+secretid_3 = secretid[!1 = @sid]
+st1_1 = st1[!2 = @sid_1,!1 = @sid]
+st1_2 = st1[!2 = @sid_2,!1 = @sid]
+d_usr_1 = d_usr[!1 = @sid]
+st_1 = st[!2 = @sid_3,!1 = @sid]
+st_2 = st[!2 = @sid_4,!1 = @sid]
+goal reachable: x_2 ≥ 1 && b-event(VCell_bitstring(d_srv_1,(1,(secretid_3,k_3,x_2)))) && b-event(Counter(d_srv_1,id[],st1_1,0)) && b-event(Counter(d_srv_1,id1[],st1_1,0)) && b-event(VCell_bitstring(d_srv_1,(0,(secretid_3,k_3,0)))) && b-event(Counter(d_usr_1,id[],st_1,x_2)) && mess(d_usr_1,x_2) -> event(Login(pid_3,k_3,1,x_2)) && event(Login(pid_3,k_3,1,x_2))
+Abbreviations:
+pid_3 = pid[!1 = @sid]
+k_3 = k[!1 = @sid]
+d_srv_1 = d_srv[!1 = @sid]
+secretid_3 = secretid[!1 = @sid]
+st1_1 = st1[!2 = @sid_1,!1 = @sid]
+d_usr_1 = d_usr[!1 = @sid]
+st_1 = st[!2 = @sid_2,!1 = @sid]
+RESULT event(Login(pid_3,k_3,i_1,x_2)) && event(Login(pid_3,k_3,i',x_2)) ==> i_1 = i' is true.
+
+--------------------------------------------------------------
+Verification summary:
+
+Query(ies):
+ - Query event(Login(pid_3,k_3,i_1,tc_2)) ==> event(YubiPress(pid_3,secretid_3,k_3,tc_2)) is true.
+ - Query event(Login(pid_3,k_3,i_1,x_2)) && event(Login(pid_3,k_3,i',x_2)) ==> i_1 = i' is true.
+Associated axiom(s):
+ - Axiom 
+   event(VCell_bitstring(d_1,(i4,(x3,x_2,i1)))) && event(VCell_bitstring(d_1,(i2,(x1,x2,i1)))) ==> (i4,x3,x_2) = (i2,x1,x2)
+   event(VCell_bitstring(d_1,(i2,(x3,x_2,i1)))) && event(VCell_bitstring(d_1,(i2,(x1,x2,i3)))) ==> (x3,x_2,i1) = (x1,x2,i3)
+   event(Counter(d_1,st1_1,st2,i1)) && event(Counter(d_1,st1_1,st2,i2)) ==> i2 = i1
+   event(Counter(d_1,st1_1,st2,i1)) && event(Counter(d_1,st1_1,st3,i1)) ==> st2 = st3
+ in process 1.
+
+--------------------------------------------------------------
+

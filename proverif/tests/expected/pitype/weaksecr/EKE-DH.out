@@ -1,0 +1,393 @@
+Linear part:
+exp(exp(g,x),y) = exp(exp(g,y),x)
+Completing equations...
+Completed equations:
+exp(exp(g,x),y) = exp(exp(g,y),x)
+Convergent part:
+dec(enc(x,y),y) = x
+enc(dec(x,y),y) = x
+Completing equations...
+Completed equations:
+enc(dec(x,y),y) = x
+dec(enc(x,y),y) = x
+Process 0 (that is, the initial process):
+(
+    {1}!
+    {2}let hostA: host = A in
+    {3}let hostX: host = A in
+    {4}let P: passwd = PAA in
+    {5}new RA: exponent;
+    {6}out(c, (hostA,enc(exp(g,RA),P)));
+    {7}in(c, (m2: G,m3: bitstring));
+    {8}let gRB: G = dec(m2,P) in
+    {9}let K: G = exp(gRB,RA) in
+    {10}let challengeB: nonce = sdec(m3,K) in
+    {11}new challengeA: nonce;
+    {12}out(c, senc((challengeA,challengeB),K));
+    {13}in(c, m4: bitstring);
+    {14}if (challengeA = sdec(m4,K)) then
+    0
+) | (
+    {15}!
+    {16}let hostB: host = A in
+    {17}let hostX_1: host = A in
+    {18}let P_1: passwd = PAA in
+    {19}in(c, (=hostX_1,m: G));
+    {20}let gRA: G = dec(m,P_1) in
+    {21}new RB: exponent;
+    {22}let K_1: G = exp(gRA,RB) in
+    {23}new challengeB_1: nonce;
+    {24}out(c, (enc(exp(g,RB),P_1),senc(challengeB_1,K_1)));
+    {25}in(c, m3_1: bitstring);
+    {26}let (challengeA_1: nonce,=challengeB_1) = sdec(m3_1,K_1) in
+    {27}out(c, senc(challengeA_1,K_1))
+) | (
+    {28}!
+    {29}let hostA_1: host = B in
+    {30}let hostX_2: host = B in
+    {31}let P_2: passwd = PBB in
+    {32}new RA_1: exponent;
+    {33}out(c, (hostA_1,enc(exp(g,RA_1),P_2)));
+    {34}in(c, (m2_1: G,m3_2: bitstring));
+    {35}let gRB_1: G = dec(m2_1,P_2) in
+    {36}let K_2: G = exp(gRB_1,RA_1) in
+    {37}let challengeB_2: nonce = sdec(m3_2,K_2) in
+    {38}new challengeA_2: nonce;
+    {39}out(c, senc((challengeA_2,challengeB_2),K_2));
+    {40}in(c, m4_1: bitstring);
+    {41}if (challengeA_2 = sdec(m4_1,K_2)) then
+    0
+) | (
+    {42}!
+    {43}let hostB_1: host = B in
+    {44}let hostX_3: host = B in
+    {45}let P_3: passwd = PBB in
+    {46}in(c, (=hostX_3,m_1: G));
+    {47}let gRA_1: G = dec(m_1,P_3) in
+    {48}new RB_1: exponent;
+    {49}let K_3: G = exp(gRA_1,RB_1) in
+    {50}new challengeB_3: nonce;
+    {51}out(c, (enc(exp(g,RB_1),P_3),senc(challengeB_3,K_3)));
+    {52}in(c, m3_3: bitstring);
+    {53}let (challengeA_3: nonce,=challengeB_3) = sdec(m3_3,K_3) in
+    {54}out(c, senc(challengeA_3,K_3))
+) | (
+    {55}!
+    {56}let hostA_2: host = A in
+    {57}let hostX_4: host = B in
+    {58}let P_4: passwd = PAB in
+    {59}new RA_2: exponent;
+    {60}out(c, (hostA_2,enc(exp(g,RA_2),P_4)));
+    {61}in(c, (m2_2: G,m3_4: bitstring));
+    {62}let gRB_2: G = dec(m2_2,P_4) in
+    {63}let K_4: G = exp(gRB_2,RA_2) in
+    {64}let challengeB_4: nonce = sdec(m3_4,K_4) in
+    {65}new challengeA_4: nonce;
+    {66}out(c, senc((challengeA_4,challengeB_4),K_4));
+    {67}in(c, m4_2: bitstring);
+    {68}if (challengeA_4 = sdec(m4_2,K_4)) then
+    0
+) | (
+    {69}!
+    {70}let hostB_2: host = A in
+    {71}let hostX_5: host = B in
+    {72}let P_5: passwd = PAB in
+    {73}in(c, (=hostX_5,m_2: G));
+    {74}let gRA_2: G = dec(m_2,P_5) in
+    {75}new RB_2: exponent;
+    {76}let K_5: G = exp(gRA_2,RB_2) in
+    {77}new challengeB_5: nonce;
+    {78}out(c, (enc(exp(g,RB_2),P_5),senc(challengeB_5,K_5)));
+    {79}in(c, m3_5: bitstring);
+    {80}let (challengeA_5: nonce,=challengeB_5) = sdec(m3_5,K_5) in
+    {81}out(c, senc(challengeA_5,K_5))
+) | (
+    {82}!
+    {83}let hostA_3: host = B in
+    {84}let hostX_6: host = A in
+    {85}let P_6: passwd = PAB in
+    {86}new RA_3: exponent;
+    {87}out(c, (hostA_3,enc(exp(g,RA_3),P_6)));
+    {88}in(c, (m2_3: G,m3_6: bitstring));
+    {89}let gRB_3: G = dec(m2_3,P_6) in
+    {90}let K_6: G = exp(gRB_3,RA_3) in
+    {91}let challengeB_6: nonce = sdec(m3_6,K_6) in
+    {92}new challengeA_6: nonce;
+    {93}out(c, senc((challengeA_6,challengeB_6),K_6));
+    {94}in(c, m4_3: bitstring);
+    {95}if (challengeA_6 = sdec(m4_3,K_6)) then
+    0
+) | (
+    {96}!
+    {97}let hostB_3: host = B in
+    {98}let hostX_7: host = A in
+    {99}let P_7: passwd = PAB in
+    {100}in(c, (=hostX_7,m_3: G));
+    {101}let gRA_3: G = dec(m_3,P_7) in
+    {102}new RB_3: exponent;
+    {103}let K_7: G = exp(gRA_3,RB_3) in
+    {104}new challengeB_7: nonce;
+    {105}out(c, (enc(exp(g,RB_3),P_7),senc(challengeB_7,K_7)));
+    {106}in(c, m3_7: bitstring);
+    {107}let (challengeA_7: nonce,=challengeB_7) = sdec(m3_7,K_7) in
+    {108}out(c, senc(challengeA_7,K_7))
+)
+
+--  Process 1 (that is, process 0, with let moved downwards):
+(
+    {1}!
+    {5}new RA: exponent;
+    {4}let P: passwd = PAA in
+    {2}let hostA: host = A in
+    {6}out(c, (hostA,enc(exp(g,RA),P)));
+    {7}in(c, (m2: G,m3: bitstring));
+    {8}let gRB: G = dec(m2,P) in
+    {9}let K: G = exp(gRB,RA) in
+    {10}let challengeB: nonce = sdec(m3,K) in
+    {11}new challengeA: nonce;
+    {12}out(c, senc((challengeA,challengeB),K));
+    {13}in(c, m4: bitstring);
+    {14}if (challengeA = sdec(m4,K)) then
+    0
+) | (
+    {15}!
+    {17}let hostX_1: host = A in
+    {19}in(c, (=hostX_1,m: G));
+    {21}new RB: exponent;
+    {23}new challengeB_1: nonce;
+    {18}let P_1: passwd = PAA in
+    {20}let gRA: G = dec(m,P_1) in
+    {22}let K_1: G = exp(gRA,RB) in
+    {24}out(c, (enc(exp(g,RB),P_1),senc(challengeB_1,K_1)));
+    {25}in(c, m3_1: bitstring);
+    {26}let (challengeA_1: nonce,=challengeB_1) = sdec(m3_1,K_1) in
+    {27}out(c, senc(challengeA_1,K_1))
+) | (
+    {28}!
+    {32}new RA_1: exponent;
+    {31}let P_2: passwd = PBB in
+    {29}let hostA_1: host = B in
+    {33}out(c, (hostA_1,enc(exp(g,RA_1),P_2)));
+    {34}in(c, (m2_1: G,m3_2: bitstring));
+    {35}let gRB_1: G = dec(m2_1,P_2) in
+    {36}let K_2: G = exp(gRB_1,RA_1) in
+    {37}let challengeB_2: nonce = sdec(m3_2,K_2) in
+    {38}new challengeA_2: nonce;
+    {39}out(c, senc((challengeA_2,challengeB_2),K_2));
+    {40}in(c, m4_1: bitstring);
+    {41}if (challengeA_2 = sdec(m4_1,K_2)) then
+    0
+) | (
+    {42}!
+    {44}let hostX_3: host = B in
+    {46}in(c, (=hostX_3,m_1: G));
+    {48}new RB_1: exponent;
+    {50}new challengeB_3: nonce;
+    {45}let P_3: passwd = PBB in
+    {47}let gRA_1: G = dec(m_1,P_3) in
+    {49}let K_3: G = exp(gRA_1,RB_1) in
+    {51}out(c, (enc(exp(g,RB_1),P_3),senc(challengeB_3,K_3)));
+    {52}in(c, m3_3: bitstring);
+    {53}let (challengeA_3: nonce,=challengeB_3) = sdec(m3_3,K_3) in
+    {54}out(c, senc(challengeA_3,K_3))
+) | (
+    {55}!
+    {59}new RA_2: exponent;
+    {58}let P_4: passwd = PAB in
+    {56}let hostA_2: host = A in
+    {60}out(c, (hostA_2,enc(exp(g,RA_2),P_4)));
+    {61}in(c, (m2_2: G,m3_4: bitstring));
+    {62}let gRB_2: G = dec(m2_2,P_4) in
+    {63}let K_4: G = exp(gRB_2,RA_2) in
+    {64}let challengeB_4: nonce = sdec(m3_4,K_4) in
+    {65}new challengeA_4: nonce;
+    {66}out(c, senc((challengeA_4,challengeB_4),K_4));
+    {67}in(c, m4_2: bitstring);
+    {68}if (challengeA_4 = sdec(m4_2,K_4)) then
+    0
+) | (
+    {69}!
+    {71}let hostX_5: host = B in
+    {73}in(c, (=hostX_5,m_2: G));
+    {75}new RB_2: exponent;
+    {77}new challengeB_5: nonce;
+    {72}let P_5: passwd = PAB in
+    {74}let gRA_2: G = dec(m_2,P_5) in
+    {76}let K_5: G = exp(gRA_2,RB_2) in
+    {78}out(c, (enc(exp(g,RB_2),P_5),senc(challengeB_5,K_5)));
+    {79}in(c, m3_5: bitstring);
+    {80}let (challengeA_5: nonce,=challengeB_5) = sdec(m3_5,K_5) in
+    {81}out(c, senc(challengeA_5,K_5))
+) | (
+    {82}!
+    {86}new RA_3: exponent;
+    {85}let P_6: passwd = PAB in
+    {83}let hostA_3: host = B in
+    {87}out(c, (hostA_3,enc(exp(g,RA_3),P_6)));
+    {88}in(c, (m2_3: G,m3_6: bitstring));
+    {89}let gRB_3: G = dec(m2_3,P_6) in
+    {90}let K_6: G = exp(gRB_3,RA_3) in
+    {91}let challengeB_6: nonce = sdec(m3_6,K_6) in
+    {92}new challengeA_6: nonce;
+    {93}out(c, senc((challengeA_6,challengeB_6),K_6));
+    {94}in(c, m4_3: bitstring);
+    {95}if (challengeA_6 = sdec(m4_3,K_6)) then
+    0
+) | (
+    {96}!
+    {98}let hostX_7: host = A in
+    {100}in(c, (=hostX_7,m_3: G));
+    {102}new RB_3: exponent;
+    {104}new challengeB_7: nonce;
+    {99}let P_7: passwd = PAB in
+    {101}let gRA_3: G = dec(m_3,P_7) in
+    {103}let K_7: G = exp(gRA_3,RB_3) in
+    {105}out(c, (enc(exp(g,RB_3),P_7),senc(challengeB_7,K_7)));
+    {106}in(c, m3_7: bitstring);
+    {107}let (challengeA_7: nonce,=challengeB_7) = sdec(m3_7,K_7) in
+    {108}out(c, senc(challengeA_7,K_7))
+)
+
+-- Weak secret PAB in process 1.
+Translating the process into Horn clauses...
+Termination warning: v ≠ v_1 && attacker_guess(v_2,v) && attacker_guess(v_2,v_1) -> bad
+Selecting 0
+Termination warning: v ≠ v_1 && attacker_guess(v,v_2) && attacker_guess(v_1,v_2) -> bad
+Selecting 0
+select attacker(senc(challengeB_8,exp(dec(*m2_4,PAA[]),RA[!1 = *@sid])))/-5000
+select attacker(senc(challengeB_8,exp(dec(*m2_4,PBB[]),RA_1[!1 = *@sid])))/-5000
+select attacker(senc(challengeB_8,exp(dec(*m2_4,PAB[]),RA_2[!1 = *@sid])))/-5000
+select attacker(senc(challengeB_8,exp(dec(*m2_4,PAB[]),RA_3[!1 = *@sid])))/-5000
+Completing...
+Termination warning: v ≠ v_1 && attacker_guess(v_2,v) && attacker_guess(v_2,v_1) -> bad
+Selecting 0
+Termination warning: v ≠ v_1 && attacker_guess(v,v_2) && attacker_guess(v_1,v_2) -> bad
+Selecting 0
+Termination warning: v ≠ v_1 && attacker(v) && attacker_guess(v,v_1) -> bad
+Selecting 1
+Termination warning: v ≠ v_1 && attacker(v) && attacker_guess(v_1,v) -> bad
+Selecting 1
+select attacker(senc(challengeB_8,exp(exp(g,RA[!1 = *@sid]),RA[!1 = *@sid_1])))/-5000
+select attacker(senc(challengeB_8,exp(exp(g,RA[!1 = *@sid]),RB[m = *m_4,!1 = *@sid_1])))/-5000
+select attacker(senc(challengeB_8,exp(exp(g,RB[m = *m_4,!1 = *@sid]),RA[!1 = *@sid_1])))/-5000
+select attacker(senc(challengeB_8,exp(exp(g,RA_1[!1 = *@sid]),RA_1[!1 = *@sid_1])))/-5000
+select attacker(senc(challengeB_8,exp(exp(g,RA_1[!1 = *@sid]),RB_1[m_1 = *m_4,!1 = *@sid_1])))/-5000
+select attacker(senc(challengeB_8,exp(exp(g,RB_1[m_1 = *m_4,!1 = *@sid]),RA_1[!1 = *@sid_1])))/-5000
+select attacker(senc(challengeB_8,exp(exp(g,RA_2[!1 = *@sid]),RA_2[!1 = *@sid_1])))/-5000
+select attacker(senc(challengeB_8,exp(exp(g,RA_2[!1 = *@sid]),RB_2[m_2 = *m_4,!1 = *@sid_1])))/-5000
+select attacker(senc(challengeB_8,exp(exp(g,RB_2[m_2 = *m_4,!1 = *@sid]),RA_2[!1 = *@sid_1])))/-5000
+select attacker(senc(challengeB_8,exp(exp(g,RA_2[!1 = *@sid]),RA_3[!1 = *@sid_1])))/-5000
+select attacker(senc(challengeB_8,exp(exp(g,RA_3[!1 = *@sid]),RA_2[!1 = *@sid_1])))/-5000
+select attacker(senc(challengeB_8,exp(exp(g,RA_3[!1 = *@sid]),RA_3[!1 = *@sid_1])))/-5000
+select attacker(senc(challengeB_8,exp(exp(g,RA_3[!1 = *@sid]),RB_2[m_2 = *m_4,!1 = *@sid_1])))/-5000
+select attacker(senc(challengeB_8,exp(exp(g,RB_2[m_2 = *m_4,!1 = *@sid]),RA_3[!1 = *@sid_1])))/-5000
+select attacker(senc(challengeB_8,exp(exp(g,RA_3[!1 = *@sid]),RB_3[m_3 = *m_4,!1 = *@sid_1])))/-5000
+select attacker(senc(challengeB_8,exp(exp(g,RA_2[!1 = *@sid]),RB_3[m_3 = *m_4,!1 = *@sid_1])))/-5000
+select attacker(senc(challengeB_8,exp(exp(g,RB_3[m_3 = *m_4,!1 = *@sid]),RA_3[!1 = *@sid_1])))/-5000
+200 rules inserted. Base: 199 rules (97 with conclusion selected). Queue: 225 rules.
+select attacker(senc(challengeB_8,exp(exp(g,RB_3[m_3 = *m_4,!1 = *@sid]),RA_2[!1 = *@sid_1])))/-5000
+400 rules inserted. Base: 391 rules (101 with conclusion selected). Queue: 392 rules.
+600 rules inserted. Base: 583 rules (105 with conclusion selected). Queue: 336 rules.
+800 rules inserted. Base: 763 rules (109 with conclusion selected). Queue: 246 rules.
+1000 rules inserted. Base: 959 rules (121 with conclusion selected). Queue: 142 rules.
+RESULT Weak secret PAB is true.
+-- Weak secret PAA in process 1.
+Translating the process into Horn clauses...
+Termination warning: v ≠ v_1 && attacker_guess(v_2,v) && attacker_guess(v_2,v_1) -> bad
+Selecting 0
+Termination warning: v ≠ v_1 && attacker_guess(v,v_2) && attacker_guess(v_1,v_2) -> bad
+Selecting 0
+select attacker(senc(challengeB_8,exp(dec(*m2_4,PAA[]),RA[!1 = *@sid])))/-5000
+select attacker(senc(challengeB_8,exp(dec(*m2_4,PBB[]),RA_1[!1 = *@sid])))/-5000
+select attacker(senc(challengeB_8,exp(dec(*m2_4,PAB[]),RA_2[!1 = *@sid])))/-5000
+select attacker(senc(challengeB_8,exp(dec(*m2_4,PAB[]),RA_3[!1 = *@sid])))/-5000
+Completing...
+Termination warning: v ≠ v_1 && attacker_guess(v_2,v) && attacker_guess(v_2,v_1) -> bad
+Selecting 0
+Termination warning: v ≠ v_1 && attacker_guess(v,v_2) && attacker_guess(v_1,v_2) -> bad
+Selecting 0
+Termination warning: v ≠ v_1 && attacker(v) && attacker_guess(v,v_1) -> bad
+Selecting 1
+Termination warning: v ≠ v_1 && attacker(v) && attacker_guess(v_1,v) -> bad
+Selecting 1
+select attacker(senc(challengeB_8,exp(exp(g,RA[!1 = *@sid]),RA[!1 = *@sid_1])))/-5000
+select attacker(senc(challengeB_8,exp(exp(g,RA[!1 = *@sid]),RB[m = *m_4,!1 = *@sid_1])))/-5000
+select attacker(senc(challengeB_8,exp(exp(g,RB[m = *m_4,!1 = *@sid]),RA[!1 = *@sid_1])))/-5000
+select attacker(senc(challengeB_8,exp(exp(g,RA_1[!1 = *@sid]),RA_1[!1 = *@sid_1])))/-5000
+select attacker(senc(challengeB_8,exp(exp(g,RA_1[!1 = *@sid]),RB_1[m_1 = *m_4,!1 = *@sid_1])))/-5000
+select attacker(senc(challengeB_8,exp(exp(g,RB_1[m_1 = *m_4,!1 = *@sid]),RA_1[!1 = *@sid_1])))/-5000
+select attacker(senc(challengeB_8,exp(exp(g,RA_2[!1 = *@sid]),RA_2[!1 = *@sid_1])))/-5000
+select attacker(senc(challengeB_8,exp(exp(g,RA_2[!1 = *@sid]),RB_2[m_2 = *m_4,!1 = *@sid_1])))/-5000
+select attacker(senc(challengeB_8,exp(exp(g,RB_2[m_2 = *m_4,!1 = *@sid]),RA_2[!1 = *@sid_1])))/-5000
+select attacker(senc(challengeB_8,exp(exp(g,RA_2[!1 = *@sid]),RA_3[!1 = *@sid_1])))/-5000
+select attacker(senc(challengeB_8,exp(exp(g,RA_3[!1 = *@sid]),RA_2[!1 = *@sid_1])))/-5000
+select attacker(senc(challengeB_8,exp(exp(g,RA_3[!1 = *@sid]),RA_3[!1 = *@sid_1])))/-5000
+select attacker(senc(challengeB_8,exp(exp(g,RA_3[!1 = *@sid]),RB_2[m_2 = *m_4,!1 = *@sid_1])))/-5000
+select attacker(senc(challengeB_8,exp(exp(g,RB_2[m_2 = *m_4,!1 = *@sid]),RA_3[!1 = *@sid_1])))/-5000
+select attacker(senc(challengeB_8,exp(exp(g,RA_3[!1 = *@sid]),RB_3[m_3 = *m_4,!1 = *@sid_1])))/-5000
+200 rules inserted. Base: 199 rules (92 with conclusion selected). Queue: 217 rules.
+select attacker(senc(challengeB_8,exp(exp(g,RA_2[!1 = *@sid]),RB_3[m_3 = *m_4,!1 = *@sid_1])))/-5000
+select attacker(senc(challengeB_8,exp(exp(g,RB_3[m_3 = *m_4,!1 = *@sid]),RA_3[!1 = *@sid_1])))/-5000
+select attacker(senc(challengeB_8,exp(exp(g,RB_3[m_3 = *m_4,!1 = *@sid]),RA_2[!1 = *@sid_1])))/-5000
+400 rules inserted. Base: 391 rules (101 with conclusion selected). Queue: 388 rules.
+600 rules inserted. Base: 585 rules (103 with conclusion selected). Queue: 442 rules.
+800 rules inserted. Base: 774 rules (103 with conclusion selected). Queue: 355 rules.
+1000 rules inserted. Base: 971 rules (105 with conclusion selected). Queue: 257 rules.
+1200 rules inserted. Base: 1161 rules (117 with conclusion selected). Queue: 134 rules.
+RESULT Weak secret PAA is true.
+-- Weak secret PBB in process 1.
+Translating the process into Horn clauses...
+Termination warning: v ≠ v_1 && attacker_guess(v_2,v) && attacker_guess(v_2,v_1) -> bad
+Selecting 0
+Termination warning: v ≠ v_1 && attacker_guess(v,v_2) && attacker_guess(v_1,v_2) -> bad
+Selecting 0
+select attacker(senc(challengeB_8,exp(dec(*m2_4,PAA[]),RA[!1 = *@sid])))/-5000
+select attacker(senc(challengeB_8,exp(dec(*m2_4,PBB[]),RA_1[!1 = *@sid])))/-5000
+select attacker(senc(challengeB_8,exp(dec(*m2_4,PAB[]),RA_2[!1 = *@sid])))/-5000
+select attacker(senc(challengeB_8,exp(dec(*m2_4,PAB[]),RA_3[!1 = *@sid])))/-5000
+Completing...
+Termination warning: v ≠ v_1 && attacker_guess(v_2,v) && attacker_guess(v_2,v_1) -> bad
+Selecting 0
+Termination warning: v ≠ v_1 && attacker_guess(v,v_2) && attacker_guess(v_1,v_2) -> bad
+Selecting 0
+Termination warning: v ≠ v_1 && attacker(v) && attacker_guess(v,v_1) -> bad
+Selecting 1
+Termination warning: v ≠ v_1 && attacker(v) && attacker_guess(v_1,v) -> bad
+Selecting 1
+select attacker(senc(challengeB_8,exp(exp(g,RA[!1 = *@sid]),RA[!1 = *@sid_1])))/-5000
+select attacker(senc(challengeB_8,exp(exp(g,RA[!1 = *@sid]),RB[m = *m_4,!1 = *@sid_1])))/-5000
+select attacker(senc(challengeB_8,exp(exp(g,RB[m = *m_4,!1 = *@sid]),RA[!1 = *@sid_1])))/-5000
+select attacker(senc(challengeB_8,exp(exp(g,RA_1[!1 = *@sid]),RA_1[!1 = *@sid_1])))/-5000
+select attacker(senc(challengeB_8,exp(exp(g,RA_1[!1 = *@sid]),RB_1[m_1 = *m_4,!1 = *@sid_1])))/-5000
+select attacker(senc(challengeB_8,exp(exp(g,RB_1[m_1 = *m_4,!1 = *@sid]),RA_1[!1 = *@sid_1])))/-5000
+select attacker(senc(challengeB_8,exp(exp(g,RA_2[!1 = *@sid]),RA_2[!1 = *@sid_1])))/-5000
+select attacker(senc(challengeB_8,exp(exp(g,RA_2[!1 = *@sid]),RB_2[m_2 = *m_4,!1 = *@sid_1])))/-5000
+select attacker(senc(challengeB_8,exp(exp(g,RB_2[m_2 = *m_4,!1 = *@sid]),RA_2[!1 = *@sid_1])))/-5000
+select attacker(senc(challengeB_8,exp(exp(g,RA_2[!1 = *@sid]),RA_3[!1 = *@sid_1])))/-5000
+select attacker(senc(challengeB_8,exp(exp(g,RA_3[!1 = *@sid]),RA_2[!1 = *@sid_1])))/-5000
+select attacker(senc(challengeB_8,exp(exp(g,RA_3[!1 = *@sid]),RA_3[!1 = *@sid_1])))/-5000
+select attacker(senc(challengeB_8,exp(exp(g,RA_3[!1 = *@sid]),RB_2[m_2 = *m_4,!1 = *@sid_1])))/-5000
+select attacker(senc(challengeB_8,exp(exp(g,RB_2[m_2 = *m_4,!1 = *@sid]),RA_3[!1 = *@sid_1])))/-5000
+select attacker(senc(challengeB_8,exp(exp(g,RA_3[!1 = *@sid]),RB_3[m_3 = *m_4,!1 = *@sid_1])))/-5000
+200 rules inserted. Base: 199 rules (92 with conclusion selected). Queue: 217 rules.
+select attacker(senc(challengeB_8,exp(exp(g,RA_2[!1 = *@sid]),RB_3[m_3 = *m_4,!1 = *@sid_1])))/-5000
+select attacker(senc(challengeB_8,exp(exp(g,RB_3[m_3 = *m_4,!1 = *@sid]),RA_3[!1 = *@sid_1])))/-5000
+select attacker(senc(challengeB_8,exp(exp(g,RB_3[m_3 = *m_4,!1 = *@sid]),RA_2[!1 = *@sid_1])))/-5000
+400 rules inserted. Base: 391 rules (101 with conclusion selected). Queue: 388 rules.
+600 rules inserted. Base: 585 rules (103 with conclusion selected). Queue: 442 rules.
+800 rules inserted. Base: 774 rules (103 with conclusion selected). Queue: 355 rules.
+1000 rules inserted. Base: 971 rules (105 with conclusion selected). Queue: 257 rules.
+1200 rules inserted. Base: 1161 rules (117 with conclusion selected). Queue: 134 rules.
+RESULT Weak secret PBB is true.
+
+--------------------------------------------------------------
+Verification summary:
+
+Weak secret PAB is true.
+
+Weak secret PAA is true.
+
+Weak secret PBB is true.
+
+--------------------------------------------------------------
+

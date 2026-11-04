@@ -1,0 +1,19 @@
+Process 0 (that is, the initial process):
+{1}new k: key;
+{2}out(c, senc(senc(s,k),k));
+{3}in(c, x: bitstring);
+{4}out(c, sdec(x,k))
+
+-- Query not attacker(s[]) in process 0.
+Translating the process into Horn clauses...
+Completing...
+Starting query not attacker(s[])
+RESULT not attacker(s[]) is true.
+
+--------------------------------------------------------------
+Verification summary:
+
+Query not attacker(s[]) is true.
+
+--------------------------------------------------------------
+

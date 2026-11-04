@@ -1,0 +1,699 @@
+Process 0 (that is, the initial process):
+{1}new Kas: key;
+{2}new Kbs: key;
+{3}insert keys(A,Kas);
+{4}insert keys(B,Kbs);
+(
+    {5}!
+    {6}in(c, (xA: host,xB0: host));
+    {7}if ((xA = A) || (xA = B)) then
+    {19}get keys(=xA,kA: key) in
+    {8}event beginBparam(xA,xB0);
+    {9}new C: nonce;
+    {10}new Na: nonce;
+    {11}out(c, (C,xA,xB0,encrypt((Na,C,xA,xB0),kA)));
+    {12}in(c, (=C,m2: bitstring));
+    {13}let (=Na,k: key) = decrypt(m2,kA) in
+    {14}event beginBkey(xA,xB0,k);
+    {15}if ((xB0 = A) || (xB0 = B)) then
+    {16}event endAparam(xA,xB0);
+    {17}event endAkey(xA,xB0,k);
+    {18}out(c, encrypt(secretA,k))
+) | (
+    {20}!
+    {21}in(c, xB: host);
+    {22}if ((xB = A) || (xB = B)) then
+    {35}get keys(=xB,kB: key) in
+    {23}in(c, (C1: nonce,xA1: host,=xB,m2_1: bitstring));
+    {24}event beginAparam(xA1,xB);
+    {25}new Nb: nonce;
+    {26}out(c, (C1,xA1,xB,m2_1,encrypt((Nb,C1,xA1,xB),kB)));
+    {27}in(c, (=C1,m3: bitstring,m4: bitstring));
+    {28}let (=Nb,k_1: key) = decrypt(m4,kB) in
+    {29}event beginAkey(xA1,xB,k_1);
+    {30}out(c, (C1,m3));
+    {31}if ((xA1 = A) || (xA1 = B)) then
+    {32}event endBparam(xA1,xB);
+    {33}event endBkey(xA1,xB,k_1);
+    {34}out(c, encrypt(secretB,k_1))
+) | (
+    {36}!
+    {37}in(c, (C1_1: nonce,xA1_1: host,xB1: host,m2_2: bitstring,m3_1: bitstring));
+    {43}get keys(=xA1_1,kA1: key) in
+    {42}get keys(=xB1,kB1: key) in
+    {38}let (Na1: nonce,=C1_1,=xA1_1,=xB1) = decrypt(m2_2,kA1) in
+    {39}let (Nb1: nonce,=C1_1,=xA1_1,=xB1) = decrypt(m3_1,kB1) in
+    {40}new k_2: key;
+    {41}out(c, (C1_1,encrypt((Na1,k_2),kA1),encrypt((Nb1,k_2),kB1)))
+) | (
+    {44}!
+    {45}in(c, (h: host,k_3: key));
+    {46}if ((h ≠ A) && (h ≠ B)) then
+    {47}insert keys(h,k_3)
+)
+
+-- Query 
+   not attacker(secretA[])
+   not attacker(secretB[])
+ in process 0.
+Translating the process into Horn clauses...
+Completing...
+200 rules inserted. Base: 144 rules (44 with conclusion selected). Queue: 39 rules.
+ok, secrecy assumption verified: fact unreachable attacker(Kas[])
+ok, secrecy assumption verified: fact unreachable attacker(Kbs[])
+Starting query not attacker(secretA[])
+RESULT not attacker(secretA[]) is true.
+Starting query not attacker(secretB[])
+RESULT not attacker(secretB[]) is true.
+-- Query inj-event(endAparam(x,y)) ==> inj-event(beginAparam(x,y)) in process 0.
+Translating the process into Horn clauses...
+Completing...
+200 rules inserted. Base: 144 rules (43 with conclusion selected). Queue: 69 rules.
+ok, secrecy assumption verified: fact unreachable attacker(Kas[])
+ok, secrecy assumption verified: fact unreachable attacker(Kbs[])
+Starting query inj-event(endAparam(x,y)) ==> inj-event(beginAparam(x,y))
+goal reachable: inj-event(endAparam(B[],B[]),@occ16_1)
+Abbreviations:
+Na_1 = Na[kA = Kbs[],xB0 = B[],xA = B[],!1 = @sid]
+C_1 = C[kA = Kbs[],xB0 = B[],xA = B[],!1 = @sid]
+k_4 = k_2[kB1 = Kbs[],kA1 = Kbs[],m3_1 = encrypt((Na_1,C_1,B[],B[]),Kbs[]),m2_2 = encrypt((Na_1,C_1,B[],B[]),Kbs[]),xB1 = B[],xA1_1 = B[],C1_1 = C_1,!1 = @sid_1]
+@occ16_1 = @occ16[m2 = encrypt((Na_1,k_4),Kbs[]),kA = Kbs[],xB0 = B[],xA = B[],!1 = @sid]
+
+Derivation:
+Abbreviations:
+Na_1 = Na[kA = Kbs[],xB0 = B[],xA = B[],!1 = @sid]
+C_1 = C[kA = Kbs[],xB0 = B[],xA = B[],!1 = @sid]
+k_4 = k_2[kB1 = Kbs[],kA1 = Kbs[],m3_1 = encrypt((Na_1,C_1,B[],B[]),Kbs[]),m2_2 = encrypt((Na_1,C_1,B[],B[]),Kbs[]),xB1 = B[],xA1_1 = B[],C1_1 = C_1,!1 = @sid_1]
+@occ16_1 = @occ16[m2 = encrypt((Na_1,k_4),Kbs[]),kA = Kbs[],xB0 = B[],xA = B[],!1 = @sid]
+
+1. The attacker initially knows B[].
+attacker(B[]).
+
+2. By 1, the attacker may know B[].
+By 1, the attacker may know B[].
+Using the function 2-tuple the attacker may obtain (B[],B[]).
+attacker((B[],B[])).
+
+3. The entry keys(B[],Kbs[]) may be inserted in a table at insert {4}.
+table(keys(B[],Kbs[])).
+
+4. The message (B[],B[]) that the attacker may have by 2 may be received at input {6}.
+The entry keys(B[],Kbs[]) that may be in a table by 3 may be read at get {19}.
+So the message (C_1,B[],B[],encrypt((Na_1,C_1,B[],B[]),Kbs[])) may be sent to the attacker at output {11}.
+attacker((C_1,B[],B[],encrypt((Na_1,C_1,B[],B[]),Kbs[]))).
+
+5. By 4, the attacker may know (C_1,B[],B[],encrypt((Na_1,C_1,B[],B[]),Kbs[])).
+Using the function 4-proj-4-tuple the attacker may obtain encrypt((Na_1,C_1,B[],B[]),Kbs[]).
+attacker(encrypt((Na_1,C_1,B[],B[]),Kbs[])).
+
+6. By 4, the attacker may know (C_1,B[],B[],encrypt((Na_1,C_1,B[],B[]),Kbs[])).
+Using the function 1-proj-4-tuple the attacker may obtain C_1.
+attacker(C_1).
+
+7. By 6, the attacker may know C_1.
+By 1, the attacker may know B[].
+By 1, the attacker may know B[].
+By 5, the attacker may know encrypt((Na_1,C_1,B[],B[]),Kbs[]).
+By 5, the attacker may know encrypt((Na_1,C_1,B[],B[]),Kbs[]).
+Using the function 5-tuple the attacker may obtain (C_1,B[],B[],encrypt((Na_1,C_1,B[],B[]),Kbs[]),encrypt((Na_1,C_1,B[],B[]),Kbs[])).
+attacker((C_1,B[],B[],encrypt((Na_1,C_1,B[],B[]),Kbs[]),encrypt((Na_1,C_1,B[],B[]),Kbs[]))).
+
+8. The message (C_1,B[],B[],encrypt((Na_1,C_1,B[],B[]),Kbs[]),encrypt((Na_1,C_1,B[],B[]),Kbs[])) that the attacker may have by 7 may be received at input {37}.
+The entry keys(B[],Kbs[]) that may be in a table by 3 may be read at get {43}.
+The entry keys(B[],Kbs[]) that may be in a table by 3 may be read at get {42}.
+So the message (C_1,encrypt((Na_1,k_4),Kbs[]),encrypt((Na_1,k_4),Kbs[])) may be sent to the attacker at output {41}.
+attacker((C_1,encrypt((Na_1,k_4),Kbs[]),encrypt((Na_1,k_4),Kbs[]))).
+
+9. By 8, the attacker may know (C_1,encrypt((Na_1,k_4),Kbs[]),encrypt((Na_1,k_4),Kbs[])).
+Using the function 3-proj-3-tuple the attacker may obtain encrypt((Na_1,k_4),Kbs[]).
+attacker(encrypt((Na_1,k_4),Kbs[])).
+
+10. By 6, the attacker may know C_1.
+By 9, the attacker may know encrypt((Na_1,k_4),Kbs[]).
+Using the function 2-tuple the attacker may obtain (C_1,encrypt((Na_1,k_4),Kbs[])).
+attacker((C_1,encrypt((Na_1,k_4),Kbs[]))).
+
+11. The message (B[],B[]) that the attacker may have by 2 may be received at input {6}.
+The entry keys(B[],Kbs[]) that may be in a table by 3 may be read at get {19}.
+The message (C_1,encrypt((Na_1,k_4),Kbs[])) that the attacker may have by 10 may be received at input {12}.
+So event endAparam(B[],B[]) may be executed at {16} in session @sid.
+inj-event(endAparam(B[],B[]),@occ16_1).
+
+12. By 11, inj-event(endAparam(B[],B[]),@occ16_1).
+The goal is reached, represented in the following fact:
+inj-event(endAparam(B[],B[]),@occ16_1).
+
+
+A more detailed output of the traces is available with
+  set traceDisplay = long.
+
+new Kas: key creating Kas_1 at {1}
+
+new Kbs: key creating Kbs_1 at {2}
+
+insert keys(A,Kas_1) at {3}
+
+insert keys(B,Kbs_1) at {4}
+
+in(c, (B,B)) at {6} in copy a
+
+get keys(B,Kbs_1) at {19} in copy a
+
+event beginBparam(B,B) at {8} in copy a
+
+new C: nonce creating C_2 at {9} in copy a
+
+new Na: nonce creating Na_2 at {10} in copy a
+
+out(c, (~M,~M_1,~M_2,~M_3)) with ~M = C_2, ~M_1 = B, ~M_2 = B, ~M_3 = encrypt((Na_2,C_2,B,B),Kbs_1) at {11} in copy a
+
+in(c, (~M,B,B,~M_3,~M_3)) with ~M = C_2, ~M_3 = encrypt((Na_2,C_2,B,B),Kbs_1), ~M_3 = encrypt((Na_2,C_2,B,B),Kbs_1) at {37} in copy a_1
+
+get keys(B,Kbs_1) at {43} in copy a_1
+
+get keys(B,Kbs_1) at {42} in copy a_1
+
+new k_2: key creating k_5 at {40} in copy a_1
+
+out(c, (~M_4,~M_5,~M_6)) with ~M_4 = C_2, ~M_5 = encrypt((Na_2,k_5),Kbs_1), ~M_6 = encrypt((Na_2,k_5),Kbs_1) at {41} in copy a_1
+
+in(c, (~M,~M_5)) with ~M = C_2, ~M_5 = encrypt((Na_2,k_5),Kbs_1) at {12} in copy a
+
+event beginBkey(B,B,k_5) at {14} in copy a
+
+event endAparam(B,B) at {16} in copy a (goal)
+
+The event endAparam(B,B) is executed at {16} in copy a.
+A trace has been found.
+RESULT inj-event(endAparam(x,y)) ==> inj-event(beginAparam(x,y)) is false.
+RESULT (even event(endAparam(x,y)) ==> event(beginAparam(x,y)) is false.)
+-- Query inj-event(endAkey(x,y,z)) ==> inj-event(beginAkey(x,y,z)) in process 0.
+Translating the process into Horn clauses...
+Completing...
+200 rules inserted. Base: 144 rules (43 with conclusion selected). Queue: 69 rules.
+ok, secrecy assumption verified: fact unreachable attacker(Kas[])
+ok, secrecy assumption verified: fact unreachable attacker(Kbs[])
+Starting query inj-event(endAkey(x,y,z)) ==> inj-event(beginAkey(x,y,z))
+goal reachable: attacker(m2_3) -> inj-event(endAkey(B[],B[],k_4),@occ17_1)
+Abbreviations:
+C_1 = C[kA = Kbs[],xB0 = B[],xA = B[],!1 = @sid]
+Nb_1 = Nb[m2_1 = m2_3,xA1 = B[],C1 = C_1,kB = Kbs[],xB = B[],!1 = @sid_1]
+Na_1 = Na[kA = Kbs[],xB0 = B[],xA = B[],!1 = @sid]
+k_4 = k_2[kB1 = Kbs[],kA1 = Kbs[],m3_1 = encrypt((Nb_1,C_1,B[],B[]),Kbs[]),m2_2 = encrypt((Na_1,C_1,B[],B[]),Kbs[]),xB1 = B[],xA1_1 = B[],C1_1 = C_1,!1 = @sid_2]
+@occ17_1 = @occ17[m2 = encrypt((Na_1,k_4),Kbs[]),kA = Kbs[],xB0 = B[],xA = B[],!1 = @sid]
+
+Derivation:
+Abbreviations:
+C_1 = C[kA = Kbs[],xB0 = B[],xA = B[],!1 = @sid]
+Nb_1 = Nb[m2_1 = m2_3,xA1 = B[],C1 = C_1,kB = Kbs[],xB = B[],!1 = @sid_1]
+Na_1 = Na[kA = Kbs[],xB0 = B[],xA = B[],!1 = @sid]
+k_4 = k_2[kB1 = Kbs[],kA1 = Kbs[],m3_1 = encrypt((Nb_1,C_1,B[],B[]),Kbs[]),m2_2 = encrypt((Na_1,C_1,B[],B[]),Kbs[]),xB1 = B[],xA1_1 = B[],C1_1 = C_1,!1 = @sid_2]
+@occ17_1 = @occ17[m2 = encrypt((Na_1,k_4),Kbs[]),kA = Kbs[],xB0 = B[],xA = B[],!1 = @sid]
+
+1. The attacker initially knows B[].
+attacker(B[]).
+
+2. By 1, the attacker may know B[].
+By 1, the attacker may know B[].
+Using the function 2-tuple the attacker may obtain (B[],B[]).
+attacker((B[],B[])).
+
+3. The entry keys(B[],Kbs[]) may be inserted in a table at insert {4}.
+table(keys(B[],Kbs[])).
+
+4. We assume as hypothesis that
+attacker(m2_3).
+
+5. The message (B[],B[]) that the attacker may have by 2 may be received at input {6}.
+The entry keys(B[],Kbs[]) that may be in a table by 3 may be read at get {19}.
+So the message (C_1,B[],B[],encrypt((Na_1,C_1,B[],B[]),Kbs[])) may be sent to the attacker at output {11}.
+attacker((C_1,B[],B[],encrypt((Na_1,C_1,B[],B[]),Kbs[]))).
+
+6. By 5, the attacker may know (C_1,B[],B[],encrypt((Na_1,C_1,B[],B[]),Kbs[])).
+Using the function 1-proj-4-tuple the attacker may obtain C_1.
+attacker(C_1).
+
+7. By 6, the attacker may know C_1.
+By 1, the attacker may know B[].
+By 1, the attacker may know B[].
+By 4, the attacker may know m2_3.
+Using the function 4-tuple the attacker may obtain (C_1,B[],B[],m2_3).
+attacker((C_1,B[],B[],m2_3)).
+
+8. The message B[] that the attacker may have by 1 may be received at input {21}.
+The entry keys(B[],Kbs[]) that may be in a table by 3 may be read at get {35}.
+The message (C_1,B[],B[],m2_3) that the attacker may have by 7 may be received at input {23}.
+So the message (C_1,B[],B[],m2_3,encrypt((Nb_1,C_1,B[],B[]),Kbs[])) may be sent to the attacker at output {26}.
+attacker((C_1,B[],B[],m2_3,encrypt((Nb_1,C_1,B[],B[]),Kbs[]))).
+
+9. By 8, the attacker may know (C_1,B[],B[],m2_3,encrypt((Nb_1,C_1,B[],B[]),Kbs[])).
+Using the function 5-proj-5-tuple the attacker may obtain encrypt((Nb_1,C_1,B[],B[]),Kbs[]).
+attacker(encrypt((Nb_1,C_1,B[],B[]),Kbs[])).
+
+10. By 5, the attacker may know (C_1,B[],B[],encrypt((Na_1,C_1,B[],B[]),Kbs[])).
+Using the function 4-proj-4-tuple the attacker may obtain encrypt((Na_1,C_1,B[],B[]),Kbs[]).
+attacker(encrypt((Na_1,C_1,B[],B[]),Kbs[])).
+
+11. By 6, the attacker may know C_1.
+By 1, the attacker may know B[].
+By 1, the attacker may know B[].
+By 10, the attacker may know encrypt((Na_1,C_1,B[],B[]),Kbs[]).
+By 9, the attacker may know encrypt((Nb_1,C_1,B[],B[]),Kbs[]).
+Using the function 5-tuple the attacker may obtain (C_1,B[],B[],encrypt((Na_1,C_1,B[],B[]),Kbs[]),encrypt((Nb_1,C_1,B[],B[]),Kbs[])).
+attacker((C_1,B[],B[],encrypt((Na_1,C_1,B[],B[]),Kbs[]),encrypt((Nb_1,C_1,B[],B[]),Kbs[]))).
+
+12. The message (C_1,B[],B[],encrypt((Na_1,C_1,B[],B[]),Kbs[]),encrypt((Nb_1,C_1,B[],B[]),Kbs[])) that the attacker may have by 11 may be received at input {37}.
+The entry keys(B[],Kbs[]) that may be in a table by 3 may be read at get {43}.
+The entry keys(B[],Kbs[]) that may be in a table by 3 may be read at get {42}.
+So the message (C_1,encrypt((Na_1,k_4),Kbs[]),encrypt((Nb_1,k_4),Kbs[])) may be sent to the attacker at output {41}.
+attacker((C_1,encrypt((Na_1,k_4),Kbs[]),encrypt((Nb_1,k_4),Kbs[]))).
+
+13. By 12, the attacker may know (C_1,encrypt((Na_1,k_4),Kbs[]),encrypt((Nb_1,k_4),Kbs[])).
+Using the function 2-proj-3-tuple the attacker may obtain encrypt((Na_1,k_4),Kbs[]).
+attacker(encrypt((Na_1,k_4),Kbs[])).
+
+14. By 6, the attacker may know C_1.
+By 13, the attacker may know encrypt((Na_1,k_4),Kbs[]).
+Using the function 2-tuple the attacker may obtain (C_1,encrypt((Na_1,k_4),Kbs[])).
+attacker((C_1,encrypt((Na_1,k_4),Kbs[]))).
+
+15. The message (B[],B[]) that the attacker may have by 2 may be received at input {6}.
+The entry keys(B[],Kbs[]) that may be in a table by 3 may be read at get {19}.
+The message (C_1,encrypt((Na_1,k_4),Kbs[])) that the attacker may have by 14 may be received at input {12}.
+So event endAkey(B[],B[],k_4) may be executed at {17} in session @sid.
+inj-event(endAkey(B[],B[],k_4),@occ17_1).
+
+16. By 15, inj-event(endAkey(B[],B[],k_4),@occ17_1).
+The goal is reached, represented in the following fact:
+inj-event(endAkey(B[],B[],k_4),@occ17_1).
+
+
+A more detailed output of the traces is available with
+  set traceDisplay = long.
+
+new Kas: key creating Kas_1 at {1}
+
+new Kbs: key creating Kbs_1 at {2}
+
+insert keys(A,Kas_1) at {3}
+
+insert keys(B,Kbs_1) at {4}
+
+in(c, (B,B)) at {6} in copy a
+
+get keys(B,Kbs_1) at {19} in copy a
+
+event beginBparam(B,B) at {8} in copy a
+
+new C: nonce creating C_2 at {9} in copy a
+
+new Na: nonce creating Na_2 at {10} in copy a
+
+out(c, (~M,~M_1,~M_2,~M_3)) with ~M = C_2, ~M_1 = B, ~M_2 = B, ~M_3 = encrypt((Na_2,C_2,B,B),Kbs_1) at {11} in copy a
+
+in(c, B) at {21} in copy a_1
+
+get keys(B,Kbs_1) at {35} in copy a_1
+
+in(c, (~M,B,B,a_2)) with ~M = C_2 at {23} in copy a_1
+
+event beginAparam(B,B) at {24} in copy a_1
+
+new Nb: nonce creating Nb_2 at {25} in copy a_1
+
+out(c, (~M_4,~M_5,~M_6,~M_7,~M_8)) with ~M_4 = C_2, ~M_5 = B, ~M_6 = B, ~M_7 = a_2, ~M_8 = encrypt((Nb_2,C_2,B,B),Kbs_1) at {26} in copy a_1
+
+in(c, (~M,B,B,~M_3,~M_8)) with ~M = C_2, ~M_3 = encrypt((Na_2,C_2,B,B),Kbs_1), ~M_8 = encrypt((Nb_2,C_2,B,B),Kbs_1) at {37} in copy a_3
+
+get keys(B,Kbs_1) at {43} in copy a_3
+
+get keys(B,Kbs_1) at {42} in copy a_3
+
+new k_2: key creating k_5 at {40} in copy a_3
+
+out(c, (~M_9,~M_10,~M_11)) with ~M_9 = C_2, ~M_10 = encrypt((Na_2,k_5),Kbs_1), ~M_11 = encrypt((Nb_2,k_5),Kbs_1) at {41} in copy a_3
+
+in(c, (~M,~M_10)) with ~M = C_2, ~M_10 = encrypt((Na_2,k_5),Kbs_1) at {12} in copy a
+
+event beginBkey(B,B,k_5) at {14} in copy a
+
+event endAparam(B,B) at {16} in copy a
+
+event endAkey(B,B,k_5) at {17} in copy a (goal)
+
+The event endAkey(B,B,k_5) is executed at {17} in copy a.
+A trace has been found.
+RESULT inj-event(endAkey(x,y,z)) ==> inj-event(beginAkey(x,y,z)) is false.
+RESULT (even event(endAkey(x,y,z)) ==> event(beginAkey(x,y,z)) is false.)
+-- Query inj-event(endBparam(x,y)) ==> inj-event(beginBparam(x,y)) in process 0.
+Translating the process into Horn clauses...
+Completing...
+200 rules inserted. Base: 144 rules (43 with conclusion selected). Queue: 71 rules.
+ok, secrecy assumption verified: fact unreachable attacker(Kas[])
+ok, secrecy assumption verified: fact unreachable attacker(Kbs[])
+Starting query inj-event(endBparam(x,y)) ==> inj-event(beginBparam(x,y))
+goal reachable: attacker(m3_2) && attacker(m2_3) && attacker(C1_2) && attacker(m2_4) -> inj-event(endBparam(B[],B[]),@occ32_1)
+Abbreviations:
+Nb_1 = Nb[m2_1 = m2_4,xA1 = B[],C1 = C1_2,kB = Kbs[],xB = B[],!1 = @sid]
+Nb_2 = Nb[m2_1 = m2_3,xA1 = B[],C1 = C1_2,kB = Kbs[],xB = B[],!1 = @sid_1]
+k_4 = k_2[kB1 = Kbs[],kA1 = Kbs[],m3_1 = encrypt((Nb_1,C1_2,B[],B[]),Kbs[]),m2_2 = encrypt((Nb_2,C1_2,B[],B[]),Kbs[]),xB1 = B[],xA1_1 = B[],C1_1 = C1_2,!1 = @sid_2]
+@occ32_1 = @occ32[m4 = encrypt((Nb_1,k_4),Kbs[]),m3 = m3_2,m2_1 = m2_4,xA1 = B[],C1 = C1_2,kB = Kbs[],xB = B[],!1 = @sid]
+
+Derivation:
+Abbreviations:
+Nb_1 = Nb[m2_1 = m2_3,xA1 = B[],C1 = C1_2,kB = Kbs[],xB = B[],!1 = @sid]
+Nb_2 = Nb[m2_1 = m2_4,xA1 = B[],C1 = C1_2,kB = Kbs[],xB = B[],!1 = @sid_1]
+k_4 = k_2[kB1 = Kbs[],kA1 = Kbs[],m3_1 = encrypt((Nb_1,C1_2,B[],B[]),Kbs[]),m2_2 = encrypt((Nb_2,C1_2,B[],B[]),Kbs[]),xB1 = B[],xA1_1 = B[],C1_1 = C1_2,!1 = @sid_2]
+@occ32_1 = @occ32[m4 = encrypt((Nb_1,k_4),Kbs[]),m3 = m3_2,m2_1 = m2_3,xA1 = B[],C1 = C1_2,kB = Kbs[],xB = B[],!1 = @sid]
+
+1. The attacker initially knows B[].
+attacker(B[]).
+
+2. The entry keys(B[],Kbs[]) may be inserted in a table at insert {4}.
+table(keys(B[],Kbs[])).
+
+3. We assume as hypothesis that
+attacker(m2_3).
+
+4. We assume as hypothesis that
+attacker(C1_2).
+
+5. By 4, the attacker may know C1_2.
+By 1, the attacker may know B[].
+By 1, the attacker may know B[].
+By 3, the attacker may know m2_3.
+Using the function 4-tuple the attacker may obtain (C1_2,B[],B[],m2_3).
+attacker((C1_2,B[],B[],m2_3)).
+
+6. The message B[] that the attacker may have by 1 may be received at input {21}.
+The entry keys(B[],Kbs[]) that may be in a table by 2 may be read at get {35}.
+The message (C1_2,B[],B[],m2_3) that the attacker may have by 5 may be received at input {23}.
+So the message (C1_2,B[],B[],m2_3,encrypt((Nb_1,C1_2,B[],B[]),Kbs[])) may be sent to the attacker at output {26}.
+attacker((C1_2,B[],B[],m2_3,encrypt((Nb_1,C1_2,B[],B[]),Kbs[]))).
+
+7. By 6, the attacker may know (C1_2,B[],B[],m2_3,encrypt((Nb_1,C1_2,B[],B[]),Kbs[])).
+Using the function 5-proj-5-tuple the attacker may obtain encrypt((Nb_1,C1_2,B[],B[]),Kbs[]).
+attacker(encrypt((Nb_1,C1_2,B[],B[]),Kbs[])).
+
+8. We assume as hypothesis that
+attacker(m2_4).
+
+9. By 4, the attacker may know C1_2.
+By 1, the attacker may know B[].
+By 1, the attacker may know B[].
+By 8, the attacker may know m2_4.
+Using the function 4-tuple the attacker may obtain (C1_2,B[],B[],m2_4).
+attacker((C1_2,B[],B[],m2_4)).
+
+10. The message B[] that the attacker may have by 1 may be received at input {21}.
+The entry keys(B[],Kbs[]) that may be in a table by 2 may be read at get {35}.
+The message (C1_2,B[],B[],m2_4) that the attacker may have by 9 may be received at input {23}.
+So the message (C1_2,B[],B[],m2_4,encrypt((Nb_2,C1_2,B[],B[]),Kbs[])) may be sent to the attacker at output {26}.
+attacker((C1_2,B[],B[],m2_4,encrypt((Nb_2,C1_2,B[],B[]),Kbs[]))).
+
+11. By 10, the attacker may know (C1_2,B[],B[],m2_4,encrypt((Nb_2,C1_2,B[],B[]),Kbs[])).
+Using the function 5-proj-5-tuple the attacker may obtain encrypt((Nb_2,C1_2,B[],B[]),Kbs[]).
+attacker(encrypt((Nb_2,C1_2,B[],B[]),Kbs[])).
+
+12. By 4, the attacker may know C1_2.
+By 1, the attacker may know B[].
+By 1, the attacker may know B[].
+By 11, the attacker may know encrypt((Nb_2,C1_2,B[],B[]),Kbs[]).
+By 7, the attacker may know encrypt((Nb_1,C1_2,B[],B[]),Kbs[]).
+Using the function 5-tuple the attacker may obtain (C1_2,B[],B[],encrypt((Nb_2,C1_2,B[],B[]),Kbs[]),encrypt((Nb_1,C1_2,B[],B[]),Kbs[])).
+attacker((C1_2,B[],B[],encrypt((Nb_2,C1_2,B[],B[]),Kbs[]),encrypt((Nb_1,C1_2,B[],B[]),Kbs[]))).
+
+13. The message (C1_2,B[],B[],encrypt((Nb_2,C1_2,B[],B[]),Kbs[]),encrypt((Nb_1,C1_2,B[],B[]),Kbs[])) that the attacker may have by 12 may be received at input {37}.
+The entry keys(B[],Kbs[]) that may be in a table by 2 may be read at get {43}.
+The entry keys(B[],Kbs[]) that may be in a table by 2 may be read at get {42}.
+So the message (C1_2,encrypt((Nb_2,k_4),Kbs[]),encrypt((Nb_1,k_4),Kbs[])) may be sent to the attacker at output {41}.
+attacker((C1_2,encrypt((Nb_2,k_4),Kbs[]),encrypt((Nb_1,k_4),Kbs[]))).
+
+14. By 13, the attacker may know (C1_2,encrypt((Nb_2,k_4),Kbs[]),encrypt((Nb_1,k_4),Kbs[])).
+Using the function 3-proj-3-tuple the attacker may obtain encrypt((Nb_1,k_4),Kbs[]).
+attacker(encrypt((Nb_1,k_4),Kbs[])).
+
+15. We assume as hypothesis that
+attacker(m3_2).
+
+16. By 4, the attacker may know C1_2.
+By 15, the attacker may know m3_2.
+By 14, the attacker may know encrypt((Nb_1,k_4),Kbs[]).
+Using the function 3-tuple the attacker may obtain (C1_2,m3_2,encrypt((Nb_1,k_4),Kbs[])).
+attacker((C1_2,m3_2,encrypt((Nb_1,k_4),Kbs[]))).
+
+17. The message B[] that the attacker may have by 1 may be received at input {21}.
+The entry keys(B[],Kbs[]) that may be in a table by 2 may be read at get {35}.
+The message (C1_2,B[],B[],m2_3) that the attacker may have by 5 may be received at input {23}.
+The message (C1_2,m3_2,encrypt((Nb_1,k_4),Kbs[])) that the attacker may have by 16 may be received at input {27}.
+So event endBparam(B[],B[]) may be executed at {32} in session @sid.
+inj-event(endBparam(B[],B[]),@occ32_1).
+
+18. By 17, inj-event(endBparam(B[],B[]),@occ32_1).
+The goal is reached, represented in the following fact:
+inj-event(endBparam(B[],B[]),@occ32_1).
+
+
+A more detailed output of the traces is available with
+  set traceDisplay = long.
+
+new Kas: key creating Kas_1 at {1}
+
+new Kbs: key creating Kbs_1 at {2}
+
+insert keys(A,Kas_1) at {3}
+
+insert keys(B,Kbs_1) at {4}
+
+in(c, B) at {21} in copy a
+
+get keys(B,Kbs_1) at {35} in copy a
+
+in(c, (a_1,B,B,a_2)) at {23} in copy a
+
+event beginAparam(B,B) at {24} in copy a
+
+new Nb: nonce creating Nb_3 at {25} in copy a
+
+out(c, (~M,~M_1,~M_2,~M_3,~M_4)) with ~M = a_1, ~M_1 = B, ~M_2 = B, ~M_3 = a_2, ~M_4 = encrypt((Nb_3,a_1,B,B),Kbs_1) at {26} in copy a
+
+in(c, B) at {21} in copy a_3
+
+get keys(B,Kbs_1) at {35} in copy a_3
+
+in(c, (a_1,B,B,a_4)) at {23} in copy a_3
+
+event beginAparam(B,B) at {24} in copy a_3
+
+new Nb: nonce creating Nb_4 at {25} in copy a_3
+
+out(c, (~M_5,~M_6,~M_7,~M_8,~M_9)) with ~M_5 = a_1, ~M_6 = B, ~M_7 = B, ~M_8 = a_4, ~M_9 = encrypt((Nb_4,a_1,B,B),Kbs_1) at {26} in copy a_3
+
+in(c, (a_1,B,B,~M_4,~M_9)) with ~M_4 = encrypt((Nb_3,a_1,B,B),Kbs_1), ~M_9 = encrypt((Nb_4,a_1,B,B),Kbs_1) at {37} in copy a_5
+
+get keys(B,Kbs_1) at {43} in copy a_5
+
+get keys(B,Kbs_1) at {42} in copy a_5
+
+new k_2: key creating k_5 at {40} in copy a_5
+
+out(c, (~M_10,~M_11,~M_12)) with ~M_10 = a_1, ~M_11 = encrypt((Nb_3,k_5),Kbs_1), ~M_12 = encrypt((Nb_4,k_5),Kbs_1) at {41} in copy a_5
+
+in(c, (a_1,a_6,~M_12)) with ~M_12 = encrypt((Nb_4,k_5),Kbs_1) at {27} in copy a_3
+
+event beginAkey(B,B,k_5) at {29} in copy a_3
+
+out(c, (~M_13,~M_14)) with ~M_13 = a_1, ~M_14 = a_6 at {30} in copy a_3
+
+event endBparam(B,B) at {32} in copy a_3 (goal)
+
+The event endBparam(B,B) is executed at {32} in copy a_3.
+A trace has been found.
+RESULT inj-event(endBparam(x,y)) ==> inj-event(beginBparam(x,y)) is false.
+RESULT (even event(endBparam(x,y)) ==> event(beginBparam(x,y)) is false.)
+-- Query inj-event(endBkey(x,y,z)) ==> inj-event(beginBkey(x,y,z)) in process 0.
+Translating the process into Horn clauses...
+Completing...
+200 rules inserted. Base: 144 rules (43 with conclusion selected). Queue: 71 rules.
+ok, secrecy assumption verified: fact unreachable attacker(Kas[])
+ok, secrecy assumption verified: fact unreachable attacker(Kbs[])
+Starting query inj-event(endBkey(x,y,z)) ==> inj-event(beginBkey(x,y,z))
+goal reachable: attacker(m3_2) && attacker(m2_3) && attacker(C1_2) && attacker(m2_4) -> inj-event(endBkey(B[],B[],k_4),@occ33_1)
+Abbreviations:
+Nb_1 = Nb[m2_1 = m2_4,xA1 = B[],C1 = C1_2,kB = Kbs[],xB = B[],!1 = @sid]
+Nb_2 = Nb[m2_1 = m2_3,xA1 = B[],C1 = C1_2,kB = Kbs[],xB = B[],!1 = @sid_1]
+k_4 = k_2[kB1 = Kbs[],kA1 = Kbs[],m3_1 = encrypt((Nb_1,C1_2,B[],B[]),Kbs[]),m2_2 = encrypt((Nb_2,C1_2,B[],B[]),Kbs[]),xB1 = B[],xA1_1 = B[],C1_1 = C1_2,!1 = @sid_2]
+@occ33_1 = @occ33[m4 = encrypt((Nb_1,k_4),Kbs[]),m3 = m3_2,m2_1 = m2_4,xA1 = B[],C1 = C1_2,kB = Kbs[],xB = B[],!1 = @sid]
+
+Derivation:
+Abbreviations:
+Nb_1 = Nb[m2_1 = m2_3,xA1 = B[],C1 = C1_2,kB = Kbs[],xB = B[],!1 = @sid]
+Nb_2 = Nb[m2_1 = m2_4,xA1 = B[],C1 = C1_2,kB = Kbs[],xB = B[],!1 = @sid_1]
+k_4 = k_2[kB1 = Kbs[],kA1 = Kbs[],m3_1 = encrypt((Nb_1,C1_2,B[],B[]),Kbs[]),m2_2 = encrypt((Nb_2,C1_2,B[],B[]),Kbs[]),xB1 = B[],xA1_1 = B[],C1_1 = C1_2,!1 = @sid_2]
+@occ33_1 = @occ33[m4 = encrypt((Nb_1,k_4),Kbs[]),m3 = m3_2,m2_1 = m2_3,xA1 = B[],C1 = C1_2,kB = Kbs[],xB = B[],!1 = @sid]
+
+1. The attacker initially knows B[].
+attacker(B[]).
+
+2. The entry keys(B[],Kbs[]) may be inserted in a table at insert {4}.
+table(keys(B[],Kbs[])).
+
+3. We assume as hypothesis that
+attacker(m2_3).
+
+4. We assume as hypothesis that
+attacker(C1_2).
+
+5. By 4, the attacker may know C1_2.
+By 1, the attacker may know B[].
+By 1, the attacker may know B[].
+By 3, the attacker may know m2_3.
+Using the function 4-tuple the attacker may obtain (C1_2,B[],B[],m2_3).
+attacker((C1_2,B[],B[],m2_3)).
+
+6. The message B[] that the attacker may have by 1 may be received at input {21}.
+The entry keys(B[],Kbs[]) that may be in a table by 2 may be read at get {35}.
+The message (C1_2,B[],B[],m2_3) that the attacker may have by 5 may be received at input {23}.
+So the message (C1_2,B[],B[],m2_3,encrypt((Nb_1,C1_2,B[],B[]),Kbs[])) may be sent to the attacker at output {26}.
+attacker((C1_2,B[],B[],m2_3,encrypt((Nb_1,C1_2,B[],B[]),Kbs[]))).
+
+7. By 6, the attacker may know (C1_2,B[],B[],m2_3,encrypt((Nb_1,C1_2,B[],B[]),Kbs[])).
+Using the function 5-proj-5-tuple the attacker may obtain encrypt((Nb_1,C1_2,B[],B[]),Kbs[]).
+attacker(encrypt((Nb_1,C1_2,B[],B[]),Kbs[])).
+
+8. We assume as hypothesis that
+attacker(m2_4).
+
+9. By 4, the attacker may know C1_2.
+By 1, the attacker may know B[].
+By 1, the attacker may know B[].
+By 8, the attacker may know m2_4.
+Using the function 4-tuple the attacker may obtain (C1_2,B[],B[],m2_4).
+attacker((C1_2,B[],B[],m2_4)).
+
+10. The message B[] that the attacker may have by 1 may be received at input {21}.
+The entry keys(B[],Kbs[]) that may be in a table by 2 may be read at get {35}.
+The message (C1_2,B[],B[],m2_4) that the attacker may have by 9 may be received at input {23}.
+So the message (C1_2,B[],B[],m2_4,encrypt((Nb_2,C1_2,B[],B[]),Kbs[])) may be sent to the attacker at output {26}.
+attacker((C1_2,B[],B[],m2_4,encrypt((Nb_2,C1_2,B[],B[]),Kbs[]))).
+
+11. By 10, the attacker may know (C1_2,B[],B[],m2_4,encrypt((Nb_2,C1_2,B[],B[]),Kbs[])).
+Using the function 5-proj-5-tuple the attacker may obtain encrypt((Nb_2,C1_2,B[],B[]),Kbs[]).
+attacker(encrypt((Nb_2,C1_2,B[],B[]),Kbs[])).
+
+12. By 4, the attacker may know C1_2.
+By 1, the attacker may know B[].
+By 1, the attacker may know B[].
+By 11, the attacker may know encrypt((Nb_2,C1_2,B[],B[]),Kbs[]).
+By 7, the attacker may know encrypt((Nb_1,C1_2,B[],B[]),Kbs[]).
+Using the function 5-tuple the attacker may obtain (C1_2,B[],B[],encrypt((Nb_2,C1_2,B[],B[]),Kbs[]),encrypt((Nb_1,C1_2,B[],B[]),Kbs[])).
+attacker((C1_2,B[],B[],encrypt((Nb_2,C1_2,B[],B[]),Kbs[]),encrypt((Nb_1,C1_2,B[],B[]),Kbs[]))).
+
+13. The message (C1_2,B[],B[],encrypt((Nb_2,C1_2,B[],B[]),Kbs[]),encrypt((Nb_1,C1_2,B[],B[]),Kbs[])) that the attacker may have by 12 may be received at input {37}.
+The entry keys(B[],Kbs[]) that may be in a table by 2 may be read at get {43}.
+The entry keys(B[],Kbs[]) that may be in a table by 2 may be read at get {42}.
+So the message (C1_2,encrypt((Nb_2,k_4),Kbs[]),encrypt((Nb_1,k_4),Kbs[])) may be sent to the attacker at output {41}.
+attacker((C1_2,encrypt((Nb_2,k_4),Kbs[]),encrypt((Nb_1,k_4),Kbs[]))).
+
+14. By 13, the attacker may know (C1_2,encrypt((Nb_2,k_4),Kbs[]),encrypt((Nb_1,k_4),Kbs[])).
+Using the function 3-proj-3-tuple the attacker may obtain encrypt((Nb_1,k_4),Kbs[]).
+attacker(encrypt((Nb_1,k_4),Kbs[])).
+
+15. We assume as hypothesis that
+attacker(m3_2).
+
+16. By 4, the attacker may know C1_2.
+By 15, the attacker may know m3_2.
+By 14, the attacker may know encrypt((Nb_1,k_4),Kbs[]).
+Using the function 3-tuple the attacker may obtain (C1_2,m3_2,encrypt((Nb_1,k_4),Kbs[])).
+attacker((C1_2,m3_2,encrypt((Nb_1,k_4),Kbs[]))).
+
+17. The message B[] that the attacker may have by 1 may be received at input {21}.
+The entry keys(B[],Kbs[]) that may be in a table by 2 may be read at get {35}.
+The message (C1_2,B[],B[],m2_3) that the attacker may have by 5 may be received at input {23}.
+The message (C1_2,m3_2,encrypt((Nb_1,k_4),Kbs[])) that the attacker may have by 16 may be received at input {27}.
+So event endBkey(B[],B[],k_4) may be executed at {33} in session @sid.
+inj-event(endBkey(B[],B[],k_4),@occ33_1).
+
+18. By 17, inj-event(endBkey(B[],B[],k_4),@occ33_1).
+The goal is reached, represented in the following fact:
+inj-event(endBkey(B[],B[],k_4),@occ33_1).
+
+
+A more detailed output of the traces is available with
+  set traceDisplay = long.
+
+new Kas: key creating Kas_1 at {1}
+
+new Kbs: key creating Kbs_1 at {2}
+
+insert keys(A,Kas_1) at {3}
+
+insert keys(B,Kbs_1) at {4}
+
+in(c, B) at {21} in copy a
+
+get keys(B,Kbs_1) at {35} in copy a
+
+in(c, (a_1,B,B,a_2)) at {23} in copy a
+
+event beginAparam(B,B) at {24} in copy a
+
+new Nb: nonce creating Nb_3 at {25} in copy a
+
+out(c, (~M,~M_1,~M_2,~M_3,~M_4)) with ~M = a_1, ~M_1 = B, ~M_2 = B, ~M_3 = a_2, ~M_4 = encrypt((Nb_3,a_1,B,B),Kbs_1) at {26} in copy a
+
+in(c, B) at {21} in copy a_3
+
+get keys(B,Kbs_1) at {35} in copy a_3
+
+in(c, (a_1,B,B,a_4)) at {23} in copy a_3
+
+event beginAparam(B,B) at {24} in copy a_3
+
+new Nb: nonce creating Nb_4 at {25} in copy a_3
+
+out(c, (~M_5,~M_6,~M_7,~M_8,~M_9)) with ~M_5 = a_1, ~M_6 = B, ~M_7 = B, ~M_8 = a_4, ~M_9 = encrypt((Nb_4,a_1,B,B),Kbs_1) at {26} in copy a_3
+
+in(c, (a_1,B,B,~M_4,~M_9)) with ~M_4 = encrypt((Nb_3,a_1,B,B),Kbs_1), ~M_9 = encrypt((Nb_4,a_1,B,B),Kbs_1) at {37} in copy a_5
+
+get keys(B,Kbs_1) at {43} in copy a_5
+
+get keys(B,Kbs_1) at {42} in copy a_5
+
+new k_2: key creating k_5 at {40} in copy a_5
+
+out(c, (~M_10,~M_11,~M_12)) with ~M_10 = a_1, ~M_11 = encrypt((Nb_3,k_5),Kbs_1), ~M_12 = encrypt((Nb_4,k_5),Kbs_1) at {41} in copy a_5
+
+in(c, (a_1,a_6,~M_12)) with ~M_12 = encrypt((Nb_4,k_5),Kbs_1) at {27} in copy a_3
+
+event beginAkey(B,B,k_5) at {29} in copy a_3
+
+out(c, (~M_13,~M_14)) with ~M_13 = a_1, ~M_14 = a_6 at {30} in copy a_3
+
+event endBparam(B,B) at {32} in copy a_3
+
+event endBkey(B,B,k_5) at {33} in copy a_3 (goal)
+
+The event endBkey(B,B,k_5) is executed at {33} in copy a_3.
+A trace has been found.
+RESULT inj-event(endBkey(x,y,z)) ==> inj-event(beginBkey(x,y,z)) is false.
+RESULT (even event(endBkey(x,y,z)) ==> event(beginBkey(x,y,z)) is false.)
+
+--------------------------------------------------------------
+Verification summary:
+
+Query not attacker(secretA[]) is true.
+
+Query not attacker(secretB[]) is true.
+
+Query inj-event(endAparam(x,y)) ==> inj-event(beginAparam(x,y)) is false.
+
+Query inj-event(endAkey(x,y,z)) ==> inj-event(beginAkey(x,y,z)) is false.
+
+Query inj-event(endBparam(x,y)) ==> inj-event(beginBparam(x,y)) is false.
+
+Query inj-event(endBkey(x,y,z)) ==> inj-event(beginBkey(x,y,z)) is false.
+
+--------------------------------------------------------------
+

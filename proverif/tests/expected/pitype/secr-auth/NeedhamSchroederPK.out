@@ -1,0 +1,1077 @@
+Process 0 (that is, the initial process):
+{1}new skA: skey;
+{2}let pkA: pkey = pk(skA) in
+{3}out(c, pkA);
+{4}insert keys(A,pkA);
+{5}new skB: skey;
+{6}let pkB: pkey = pk(skB) in
+{7}out(c, pkB);
+{8}insert keys(B,pkB);
+{9}new skS: sskey;
+{10}let pkS: spkey = spk(skS) in
+{11}out(c, pkS);
+(
+    {12}!
+    {13}let skA_1: skey = skA in
+    {14}let skB_1: skey = skB in
+    {15}in(c, (xA: host,hostX: host));
+    {16}if ((xA = A) || (xA = B)) then
+    {17}let skxA: skey = (if (xA = A) then skA_1 else skB_1) in
+    {18}let pkxA: pkey = pk(skxA) in
+    {19}event beginBparam(xA,hostX);
+    {20}out(c, (xA,hostX));
+    {21}in(c, ms: bitstring);
+    {22}let (pkX: pkey,=hostX) = checksign(ms,pkS) in
+    {23}new Na: nonce;
+    {24}out(c, encrypt((Na,xA),pkX));
+    {25}in(c, m: bitstring);
+    {26}let (=Na,NX2: nonce) = decrypt(m,skxA) in
+    {27}event beginBfull(xA,hostX,pkX,pkxA,Na,NX2);
+    {28}out(c, encrypt(nonce_to_bitstring(NX2),pkX));
+    {29}if ((hostX = B) || (hostX = A)) then
+    {30}event endAparam(xA,hostX);
+    {31}event endAfull(xA,hostX,pkX,pkxA,Na,NX2);
+    {32}out(c, sencrypt(secretANa,Na));
+    {33}out(c, sencrypt(secretANb,NX2))
+) | (
+    {34}!
+    {35}let skA_2: skey = skA in
+    {36}let skB_2: skey = skB in
+    {37}in(c, xB: host);
+    {38}if ((xB = A) || (xB = B)) then
+    {39}let skxB: skey = (if (xB = A) then skA_2 else skB_2) in
+    {40}let pkxB: pkey = pk(skxB) in
+    {41}in(c, m_1: bitstring);
+    {42}let (NY: nonce,hostY: host) = decrypt(m_1,skxB) in
+    {43}event beginAparam(hostY,xB);
+    {44}out(c, (xB,hostY));
+    {45}in(c, ms_1: bitstring);
+    {46}let (pkY: pkey,=hostY) = checksign(ms_1,pkS) in
+    {47}new Nb: nonce;
+    {48}event beginAfull(hostY,xB,pkxB,pkY,NY,Nb);
+    {49}out(c, encrypt((NY,Nb),pkY));
+    {50}in(c, m3: bitstring);
+    {51}if (nonce_to_bitstring(Nb) = decrypt(m3,skB_2)) then
+    {52}if ((hostY = A) || (hostY = B)) then
+    {53}event endBparam(hostY,xB);
+    {54}event endBfull(hostY,xB,pkxB,pkY,NY,Nb);
+    {55}out(c, sencrypt(secretBNa,NY));
+    {56}out(c, sencrypt(secretBNb,Nb))
+) | (
+    {57}!
+    {58}let skS_1: sskey = skS in
+    {59}in(c, (a: host,b: host));
+    {61}get keys(=b,sb: pkey) in
+    {60}out(c, sign((sb,b),skS_1))
+) | (
+    {62}!
+    {63}in(c, (h: host,k: pkey));
+    {64}if ((h ≠ A) && (h ≠ B)) then
+    {65}insert keys(h,k)
+)
+
+--  Process 1 (that is, process 0, with let moved downwards):
+{1}new skA: skey;
+{2}let pkA: pkey = pk(skA) in
+{3}out(c, pkA);
+{4}insert keys(A,pkA);
+{5}new skB: skey;
+{6}let pkB: pkey = pk(skB) in
+{7}out(c, pkB);
+{8}insert keys(B,pkB);
+{9}new skS: sskey;
+{10}let pkS: spkey = spk(skS) in
+{11}out(c, pkS);
+(
+    {12}!
+    {15}in(c, (xA: host,hostX: host));
+    {16}if ((xA = A) || (xA = B)) then
+    {19}event beginBparam(xA,hostX);
+    {20}out(c, (xA,hostX));
+    {21}in(c, ms: bitstring);
+    {22}let (pkX: pkey,=hostX) = checksign(ms,pkS) in
+    {23}new Na: nonce;
+    {24}out(c, encrypt((Na,xA),pkX));
+    {25}in(c, m: bitstring);
+    {14}let skB_1: skey = skB in
+    {13}let skA_1: skey = skA in
+    {17}let skxA: skey = (if (xA = A) then skA_1 else skB_1) in
+    {26}let (=Na,NX2: nonce) = decrypt(m,skxA) in
+    {18}let pkxA: pkey = pk(skxA) in
+    {27}event beginBfull(xA,hostX,pkX,pkxA,Na,NX2);
+    {28}out(c, encrypt(nonce_to_bitstring(NX2),pkX));
+    {29}if ((hostX = B) || (hostX = A)) then
+    {30}event endAparam(xA,hostX);
+    {31}event endAfull(xA,hostX,pkX,pkxA,Na,NX2);
+    {32}out(c, sencrypt(secretANa,Na));
+    {33}out(c, sencrypt(secretANb,NX2))
+) | (
+    {34}!
+    {37}in(c, xB: host);
+    {38}if ((xB = A) || (xB = B)) then
+    {41}in(c, m_1: bitstring);
+    {36}let skB_2: skey = skB in
+    {35}let skA_2: skey = skA in
+    {39}let skxB: skey = (if (xB = A) then skA_2 else skB_2) in
+    {42}let (NY: nonce,hostY: host) = decrypt(m_1,skxB) in
+    {43}event beginAparam(hostY,xB);
+    {44}out(c, (xB,hostY));
+    {45}in(c, ms_1: bitstring);
+    {46}let (pkY: pkey,=hostY) = checksign(ms_1,pkS) in
+    {47}new Nb: nonce;
+    {40}let pkxB: pkey = pk(skxB) in
+    {48}event beginAfull(hostY,xB,pkxB,pkY,NY,Nb);
+    {49}out(c, encrypt((NY,Nb),pkY));
+    {50}in(c, m3: bitstring);
+    {51}if (nonce_to_bitstring(Nb) = decrypt(m3,skB_2)) then
+    {52}if ((hostY = A) || (hostY = B)) then
+    {53}event endBparam(hostY,xB);
+    {54}event endBfull(hostY,xB,pkxB,pkY,NY,Nb);
+    {55}out(c, sencrypt(secretBNa,NY));
+    {56}out(c, sencrypt(secretBNb,Nb))
+) | (
+    {57}!
+    {59}in(c, (a: host,b: host));
+    {61}get keys(=b,sb: pkey) in
+    {58}let skS_1: sskey = skS in
+    {60}out(c, sign((sb,b),skS_1))
+) | (
+    {62}!
+    {63}in(c, (h: host,k: pkey));
+    {64}if ((h ≠ A) && (h ≠ B)) then
+    {65}insert keys(h,k)
+)
+
+-- Query 
+   not attacker_bitstring(secretANa[])
+   not attacker_bitstring(secretANb[])
+   not attacker_bitstring(secretBNa[])
+   not attacker_bitstring(secretBNb[])
+ in process 1.
+Translating the process into Horn clauses...
+Completing...
+200 rules inserted. Base: 188 rules (87 with conclusion selected). Queue: 28 rules.
+ok, secrecy assumption verified: fact unreachable attacker_skey(skA[])
+ok, secrecy assumption verified: fact unreachable attacker_skey(skB[])
+ok, secrecy assumption verified: fact unreachable attacker_sskey(skS[])
+Starting query not attacker_bitstring(secretANa[])
+RESULT not attacker_bitstring(secretANa[]) is true.
+Starting query not attacker_bitstring(secretANb[])
+RESULT not attacker_bitstring(secretANb[]) is true.
+Starting query not attacker_bitstring(secretBNa[])
+goal reachable: attacker_bitstring(secretBNa[])
+
+Derivation:
+Abbreviations:
+Na_1 = Na[ms = sign((pk(y),hostX_1),skS[]),hostX = hostX_1,xA = A[],!1 = @sid]
+Nb_1 = Nb[ms_1 = sign((pk(skA[]),A[]),skS[]),m_1 = encrypt((Na_1,A[]),pk(skB[])),xB = B[],!1 = @sid_1]
+
+1. The attacker has some term y.
+attacker_skey(y).
+
+2. The attacker has some term hostX_1.
+attacker_host(hostX_1).
+
+3. The attacker initially knows A[].
+attacker_host(A[]).
+
+4. By 3, the attacker may know A[].
+By 2, the attacker may know hostX_1.
+Using the function host-host-tuple the attacker may obtain (A[],hostX_1).
+attacker_bitstring((A[],hostX_1)).
+
+5. The attacker has some term a_1.
+attacker_host(a_1).
+
+6. By 5, the attacker may know a_1.
+By 2, the attacker may know hostX_1.
+Using the function host-host-tuple the attacker may obtain (a_1,hostX_1).
+attacker_bitstring((a_1,hostX_1)).
+
+7. By 1, the attacker may know y.
+Using the function pk the attacker may obtain pk(y).
+attacker_pkey(pk(y)).
+
+8. By 2, the attacker may know hostX_1.
+By 7, the attacker may know pk(y).
+Using the function host-pkey-tuple the attacker may obtain (hostX_1,pk(y)).
+attacker_bitstring((hostX_1,pk(y))).
+
+9. The message (hostX_1,pk(y)) that the attacker may have by 8 may be received at input {63}.
+We have hostX_1 ≠ B[] && hostX_1 ≠ A[].
+So the entry keys(hostX_1,pk(y)) may be inserted in a table at insert {65}.
+table(keys(hostX_1,pk(y))).
+
+10. The message (a_1,hostX_1) that the attacker may have by 6 may be received at input {59}.
+The entry keys(hostX_1,pk(y)) that may be in a table by 9 may be read at get {61}.
+So the message sign((pk(y),hostX_1),skS[]) may be sent to the attacker at output {60}.
+attacker_bitstring(sign((pk(y),hostX_1),skS[])).
+
+11. The message (A[],hostX_1) that the attacker may have by 4 may be received at input {15}.
+The message sign((pk(y),hostX_1),skS[]) that the attacker may have by 10 may be received at input {21}.
+So the message encrypt((Na_1,A[]),pk(y)) may be sent to the attacker at output {24}.
+attacker_bitstring(encrypt((Na_1,A[]),pk(y))).
+
+12. By 11, the attacker may know encrypt((Na_1,A[]),pk(y)).
+By 1, the attacker may know y.
+Using the function decrypt the attacker may obtain (Na_1,A[]).
+attacker_bitstring((Na_1,A[])).
+
+13. By 12, the attacker may know (Na_1,A[]).
+Using the function 1-proj-nonce-host-tuple the attacker may obtain Na_1.
+attacker_nonce(Na_1).
+
+14. The attacker initially knows B[].
+attacker_host(B[]).
+
+15. The message pk(skB[]) may be sent to the attacker at output {7}.
+attacker_pkey(pk(skB[])).
+
+16. By 12, the attacker may know (Na_1,A[]).
+By 15, the attacker may know pk(skB[]).
+Using the function encrypt the attacker may obtain encrypt((Na_1,A[]),pk(skB[])).
+attacker_bitstring(encrypt((Na_1,A[]),pk(skB[]))).
+
+17. The attacker has some term a_2.
+attacker_host(a_2).
+
+18. By 17, the attacker may know a_2.
+By 3, the attacker may know A[].
+Using the function host-host-tuple the attacker may obtain (a_2,A[]).
+attacker_bitstring((a_2,A[])).
+
+19. The entry keys(A[],pk(skA[])) may be inserted in a table at insert {4}.
+table(keys(A[],pk(skA[]))).
+
+20. The message (a_2,A[]) that the attacker may have by 18 may be received at input {59}.
+The entry keys(A[],pk(skA[])) that may be in a table by 19 may be read at get {61}.
+So the message sign((pk(skA[]),A[]),skS[]) may be sent to the attacker at output {60}.
+attacker_bitstring(sign((pk(skA[]),A[]),skS[])).
+
+21. The message B[] that the attacker may have by 14 may be received at input {37}.
+The message encrypt((Na_1,A[]),pk(skB[])) that the attacker may have by 16 may be received at input {41}.
+The message sign((pk(skA[]),A[]),skS[]) that the attacker may have by 20 may be received at input {45}.
+So the message encrypt((Na_1,Nb_1),pk(skA[])) may be sent to the attacker at output {49}.
+attacker_bitstring(encrypt((Na_1,Nb_1),pk(skA[]))).
+
+22. The message (A[],hostX_1) that the attacker may have by 4 may be received at input {15}.
+The message sign((pk(y),hostX_1),skS[]) that the attacker may have by 10 may be received at input {21}.
+The message encrypt((Na_1,Nb_1),pk(skA[])) that the attacker may have by 21 may be received at input {25}.
+So the message encrypt(nonce_to_bitstring(Nb_1),pk(y)) may be sent to the attacker at output {28}.
+attacker_bitstring(encrypt(nonce_to_bitstring(Nb_1),pk(y))).
+
+23. By 22, the attacker may know encrypt(nonce_to_bitstring(Nb_1),pk(y)).
+By 1, the attacker may know y.
+Using the function decrypt the attacker may obtain nonce_to_bitstring(Nb_1).
+attacker_bitstring(nonce_to_bitstring(Nb_1)).
+
+24. By 23, the attacker may know nonce_to_bitstring(Nb_1).
+Using the function 1-proj-nonce_to_bitstring the attacker may obtain Nb_1.
+attacker_nonce(Nb_1).
+
+25. By 24, the attacker may know Nb_1.
+Using the function nonce_to_bitstring the attacker may obtain nonce_to_bitstring(Nb_1).
+attacker_bitstring(nonce_to_bitstring(Nb_1)).
+
+26. By 25, the attacker may know nonce_to_bitstring(Nb_1).
+By 15, the attacker may know pk(skB[]).
+Using the function encrypt the attacker may obtain encrypt(nonce_to_bitstring(Nb_1),pk(skB[])).
+attacker_bitstring(encrypt(nonce_to_bitstring(Nb_1),pk(skB[]))).
+
+27. The message B[] that the attacker may have by 14 may be received at input {37}.
+The message encrypt((Na_1,A[]),pk(skB[])) that the attacker may have by 16 may be received at input {41}.
+The message sign((pk(skA[]),A[]),skS[]) that the attacker may have by 20 may be received at input {45}.
+The message encrypt(nonce_to_bitstring(Nb_1),pk(skB[])) that the attacker may have by 26 may be received at input {50}.
+So the message sencrypt(secretBNa[],Na_1) may be sent to the attacker at output {55}.
+attacker_bitstring(sencrypt(secretBNa[],Na_1)).
+
+28. By 27, the attacker may know sencrypt(secretBNa[],Na_1).
+By 13, the attacker may know Na_1.
+Using the function sdecrypt the attacker may obtain secretBNa[].
+attacker_bitstring(secretBNa[]).
+
+29. By 28, attacker_bitstring(secretBNa[]).
+The goal is reached, represented in the following fact:
+attacker_bitstring(secretBNa[]).
+
+
+A more detailed output of the traces is available with
+  set traceDisplay = long.
+
+new skA: skey creating skA_3 at {1}
+
+out(c, ~M) with ~M = pk(skA_3) at {3}
+
+insert keys(A,pk(skA_3)) at {4}
+
+new skB: skey creating skB_3 at {5}
+
+out(c, ~M_1) with ~M_1 = pk(skB_3) at {7}
+
+insert keys(B,pk(skB_3)) at {8}
+
+new skS: sskey creating skS_2 at {9}
+
+out(c, ~M_2) with ~M_2 = spk(skS_2) at {11}
+
+in(c, (A,a_3)) at {15} in copy a_4
+
+event beginBparam(A,a_3) at {19} in copy a_4
+
+out(c, (~M_3,~M_4)) with ~M_3 = A, ~M_4 = a_3 at {20} in copy a_4
+
+in(c, B) at {37} in copy a_5
+
+in(c, (a_6,A)) at {59} in copy a_7
+
+get keys(A,pk(skA_3)) at {61} in copy a_7
+
+out(c, ~M_5) with ~M_5 = sign((pk(skA_3),A),skS_2) at {60} in copy a_7
+
+in(c, (a_8,a_3)) at {59} in copy a_9
+
+in(c, (a_3,pk(a_10))) at {63} in copy a_11
+
+insert keys(a_3,pk(a_10)) at {65} in copy a_11
+
+get keys(a_3,pk(a_10)) at {61} in copy a_9
+
+out(c, ~M_6) with ~M_6 = sign((pk(a_10),a_3),skS_2) at {60} in copy a_9
+
+in(c, ~M_6) with ~M_6 = sign((pk(a_10),a_3),skS_2) at {21} in copy a_4
+
+new Na: nonce creating Na_2 at {23} in copy a_4
+
+out(c, ~M_7) with ~M_7 = encrypt((Na_2,A),pk(a_10)) at {24} in copy a_4
+
+in(c, encrypt((1-proj-nonce-host-tuple(decrypt(~M_7,a_10)),A),~M_1)) with encrypt((1-proj-nonce-host-tuple(decrypt(~M_7,a_10)),A),~M_1) = encrypt((Na_2,A),pk(skB_3)) at {41} in copy a_5
+
+event beginAparam(A,B) at {43} in copy a_5
+
+out(c, (~M_8,~M_9)) with ~M_8 = B, ~M_9 = A at {44} in copy a_5
+
+in(c, ~M_5) with ~M_5 = sign((pk(skA_3),A),skS_2) at {45} in copy a_5
+
+new Nb: nonce creating Nb_2 at {47} in copy a_5
+
+event beginAfull(A,B,pk(skB_3),pk(skA_3),Na_2,Nb_2) at {48} in copy a_5
+
+out(c, ~M_10) with ~M_10 = encrypt((Na_2,Nb_2),pk(skA_3)) at {49} in copy a_5
+
+in(c, ~M_10) with ~M_10 = encrypt((Na_2,Nb_2),pk(skA_3)) at {25} in copy a_4
+
+event beginBfull(A,a_3,pk(a_10),pk(skA_3),Na_2,Nb_2) at {27} in copy a_4
+
+out(c, ~M_11) with ~M_11 = encrypt(nonce_to_bitstring(Nb_2),pk(a_10)) at {28} in copy a_4
+
+in(c, encrypt(nonce_to_bitstring(1-proj-nonce_to_bitstring(decrypt(~M_11,a_10))),~M_1)) with encrypt(nonce_to_bitstring(1-proj-nonce_to_bitstring(decrypt(~M_11,a_10))),~M_1) = encrypt(nonce_to_bitstring(Nb_2),pk(skB_3)) at {50} in copy a_5
+
+event endBparam(A,B) at {53} in copy a_5
+
+event endBfull(A,B,pk(skB_3),pk(skA_3),Na_2,Nb_2) at {54} in copy a_5
+
+out(c, ~M_12) with ~M_12 = sencrypt(secretBNa,Na_2) at {55} in copy a_5
+
+out(c, ~M_13) with ~M_13 = sencrypt(secretBNb,Nb_2) at {56} in copy a_5
+
+The attacker has the message sdecrypt(~M_12,1-proj-nonce-host-tuple(decrypt(~M_7,a_10))) = secretBNa.
+A trace has been found.
+RESULT not attacker_bitstring(secretBNa[]) is false.
+Starting query not attacker_bitstring(secretBNb[])
+goal reachable: attacker_bitstring(secretBNb[])
+
+Derivation:
+Abbreviations:
+Na_1 = Na[ms = sign((pk(y),hostX_1),skS[]),hostX = hostX_1,xA = A[],!1 = @sid]
+Nb_1 = Nb[ms_1 = sign((pk(skA[]),A[]),skS[]),m_1 = encrypt((Na_1,A[]),pk(skB[])),xB = B[],!1 = @sid_1]
+
+1. The attacker has some term y.
+attacker_skey(y).
+
+2. The attacker has some term hostX_1.
+attacker_host(hostX_1).
+
+3. The attacker initially knows A[].
+attacker_host(A[]).
+
+4. By 3, the attacker may know A[].
+By 2, the attacker may know hostX_1.
+Using the function host-host-tuple the attacker may obtain (A[],hostX_1).
+attacker_bitstring((A[],hostX_1)).
+
+5. The attacker has some term a_1.
+attacker_host(a_1).
+
+6. By 5, the attacker may know a_1.
+By 2, the attacker may know hostX_1.
+Using the function host-host-tuple the attacker may obtain (a_1,hostX_1).
+attacker_bitstring((a_1,hostX_1)).
+
+7. By 1, the attacker may know y.
+Using the function pk the attacker may obtain pk(y).
+attacker_pkey(pk(y)).
+
+8. By 2, the attacker may know hostX_1.
+By 7, the attacker may know pk(y).
+Using the function host-pkey-tuple the attacker may obtain (hostX_1,pk(y)).
+attacker_bitstring((hostX_1,pk(y))).
+
+9. The message (hostX_1,pk(y)) that the attacker may have by 8 may be received at input {63}.
+We have hostX_1 ≠ B[] && hostX_1 ≠ A[].
+So the entry keys(hostX_1,pk(y)) may be inserted in a table at insert {65}.
+table(keys(hostX_1,pk(y))).
+
+10. The message (a_1,hostX_1) that the attacker may have by 6 may be received at input {59}.
+The entry keys(hostX_1,pk(y)) that may be in a table by 9 may be read at get {61}.
+So the message sign((pk(y),hostX_1),skS[]) may be sent to the attacker at output {60}.
+attacker_bitstring(sign((pk(y),hostX_1),skS[])).
+
+11. The attacker initially knows B[].
+attacker_host(B[]).
+
+12. The message pk(skB[]) may be sent to the attacker at output {7}.
+attacker_pkey(pk(skB[])).
+
+13. The message (A[],hostX_1) that the attacker may have by 4 may be received at input {15}.
+The message sign((pk(y),hostX_1),skS[]) that the attacker may have by 10 may be received at input {21}.
+So the message encrypt((Na_1,A[]),pk(y)) may be sent to the attacker at output {24}.
+attacker_bitstring(encrypt((Na_1,A[]),pk(y))).
+
+14. By 13, the attacker may know encrypt((Na_1,A[]),pk(y)).
+By 1, the attacker may know y.
+Using the function decrypt the attacker may obtain (Na_1,A[]).
+attacker_bitstring((Na_1,A[])).
+
+15. By 14, the attacker may know (Na_1,A[]).
+Using the function 1-proj-nonce-host-tuple the attacker may obtain Na_1.
+attacker_nonce(Na_1).
+
+16. By 15, the attacker may know Na_1.
+By 3, the attacker may know A[].
+Using the function nonce-host-tuple the attacker may obtain (Na_1,A[]).
+attacker_bitstring((Na_1,A[])).
+
+17. By 16, the attacker may know (Na_1,A[]).
+By 12, the attacker may know pk(skB[]).
+Using the function encrypt the attacker may obtain encrypt((Na_1,A[]),pk(skB[])).
+attacker_bitstring(encrypt((Na_1,A[]),pk(skB[]))).
+
+18. The attacker has some term a_2.
+attacker_host(a_2).
+
+19. By 18, the attacker may know a_2.
+By 3, the attacker may know A[].
+Using the function host-host-tuple the attacker may obtain (a_2,A[]).
+attacker_bitstring((a_2,A[])).
+
+20. The entry keys(A[],pk(skA[])) may be inserted in a table at insert {4}.
+table(keys(A[],pk(skA[]))).
+
+21. The message (a_2,A[]) that the attacker may have by 19 may be received at input {59}.
+The entry keys(A[],pk(skA[])) that may be in a table by 20 may be read at get {61}.
+So the message sign((pk(skA[]),A[]),skS[]) may be sent to the attacker at output {60}.
+attacker_bitstring(sign((pk(skA[]),A[]),skS[])).
+
+22. The message B[] that the attacker may have by 11 may be received at input {37}.
+The message encrypt((Na_1,A[]),pk(skB[])) that the attacker may have by 17 may be received at input {41}.
+The message sign((pk(skA[]),A[]),skS[]) that the attacker may have by 21 may be received at input {45}.
+So the message encrypt((Na_1,Nb_1),pk(skA[])) may be sent to the attacker at output {49}.
+attacker_bitstring(encrypt((Na_1,Nb_1),pk(skA[]))).
+
+23. The message (A[],hostX_1) that the attacker may have by 4 may be received at input {15}.
+The message sign((pk(y),hostX_1),skS[]) that the attacker may have by 10 may be received at input {21}.
+The message encrypt((Na_1,Nb_1),pk(skA[])) that the attacker may have by 22 may be received at input {25}.
+So the message encrypt(nonce_to_bitstring(Nb_1),pk(y)) may be sent to the attacker at output {28}.
+attacker_bitstring(encrypt(nonce_to_bitstring(Nb_1),pk(y))).
+
+24. By 23, the attacker may know encrypt(nonce_to_bitstring(Nb_1),pk(y)).
+By 1, the attacker may know y.
+Using the function decrypt the attacker may obtain nonce_to_bitstring(Nb_1).
+attacker_bitstring(nonce_to_bitstring(Nb_1)).
+
+25. By 24, the attacker may know nonce_to_bitstring(Nb_1).
+Using the function 1-proj-nonce_to_bitstring the attacker may obtain Nb_1.
+attacker_nonce(Nb_1).
+
+26. By 24, the attacker may know nonce_to_bitstring(Nb_1).
+By 12, the attacker may know pk(skB[]).
+Using the function encrypt the attacker may obtain encrypt(nonce_to_bitstring(Nb_1),pk(skB[])).
+attacker_bitstring(encrypt(nonce_to_bitstring(Nb_1),pk(skB[]))).
+
+27. The message B[] that the attacker may have by 11 may be received at input {37}.
+The message encrypt((Na_1,A[]),pk(skB[])) that the attacker may have by 17 may be received at input {41}.
+The message sign((pk(skA[]),A[]),skS[]) that the attacker may have by 21 may be received at input {45}.
+The message encrypt(nonce_to_bitstring(Nb_1),pk(skB[])) that the attacker may have by 26 may be received at input {50}.
+So the message sencrypt(secretBNb[],Nb_1) may be sent to the attacker at output {56}.
+attacker_bitstring(sencrypt(secretBNb[],Nb_1)).
+
+28. By 27, the attacker may know sencrypt(secretBNb[],Nb_1).
+By 25, the attacker may know Nb_1.
+Using the function sdecrypt the attacker may obtain secretBNb[].
+attacker_bitstring(secretBNb[]).
+
+29. By 28, attacker_bitstring(secretBNb[]).
+The goal is reached, represented in the following fact:
+attacker_bitstring(secretBNb[]).
+
+
+A more detailed output of the traces is available with
+  set traceDisplay = long.
+
+new skA: skey creating skA_3 at {1}
+
+out(c, ~M) with ~M = pk(skA_3) at {3}
+
+insert keys(A,pk(skA_3)) at {4}
+
+new skB: skey creating skB_3 at {5}
+
+out(c, ~M_1) with ~M_1 = pk(skB_3) at {7}
+
+insert keys(B,pk(skB_3)) at {8}
+
+new skS: sskey creating skS_2 at {9}
+
+out(c, ~M_2) with ~M_2 = spk(skS_2) at {11}
+
+in(c, (A,a_3)) at {15} in copy a_4
+
+event beginBparam(A,a_3) at {19} in copy a_4
+
+out(c, (~M_3,~M_4)) with ~M_3 = A, ~M_4 = a_3 at {20} in copy a_4
+
+in(c, B) at {37} in copy a_5
+
+in(c, (a_6,A)) at {59} in copy a_7
+
+get keys(A,pk(skA_3)) at {61} in copy a_7
+
+out(c, ~M_5) with ~M_5 = sign((pk(skA_3),A),skS_2) at {60} in copy a_7
+
+in(c, (a_8,a_3)) at {59} in copy a_9
+
+in(c, (a_3,pk(a_10))) at {63} in copy a_11
+
+insert keys(a_3,pk(a_10)) at {65} in copy a_11
+
+get keys(a_3,pk(a_10)) at {61} in copy a_9
+
+out(c, ~M_6) with ~M_6 = sign((pk(a_10),a_3),skS_2) at {60} in copy a_9
+
+in(c, ~M_6) with ~M_6 = sign((pk(a_10),a_3),skS_2) at {21} in copy a_4
+
+new Na: nonce creating Na_2 at {23} in copy a_4
+
+out(c, ~M_7) with ~M_7 = encrypt((Na_2,A),pk(a_10)) at {24} in copy a_4
+
+in(c, encrypt((1-proj-nonce-host-tuple(decrypt(~M_7,a_10)),A),~M_1)) with encrypt((1-proj-nonce-host-tuple(decrypt(~M_7,a_10)),A),~M_1) = encrypt((Na_2,A),pk(skB_3)) at {41} in copy a_5
+
+event beginAparam(A,B) at {43} in copy a_5
+
+out(c, (~M_8,~M_9)) with ~M_8 = B, ~M_9 = A at {44} in copy a_5
+
+in(c, ~M_5) with ~M_5 = sign((pk(skA_3),A),skS_2) at {45} in copy a_5
+
+new Nb: nonce creating Nb_2 at {47} in copy a_5
+
+event beginAfull(A,B,pk(skB_3),pk(skA_3),Na_2,Nb_2) at {48} in copy a_5
+
+out(c, ~M_10) with ~M_10 = encrypt((Na_2,Nb_2),pk(skA_3)) at {49} in copy a_5
+
+in(c, ~M_10) with ~M_10 = encrypt((Na_2,Nb_2),pk(skA_3)) at {25} in copy a_4
+
+event beginBfull(A,a_3,pk(a_10),pk(skA_3),Na_2,Nb_2) at {27} in copy a_4
+
+out(c, ~M_11) with ~M_11 = encrypt(nonce_to_bitstring(Nb_2),pk(a_10)) at {28} in copy a_4
+
+in(c, encrypt(nonce_to_bitstring(1-proj-nonce_to_bitstring(decrypt(~M_11,a_10))),~M_1)) with encrypt(nonce_to_bitstring(1-proj-nonce_to_bitstring(decrypt(~M_11,a_10))),~M_1) = encrypt(nonce_to_bitstring(Nb_2),pk(skB_3)) at {50} in copy a_5
+
+event endBparam(A,B) at {53} in copy a_5
+
+event endBfull(A,B,pk(skB_3),pk(skA_3),Na_2,Nb_2) at {54} in copy a_5
+
+out(c, ~M_12) with ~M_12 = sencrypt(secretBNa,Na_2) at {55} in copy a_5
+
+out(c, ~M_13) with ~M_13 = sencrypt(secretBNb,Nb_2) at {56} in copy a_5
+
+The attacker has the message sdecrypt(~M_13,1-proj-nonce_to_bitstring(decrypt(~M_11,a_10))) = secretBNb.
+A trace has been found.
+RESULT not attacker_bitstring(secretBNb[]) is false.
+-- Query inj-event(endBparam(x,y)) ==> inj-event(beginBparam(x,y)) in process 1.
+Translating the process into Horn clauses...
+Completing...
+200 rules inserted. Base: 192 rules (85 with conclusion selected). Queue: 42 rules.
+400 rules inserted. Base: 287 rules (133 with conclusion selected). Queue: 18 rules.
+ok, secrecy assumption verified: fact unreachable attacker_skey(skA[])
+ok, secrecy assumption verified: fact unreachable attacker_skey(skB[])
+ok, secrecy assumption verified: fact unreachable attacker_sskey(skS[])
+Starting query inj-event(endBparam(x,y)) ==> inj-event(beginBparam(x,y))
+goal reachable: hostX_1 ≠ B[] && hostX_1 ≠ A[] && b-event(@p_act_bitstring(@occ25_1,encrypt((Na_1,Nb_1),pk(skB[])))) && b-event(@p_act_bitstring(@occ21_1,sign((pk(skB[]),hostX_1),skS[]))) && b-inj-event(beginBparam(B[],hostX_1),@occ19_1) && attacker_host(hostX_1) -> inj-event(endBparam(B[],B[]),@occ53_1)
+Abbreviations:
+Na_1 = Na[ms = sign((pk(skB[]),hostX_1),skS[]),hostX = hostX_1,xA = B[],!1 = @sid]
+Nb_1 = Nb[ms_1 = sign((pk(skB[]),B[]),skS[]),m_1 = encrypt((Na_1,B[]),pk(skB[])),xB = B[],!1 = @sid_1]
+@occ53_1 = @occ53[m3 = encrypt(nonce_to_bitstring(Nb_1),pk(skB[])),ms_1 = sign((pk(skB[]),B[]),skS[]),m_1 = encrypt((Na_1,B[]),pk(skB[])),xB = B[],!1 = @sid_1]
+@occ25_1 = @occ25[!1 = @sid]
+@occ21_1 = @occ21[!1 = @sid]
+@occ19_1 = @occ19[hostX = hostX_1,xA = B[],!1 = @sid]
+
+Derivation:
+Abbreviations:
+Na_1 = Na[ms = sign((pk(skB[]),hostX_1),skS[]),hostX = hostX_1,xA = B[],!1 = @sid]
+Nb_1 = Nb[ms_1 = sign((pk(skB[]),B[]),skS[]),m_1 = encrypt((Na_1,B[]),pk(skB[])),xB = B[],!1 = @sid_1]
+@occ53_1 = @occ53[m3 = encrypt(nonce_to_bitstring(Nb_1),pk(skB[])),ms_1 = sign((pk(skB[]),B[]),skS[]),m_1 = encrypt((Na_1,B[]),pk(skB[])),xB = B[],!1 = @sid_1]
+@occ25_1 = @occ25[!1 = @sid]
+@occ21_1 = @occ21[!1 = @sid]
+@occ19_1 = @occ19[hostX = hostX_1,xA = B[],!1 = @sid]
+
+1. The attacker initially knows B[].
+attacker_host(B[]).
+
+2. We assume as hypothesis that
+attacker_host(hostX_1).
+
+3. By 1, the attacker may know B[].
+By 2, the attacker may know hostX_1.
+Using the function host-host-tuple the attacker may obtain (B[],hostX_1).
+attacker_bitstring((B[],hostX_1)).
+
+4. The attacker has some term a_1.
+attacker_host(a_1).
+
+5. By 4, the attacker may know a_1.
+By 2, the attacker may know hostX_1.
+Using the function host-host-tuple the attacker may obtain (a_1,hostX_1).
+attacker_bitstring((a_1,hostX_1)).
+
+6. The message pk(skB[]) may be sent to the attacker at output {7}.
+attacker_pkey(pk(skB[])).
+
+7. By 2, the attacker may know hostX_1.
+By 6, the attacker may know pk(skB[]).
+Using the function host-pkey-tuple the attacker may obtain (hostX_1,pk(skB[])).
+attacker_bitstring((hostX_1,pk(skB[]))).
+
+8. The message (hostX_1,pk(skB[])) that the attacker may have by 7 may be received at input {63}.
+We have hostX_1 ≠ B[] && hostX_1 ≠ A[].
+So the entry keys(hostX_1,pk(skB[])) may be inserted in a table at insert {65}.
+table(keys(hostX_1,pk(skB[]))).
+
+9. The message (a_1,hostX_1) that the attacker may have by 5 may be received at input {59}.
+The entry keys(hostX_1,pk(skB[])) that may be in a table by 8 may be read at get {61}.
+So the message sign((pk(skB[]),hostX_1),skS[]) may be sent to the attacker at output {60}.
+attacker_bitstring(sign((pk(skB[]),hostX_1),skS[])).
+
+10. The message (B[],hostX_1) that the attacker may have by 3 may be received at input {15}.
+The event beginBparam(B[],hostX_1) (with occurrence name @occ19_1) may be executed at {19}.
+The event @p_act_bitstring(@occ21_1,sign((pk(skB[]),hostX_1),skS[])) records how variables are instantiated at {21}.
+The message sign((pk(skB[]),hostX_1),skS[]) that the attacker may have by 9 may be received at input {21}.
+So the message encrypt((Na_1,B[]),pk(skB[])) may be sent to the attacker at output {24}.
+attacker_bitstring(encrypt((Na_1,B[]),pk(skB[]))).
+
+11. The attacker has some term a_2.
+attacker_host(a_2).
+
+12. By 11, the attacker may know a_2.
+By 1, the attacker may know B[].
+Using the function host-host-tuple the attacker may obtain (a_2,B[]).
+attacker_bitstring((a_2,B[])).
+
+13. The entry keys(B[],pk(skB[])) may be inserted in a table at insert {8}.
+table(keys(B[],pk(skB[]))).
+
+14. The message (a_2,B[]) that the attacker may have by 12 may be received at input {59}.
+The entry keys(B[],pk(skB[])) that may be in a table by 13 may be read at get {61}.
+So the message sign((pk(skB[]),B[]),skS[]) may be sent to the attacker at output {60}.
+attacker_bitstring(sign((pk(skB[]),B[]),skS[])).
+
+15. The message B[] that the attacker may have by 1 may be received at input {37}.
+The message encrypt((Na_1,B[]),pk(skB[])) that the attacker may have by 10 may be received at input {41}.
+The message sign((pk(skB[]),B[]),skS[]) that the attacker may have by 14 may be received at input {45}.
+So the message encrypt((Na_1,Nb_1),pk(skB[])) may be sent to the attacker at output {49}.
+attacker_bitstring(encrypt((Na_1,Nb_1),pk(skB[]))).
+
+16. The message (B[],hostX_1) that the attacker may have by 3 may be received at input {15}.
+The event beginBparam(B[],hostX_1) (with occurrence name @occ19_1) may be executed at {19}.
+The event @p_act_bitstring(@occ21_1,sign((pk(skB[]),hostX_1),skS[])) records how variables are instantiated at {21}.
+The message sign((pk(skB[]),hostX_1),skS[]) that the attacker may have by 9 may be received at input {21}.
+The event @p_act_bitstring(@occ25_1,encrypt((Na_1,Nb_1),pk(skB[]))) records how variables are instantiated at {25}.
+The message encrypt((Na_1,Nb_1),pk(skB[])) that the attacker may have by 15 may be received at input {25}.
+So the message encrypt(nonce_to_bitstring(Nb_1),pk(skB[])) may be sent to the attacker at output {28}.
+attacker_bitstring(encrypt(nonce_to_bitstring(Nb_1),pk(skB[]))).
+
+17. The message B[] that the attacker may have by 1 may be received at input {37}.
+The message encrypt((Na_1,B[]),pk(skB[])) that the attacker may have by 10 may be received at input {41}.
+The message sign((pk(skB[]),B[]),skS[]) that the attacker may have by 14 may be received at input {45}.
+The message encrypt(nonce_to_bitstring(Nb_1),pk(skB[])) that the attacker may have by 16 may be received at input {50}.
+So event endBparam(B[],B[]) may be executed at {53} in session @sid_1.
+inj-event(endBparam(B[],B[]),@occ53_1).
+
+18. By 17, inj-event(endBparam(B[],B[]),@occ53_1).
+The goal is reached, represented in the following fact:
+inj-event(endBparam(B[],B[]),@occ53_1).
+
+
+A more detailed output of the traces is available with
+  set traceDisplay = long.
+
+new skA: skey creating skA_3 at {1}
+
+out(c, ~M) with ~M = pk(skA_3) at {3}
+
+insert keys(A,pk(skA_3)) at {4}
+
+new skB: skey creating skB_3 at {5}
+
+out(c, ~M_1) with ~M_1 = pk(skB_3) at {7}
+
+insert keys(B,pk(skB_3)) at {8}
+
+new skS: sskey creating skS_2 at {9}
+
+out(c, ~M_2) with ~M_2 = spk(skS_2) at {11}
+
+in(c, (B,a_3)) at {15} in copy a_4
+
+event beginBparam(B,a_3) at {19} in copy a_4
+
+out(c, (~M_3,~M_4)) with ~M_3 = B, ~M_4 = a_3 at {20} in copy a_4
+
+in(c, B) at {37} in copy a_5
+
+in(c, (a_6,B)) at {59} in copy a_7
+
+get keys(B,pk(skB_3)) at {61} in copy a_7
+
+out(c, ~M_5) with ~M_5 = sign((pk(skB_3),B),skS_2) at {60} in copy a_7
+
+in(c, (a_8,a_3)) at {59} in copy a_9
+
+in(c, (a_3,~M_1)) with ~M_1 = pk(skB_3) at {63} in copy a_10
+
+insert keys(a_3,pk(skB_3)) at {65} in copy a_10
+
+get keys(a_3,pk(skB_3)) at {61} in copy a_9
+
+out(c, ~M_6) with ~M_6 = sign((pk(skB_3),a_3),skS_2) at {60} in copy a_9
+
+in(c, ~M_6) with ~M_6 = sign((pk(skB_3),a_3),skS_2) at {21} in copy a_4
+
+new Na: nonce creating Na_2 at {23} in copy a_4
+
+out(c, ~M_7) with ~M_7 = encrypt((Na_2,B),pk(skB_3)) at {24} in copy a_4
+
+in(c, ~M_7) with ~M_7 = encrypt((Na_2,B),pk(skB_3)) at {41} in copy a_5
+
+event beginAparam(B,B) at {43} in copy a_5
+
+out(c, (~M_8,~M_9)) with ~M_8 = B, ~M_9 = B at {44} in copy a_5
+
+in(c, ~M_5) with ~M_5 = sign((pk(skB_3),B),skS_2) at {45} in copy a_5
+
+new Nb: nonce creating Nb_2 at {47} in copy a_5
+
+event beginAfull(B,B,pk(skB_3),pk(skB_3),Na_2,Nb_2) at {48} in copy a_5
+
+out(c, ~M_10) with ~M_10 = encrypt((Na_2,Nb_2),pk(skB_3)) at {49} in copy a_5
+
+in(c, ~M_10) with ~M_10 = encrypt((Na_2,Nb_2),pk(skB_3)) at {25} in copy a_4
+
+event beginBfull(B,a_3,pk(skB_3),pk(skB_3),Na_2,Nb_2) at {27} in copy a_4
+
+out(c, ~M_11) with ~M_11 = encrypt(nonce_to_bitstring(Nb_2),pk(skB_3)) at {28} in copy a_4
+
+in(c, ~M_11) with ~M_11 = encrypt(nonce_to_bitstring(Nb_2),pk(skB_3)) at {50} in copy a_5
+
+event endBparam(B,B) at {53} in copy a_5 (goal)
+
+The event endBparam(B,B) is executed at {53} in copy a_5.
+A trace has been found.
+RESULT inj-event(endBparam(x,y)) ==> inj-event(beginBparam(x,y)) is false.
+RESULT (even event(endBparam(x,y)) ==> event(beginBparam(x,y)) is false.)
+-- Query inj-event(endBfull(x1,x2,x3,x4,x5,x6)) ==> inj-event(beginBfull(x1,x2,x3,x4,x5,x6)) in process 1.
+Translating the process into Horn clauses...
+Completing...
+200 rules inserted. Base: 192 rules (85 with conclusion selected). Queue: 42 rules.
+400 rules inserted. Base: 287 rules (133 with conclusion selected). Queue: 18 rules.
+ok, secrecy assumption verified: fact unreachable attacker_skey(skA[])
+ok, secrecy assumption verified: fact unreachable attacker_skey(skB[])
+ok, secrecy assumption verified: fact unreachable attacker_sskey(skS[])
+Starting query inj-event(endBfull(x1,x2,x3,x4,x5,x6)) ==> inj-event(beginBfull(x1,x2,x3,x4,x5,x6))
+goal reachable: hostX_1 ≠ B[] && hostX_1 ≠ A[] && b-inj-event(beginBfull(B[],hostX_1,pk(skB[]),pk(skB[]),Na_1,Nb_1),@occ27_1) && attacker_host(hostX_1) -> inj-event(endBfull(B[],B[],pk(skB[]),pk(skB[]),Na_1,Nb_1),@occ54_1)
+Abbreviations:
+Na_1 = Na[ms = sign((pk(skB[]),hostX_1),skS[]),hostX = hostX_1,xA = B[],!1 = @sid]
+Nb_1 = Nb[ms_1 = sign((pk(skB[]),B[]),skS[]),m_1 = encrypt((Na_1,B[]),pk(skB[])),xB = B[],!1 = @sid_1]
+@occ54_1 = @occ54[m3 = encrypt(nonce_to_bitstring(Nb_1),pk(skB[])),ms_1 = sign((pk(skB[]),B[]),skS[]),m_1 = encrypt((Na_1,B[]),pk(skB[])),xB = B[],!1 = @sid_1]
+@occ27_1 = @occ27[m = encrypt((Na_1,Nb_1),pk(skB[])),ms = sign((pk(skB[]),hostX_1),skS[]),hostX = hostX_1,xA = B[],!1 = @sid]
+
+Derivation:
+Abbreviations:
+Na_1 = Na[ms = sign((pk(skB[]),hostX_1),skS[]),hostX = hostX_1,xA = B[],!1 = @sid]
+Nb_1 = Nb[ms_1 = sign((pk(skB[]),B[]),skS[]),m_1 = encrypt((Na_1,B[]),pk(skB[])),xB = B[],!1 = @sid_1]
+@occ54_1 = @occ54[m3 = encrypt(nonce_to_bitstring(Nb_1),pk(skB[])),ms_1 = sign((pk(skB[]),B[]),skS[]),m_1 = encrypt((Na_1,B[]),pk(skB[])),xB = B[],!1 = @sid_1]
+@occ27_1 = @occ27[m = encrypt((Na_1,Nb_1),pk(skB[])),ms = sign((pk(skB[]),hostX_1),skS[]),hostX = hostX_1,xA = B[],!1 = @sid]
+
+1. The attacker initially knows B[].
+attacker_host(B[]).
+
+2. We assume as hypothesis that
+attacker_host(hostX_1).
+
+3. By 1, the attacker may know B[].
+By 2, the attacker may know hostX_1.
+Using the function host-host-tuple the attacker may obtain (B[],hostX_1).
+attacker_bitstring((B[],hostX_1)).
+
+4. The attacker has some term a_1.
+attacker_host(a_1).
+
+5. By 4, the attacker may know a_1.
+By 2, the attacker may know hostX_1.
+Using the function host-host-tuple the attacker may obtain (a_1,hostX_1).
+attacker_bitstring((a_1,hostX_1)).
+
+6. The message pk(skB[]) may be sent to the attacker at output {7}.
+attacker_pkey(pk(skB[])).
+
+7. By 2, the attacker may know hostX_1.
+By 6, the attacker may know pk(skB[]).
+Using the function host-pkey-tuple the attacker may obtain (hostX_1,pk(skB[])).
+attacker_bitstring((hostX_1,pk(skB[]))).
+
+8. The message (hostX_1,pk(skB[])) that the attacker may have by 7 may be received at input {63}.
+We have hostX_1 ≠ B[] && hostX_1 ≠ A[].
+So the entry keys(hostX_1,pk(skB[])) may be inserted in a table at insert {65}.
+table(keys(hostX_1,pk(skB[]))).
+
+9. The message (a_1,hostX_1) that the attacker may have by 5 may be received at input {59}.
+The entry keys(hostX_1,pk(skB[])) that may be in a table by 8 may be read at get {61}.
+So the message sign((pk(skB[]),hostX_1),skS[]) may be sent to the attacker at output {60}.
+attacker_bitstring(sign((pk(skB[]),hostX_1),skS[])).
+
+10. The message (B[],hostX_1) that the attacker may have by 3 may be received at input {15}.
+The message sign((pk(skB[]),hostX_1),skS[]) that the attacker may have by 9 may be received at input {21}.
+So the message encrypt((Na_1,B[]),pk(skB[])) may be sent to the attacker at output {24}.
+attacker_bitstring(encrypt((Na_1,B[]),pk(skB[]))).
+
+11. The attacker has some term a_2.
+attacker_host(a_2).
+
+12. By 11, the attacker may know a_2.
+By 1, the attacker may know B[].
+Using the function host-host-tuple the attacker may obtain (a_2,B[]).
+attacker_bitstring((a_2,B[])).
+
+13. The entry keys(B[],pk(skB[])) may be inserted in a table at insert {8}.
+table(keys(B[],pk(skB[]))).
+
+14. The message (a_2,B[]) that the attacker may have by 12 may be received at input {59}.
+The entry keys(B[],pk(skB[])) that may be in a table by 13 may be read at get {61}.
+So the message sign((pk(skB[]),B[]),skS[]) may be sent to the attacker at output {60}.
+attacker_bitstring(sign((pk(skB[]),B[]),skS[])).
+
+15. The message B[] that the attacker may have by 1 may be received at input {37}.
+The message encrypt((Na_1,B[]),pk(skB[])) that the attacker may have by 10 may be received at input {41}.
+The message sign((pk(skB[]),B[]),skS[]) that the attacker may have by 14 may be received at input {45}.
+So the message encrypt((Na_1,Nb_1),pk(skB[])) may be sent to the attacker at output {49}.
+attacker_bitstring(encrypt((Na_1,Nb_1),pk(skB[]))).
+
+16. The message (B[],hostX_1) that the attacker may have by 3 may be received at input {15}.
+The message sign((pk(skB[]),hostX_1),skS[]) that the attacker may have by 9 may be received at input {21}.
+The message encrypt((Na_1,Nb_1),pk(skB[])) that the attacker may have by 15 may be received at input {25}.
+The event beginBfull(B[],hostX_1,pk(skB[]),pk(skB[]),Na_1,Nb_1) (with occurrence name @occ27_1) may be executed at {27}.
+So the message encrypt(nonce_to_bitstring(Nb_1),pk(skB[])) may be sent to the attacker at output {28}.
+attacker_bitstring(encrypt(nonce_to_bitstring(Nb_1),pk(skB[]))).
+
+17. The message B[] that the attacker may have by 1 may be received at input {37}.
+The message encrypt((Na_1,B[]),pk(skB[])) that the attacker may have by 10 may be received at input {41}.
+The message sign((pk(skB[]),B[]),skS[]) that the attacker may have by 14 may be received at input {45}.
+The message encrypt(nonce_to_bitstring(Nb_1),pk(skB[])) that the attacker may have by 16 may be received at input {50}.
+So event endBfull(B[],B[],pk(skB[]),pk(skB[]),Na_1,Nb_1) may be executed at {54} in session @sid_1.
+inj-event(endBfull(B[],B[],pk(skB[]),pk(skB[]),Na_1,Nb_1),@occ54_1).
+
+18. By 17, inj-event(endBfull(B[],B[],pk(skB[]),pk(skB[]),Na_1,Nb_1),@occ54_1).
+The goal is reached, represented in the following fact:
+inj-event(endBfull(B[],B[],pk(skB[]),pk(skB[]),Na_1,Nb_1),@occ54_1).
+
+
+A more detailed output of the traces is available with
+  set traceDisplay = long.
+
+new skA: skey creating skA_3 at {1}
+
+out(c, ~M) with ~M = pk(skA_3) at {3}
+
+insert keys(A,pk(skA_3)) at {4}
+
+new skB: skey creating skB_3 at {5}
+
+out(c, ~M_1) with ~M_1 = pk(skB_3) at {7}
+
+insert keys(B,pk(skB_3)) at {8}
+
+new skS: sskey creating skS_2 at {9}
+
+out(c, ~M_2) with ~M_2 = spk(skS_2) at {11}
+
+in(c, (B,a_3)) at {15} in copy a_4
+
+event beginBparam(B,a_3) at {19} in copy a_4
+
+out(c, (~M_3,~M_4)) with ~M_3 = B, ~M_4 = a_3 at {20} in copy a_4
+
+in(c, B) at {37} in copy a_5
+
+in(c, (a_6,B)) at {59} in copy a_7
+
+get keys(B,pk(skB_3)) at {61} in copy a_7
+
+out(c, ~M_5) with ~M_5 = sign((pk(skB_3),B),skS_2) at {60} in copy a_7
+
+in(c, (a_8,a_3)) at {59} in copy a_9
+
+in(c, (a_3,~M_1)) with ~M_1 = pk(skB_3) at {63} in copy a_10
+
+insert keys(a_3,pk(skB_3)) at {65} in copy a_10
+
+get keys(a_3,pk(skB_3)) at {61} in copy a_9
+
+out(c, ~M_6) with ~M_6 = sign((pk(skB_3),a_3),skS_2) at {60} in copy a_9
+
+in(c, ~M_6) with ~M_6 = sign((pk(skB_3),a_3),skS_2) at {21} in copy a_4
+
+new Na: nonce creating Na_2 at {23} in copy a_4
+
+out(c, ~M_7) with ~M_7 = encrypt((Na_2,B),pk(skB_3)) at {24} in copy a_4
+
+in(c, ~M_7) with ~M_7 = encrypt((Na_2,B),pk(skB_3)) at {41} in copy a_5
+
+event beginAparam(B,B) at {43} in copy a_5
+
+out(c, (~M_8,~M_9)) with ~M_8 = B, ~M_9 = B at {44} in copy a_5
+
+in(c, ~M_5) with ~M_5 = sign((pk(skB_3),B),skS_2) at {45} in copy a_5
+
+new Nb: nonce creating Nb_2 at {47} in copy a_5
+
+event beginAfull(B,B,pk(skB_3),pk(skB_3),Na_2,Nb_2) at {48} in copy a_5
+
+out(c, ~M_10) with ~M_10 = encrypt((Na_2,Nb_2),pk(skB_3)) at {49} in copy a_5
+
+in(c, ~M_10) with ~M_10 = encrypt((Na_2,Nb_2),pk(skB_3)) at {25} in copy a_4
+
+event beginBfull(B,a_3,pk(skB_3),pk(skB_3),Na_2,Nb_2) at {27} in copy a_4
+
+out(c, ~M_11) with ~M_11 = encrypt(nonce_to_bitstring(Nb_2),pk(skB_3)) at {28} in copy a_4
+
+in(c, ~M_11) with ~M_11 = encrypt(nonce_to_bitstring(Nb_2),pk(skB_3)) at {50} in copy a_5
+
+event endBparam(B,B) at {53} in copy a_5
+
+event endBfull(B,B,pk(skB_3),pk(skB_3),Na_2,Nb_2) at {54} in copy a_5 (goal)
+
+The event endBfull(B,B,pk(skB_3),pk(skB_3),Na_2,Nb_2) is executed at {54} in copy a_5.
+A trace has been found.
+RESULT inj-event(endBfull(x1,x2,x3,x4,x5,x6)) ==> inj-event(beginBfull(x1,x2,x3,x4,x5,x6)) is false.
+RESULT (even event(endBfull(x1,x2,x3,x4,x5,x6)) ==> event(beginBfull(x1,x2,x3,x4,x5,x6)) is false.)
+-- Query inj-event(endAparam(x,y)) ==> inj-event(beginAparam(x,y)) in process 1.
+Translating the process into Horn clauses...
+Completing...
+200 rules inserted. Base: 192 rules (85 with conclusion selected). Queue: 52 rules.
+400 rules inserted. Base: 294 rules (137 with conclusion selected). Queue: 12 rules.
+ok, secrecy assumption verified: fact unreachable attacker_skey(skA[])
+ok, secrecy assumption verified: fact unreachable attacker_skey(skB[])
+ok, secrecy assumption verified: fact unreachable attacker_sskey(skS[])
+Starting query inj-event(endAparam(x,y)) ==> inj-event(beginAparam(x,y))
+goal reachable: b-event(@p_act_bitstring(@occ45_1,sign((pk(skB[]),B[]),skS[]))) && b-inj-event(beginAparam(B[],B[]),@occ43_1) -> inj-event(endAparam(B[],B[]),@occ30_1)
+The 1st, 2nd hypotheses occur strictly before the conclusion.
+Abbreviations:
+Na_1 = Na[ms = sign((pk(skB[]),B[]),skS[]),hostX = B[],xA = B[],!1 = @sid]
+Nb_1 = Nb[ms_1 = sign((pk(skB[]),B[]),skS[]),m_1 = encrypt((Na_1,B[]),pk(skB[])),xB = B[],!1 = @sid_1]
+@occ30_1 = @occ30[m = encrypt((Na_1,Nb_1),pk(skB[])),ms = sign((pk(skB[]),B[]),skS[]),hostX = B[],xA = B[],!1 = @sid]
+@occ45_1 = @occ45[!1 = @sid_1]
+@occ43_1 = @occ43[m_1 = encrypt((Na_1,B[]),pk(skB[])),xB = B[],!1 = @sid_1]
+goal reachable: b-event(@p_act_bitstring(@occ45_1,sign((pk(skB[]),B[]),skS[]))) && b-inj-event(beginAparam(B[],A[]),@occ43_1) -> inj-event(endAparam(B[],A[]),@occ30_1)
+The 1st, 2nd hypotheses occur strictly before the conclusion.
+Abbreviations:
+Na_1 = Na[ms = sign((pk(skA[]),A[]),skS[]),hostX = A[],xA = B[],!1 = @sid]
+Nb_1 = Nb[ms_1 = sign((pk(skB[]),B[]),skS[]),m_1 = encrypt((Na_1,B[]),pk(skA[])),xB = A[],!1 = @sid_1]
+@occ30_1 = @occ30[m = encrypt((Na_1,Nb_1),pk(skB[])),ms = sign((pk(skA[]),A[]),skS[]),hostX = A[],xA = B[],!1 = @sid]
+@occ45_1 = @occ45[!1 = @sid_1]
+@occ43_1 = @occ43[m_1 = encrypt((Na_1,B[]),pk(skA[])),xB = A[],!1 = @sid_1]
+goal reachable: b-event(@p_act_bitstring(@occ45_1,sign((pk(skA[]),A[]),skS[]))) && b-inj-event(beginAparam(A[],B[]),@occ43_1) -> inj-event(endAparam(A[],B[]),@occ30_1)
+The 1st, 2nd hypotheses occur strictly before the conclusion.
+Abbreviations:
+Na_1 = Na[ms = sign((pk(skB[]),B[]),skS[]),hostX = B[],xA = A[],!1 = @sid]
+Nb_1 = Nb[ms_1 = sign((pk(skA[]),A[]),skS[]),m_1 = encrypt((Na_1,A[]),pk(skB[])),xB = B[],!1 = @sid_1]
+@occ30_1 = @occ30[m = encrypt((Na_1,Nb_1),pk(skA[])),ms = sign((pk(skB[]),B[]),skS[]),hostX = B[],xA = A[],!1 = @sid]
+@occ45_1 = @occ45[!1 = @sid_1]
+@occ43_1 = @occ43[m_1 = encrypt((Na_1,A[]),pk(skB[])),xB = B[],!1 = @sid_1]
+goal reachable: b-event(@p_act_bitstring(@occ45_1,sign((pk(skA[]),A[]),skS[]))) && b-inj-event(beginAparam(A[],A[]),@occ43_1) -> inj-event(endAparam(A[],A[]),@occ30_1)
+The 1st, 2nd hypotheses occur strictly before the conclusion.
+Abbreviations:
+Na_1 = Na[ms = sign((pk(skA[]),A[]),skS[]),hostX = A[],xA = A[],!1 = @sid]
+Nb_1 = Nb[ms_1 = sign((pk(skA[]),A[]),skS[]),m_1 = encrypt((Na_1,A[]),pk(skA[])),xB = A[],!1 = @sid_1]
+@occ30_1 = @occ30[m = encrypt((Na_1,Nb_1),pk(skA[])),ms = sign((pk(skA[]),A[]),skS[]),hostX = A[],xA = A[],!1 = @sid]
+@occ45_1 = @occ45[!1 = @sid_1]
+@occ43_1 = @occ43[m_1 = encrypt((Na_1,A[]),pk(skA[])),xB = A[],!1 = @sid_1]
+RESULT inj-event(endAparam(x,y)) ==> inj-event(beginAparam(x,y)) is true.
+-- Query inj-event(endAfull(x1,x2,x3,x4,x5,x6)) ==> inj-event(beginAfull(x1,x2,x3,x4,x5,x6)) in process 1.
+Translating the process into Horn clauses...
+Completing...
+200 rules inserted. Base: 192 rules (85 with conclusion selected). Queue: 52 rules.
+400 rules inserted. Base: 294 rules (137 with conclusion selected). Queue: 12 rules.
+ok, secrecy assumption verified: fact unreachable attacker_skey(skA[])
+ok, secrecy assumption verified: fact unreachable attacker_skey(skB[])
+ok, secrecy assumption verified: fact unreachable attacker_sskey(skS[])
+Starting query inj-event(endAfull(x1,x2,x3,x4,x5,x6)) ==> inj-event(beginAfull(x1,x2,x3,x4,x5,x6))
+goal reachable: b-inj-event(beginAfull(B[],B[],pk(skB[]),pk(skB[]),Na_1,Nb_1),@occ48_1) -> inj-event(endAfull(B[],B[],pk(skB[]),pk(skB[]),Na_1,Nb_1),@occ31_1)
+The hypothesis occurs strictly before the conclusion.
+Abbreviations:
+Na_1 = Na[ms = sign((pk(skB[]),B[]),skS[]),hostX = B[],xA = B[],!1 = @sid]
+Nb_1 = Nb[ms_1 = sign((pk(skB[]),B[]),skS[]),m_1 = encrypt((Na_1,B[]),pk(skB[])),xB = B[],!1 = @sid_1]
+@occ31_1 = @occ31[m = encrypt((Na_1,Nb_1),pk(skB[])),ms = sign((pk(skB[]),B[]),skS[]),hostX = B[],xA = B[],!1 = @sid]
+@occ48_1 = @occ48[ms_1 = sign((pk(skB[]),B[]),skS[]),m_1 = encrypt((Na_1,B[]),pk(skB[])),xB = B[],!1 = @sid_1]
+goal reachable: b-inj-event(beginAfull(B[],A[],pk(skA[]),pk(skB[]),Na_1,Nb_1),@occ48_1) -> inj-event(endAfull(B[],A[],pk(skA[]),pk(skB[]),Na_1,Nb_1),@occ31_1)
+The hypothesis occurs strictly before the conclusion.
+Abbreviations:
+Na_1 = Na[ms = sign((pk(skA[]),A[]),skS[]),hostX = A[],xA = B[],!1 = @sid]
+Nb_1 = Nb[ms_1 = sign((pk(skB[]),B[]),skS[]),m_1 = encrypt((Na_1,B[]),pk(skA[])),xB = A[],!1 = @sid_1]
+@occ31_1 = @occ31[m = encrypt((Na_1,Nb_1),pk(skB[])),ms = sign((pk(skA[]),A[]),skS[]),hostX = A[],xA = B[],!1 = @sid]
+@occ48_1 = @occ48[ms_1 = sign((pk(skB[]),B[]),skS[]),m_1 = encrypt((Na_1,B[]),pk(skA[])),xB = A[],!1 = @sid_1]
+goal reachable: b-inj-event(beginAfull(A[],B[],pk(skB[]),pk(skA[]),Na_1,Nb_1),@occ48_1) -> inj-event(endAfull(A[],B[],pk(skB[]),pk(skA[]),Na_1,Nb_1),@occ31_1)
+The hypothesis occurs strictly before the conclusion.
+Abbreviations:
+Na_1 = Na[ms = sign((pk(skB[]),B[]),skS[]),hostX = B[],xA = A[],!1 = @sid]
+Nb_1 = Nb[ms_1 = sign((pk(skA[]),A[]),skS[]),m_1 = encrypt((Na_1,A[]),pk(skB[])),xB = B[],!1 = @sid_1]
+@occ31_1 = @occ31[m = encrypt((Na_1,Nb_1),pk(skA[])),ms = sign((pk(skB[]),B[]),skS[]),hostX = B[],xA = A[],!1 = @sid]
+@occ48_1 = @occ48[ms_1 = sign((pk(skA[]),A[]),skS[]),m_1 = encrypt((Na_1,A[]),pk(skB[])),xB = B[],!1 = @sid_1]
+goal reachable: b-inj-event(beginAfull(A[],A[],pk(skA[]),pk(skA[]),Na_1,Nb_1),@occ48_1) -> inj-event(endAfull(A[],A[],pk(skA[]),pk(skA[]),Na_1,Nb_1),@occ31_1)
+The hypothesis occurs strictly before the conclusion.
+Abbreviations:
+Na_1 = Na[ms = sign((pk(skA[]),A[]),skS[]),hostX = A[],xA = A[],!1 = @sid]
+Nb_1 = Nb[ms_1 = sign((pk(skA[]),A[]),skS[]),m_1 = encrypt((Na_1,A[]),pk(skA[])),xB = A[],!1 = @sid_1]
+@occ31_1 = @occ31[m = encrypt((Na_1,Nb_1),pk(skA[])),ms = sign((pk(skA[]),A[]),skS[]),hostX = A[],xA = A[],!1 = @sid]
+@occ48_1 = @occ48[ms_1 = sign((pk(skA[]),A[]),skS[]),m_1 = encrypt((Na_1,A[]),pk(skA[])),xB = A[],!1 = @sid_1]
+RESULT inj-event(endAfull(x1,x2,x3,x4,x5,x6)) ==> inj-event(beginAfull(x1,x2,x3,x4,x5,x6)) is true.
+
+--------------------------------------------------------------
+Verification summary:
+
+Query not attacker_bitstring(secretANa[]) is true.
+
+Query not attacker_bitstring(secretANb[]) is true.
+
+Query not attacker_bitstring(secretBNa[]) is false.
+
+Query not attacker_bitstring(secretBNb[]) is false.
+
+Query inj-event(endBparam(x,y)) ==> inj-event(beginBparam(x,y)) is false.
+
+Query inj-event(endBfull(x1,x2,x3,x4,x5,x6)) ==> inj-event(beginBfull(x1,x2,x3,x4,x5,x6)) is false.
+
+Query inj-event(endAparam(x,y)) ==> inj-event(beginAparam(x,y)) is true.
+
+Query inj-event(endAfull(x1,x2,x3,x4,x5,x6)) ==> inj-event(beginAfull(x1,x2,x3,x4,x5,x6)) is true.
+
+--------------------------------------------------------------
+

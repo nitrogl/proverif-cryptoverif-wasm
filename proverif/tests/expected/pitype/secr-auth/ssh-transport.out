@@ -1,0 +1,148 @@
+Linear part:
+exp(exp(g,x),y) = exp(exp(g,y),x)
+Completing equations...
+Completed equations:
+exp(exp(g,x),y) = exp(exp(g,y),x)
+Convergent part: No equation.
+Process 0 (that is, the initial process):
+{1}new SSigKey: skey;
+{2}let SVerKey: pkey = pk(SSigKey) in
+{3}out(c, SVerKey);
+(
+    {4}!
+    {5}new dhsecretC: exponent;
+    {6}let dhpublicC: G = exp(g,dhsecretC) in
+    {7}out(c, (KEXDHINIT,dhpublicC));
+    {8}in(c, (=KEXDHREPLY,ServerVerKey: pkey,dhpublicS: G,sign: bitstring));
+    {9}let K: G = exp(dhpublicS,dhsecretC) in
+    {10}let h: key = H((ServerVerKey,dhpublicC,dhpublicS,K)) in
+    {11}if (checknmrsign(ServerVerKey,sign,h) = true) then
+    {12}let enckeyCtoS: key = H((K,h,keyEncCtoS)) in
+    {13}let enckeyStoC: key = H((K,h,keyEncStoC)) in
+    {14}let mackeyCtoS: key = H((K,h,keyMacCtoS)) in
+    {15}let mackeyStoC: key = H((K,h,keyMacStoC)) in
+    {16}new CsecchannelToS: channel;
+    {17}new CsecchannelFromS: channel;
+    (
+        {18}!
+        {19}in(CsecchannelToS, m2payload: bitstring);
+        {20}out(c, (enc(enckeyCtoS,m2payload),mac(mackeyCtoS,m2payload)))
+    ) | (
+        {21}!
+        {22}in(c, (m4enc: bitstring,m4mac: bitstring));
+        {23}let m4payload: bitstring = dec(enckeyStoC,m4enc) in
+        {24}if (m4mac = mac(mackeyStoC,m4payload)) then
+        {25}out(CsecchannelFromS, m4payload)
+    ) | (
+        {26}if (ServerVerKey = SVerKey) then
+        {27}out(CsecchannelToS, secretC)
+    )
+) | (
+    {28}!
+    {29}let SSigKey_1: skey = SSigKey in
+    {30}in(c, (=KEXDHINIT,dhpublicC_1: G));
+    {31}new dhsecretS: exponent;
+    {32}let dhpublicS_1: G = exp(g,dhsecretS) in
+    {33}let K_1: G = exp(dhpublicC_1,dhsecretS) in
+    {34}let h_1: key = H((SVerKey,dhpublicC_1,dhpublicS_1,K_1)) in
+    {35}out(c, (KEXDHREPLY,SVerKey,dhpublicS_1,nmrsign(SSigKey_1,h_1)));
+    {36}let enckeyCtoS_1: key = H((K_1,h_1,keyEncCtoS)) in
+    {37}let enckeyStoC_1: key = H((K_1,h_1,keyEncStoC)) in
+    {38}let mackeyCtoS_1: key = H((K_1,h_1,keyMacCtoS)) in
+    {39}let mackeyStoC_1: key = H((K_1,h_1,keyMacStoC)) in
+    {40}new SsecchannelToC: channel;
+    {41}new SsecchannelFromC: channel;
+    (
+        {42}!
+        {43}in(SsecchannelToC, m3payload: bitstring);
+        {44}out(c, (enc(enckeyStoC_1,m3payload),mac(mackeyStoC_1,m3payload)))
+    ) | (
+        {45}!
+        {46}in(c, (m2enc: bitstring,m2mac: bitstring));
+        {47}let m2payload_1: bitstring = dec(enckeyCtoS_1,m2enc) in
+        {48}if (m2mac = mac(mackeyCtoS_1,m2payload_1)) then
+        {49}out(SsecchannelFromC, m2payload_1)
+    ) | (
+        0
+    )
+)
+
+--  Process 1 (that is, process 0, with let moved downwards):
+{1}new SSigKey: skey;
+{2}let SVerKey: pkey = pk(SSigKey) in
+{3}out(c, SVerKey);
+(
+    {4}!
+    {5}new dhsecretC: exponent;
+    {6}let dhpublicC: G = exp(g,dhsecretC) in
+    {7}out(c, (KEXDHINIT,dhpublicC));
+    {8}in(c, (=KEXDHREPLY,ServerVerKey: pkey,dhpublicS: G,sign: bitstring));
+    {9}let K: G = exp(dhpublicS,dhsecretC) in
+    {10}let h: key = H((ServerVerKey,dhpublicC,dhpublicS,K)) in
+    {11}if (checknmrsign(ServerVerKey,sign,h) = true) then
+    {16}new CsecchannelToS: channel;
+    {17}new CsecchannelFromS: channel;
+    (
+        {18}!
+        {19}in(CsecchannelToS, m2payload: bitstring);
+        {14}let mackeyCtoS: key = H((K,h,keyMacCtoS)) in
+        {12}let enckeyCtoS: key = H((K,h,keyEncCtoS)) in
+        {20}out(c, (enc(enckeyCtoS,m2payload),mac(mackeyCtoS,m2payload)))
+    ) | (
+        {21}!
+        {22}in(c, (m4enc: bitstring,m4mac: bitstring));
+        {13}let enckeyStoC: key = H((K,h,keyEncStoC)) in
+        {23}let m4payload: bitstring = dec(enckeyStoC,m4enc) in
+        {15}let mackeyStoC: key = H((K,h,keyMacStoC)) in
+        {24}if (m4mac = mac(mackeyStoC,m4payload)) then
+        {25}out(CsecchannelFromS, m4payload)
+    ) | (
+        {26}if (ServerVerKey = SVerKey) then
+        {27}out(CsecchannelToS, secretC)
+    )
+) | (
+    {28}!
+    {30}in(c, (=KEXDHINIT,dhpublicC_1: G));
+    {31}new dhsecretS: exponent;
+    {33}let K_1: G = exp(dhpublicC_1,dhsecretS) in
+    {32}let dhpublicS_1: G = exp(g,dhsecretS) in
+    {34}let h_1: key = H((SVerKey,dhpublicC_1,dhpublicS_1,K_1)) in
+    {29}let SSigKey_1: skey = SSigKey in
+    {35}out(c, (KEXDHREPLY,SVerKey,dhpublicS_1,nmrsign(SSigKey_1,h_1)));
+    {40}new SsecchannelToC: channel;
+    {41}new SsecchannelFromC: channel;
+    (
+        {42}!
+        {43}in(SsecchannelToC, m3payload: bitstring);
+        {39}let mackeyStoC_1: key = H((K_1,h_1,keyMacStoC)) in
+        {37}let enckeyStoC_1: key = H((K_1,h_1,keyEncStoC)) in
+        {44}out(c, (enc(enckeyStoC_1,m3payload),mac(mackeyStoC_1,m3payload)))
+    ) | (
+        {45}!
+        {46}in(c, (m2enc: bitstring,m2mac: bitstring));
+        {36}let enckeyCtoS_1: key = H((K_1,h_1,keyEncCtoS)) in
+        {47}let m2payload_1: bitstring = dec(enckeyCtoS_1,m2enc) in
+        {38}let mackeyCtoS_1: key = H((K_1,h_1,keyMacCtoS)) in
+        {48}if (m2mac = mac(mackeyCtoS_1,m2payload_1)) then
+        {49}out(SsecchannelFromC, m2payload_1)
+    ) | (
+        0
+    )
+)
+
+-- Query not attacker(secretC[]) in process 1.
+Translating the process into Horn clauses...
+Completing...
+ok, secrecy assumption verified: fact unreachable attacker(dhsecretC[!1 = v])
+ok, secrecy assumption verified: fact unreachable attacker(dhsecretS[dhpublicC_1 = v,!1 = v_1])
+ok, secrecy assumption verified: fact unreachable attacker(SSigKey[])
+Starting query not attacker(secretC[])
+RESULT not attacker(secretC[]) is true.
+
+--------------------------------------------------------------
+Verification summary:
+
+Query not attacker(secretC[]) is true.
+
+--------------------------------------------------------------
+

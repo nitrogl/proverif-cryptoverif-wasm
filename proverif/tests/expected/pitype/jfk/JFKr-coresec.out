@@ -1,0 +1,238 @@
+File "JFKr-coresec.pv", line 133, characters 12-13:
+Warning: identifier xI rebound.
+File "JFKr-coresec.pv", line 128, characters 25-26:
+Warning: identifier xI rebound.
+Linear part:
+exp(exp(g,y),z) = exp(exp(g,z),y)
+Completing equations...
+Completed equations:
+exp(exp(g,y),z) = exp(exp(g,z),y)
+Convergent part: No equation.
+Biprocess 0 (that is, the initial process):
+{1}new exponent: channel;
+{2}new cp: channel;
+{3}new ids: channel;
+(
+    {4}!
+    {5}new d: texponent;
+    {6}let x: G = exp(g,d) in
+    {7}out(getexponential, x);
+    {8}!
+    {9}out(exponent, (d,x))
+) | (
+    {10}!
+    {11}new kAminus: skey;
+    {12}let IDA: pkey = Pk(kAminus) in
+    {13}new init: channel;
+    {14}new getI: channel;
+    {15}new getR: channel;
+    {16}out(getprinc0, (IDA,getI,getR,init));
+    (
+        {17}let exponent_1: channel = exponent in
+        {18}let init_1: channel = init in
+        {19}let getI_1: channel = getI in
+        {20}let kAminus_1: skey = kAminus in
+        {21}!
+        {22}in(exponent_1, (dI: texponent,xI: G));
+        {23}!
+        {24}in(init_1, dummy: bitstring);
+        {25}new NI: nonce;
+        {26}out(c, cons1(NI,xI));
+        {27}in(c, cons2(=NI,NR: nonce,xR: G,grpinfoR_1: grpinfo,tR: key));
+        {28}let h: key = exp(xR,dI) in
+        {29}let Ka: key = H(h,(NI,NR,tagA)) in
+        {30}let Ke: key = H(h,(NI,NR,tagE)) in
+        {31}let Kv: key = H(h,(NI,NR,tagV)) in
+        {32}let sI: bitstring = S(kAminus_1,(NI,NR,xI,xR,grpinfoR_1)) in
+        {33}out(getI_1, (dummy,NI,NR,xI,xR,tR,Ka,Ke,Kv,sI))
+    ) | (
+        {34}let exponent_2: channel = exponent in
+        {35}let getR_1: channel = getR in
+        {36}let kAminus_2: skey = kAminus in
+        {37}!
+        {38}in(exponent_2, (dR: texponent,xR_1: G));
+        {39}!
+        {40}in(c, cons1(NI_1: nonce,xI_1: G));
+        {41}new NR_1: nonce;
+        {42}new tR_1: key;
+        {43}out(c, cons2(NI_1,NR_1,xR_1,grpinfoR,tR_1));
+        {44}new l: channel;
+        (
+            {45}!
+            {46}in(c, cons3(=NI_1,=NR_1,xI_2: G,=xR_1,=tR_1,eI: bitstring,hI: key));
+            {47}out(l, (xI_2,eI,hI))
+        ) | (
+            {48}in(l, (xI_3: G,eI_1: bitstring,hI_1: key));
+            (
+                {49}out(d0, (NR_1,IDA))
+            ) | (
+                {50}let h_1: key = exp(xI_3,dR) in
+                {51}let Ka_1: key = H(h_1,(NI_1,NR_1,tagA)) in
+                {52}let Ke_1: key = H(h_1,(NI_1,NR_1,tagE)) in
+                {53}let Kv_1: key = H(h_1,(NI_1,NR_1,tagV)) in
+                {54}let sR: bitstring = S(kAminus_2,(NI_1,NR_1,xI_3,xR_1)) in
+                {55}out(getR_1, (NI_1,NR_1,xI_3,xR_1,tR_1,eI_1,hI_1,Ka_1,Ke_1,Kv_1,sR))
+            )
+        )
+    ) | (
+        {56}!
+        {57}out(cp, IDA)
+    ) | (
+        {58}!
+        {59}out(ids, (kAminus,IDA))
+    )
+) | (
+    {60}in(ids, (kAIminus: skey,IDAI: pkey));
+    {61}in(ids, (kARminus: skey,IDAR: pkey));
+    {62}in(exponent, (dI_1: texponent,xI_4: G));
+    {63}in(exponent, (dR_1: texponent,xR_2: G));
+    {64}in(init0, (IDRp: pkey,saI: sainfo,=IDAI,=IDAR,=xI_4,=xR_2));
+    {65}new NI_2: nonce;
+    {66}new NR_2: nonce;
+    {67}new TR: key;
+    {68}new NeI: bitstring;
+    {69}new NhI: key;
+    {70}new NeR: bitstring;
+    {71}new NhR: key;
+    {72}new NKv: key;
+    {73}let h_2: key = exp(xR_2,dI_1) in
+    {74}let Ka_2: key = H(h_2,(NI_2,NR_2,tagA)) in
+    {75}let Ke_2: key = H(h_2,(NI_2,NR_2,tagE)) in
+    {76}let Kv_2: key = H(h_2,(NI_2,NR_2,tagV)) in
+    {77}let sR_1: bitstring = S(kARminus,(NI_2,NR_2,xI_4,xR_2)) in
+    {78}let eR: bitstring = E(Ke_2,(IDAR,saR,sR_1)) in
+    {79}let hR: key = H(Ka_2,(constR,eR)) in
+    {80}let sI_1: bitstring = S(kAIminus,(NI_2,NR_2,xI_4,xR_2,grpinfoR)) in
+    {81}let eI_2: bitstring = E(Ke_2,(IDAI,IDRp,saI,sI_1)) in
+    {82}let hI_2: key = H(Ka_2,(constI,eI_2)) in
+    {83}out(pub, (NI_2,NR_2,TR,choice[eI_2,NeI],choice[hI_2,NhI],choice[eR,NeR],choice[hR,NhR],choice[Kv_2,NKv]))
+)
+
+-- Observational equivalence in biprocess 1 (that is, biprocess 0, with let moved downwards):
+{1}new exponent: channel;
+{2}new cp: channel;
+{3}new ids: channel;
+(
+    {4}!
+    {5}new d: texponent;
+    {6}let x: G = exp(g,d) in
+    {7}out(getexponential, x);
+    {8}!
+    {9}out(exponent, (d,x))
+) | (
+    {10}!
+    {11}new kAminus: skey;
+    {13}new init: channel;
+    {14}new getI: channel;
+    {15}new getR: channel;
+    {12}let IDA: pkey = Pk(kAminus) in
+    {16}out(getprinc0, (IDA,getI,getR,init));
+    (
+        {21}!
+        {17}let exponent_1: channel = exponent in
+        {22}in(exponent_1, (dI: texponent,xI: G));
+        {23}!
+        {18}let init_1: channel = init in
+        {24}in(init_1, dummy: bitstring);
+        {25}new NI: nonce;
+        {26}out(c, cons1(NI,xI));
+        {27}in(c, cons2(=NI,NR: nonce,xR: G,grpinfoR_1: grpinfo,tR: key));
+        {20}let kAminus_1: skey = kAminus in
+        {32}let sI: bitstring = S(kAminus_1,(NI,NR,xI,xR,grpinfoR_1)) in
+        {28}let h: key = exp(xR,dI) in
+        {31}let Kv: key = H(h,(NI,NR,tagV)) in
+        {30}let Ke: key = H(h,(NI,NR,tagE)) in
+        {29}let Ka: key = H(h,(NI,NR,tagA)) in
+        {19}let getI_1: channel = getI in
+        {33}out(getI_1, (dummy,NI,NR,xI,xR,tR,Ka,Ke,Kv,sI))
+    ) | (
+        {37}!
+        {34}let exponent_2: channel = exponent in
+        {38}in(exponent_2, (dR: texponent,xR_1: G));
+        {39}!
+        {40}in(c, cons1(NI_1: nonce,xI_1: G));
+        {41}new NR_1: nonce;
+        {42}new tR_1: key;
+        {43}out(c, cons2(NI_1,NR_1,xR_1,grpinfoR,tR_1));
+        {44}new l: channel;
+        (
+            {45}!
+            {46}in(c, cons3(=NI_1,=NR_1,xI_2: G,=xR_1,=tR_1,eI: bitstring,hI: key));
+            {47}out(l, (xI_2,eI,hI))
+        ) | (
+            {48}in(l, (xI_3: G,eI_1: bitstring,hI_1: key));
+            (
+                {49}out(d0, (NR_1,IDA))
+            ) | (
+                {36}let kAminus_2: skey = kAminus in
+                {54}let sR: bitstring = S(kAminus_2,(NI_1,NR_1,xI_3,xR_1)) in
+                {50}let h_1: key = exp(xI_3,dR) in
+                {53}let Kv_1: key = H(h_1,(NI_1,NR_1,tagV)) in
+                {52}let Ke_1: key = H(h_1,(NI_1,NR_1,tagE)) in
+                {51}let Ka_1: key = H(h_1,(NI_1,NR_1,tagA)) in
+                {35}let getR_1: channel = getR in
+                {55}out(getR_1, (NI_1,NR_1,xI_3,xR_1,tR_1,eI_1,hI_1,Ka_1,Ke_1,Kv_1,sR))
+            )
+        )
+    ) | (
+        {56}!
+        {57}out(cp, IDA)
+    ) | (
+        {58}!
+        {59}out(ids, (kAminus,IDA))
+    )
+) | (
+    {60}in(ids, (kAIminus: skey,IDAI: pkey));
+    {61}in(ids, (kARminus: skey,IDAR: pkey));
+    {62}in(exponent, (dI_1: texponent,xI_4: G));
+    {63}in(exponent, (dR_1: texponent,xR_2: G));
+    {64}in(init0, (IDRp: pkey,saI: sainfo,=IDAI,=IDAR,=xI_4,=xR_2));
+    {65}new NI_2: nonce;
+    {66}new NR_2: nonce;
+    {67}new TR: key;
+    {68}new NeI: bitstring;
+    {69}new NhI: key;
+    {70}new NeR: bitstring;
+    {71}new NhR: key;
+    {72}new NKv: key;
+    {80}let sI_1: bitstring = S(kAIminus,(NI_2,NR_2,xI_4,xR_2,grpinfoR)) in
+    {73}let h_2: key = exp(xR_2,dI_1) in
+    {75}let Ke_2: key = H(h_2,(NI_2,NR_2,tagE)) in
+    {81}let eI_2: bitstring = E(Ke_2,(IDAI,IDRp,saI,sI_1)) in
+    {74}let Ka_2: key = H(h_2,(NI_2,NR_2,tagA)) in
+    {82}let hI_2: key = H(Ka_2,(constI,eI_2)) in
+    {77}let sR_1: bitstring = S(kARminus,(NI_2,NR_2,xI_4,xR_2)) in
+    {78}let eR: bitstring = E(Ke_2,(IDAR,saR,sR_1)) in
+    {79}let hR: key = H(Ka_2,(constR,eR)) in
+    {76}let Kv_2: key = H(h_2,(NI_2,NR_2,tagV)) in
+    {83}out(pub, (NI_2,NR_2,TR,choice[eI_2,NeI],choice[hI_2,NhI],choice[eR,NeR],choice[hR,NhR],choice[Kv_2,NKv]))
+)
+
+Translating the process into Horn clauses...
+Termination warning: v ≠ v_1 && attacker2(v_2,v) && attacker2(v_2,v_1) -> bad
+Selecting 0
+Termination warning: v ≠ v_1 && attacker2(v,v_2) && attacker2(v_1,v_2) -> bad
+Selecting 0
+Completing...
+Termination warning: v ≠ v_1 && attacker2(v_2,v) && attacker2(v_2,v_1) -> bad
+Selecting 0
+Termination warning: v ≠ v_1 && attacker2(v,v_2) && attacker2(v_1,v_2) -> bad
+Selecting 0
+200 rules inserted. Base: 199 rules (55 with conclusion selected). Queue: 70 rules.
+400 rules inserted. Base: 364 rules (65 with conclusion selected). Queue: 89 rules.
+600 rules inserted. Base: 494 rules (67 with conclusion selected). Queue: 178 rules.
+800 rules inserted. Base: 622 rules (67 with conclusion selected). Queue: 167 rules.
+1000 rules inserted. Base: 765 rules (69 with conclusion selected). Queue: 64 rules.
+1200 rules inserted. Base: 893 rules (121 with conclusion selected). Queue: 114 rules.
+1400 rules inserted. Base: 1063 rules (140 with conclusion selected). Queue: 55 rules.
+ok, secrecy assumption verified: fact unreachable attacker2(kAminus[!1 = v],kAminus[!1 = v])
+ok, secrecy assumption verified: fact unreachable attacker2(d[!1 = v],d[!1 = v])
+RESULT Observational equivalence is true.
+
+--------------------------------------------------------------
+Verification summary:
+
+Observational equivalence is true.
+
+--------------------------------------------------------------
+

@@ -1,0 +1,83 @@
+Linear part:
+exp(exp(g,x),y) = exp(exp(g,y),x)
+Completing equations...
+Completed equations:
+exp(exp(g,x),y) = exp(exp(g,y),x)
+Convergent part: No equation.
+Process 0 (that is, the initial process):
+{1}new skA: skey;
+{2}let pkA: pkey = pk(skA) in
+{3}out(c, pkA);
+{4}new skB: skey;
+{5}let pkB: pkey = pk(skB) in
+{6}out(c, pkB);
+(
+    {7}!
+    {8}let skA_1: skey = skA in
+    {9}in(c, pkX: pkey);
+    {10}new n0: exponent;
+    {11}out(c, (sign(exp(g,n0),skA_1),pkA));
+    {12}in(c, m1: bitstring);
+    {13}let x1: G = checksign(m1,pkX) in
+    {14}let k: G = exp(x1,n0) in
+    {15}if (pkX = pkB) then
+    {16}out(c, enc(s,k))
+) | (
+    {17}!
+    {18}let skB_1: skey = skB in
+    {19}in(c, (m0: bitstring,pkY: pkey));
+    {20}let x0: G = checksign(m0,pkY) in
+    {21}new n1: exponent;
+    {22}let k_1: G = exp(x0,n1) in
+    {23}out(c, sign(exp(g,n1),skB_1));
+    {24}in(c, m: bitstring);
+    {25}let s2: bitstring = dec(m,k_1) in
+    0
+)
+
+--  Process 1 (that is, process 0, with let moved downwards):
+{1}new skA: skey;
+{2}let pkA: pkey = pk(skA) in
+{3}out(c, pkA);
+{4}new skB: skey;
+{5}let pkB: pkey = pk(skB) in
+{6}out(c, pkB);
+(
+    {7}!
+    {9}in(c, pkX: pkey);
+    {10}new n0: exponent;
+    {8}let skA_1: skey = skA in
+    {11}out(c, (sign(exp(g,n0),skA_1),pkA));
+    {12}in(c, m1: bitstring);
+    {13}let x1: G = checksign(m1,pkX) in
+    {15}if (pkX = pkB) then
+    {14}let k: G = exp(x1,n0) in
+    {16}out(c, enc(s,k))
+) | (
+    {17}!
+    {19}in(c, (m0: bitstring,pkY: pkey));
+    {20}let x0: G = checksign(m0,pkY) in
+    {21}new n1: exponent;
+    {18}let skB_1: skey = skB in
+    {23}out(c, sign(exp(g,n1),skB_1));
+    {24}in(c, m: bitstring);
+    {22}let k_1: G = exp(x0,n1) in
+    {25}let s2: bitstring = dec(m,k_1) in
+    0
+)
+
+-- Query not attacker(s[]) in process 1.
+Translating the process into Horn clauses...
+Completing...
+select attacker(sign(x0_1,k_2))/-5000
+select attacker(sign(x0_1,skB[]))/-5000
+Starting query not attacker(s[])
+RESULT not attacker(s[]) is true.
+
+--------------------------------------------------------------
+Verification summary:
+
+Query not attacker(s[]) is true.
+
+--------------------------------------------------------------
+

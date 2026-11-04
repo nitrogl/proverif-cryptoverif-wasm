@@ -1,0 +1,159 @@
+Process 0 (that is, the initial process):
+{1}new skA: sskey;
+{2}let pkA: spkey = spk(skA) in
+{3}out(c, pkA);
+{4}new skB: skey;
+{5}let pkB: pkey = pk(skB) in
+{6}out(c, pkB);
+(
+    {7}!
+    {8}let skA_1: sskey = skA in
+    {9}in(c, pk2: pkey);
+    {10}new k: key;
+    {11}let x: bitstring = sign((pkA,pk2,k),skA_1) in
+    {12}new r: seed;
+    {13}out(c, internal_encrypt(x,pk2,r));
+    {14}if (pk2 = pkB) then
+    (
+        {15}in(c, m: bitstring);
+        {16}let s: bitstring = sdecrypt(m,k) in
+        0
+    ) | (
+        {17}out(c, sencrypt(secretA,k))
+    )
+) | (
+    {18}!
+    {19}let skB_1: skey = skB in
+    {20}in(c, km: bitstring);
+    {21}let ks: bitstring = decrypt(km,skB_1) in
+    {22}let (=pkA,=pkB,k_1: key) = checksign(ks,pkA) in
+    (
+        {23}in(c, m_1: bitstring);
+        {24}let s_1: bitstring = sdecrypt(m_1,k_1) in
+        0
+    ) | (
+        {25}out(c, sencrypt(secretB,k_1))
+    )
+)
+
+--  Process 1 (that is, process 0, with let moved downwards):
+{1}new skA: sskey;
+{2}let pkA: spkey = spk(skA) in
+{3}out(c, pkA);
+{4}new skB: skey;
+{5}let pkB: pkey = pk(skB) in
+{6}out(c, pkB);
+(
+    {7}!
+    {9}in(c, pk2: pkey);
+    {10}new k: key;
+    {12}new r: seed;
+    {8}let skA_1: sskey = skA in
+    {11}let x: bitstring = sign((pkA,pk2,k),skA_1) in
+    {13}out(c, internal_encrypt(x,pk2,r));
+    {14}if (pk2 = pkB) then
+    (
+        {15}in(c, m: bitstring);
+        {16}let s: bitstring = sdecrypt(m,k) in
+        0
+    ) | (
+        {17}out(c, sencrypt(secretA,k))
+    )
+) | (
+    {18}!
+    {20}in(c, km: bitstring);
+    {19}let skB_1: skey = skB in
+    {21}let ks: bitstring = decrypt(km,skB_1) in
+    {22}let (=pkA,=pkB,k_1: key) = checksign(ks,pkA) in
+    (
+        {23}in(c, m_1: bitstring);
+        {24}let s_1: bitstring = sdecrypt(m_1,k_1) in
+        0
+    ) | (
+        {25}out(c, sencrypt(secretB,k_1))
+    )
+)
+
+-- Non-interference secretA, secretB in process 1.
+Translating the process into Horn clauses...
+Completing...
+ok, secrecy assumption verified: fact unreachable attacker(skA[])
+ok, secrecy assumption verified: fact unreachable attacker(skB[])
+goal reachable: bad
+
+Derivation:
+Abbreviations:
+k_2 = k[pk2 = pk(skB[]),!1 = @sid]
+r_1 = r[pk2 = pk(skB[]),!1 = @sid]
+
+1. The attacker has some term @sid_1.
+attacker(@sid_1).
+
+2. The attacker has some term @sid.
+attacker(@sid).
+
+3. The message pk(skB[]) may be sent to the attacker at output {6}.
+attacker(pk(skB[])).
+
+4. By 2, the attacker may have the session identifier @sid.
+The message pk(skB[]) that the attacker may have by 3 may be received at input {9}.
+So the message internal_encrypt(sign((spk(skA[]),pk(skB[]),k_2),skA[]),pk(skB[]),r_1) may be sent to the attacker at output {13}.
+attacker(internal_encrypt(sign((spk(skA[]),pk(skB[]),k_2),skA[]),pk(skB[]),r_1)).
+
+5. By 1, the attacker may have the session identifier @sid_1.
+The message internal_encrypt(sign((spk(skA[]),pk(skB[]),k_2),skA[]),pk(skB[]),r_1) that the attacker may have by 4 may be received at input {20}.
+So the message sencrypt(secretB[],k_2) may be sent to the attacker at output {25}.
+attacker(sencrypt(secretB[],k_2)).
+
+6. By 2, the attacker may have the session identifier @sid.
+The message pk(skB[]) that the attacker may have by 3 may be received at input {9}.
+So the message sencrypt(secretA[],k_2) may be sent to the attacker at output {17}.
+attacker(sencrypt(secretA[],k_2)).
+
+7. By 6, the attacker may know sencrypt(secretA[],k_2).
+By 5, the attacker may know sencrypt(secretB[],k_2).
+The terms sencrypt(secretA[],k_2) and sencrypt(secretB[],k_2) unify for some values of the secrets and not for others.
+The attacker tests equality between the two terms he knows, which may allow it to distinguish cases.
+bad.
+
+
+A more detailed output of the traces is available with
+  set traceDisplay = long.
+
+new skA: sskey creating skA_2 at {1}
+
+out(c, ~M) with ~M = spk(skA_2) at {3}
+
+new skB: skey creating skB_2 at {4}
+
+out(c, ~M_1) with ~M_1 = pk(skB_2) at {6}
+
+in(c, ~M_1) with ~M_1 = pk(skB_2) at {9} in copy a
+
+new k: key creating k_3 at {10} in copy a
+
+new r: seed creating r_2 at {12} in copy a
+
+out(c, ~M_2) with ~M_2 = internal_encrypt(sign((spk(skA_2),pk(skB_2),k_3),skA_2),pk(skB_2),r_2) at {13} in copy a
+
+out(c, ~M_3) with ~M_3 = sencrypt(secretA,k_3) at {17} in copy a
+
+in(c, ~M_2) with ~M_2 = internal_encrypt(sign((spk(skA_2),pk(skB_2),k_3),skA_2),pk(skB_2),r_2) at {20} in copy a_1
+
+out(c, ~M_4) with ~M_4 = sencrypt(secretB,k_3) at {25} in copy a_1
+
+The attacker tests whether
+~M_3 = sencrypt(secretA,k_3)
+is equal to
+~M_4 = sencrypt(secretB,k_3).
+This gives the attacker some information on the secret.
+A trace has been found.
+RESULT Non-interference secretA, secretB cannot be proved.
+
+--------------------------------------------------------------
+Verification summary:
+
+Non-interference secretA, secretB cannot be proved.
+
+--------------------------------------------------------------
+

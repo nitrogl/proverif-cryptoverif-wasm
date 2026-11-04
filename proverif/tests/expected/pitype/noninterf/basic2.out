@@ -1,0 +1,52 @@
+Process 0 (that is, the initial process):
+{1}out(c, (m,x))
+
+-- Non-interference x among (n[], hash(m[])) in process 0.
+Translating the process into Horn clauses...
+Completing...
+goal reachable: bad
+
+Derivation:
+
+1. The message (m[],x[]) may be sent to the attacker at output {1}.
+attacker((m[],x[])).
+
+2. By 1, the attacker may know (m[],x[]).
+Using the function 2-proj-2-tuple the attacker may obtain x[].
+attacker(x[]).
+
+3. By 1, the attacker may know (m[],x[]).
+Using the function 1-proj-2-tuple the attacker may obtain m[].
+attacker(m[]).
+
+4. By 3, the attacker may know m[].
+Using the function hash the attacker may obtain hash(m[]).
+attacker(hash(m[])).
+
+5. By 4, the attacker may know hash(m[]).
+By 2, the attacker may know x[].
+The terms hash(m[]) and x[] unify for some values of the secrets and not for others.
+The attacker tests equality between the two terms he knows, which may allow it to distinguish cases.
+bad.
+
+
+A more detailed output of the traces is available with
+  set traceDisplay = long.
+
+out(c, (~M,~M_1)) with ~M = m, ~M_1 = x at {1}
+
+The attacker tests whether
+hash(~M) = hash(m)
+is equal to
+~M_1 = x.
+This gives the attacker some information on the secret.
+A trace has been found.
+RESULT Non-interference x among (n[], hash(m[])) cannot be proved.
+
+--------------------------------------------------------------
+Verification summary:
+
+Non-interference x among (n[], hash(m[])) cannot be proved.
+
+--------------------------------------------------------------
+

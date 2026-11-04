@@ -1,0 +1,15 @@
+Process 0 (that is, the initial process):
+{1}out(c, x)
+
+-- Non-interference x among (n[], hash(n[])) in process 0.
+Translating the process into Horn clauses...
+Completing...
+RESULT Non-interference x among (n[], hash(n[])) is true.
+
+--------------------------------------------------------------
+Verification summary:
+
+Non-interference x among (n[], hash(n[])) is true.
+
+--------------------------------------------------------------
+

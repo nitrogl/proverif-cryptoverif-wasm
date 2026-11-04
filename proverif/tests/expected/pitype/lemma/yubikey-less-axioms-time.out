@@ -1,0 +1,502 @@
+Process 0 (that is, the initial process):
+{1}!
+{2}new k: bitstring;
+{3}new pid: bitstring;
+{4}new secretid: bitstring;
+{5}new d_usr: channel;
+{6}new d_srv: channel;
+(
+    {7}out(d_srv, (0,(secretid,k,0)))
+) | (
+    {8}out(d_usr, 1)
+) | (
+    {9}!
+    {10}in(d_srv, x: bitstring);
+    {11}out(d_srv, x)
+) | (
+    {12}!
+    {13}in(d_usr, x_1: nat);
+    {14}out(d_usr, x_1)
+) | (
+    {15}out(c, pid)
+) | (
+    {16}let d: channel = d_srv in
+    {17}let pid_1: bitstring = pid in
+    {18}let secretid_1: bitstring = secretid in
+    {19}let k_1: bitstring = k in
+    {20}!
+    {21}in(c, (=pid_1,nonce: bitstring,otp: bitstring));
+    {22}in(d, (i: nat,(=secretid_1,=k_1,otc: nat)));
+    {23}event VCell_bitstring(d,(i,(secretid_1,k_1,otc)));
+    {24}let (=secretid_1,tc: nat,npr: bitstring) = sdec(otp,k_1) in
+    (
+        {25}if (otc < tc) then
+            {26}new st1[]: stamp;
+            {27}event Counter(d,id1,st1,otc);
+            {28}event Counter(d,id,st1,i);
+            {29}event VCell_bitstring(d,(i + 1,(secretid_1,k_1,tc)));
+            {30}event Login(pid_1,k_1,i + 1,tc);
+            {31}out(d, (i + 1,(secretid_1,k_1,tc)))
+        else
+            {32}out(d, (i,(secretid_1,k_1,otc)))
+    )
+    else
+        {33}out(d, (i,(secretid_1,k_1,otc)))
+) | (
+    {34}!
+    {35}let cell: channel = d_usr in
+    {36}let pid_2: bitstring = pid in
+    {37}let secretid_2: bitstring = secretid in
+    {38}let k_2: bitstring = k in
+    {39}in(cell, tc_1: nat);
+    {40}new st[]: stamp;
+    {41}event Counter(cell,id,st,tc_1);
+    {42}new nonce_1: bitstring;
+    {43}new npr_1: bitstring;
+    {44}event YubiPress(pid_2,secretid_2,k_2,tc_1);
+    {45}out(c, (pid_2,nonce_1,senc((secretid_2,tc_1,npr_1),k_2)));
+    {46}out(cell, tc_1 + 1)
+)
+
+--  Process 1 (that is, process 0, with let moved downwards):
+{1}!
+{2}new k: bitstring;
+{3}new pid: bitstring;
+{4}new secretid: bitstring;
+{5}new d_usr: channel;
+{6}new d_srv: channel;
+(
+    {7}out(d_srv, (0,(secretid,k,0)))
+) | (
+    {8}out(d_usr, 1)
+) | (
+    {9}!
+    {10}in(d_srv, x: bitstring);
+    {11}out(d_srv, x)
+) | (
+    {12}!
+    {13}in(d_usr, x_1: nat);
+    {14}out(d_usr, x_1)
+) | (
+    {15}out(c, pid)
+) | (
+    {20}!
+    {17}let pid_1: bitstring = pid in
+    {21}in(c, (=pid_1,nonce: bitstring,otp: bitstring));
+    {19}let k_1: bitstring = k in
+    {18}let secretid_1: bitstring = secretid in
+    {16}let d: channel = d_srv in
+    {22}in(d, (i: nat,(=secretid_1,=k_1,otc: nat)));
+    {23}event VCell_bitstring(d,(i,(secretid_1,k_1,otc)));
+    {24}let (=secretid_1,tc: nat,npr: bitstring) = sdec(otp,k_1) in
+    (
+        {25}if (otc < tc) then
+            {26}new st1[]: stamp;
+            {27}event Counter(d,id1,st1,otc);
+            {28}event Counter(d,id,st1,i);
+            {29}event VCell_bitstring(d,(i + 1,(secretid_1,k_1,tc)));
+            {30}event Login(pid_1,k_1,i + 1,tc);
+            {31}out(d, (i + 1,(secretid_1,k_1,tc)))
+        else
+            {32}out(d, (i,(secretid_1,k_1,otc)))
+    )
+    else
+        {33}out(d, (i,(secretid_1,k_1,otc)))
+) | (
+    {34}!
+    {35}let cell: channel = d_usr in
+    {39}in(cell, tc_1: nat);
+    {40}new st[]: stamp;
+    {41}event Counter(cell,id,st,tc_1);
+    {42}new nonce_1: bitstring;
+    {43}new npr_1: bitstring;
+    {38}let k_2: bitstring = k in
+    {37}let secretid_2: bitstring = secretid in
+    {36}let pid_2: bitstring = pid in
+    {44}event YubiPress(pid_2,secretid_2,k_2,tc_1);
+    {45}out(c, (pid_2,nonce_1,senc((secretid_2,tc_1,npr_1),k_2)));
+    {46}out(cell, tc_1 + 1)
+)
+
+-- Axiom 
+   event(VCell_bitstring(d_1,(i2,(x3,x_2,i1)))) && event(VCell_bitstring(d_1,(i2,(x1,x2,i3)))) ==> (x3,x_2,i1) = (x1,x2,i3)
+   event(Counter(d_1,st1_1,st2,i1)) && event(Counter(d_1,st1_1,st2,i2)) ==> i2 = i1
+   event(Counter(d_1,st1_1,st2,i1)) && event(Counter(d_1,st1_1,st3,i1)) ==> st2 = st3
+ in process 1.
+-- Query event(Login(pid_3,k_3,i_1,x_2)) && event(Login(pid_3,k_3,i',x')) ==> (i_1 = i' && x_2 = x') || (i' ≥ i_1 + 1 && x' ≥ x_2 + 1) || (i_1 ≥ i' + 1 && x_2 ≥ x' + 1) in process 1.
+Translating the process into Horn clauses...
+select mess(d_usr[!1 = *@sid],tc_2)/-5000
+Completing...
+select mess(d_srv[!1 = *@sid],(i_1,(secretid[!1 = *@sid],k[!1 = *@sid],*otc_1)))/-5000
+Starting query event(Login(pid_3,k_3,i_1,x_2)) && event(Login(pid_3,k_3,i',x')) ==> (i_1 = i' && x_2 = x') || (i' ≥ i_1 + 1 && x' ≥ x_2 + 1) || (i_1 ≥ i' + 1 && x_2 ≥ x' + 1)
+goal reachable: i_1 ≥ i_2 + 2 && otc_1 ≥ otc_2 + 1 && x_2 ≥ otc_1 + 1 && otc_1 ≥ x' + 1 && otc_3 ≥ otc_4 + 1 && x' ≥ otc_3 + 1 && b-event(VCell_bitstring(d_srv_1,(i_1 + 2,(secretid_3,k_3,x_2)))) && b-event(Counter(d_srv_1,id[],st1_1,i_1 + 1)) && b-event(Counter(d_srv_1,id1[],st1_1,otc_1)) && b-event(Login(pid_3,k_3,i_1 + 1,otc_1)) && b-event(VCell_bitstring(d_srv_1,(i_1 + 1,(secretid_3,k_3,otc_1)))) && b-event(Counter(d_srv_1,id[],st1_2,i_1)) && b-event(Counter(d_srv_1,id1[],st1_2,otc_2)) && b-event(VCell_bitstring(d_srv_1,(i_1,(secretid_3,k_3,otc_2)))) && mess(d_srv_1,(i_1,(secretid_3,k_3,otc_2))) && b-event(@p_act(@occ22_1,(i_1,(secretid_3,k_3,otc_2)))) && attacker(nonce_2) && b-event(Counter(d_usr_1,id[],st_1,otc_1)) && mess(d_usr_1,otc_1) && b-event(@p_act(@occ39_1,otc_1)) && b-event(@p_act(@occ21_1,(pid_3,nonce_2,senc((secretid_3,otc_1,npr_2),k_3)))) && b-event(@p_act(@occ22_2,(i_1 + 1,(secretid_3,k_3,otc_1)))) && attacker(nonce_3) && b-event(Counter(d_usr_1,id[],st_2,x_2)) && mess(d_usr_1,x_2) && b-event(@p_act(@occ39_2,x_2)) && b-event(@p_act(@occ21_2,(pid_3,nonce_3,senc((secretid_3,x_2,npr_3),k_3)))) && b-event(VCell_bitstring(d_srv_1,(i_2 + 2,(secretid_3,k_3,x')))) && b-event(Counter(d_srv_1,id[],st1_3,i_2 + 1)) && b-event(Counter(d_srv_1,id1[],st1_3,otc_3)) && b-event(Login(pid_3,k_3,i_2 + 1,otc_3)) && b-event(VCell_bitstring(d_srv_1,(i_2 + 1,(secretid_3,k_3,otc_3)))) && b-event(Counter(d_srv_1,id[],st1_4,i_2)) && b-event(Counter(d_srv_1,id1[],st1_4,otc_4)) && b-event(VCell_bitstring(d_srv_1,(i_2,(secretid_3,k_3,otc_4)))) && mess(d_srv_1,(i_2,(secretid_3,k_3,otc_4))) && b-event(@p_act(@occ22_3,(i_2,(secretid_3,k_3,otc_4)))) && attacker(nonce_4) && b-event(Counter(d_usr_1,id[],st_3,otc_3)) && mess(d_usr_1,otc_3) && b-event(@p_act(@occ39_3,otc_3)) && b-event(@p_act(@occ21_3,(pid_3,nonce_4,senc((secretid_3,otc_3,npr_4),k_3)))) && b-event(@p_act(@occ22_4,(i_2 + 1,(secretid_3,k_3,otc_3)))) && attacker(nonce_5) && b-event(Counter(d_usr_1,id[],st_4,x')) && mess(d_usr_1,x') && b-event(@p_act(@occ39_4,x')) && b-event(@p_act(@occ21_4,(pid_3,nonce_5,senc((secretid_3,x',npr_5),k_3)))) -> event(Login(pid_3,k_3,i_1 + 2,x_2)) && event(Login(pid_3,k_3,i_2 + 2,x'))
+The 1st, 2nd, 3rd, 4th, 5th, 6th, 7th, 8th, 10th, 12th, 14th, 15th, 16th, 18th, 20th, 21st hypotheses occur strictly before the 1st conclusion.
+The 9th, 11th, 13th, 17th, 19th hypotheses occur before the 1st conclusion.
+The 22nd, 23rd, 24th, 25th, 26th, 27th, 28th, 29th, 31st, 33rd, 35th, 36th, 37th, 39th, 41st, 42nd hypotheses occur strictly before the 2nd conclusion.
+The 30th, 32nd, 34th, 38th, 40th hypotheses occur before the 2nd conclusion.
+Abbreviations:
+pid_3 = pid[!1 = @sid]
+k_3 = k[!1 = @sid]
+d_srv_1 = d_srv[!1 = @sid]
+secretid_3 = secretid[!1 = @sid]
+st1_1 = st1[!2 = @sid_1,!1 = @sid]
+st1_2 = st1[!2 = @sid_2,!1 = @sid]
+@occ22_1 = @occ22[!2 = @sid_2,!1 = @sid]
+d_usr_1 = d_usr[!1 = @sid]
+st_1 = st[!2 = @sid_3,!1 = @sid]
+@occ39_1 = @occ39[!2 = @sid_3,!1 = @sid]
+@occ21_1 = @occ21[!2 = @sid_2,!1 = @sid]
+npr_2 = npr_1[tc_1 = otc_1,!2 = @sid_3,!1 = @sid]
+@occ22_2 = @occ22[!2 = @sid_1,!1 = @sid]
+st_2 = st[!2 = @sid_4,!1 = @sid]
+@occ39_2 = @occ39[!2 = @sid_4,!1 = @sid]
+@occ21_2 = @occ21[!2 = @sid_1,!1 = @sid]
+npr_3 = npr_1[tc_1 = x_2,!2 = @sid_4,!1 = @sid]
+st1_3 = st1[!2 = @sid_5,!1 = @sid]
+st1_4 = st1[!2 = @sid_6,!1 = @sid]
+@occ22_3 = @occ22[!2 = @sid_6,!1 = @sid]
+st_3 = st[!2 = @sid_7,!1 = @sid]
+@occ39_3 = @occ39[!2 = @sid_7,!1 = @sid]
+@occ21_3 = @occ21[!2 = @sid_6,!1 = @sid]
+npr_4 = npr_1[tc_1 = otc_3,!2 = @sid_7,!1 = @sid]
+@occ22_4 = @occ22[!2 = @sid_5,!1 = @sid]
+st_4 = st[!2 = @sid_8,!1 = @sid]
+@occ39_4 = @occ39[!2 = @sid_8,!1 = @sid]
+@occ21_4 = @occ21[!2 = @sid_5,!1 = @sid]
+npr_5 = npr_1[tc_1 = x',!2 = @sid_8,!1 = @sid]
+goal reachable: otc_1 ≥ otc_2 + 1 && x_2 ≥ otc_1 + 1 && otc_1 ≥ x' + 1 && x' ≥ 1 && i_1 ≥ 1 && b-event(VCell_bitstring(d_srv_1,(i_1 + 2,(secretid_3,k_3,x_2)))) && b-event(Counter(d_srv_1,id[],st1_1,i_1 + 1)) && b-event(Counter(d_srv_1,id1[],st1_1,otc_1)) && b-event(Login(pid_3,k_3,i_1 + 1,otc_1)) && b-event(VCell_bitstring(d_srv_1,(i_1 + 1,(secretid_3,k_3,otc_1)))) && b-event(Counter(d_srv_1,id[],st1_2,i_1)) && b-event(Counter(d_srv_1,id1[],st1_2,otc_2)) && b-event(VCell_bitstring(d_srv_1,(i_1,(secretid_3,k_3,otc_2)))) && mess(d_srv_1,(i_1,(secretid_3,k_3,otc_2))) && b-event(@p_act(@occ22_1,(i_1,(secretid_3,k_3,otc_2)))) && attacker(nonce_2) && b-event(Counter(d_usr_1,id[],st_1,otc_1)) && mess(d_usr_1,otc_1) && b-event(@p_act(@occ39_1,otc_1)) && b-event(@p_act(@occ21_1,(pid_3,nonce_2,senc((secretid_3,otc_1,npr_2),k_3)))) && b-event(@p_act(@occ22_2,(i_1 + 1,(secretid_3,k_3,otc_1)))) && attacker(nonce_3) && b-event(Counter(d_usr_1,id[],st_2,x_2)) && mess(d_usr_1,x_2) && b-event(@p_act(@occ39_2,x_2)) && b-event(@p_act(@occ21_2,(pid_3,nonce_3,senc((secretid_3,x_2,npr_3),k_3)))) && b-event(VCell_bitstring(d_srv_1,(1,(secretid_3,k_3,x')))) && b-event(Counter(d_srv_1,id[],st1_3,0)) && b-event(Counter(d_srv_1,id1[],st1_3,0)) && b-event(VCell_bitstring(d_srv_1,(0,(secretid_3,k_3,0)))) && b-event(@p_act(@occ22_3,(0,(secretid_3,k_3,0)))) && attacker(nonce_4) && b-event(Counter(d_usr_1,id[],st_3,x')) && mess(d_usr_1,x') && b-event(@p_act(@occ39_3,x')) && b-event(@p_act(@occ21_3,(pid_3,nonce_4,senc((secretid_3,x',npr_4),k_3)))) -> event(Login(pid_3,k_3,i_1 + 2,x_2)) && event(Login(pid_3,k_3,1,x'))
+The 1st, 2nd, 3rd, 4th, 5th, 6th, 7th, 8th, 10th, 12th, 14th, 15th, 16th, 18th, 20th, 21st hypotheses occur strictly before the 1st conclusion.
+The 9th, 11th, 13th, 17th, 19th hypotheses occur before the 1st conclusion.
+The 22nd, 23rd, 24th, 25th, 26th, 28th, 30th, 31st hypotheses occur strictly before the 2nd conclusion.
+The 27th, 29th hypotheses occur before the 2nd conclusion.
+Abbreviations:
+pid_3 = pid[!1 = @sid]
+k_3 = k[!1 = @sid]
+d_srv_1 = d_srv[!1 = @sid]
+secretid_3 = secretid[!1 = @sid]
+st1_1 = st1[!2 = @sid_1,!1 = @sid]
+st1_2 = st1[!2 = @sid_2,!1 = @sid]
+@occ22_1 = @occ22[!2 = @sid_2,!1 = @sid]
+d_usr_1 = d_usr[!1 = @sid]
+st_1 = st[!2 = @sid_3,!1 = @sid]
+@occ39_1 = @occ39[!2 = @sid_3,!1 = @sid]
+@occ21_1 = @occ21[!2 = @sid_2,!1 = @sid]
+npr_2 = npr_1[tc_1 = otc_1,!2 = @sid_3,!1 = @sid]
+@occ22_2 = @occ22[!2 = @sid_1,!1 = @sid]
+st_2 = st[!2 = @sid_4,!1 = @sid]
+@occ39_2 = @occ39[!2 = @sid_4,!1 = @sid]
+@occ21_2 = @occ21[!2 = @sid_1,!1 = @sid]
+npr_3 = npr_1[tc_1 = x_2,!2 = @sid_4,!1 = @sid]
+st1_3 = st1[!2 = @sid_5,!1 = @sid]
+@occ22_3 = @occ22[!2 = @sid_5,!1 = @sid]
+st_3 = st[!2 = @sid_6,!1 = @sid]
+@occ39_3 = @occ39[!2 = @sid_6,!1 = @sid]
+@occ21_3 = @occ21[!2 = @sid_5,!1 = @sid]
+npr_4 = npr_1[tc_1 = x',!2 = @sid_6,!1 = @sid]
+goal reachable: i_1 ≥ i_2 + 2 && otc_1 ≥ otc_2 + 1 && x_2 ≥ otc_1 + 1 && otc_3 ≥ x_2 + 1 && otc_3 ≥ otc_4 + 1 && x' ≥ otc_3 + 1 && b-event(VCell_bitstring(d_srv_1,(i_2 + 2,(secretid_3,k_3,x_2)))) && b-event(Counter(d_srv_1,id[],st1_1,i_2 + 1)) && b-event(Counter(d_srv_1,id1[],st1_1,otc_1)) && b-event(Login(pid_3,k_3,i_2 + 1,otc_1)) && b-event(VCell_bitstring(d_srv_1,(i_2 + 1,(secretid_3,k_3,otc_1)))) && b-event(Counter(d_srv_1,id[],st1_2,i_2)) && b-event(Counter(d_srv_1,id1[],st1_2,otc_2)) && b-event(VCell_bitstring(d_srv_1,(i_2,(secretid_3,k_3,otc_2)))) && mess(d_srv_1,(i_2,(secretid_3,k_3,otc_2))) && b-event(@p_act(@occ22_1,(i_2,(secretid_3,k_3,otc_2)))) && attacker(nonce_2) && b-event(Counter(d_usr_1,id[],st_1,otc_1)) && mess(d_usr_1,otc_1) && b-event(@p_act(@occ39_1,otc_1)) && b-event(@p_act(@occ21_1,(pid_3,nonce_2,senc((secretid_3,otc_1,npr_2),k_3)))) && b-event(@p_act(@occ22_2,(i_2 + 1,(secretid_3,k_3,otc_1)))) && attacker(nonce_3) && b-event(Counter(d_usr_1,id[],st_2,x_2)) && mess(d_usr_1,x_2) && b-event(@p_act(@occ39_2,x_2)) && b-event(@p_act(@occ21_2,(pid_3,nonce_3,senc((secretid_3,x_2,npr_3),k_3)))) && b-event(VCell_bitstring(d_srv_1,(i_1 + 2,(secretid_3,k_3,x')))) && b-event(Counter(d_srv_1,id[],st1_3,i_1 + 1)) && b-event(Counter(d_srv_1,id1[],st1_3,otc_3)) && b-event(Login(pid_3,k_3,i_1 + 1,otc_3)) && b-event(VCell_bitstring(d_srv_1,(i_1 + 1,(secretid_3,k_3,otc_3)))) && b-event(Counter(d_srv_1,id[],st1_4,i_1)) && b-event(Counter(d_srv_1,id1[],st1_4,otc_4)) && b-event(VCell_bitstring(d_srv_1,(i_1,(secretid_3,k_3,otc_4)))) && mess(d_srv_1,(i_1,(secretid_3,k_3,otc_4))) && b-event(@p_act(@occ22_3,(i_1,(secretid_3,k_3,otc_4)))) && attacker(nonce_4) && b-event(Counter(d_usr_1,id[],st_3,otc_3)) && mess(d_usr_1,otc_3) && b-event(@p_act(@occ39_3,otc_3)) && b-event(@p_act(@occ21_3,(pid_3,nonce_4,senc((secretid_3,otc_3,npr_4),k_3)))) && b-event(@p_act(@occ22_4,(i_1 + 1,(secretid_3,k_3,otc_3)))) && attacker(nonce_5) && b-event(Counter(d_usr_1,id[],st_4,x')) && mess(d_usr_1,x') && b-event(@p_act(@occ39_4,x')) && b-event(@p_act(@occ21_4,(pid_3,nonce_5,senc((secretid_3,x',npr_5),k_3)))) -> event(Login(pid_3,k_3,i_2 + 2,x_2)) && event(Login(pid_3,k_3,i_1 + 2,x'))
+The 1st, 2nd, 3rd, 4th, 5th, 6th, 7th, 8th, 10th, 12th, 14th, 15th, 16th, 18th, 20th, 21st hypotheses occur strictly before the 1st conclusion.
+The 9th, 11th, 13th, 17th, 19th hypotheses occur before the 1st conclusion.
+The 22nd, 23rd, 24th, 25th, 26th, 27th, 28th, 29th, 31st, 33rd, 35th, 36th, 37th, 39th, 41st, 42nd hypotheses occur strictly before the 2nd conclusion.
+The 30th, 32nd, 34th, 38th, 40th hypotheses occur before the 2nd conclusion.
+Abbreviations:
+pid_3 = pid[!1 = @sid]
+k_3 = k[!1 = @sid]
+d_srv_1 = d_srv[!1 = @sid]
+secretid_3 = secretid[!1 = @sid]
+st1_1 = st1[!2 = @sid_1,!1 = @sid]
+st1_2 = st1[!2 = @sid_2,!1 = @sid]
+@occ22_1 = @occ22[!2 = @sid_2,!1 = @sid]
+d_usr_1 = d_usr[!1 = @sid]
+st_1 = st[!2 = @sid_3,!1 = @sid]
+@occ39_1 = @occ39[!2 = @sid_3,!1 = @sid]
+@occ21_1 = @occ21[!2 = @sid_2,!1 = @sid]
+npr_2 = npr_1[tc_1 = otc_1,!2 = @sid_3,!1 = @sid]
+@occ22_2 = @occ22[!2 = @sid_1,!1 = @sid]
+st_2 = st[!2 = @sid_4,!1 = @sid]
+@occ39_2 = @occ39[!2 = @sid_4,!1 = @sid]
+@occ21_2 = @occ21[!2 = @sid_1,!1 = @sid]
+npr_3 = npr_1[tc_1 = x_2,!2 = @sid_4,!1 = @sid]
+st1_3 = st1[!2 = @sid_5,!1 = @sid]
+st1_4 = st1[!2 = @sid_6,!1 = @sid]
+@occ22_3 = @occ22[!2 = @sid_6,!1 = @sid]
+st_3 = st[!2 = @sid_7,!1 = @sid]
+@occ39_3 = @occ39[!2 = @sid_7,!1 = @sid]
+@occ21_3 = @occ21[!2 = @sid_6,!1 = @sid]
+npr_4 = npr_1[tc_1 = otc_3,!2 = @sid_7,!1 = @sid]
+@occ22_4 = @occ22[!2 = @sid_5,!1 = @sid]
+st_4 = st[!2 = @sid_8,!1 = @sid]
+@occ39_4 = @occ39[!2 = @sid_8,!1 = @sid]
+@occ21_4 = @occ21[!2 = @sid_5,!1 = @sid]
+npr_5 = npr_1[tc_1 = x',!2 = @sid_8,!1 = @sid]
+goal reachable: is_nat(i_1) && otc_1 ≥ otc_2 + 1 && x' ≥ otc_1 + 1 && b-event(VCell_bitstring(d_srv_1,(i_1 + 2,(secretid_3,k_3,x')))) && b-event(Counter(d_srv_1,id[],st1_1,i_1 + 1)) && b-event(Counter(d_srv_1,id1[],st1_1,otc_1)) && b-event(Login(pid_3,k_3,i_1 + 1,otc_1)) && b-event(VCell_bitstring(d_srv_1,(i_1 + 1,(secretid_3,k_3,otc_1)))) && b-event(Counter(d_srv_1,id[],st1_2,i_1)) && b-event(Counter(d_srv_1,id1[],st1_2,otc_2)) && b-event(VCell_bitstring(d_srv_1,(i_1,(secretid_3,k_3,otc_2)))) && mess(d_srv_1,(i_1,(secretid_3,k_3,otc_2))) && b-event(@p_act(@occ22_1,(i_1,(secretid_3,k_3,otc_2)))) && attacker(nonce_2) && b-event(Counter(d_usr_1,id[],st_1,otc_1)) && mess(d_usr_1,otc_1) && b-event(@p_act(@occ39_1,otc_1)) && b-event(@p_act(@occ21_1,(pid_3,nonce_2,senc((secretid_3,otc_1,npr_2),k_3)))) && b-event(@p_act(@occ22_2,(i_1 + 1,(secretid_3,k_3,otc_1)))) && attacker(nonce_3) && b-event(Counter(d_usr_1,id[],st_2,x')) && mess(d_usr_1,x') && b-event(@p_act(@occ39_2,x')) && b-event(@p_act(@occ21_2,(pid_3,nonce_3,senc((secretid_3,x',npr_3),k_3)))) -> event(Login(pid_3,k_3,i_1 + 2,x')) && event(Login(pid_3,k_3,i_1 + 2,x'))
+The 1st, 2nd, 3rd, 4th, 5th, 6th, 7th, 8th, 10th, 12th, 14th, 15th, 16th, 18th, 20th, 21st hypotheses occur strictly before the 1st conclusion.
+The 1st, 2nd, 3rd, 4th, 5th, 6th, 7th, 8th, 10th, 12th, 14th, 15th, 16th, 18th, 20th, 21st hypotheses occur strictly before the 2nd conclusion.
+The 9th, 11th, 13th, 17th, 19th hypotheses occur before the 1st conclusion.
+The 9th, 11th, 13th, 17th, 19th hypotheses occur before the 2nd conclusion.
+Abbreviations:
+pid_3 = pid[!1 = @sid]
+k_3 = k[!1 = @sid]
+d_srv_1 = d_srv[!1 = @sid]
+secretid_3 = secretid[!1 = @sid]
+st1_1 = st1[!2 = @sid_1,!1 = @sid]
+st1_2 = st1[!2 = @sid_2,!1 = @sid]
+@occ22_1 = @occ22[!2 = @sid_2,!1 = @sid]
+d_usr_1 = d_usr[!1 = @sid]
+st_1 = st[!2 = @sid_3,!1 = @sid]
+@occ39_1 = @occ39[!2 = @sid_3,!1 = @sid]
+@occ21_1 = @occ21[!2 = @sid_2,!1 = @sid]
+npr_2 = npr_1[tc_1 = otc_1,!2 = @sid_3,!1 = @sid]
+@occ22_2 = @occ22[!2 = @sid_1,!1 = @sid]
+st_2 = st[!2 = @sid_4,!1 = @sid]
+@occ39_2 = @occ39[!2 = @sid_4,!1 = @sid]
+@occ21_2 = @occ21[!2 = @sid_1,!1 = @sid]
+npr_3 = npr_1[tc_1 = x',!2 = @sid_4,!1 = @sid]
+goal reachable: otc_1 ≥ otc_2 + 1 && otc_1 ≥ x_2 + 1 && x' ≥ otc_1 + 1 && x_2 ≥ 1 && i_1 ≥ 1 && b-event(VCell_bitstring(d_srv_1,(1,(secretid_3,k_3,x_2)))) && b-event(Counter(d_srv_1,id[],st1_1,0)) && b-event(Counter(d_srv_1,id1[],st1_1,0)) && b-event(VCell_bitstring(d_srv_1,(0,(secretid_3,k_3,0)))) && b-event(@p_act(@occ22_1,(0,(secretid_3,k_3,0)))) && attacker(nonce_2) && b-event(Counter(d_usr_1,id[],st_1,x_2)) && mess(d_usr_1,x_2) && b-event(@p_act(@occ39_1,x_2)) && b-event(@p_act(@occ21_1,(pid_3,nonce_2,senc((secretid_3,x_2,npr_2),k_3)))) && b-event(VCell_bitstring(d_srv_1,(i_1 + 2,(secretid_3,k_3,x')))) && b-event(Counter(d_srv_1,id[],st1_2,i_1 + 1)) && b-event(Counter(d_srv_1,id1[],st1_2,otc_1)) && b-event(Login(pid_3,k_3,i_1 + 1,otc_1)) && b-event(VCell_bitstring(d_srv_1,(i_1 + 1,(secretid_3,k_3,otc_1)))) && b-event(Counter(d_srv_1,id[],st1_3,i_1)) && b-event(Counter(d_srv_1,id1[],st1_3,otc_2)) && b-event(VCell_bitstring(d_srv_1,(i_1,(secretid_3,k_3,otc_2)))) && mess(d_srv_1,(i_1,(secretid_3,k_3,otc_2))) && b-event(@p_act(@occ22_2,(i_1,(secretid_3,k_3,otc_2)))) && attacker(nonce_3) && b-event(Counter(d_usr_1,id[],st_2,otc_1)) && mess(d_usr_1,otc_1) && b-event(@p_act(@occ39_2,otc_1)) && b-event(@p_act(@occ21_2,(pid_3,nonce_3,senc((secretid_3,otc_1,npr_3),k_3)))) && b-event(@p_act(@occ22_3,(i_1 + 1,(secretid_3,k_3,otc_1)))) && attacker(nonce_4) && b-event(Counter(d_usr_1,id[],st_3,x')) && mess(d_usr_1,x') && b-event(@p_act(@occ39_3,x')) && b-event(@p_act(@occ21_3,(pid_3,nonce_4,senc((secretid_3,x',npr_4),k_3)))) -> event(Login(pid_3,k_3,1,x_2)) && event(Login(pid_3,k_3,i_1 + 2,x'))
+The 1st, 2nd, 3rd, 4th, 5th, 7th, 9th, 10th hypotheses occur strictly before the 1st conclusion.
+The 6th, 8th hypotheses occur before the 1st conclusion.
+The 11th, 12th, 13th, 14th, 15th, 16th, 17th, 18th, 20th, 22nd, 24th, 25th, 26th, 28th, 30th, 31st hypotheses occur strictly before the 2nd conclusion.
+The 19th, 21st, 23rd, 27th, 29th hypotheses occur before the 2nd conclusion.
+Abbreviations:
+pid_3 = pid[!1 = @sid]
+k_3 = k[!1 = @sid]
+d_srv_1 = d_srv[!1 = @sid]
+secretid_3 = secretid[!1 = @sid]
+st1_1 = st1[!2 = @sid_1,!1 = @sid]
+@occ22_1 = @occ22[!2 = @sid_1,!1 = @sid]
+d_usr_1 = d_usr[!1 = @sid]
+st_1 = st[!2 = @sid_2,!1 = @sid]
+@occ39_1 = @occ39[!2 = @sid_2,!1 = @sid]
+@occ21_1 = @occ21[!2 = @sid_1,!1 = @sid]
+npr_2 = npr_1[tc_1 = x_2,!2 = @sid_2,!1 = @sid]
+st1_2 = st1[!2 = @sid_3,!1 = @sid]
+st1_3 = st1[!2 = @sid_4,!1 = @sid]
+@occ22_2 = @occ22[!2 = @sid_4,!1 = @sid]
+st_2 = st[!2 = @sid_5,!1 = @sid]
+@occ39_2 = @occ39[!2 = @sid_5,!1 = @sid]
+@occ21_2 = @occ21[!2 = @sid_4,!1 = @sid]
+npr_3 = npr_1[tc_1 = otc_1,!2 = @sid_5,!1 = @sid]
+@occ22_3 = @occ22[!2 = @sid_3,!1 = @sid]
+st_3 = st[!2 = @sid_6,!1 = @sid]
+@occ39_3 = @occ39[!2 = @sid_6,!1 = @sid]
+@occ21_3 = @occ21[!2 = @sid_3,!1 = @sid]
+npr_4 = npr_1[tc_1 = x',!2 = @sid_6,!1 = @sid]
+goal reachable: x' ≥ 1 && b-event(VCell_bitstring(d_srv_1,(1,(secretid_3,k_3,x')))) && b-event(Counter(d_srv_1,id[],st1_1,0)) && b-event(Counter(d_srv_1,id1[],st1_1,0)) && b-event(VCell_bitstring(d_srv_1,(0,(secretid_3,k_3,0)))) && b-event(@p_act(@occ22_1,(0,(secretid_3,k_3,0)))) && attacker(nonce_2) && b-event(Counter(d_usr_1,id[],st_1,x')) && mess(d_usr_1,x') && b-event(@p_act(@occ39_1,x')) && b-event(@p_act(@occ21_1,(pid_3,nonce_2,senc((secretid_3,x',npr_2),k_3)))) -> event(Login(pid_3,k_3,1,x')) && event(Login(pid_3,k_3,1,x'))
+The 1st, 2nd, 3rd, 4th, 5th, 7th, 9th, 10th hypotheses occur strictly before the 1st conclusion.
+The 1st, 2nd, 3rd, 4th, 5th, 7th, 9th, 10th hypotheses occur strictly before the 2nd conclusion.
+The 6th, 8th hypotheses occur before the 1st conclusion.
+The 6th, 8th hypotheses occur before the 2nd conclusion.
+Abbreviations:
+pid_3 = pid[!1 = @sid]
+k_3 = k[!1 = @sid]
+d_srv_1 = d_srv[!1 = @sid]
+secretid_3 = secretid[!1 = @sid]
+st1_1 = st1[!2 = @sid_1,!1 = @sid]
+@occ22_1 = @occ22[!2 = @sid_1,!1 = @sid]
+d_usr_1 = d_usr[!1 = @sid]
+st_1 = st[!2 = @sid_2,!1 = @sid]
+@occ39_1 = @occ39[!2 = @sid_2,!1 = @sid]
+@occ21_1 = @occ21[!2 = @sid_1,!1 = @sid]
+npr_2 = npr_1[tc_1 = x',!2 = @sid_2,!1 = @sid]
+goal reachable: is_nat(i_1) && x_2 ≥ otc_1 + 1 && otc_2 ≥ otc_3 + 1 && otc_1 ≥ otc_2 + 1 && b-event(VCell_bitstring(d_srv_1,(i_1 + 3,(secretid_3,k_3,x_2)))) && b-event(Counter(d_srv_1,id[],st1_1,i_1 + 2)) && b-event(Counter(d_srv_1,id1[],st1_1,otc_1)) && b-event(Login(pid_3,k_3,i_1 + 2,otc_1)) && b-event(@p_act(@occ22_1,(i_1 + 2,(secretid_3,k_3,otc_1)))) && attacker(nonce_2) && b-event(Counter(d_usr_1,id[],st_1,x_2)) && mess(d_usr_1,x_2) && b-event(@p_act(@occ39_1,x_2)) && b-event(@p_act(@occ21_1,(pid_3,nonce_2,senc((secretid_3,x_2,npr_2),k_3)))) && b-event(VCell_bitstring(d_srv_1,(i_1 + 2,(secretid_3,k_3,otc_1)))) && b-event(Counter(d_srv_1,id[],st1_2,i_1 + 1)) && b-event(Counter(d_srv_1,id1[],st1_2,otc_2)) && b-event(Login(pid_3,k_3,i_1 + 1,otc_2)) && b-event(VCell_bitstring(d_srv_1,(i_1 + 1,(secretid_3,k_3,otc_2)))) && b-event(Counter(d_srv_1,id[],st1_3,i_1)) && b-event(Counter(d_srv_1,id1[],st1_3,otc_3)) && b-event(VCell_bitstring(d_srv_1,(i_1,(secretid_3,k_3,otc_3)))) && mess(d_srv_1,(i_1,(secretid_3,k_3,otc_3))) && b-event(@p_act(@occ22_2,(i_1,(secretid_3,k_3,otc_3)))) && attacker(nonce_3) && b-event(Counter(d_usr_1,id[],st_2,otc_2)) && mess(d_usr_1,otc_2) && b-event(@p_act(@occ39_2,otc_2)) && b-event(@p_act(@occ21_2,(pid_3,nonce_3,senc((secretid_3,otc_2,npr_3),k_3)))) && b-event(@p_act(@occ22_3,(i_1 + 1,(secretid_3,k_3,otc_2)))) && attacker(nonce_4) && b-event(Counter(d_usr_1,id[],st_3,otc_1)) && mess(d_usr_1,otc_1) && b-event(@p_act(@occ39_3,otc_1)) && b-event(@p_act(@occ21_3,(pid_3,nonce_4,senc((secretid_3,otc_1,npr_4),k_3)))) -> event(Login(pid_3,k_3,i_1 + 3,x_2)) && event(Login(pid_3,k_3,i_1 + 2,otc_1))
+The 1st, 2nd, 3rd, 4th, 5th, 7th, 9th, 10th, 11th, 12th, 13th, 14th, 15th, 16th, 17th, 18th, 20th, 22nd, 24th, 25th, 26th, 28th, 30th, 31st hypotheses occur strictly before the 1st conclusion.
+The 6th, 8th, 19th, 21st, 23rd, 27th, 29th hypotheses occur before the 1st conclusion.
+The 11th, 12th, 13th, 14th, 15th, 16th, 17th, 18th, 20th, 22nd, 24th, 25th, 26th, 28th, 30th, 31st hypotheses occur strictly before the 2nd conclusion.
+The 19th, 21st, 23rd, 27th, 29th hypotheses occur before the 2nd conclusion.
+Abbreviations:
+pid_3 = pid[!1 = @sid]
+k_3 = k[!1 = @sid]
+d_srv_1 = d_srv[!1 = @sid]
+secretid_3 = secretid[!1 = @sid]
+st1_1 = st1[!2 = @sid_1,!1 = @sid]
+@occ22_1 = @occ22[!2 = @sid_1,!1 = @sid]
+d_usr_1 = d_usr[!1 = @sid]
+st_1 = st[!2 = @sid_2,!1 = @sid]
+@occ39_1 = @occ39[!2 = @sid_2,!1 = @sid]
+@occ21_1 = @occ21[!2 = @sid_1,!1 = @sid]
+npr_2 = npr_1[tc_1 = x_2,!2 = @sid_2,!1 = @sid]
+st1_2 = st1[!2 = @sid_3,!1 = @sid]
+st1_3 = st1[!2 = @sid_4,!1 = @sid]
+@occ22_2 = @occ22[!2 = @sid_4,!1 = @sid]
+st_2 = st[!2 = @sid_5,!1 = @sid]
+@occ39_2 = @occ39[!2 = @sid_5,!1 = @sid]
+@occ21_2 = @occ21[!2 = @sid_4,!1 = @sid]
+npr_3 = npr_1[tc_1 = otc_2,!2 = @sid_5,!1 = @sid]
+@occ22_3 = @occ22[!2 = @sid_3,!1 = @sid]
+st_3 = st[!2 = @sid_6,!1 = @sid]
+@occ39_3 = @occ39[!2 = @sid_6,!1 = @sid]
+@occ21_3 = @occ21[!2 = @sid_3,!1 = @sid]
+npr_4 = npr_1[tc_1 = otc_1,!2 = @sid_6,!1 = @sid]
+goal reachable: x_2 ≥ otc_1 + 1 && otc_1 ≥ 1 && b-event(VCell_bitstring(d_srv_1,(2,(secretid_3,k_3,x_2)))) && b-event(Counter(d_srv_1,id[],st1_1,1)) && b-event(Counter(d_srv_1,id1[],st1_1,otc_1)) && b-event(Login(pid_3,k_3,1,otc_1)) && b-event(@p_act(@occ22_1,(1,(secretid_3,k_3,otc_1)))) && attacker(nonce_2) && b-event(Counter(d_usr_1,id[],st_1,x_2)) && mess(d_usr_1,x_2) && b-event(@p_act(@occ39_1,x_2)) && b-event(@p_act(@occ21_1,(pid_3,nonce_2,senc((secretid_3,x_2,npr_2),k_3)))) && b-event(VCell_bitstring(d_srv_1,(1,(secretid_3,k_3,otc_1)))) && b-event(Counter(d_srv_1,id[],st1_2,0)) && b-event(Counter(d_srv_1,id1[],st1_2,0)) && b-event(VCell_bitstring(d_srv_1,(0,(secretid_3,k_3,0)))) && b-event(@p_act(@occ22_2,(0,(secretid_3,k_3,0)))) && attacker(nonce_3) && b-event(Counter(d_usr_1,id[],st_2,otc_1)) && mess(d_usr_1,otc_1) && b-event(@p_act(@occ39_2,otc_1)) && b-event(@p_act(@occ21_2,(pid_3,nonce_3,senc((secretid_3,otc_1,npr_3),k_3)))) -> event(Login(pid_3,k_3,2,x_2)) && event(Login(pid_3,k_3,1,otc_1))
+The 1st, 2nd, 3rd, 4th, 5th, 7th, 9th, 10th, 11th, 12th, 13th, 14th, 15th, 17th, 19th, 20th hypotheses occur strictly before the 1st conclusion.
+The 6th, 8th, 16th, 18th hypotheses occur before the 1st conclusion.
+The 11th, 12th, 13th, 14th, 15th, 17th, 19th, 20th hypotheses occur strictly before the 2nd conclusion.
+The 16th, 18th hypotheses occur before the 2nd conclusion.
+Abbreviations:
+pid_3 = pid[!1 = @sid]
+k_3 = k[!1 = @sid]
+d_srv_1 = d_srv[!1 = @sid]
+secretid_3 = secretid[!1 = @sid]
+st1_1 = st1[!2 = @sid_1,!1 = @sid]
+@occ22_1 = @occ22[!2 = @sid_1,!1 = @sid]
+d_usr_1 = d_usr[!1 = @sid]
+st_1 = st[!2 = @sid_2,!1 = @sid]
+@occ39_1 = @occ39[!2 = @sid_2,!1 = @sid]
+@occ21_1 = @occ21[!2 = @sid_1,!1 = @sid]
+npr_2 = npr_1[tc_1 = x_2,!2 = @sid_2,!1 = @sid]
+st1_2 = st1[!2 = @sid_3,!1 = @sid]
+@occ22_2 = @occ22[!2 = @sid_3,!1 = @sid]
+st_2 = st[!2 = @sid_4,!1 = @sid]
+@occ39_2 = @occ39[!2 = @sid_4,!1 = @sid]
+@occ21_2 = @occ21[!2 = @sid_3,!1 = @sid]
+npr_3 = npr_1[tc_1 = otc_1,!2 = @sid_4,!1 = @sid]
+goal reachable: is_nat(i_1) && otc_1 ≥ otc_2 + 1 && otc_3 ≥ otc_1 + 1 && x' ≥ otc_3 + 1 && b-event(VCell_bitstring(d_srv_1,(i_1 + 3,(secretid_3,k_3,x')))) && b-event(Counter(d_srv_1,id[],st1_1,i_1 + 2)) && b-event(Counter(d_srv_1,id1[],st1_1,otc_3)) && b-event(Login(pid_3,k_3,i_1 + 2,otc_3)) && b-event(VCell_bitstring(d_srv_1,(i_1 + 2,(secretid_3,k_3,otc_3)))) && b-event(Counter(d_srv_1,id[],st1_2,i_1 + 1)) && b-event(Counter(d_srv_1,id1[],st1_2,otc_1)) && b-event(Login(pid_3,k_3,i_1 + 1,otc_1)) && b-event(VCell_bitstring(d_srv_1,(i_1 + 1,(secretid_3,k_3,otc_1)))) && b-event(Counter(d_srv_1,id[],st1_3,i_1)) && b-event(Counter(d_srv_1,id1[],st1_3,otc_2)) && b-event(VCell_bitstring(d_srv_1,(i_1,(secretid_3,k_3,otc_2)))) && mess(d_srv_1,(i_1,(secretid_3,k_3,otc_2))) && b-event(@p_act(@occ22_1,(i_1,(secretid_3,k_3,otc_2)))) && attacker(nonce_2) && b-event(Counter(d_usr_1,id[],st_1,otc_1)) && mess(d_usr_1,otc_1) && b-event(@p_act(@occ39_1,otc_1)) && b-event(@p_act(@occ21_1,(pid_3,nonce_2,senc((secretid_3,otc_1,npr_2),k_3)))) && b-event(@p_act(@occ22_2,(i_1 + 1,(secretid_3,k_3,otc_1)))) && attacker(nonce_3) && b-event(Counter(d_usr_1,id[],st_2,otc_3)) && mess(d_usr_1,otc_3) && b-event(@p_act(@occ39_2,otc_3)) && b-event(@p_act(@occ21_2,(pid_3,nonce_3,senc((secretid_3,otc_3,npr_3),k_3)))) && b-event(@p_act(@occ22_3,(i_1 + 2,(secretid_3,k_3,otc_3)))) && attacker(nonce_4) && b-event(Counter(d_usr_1,id[],st_3,x')) && mess(d_usr_1,x') && b-event(@p_act(@occ39_3,x')) && b-event(@p_act(@occ21_3,(pid_3,nonce_4,senc((secretid_3,x',npr_4),k_3)))) -> event(Login(pid_3,k_3,i_1 + 2,otc_3)) && event(Login(pid_3,k_3,i_1 + 3,x'))
+The 1st, 2nd, 3rd, 4th, 5th, 6th, 7th, 8th, 9th, 10th, 11th, 12th, 14th, 16th, 18th, 19th, 20th, 22nd, 24th, 25th, 26th, 28th, 30th, 31st hypotheses occur strictly before the 2nd conclusion.
+The 5th, 6th, 7th, 8th, 9th, 10th, 11th, 12th, 14th, 16th, 18th, 19th, 20th, 22nd, 24th, 25th hypotheses occur strictly before the 1st conclusion.
+The 13th, 15th, 17th, 21st, 23rd hypotheses occur before the 1st conclusion.
+The 13th, 15th, 17th, 21st, 23rd, 27th, 29th hypotheses occur before the 2nd conclusion.
+Abbreviations:
+pid_3 = pid[!1 = @sid]
+k_3 = k[!1 = @sid]
+d_srv_1 = d_srv[!1 = @sid]
+secretid_3 = secretid[!1 = @sid]
+st1_1 = st1[!2 = @sid_1,!1 = @sid]
+st1_2 = st1[!2 = @sid_2,!1 = @sid]
+st1_3 = st1[!2 = @sid_3,!1 = @sid]
+@occ22_1 = @occ22[!2 = @sid_3,!1 = @sid]
+d_usr_1 = d_usr[!1 = @sid]
+st_1 = st[!2 = @sid_4,!1 = @sid]
+@occ39_1 = @occ39[!2 = @sid_4,!1 = @sid]
+@occ21_1 = @occ21[!2 = @sid_3,!1 = @sid]
+npr_2 = npr_1[tc_1 = otc_1,!2 = @sid_4,!1 = @sid]
+@occ22_2 = @occ22[!2 = @sid_2,!1 = @sid]
+st_2 = st[!2 = @sid_5,!1 = @sid]
+@occ39_2 = @occ39[!2 = @sid_5,!1 = @sid]
+@occ21_2 = @occ21[!2 = @sid_2,!1 = @sid]
+npr_3 = npr_1[tc_1 = otc_3,!2 = @sid_5,!1 = @sid]
+@occ22_3 = @occ22[!2 = @sid_1,!1 = @sid]
+st_3 = st[!2 = @sid_6,!1 = @sid]
+@occ39_3 = @occ39[!2 = @sid_6,!1 = @sid]
+@occ21_3 = @occ21[!2 = @sid_1,!1 = @sid]
+npr_4 = npr_1[tc_1 = x',!2 = @sid_6,!1 = @sid]
+goal reachable: x' ≥ otc_1 + 1 && otc_1 ≥ 1 && b-event(VCell_bitstring(d_srv_1,(2,(secretid_3,k_3,x')))) && b-event(Counter(d_srv_1,id[],st1_1,1)) && b-event(Counter(d_srv_1,id1[],st1_1,otc_1)) && b-event(Login(pid_3,k_3,1,otc_1)) && b-event(VCell_bitstring(d_srv_1,(1,(secretid_3,k_3,otc_1)))) && b-event(Counter(d_srv_1,id[],st1_2,0)) && b-event(Counter(d_srv_1,id1[],st1_2,0)) && b-event(VCell_bitstring(d_srv_1,(0,(secretid_3,k_3,0)))) && b-event(@p_act(@occ22_1,(0,(secretid_3,k_3,0)))) && attacker(nonce_2) && b-event(Counter(d_usr_1,id[],st_1,otc_1)) && mess(d_usr_1,otc_1) && b-event(@p_act(@occ39_1,otc_1)) && b-event(@p_act(@occ21_1,(pid_3,nonce_2,senc((secretid_3,otc_1,npr_2),k_3)))) && b-event(@p_act(@occ22_2,(1,(secretid_3,k_3,otc_1)))) && attacker(nonce_3) && b-event(Counter(d_usr_1,id[],st_2,x')) && mess(d_usr_1,x') && b-event(@p_act(@occ39_2,x')) && b-event(@p_act(@occ21_2,(pid_3,nonce_3,senc((secretid_3,x',npr_3),k_3)))) -> event(Login(pid_3,k_3,1,otc_1)) && event(Login(pid_3,k_3,2,x'))
+The 1st, 2nd, 3rd, 4th, 5th, 6th, 7th, 8th, 9th, 11th, 13th, 14th, 15th, 17th, 19th, 20th hypotheses occur strictly before the 2nd conclusion.
+The 5th, 6th, 7th, 8th, 9th, 11th, 13th, 14th hypotheses occur strictly before the 1st conclusion.
+The 10th, 12th hypotheses occur before the 1st conclusion.
+The 10th, 12th, 16th, 18th hypotheses occur before the 2nd conclusion.
+Abbreviations:
+pid_3 = pid[!1 = @sid]
+k_3 = k[!1 = @sid]
+d_srv_1 = d_srv[!1 = @sid]
+secretid_3 = secretid[!1 = @sid]
+st1_1 = st1[!2 = @sid_1,!1 = @sid]
+st1_2 = st1[!2 = @sid_2,!1 = @sid]
+@occ22_1 = @occ22[!2 = @sid_2,!1 = @sid]
+d_usr_1 = d_usr[!1 = @sid]
+st_1 = st[!2 = @sid_3,!1 = @sid]
+@occ39_1 = @occ39[!2 = @sid_3,!1 = @sid]
+@occ21_1 = @occ21[!2 = @sid_2,!1 = @sid]
+npr_2 = npr_1[tc_1 = otc_1,!2 = @sid_3,!1 = @sid]
+@occ22_2 = @occ22[!2 = @sid_1,!1 = @sid]
+st_2 = st[!2 = @sid_4,!1 = @sid]
+@occ39_2 = @occ39[!2 = @sid_4,!1 = @sid]
+@occ21_2 = @occ21[!2 = @sid_1,!1 = @sid]
+npr_3 = npr_1[tc_1 = x',!2 = @sid_4,!1 = @sid]
+RESULT event(Login(pid_3,k_3,i_1,x_2)) && event(Login(pid_3,k_3,i',x')) ==> (i_1 = i' && x_2 = x') || (i' ≥ i_1 + 1 && x' ≥ x_2 + 1) || (i_1 ≥ i' + 1 && x_2 ≥ x' + 1) is true.
+-- Query event(Login(pid_3,k_3,i_1,tc_2)) ==> event(YubiPress(pid_3,secretid_3,k_3,tc_2)) in process 1.
+Translating the process into Horn clauses...
+select mess(d_usr[!1 = *@sid],tc_2)/-5000
+Completing...
+select mess(d_srv[!1 = *@sid],(i_1,(secretid[!1 = *@sid],k[!1 = *@sid],*otc_1)))/-5000
+Starting query event(Login(pid_3,k_3,i_1,tc_2)) ==> event(YubiPress(pid_3,secretid_3,k_3,tc_2))
+goal reachable: is_nat(i_1) && otc_1 ≥ otc_2 + 1 && tc_2 ≥ otc_1 + 1 && b-event(VCell_bitstring(d_srv_1,(i_1 + 2,(secretid_3,k_3,tc_2)))) && b-event(Counter(d_srv_1,id[],st1_1,i_1 + 1)) && b-event(Counter(d_srv_1,id1[],st1_1,otc_1)) && b-event(Login(pid_3,k_3,i_1 + 1,otc_1)) && b-event(VCell_bitstring(d_srv_1,(i_1 + 1,(secretid_3,k_3,otc_1)))) && b-event(Counter(d_srv_1,id[],st1_2,i_1)) && b-event(Counter(d_srv_1,id1[],st1_2,otc_2)) && b-event(VCell_bitstring(d_srv_1,(i_1,(secretid_3,k_3,otc_2)))) && mess(d_srv_1,(i_1,(secretid_3,k_3,otc_2))) && b-event(@p_act(@occ22_2,(i_1,(secretid_3,k_3,otc_2)))) && attacker(nonce_2) && b-event(YubiPress(pid_3,secretid_3,k_3,otc_1)) && b-event(Counter(d_usr_1,id[],st_1,otc_1)) && mess(d_usr_1,otc_1) && b-event(@p_act(@occ39_2,otc_1)) && b-event(@p_act(@occ21_2,(pid_3,nonce_2,senc((secretid_3,otc_1,npr_2),k_3)))) && b-event(@p_act(@occ22_3,(i_1 + 1,(secretid_3,k_3,otc_1)))) && attacker(nonce_3) && b-event(YubiPress(pid_3,secretid_3,k_3,tc_2)) && b-event(Counter(d_usr_1,id[],st_2,tc_2)) && mess(d_usr_1,tc_2) && b-event(@p_act(@occ39_3,tc_2)) && b-event(@p_act(@occ21_3,(pid_3,nonce_3,senc((secretid_3,tc_2,npr_3),k_3)))) -> event(Login(pid_3,k_3,i_1 + 2,tc_2))
+Abbreviations:
+pid_3 = pid[!1 = @sid]
+k_3 = k[!1 = @sid]
+d_srv_1 = d_srv[!1 = @sid]
+secretid_3 = secretid[!1 = @sid]
+st1_1 = st1[!2 = @sid_1,!1 = @sid]
+st1_2 = st1[!2 = @sid_2,!1 = @sid]
+@occ22_2 = @occ22_1[!2 = @sid_2,!1 = @sid]
+d_usr_1 = d_usr[!1 = @sid]
+st_1 = st[!2 = @sid_3,!1 = @sid]
+@occ39_2 = @occ39_1[!2 = @sid_3,!1 = @sid]
+@occ21_2 = @occ21_1[!2 = @sid_2,!1 = @sid]
+npr_2 = npr_1[tc_1 = otc_1,!2 = @sid_3,!1 = @sid]
+@occ22_3 = @occ22_1[!2 = @sid_1,!1 = @sid]
+st_2 = st[!2 = @sid_4,!1 = @sid]
+@occ39_3 = @occ39_1[!2 = @sid_4,!1 = @sid]
+@occ21_3 = @occ21_1[!2 = @sid_1,!1 = @sid]
+npr_3 = npr_1[tc_1 = tc_2,!2 = @sid_4,!1 = @sid]
+goal reachable: tc_2 ≥ 1 && b-event(VCell_bitstring(d_srv_1,(1,(secretid_3,k_3,tc_2)))) && b-event(Counter(d_srv_1,id[],st1_1,0)) && b-event(Counter(d_srv_1,id1[],st1_1,0)) && b-event(VCell_bitstring(d_srv_1,(0,(secretid_3,k_3,0)))) && b-event(@p_act(@occ22_2,(0,(secretid_3,k_3,0)))) && attacker(nonce_2) && b-event(YubiPress(pid_3,secretid_3,k_3,tc_2)) && b-event(Counter(d_usr_1,id[],st_1,tc_2)) && mess(d_usr_1,tc_2) && b-event(@p_act(@occ39_2,tc_2)) && b-event(@p_act(@occ21_2,(pid_3,nonce_2,senc((secretid_3,tc_2,npr_2),k_3)))) -> event(Login(pid_3,k_3,1,tc_2))
+Abbreviations:
+pid_3 = pid[!1 = @sid]
+k_3 = k[!1 = @sid]
+d_srv_1 = d_srv[!1 = @sid]
+secretid_3 = secretid[!1 = @sid]
+st1_1 = st1[!2 = @sid_1,!1 = @sid]
+@occ22_2 = @occ22_1[!2 = @sid_1,!1 = @sid]
+d_usr_1 = d_usr[!1 = @sid]
+st_1 = st[!2 = @sid_2,!1 = @sid]
+@occ39_2 = @occ39_1[!2 = @sid_2,!1 = @sid]
+@occ21_2 = @occ21_1[!2 = @sid_1,!1 = @sid]
+npr_2 = npr_1[tc_1 = tc_2,!2 = @sid_2,!1 = @sid]
+RESULT event(Login(pid_3,k_3,i_1,tc_2)) ==> event(YubiPress(pid_3,secretid_3,k_3,tc_2)) is true.
+-- Query event(Login(pid_3,k_3,i_1,x_2))@t && event(Login(pid_3,k_3,i',x_2))@t' ==> t = t' encoded as event(v,Login(pid_3,k_3,i_1,x_2)) && event(v_1,Login(pid_3,k_3,i',x_2)) ==> v_1 = v in process 1.
+Translating the process into Horn clauses...
+select mess(d_usr[!1 = *@sid],tc_2)/-5000
+Completing...
+select mess(d_srv[!1 = *@sid],(i_1,(secretid[!1 = *@sid],k[!1 = *@sid],*otc_1)))/-5000
+Starting query event(Login(pid_3,k_3,i_1,x_2))@t && event(Login(pid_3,k_3,i',x_2))@t' ==> t = t'
+goal reachable: is_nat(i_1) && otc_1 ≥ otc_2 + 1 && x_2 ≥ otc_1 + 1 && b-event(VCell_bitstring(d_srv_1,(i_1 + 2,(secretid_3,k_3,x_2)))) && b-event(Counter(d_srv_1,id[],st1_1,i_1 + 1)) && b-event(Counter(d_srv_1,id1[],st1_1,otc_1)) && b-event(Login(pid_3,k_3,i_1 + 1,otc_1)) && b-event(VCell_bitstring(d_srv_1,(i_1 + 1,(secretid_3,k_3,otc_1)))) && b-event(Counter(d_srv_1,id[],st1_2,i_1)) && b-event(Counter(d_srv_1,id1[],st1_2,otc_2)) && b-event(VCell_bitstring(d_srv_1,(i_1,(secretid_3,k_3,otc_2)))) && mess(d_srv_1,(i_1,(secretid_3,k_3,otc_2))) && b-event(@p_act(@occ22_3,(i_1,(secretid_3,k_3,otc_2)))) && attacker(nonce_2) && b-event(Counter(d_usr_1,id[],st_1,otc_1)) && mess(d_usr_1,otc_1) && b-event(@p_act(@occ39_3,otc_1)) && b-event(@p_act(@occ21_3,(pid_3,nonce_2,senc((secretid_3,otc_1,npr_2),k_3)))) && b-event(@p_act(@occ22_4,(i_1 + 1,(secretid_3,k_3,otc_1)))) && attacker(nonce_3) && b-event(Counter(d_usr_1,id[],st_2,x_2)) && mess(d_usr_1,x_2) && b-event(@p_act(@occ39_4,x_2)) && b-event(@p_act(@occ21_4,(pid_3,nonce_3,senc((secretid_3,x_2,npr_3),k_3)))) -> inj-event(Login(pid_3,k_3,i_1 + 2,x_2),@occ30_1) && inj-event(Login(pid_3,k_3,i_1 + 2,x_2),@occ30_1)
+Abbreviations:
+pid_3 = pid[!1 = @sid]
+k_3 = k[!1 = @sid]
+secretid_3 = secretid[!1 = @sid]
+npr_3 = npr_1[tc_1 = x_2,!2 = @sid_1,!1 = @sid]
+@occ30_1 = @occ30[otc = otc_1,i = i_1 + 1,otp = senc((secretid_3,x_2,npr_3),k_3),nonce = nonce_3,!2 = @sid_2,!1 = @sid]
+d_srv_1 = d_srv[!1 = @sid]
+st1_1 = st1[!2 = @sid_2,!1 = @sid]
+st1_2 = st1[!2 = @sid_3,!1 = @sid]
+@occ22_3 = @occ22_2[!2 = @sid_3,!1 = @sid]
+d_usr_1 = d_usr[!1 = @sid]
+st_1 = st[!2 = @sid_4,!1 = @sid]
+@occ39_3 = @occ39_2[!2 = @sid_4,!1 = @sid]
+@occ21_3 = @occ21_2[!2 = @sid_3,!1 = @sid]
+npr_2 = npr_1[tc_1 = otc_1,!2 = @sid_4,!1 = @sid]
+@occ22_4 = @occ22_2[!2 = @sid_2,!1 = @sid]
+st_2 = st[!2 = @sid_1,!1 = @sid]
+@occ39_4 = @occ39_2[!2 = @sid_1,!1 = @sid]
+@occ21_4 = @occ21_2[!2 = @sid_2,!1 = @sid]
+goal reachable: x_2 ≥ 1 && b-event(VCell_bitstring(d_srv_1,(1,(secretid_3,k_3,x_2)))) && b-event(Counter(d_srv_1,id[],st1_1,0)) && b-event(Counter(d_srv_1,id1[],st1_1,0)) && b-event(VCell_bitstring(d_srv_1,(0,(secretid_3,k_3,0)))) && b-event(@p_act(@occ22_3,(0,(secretid_3,k_3,0)))) && attacker(nonce_2) && b-event(Counter(d_usr_1,id[],st_1,x_2)) && mess(d_usr_1,x_2) && b-event(@p_act(@occ39_3,x_2)) && b-event(@p_act(@occ21_3,(pid_3,nonce_2,senc((secretid_3,x_2,npr_2),k_3)))) -> inj-event(Login(pid_3,k_3,1,x_2),@occ30_1) && inj-event(Login(pid_3,k_3,1,x_2),@occ30_1)
+Abbreviations:
+pid_3 = pid[!1 = @sid]
+k_3 = k[!1 = @sid]
+secretid_3 = secretid[!1 = @sid]
+npr_2 = npr_1[tc_1 = x_2,!2 = @sid_1,!1 = @sid]
+@occ30_1 = @occ30[otc = 0,i = 0,otp = senc((secretid_3,x_2,npr_2),k_3),nonce = nonce_2,!2 = @sid_2,!1 = @sid]
+d_srv_1 = d_srv[!1 = @sid]
+st1_1 = st1[!2 = @sid_2,!1 = @sid]
+@occ22_3 = @occ22_2[!2 = @sid_2,!1 = @sid]
+d_usr_1 = d_usr[!1 = @sid]
+st_1 = st[!2 = @sid_1,!1 = @sid]
+@occ39_3 = @occ39_2[!2 = @sid_1,!1 = @sid]
+@occ21_3 = @occ21_2[!2 = @sid_2,!1 = @sid]
+RESULT event(Login(pid_3,k_3,i_1,x_2))@t && event(Login(pid_3,k_3,i',x_2))@t' ==> t = t' is true.
+
+--------------------------------------------------------------
+Verification summary:
+
+Query(ies):
+ - Query event(Login(pid_3,k_3,i_1,tc_2)) ==> event(YubiPress(pid_3,secretid_3,k_3,tc_2)) is true.
+ - Query event(Login(pid_3,k_3,i_1,x_2))@t && event(Login(pid_3,k_3,i',x_2))@t' ==> t = t' is true.
+Associated axiom(s):
+ - Axiom 
+   event(VCell_bitstring(d_1,(i2,(x3,x_2,i1)))) && event(VCell_bitstring(d_1,(i2,(x1,x2,i3)))) ==> (x3,x_2,i1) = (x1,x2,i3)
+   event(Counter(d_1,st1_1,st2,i1)) && event(Counter(d_1,st1_1,st2,i2)) ==> i2 = i1
+   event(Counter(d_1,st1_1,st2,i1)) && event(Counter(d_1,st1_1,st3,i1)) ==> st2 = st3
+ in process 1.
+Associated lemma(s):
+ - Lemma event(Login(pid_3,k_3,i_1,x_2)) && event(Login(pid_3,k_3,i',x')) ==> (i_1 = i' && x_2 = x') || (i' ≥ i_1 + 1 && x' ≥ x_2 + 1) || (i_1 ≥ i' + 1 && x_2 ≥ x' + 1) is true in process 1.
+
+--------------------------------------------------------------
+

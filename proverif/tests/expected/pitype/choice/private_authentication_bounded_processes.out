@@ -1,0 +1,112 @@
+Process 1 (that is, the first initial process):
+{1}new sk_a: bitstring;
+{2}new sk_b: bitstring;
+{3}new sk_c: bitstring;
+{4}out(c, pk(sk_a));
+{5}out(c, pk(sk_b));
+{6}out(c, pk(sk_c));
+{7}let sk_a_1: bitstring = sk_a in
+{8}let sk_b_1: bitstring = sk_b in
+(
+    {9}!
+    {10}new n_a: bitstring;
+    {11}out(c, aenc((n_a,pk(sk_a_1)),pk(sk_b_1)));
+    {12}in(c, x: bitstring)
+) | (
+    {13}!
+    {14}in(c, x_1: bitstring);
+    {15}new n_b: bitstring;
+    {16}let (n_a_1: bitstring,pub_a: bitstring) = adec(x_1,sk_b_1) in
+    (
+        {17}if (pub_a = pk(sk_a_1)) then
+            {18}out(c, aenc((n_a_1,n_b,pk(sk_b_1)),pk(sk_a_1)))
+        else
+            {19}out(c, aenc(n_b,pk(sk_b_1)))
+    )
+    else
+        {20}out(c, aenc(n_b,pk(sk_b_1)))
+)
+
+Process 2 (that is, the second initial process):
+{21}new sk_a_2: bitstring;
+{22}new sk_b_2: bitstring;
+{23}new sk_c_1: bitstring;
+{24}out(c, pk(sk_a_2));
+{25}out(c, pk(sk_b_2));
+{26}out(c, pk(sk_c_1));
+{27}let sk_a_3: bitstring = sk_c_1 in
+{28}let sk_b_3: bitstring = sk_b_2 in
+(
+    {29}!
+    {30}new n_a_2: bitstring;
+    {31}out(c, aenc((n_a_2,pk(sk_a_3)),pk(sk_b_3)));
+    {32}in(c, x_2: bitstring)
+) | (
+    {33}!
+    {34}in(c, x_3: bitstring);
+    {35}new n_b_1: bitstring;
+    {36}let (n_a_3: bitstring,pub_a_1: bitstring) = adec(x_3,sk_b_3) in
+    (
+        {37}if (pub_a_1 = pk(sk_a_3)) then
+            {38}out(c, aenc((n_a_3,n_b_1,pk(sk_b_3)),pk(sk_a_3)))
+        else
+            {39}out(c, aenc(n_b_1,pk(sk_b_3)))
+    )
+    else
+        {40}out(c, aenc(n_b_1,pk(sk_b_3)))
+)
+
+-- Observational equivalence between two processes
+-- Observational equivalence in biprocess 3 (that is, the merge of process 1 and process 2, simplified, with let moved downwards):
+{1}new sk_a_4: bitstring;
+{2}new sk_b_4: bitstring;
+{3}new sk_c_2: bitstring;
+{4}new sk_a_5: bitstring;
+{5}new sk_b_5: bitstring;
+{6}new sk_c_3: bitstring;
+{7}let v: bool = choice[true,false] in
+{8}out(c, (if v then pk(sk_a_4) else pk(sk_a_5)));
+{9}out(c, (if v then pk(sk_b_4) else pk(sk_b_5)));
+{10}out(c, (if v then pk(sk_c_2) else pk(sk_c_3)));
+{11}!
+{12}new n_a_4: bitstring;
+{13}new n_a_5: bitstring;
+{14}let sk_b_6: bitstring = (if v then caught-fail else sk_b_5) in
+{15}let sk_a_6: bitstring = (if v then caught-fail else sk_c_3) in
+{16}let sk_b_7: bitstring = (if v then sk_b_4 else caught-fail) in
+{17}let sk_a_7: bitstring = (if v then sk_a_4 else caught-fail) in
+(
+    {18}out(c, (if v then aenc((n_a_5,pk(sk_a_7)),pk(sk_b_7)) else aenc((n_a_4,pk(sk_a_6)),pk(sk_b_6))));
+    {19}in(c, v_1: bitstring)
+) | (
+    {20}!
+    {21}in(c, v_2: bitstring);
+    {22}new n_b_2: bitstring;
+    {23}new n_b_3: bitstring;
+    {24}let v_3: bitstring = catch-fail(adec(v_2,sk_b_6)) in
+    {25}let v_4: bitstring = catch-fail(adec(v_2,sk_b_7)) in
+    {26}out(c, (if v then (if ((not-caught-fail(v_4) && success?(1-proj-2-tuple(v_4))) && (2-proj-2-tuple(v_4) = pk(sk_a_7))) then aenc((1-proj-2-tuple(v_4),n_b_2,pk(sk_b_7)),pk(sk_a_7)) else aenc(n_b_2,pk(sk_b_7))) else (if ((not-caught-fail(v_3) && success?(1-proj-2-tuple(v_3))) && (2-proj-2-tuple(v_3) = pk(sk_a_6))) then aenc((1-proj-2-tuple(v_3),n_b_3,pk(sk_b_6)),pk(sk_a_6)) else aenc(n_b_3,pk(sk_b_6)))))
+)
+
+Translating the process into Horn clauses...
+Termination warning: v_5 ≠ v_6 && attacker2(v_7,v_5) && attacker2(v_7,v_6) -> bad
+Selecting 0
+Termination warning: v_5 ≠ v_6 && attacker2(v_5,v_7) && attacker2(v_6,v_7) -> bad
+Selecting 0
+select attacker2(aenc(x_4,pk(sk_b_4[])),v_5)/-5000
+select attacker2(v_5,aenc(x_4,pk(sk_b_5[])))/-5000
+select attacker2(aenc(x_4,pk(sk_b_4[])),aenc(x_5,pk(sk_b_5[])))/-5000
+Completing...
+Termination warning: v_5 ≠ v_6 && attacker2(v_7,v_5) && attacker2(v_7,v_6) -> bad
+Selecting 0
+Termination warning: v_5 ≠ v_6 && attacker2(v_5,v_7) && attacker2(v_6,v_7) -> bad
+Selecting 0
+RESULT Observational equivalence is true.
+
+--------------------------------------------------------------
+Verification summary:
+
+Equivalence between process 1 and process 2 is true.
+
+--------------------------------------------------------------
+

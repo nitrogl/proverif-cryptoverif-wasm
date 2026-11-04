@@ -1,0 +1,182 @@
+Biprocess 0 (that is, the initial process):
+{1}new sk_a: bitstring;
+{2}new sk_b: bitstring;
+{3}new sk_c: bitstring;
+{4}!
+{5}out(c, pk(sk_a));
+{6}out(c, pk(sk_b));
+{7}out(c, pk(sk_c));
+{8}let sk_a_1: bitstring = choice[sk_a,sk_c] in
+{9}let sk_b_1: bitstring = sk_b in
+(
+    {10}!
+    {11}new n_a: bitstring;
+    {12}out(c, aenc((n_a,pk(sk_a_1)),pk(sk_b_1)));
+    {13}in(c, x: bitstring)
+) | (
+    {14}!
+    {15}in(c, x_1: bitstring);
+    {16}new n_b: bitstring;
+    {17}let (n_a_1: bitstring,pub_a: bitstring) = adec(x_1,sk_b_1) in
+    (
+        {18}if (pub_a = pk(sk_a_1)) then
+            {19}out(c, aenc((n_a_1,n_b,pk(sk_b_1)),pk(sk_a_1)))
+        else
+            {20}out(c, aenc(n_b,pk(sk_b_1)))
+    )
+    else
+        {21}out(c, aenc(n_b,pk(sk_b_1)))
+)
+
+-- Observational equivalence in biprocess 1 (that is, biprocess 0, with let moved downwards):
+{1}new sk_a: bitstring;
+{2}new sk_b: bitstring;
+{3}new sk_c: bitstring;
+{4}!
+{5}out(c, pk(sk_a));
+{6}out(c, pk(sk_b));
+{7}out(c, pk(sk_c));
+{9}let sk_b_1: bitstring = sk_b in
+{8}let sk_a_1: bitstring = choice[sk_a,sk_c] in
+(
+    {10}!
+    {11}new n_a: bitstring;
+    {12}out(c, aenc((n_a,pk(sk_a_1)),pk(sk_b_1)));
+    {13}in(c, x: bitstring)
+) | (
+    {14}!
+    {15}in(c, x_1: bitstring);
+    {16}new n_b: bitstring;
+    {17}let (n_a_1: bitstring,pub_a: bitstring) = adec(x_1,sk_b_1) in
+    (
+        {18}if (pub_a = pk(sk_a_1)) then
+            {19}out(c, aenc((n_a_1,n_b,pk(sk_b_1)),pk(sk_a_1)))
+        else
+            {20}out(c, aenc(n_b,pk(sk_b_1)))
+    )
+    else
+        {21}out(c, aenc(n_b,pk(sk_b_1)))
+)
+
+Translating the process into Horn clauses...
+Termination warning: v ≠ v_1 && attacker2(v_2,v) && attacker2(v_2,v_1) -> bad
+Selecting 0
+Termination warning: v ≠ v_1 && attacker2(v,v_2) && attacker2(v_1,v_2) -> bad
+Selecting 0
+select attacker2(x_2,aenc(x_3,pk(sk_b[])))/-5000
+select attacker2(aenc(x_2,pk(sk_b[])),x_3)/-5000
+select attacker2(aenc(x_2,pk(sk_b[])),aenc(x_3,pk(sk_b[])))/-5000
+Completing...
+Termination warning: v ≠ v_1 && attacker2(v_2,v) && attacker2(v_2,v_1) -> bad
+Selecting 0
+Termination warning: v ≠ v_1 && attacker2(v,v_2) && attacker2(v_1,v_2) -> bad
+Selecting 0
+goal reachable: bad
+
+Derivation:
+
+1. The message pk(sk_b[]) (resp. pk(sk_b[])) may be sent to the attacker at output {6}.
+attacker2(pk(sk_b[]),pk(sk_b[])).
+
+2. The message pk(sk_c[]) (resp. pk(sk_c[])) may be sent to the attacker at output {7}.
+attacker2(pk(sk_c[]),pk(sk_c[])).
+
+3. The attacker has some term n_a_2 (resp. n_a_3).
+attacker2(n_a_2,n_a_3).
+
+4. By 3, the attacker may know n_a_2 (resp. n_a_3).
+By 2, the attacker may know pk(sk_c[]) (resp. pk(sk_c[])).
+Using the function 2-tuple the attacker may obtain (n_a_2,pk(sk_c[])) (resp. (n_a_3,pk(sk_c[]))).
+attacker2((n_a_2,pk(sk_c[])),(n_a_3,pk(sk_c[]))).
+
+5. By 4, the attacker may know (n_a_2,pk(sk_c[])) (resp. (n_a_3,pk(sk_c[]))).
+By 1, the attacker may know pk(sk_b[]) (resp. pk(sk_b[])).
+Using the function aenc the attacker may obtain aenc((n_a_2,pk(sk_c[])),pk(sk_b[])) (resp. aenc((n_a_3,pk(sk_c[])),pk(sk_b[]))).
+attacker2(aenc((n_a_2,pk(sk_c[])),pk(sk_b[])),aenc((n_a_3,pk(sk_c[])),pk(sk_b[]))).
+
+6. The message aenc((n_a_2,pk(sk_c[])),pk(sk_b[])) (resp. aenc((n_a_3,pk(sk_c[])),pk(sk_b[]))) that the attacker may have by 5 may be received at input {15}.
+We have pk(sk_c[]) ≠ pk(sk_a[]).
+So the attacker can make a distinguishing test at {18}.
+bad.
+
+
+Unified n_a_2 with n_a_3
+A more detailed output of the traces is available with
+  set traceDisplay = long.
+
+new sk_a: bitstring creating sk_a_2 at {1}
+
+new sk_b: bitstring creating sk_b_2 at {2}
+
+new sk_c: bitstring creating sk_c_1 at {3}
+
+out(c, ~M) with ~M = pk(sk_a_2) at {5} in copy a
+
+out(c, ~M_1) with ~M_1 = pk(sk_b_2) at {6} in copy a
+
+out(c, ~M_2) with ~M_2 = pk(sk_c_1) at {7} in copy a
+
+out(c, ~M_3) with ~M_3 = pk(sk_a_2) at {5} in copy a_1
+
+out(c, ~M_4) with ~M_4 = pk(sk_b_2) at {6} in copy a_1
+
+out(c, ~M_5) with ~M_5 = pk(sk_c_1) at {7} in copy a_1
+
+out(c, ~M_6) with ~M_6 = pk(sk_a_2) at {5} in copy a_2
+
+out(c, ~M_7) with ~M_7 = pk(sk_b_2) at {6} in copy a_2
+
+out(c, ~M_8) with ~M_8 = pk(sk_c_1) at {7} in copy a_2
+
+in(c, aenc((a_3,~M_2),~M_1)) with aenc((a_3,~M_2),~M_1) = aenc((a_3,pk(sk_c_1)),pk(sk_b_2)) at {15} in copy a, a_4
+
+new n_b: bitstring creating n_b_1 at {16} in copy a, a_4
+
+A process performs a test that may succeed on one side and not on the other at {18} in copy a, a_4.
+A trace has been found.
+RESULT Observational equivalence cannot be proved.
+Looking for simplified processes ...
+-- Observational equivalence in biprocess 2 (that is, biprocess 1, simplified):
+{1}new sk_a_2: bitstring;
+{2}new sk_b_2: bitstring;
+{3}new sk_c_1: bitstring;
+{4}let sk_b_3: bitstring = sk_b_2 in
+{5}let sk_a_3: bitstring = choice[sk_a_2,sk_c_1] in
+{6}!
+{7}out(c, pk(sk_a_2));
+{8}out(c, pk(sk_b_2));
+{9}out(c, pk(sk_c_1));
+{10}!
+{11}new n_a_2: bitstring;
+(
+    {12}out(c, aenc((n_a_2,pk(sk_a_3)),pk(sk_b_3)));
+    {13}in(c, x_2: bitstring)
+) | (
+    {14}in(c, x_3: bitstring);
+    {15}new n_b_1: bitstring;
+    {16}let v: bitstring = catch-fail(adec(x_3,sk_b_3)) in
+    {17}out(c, (if ((not-caught-fail(v) && success?(1-proj-2-tuple(v))) && (2-proj-2-tuple(v) = pk(sk_a_3))) then aenc((1-proj-2-tuple(v),n_b_1,pk(sk_b_3)),pk(sk_a_3)) else aenc(n_b_1,pk(sk_b_3))))
+)
+
+Translating the process into Horn clauses...
+Termination warning: v_1 ≠ v_2 && attacker2(v_3,v_1) && attacker2(v_3,v_2) -> bad
+Selecting 0
+Termination warning: v_1 ≠ v_2 && attacker2(v_1,v_3) && attacker2(v_2,v_3) -> bad
+Selecting 0
+select attacker2(x_4,aenc(x_5,pk(sk_b_2[])))/-5000
+select attacker2(aenc(x_4,pk(sk_b_2[])),x_5)/-5000
+select attacker2(aenc(x_4,pk(sk_b_2[])),aenc(x_5,pk(sk_b_2[])))/-5000
+Completing...
+Termination warning: v_1 ≠ v_2 && attacker2(v_3,v_1) && attacker2(v_3,v_2) -> bad
+Selecting 0
+Termination warning: v_1 ≠ v_2 && attacker2(v_1,v_3) && attacker2(v_2,v_3) -> bad
+Selecting 0
+RESULT Observational equivalence is true.
+
+--------------------------------------------------------------
+Verification summary:
+
+Observational equivalence is true.
+
+--------------------------------------------------------------
+

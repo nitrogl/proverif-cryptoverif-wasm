@@ -1,0 +1,155 @@
+Biprocess 0 (that is, the initial process):
+{1}new skA: skey;
+{2}let pkA: pkey = pk(skA) in
+{3}out(c, pkA);
+{4}new skB: skey;
+{5}let pkB: pkey = pk(skB) in
+{6}out(c, pkB);
+{7}new skS: skey;
+{8}let pkS: pkey = pk(skS) in
+{9}out(c, pkS);
+{10}insert keys(hostA,pkA);
+{11}insert keys(hostB,pkB);
+(
+    {12}!
+    {13}in(c, (h: host,k: pkey));
+    {14}if ((h ≠ hostA) && (h ≠ hostB)) then
+    {15}insert keys(h,k)
+) | (
+    {16}in(c, xANa: bitstring);
+    {17}in(c, yANa: bitstring);
+    {18}in(c, xANb: bitstring);
+    {19}in(c, yANb: bitstring);
+    {20}let secretANa: bitstring = choice[xANa,yANa] in
+    {21}let secretANb: bitstring = choice[xANb,yANb] in
+    (
+        {22}!
+        {23}let skA_1: skey = skA in
+        {24}in(c, hostX: host);
+        {25}out(c, (hostA,hostX));
+        {26}in(c, ms: bitstring);
+        {27}let (pkX: pkey,=hostX) = checksign(ms,pkS) in
+        {28}new Na: nonce;
+        {29}out(c, encrypt((Na,hostA),pkX));
+        {30}in(c, m: bitstring);
+        {31}let (=Na,NX2: nonce,=hostX) = decrypt(m,skA_1) in
+        {32}out(c, encrypt(NX2,pkX));
+        {33}if (hostX = hostB) then
+        {34}out(c, sencrypt(secretANa,Na));
+        {35}out(c, sencrypt(secretANb,NX2))
+    ) | (
+        {36}!
+        {37}let skB_1: skey = skB in
+        {38}let secretBNa_1: bitstring = secretBNa in
+        {39}let secretBNb_1: bitstring = secretBNb in
+        {40}in(c, m_1: bitstring);
+        {41}let (NY: nonce,hostY: host) = decrypt(m_1,skB_1) in
+        {42}out(c, (hostB,hostY));
+        {43}in(c, ms_1: bitstring);
+        {44}let (pkY: pkey,=hostY) = checksign(ms_1,pkS) in
+        {45}new Nb: nonce;
+        {46}out(c, encrypt((NY,Nb,hostB),pkY));
+        {47}in(c, m3: bitstring);
+        {48}if (Nb = decrypt(m3,skB_1)) then
+        {49}if (hostY = hostA) then
+        {50}out(c, sencrypt(secretBNa_1,NY));
+        {51}out(c, sencrypt(secretBNb_1,Nb))
+    ) | (
+        {52}!
+        {53}let skS_1: skey = skS in
+        {54}in(c, m_2: bitstring);
+        {55}let (a: host,b: host) = m_2 in
+        {57}get keys(=b,pkb: pkey) in
+        {56}out(c, sign((pkb,b),skS_1))
+    )
+)
+
+-- Observational equivalence in biprocess 1 (that is, biprocess 0, with let moved downwards):
+{1}new skA: skey;
+{2}let pkA: pkey = pk(skA) in
+{3}out(c, pkA);
+{4}new skB: skey;
+{5}let pkB: pkey = pk(skB) in
+{6}out(c, pkB);
+{7}new skS: skey;
+{8}let pkS: pkey = pk(skS) in
+{9}out(c, pkS);
+{10}insert keys(hostA,pkA);
+{11}insert keys(hostB,pkB);
+(
+    {12}!
+    {13}in(c, (h: host,k: pkey));
+    {14}if ((h ≠ hostA) && (h ≠ hostB)) then
+    {15}insert keys(h,k)
+) | (
+    {16}in(c, xANa: bitstring);
+    {17}in(c, yANa: bitstring);
+    {18}in(c, xANb: bitstring);
+    {19}in(c, yANb: bitstring);
+    (
+        {22}!
+        {24}in(c, hostX: host);
+        {25}out(c, (hostA,hostX));
+        {26}in(c, ms: bitstring);
+        {27}let (pkX: pkey,=hostX) = checksign(ms,pkS) in
+        {28}new Na: nonce;
+        {29}out(c, encrypt((Na,hostA),pkX));
+        {30}in(c, m: bitstring);
+        {23}let skA_1: skey = skA in
+        {31}let (=Na,NX2: nonce,=hostX) = decrypt(m,skA_1) in
+        {32}out(c, encrypt(NX2,pkX));
+        {33}if (hostX = hostB) then
+        {20}let secretANa: bitstring = choice[xANa,yANa] in
+        {34}out(c, sencrypt(secretANa,Na));
+        {21}let secretANb: bitstring = choice[xANb,yANb] in
+        {35}out(c, sencrypt(secretANb,NX2))
+    ) | (
+        {36}!
+        {40}in(c, m_1: bitstring);
+        {37}let skB_1: skey = skB in
+        {41}let (NY: nonce,hostY: host) = decrypt(m_1,skB_1) in
+        {42}out(c, (hostB,hostY));
+        {43}in(c, ms_1: bitstring);
+        {44}let (pkY: pkey,=hostY) = checksign(ms_1,pkS) in
+        {45}new Nb: nonce;
+        {46}out(c, encrypt((NY,Nb,hostB),pkY));
+        {47}in(c, m3: bitstring);
+        {48}if (Nb = decrypt(m3,skB_1)) then
+        {49}if (hostY = hostA) then
+        {38}let secretBNa_1: bitstring = secretBNa in
+        {50}out(c, sencrypt(secretBNa_1,NY));
+        {39}let secretBNb_1: bitstring = secretBNb in
+        {51}out(c, sencrypt(secretBNb_1,Nb))
+    ) | (
+        {52}!
+        {54}in(c, m_2: bitstring);
+        {55}let (a: host,b: host) = m_2 in
+        {57}get keys(=b,pkb: pkey) in
+        {53}let skS_1: skey = skS in
+        {56}out(c, sign((pkb,b),skS_1))
+    )
+)
+
+Translating the process into Horn clauses...
+Termination warning: v ≠ v_1 && attacker2(v_2,v) && attacker2(v_2,v_1) -> bad
+Selecting 0
+Termination warning: v ≠ v_1 && attacker2(v,v_2) && attacker2(v_1,v_2) -> bad
+Selecting 0
+Completing...
+Termination warning: v ≠ v_1 && attacker2(v_2,v) && attacker2(v_2,v_1) -> bad
+Selecting 0
+Termination warning: v ≠ v_1 && attacker2(v,v_2) && attacker2(v_1,v_2) -> bad
+Selecting 0
+200 rules inserted. Base: 189 rules (39 with conclusion selected). Queue: 14 rules.
+ok, secrecy assumption verified: fact unreachable attacker2(skA[],skA[])
+ok, secrecy assumption verified: fact unreachable attacker2(skB[],skB[])
+ok, secrecy assumption verified: fact unreachable attacker2(skS[],skS[])
+RESULT Observational equivalence is true.
+
+--------------------------------------------------------------
+Verification summary:
+
+Observational equivalence is true.
+
+--------------------------------------------------------------
+

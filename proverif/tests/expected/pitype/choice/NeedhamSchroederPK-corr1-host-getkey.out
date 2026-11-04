@@ -1,0 +1,145 @@
+Biprocess 0 (that is, the initial process):
+{1}in(c, xANa: bitstring);
+{2}in(c, yANa: bitstring);
+{3}in(c, xANb: bitstring);
+{4}in(c, yANb: bitstring);
+{5}let secretANa: bitstring = choice[xANa,yANa] in
+{6}let secretANb: bitstring = choice[xANb,yANb] in
+{7}new skA: skey;
+{8}let pkA: pkey = pk(skA) in
+{9}out(c, pkA);
+{10}new skB: skey;
+{11}let pkB: pkey = pk(skB) in
+{12}out(c, pkB);
+{13}new skS: skey;
+{14}let pkS: pkey = pk(skS) in
+{15}out(c, pkS);
+{16}let hostA: host = fhost(skA) in
+{17}out(c, hostA);
+{18}let hostB: host = fhost(skB) in
+{19}out(c, hostB);
+(
+    {20}!
+    {21}let skA_1: skey = skA in
+    {22}in(c, hostX: host);
+    {23}out(c, (hostA,hostX));
+    {24}in(c, ms: bitstring);
+    {25}let (pkX: pkey,=hostX) = checksign(ms,pkS) in
+    {26}new Na: nonce;
+    {27}out(c, encrypt((Na,hostA),pkX));
+    {28}in(c, m: bitstring);
+    {29}let (=Na,NX2: nonce,=hostX) = decrypt(m,skA_1) in
+    {30}out(c, encrypt(NX2,pkX));
+    {31}if (hostX = hostB) then
+    {32}out(c, sencrypt(secretANa,Na));
+    {33}out(c, sencrypt(secretANb,NX2))
+) | (
+    {34}!
+    {35}let skB_1: skey = skB in
+    {36}let secretBNa_1: bitstring = secretBNa in
+    {37}let secretBNb_1: bitstring = secretBNb in
+    {38}in(c, m_1: bitstring);
+    {39}let (NY: nonce,hostY: host) = decrypt(m_1,skB_1) in
+    {40}out(c, (hostB,hostY));
+    {41}in(c, ms_1: bitstring);
+    {42}let (pkY: pkey,=hostY) = checksign(ms_1,pkS) in
+    {43}new Nb: nonce;
+    {44}out(c, encrypt((NY,Nb,hostB),pkY));
+    {45}in(c, m3: bitstring);
+    {46}if (Nb = decrypt(m3,skB_1)) then
+    {47}if (hostY = hostA) then
+    {48}out(c, sencrypt(secretBNa_1,NY));
+    {49}out(c, sencrypt(secretBNb_1,Nb))
+) | (
+    {50}!
+    {51}let skS_1: skey = skS in
+    {52}in(c, m_2: bitstring);
+    {53}let (a: host,b: host) = m_2 in
+    {54}let sb: skey = getkey(b) in
+    {55}out(c, sign((pk(sb),b),skS_1))
+)
+
+-- Observational equivalence in biprocess 1 (that is, biprocess 0, with let moved downwards):
+{1}in(c, xANa: bitstring);
+{2}in(c, yANa: bitstring);
+{3}in(c, xANb: bitstring);
+{4}in(c, yANb: bitstring);
+{7}new skA: skey;
+{8}let pkA: pkey = pk(skA) in
+{9}out(c, pkA);
+{10}new skB: skey;
+{11}let pkB: pkey = pk(skB) in
+{12}out(c, pkB);
+{13}new skS: skey;
+{14}let pkS: pkey = pk(skS) in
+{15}out(c, pkS);
+{16}let hostA: host = fhost(skA) in
+{17}out(c, hostA);
+{18}let hostB: host = fhost(skB) in
+{19}out(c, hostB);
+(
+    {20}!
+    {22}in(c, hostX: host);
+    {23}out(c, (hostA,hostX));
+    {24}in(c, ms: bitstring);
+    {25}let (pkX: pkey,=hostX) = checksign(ms,pkS) in
+    {26}new Na: nonce;
+    {27}out(c, encrypt((Na,hostA),pkX));
+    {28}in(c, m: bitstring);
+    {21}let skA_1: skey = skA in
+    {29}let (=Na,NX2: nonce,=hostX) = decrypt(m,skA_1) in
+    {30}out(c, encrypt(NX2,pkX));
+    {31}if (hostX = hostB) then
+    {5}let secretANa: bitstring = choice[xANa,yANa] in
+    {32}out(c, sencrypt(secretANa,Na));
+    {6}let secretANb: bitstring = choice[xANb,yANb] in
+    {33}out(c, sencrypt(secretANb,NX2))
+) | (
+    {34}!
+    {38}in(c, m_1: bitstring);
+    {35}let skB_1: skey = skB in
+    {39}let (NY: nonce,hostY: host) = decrypt(m_1,skB_1) in
+    {40}out(c, (hostB,hostY));
+    {41}in(c, ms_1: bitstring);
+    {42}let (pkY: pkey,=hostY) = checksign(ms_1,pkS) in
+    {43}new Nb: nonce;
+    {44}out(c, encrypt((NY,Nb,hostB),pkY));
+    {45}in(c, m3: bitstring);
+    {46}if (Nb = decrypt(m3,skB_1)) then
+    {47}if (hostY = hostA) then
+    {36}let secretBNa_1: bitstring = secretBNa in
+    {48}out(c, sencrypt(secretBNa_1,NY));
+    {37}let secretBNb_1: bitstring = secretBNb in
+    {49}out(c, sencrypt(secretBNb_1,Nb))
+) | (
+    {50}!
+    {52}in(c, m_2: bitstring);
+    {53}let (a: host,b: host) = m_2 in
+    {54}let sb: skey = getkey(b) in
+    {51}let skS_1: skey = skS in
+    {55}out(c, sign((pk(sb),b),skS_1))
+)
+
+Translating the process into Horn clauses...
+Termination warning: v ≠ v_1 && attacker2(v_2,v) && attacker2(v_2,v_1) -> bad
+Selecting 0
+Termination warning: v ≠ v_1 && attacker2(v,v_2) && attacker2(v_1,v_2) -> bad
+Selecting 0
+Completing...
+Termination warning: v ≠ v_1 && attacker2(v_2,v) && attacker2(v_2,v_1) -> bad
+Selecting 0
+Termination warning: v ≠ v_1 && attacker2(v,v_2) && attacker2(v_1,v_2) -> bad
+Selecting 0
+200 rules inserted. Base: 187 rules (35 with conclusion selected). Queue: 30 rules.
+ok, secrecy assumption verified: fact unreachable attacker2(skA[yANb = choice[v,v],xANb = choice[v_1,v_1],yANa = choice[v_2,v_2],xANa = choice[v_3,v_3]],skA[yANb = choice[v,v],xANb = choice[v_1,v_1],yANa = choice[v_2,v_2],xANa = choice[v_3,v_3]])
+ok, secrecy assumption verified: fact unreachable attacker2(skB[yANb = choice[v,v],xANb = choice[v_1,v_1],yANa = choice[v_2,v_2],xANa = choice[v_3,v_3]],skB[yANb = choice[v,v],xANb = choice[v_1,v_1],yANa = choice[v_2,v_2],xANa = choice[v_3,v_3]])
+ok, secrecy assumption verified: fact unreachable attacker2(skS[yANb = choice[v,v],xANb = choice[v_1,v_1],yANa = choice[v_2,v_2],xANa = choice[v_3,v_3]],skS[yANb = choice[v,v],xANb = choice[v_1,v_1],yANa = choice[v_2,v_2],xANa = choice[v_3,v_3]])
+RESULT Observational equivalence is true.
+
+--------------------------------------------------------------
+Verification summary:
+
+Observational equivalence is true.
+
+--------------------------------------------------------------
+

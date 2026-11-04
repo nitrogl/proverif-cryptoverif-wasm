@@ -1,0 +1,822 @@
+Biprocess 0 (that is, the initial process):
+{1}in(c, xANa: bitstring);
+{2}in(c, yANa: bitstring);
+{3}in(c, xANb: bitstring);
+{4}in(c, yANb: bitstring);
+{5}in(c, xBNa: bitstring);
+{6}in(c, yBNa: bitstring);
+{7}in(c, xBNb: bitstring);
+{8}in(c, yBNb: bitstring);
+{9}let secretANa: bitstring = choice[xANa,yANa] in
+{10}let secretANb: bitstring = choice[xANb,yANb] in
+{11}let secretBNa: bitstring = choice[xBNa,yBNa] in
+{12}let secretBNb: bitstring = choice[xBNb,yBNb] in
+{13}new skA: skey;
+{14}let pkA: pkey = pk(skA) in
+{15}out(c, pkA);
+{16}new skB: skey;
+{17}let pkB: pkey = pk(skB) in
+{18}out(c, pkB);
+{19}new skS: skey;
+{20}let pkS: pkey = pk(skS) in
+{21}out(c, pkS);
+{22}let hostA: host = fhost(skA) in
+{23}out(c, hostA);
+{24}let hostB: host = fhost(skB) in
+{25}out(c, hostB);
+(
+    {26}!
+    {27}let skA_1: skey = skA in
+    {28}in(c, hostX: host);
+    {29}out(c, (hostA,hostX));
+    {30}in(c, ms: bitstring);
+    {31}let (pkX: pkey,=hostX) = checksign(ms,pkS) in
+    {32}new Na: nonce;
+    {33}out(c, encrypt((Na,hostA),pkX));
+    {34}in(c, m: bitstring);
+    {35}let (=Na,NX2: nonce,=hostX) = decrypt(m,skA_1) in
+    {36}out(c, encrypt(NX2,pkX));
+    {37}if (hostX = hostB) then
+    {38}out(c, sencrypt(secretANa,Na));
+    {39}out(c, sencrypt(secretANb,NX2))
+) | (
+    {40}!
+    {41}let skB_1: skey = skB in
+    {42}in(c, m_1: bitstring);
+    {43}let (NY: nonce,hostY: host) = decrypt(m_1,skB_1) in
+    {44}out(c, (hostB,hostY));
+    {45}in(c, ms_1: bitstring);
+    {46}let (pkY: pkey,=hostY) = checksign(ms_1,pkS) in
+    {47}new Nb: nonce;
+    {48}out(c, encrypt((NY,Nb,hostB),pkY));
+    {49}in(c, m3: bitstring);
+    {50}if (Nb = decrypt(m3,skB_1)) then
+    {51}if (hostY = hostA) then
+    {52}out(c, sencrypt(secretBNa,NY));
+    {53}out(c, sencrypt(secretBNb,Nb))
+) | (
+    {54}!
+    {55}let skS_1: skey = skS in
+    {56}in(c, m_2: bitstring);
+    {57}let (a: host,b: host) = m_2 in
+    {58}let sb: skey = getkey(b) in
+    {59}out(c, sign((pk(sb),b),skS_1))
+)
+
+-- Observational equivalence in biprocess 1 (that is, biprocess 0, with let moved downwards):
+{1}in(c, xANa: bitstring);
+{2}in(c, yANa: bitstring);
+{3}in(c, xANb: bitstring);
+{4}in(c, yANb: bitstring);
+{5}in(c, xBNa: bitstring);
+{6}in(c, yBNa: bitstring);
+{7}in(c, xBNb: bitstring);
+{8}in(c, yBNb: bitstring);
+{13}new skA: skey;
+{14}let pkA: pkey = pk(skA) in
+{15}out(c, pkA);
+{16}new skB: skey;
+{17}let pkB: pkey = pk(skB) in
+{18}out(c, pkB);
+{19}new skS: skey;
+{20}let pkS: pkey = pk(skS) in
+{21}out(c, pkS);
+{22}let hostA: host = fhost(skA) in
+{23}out(c, hostA);
+{24}let hostB: host = fhost(skB) in
+{25}out(c, hostB);
+(
+    {26}!
+    {28}in(c, hostX: host);
+    {29}out(c, (hostA,hostX));
+    {30}in(c, ms: bitstring);
+    {31}let (pkX: pkey,=hostX) = checksign(ms,pkS) in
+    {32}new Na: nonce;
+    {33}out(c, encrypt((Na,hostA),pkX));
+    {34}in(c, m: bitstring);
+    {27}let skA_1: skey = skA in
+    {35}let (=Na,NX2: nonce,=hostX) = decrypt(m,skA_1) in
+    {36}out(c, encrypt(NX2,pkX));
+    {37}if (hostX = hostB) then
+    {9}let secretANa: bitstring = choice[xANa,yANa] in
+    {38}out(c, sencrypt(secretANa,Na));
+    {10}let secretANb: bitstring = choice[xANb,yANb] in
+    {39}out(c, sencrypt(secretANb,NX2))
+) | (
+    {40}!
+    {42}in(c, m_1: bitstring);
+    {41}let skB_1: skey = skB in
+    {43}let (NY: nonce,hostY: host) = decrypt(m_1,skB_1) in
+    {44}out(c, (hostB,hostY));
+    {45}in(c, ms_1: bitstring);
+    {46}let (pkY: pkey,=hostY) = checksign(ms_1,pkS) in
+    {47}new Nb: nonce;
+    {48}out(c, encrypt((NY,Nb,hostB),pkY));
+    {49}in(c, m3: bitstring);
+    {50}if (Nb = decrypt(m3,skB_1)) then
+    {51}if (hostY = hostA) then
+    {11}let secretBNa: bitstring = choice[xBNa,yBNa] in
+    {52}out(c, sencrypt(secretBNa,NY));
+    {12}let secretBNb: bitstring = choice[xBNb,yBNb] in
+    {53}out(c, sencrypt(secretBNb,Nb))
+) | (
+    {54}!
+    {56}in(c, m_2: bitstring);
+    {57}let (a: host,b: host) = m_2 in
+    {58}let sb: skey = getkey(b) in
+    {55}let skS_1: skey = skS in
+    {59}out(c, sign((pk(sb),b),skS_1))
+)
+
+Translating the process into Horn clauses...
+Termination warning: v ≠ v_1 && attacker2(v_2,v) && attacker2(v_2,v_1) -> bad
+Selecting 0
+Termination warning: v ≠ v_1 && attacker2(v,v_2) && attacker2(v_1,v_2) -> bad
+Selecting 0
+Completing...
+Termination warning: v ≠ v_1 && attacker2(v_2,v) && attacker2(v_2,v_1) -> bad
+Selecting 0
+Termination warning: v ≠ v_1 && attacker2(v,v_2) && attacker2(v_1,v_2) -> bad
+Selecting 0
+200 rules inserted. Base: 187 rules (35 with conclusion selected). Queue: 30 rules.
+ok, secrecy assumption verified: fact unreachable attacker2(skA[yBNb = choice[v,v],xBNb = choice[v_1,v_1],yBNa = choice[v_2,v_2],xBNa = choice[v_3,v_3],yANb = choice[v_4,v_4],xANb = choice[v_5,v_5],yANa = choice[v_6,v_6],xANa = choice[v_7,v_7]],skA[yBNb = choice[v,v],xBNb = choice[v_1,v_1],yBNa = choice[v_2,v_2],xBNa = choice[v_3,v_3],yANb = choice[v_4,v_4],xANb = choice[v_5,v_5],yANa = choice[v_6,v_6],xANa = choice[v_7,v_7]])
+ok, secrecy assumption verified: fact unreachable attacker2(skB[yBNb = choice[v,v],xBNb = choice[v_1,v_1],yBNa = choice[v_2,v_2],xBNa = choice[v_3,v_3],yANb = choice[v_4,v_4],xANb = choice[v_5,v_5],yANa = choice[v_6,v_6],xANa = choice[v_7,v_7]],skB[yBNb = choice[v,v],xBNb = choice[v_1,v_1],yBNa = choice[v_2,v_2],xBNa = choice[v_3,v_3],yANb = choice[v_4,v_4],xANb = choice[v_5,v_5],yANa = choice[v_6,v_6],xANa = choice[v_7,v_7]])
+ok, secrecy assumption verified: fact unreachable attacker2(skS[yBNb = choice[v,v],xBNb = choice[v_1,v_1],yBNa = choice[v_2,v_2],xBNa = choice[v_3,v_3],yANb = choice[v_4,v_4],xANb = choice[v_5,v_5],yANa = choice[v_6,v_6],xANa = choice[v_7,v_7]],skS[yBNb = choice[v,v],xBNb = choice[v_1,v_1],yBNa = choice[v_2,v_2],xBNa = choice[v_3,v_3],yANb = choice[v_4,v_4],xANb = choice[v_5,v_5],yANa = choice[v_6,v_6],xANa = choice[v_7,v_7]])
+goal reachable: bad
+
+Derivation:
+Abbreviations:
+skB_2 = skB[yBNb = choice[yBNb_1,yBNb_2],xBNb = choice[xBNb_1,xBNb_2],yBNa = choice[yBNa_1,yBNa_2],xBNa = choice[xBNa_1,xANa_1],yANb = choice[yANb_1,yANb_2],xANb = choice[xANb_1,xANb_2],yANa = choice[yANa_1,secretANa_1],xANa = choice[xBNa_1,xANa_1]]
+skS_2 = skS[yBNb = choice[yBNb_1,yBNb_2],xBNb = choice[xBNb_1,xBNb_2],yBNa = choice[yBNa_1,yBNa_2],xBNa = choice[xBNa_1,xANa_1],yANb = choice[yANb_1,yANb_2],xANb = choice[xANb_1,xANb_2],yANa = choice[yANa_1,secretANa_1],xANa = choice[xBNa_1,xANa_1]]
+Na_1 = Na[ms = choice[sign((pk(skB_2),fhost(skB_2)),skS_2),sign((pk(skB_2),fhost(skB_2)),skS_2)],hostX = choice[fhost(skB_2),fhost(skB_2)],!1 = @sid,yBNb = choice[yBNb_1,yBNb_2],xBNb = choice[xBNb_1,xBNb_2],yBNa = choice[yBNa_1,yBNa_2],xBNa = choice[xBNa_1,xANa_1],yANb = choice[yANb_1,yANb_2],xANb = choice[xANb_1,xANb_2],yANa = choice[yANa_1,secretANa_1],xANa = choice[xBNa_1,xANa_1]]
+skA_2 = skA[yBNb = choice[yBNb_1,yBNb_2],xBNb = choice[xBNb_1,xBNb_2],yBNa = choice[yBNa_1,yBNa_2],xBNa = choice[xBNa_1,xANa_1],yANb = choice[yANb_1,yANb_2],xANb = choice[xANb_1,xANb_2],yANa = choice[yANa_1,secretANa_1],xANa = choice[xBNa_1,xANa_1]]
+Nb_1 = Nb[ms_1 = choice[sign((pk(skA_2),fhost(skA_2)),skS_2),sign((pk(skA_2),fhost(skA_2)),skS_2)],m_1 = choice[encrypt((Na_1,fhost(skA_2)),pk(skB_2)),encrypt((Na_1,fhost(skA_2)),pk(skB_2))],!1 = @sid_1,yBNb = choice[yBNb_1,yBNb_2],xBNb = choice[xBNb_1,xBNb_2],yBNa = choice[yBNa_1,yBNa_2],xBNa = choice[xBNa_1,xANa_1],yANb = choice[yANb_1,yANb_2],xANb = choice[xANb_1,xANb_2],yANa = choice[yANa_1,secretANa_1],xANa = choice[xBNa_1,xANa_1]]
+Nb_2 = Nb[ms_1 = choice[sign((pk(skA_2),fhost(skA_2)),skS_2),sign((pk(skA_2),fhost(skA_2)),skS_2)],m_1 = choice[encrypt((Na_1,fhost(skA_2)),pk(skB_2)),encrypt((Na_1,fhost(skA_2)),pk(skB_2))],!1 = @sid_2,yBNb = choice[yBNb_1,yBNb_2],xBNb = choice[xBNb_1,xBNb_2],yBNa = choice[yBNa_1,yBNa_2],xBNa = choice[xBNa_1,xANa_1],yANb = choice[yANb_1,yANb_2],xANb = choice[xANb_1,xANb_2],yANa = choice[yANa_1,secretANa_1],xANa = choice[xBNa_1,xANa_1]]
+
+1. The attacker has some term xBNa_1 (resp. xANa_1).
+attacker2(xBNa_1,xANa_1).
+
+2. The attacker has some term yANa_1 (resp. secretANa_1).
+attacker2(yANa_1,secretANa_1).
+
+3. The attacker has some term xANb_1 (resp. xANb_2).
+attacker2(xANb_1,xANb_2).
+
+4. The attacker has some term yANb_1 (resp. yANb_2).
+attacker2(yANb_1,yANb_2).
+
+5. The attacker has some term yBNa_1 (resp. yBNa_2).
+attacker2(yBNa_1,yBNa_2).
+
+6. The attacker has some term xBNb_1 (resp. xBNb_2).
+attacker2(xBNb_1,xBNb_2).
+
+7. The attacker has some term yBNb_1 (resp. yBNb_2).
+attacker2(yBNb_1,yBNb_2).
+
+8. The message xBNa_1 (resp. xANa_1) that the attacker may have by 1 may be received at input {1}.
+The message yANa_1 (resp. secretANa_1) that the attacker may have by 2 may be received at input {2}.
+The message xANb_1 (resp. xANb_2) that the attacker may have by 3 may be received at input {3}.
+The message yANb_1 (resp. yANb_2) that the attacker may have by 4 may be received at input {4}.
+The message xBNa_1 (resp. xANa_1) that the attacker may have by 1 may be received at input {5}.
+The message yBNa_1 (resp. yBNa_2) that the attacker may have by 5 may be received at input {6}.
+The message xBNb_1 (resp. xBNb_2) that the attacker may have by 6 may be received at input {7}.
+The message yBNb_1 (resp. yBNb_2) that the attacker may have by 7 may be received at input {8}.
+So the message fhost(skB_2) (resp. fhost(skB_2)) may be sent to the attacker at output {25}.
+attacker2(fhost(skB_2),fhost(skB_2)).
+
+9. The attacker has some term a_1 (resp. a_2).
+attacker2(a_1,a_2).
+
+10. By 9, the attacker may know a_1 (resp. a_2).
+By 8, the attacker may know fhost(skB_2) (resp. fhost(skB_2)).
+Using the function 2-tuple the attacker may obtain (a_1,fhost(skB_2)) (resp. (a_2,fhost(skB_2))).
+attacker2((a_1,fhost(skB_2)),(a_2,fhost(skB_2))).
+
+11. The message xBNa_1 (resp. xANa_1) that the attacker may have by 1 may be received at input {1}.
+The message yANa_1 (resp. secretANa_1) that the attacker may have by 2 may be received at input {2}.
+The message xANb_1 (resp. xANb_2) that the attacker may have by 3 may be received at input {3}.
+The message yANb_1 (resp. yANb_2) that the attacker may have by 4 may be received at input {4}.
+The message xBNa_1 (resp. xANa_1) that the attacker may have by 1 may be received at input {5}.
+The message yBNa_1 (resp. yBNa_2) that the attacker may have by 5 may be received at input {6}.
+The message xBNb_1 (resp. xBNb_2) that the attacker may have by 6 may be received at input {7}.
+The message yBNb_1 (resp. yBNb_2) that the attacker may have by 7 may be received at input {8}.
+The message (a_1,fhost(skB_2)) (resp. (a_2,fhost(skB_2))) that the attacker may have by 10 may be received at input {56}.
+So the message sign((pk(skB_2),fhost(skB_2)),skS_2) (resp. sign((pk(skB_2),fhost(skB_2)),skS_2)) may be sent to the attacker at output {59}.
+attacker2(sign((pk(skB_2),fhost(skB_2)),skS_2),sign((pk(skB_2),fhost(skB_2)),skS_2)).
+
+12. The message xBNa_1 (resp. xANa_1) that the attacker may have by 1 may be received at input {1}.
+The message yANa_1 (resp. secretANa_1) that the attacker may have by 2 may be received at input {2}.
+The message xANb_1 (resp. xANb_2) that the attacker may have by 3 may be received at input {3}.
+The message yANb_1 (resp. yANb_2) that the attacker may have by 4 may be received at input {4}.
+The message xBNa_1 (resp. xANa_1) that the attacker may have by 1 may be received at input {5}.
+The message yBNa_1 (resp. yBNa_2) that the attacker may have by 5 may be received at input {6}.
+The message xBNb_1 (resp. xBNb_2) that the attacker may have by 6 may be received at input {7}.
+The message yBNb_1 (resp. yBNb_2) that the attacker may have by 7 may be received at input {8}.
+The message fhost(skB_2) (resp. fhost(skB_2)) that the attacker may have by 8 may be received at input {28}.
+The message sign((pk(skB_2),fhost(skB_2)),skS_2) (resp. sign((pk(skB_2),fhost(skB_2)),skS_2)) that the attacker may have by 11 may be received at input {30}.
+So the message encrypt((Na_1,fhost(skA_2)),pk(skB_2)) (resp. encrypt((Na_1,fhost(skA_2)),pk(skB_2))) may be sent to the attacker at output {33}.
+attacker2(encrypt((Na_1,fhost(skA_2)),pk(skB_2)),encrypt((Na_1,fhost(skA_2)),pk(skB_2))).
+
+13. The attacker has some term hostX_1 (resp. hostX_2).
+attacker2(hostX_1,hostX_2).
+
+14. The message xBNa_1 (resp. xANa_1) that the attacker may have by 1 may be received at input {1}.
+The message yANa_1 (resp. secretANa_1) that the attacker may have by 2 may be received at input {2}.
+The message xANb_1 (resp. xANb_2) that the attacker may have by 3 may be received at input {3}.
+The message yANb_1 (resp. yANb_2) that the attacker may have by 4 may be received at input {4}.
+The message xBNa_1 (resp. xANa_1) that the attacker may have by 1 may be received at input {5}.
+The message yBNa_1 (resp. yBNa_2) that the attacker may have by 5 may be received at input {6}.
+The message xBNb_1 (resp. xBNb_2) that the attacker may have by 6 may be received at input {7}.
+The message yBNb_1 (resp. yBNb_2) that the attacker may have by 7 may be received at input {8}.
+The message hostX_1 (resp. hostX_2) that the attacker may have by 13 may be received at input {28}.
+So the message (fhost(skA_2),hostX_1) (resp. (fhost(skA_2),hostX_2)) may be sent to the attacker at output {29}.
+attacker2((fhost(skA_2),hostX_1),(fhost(skA_2),hostX_2)).
+
+15. By 14, the attacker may know (fhost(skA_2),hostX_1) (resp. (fhost(skA_2),hostX_2)).
+Using the function 1-proj-2-tuple the attacker may obtain fhost(skA_2) (resp. fhost(skA_2)).
+attacker2(fhost(skA_2),fhost(skA_2)).
+
+16. The attacker has some term a_3 (resp. a_4).
+attacker2(a_3,a_4).
+
+17. By 16, the attacker may know a_3 (resp. a_4).
+By 15, the attacker may know fhost(skA_2) (resp. fhost(skA_2)).
+Using the function 2-tuple the attacker may obtain (a_3,fhost(skA_2)) (resp. (a_4,fhost(skA_2))).
+attacker2((a_3,fhost(skA_2)),(a_4,fhost(skA_2))).
+
+18. The message xBNa_1 (resp. xANa_1) that the attacker may have by 1 may be received at input {1}.
+The message yANa_1 (resp. secretANa_1) that the attacker may have by 2 may be received at input {2}.
+The message xANb_1 (resp. xANb_2) that the attacker may have by 3 may be received at input {3}.
+The message yANb_1 (resp. yANb_2) that the attacker may have by 4 may be received at input {4}.
+The message xBNa_1 (resp. xANa_1) that the attacker may have by 1 may be received at input {5}.
+The message yBNa_1 (resp. yBNa_2) that the attacker may have by 5 may be received at input {6}.
+The message xBNb_1 (resp. xBNb_2) that the attacker may have by 6 may be received at input {7}.
+The message yBNb_1 (resp. yBNb_2) that the attacker may have by 7 may be received at input {8}.
+The message (a_3,fhost(skA_2)) (resp. (a_4,fhost(skA_2))) that the attacker may have by 17 may be received at input {56}.
+So the message sign((pk(skA_2),fhost(skA_2)),skS_2) (resp. sign((pk(skA_2),fhost(skA_2)),skS_2)) may be sent to the attacker at output {59}.
+attacker2(sign((pk(skA_2),fhost(skA_2)),skS_2),sign((pk(skA_2),fhost(skA_2)),skS_2)).
+
+19. The message xBNa_1 (resp. xANa_1) that the attacker may have by 1 may be received at input {1}.
+The message yANa_1 (resp. secretANa_1) that the attacker may have by 2 may be received at input {2}.
+The message xANb_1 (resp. xANb_2) that the attacker may have by 3 may be received at input {3}.
+The message yANb_1 (resp. yANb_2) that the attacker may have by 4 may be received at input {4}.
+The message xBNa_1 (resp. xANa_1) that the attacker may have by 1 may be received at input {5}.
+The message yBNa_1 (resp. yBNa_2) that the attacker may have by 5 may be received at input {6}.
+The message xBNb_1 (resp. xBNb_2) that the attacker may have by 6 may be received at input {7}.
+The message yBNb_1 (resp. yBNb_2) that the attacker may have by 7 may be received at input {8}.
+The message encrypt((Na_1,fhost(skA_2)),pk(skB_2)) (resp. encrypt((Na_1,fhost(skA_2)),pk(skB_2))) that the attacker may have by 12 may be received at input {42}.
+The message sign((pk(skA_2),fhost(skA_2)),skS_2) (resp. sign((pk(skA_2),fhost(skA_2)),skS_2)) that the attacker may have by 18 may be received at input {45}.
+So the message encrypt((Na_1,Nb_2,fhost(skB_2)),pk(skA_2)) (resp. encrypt((Na_1,Nb_2,fhost(skB_2)),pk(skA_2))) may be sent to the attacker at output {48}.
+attacker2(encrypt((Na_1,Nb_2,fhost(skB_2)),pk(skA_2)),encrypt((Na_1,Nb_2,fhost(skB_2)),pk(skA_2))).
+
+20. The message xBNa_1 (resp. xANa_1) that the attacker may have by 1 may be received at input {1}.
+The message yANa_1 (resp. secretANa_1) that the attacker may have by 2 may be received at input {2}.
+The message xANb_1 (resp. xANb_2) that the attacker may have by 3 may be received at input {3}.
+The message yANb_1 (resp. yANb_2) that the attacker may have by 4 may be received at input {4}.
+The message xBNa_1 (resp. xANa_1) that the attacker may have by 1 may be received at input {5}.
+The message yBNa_1 (resp. yBNa_2) that the attacker may have by 5 may be received at input {6}.
+The message xBNb_1 (resp. xBNb_2) that the attacker may have by 6 may be received at input {7}.
+The message yBNb_1 (resp. yBNb_2) that the attacker may have by 7 may be received at input {8}.
+The message fhost(skB_2) (resp. fhost(skB_2)) that the attacker may have by 8 may be received at input {28}.
+The message sign((pk(skB_2),fhost(skB_2)),skS_2) (resp. sign((pk(skB_2),fhost(skB_2)),skS_2)) that the attacker may have by 11 may be received at input {30}.
+The message encrypt((Na_1,Nb_2,fhost(skB_2)),pk(skA_2)) (resp. encrypt((Na_1,Nb_2,fhost(skB_2)),pk(skA_2))) that the attacker may have by 19 may be received at input {34}.
+So the message encrypt(Nb_2,pk(skB_2)) (resp. encrypt(Nb_2,pk(skB_2))) may be sent to the attacker at output {36}.
+attacker2(encrypt(Nb_2,pk(skB_2)),encrypt(Nb_2,pk(skB_2))).
+
+21. The message xBNa_1 (resp. xANa_1) that the attacker may have by 1 may be received at input {1}.
+The message yANa_1 (resp. secretANa_1) that the attacker may have by 2 may be received at input {2}.
+The message xANb_1 (resp. xANb_2) that the attacker may have by 3 may be received at input {3}.
+The message yANb_1 (resp. yANb_2) that the attacker may have by 4 may be received at input {4}.
+The message xBNa_1 (resp. xANa_1) that the attacker may have by 1 may be received at input {5}.
+The message yBNa_1 (resp. yBNa_2) that the attacker may have by 5 may be received at input {6}.
+The message xBNb_1 (resp. xBNb_2) that the attacker may have by 6 may be received at input {7}.
+The message yBNb_1 (resp. yBNb_2) that the attacker may have by 7 may be received at input {8}.
+The message encrypt((Na_1,fhost(skA_2)),pk(skB_2)) (resp. encrypt((Na_1,fhost(skA_2)),pk(skB_2))) that the attacker may have by 12 may be received at input {42}.
+The message sign((pk(skA_2),fhost(skA_2)),skS_2) (resp. sign((pk(skA_2),fhost(skA_2)),skS_2)) that the attacker may have by 18 may be received at input {45}.
+The message encrypt(Nb_2,pk(skB_2)) (resp. encrypt(Nb_2,pk(skB_2))) that the attacker may have by 20 may be received at input {49}.
+So the message sencrypt(xBNa_1,Na_1) (resp. sencrypt(yBNa_2,Na_1)) may be sent to the attacker at output {52}.
+attacker2(sencrypt(xBNa_1,Na_1),sencrypt(yBNa_2,Na_1)).
+
+22. The message xBNa_1 (resp. xANa_1) that the attacker may have by 1 may be received at input {1}.
+The message yANa_1 (resp. secretANa_1) that the attacker may have by 2 may be received at input {2}.
+The message xANb_1 (resp. xANb_2) that the attacker may have by 3 may be received at input {3}.
+The message yANb_1 (resp. yANb_2) that the attacker may have by 4 may be received at input {4}.
+The message xBNa_1 (resp. xANa_1) that the attacker may have by 1 may be received at input {5}.
+The message yBNa_1 (resp. yBNa_2) that the attacker may have by 5 may be received at input {6}.
+The message xBNb_1 (resp. xBNb_2) that the attacker may have by 6 may be received at input {7}.
+The message yBNb_1 (resp. yBNb_2) that the attacker may have by 7 may be received at input {8}.
+The message encrypt((Na_1,fhost(skA_2)),pk(skB_2)) (resp. encrypt((Na_1,fhost(skA_2)),pk(skB_2))) that the attacker may have by 12 may be received at input {42}.
+The message sign((pk(skA_2),fhost(skA_2)),skS_2) (resp. sign((pk(skA_2),fhost(skA_2)),skS_2)) that the attacker may have by 18 may be received at input {45}.
+So the message encrypt((Na_1,Nb_1,fhost(skB_2)),pk(skA_2)) (resp. encrypt((Na_1,Nb_1,fhost(skB_2)),pk(skA_2))) may be sent to the attacker at output {48}.
+attacker2(encrypt((Na_1,Nb_1,fhost(skB_2)),pk(skA_2)),encrypt((Na_1,Nb_1,fhost(skB_2)),pk(skA_2))).
+
+23. The message xBNa_1 (resp. xANa_1) that the attacker may have by 1 may be received at input {1}.
+The message yANa_1 (resp. secretANa_1) that the attacker may have by 2 may be received at input {2}.
+The message xANb_1 (resp. xANb_2) that the attacker may have by 3 may be received at input {3}.
+The message yANb_1 (resp. yANb_2) that the attacker may have by 4 may be received at input {4}.
+The message xBNa_1 (resp. xANa_1) that the attacker may have by 1 may be received at input {5}.
+The message yBNa_1 (resp. yBNa_2) that the attacker may have by 5 may be received at input {6}.
+The message xBNb_1 (resp. xBNb_2) that the attacker may have by 6 may be received at input {7}.
+The message yBNb_1 (resp. yBNb_2) that the attacker may have by 7 may be received at input {8}.
+The message fhost(skB_2) (resp. fhost(skB_2)) that the attacker may have by 8 may be received at input {28}.
+The message sign((pk(skB_2),fhost(skB_2)),skS_2) (resp. sign((pk(skB_2),fhost(skB_2)),skS_2)) that the attacker may have by 11 may be received at input {30}.
+The message encrypt((Na_1,Nb_1,fhost(skB_2)),pk(skA_2)) (resp. encrypt((Na_1,Nb_1,fhost(skB_2)),pk(skA_2))) that the attacker may have by 22 may be received at input {34}.
+So the message sencrypt(xBNa_1,Na_1) (resp. sencrypt(secretANa_1,Na_1)) may be sent to the attacker at output {38}.
+attacker2(sencrypt(xBNa_1,Na_1),sencrypt(secretANa_1,Na_1)).
+
+24. By 23, the attacker may know sencrypt(xBNa_1,Na_1) (resp. sencrypt(secretANa_1,Na_1)).
+By 21, the attacker may know sencrypt(xBNa_1,Na_1) (resp. sencrypt(yBNa_2,Na_1)).
+We have sencrypt(secretANa_1,Na_1) ≠ sencrypt(yBNa_2,Na_1).
+The attacker tests equality between the two terms he knows, which may allow it to distinguish cases.
+bad.
+
+
+Unified @sid_2 with @sid_1
+Unified xBNa_1 with xANa_1
+Unified yANa_1 with secretANa_1
+Unified xANb_1 with xANb_2
+Unified yANb_1 with yANb_2
+Unified yBNa_1 with yBNa_2
+Unified xBNb_1 with xBNb_2
+Unified yBNb_1 with yBNb_2
+Unified a_1 with a_2
+Unified hostX_1 with hostX_2
+Unified a_3 with a_4
+A more detailed output of the traces is available with
+  set traceDisplay = long.
+
+in(c, a_5) at {1}
+
+in(c, a_6) at {2}
+
+in(c, a_7) at {3}
+
+in(c, a_8) at {4}
+
+in(c, a_5) at {5}
+
+in(c, a_9) at {6}
+
+in(c, a_10) at {7}
+
+in(c, a_11) at {8}
+
+new skA: skey creating skA_3 at {13}
+
+out(c, ~M) with ~M = pk(skA_3) at {15}
+
+new skB: skey creating skB_3 at {16}
+
+out(c, ~M_1) with ~M_1 = pk(skB_3) at {18}
+
+new skS: skey creating skS_3 at {19}
+
+out(c, ~M_2) with ~M_2 = pk(skS_3) at {21}
+
+out(c, ~M_3) with ~M_3 = fhost(skA_3) at {23}
+
+out(c, ~M_4) with ~M_4 = fhost(skB_3) at {25}
+
+in(c, a_12) at {28} in copy a_13
+
+out(c, (~M_5,~M_6)) with ~M_5 = fhost(skA_3), ~M_6 = a_12 at {29} in copy a_13
+
+in(c, ~M_4) with ~M_4 = fhost(skB_3) at {28} in copy a_14
+
+out(c, (~M_7,~M_8)) with ~M_7 = fhost(skA_3), ~M_8 = fhost(skB_3) at {29} in copy a_14
+
+in(c, (a_15,~M_3)) with ~M_3 = fhost(skA_3) at {56} in copy a_16
+
+out(c, ~M_9) with ~M_9 = sign((pk(skA_3),fhost(skA_3)),skS_3) at {59} in copy a_16
+
+in(c, (a_17,~M_4)) with ~M_4 = fhost(skB_3) at {56} in copy a_18
+
+out(c, ~M_10) with ~M_10 = sign((pk(skB_3),fhost(skB_3)),skS_3) at {59} in copy a_18
+
+in(c, ~M_10) with ~M_10 = sign((pk(skB_3),fhost(skB_3)),skS_3) at {30} in copy a_14
+
+new Na: nonce creating Na_2 at {32} in copy a_14
+
+out(c, ~M_11) with ~M_11 = encrypt((Na_2,fhost(skA_3)),pk(skB_3)) at {33} in copy a_14
+
+in(c, ~M_11) with ~M_11 = encrypt((Na_2,fhost(skA_3)),pk(skB_3)) at {42} in copy a_19
+
+out(c, (~M_12,~M_13)) with ~M_12 = fhost(skB_3), ~M_13 = fhost(skA_3) at {44} in copy a_19
+
+in(c, ~M_9) with ~M_9 = sign((pk(skA_3),fhost(skA_3)),skS_3) at {45} in copy a_19
+
+new Nb: nonce creating Nb_3 at {47} in copy a_19
+
+out(c, ~M_14) with ~M_14 = encrypt((Na_2,Nb_3,fhost(skB_3)),pk(skA_3)) at {48} in copy a_19
+
+in(c, ~M_14) with ~M_14 = encrypt((Na_2,Nb_3,fhost(skB_3)),pk(skA_3)) at {34} in copy a_14
+
+out(c, ~M_15) with ~M_15 = encrypt(Nb_3,pk(skB_3)) at {36} in copy a_14
+
+out(c, ~M_16) with ~M_16 = sencrypt(choice[a_5,a_6],Na_2) at {38} in copy a_14
+
+out(c, ~M_17) with ~M_17 = sencrypt(choice[a_7,a_8],Nb_3) at {39} in copy a_14
+
+in(c, ~M_15) with ~M_15 = encrypt(Nb_3,pk(skB_3)) at {49} in copy a_19
+
+out(c, ~M_18) with ~M_18 = sencrypt(choice[a_5,a_9],Na_2) at {52} in copy a_19
+
+out(c, ~M_19) with ~M_19 = sencrypt(choice[a_10,a_11],Nb_3) at {53} in copy a_19
+
+The attacker tests whether
+~M_16 = sencrypt(choice[a_5,a_6],Na_2)
+is equal to
+~M_18 = sencrypt(choice[a_5,a_9],Na_2).
+The result in the left-hand side is different from the result in the right-hand side.
+A trace has been found.
+RESULT Observational equivalence cannot be proved.
+Looking for simplified processes ...
+-- Observational equivalence in biprocess 2 (that is, biprocess 1, simplified):
+{1}in(c, xANa_1: bitstring);
+{2}in(c, yANa_1: bitstring);
+{3}in(c, xANb_1: bitstring);
+{4}in(c, yANb_1: bitstring);
+{5}in(c, xBNa_1: bitstring);
+{6}in(c, yBNa_1: bitstring);
+{7}in(c, xBNb_1: bitstring);
+{8}in(c, yBNb_1: bitstring);
+{9}new skA_2: skey;
+{10}new skB_2: skey;
+{11}new skS_2: skey;
+{12}let pkA_1: pkey = pk(skA_2) in
+{13}let pkB_1: pkey = pk(skB_2) in
+{14}let pkS_1: pkey = pk(skS_2) in
+{15}let hostA_1: host = fhost(skA_2) in
+{16}let hostB_1: host = fhost(skB_2) in
+{17}out(c, pkA_1);
+{18}out(c, pkB_1);
+{19}out(c, pkS_1);
+{20}out(c, hostA_1);
+{21}out(c, hostB_1);
+{22}!
+(
+    {23}in(c, hostX_1: host);
+    {24}out(c, (hostA_1,hostX_1));
+    {25}in(c, ms_2: bitstring);
+    {26}new Na_1: nonce;
+    {27}let v: bitstring = catch-fail(checksign(ms_2,pkS_1)) in
+    {28}if (not-caught-fail(v) && (success?(1-proj-2-tuple(v)) && (hostX_1 =nf 2-proj-2-tuple(v)))) then
+    {29}out(c, encrypt((Na_1,hostA_1),1-proj-2-tuple(v)));
+    {30}in(c, m_3: bitstring);
+    {31}let skA_3: skey = skA_2 in
+    {32}let v_1: bitstring = catch-fail(decrypt(m_3,skA_3)) in
+    {33}let v_2: bool = (not-caught-fail(v_1) && (success?(1-proj-3-tuple(v_1)) && ((Na_1 =nf 1-proj-3-tuple(v_1)) && (hostX_1 =nf 3-proj-3-tuple(v_1))))) in
+    {34}let v_3: bool = (if v_2 then (hostX_1 = hostB_1) else caught-fail) in
+    {35}let secretANa_1: bitstring = (if v_2 then (if v_3 then choice[xANa_1,yANa_1] else caught-fail) else caught-fail) in
+    {36}let secretANb_1: bitstring = (if v_2 then (if v_3 then choice[xANb_1,yANb_1] else caught-fail) else caught-fail) in
+    {37}if v_2 then
+    {38}if v_3 then
+        {39}out(c, encrypt(2-proj-3-tuple(v_1),1-proj-2-tuple(v)));
+        {40}out(c, sencrypt(secretANa_1,Na_1));
+        {41}out(c, sencrypt(secretANb_1,2-proj-3-tuple(v_1)))
+    else
+        {42}out(c, encrypt(2-proj-3-tuple(v_1),1-proj-2-tuple(v)))
+) | (
+    {43}in(c, m_4: bitstring);
+    {44}let skB_3: skey = skB_2 in
+    {45}let v_4: bitstring = catch-fail(decrypt(m_4,skB_3)) in
+    {46}if (not-caught-fail(v_4) && success?(1-proj-2-tuple(v_4))) then
+    {47}out(c, (hostB_1,2-proj-2-tuple(v_4)));
+    {48}in(c, ms_3: bitstring);
+    {49}new Nb_1: nonce;
+    {50}let v_5: bitstring = catch-fail(checksign(ms_3,pkS_1)) in
+    {51}if (not-caught-fail(v_5) && (success?(1-proj-2-tuple(v_5)) && (2-proj-2-tuple(v_4) =nf 2-proj-2-tuple(v_5)))) then
+    {52}out(c, encrypt((1-proj-2-tuple(v_4),Nb_1,hostB_1),1-proj-2-tuple(v_5)));
+    {53}in(c, m3_1: bitstring);
+    {54}let v_6: bool = catch-fail((Nb_1 = decrypt(m3_1,skB_3))) in
+    {55}let v_7: bool = not-caught-fail(v_6) in
+    {56}let v_8: bool = (if v_7 then v_6 else caught-fail) in
+    {57}let v_9: bool = (if v_7 then (if v_8 then (2-proj-2-tuple(v_4) = hostA_1) else caught-fail) else caught-fail) in
+    {58}let secretBNa_1: bitstring = (if v_7 then (if v_8 then (if v_9 then choice[xBNa_1,yBNa_1] else caught-fail) else caught-fail) else caught-fail) in
+    {59}let secretBNb_1: bitstring = (if v_7 then (if v_8 then (if v_9 then choice[xBNb_1,yBNb_1] else caught-fail) else caught-fail) else caught-fail) in
+    {60}if (v_7 && (v_8 && v_9)) then
+    {61}out(c, sencrypt(secretBNa_1,1-proj-2-tuple(v_4)));
+    {62}out(c, sencrypt(secretBNb_1,Nb_1))
+) | (
+    {63}in(c, m_5: bitstring);
+    {64}let v_10: bitstring = m_5 in
+    {65}let v_11: bool = success?(1-proj-2-tuple(v_10)) in
+    {66}let sb_1: skey = (if v_11 then catch-fail(getkey(2-proj-2-tuple(v_10))) else caught-fail) in
+    {67}let v_12: bool = (if v_11 then not-caught-fail(sb_1) else caught-fail) in
+    {68}let skS_3: skey = (if v_11 then (if v_12 then skS_2 else caught-fail) else caught-fail) in
+    {69}if (v_11 && v_12) then
+    {70}out(c, sign((pk(sb_1),2-proj-2-tuple(v_10)),skS_3))
+)
+
+Translating the process into Horn clauses...
+Termination warning: v_13 ≠ v_14 && attacker2(v_15,v_13) && attacker2(v_15,v_14) -> bad
+Selecting 0
+Termination warning: v_13 ≠ v_14 && attacker2(v_13,v_15) && attacker2(v_14,v_15) -> bad
+Selecting 0
+Completing...
+Termination warning: v_13 ≠ v_14 && attacker2(v_15,v_13) && attacker2(v_15,v_14) -> bad
+Selecting 0
+Termination warning: v_13 ≠ v_14 && attacker2(v_13,v_15) && attacker2(v_14,v_15) -> bad
+Selecting 0
+200 rules inserted. Base: 185 rules (33 with conclusion selected). Queue: 44 rules.
+ok, secrecy assumption verified: fact unreachable attacker2(skA_2[yBNb_1 = choice[v_13,v_13],xBNb_1 = choice[v_14,v_14],yBNa_1 = choice[v_15,v_15],xBNa_1 = choice[v_16,v_16],yANb_1 = choice[v_17,v_17],xANb_1 = choice[v_18,v_18],yANa_1 = choice[v_19,v_19],xANa_1 = choice[v_20,v_20]],skA_2[yBNb_1 = choice[v_13,v_13],xBNb_1 = choice[v_14,v_14],yBNa_1 = choice[v_15,v_15],xBNa_1 = choice[v_16,v_16],yANb_1 = choice[v_17,v_17],xANb_1 = choice[v_18,v_18],yANa_1 = choice[v_19,v_19],xANa_1 = choice[v_20,v_20]])
+ok, secrecy assumption verified: fact unreachable attacker2(skB_2[yBNb_1 = choice[v_13,v_13],xBNb_1 = choice[v_14,v_14],yBNa_1 = choice[v_15,v_15],xBNa_1 = choice[v_16,v_16],yANb_1 = choice[v_17,v_17],xANb_1 = choice[v_18,v_18],yANa_1 = choice[v_19,v_19],xANa_1 = choice[v_20,v_20]],skB_2[yBNb_1 = choice[v_13,v_13],xBNb_1 = choice[v_14,v_14],yBNa_1 = choice[v_15,v_15],xBNa_1 = choice[v_16,v_16],yANb_1 = choice[v_17,v_17],xANb_1 = choice[v_18,v_18],yANa_1 = choice[v_19,v_19],xANa_1 = choice[v_20,v_20]])
+ok, secrecy assumption verified: fact unreachable attacker2(skS_2[yBNb_1 = choice[v_13,v_13],xBNb_1 = choice[v_14,v_14],yBNa_1 = choice[v_15,v_15],xBNa_1 = choice[v_16,v_16],yANb_1 = choice[v_17,v_17],xANb_1 = choice[v_18,v_18],yANa_1 = choice[v_19,v_19],xANa_1 = choice[v_20,v_20]],skS_2[yBNb_1 = choice[v_13,v_13],xBNb_1 = choice[v_14,v_14],yBNa_1 = choice[v_15,v_15],xBNa_1 = choice[v_16,v_16],yANb_1 = choice[v_17,v_17],xANb_1 = choice[v_18,v_18],yANa_1 = choice[v_19,v_19],xANa_1 = choice[v_20,v_20]])
+goal reachable: bad
+
+Derivation:
+Abbreviations:
+skB_4 = skB_2[yBNb_1 = choice[yBNb_2,yBNb_3],xBNb_1 = choice[xBNb_2,xBNb_3],yBNa_1 = choice[yBNa_2,yBNa_3],xBNa_1 = choice[xBNa_2,xANa_2],yANb_1 = choice[yANb_2,secretANb_2],xANb_1 = choice[secretANb_3,xANb_2],yANa_1 = choice[yANa_2,secretANa_2],xANa_1 = choice[xBNa_2,xANa_2]]
+skS_4 = skS_2[yBNb_1 = choice[yBNb_2,yBNb_3],xBNb_1 = choice[xBNb_2,xBNb_3],yBNa_1 = choice[yBNa_2,yBNa_3],xBNa_1 = choice[xBNa_2,xANa_2],yANb_1 = choice[yANb_2,secretANb_2],xANb_1 = choice[secretANb_3,xANb_2],yANa_1 = choice[yANa_2,secretANa_2],xANa_1 = choice[xBNa_2,xANa_2]]
+Na_2 = Na_1[ms_2 = choice[sign((pk(skB_4),fhost(skB_4)),skS_4),sign((pk(skB_4),fhost(skB_4)),skS_4)],hostX_1 = choice[fhost(skB_4),fhost(skB_4)],!1 = @sid,yBNb_1 = choice[yBNb_2,yBNb_3],xBNb_1 = choice[xBNb_2,xBNb_3],yBNa_1 = choice[yBNa_2,yBNa_3],xBNa_1 = choice[xBNa_2,xANa_2],yANb_1 = choice[yANb_2,secretANb_2],xANb_1 = choice[secretANb_3,xANb_2],yANa_1 = choice[yANa_2,secretANa_2],xANa_1 = choice[xBNa_2,xANa_2]]
+skA_4 = skA_2[yBNb_1 = choice[yBNb_2,yBNb_3],xBNb_1 = choice[xBNb_2,xBNb_3],yBNa_1 = choice[yBNa_2,yBNa_3],xBNa_1 = choice[xBNa_2,xANa_2],yANb_1 = choice[yANb_2,secretANb_2],xANb_1 = choice[secretANb_3,xANb_2],yANa_1 = choice[yANa_2,secretANa_2],xANa_1 = choice[xBNa_2,xANa_2]]
+Nb_2 = Nb_1[ms_3 = choice[sign((pk(skA_4),fhost(skA_4)),skS_4),sign((pk(skA_4),fhost(skA_4)),skS_4)],m_4 = choice[encrypt((Na_2,fhost(skA_4)),pk(skB_4)),encrypt((Na_2,fhost(skA_4)),pk(skB_4))],!1 = @sid_1,yBNb_1 = choice[yBNb_2,yBNb_3],xBNb_1 = choice[xBNb_2,xBNb_3],yBNa_1 = choice[yBNa_2,yBNa_3],xBNa_1 = choice[xBNa_2,xANa_2],yANb_1 = choice[yANb_2,secretANb_2],xANb_1 = choice[secretANb_3,xANb_2],yANa_1 = choice[yANa_2,secretANa_2],xANa_1 = choice[xBNa_2,xANa_2]]
+Nb_3 = Nb_1[ms_3 = choice[sign((pk(skA_4),fhost(skA_4)),skS_4),sign((pk(skA_4),fhost(skA_4)),skS_4)],m_4 = choice[encrypt((Na_2,fhost(skA_4)),pk(skB_4)),encrypt((Na_2,fhost(skA_4)),pk(skB_4))],!1 = @sid_2,yBNb_1 = choice[yBNb_2,yBNb_3],xBNb_1 = choice[xBNb_2,xBNb_3],yBNa_1 = choice[yBNa_2,yBNa_3],xBNa_1 = choice[xBNa_2,xANa_2],yANb_1 = choice[yANb_2,secretANb_2],xANb_1 = choice[secretANb_3,xANb_2],yANa_1 = choice[yANa_2,secretANa_2],xANa_1 = choice[xBNa_2,xANa_2]]
+
+1. The attacker has some term xBNa_2 (resp. xANa_2).
+attacker2(xBNa_2,xANa_2).
+
+2. The attacker has some term yANa_2 (resp. secretANa_2).
+attacker2(yANa_2,secretANa_2).
+
+3. The attacker has some term secretANb_3 (resp. xANb_2).
+attacker2(secretANb_3,xANb_2).
+
+4. The attacker has some term yANb_2 (resp. secretANb_2).
+attacker2(yANb_2,secretANb_2).
+
+5. The attacker has some term yBNa_2 (resp. yBNa_3).
+attacker2(yBNa_2,yBNa_3).
+
+6. The attacker has some term xBNb_2 (resp. xBNb_3).
+attacker2(xBNb_2,xBNb_3).
+
+7. The attacker has some term yBNb_2 (resp. yBNb_3).
+attacker2(yBNb_2,yBNb_3).
+
+8. The message xBNa_2 (resp. xANa_2) that the attacker may have by 1 may be received at input {1}.
+The message yANa_2 (resp. secretANa_2) that the attacker may have by 2 may be received at input {2}.
+The message secretANb_3 (resp. xANb_2) that the attacker may have by 3 may be received at input {3}.
+The message yANb_2 (resp. secretANb_2) that the attacker may have by 4 may be received at input {4}.
+The message xBNa_2 (resp. xANa_2) that the attacker may have by 1 may be received at input {5}.
+The message yBNa_2 (resp. yBNa_3) that the attacker may have by 5 may be received at input {6}.
+The message xBNb_2 (resp. xBNb_3) that the attacker may have by 6 may be received at input {7}.
+The message yBNb_2 (resp. yBNb_3) that the attacker may have by 7 may be received at input {8}.
+So the message fhost(skB_4) (resp. fhost(skB_4)) may be sent to the attacker at output {21}.
+attacker2(fhost(skB_4),fhost(skB_4)).
+
+9. The attacker has some term v_13 (resp. v_14).
+attacker2(v_13,v_14).
+
+10. By 9, the attacker may know v_13 (resp. v_14).
+By 8, the attacker may know fhost(skB_4) (resp. fhost(skB_4)).
+Using the function 2-tuple the attacker may obtain (v_13,fhost(skB_4)) (resp. (v_14,fhost(skB_4))).
+attacker2((v_13,fhost(skB_4)),(v_14,fhost(skB_4))).
+
+11. The message xBNa_2 (resp. xANa_2) that the attacker may have by 1 may be received at input {1}.
+The message yANa_2 (resp. secretANa_2) that the attacker may have by 2 may be received at input {2}.
+The message secretANb_3 (resp. xANb_2) that the attacker may have by 3 may be received at input {3}.
+The message yANb_2 (resp. secretANb_2) that the attacker may have by 4 may be received at input {4}.
+The message xBNa_2 (resp. xANa_2) that the attacker may have by 1 may be received at input {5}.
+The message yBNa_2 (resp. yBNa_3) that the attacker may have by 5 may be received at input {6}.
+The message xBNb_2 (resp. xBNb_3) that the attacker may have by 6 may be received at input {7}.
+The message yBNb_2 (resp. yBNb_3) that the attacker may have by 7 may be received at input {8}.
+The message (v_13,fhost(skB_4)) (resp. (v_14,fhost(skB_4))) that the attacker may have by 10 may be received at input {63}.
+So the message sign((pk(skB_4),fhost(skB_4)),skS_4) (resp. sign((pk(skB_4),fhost(skB_4)),skS_4)) may be sent to the attacker at output {70}.
+attacker2(sign((pk(skB_4),fhost(skB_4)),skS_4),sign((pk(skB_4),fhost(skB_4)),skS_4)).
+
+12. The message xBNa_2 (resp. xANa_2) that the attacker may have by 1 may be received at input {1}.
+The message yANa_2 (resp. secretANa_2) that the attacker may have by 2 may be received at input {2}.
+The message secretANb_3 (resp. xANb_2) that the attacker may have by 3 may be received at input {3}.
+The message yANb_2 (resp. secretANb_2) that the attacker may have by 4 may be received at input {4}.
+The message xBNa_2 (resp. xANa_2) that the attacker may have by 1 may be received at input {5}.
+The message yBNa_2 (resp. yBNa_3) that the attacker may have by 5 may be received at input {6}.
+The message xBNb_2 (resp. xBNb_3) that the attacker may have by 6 may be received at input {7}.
+The message yBNb_2 (resp. yBNb_3) that the attacker may have by 7 may be received at input {8}.
+The message fhost(skB_4) (resp. fhost(skB_4)) that the attacker may have by 8 may be received at input {23}.
+The message sign((pk(skB_4),fhost(skB_4)),skS_4) (resp. sign((pk(skB_4),fhost(skB_4)),skS_4)) that the attacker may have by 11 may be received at input {25}.
+So the message encrypt((Na_2,fhost(skA_4)),pk(skB_4)) (resp. encrypt((Na_2,fhost(skA_4)),pk(skB_4))) may be sent to the attacker at output {29}.
+attacker2(encrypt((Na_2,fhost(skA_4)),pk(skB_4)),encrypt((Na_2,fhost(skA_4)),pk(skB_4))).
+
+13. The attacker has some term hostX_2 (resp. hostX_3).
+attacker2(hostX_2,hostX_3).
+
+14. The message xBNa_2 (resp. xANa_2) that the attacker may have by 1 may be received at input {1}.
+The message yANa_2 (resp. secretANa_2) that the attacker may have by 2 may be received at input {2}.
+The message secretANb_3 (resp. xANb_2) that the attacker may have by 3 may be received at input {3}.
+The message yANb_2 (resp. secretANb_2) that the attacker may have by 4 may be received at input {4}.
+The message xBNa_2 (resp. xANa_2) that the attacker may have by 1 may be received at input {5}.
+The message yBNa_2 (resp. yBNa_3) that the attacker may have by 5 may be received at input {6}.
+The message xBNb_2 (resp. xBNb_3) that the attacker may have by 6 may be received at input {7}.
+The message yBNb_2 (resp. yBNb_3) that the attacker may have by 7 may be received at input {8}.
+The message hostX_2 (resp. hostX_3) that the attacker may have by 13 may be received at input {23}.
+So the message (fhost(skA_4),hostX_2) (resp. (fhost(skA_4),hostX_3)) may be sent to the attacker at output {24}.
+attacker2((fhost(skA_4),hostX_2),(fhost(skA_4),hostX_3)).
+
+15. By 14, the attacker may know (fhost(skA_4),hostX_2) (resp. (fhost(skA_4),hostX_3)).
+Using the function 1-proj-2-tuple the attacker may obtain fhost(skA_4) (resp. fhost(skA_4)).
+attacker2(fhost(skA_4),fhost(skA_4)).
+
+16. The attacker has some term v_15 (resp. v_16).
+attacker2(v_15,v_16).
+
+17. By 16, the attacker may know v_15 (resp. v_16).
+By 15, the attacker may know fhost(skA_4) (resp. fhost(skA_4)).
+Using the function 2-tuple the attacker may obtain (v_15,fhost(skA_4)) (resp. (v_16,fhost(skA_4))).
+attacker2((v_15,fhost(skA_4)),(v_16,fhost(skA_4))).
+
+18. The message xBNa_2 (resp. xANa_2) that the attacker may have by 1 may be received at input {1}.
+The message yANa_2 (resp. secretANa_2) that the attacker may have by 2 may be received at input {2}.
+The message secretANb_3 (resp. xANb_2) that the attacker may have by 3 may be received at input {3}.
+The message yANb_2 (resp. secretANb_2) that the attacker may have by 4 may be received at input {4}.
+The message xBNa_2 (resp. xANa_2) that the attacker may have by 1 may be received at input {5}.
+The message yBNa_2 (resp. yBNa_3) that the attacker may have by 5 may be received at input {6}.
+The message xBNb_2 (resp. xBNb_3) that the attacker may have by 6 may be received at input {7}.
+The message yBNb_2 (resp. yBNb_3) that the attacker may have by 7 may be received at input {8}.
+The message (v_15,fhost(skA_4)) (resp. (v_16,fhost(skA_4))) that the attacker may have by 17 may be received at input {63}.
+So the message sign((pk(skA_4),fhost(skA_4)),skS_4) (resp. sign((pk(skA_4),fhost(skA_4)),skS_4)) may be sent to the attacker at output {70}.
+attacker2(sign((pk(skA_4),fhost(skA_4)),skS_4),sign((pk(skA_4),fhost(skA_4)),skS_4)).
+
+19. The message xBNa_2 (resp. xANa_2) that the attacker may have by 1 may be received at input {1}.
+The message yANa_2 (resp. secretANa_2) that the attacker may have by 2 may be received at input {2}.
+The message secretANb_3 (resp. xANb_2) that the attacker may have by 3 may be received at input {3}.
+The message yANb_2 (resp. secretANb_2) that the attacker may have by 4 may be received at input {4}.
+The message xBNa_2 (resp. xANa_2) that the attacker may have by 1 may be received at input {5}.
+The message yBNa_2 (resp. yBNa_3) that the attacker may have by 5 may be received at input {6}.
+The message xBNb_2 (resp. xBNb_3) that the attacker may have by 6 may be received at input {7}.
+The message yBNb_2 (resp. yBNb_3) that the attacker may have by 7 may be received at input {8}.
+The message encrypt((Na_2,fhost(skA_4)),pk(skB_4)) (resp. encrypt((Na_2,fhost(skA_4)),pk(skB_4))) that the attacker may have by 12 may be received at input {43}.
+The message sign((pk(skA_4),fhost(skA_4)),skS_4) (resp. sign((pk(skA_4),fhost(skA_4)),skS_4)) that the attacker may have by 18 may be received at input {48}.
+So the message encrypt((Na_2,Nb_3,fhost(skB_4)),pk(skA_4)) (resp. encrypt((Na_2,Nb_3,fhost(skB_4)),pk(skA_4))) may be sent to the attacker at output {52}.
+attacker2(encrypt((Na_2,Nb_3,fhost(skB_4)),pk(skA_4)),encrypt((Na_2,Nb_3,fhost(skB_4)),pk(skA_4))).
+
+20. The message xBNa_2 (resp. xANa_2) that the attacker may have by 1 may be received at input {1}.
+The message yANa_2 (resp. secretANa_2) that the attacker may have by 2 may be received at input {2}.
+The message secretANb_3 (resp. xANb_2) that the attacker may have by 3 may be received at input {3}.
+The message yANb_2 (resp. secretANb_2) that the attacker may have by 4 may be received at input {4}.
+The message xBNa_2 (resp. xANa_2) that the attacker may have by 1 may be received at input {5}.
+The message yBNa_2 (resp. yBNa_3) that the attacker may have by 5 may be received at input {6}.
+The message xBNb_2 (resp. xBNb_3) that the attacker may have by 6 may be received at input {7}.
+The message yBNb_2 (resp. yBNb_3) that the attacker may have by 7 may be received at input {8}.
+The message fhost(skB_4) (resp. fhost(skB_4)) that the attacker may have by 8 may be received at input {23}.
+The message sign((pk(skB_4),fhost(skB_4)),skS_4) (resp. sign((pk(skB_4),fhost(skB_4)),skS_4)) that the attacker may have by 11 may be received at input {25}.
+The message encrypt((Na_2,Nb_3,fhost(skB_4)),pk(skA_4)) (resp. encrypt((Na_2,Nb_3,fhost(skB_4)),pk(skA_4))) that the attacker may have by 19 may be received at input {30}.
+So the message encrypt(Nb_3,pk(skB_4)) (resp. encrypt(Nb_3,pk(skB_4))) may be sent to the attacker at output {39}.
+attacker2(encrypt(Nb_3,pk(skB_4)),encrypt(Nb_3,pk(skB_4))).
+
+21. The message xBNa_2 (resp. xANa_2) that the attacker may have by 1 may be received at input {1}.
+The message yANa_2 (resp. secretANa_2) that the attacker may have by 2 may be received at input {2}.
+The message secretANb_3 (resp. xANb_2) that the attacker may have by 3 may be received at input {3}.
+The message yANb_2 (resp. secretANb_2) that the attacker may have by 4 may be received at input {4}.
+The message xBNa_2 (resp. xANa_2) that the attacker may have by 1 may be received at input {5}.
+The message yBNa_2 (resp. yBNa_3) that the attacker may have by 5 may be received at input {6}.
+The message xBNb_2 (resp. xBNb_3) that the attacker may have by 6 may be received at input {7}.
+The message yBNb_2 (resp. yBNb_3) that the attacker may have by 7 may be received at input {8}.
+The message encrypt((Na_2,fhost(skA_4)),pk(skB_4)) (resp. encrypt((Na_2,fhost(skA_4)),pk(skB_4))) that the attacker may have by 12 may be received at input {43}.
+The message sign((pk(skA_4),fhost(skA_4)),skS_4) (resp. sign((pk(skA_4),fhost(skA_4)),skS_4)) that the attacker may have by 18 may be received at input {48}.
+The message encrypt(Nb_3,pk(skB_4)) (resp. encrypt(Nb_3,pk(skB_4))) that the attacker may have by 20 may be received at input {53}.
+So the message sencrypt(xBNa_2,Na_2) (resp. sencrypt(yBNa_3,Na_2)) may be sent to the attacker at output {61}.
+attacker2(sencrypt(xBNa_2,Na_2),sencrypt(yBNa_3,Na_2)).
+
+22. The message xBNa_2 (resp. xANa_2) that the attacker may have by 1 may be received at input {1}.
+The message yANa_2 (resp. secretANa_2) that the attacker may have by 2 may be received at input {2}.
+The message secretANb_3 (resp. xANb_2) that the attacker may have by 3 may be received at input {3}.
+The message yANb_2 (resp. secretANb_2) that the attacker may have by 4 may be received at input {4}.
+The message xBNa_2 (resp. xANa_2) that the attacker may have by 1 may be received at input {5}.
+The message yBNa_2 (resp. yBNa_3) that the attacker may have by 5 may be received at input {6}.
+The message xBNb_2 (resp. xBNb_3) that the attacker may have by 6 may be received at input {7}.
+The message yBNb_2 (resp. yBNb_3) that the attacker may have by 7 may be received at input {8}.
+The message encrypt((Na_2,fhost(skA_4)),pk(skB_4)) (resp. encrypt((Na_2,fhost(skA_4)),pk(skB_4))) that the attacker may have by 12 may be received at input {43}.
+The message sign((pk(skA_4),fhost(skA_4)),skS_4) (resp. sign((pk(skA_4),fhost(skA_4)),skS_4)) that the attacker may have by 18 may be received at input {48}.
+So the message encrypt((Na_2,Nb_2,fhost(skB_4)),pk(skA_4)) (resp. encrypt((Na_2,Nb_2,fhost(skB_4)),pk(skA_4))) may be sent to the attacker at output {52}.
+attacker2(encrypt((Na_2,Nb_2,fhost(skB_4)),pk(skA_4)),encrypt((Na_2,Nb_2,fhost(skB_4)),pk(skA_4))).
+
+23. The message xBNa_2 (resp. xANa_2) that the attacker may have by 1 may be received at input {1}.
+The message yANa_2 (resp. secretANa_2) that the attacker may have by 2 may be received at input {2}.
+The message secretANb_3 (resp. xANb_2) that the attacker may have by 3 may be received at input {3}.
+The message yANb_2 (resp. secretANb_2) that the attacker may have by 4 may be received at input {4}.
+The message xBNa_2 (resp. xANa_2) that the attacker may have by 1 may be received at input {5}.
+The message yBNa_2 (resp. yBNa_3) that the attacker may have by 5 may be received at input {6}.
+The message xBNb_2 (resp. xBNb_3) that the attacker may have by 6 may be received at input {7}.
+The message yBNb_2 (resp. yBNb_3) that the attacker may have by 7 may be received at input {8}.
+The message fhost(skB_4) (resp. fhost(skB_4)) that the attacker may have by 8 may be received at input {23}.
+The message sign((pk(skB_4),fhost(skB_4)),skS_4) (resp. sign((pk(skB_4),fhost(skB_4)),skS_4)) that the attacker may have by 11 may be received at input {25}.
+The message encrypt((Na_2,Nb_2,fhost(skB_4)),pk(skA_4)) (resp. encrypt((Na_2,Nb_2,fhost(skB_4)),pk(skA_4))) that the attacker may have by 22 may be received at input {30}.
+So the message sencrypt(xBNa_2,Na_2) (resp. sencrypt(secretANa_2,Na_2)) may be sent to the attacker at output {40}.
+attacker2(sencrypt(xBNa_2,Na_2),sencrypt(secretANa_2,Na_2)).
+
+24. By 23, the attacker may know sencrypt(xBNa_2,Na_2) (resp. sencrypt(secretANa_2,Na_2)).
+By 21, the attacker may know sencrypt(xBNa_2,Na_2) (resp. sencrypt(yBNa_3,Na_2)).
+We have sencrypt(secretANa_2,Na_2) ≠ sencrypt(yBNa_3,Na_2).
+The attacker tests equality between the two terms he knows, which may allow it to distinguish cases.
+bad.
+
+
+Unified @sid_2 with @sid_1
+Unified xBNa_2 with xANa_2
+Unified yANa_2 with secretANa_2
+Unified secretANb_3 with xANb_2
+Unified yANb_2 with secretANb_2
+Unified yBNa_2 with yBNa_3
+Unified xBNb_2 with xBNb_3
+Unified yBNb_2 with yBNb_3
+Unified v_13 with v_14
+Unified hostX_2 with hostX_3
+Unified v_15 with v_16
+A more detailed output of the traces is available with
+  set traceDisplay = long.
+
+in(c, a_1) at {1}
+
+in(c, a_2) at {2}
+
+in(c, a_3) at {3}
+
+in(c, a_4) at {4}
+
+in(c, a_1) at {5}
+
+in(c, a_5) at {6}
+
+in(c, a_6) at {7}
+
+in(c, a_7) at {8}
+
+new skA_2: skey creating skA_5 at {9}
+
+new skB_2: skey creating skB_5 at {10}
+
+new skS_2: skey creating skS_5 at {11}
+
+out(c, ~M) with ~M = pk(skA_5) at {17}
+
+out(c, ~M_1) with ~M_1 = pk(skB_5) at {18}
+
+out(c, ~M_2) with ~M_2 = pk(skS_5) at {19}
+
+out(c, ~M_3) with ~M_3 = fhost(skA_5) at {20}
+
+out(c, ~M_4) with ~M_4 = fhost(skB_5) at {21}
+
+in(c, a_8) at {23} in copy a_9
+
+out(c, (~M_5,~M_6)) with ~M_5 = fhost(skA_5), ~M_6 = a_8 at {24} in copy a_9
+
+in(c, (a_10,~M_3)) with ~M_3 = fhost(skA_5) at {63} in copy a_11
+
+out(c, ~M_7) with ~M_7 = sign((pk(skA_5),fhost(skA_5)),skS_5) at {70} in copy a_11
+
+in(c, (a_12,~M_4)) with ~M_4 = fhost(skB_5) at {63} in copy a_13
+
+out(c, ~M_8) with ~M_8 = sign((pk(skB_5),fhost(skB_5)),skS_5) at {70} in copy a_13
+
+in(c, ~M_4) with ~M_4 = fhost(skB_5) at {23} in copy a_14
+
+out(c, (~M_9,~M_10)) with ~M_9 = fhost(skA_5), ~M_10 = fhost(skB_5) at {24} in copy a_14
+
+in(c, ~M_8) with ~M_8 = sign((pk(skB_5),fhost(skB_5)),skS_5) at {25} in copy a_14
+
+new Na_1: nonce creating Na_3 at {26} in copy a_14
+
+out(c, ~M_11) with ~M_11 = encrypt((Na_3,fhost(skA_5)),pk(skB_5)) at {29} in copy a_14
+
+in(c, ~M_11) with ~M_11 = encrypt((Na_3,fhost(skA_5)),pk(skB_5)) at {43} in copy a_15
+
+out(c, (~M_12,~M_13)) with ~M_12 = fhost(skB_5), ~M_13 = fhost(skA_5) at {47} in copy a_15
+
+in(c, ~M_7) with ~M_7 = sign((pk(skA_5),fhost(skA_5)),skS_5) at {48} in copy a_15
+
+new Nb_1: nonce creating Nb_4 at {49} in copy a_15
+
+out(c, ~M_14) with ~M_14 = encrypt((Na_3,Nb_4,fhost(skB_5)),pk(skA_5)) at {52} in copy a_15
+
+in(c, ~M_14) with ~M_14 = encrypt((Na_3,Nb_4,fhost(skB_5)),pk(skA_5)) at {30} in copy a_14
+
+out(c, ~M_15) with ~M_15 = encrypt(Nb_4,pk(skB_5)) at {39} in copy a_14
+
+out(c, ~M_16) with ~M_16 = sencrypt(choice[a_1,a_2],Na_3) at {40} in copy a_14
+
+out(c, ~M_17) with ~M_17 = sencrypt(choice[a_3,a_4],Nb_4) at {41} in copy a_14
+
+in(c, ~M_15) with ~M_15 = encrypt(Nb_4,pk(skB_5)) at {53} in copy a_15
+
+out(c, ~M_18) with ~M_18 = sencrypt(choice[a_1,a_5],Na_3) at {61} in copy a_15
+
+out(c, ~M_19) with ~M_19 = sencrypt(choice[a_6,a_7],Nb_4) at {62} in copy a_15
+
+The attacker tests whether
+~M_16 = sencrypt(choice[a_1,a_2],Na_3)
+is equal to
+~M_18 = sencrypt(choice[a_1,a_5],Na_3).
+The result in the left-hand side is different from the result in the right-hand side.
+A trace has been found.
+RESULT Observational equivalence cannot be proved.
+
+--------------------------------------------------------------
+Verification summary:
+
+Observational equivalence cannot be proved.
+
+--------------------------------------------------------------
+

@@ -1,0 +1,297 @@
+Process 1 (that is, the first initial process):
+{1}new c_k: channel;
+(
+    {2}!
+    {3}let c_k_1: channel = c_k in
+    {4}in(c_k_1, x_k: bitstring);
+    {5}let (ke: bitstring,km: bitstring) = x_k in
+    {6}out(c, get_challenge);
+    {7}in(c, nt: bitstring);
+    {8}new nr: bitstring;
+    {9}new kr: bitstring;
+    {10}let m: bitstring = enc((nr,nt,kr),ke) in
+    {11}out(c, (m,mac(m,km)));
+    {12}in(c, y: bitstring)
+) | (
+    {13}!
+    {14}new ke_1: bitstring;
+    {15}new km_1: bitstring;
+    {16}let c_k_2: channel = c_k in
+    {17}let ke_2: bitstring = ke_1 in
+    {18}let km_2: bitstring = km_1 in
+    {19}out(c_k_2, (ke_2,km_2));
+    {20}in(c, x: bitstring);
+    {21}if (x = get_challenge) then
+    {22}new nt_1: bitstring;
+    {23}out(c, nt_1);
+    {24}in(c, y_1: bitstring);
+    {25}let (m_e: bitstring,m_m: bitstring) = y_1 in
+    {26}if (mac(m_e,km_2) = m_m) then
+    (
+        {27}let (nr_1: bitstring,nt': bitstring,kr_1: bitstring) = dec(m_e,ke_2) in
+        (
+            {28}if (nt_1 = nt') then
+            (
+                {29}new kt: bitstring;
+                {30}let m_1: bitstring = enc((nt_1,nr_1,kt),ke_2) in
+                {31}out(c, (m_1,mac(m_1,km_2)))
+            )
+            else
+                {32}out(c, error_6A80)
+        )
+        else
+            {33}out(c, error_6A80)
+    )
+    else
+        {34}out(c, error_6A80)
+)
+
+Process 2 (that is, the second initial process):
+{35}new c_k_3: channel;
+(
+    {36}!
+    {37}let c_k_4: channel = c_k_3 in
+    {38}in(c_k_4, x_k_1: bitstring);
+    {39}let (ke_3: bitstring,km_3: bitstring) = x_k_1 in
+    {40}out(c, get_challenge);
+    {41}in(c, nt_2: bitstring);
+    {42}new nr_2: bitstring;
+    {43}new kr_2: bitstring;
+    {44}let m_2: bitstring = enc((nr_2,nt_2,kr_2),ke_3) in
+    {45}out(c, (m_2,mac(m_2,km_3)));
+    {46}in(c, y_2: bitstring)
+) | (
+    {47}!
+    {48}new ke_4: bitstring;
+    {49}new km_4: bitstring;
+    {50}!
+    {51}let c_k_5: channel = c_k_3 in
+    {52}let ke_5: bitstring = ke_4 in
+    {53}let km_5: bitstring = km_4 in
+    {54}out(c_k_5, (ke_5,km_5));
+    {55}in(c, x_1: bitstring);
+    {56}if (x_1 = get_challenge) then
+    {57}new nt_3: bitstring;
+    {58}out(c, nt_3);
+    {59}in(c, y_3: bitstring);
+    {60}let (m_e_1: bitstring,m_m_1: bitstring) = y_3 in
+    {61}if (mac(m_e_1,km_5) = m_m_1) then
+    (
+        {62}let (nr_3: bitstring,nt'_1: bitstring,kr_3: bitstring) = dec(m_e_1,ke_5) in
+        (
+            {63}if (nt_3 = nt'_1) then
+            (
+                {64}new kt_1: bitstring;
+                {65}let m_3: bitstring = enc((nt_3,nr_3,kt_1),ke_5) in
+                {66}out(c, (m_3,mac(m_3,km_5)))
+            )
+            else
+                {67}out(c, error_6A80)
+        )
+        else
+            {68}out(c, error_6A80)
+    )
+    else
+        {69}out(c, error_6A80)
+)
+
+-- Observational equivalence between two processes
+-- Observational equivalence in biprocess 3 (that is, the merge of process 1 and process 2, simplified, with let moved downwards):
+{1}new c_k_6: channel;
+{2}new c_k_7: channel;
+{3}!
+{4}let v: bool = choice[true,false] in
+(
+    {5}let c_k_8: channel = (if v then caught-fail else c_k_7) in
+    {6}let c_k_9: channel = (if v then c_k_6 else caught-fail) in
+    {7}in((if v then c_k_9 else c_k_8), v_1: bitstring);
+    {8}let v_2: bitstring = v_1 in
+    {9}let v_3: bitstring = v_1 in
+    {10}if (if v then success?(1-proj-2-tuple(v_3)) else success?(1-proj-2-tuple(v_2))) then
+    {11}out(c, get_challenge);
+    {12}in(c, v_4: bitstring);
+    {13}new nr_4: bitstring;
+    {14}new kr_4: bitstring;
+    {15}new nr_5: bitstring;
+    {16}new kr_5: bitstring;
+    {17}let m_4: bitstring = catch-fail(enc((nr_5,v_4,kr_5),1-proj-2-tuple(v_2))) in
+    {18}let m_5: bitstring = catch-fail(enc((nr_4,v_4,kr_4),1-proj-2-tuple(v_3))) in
+    {19}out(c, (if v then (m_5,mac(m_5,2-proj-2-tuple(v_3))) else (m_4,mac(m_4,2-proj-2-tuple(v_2)))));
+    {20}in(c, v_5: bitstring)
+) | (
+    {21}!
+    {22}new ke_6: bitstring;
+    {23}new km_6: bitstring;
+    {24}!
+    {25}new ke_7: bitstring;
+    {26}new km_7: bitstring;
+    {27}let km_8: bitstring = km_7 in
+    {28}let ke_8: bitstring = ke_7 in
+    {29}let km_9: bitstring = km_6 in
+    {30}let ke_9: bitstring = ke_6 in
+    {31}let c_k_10: channel = (if v then caught-fail else c_k_7) in
+    {32}let c_k_11: channel = (if v then c_k_6 else caught-fail) in
+    {33}out((if v then c_k_11 else c_k_10), (if v then (ke_8,km_8) else (ke_9,km_9)));
+    {34}in(c, v_6: bitstring);
+    {35}new nt_4: bitstring;
+    {36}new nt_5: bitstring;
+    {37}if (v_6 = get_challenge) then
+    {38}out(c, (if v then nt_4 else nt_5));
+    {39}in(c, v_7: bitstring);
+    {40}new kt_2: bitstring;
+    {41}new kt_3: bitstring;
+    {42}let v_8: bitstring = v_7 in
+    {43}let v_9: bool = success?(1-proj-2-tuple(v_8)) in
+    {44}let v_10: bitstring = v_7 in
+    {45}let v_11: bool = success?(1-proj-2-tuple(v_10)) in
+    {46}if (if v then v_11 else v_9) then
+    {47}let v_12: bool = (if v_9 then (mac(1-proj-2-tuple(v_8),km_9) = 2-proj-2-tuple(v_8)) else caught-fail) in
+    {48}let v_13: bitstring = (if v_9 then (if v_12 then catch-fail(dec(1-proj-2-tuple(v_8),ke_9)) else caught-fail) else caught-fail) in
+    {49}let v_14: bool = (if v_9 then (if v_12 then (not-caught-fail(v_13) && success?(1-proj-3-tuple(v_13))) else caught-fail) else caught-fail) in
+    {50}let v_15: bool = (if v_9 then (if v_12 then (if v_14 then (nt_5 = 2-proj-3-tuple(v_13)) else caught-fail) else caught-fail) else caught-fail) in
+    {51}let m_6: bitstring = (if v_9 then (if v_12 then (if v_14 then (if v_15 then catch-fail(enc((nt_5,1-proj-3-tuple(v_13),kt_3),ke_9)) else caught-fail) else caught-fail) else caught-fail) else caught-fail) in
+    {52}let v_16: bool = (if v_11 then (mac(1-proj-2-tuple(v_10),km_8) = 2-proj-2-tuple(v_10)) else caught-fail) in
+    {53}let v_17: bitstring = (if v_11 then (if v_16 then catch-fail(dec(1-proj-2-tuple(v_10),ke_8)) else caught-fail) else caught-fail) in
+    {54}let v_18: bool = (if v_11 then (if v_16 then (not-caught-fail(v_17) && success?(1-proj-3-tuple(v_17))) else caught-fail) else caught-fail) in
+    {55}let v_19: bool = (if v_11 then (if v_16 then (if v_18 then (nt_4 = 2-proj-3-tuple(v_17)) else caught-fail) else caught-fail) else caught-fail) in
+    {56}let m_7: bitstring = (if v_11 then (if v_16 then (if v_18 then (if v_19 then catch-fail(enc((nt_4,1-proj-3-tuple(v_17),kt_2),ke_8)) else caught-fail) else caught-fail) else caught-fail) else caught-fail) in
+    {57}out(c, (if v then (if (v_16 && (v_18 && v_19)) then (m_7,mac(m_7,km_8)) else error_6A80) else (if (v_12 && (v_14 && v_15)) then (m_6,mac(m_6,km_9)) else error_6A80)))
+)
+
+Translating the process into Horn clauses...
+Termination warning: v_20 ≠ v_21 && attacker2(v_22,v_20) && attacker2(v_22,v_21) -> bad
+Selecting 0
+Termination warning: v_20 ≠ v_21 && attacker2(v_20,v_22) && attacker2(v_21,v_22) -> bad
+Selecting 0
+Completing...
+Termination warning: v_20 ≠ v_21 && attacker2(v_22,v_20) && attacker2(v_22,v_21) -> bad
+Selecting 0
+Termination warning: v_20 ≠ v_21 && attacker2(v_20,v_22) && attacker2(v_21,v_22) -> bad
+Selecting 0
+goal reachable: bad
+
+Derivation:
+Abbreviations:
+nt_6 = nt_5[v_6 = choice[get_challenge[],get_challenge[]],!3 = @sid,!2 = @sid_1,!1 = @sid_2]
+nt_7 = nt_4[v_6 = choice[get_challenge[],get_challenge[]],!3 = @sid,!2 = @sid_1,!1 = @sid_2]
+ke_10 = ke_7[!3 = @sid_3,!2 = @sid_1,!1 = @sid_2]
+km_10 = km_7[!3 = @sid_3,!2 = @sid_1,!1 = @sid_2]
+ke_11 = ke_6[!2 = @sid_1,!1 = @sid_2]
+km_11 = km_6[!2 = @sid_1,!1 = @sid_2]
+nr_6 = nr_5[v_4 = choice[nt_7,nt_6],v_1 = choice[(ke_10,km_10),(ke_11,km_11)],!1 = @sid_4]
+nr_7 = nr_4[v_4 = choice[nt_7,nt_6],v_1 = choice[(ke_10,km_10),(ke_11,km_11)],!1 = @sid_4]
+kr_6 = kr_4[v_4 = choice[nt_7,nt_6],v_1 = choice[(ke_10,km_10),(ke_11,km_11)],!1 = @sid_4]
+kr_7 = kr_5[v_4 = choice[nt_7,nt_6],v_1 = choice[(ke_10,km_10),(ke_11,km_11)],!1 = @sid_4]
+kt_4 = kt_3[v_7 = choice[(enc((nr_7,nt_7,kr_6),ke_10),mac(enc((nr_7,nt_7,kr_6),ke_10),km_10)),(enc((nr_6,nt_6,kr_7),ke_11),mac(enc((nr_6,nt_6,kr_7),ke_11),km_11))],v_6 = choice[get_challenge[],get_challenge[]],!3 = @sid,!2 = @sid_1,!1 = @sid_2]
+km_12 = km_7[!3 = @sid,!2 = @sid_1,!1 = @sid_2]
+
+1. The attacker initially knows get_challenge[] (resp. get_challenge[]).
+attacker2(get_challenge[],get_challenge[]).
+
+2. The message (ke_10,km_10) may be sent on channel c_k_6[] (resp. message (ke_11,km_11) on channel c_k_7[]) at output {33}.
+mess2(c_k_6[],(ke_10,km_10),c_k_7[],(ke_11,km_11)).
+
+3. The message get_challenge[] (resp. get_challenge[]) that the attacker may have by 1 may be received at input {34}.
+So the message nt_7 (resp. nt_6) may be sent to the attacker at output {38}.
+attacker2(nt_7,nt_6).
+
+4. The message (ke_10,km_10) that may be sent on channel c_k_6[] (resp. message (ke_11,km_11) on channel c_k_7[]) by 2 may be received at input {7}.
+The message nt_7 (resp. nt_6) that the attacker may have by 3 may be received at input {12}.
+So the message (enc((nr_7,nt_7,kr_6),ke_10),mac(enc((nr_7,nt_7,kr_6),ke_10),km_10)) (resp. (enc((nr_6,nt_6,kr_7),ke_11),mac(enc((nr_6,nt_6,kr_7),ke_11),km_11))) may be sent to the attacker at output {19}.
+attacker2((enc((nr_7,nt_7,kr_6),ke_10),mac(enc((nr_7,nt_7,kr_6),ke_10),km_10)),(enc((nr_6,nt_6,kr_7),ke_11),mac(enc((nr_6,nt_6,kr_7),ke_11),km_11))).
+
+5. By 4, the attacker may know (enc((nr_7,nt_7,kr_6),ke_10),mac(enc((nr_7,nt_7,kr_6),ke_10),km_10)) (resp. (enc((nr_6,nt_6,kr_7),ke_11),mac(enc((nr_6,nt_6,kr_7),ke_11),km_11))).
+Using the function 2-proj-2-tuple the attacker may obtain mac(enc((nr_7,nt_7,kr_6),ke_10),km_10) (resp. mac(enc((nr_6,nt_6,kr_7),ke_11),km_11)).
+attacker2(mac(enc((nr_7,nt_7,kr_6),ke_10),km_10),mac(enc((nr_6,nt_6,kr_7),ke_11),km_11)).
+
+6. By 4, the attacker may know (enc((nr_7,nt_7,kr_6),ke_10),mac(enc((nr_7,nt_7,kr_6),ke_10),km_10)) (resp. (enc((nr_6,nt_6,kr_7),ke_11),mac(enc((nr_6,nt_6,kr_7),ke_11),km_11))).
+Using the function 1-proj-2-tuple the attacker may obtain enc((nr_7,nt_7,kr_6),ke_10) (resp. enc((nr_6,nt_6,kr_7),ke_11)).
+attacker2(enc((nr_7,nt_7,kr_6),ke_10),enc((nr_6,nt_6,kr_7),ke_11)).
+
+7. By 6, the attacker may know enc((nr_7,nt_7,kr_6),ke_10) (resp. enc((nr_6,nt_6,kr_7),ke_11)).
+By 5, the attacker may know mac(enc((nr_7,nt_7,kr_6),ke_10),km_10) (resp. mac(enc((nr_6,nt_6,kr_7),ke_11),km_11)).
+Using the function 2-tuple the attacker may obtain (enc((nr_7,nt_7,kr_6),ke_10),mac(enc((nr_7,nt_7,kr_6),ke_10),km_10)) (resp. (enc((nr_6,nt_6,kr_7),ke_11),mac(enc((nr_6,nt_6,kr_7),ke_11),km_11))).
+attacker2((enc((nr_7,nt_7,kr_6),ke_10),mac(enc((nr_7,nt_7,kr_6),ke_10),km_10)),(enc((nr_6,nt_6,kr_7),ke_11),mac(enc((nr_6,nt_6,kr_7),ke_11),km_11))).
+
+8. The message get_challenge[] (resp. get_challenge[]) that the attacker may have by 1 may be received at input {34}.
+The message (enc((nr_7,nt_7,kr_6),ke_10),mac(enc((nr_7,nt_7,kr_6),ke_10),km_10)) (resp. (enc((nr_6,nt_6,kr_7),ke_11),mac(enc((nr_6,nt_6,kr_7),ke_11),km_11))) that the attacker may have by 7 may be received at input {39}.
+We have mac(enc((nr_7,nt_7,kr_6),ke_10),km_10) ≠ mac(enc((nr_7,nt_7,kr_6),ke_10),km_12) && mac(enc((nr_7,nt_7,kr_6),ke_10),km_10) ≠ mac(enc((nr_7,nt_7,kr_6),ke_10),km_11).
+So the message error_6A80[] (resp. (enc((nt_6,nr_6,kt_4),ke_11),mac(enc((nt_6,nr_6,kt_4),ke_11),km_11))) may be sent to the attacker at output {57}.
+attacker2(error_6A80[],(enc((nt_6,nr_6,kt_4),ke_11),mac(enc((nt_6,nr_6,kt_4),ke_11),km_11))).
+
+9. By 8, the attacker may know error_6A80[] (resp. (enc((nt_6,nr_6,kt_4),ke_11),mac(enc((nt_6,nr_6,kt_4),ke_11),km_11))).
+Using the function 1-proj-2-tuple the attacker may obtain fail-any_type (resp. enc((nt_6,nr_6,kt_4),ke_11)).
+attacker2(fail-any_type,enc((nt_6,nr_6,kt_4),ke_11)).
+
+10. By 9, the attacker may know fail-any_type (resp. enc((nt_6,nr_6,kt_4),ke_11)).
+So the attacker may test the failure of this term, which may allow it to distinguish cases.
+bad.
+
+
+A more detailed output of the traces is available with
+  set traceDisplay = long.
+
+new c_k_6: channel creating c_k_12 at {1}
+
+new c_k_7: channel creating c_k_13 at {2}
+
+new ke_6: bitstring creating ke_12 at {22} in copy a, a_1
+
+new km_6: bitstring creating km_13 at {23} in copy a, a_1
+
+new ke_7: bitstring creating ke_13 at {25} in copy a, a_1, a_2
+
+new km_7: bitstring creating km_14 at {26} in copy a, a_1, a_2
+
+new ke_7: bitstring creating ke_14 at {25} in copy a, a_1, a_3
+
+new km_7: bitstring creating km_15 at {26} in copy a, a_1, a_3
+
+out(choice[c_k_12,c_k_13], choice[(ke_14,km_15),(ke_12,km_13)]) at {33} in copy a, a_1, a_3 received at {7} in copy a_4
+
+out(c, ~M) with ~M = get_challenge at {11} in copy a_4
+
+out(choice[c_k_12,c_k_13], choice[(ke_13,km_14),(ke_12,km_13)]) at {33} in copy a, a_1, a_2 received at {7} in copy a
+
+out(c, ~M_1) with ~M_1 = get_challenge at {11} in copy a
+
+in(c, get_challenge) at {34} in copy a, a_1, a_2
+
+new nt_4: bitstring creating nt_8 at {35} in copy a, a_1, a_2
+
+new nt_5: bitstring creating nt_9 at {36} in copy a, a_1, a_2
+
+out(c, ~M_2) with ~M_2 = choice[nt_8,nt_9] at {38} in copy a, a_1, a_2
+
+in(c, ~M_2) with ~M_2 = choice[nt_8,nt_9] at {12} in copy a_4
+
+new nr_4: bitstring creating nr_8 at {13} in copy a_4
+
+new kr_4: bitstring creating kr_8 at {14} in copy a_4
+
+new nr_5: bitstring creating nr_9 at {15} in copy a_4
+
+new kr_5: bitstring creating kr_9 at {16} in copy a_4
+
+out(c, (~M_3,~M_4)) with (~M_3,~M_4) = choice[(enc((nr_8,nt_8,kr_8),ke_14),mac(enc((nr_8,nt_8,kr_8),ke_14),km_15)),(enc((nr_9,nt_9,kr_9),ke_12),mac(enc((nr_9,nt_9,kr_9),ke_12),km_13))] at {19} in copy a_4
+
+in(c, (~M_3,~M_4)) with (~M_3,~M_4) = choice[(enc((nr_8,nt_8,kr_8),ke_14),mac(enc((nr_8,nt_8,kr_8),ke_14),km_15)),(enc((nr_9,nt_9,kr_9),ke_12),mac(enc((nr_9,nt_9,kr_9),ke_12),km_13))] at {39} in copy a, a_1, a_2
+
+new kt_2: bitstring creating kt_5 at {40} in copy a, a_1, a_2
+
+new kt_3: bitstring creating kt_6 at {41} in copy a, a_1, a_2
+
+out(c, ~M_5) with ~M_5 = choice[error_6A80,(enc((nt_9,nr_9,kt_6),ke_12),mac(enc((nt_9,nr_9,kt_6),ke_12),km_13))] at {57} in copy a, a_1, a_2
+
+The attacker tests whether 1-proj-2-tuple(~M_5) = choice[fail-any_type,enc((nt_9,nr_9,kt_6),ke_12)] is fail.
+This holds on one side and not on the other.
+A trace has been found.
+RESULT Observational equivalence cannot be proved.
+
+--------------------------------------------------------------
+Verification summary:
+
+Equivalence between process 1 and process 2 cannot be proved.
+
+--------------------------------------------------------------
+

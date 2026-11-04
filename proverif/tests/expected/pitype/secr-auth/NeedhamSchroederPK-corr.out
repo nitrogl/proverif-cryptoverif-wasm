@@ -1,0 +1,263 @@
+Process 0 (that is, the initial process):
+{1}new skA: skey;
+{2}let pkA: pkey = pk(skA) in
+{3}out(c, pkA);
+{4}insert keys(A,pkA);
+{5}new skB: skey;
+{6}let pkB: pkey = pk(skB) in
+{7}out(c, pkB);
+{8}insert keys(B,pkB);
+{9}new skS: sskey;
+{10}let pkS: spkey = spk(skS) in
+{11}out(c, pkS);
+(
+    {12}!
+    {13}let skA_1: skey = skA in
+    {14}let skB_1: skey = skB in
+    {15}in(c, (xA: host,hostX: host));
+    {16}if ((xA = A) || (xA = B)) then
+    {17}let skxA: skey = (if (xA = A) then skA_1 else skB_1) in
+    {18}let pkxA: pkey = pk(skxA) in
+    {19}event beginBparam(xA,hostX);
+    {20}out(c, (xA,hostX));
+    {21}in(c, ms: bitstring);
+    {22}let (pkX: pkey,=hostX) = checksign(ms,pkS) in
+    {23}new Na: nonce;
+    {24}out(c, encrypt((Na,xA),pkX));
+    {25}in(c, m: bitstring);
+    {26}let (=Na,NX2: nonce,=hostX) = decrypt(m,skA_1) in
+    {27}event beginBfull(xA,hostX,pkX,pkxA,Na,NX2);
+    {28}out(c, encrypt(NX2,pkX));
+    {29}if ((hostX = B) || (hostX = A)) then
+    {30}event endAparam(xA,hostX);
+    {31}event endAfull(xA,hostX,pkX,pkxA,Na,NX2);
+    {32}out(c, sencrypt(secretANa,Na));
+    {33}out(c, sencrypt(secretANb,NX2))
+) | (
+    {34}!
+    {35}let skA_2: skey = skA in
+    {36}let skB_2: skey = skB in
+    {37}in(c, xB: host);
+    {38}if ((xB = A) || (xB = B)) then
+    {39}let skxB: skey = (if (xB = A) then skA_2 else skB_2) in
+    {40}let pkxB: pkey = pk(skxB) in
+    {41}in(c, m_1: bitstring);
+    {42}let (NY: nonce,hostY: host) = decrypt(m_1,skxB) in
+    {43}event beginAparam(hostY,xB);
+    {44}out(c, (xB,hostY));
+    {45}in(c, ms_1: bitstring);
+    {46}let (pkY: pkey,=hostY) = checksign(ms_1,pkS) in
+    {47}new Nb: nonce;
+    {48}event beginAfull(hostY,xB,pkxB,pkY,NY,Nb);
+    {49}out(c, encrypt((NY,Nb,xB),pkY));
+    {50}in(c, m3: bitstring);
+    {51}if (Nb = decrypt(m3,skB_2)) then
+    {52}if ((hostY = A) || (hostY = B)) then
+    {53}event endBparam(hostY,xB);
+    {54}event endBfull(hostY,xB,pkxB,pkY,NY,Nb);
+    {55}out(c, sencrypt(secretBNa,NY));
+    {56}out(c, sencrypt(secretBNb,Nb))
+) | (
+    {57}!
+    {58}let skS_1: sskey = skS in
+    {59}in(c, (a: host,b: host));
+    {61}get keys(=b,sb: pkey) in
+    {60}out(c, sign((sb,b),skS_1))
+) | (
+    {62}!
+    {63}in(c, (h: host,k: pkey));
+    {64}if ((h ≠ A) && (h ≠ B)) then
+    {65}insert keys(h,k)
+)
+
+--  Process 1 (that is, process 0, with let moved downwards):
+{1}new skA: skey;
+{2}let pkA: pkey = pk(skA) in
+{3}out(c, pkA);
+{4}insert keys(A,pkA);
+{5}new skB: skey;
+{6}let pkB: pkey = pk(skB) in
+{7}out(c, pkB);
+{8}insert keys(B,pkB);
+{9}new skS: sskey;
+{10}let pkS: spkey = spk(skS) in
+{11}out(c, pkS);
+(
+    {12}!
+    {15}in(c, (xA: host,hostX: host));
+    {16}if ((xA = A) || (xA = B)) then
+    {19}event beginBparam(xA,hostX);
+    {20}out(c, (xA,hostX));
+    {21}in(c, ms: bitstring);
+    {22}let (pkX: pkey,=hostX) = checksign(ms,pkS) in
+    {23}new Na: nonce;
+    {24}out(c, encrypt((Na,xA),pkX));
+    {25}in(c, m: bitstring);
+    {13}let skA_1: skey = skA in
+    {26}let (=Na,NX2: nonce,=hostX) = decrypt(m,skA_1) in
+    {14}let skB_1: skey = skB in
+    {17}let skxA: skey = (if (xA = A) then skA_1 else skB_1) in
+    {18}let pkxA: pkey = pk(skxA) in
+    {27}event beginBfull(xA,hostX,pkX,pkxA,Na,NX2);
+    {28}out(c, encrypt(NX2,pkX));
+    {29}if ((hostX = B) || (hostX = A)) then
+    {30}event endAparam(xA,hostX);
+    {31}event endAfull(xA,hostX,pkX,pkxA,Na,NX2);
+    {32}out(c, sencrypt(secretANa,Na));
+    {33}out(c, sencrypt(secretANb,NX2))
+) | (
+    {34}!
+    {37}in(c, xB: host);
+    {38}if ((xB = A) || (xB = B)) then
+    {41}in(c, m_1: bitstring);
+    {36}let skB_2: skey = skB in
+    {35}let skA_2: skey = skA in
+    {39}let skxB: skey = (if (xB = A) then skA_2 else skB_2) in
+    {42}let (NY: nonce,hostY: host) = decrypt(m_1,skxB) in
+    {43}event beginAparam(hostY,xB);
+    {44}out(c, (xB,hostY));
+    {45}in(c, ms_1: bitstring);
+    {46}let (pkY: pkey,=hostY) = checksign(ms_1,pkS) in
+    {47}new Nb: nonce;
+    {40}let pkxB: pkey = pk(skxB) in
+    {48}event beginAfull(hostY,xB,pkxB,pkY,NY,Nb);
+    {49}out(c, encrypt((NY,Nb,xB),pkY));
+    {50}in(c, m3: bitstring);
+    {51}if (Nb = decrypt(m3,skB_2)) then
+    {52}if ((hostY = A) || (hostY = B)) then
+    {53}event endBparam(hostY,xB);
+    {54}event endBfull(hostY,xB,pkxB,pkY,NY,Nb);
+    {55}out(c, sencrypt(secretBNa,NY));
+    {56}out(c, sencrypt(secretBNb,Nb))
+) | (
+    {57}!
+    {59}in(c, (a: host,b: host));
+    {61}get keys(=b,sb: pkey) in
+    {58}let skS_1: sskey = skS in
+    {60}out(c, sign((sb,b),skS_1))
+) | (
+    {62}!
+    {63}in(c, (h: host,k: pkey));
+    {64}if ((h ≠ A) && (h ≠ B)) then
+    {65}insert keys(h,k)
+)
+
+-- Query 
+   not attacker(secretANa[])
+   not attacker(secretANb[])
+   not attacker(secretBNa[])
+   not attacker(secretBNb[])
+ in process 1.
+Translating the process into Horn clauses...
+Completing...
+ok, secrecy assumption verified: fact unreachable attacker(skA[])
+ok, secrecy assumption verified: fact unreachable attacker(skB[])
+ok, secrecy assumption verified: fact unreachable attacker(skS[])
+Starting query not attacker(secretANa[])
+RESULT not attacker(secretANa[]) is true.
+Starting query not attacker(secretANb[])
+RESULT not attacker(secretANb[]) is true.
+Starting query not attacker(secretBNa[])
+RESULT not attacker(secretBNa[]) is true.
+Starting query not attacker(secretBNb[])
+RESULT not attacker(secretBNb[]) is true.
+-- Query inj-event(endBparam(x,y)) ==> inj-event(beginBparam(x,y)) in process 1.
+Translating the process into Horn clauses...
+Completing...
+ok, secrecy assumption verified: fact unreachable attacker(skA[])
+ok, secrecy assumption verified: fact unreachable attacker(skB[])
+ok, secrecy assumption verified: fact unreachable attacker(skS[])
+Starting query inj-event(endBparam(x,y)) ==> inj-event(beginBparam(x,y))
+goal reachable: b-event(@p_act(@occ25_1,encrypt((Na_1,Nb_1,B[]),pk(skA[])))) && b-event(@p_act(@occ21_1,sign((pk(skB[]),B[]),skS[]))) && b-inj-event(beginBparam(A[],B[]),@occ19_1) -> inj-event(endBparam(A[],B[]),@occ53_1)
+The 1st, 2nd, 3rd hypotheses occur strictly before the conclusion.
+Abbreviations:
+Na_1 = Na[ms = sign((pk(skB[]),B[]),skS[]),hostX = B[],xA = A[],!1 = @sid]
+Nb_1 = Nb[ms_1 = sign((pk(skA[]),A[]),skS[]),m_1 = encrypt((Na_1,A[]),pk(skB[])),xB = B[],!1 = @sid_1]
+@occ53_1 = @occ53[m3 = encrypt(Nb_1,pk(skB[])),ms_1 = sign((pk(skA[]),A[]),skS[]),m_1 = encrypt((Na_1,A[]),pk(skB[])),xB = B[],!1 = @sid_1]
+@occ25_1 = @occ25[!1 = @sid]
+@occ21_1 = @occ21[!1 = @sid]
+@occ19_1 = @occ19[hostX = B[],xA = A[],!1 = @sid]
+RESULT inj-event(endBparam(x,y)) ==> inj-event(beginBparam(x,y)) is true.
+-- Query inj-event(endBfull(x1,x2,x3,x4,x5,x6)) ==> inj-event(beginBfull(x1,x2,x3,x4,x5,x6)) in process 1.
+Translating the process into Horn clauses...
+Completing...
+ok, secrecy assumption verified: fact unreachable attacker(skA[])
+ok, secrecy assumption verified: fact unreachable attacker(skB[])
+ok, secrecy assumption verified: fact unreachable attacker(skS[])
+Starting query inj-event(endBfull(x1,x2,x3,x4,x5,x6)) ==> inj-event(beginBfull(x1,x2,x3,x4,x5,x6))
+goal reachable: b-inj-event(beginBfull(A[],B[],pk(skB[]),pk(skA[]),Na_1,Nb_1),@occ27_1) -> inj-event(endBfull(A[],B[],pk(skB[]),pk(skA[]),Na_1,Nb_1),@occ54_1)
+The hypothesis occurs strictly before the conclusion.
+Abbreviations:
+Na_1 = Na[ms = sign((pk(skB[]),B[]),skS[]),hostX = B[],xA = A[],!1 = @sid]
+Nb_1 = Nb[ms_1 = sign((pk(skA[]),A[]),skS[]),m_1 = encrypt((Na_1,A[]),pk(skB[])),xB = B[],!1 = @sid_1]
+@occ54_1 = @occ54[m3 = encrypt(Nb_1,pk(skB[])),ms_1 = sign((pk(skA[]),A[]),skS[]),m_1 = encrypt((Na_1,A[]),pk(skB[])),xB = B[],!1 = @sid_1]
+@occ27_1 = @occ27[m = encrypt((Na_1,Nb_1,B[]),pk(skA[])),ms = sign((pk(skB[]),B[]),skS[]),hostX = B[],xA = A[],!1 = @sid]
+RESULT inj-event(endBfull(x1,x2,x3,x4,x5,x6)) ==> inj-event(beginBfull(x1,x2,x3,x4,x5,x6)) is true.
+-- Query inj-event(endAparam(x,y)) ==> inj-event(beginAparam(x,y)) in process 1.
+Translating the process into Horn clauses...
+Completing...
+ok, secrecy assumption verified: fact unreachable attacker(skA[])
+ok, secrecy assumption verified: fact unreachable attacker(skB[])
+ok, secrecy assumption verified: fact unreachable attacker(skS[])
+Starting query inj-event(endAparam(x,y)) ==> inj-event(beginAparam(x,y))
+goal reachable: b-event(@p_act(@occ45_1,sign((pk(skA[]),A[]),skS[]))) && b-inj-event(beginAparam(A[],B[]),@occ43_1) -> inj-event(endAparam(A[],B[]),@occ30_1)
+The 1st, 2nd hypotheses occur strictly before the conclusion.
+Abbreviations:
+Na_1 = Na[ms = sign((pk(skB[]),B[]),skS[]),hostX = B[],xA = A[],!1 = @sid]
+Nb_1 = Nb[ms_1 = sign((pk(skA[]),A[]),skS[]),m_1 = encrypt((Na_1,A[]),pk(skB[])),xB = B[],!1 = @sid_1]
+@occ30_1 = @occ30[m = encrypt((Na_1,Nb_1,B[]),pk(skA[])),ms = sign((pk(skB[]),B[]),skS[]),hostX = B[],xA = A[],!1 = @sid]
+@occ45_1 = @occ45[!1 = @sid_1]
+@occ43_1 = @occ43[m_1 = encrypt((Na_1,A[]),pk(skB[])),xB = B[],!1 = @sid_1]
+goal reachable: b-event(@p_act(@occ45_1,sign((pk(skA[]),A[]),skS[]))) && b-inj-event(beginAparam(A[],A[]),@occ43_1) -> inj-event(endAparam(A[],A[]),@occ30_1)
+The 1st, 2nd hypotheses occur strictly before the conclusion.
+Abbreviations:
+Na_1 = Na[ms = sign((pk(skA[]),A[]),skS[]),hostX = A[],xA = A[],!1 = @sid]
+Nb_1 = Nb[ms_1 = sign((pk(skA[]),A[]),skS[]),m_1 = encrypt((Na_1,A[]),pk(skA[])),xB = A[],!1 = @sid_1]
+@occ30_1 = @occ30[m = encrypt((Na_1,Nb_1,A[]),pk(skA[])),ms = sign((pk(skA[]),A[]),skS[]),hostX = A[],xA = A[],!1 = @sid]
+@occ45_1 = @occ45[!1 = @sid_1]
+@occ43_1 = @occ43[m_1 = encrypt((Na_1,A[]),pk(skA[])),xB = A[],!1 = @sid_1]
+RESULT inj-event(endAparam(x,y)) ==> inj-event(beginAparam(x,y)) is true.
+-- Query inj-event(endAfull(x1,x2,x3,x4,x5,x6)) ==> inj-event(beginAfull(x1,x2,x3,x4,x5,x6)) in process 1.
+Translating the process into Horn clauses...
+Completing...
+ok, secrecy assumption verified: fact unreachable attacker(skA[])
+ok, secrecy assumption verified: fact unreachable attacker(skB[])
+ok, secrecy assumption verified: fact unreachable attacker(skS[])
+Starting query inj-event(endAfull(x1,x2,x3,x4,x5,x6)) ==> inj-event(beginAfull(x1,x2,x3,x4,x5,x6))
+goal reachable: b-inj-event(beginAfull(A[],B[],pk(skB[]),pk(skA[]),Na_1,Nb_1),@occ48_1) -> inj-event(endAfull(A[],B[],pk(skB[]),pk(skA[]),Na_1,Nb_1),@occ31_1)
+The hypothesis occurs strictly before the conclusion.
+Abbreviations:
+Na_1 = Na[ms = sign((pk(skB[]),B[]),skS[]),hostX = B[],xA = A[],!1 = @sid]
+Nb_1 = Nb[ms_1 = sign((pk(skA[]),A[]),skS[]),m_1 = encrypt((Na_1,A[]),pk(skB[])),xB = B[],!1 = @sid_1]
+@occ31_1 = @occ31[m = encrypt((Na_1,Nb_1,B[]),pk(skA[])),ms = sign((pk(skB[]),B[]),skS[]),hostX = B[],xA = A[],!1 = @sid]
+@occ48_1 = @occ48[ms_1 = sign((pk(skA[]),A[]),skS[]),m_1 = encrypt((Na_1,A[]),pk(skB[])),xB = B[],!1 = @sid_1]
+goal reachable: b-inj-event(beginAfull(A[],A[],pk(skA[]),pk(skA[]),Na_1,Nb_1),@occ48_1) -> inj-event(endAfull(A[],A[],pk(skA[]),pk(skA[]),Na_1,Nb_1),@occ31_1)
+The hypothesis occurs strictly before the conclusion.
+Abbreviations:
+Na_1 = Na[ms = sign((pk(skA[]),A[]),skS[]),hostX = A[],xA = A[],!1 = @sid]
+Nb_1 = Nb[ms_1 = sign((pk(skA[]),A[]),skS[]),m_1 = encrypt((Na_1,A[]),pk(skA[])),xB = A[],!1 = @sid_1]
+@occ31_1 = @occ31[m = encrypt((Na_1,Nb_1,A[]),pk(skA[])),ms = sign((pk(skA[]),A[]),skS[]),hostX = A[],xA = A[],!1 = @sid]
+@occ48_1 = @occ48[ms_1 = sign((pk(skA[]),A[]),skS[]),m_1 = encrypt((Na_1,A[]),pk(skA[])),xB = A[],!1 = @sid_1]
+RESULT inj-event(endAfull(x1,x2,x3,x4,x5,x6)) ==> inj-event(beginAfull(x1,x2,x3,x4,x5,x6)) is true.
+
+--------------------------------------------------------------
+Verification summary:
+
+Query not attacker(secretANa[]) is true.
+
+Query not attacker(secretANb[]) is true.
+
+Query not attacker(secretBNa[]) is true.
+
+Query not attacker(secretBNb[]) is true.
+
+Query inj-event(endBparam(x,y)) ==> inj-event(beginBparam(x,y)) is true.
+
+Query inj-event(endBfull(x1,x2,x3,x4,x5,x6)) ==> inj-event(beginBfull(x1,x2,x3,x4,x5,x6)) is true.
+
+Query inj-event(endAparam(x,y)) ==> inj-event(beginAparam(x,y)) is true.
+
+Query inj-event(endAfull(x1,x2,x3,x4,x5,x6)) ==> inj-event(beginAfull(x1,x2,x3,x4,x5,x6)) is true.
+
+--------------------------------------------------------------
+

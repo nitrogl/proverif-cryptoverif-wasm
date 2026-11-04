@@ -1,0 +1,301 @@
+Process 0 (that is, the initial process):
+{1}new Kas: key;
+{2}new Kbs: key;
+{3}insert keys(A,Kas);
+{4}insert keys(B,Kbs);
+(
+    {5}!
+    {6}new secretA: bitstring;
+    {7}in(c, (xA: host,h: host));
+    {8}if ((xA = A) || (xA = B)) then
+    {24}get keys(=xA,kas: key) in
+    {9}in(c, bm: bitstring);
+    {10}event beginBparam(xA,h);
+    {11}new Na: nonce;
+    {12}out(c, (xA,h,Na,bm));
+    {13}in(c, m2: bitstring);
+    {14}let (=Na,=h,k: key,m: bitstring) = decrypt(m2,kas) in
+    {15}event beginBkey(xA,h,k);
+    {16}out(c, m);
+    {17}in(c, m3: bitstring);
+    {18}let (=c0,n: nonce) = decrypt(m3,k) in
+    {19}out(c, encrypt((c1,n),k));
+    {20}if ((h = A) || (h = B)) then
+    {21}event endAparam(xA,h);
+    {22}event endAkey(xA,h,k);
+    {23}out(c, encrypt(secretA,k))
+) | (
+    {25}!
+    {26}new secretB: bitstring;
+    {27}in(c, xB: host);
+    {28}if ((xB = A) || (xB = B)) then
+    {44}get keys(=xB,kbs: key) in
+    {29}in(c, h_1: host);
+    {30}event beginAparam(h_1,xB);
+    {31}new J: nonce;
+    {32}out(c, encrypt((h_1,J),kbs));
+    {33}in(c, m4: bitstring);
+    {34}let (k_1: key,=h_1,=J) = decrypt(m4,kbs) in
+    {35}event beginAkey(h_1,xB,k_1);
+    {36}new Nb: nonce;
+    {37}out(c, encrypt((c0,Nb),k_1));
+    {38}in(c, m5: bitstring);
+    {39}let (=c1,=Nb) = decrypt(m5,k_1) in
+    {40}if ((h_1 = A) || (h_1 = B)) then
+    {41}event endBparam(h_1,xB);
+    {42}event endBkey(h_1,xB,k_1);
+    {43}out(c, encrypt(secretB,k_1))
+) | (
+    {45}!
+    {46}in(c, (h1: host,h2: host,n_1: nonce,bm_1: bitstring));
+    {51}get keys(=h1,ks1: key) in
+    {50}get keys(=h2,ks2: key) in
+    {47}let (=h1,j: nonce) = decrypt(bm_1,ks2) in
+    {48}new k_2: key;
+    {49}out(c, encrypt((n_1,h2,k_2,encrypt((k_2,h1,j),ks2)),ks1))
+) | (
+    {52}!
+    {53}in(c, (h_2: host,k_3: key));
+    {54}if ((h_2 ≠ A) && (h_2 ≠ B)) then
+    {55}insert keys(h_2,k_3)
+)
+
+-- Query 
+   not attacker(secretA[!1 = v])
+   not attacker(secretB[!1 = v])
+ in process 0.
+Translating the process into Horn clauses...
+Completing...
+200 rules inserted. Base: 166 rules (48 with conclusion selected). Queue: 14 rules.
+ok, secrecy assumption verified: fact unreachable attacker(Kas[])
+ok, secrecy assumption verified: fact unreachable attacker(Kbs[])
+Starting query not attacker(secretA[!1 = v])
+RESULT not attacker(secretA[!1 = v]) is true.
+Starting query not attacker(secretB[!1 = v])
+RESULT not attacker(secretB[!1 = v]) is true.
+-- Query inj-event(endAparam(x,y)) ==> inj-event(beginAparam(x,y)) in process 0.
+Translating the process into Horn clauses...
+Completing...
+200 rules inserted. Base: 173 rules (38 with conclusion selected). Queue: 20 rules.
+ok, secrecy assumption verified: fact unreachable attacker(Kas[])
+ok, secrecy assumption verified: fact unreachable attacker(Kbs[])
+Starting query inj-event(endAparam(x,y)) ==> inj-event(beginAparam(x,y))
+goal reachable: b-event(@p_act(@occ33_1,encrypt((k_4,B[],J_1),Kbs[]))) && b-inj-event(beginAparam(B[],B[]),@occ30_1) && attacker(bm_2) -> inj-event(endAparam(B[],B[]),@occ21_1)
+The 1st, 2nd hypotheses occur strictly before the conclusion.
+The 3rd hypothesis occurs before the conclusion.
+Abbreviations:
+J_1 = J[h_1 = B[],kbs = Kbs[],xB = B[],!1 = @sid]
+Na_1 = Na[bm = bm_2,kas = Kbs[],h = B[],xA = B[],!1 = @sid_1]
+k_4 = k_2[ks2 = Kbs[],ks1 = Kbs[],bm_1 = encrypt((B[],J_1),Kbs[]),n_1 = Na_1,h2 = B[],h1 = B[],!1 = @sid_2]
+Nb_1 = Nb[m4 = encrypt((k_4,B[],J_1),Kbs[]),h_1 = B[],kbs = Kbs[],xB = B[],!1 = @sid]
+@occ21_1 = @occ21[m3 = encrypt((c0,Nb_1),k_4),m2 = encrypt((Na_1,B[],k_4,encrypt((k_4,B[],J_1),Kbs[])),Kbs[]),bm = bm_2,kas = Kbs[],h = B[],xA = B[],!1 = @sid_1]
+@occ33_1 = @occ33[!1 = @sid]
+@occ30_1 = @occ30[h_1 = B[],kbs = Kbs[],xB = B[],!1 = @sid]
+goal reachable: b-event(@p_act(@occ33_1,encrypt((k_4,B[],J_1),Kas[]))) && b-inj-event(beginAparam(B[],A[]),@occ30_1) && attacker(bm_2) -> inj-event(endAparam(B[],A[]),@occ21_1)
+The 1st, 2nd hypotheses occur strictly before the conclusion.
+The 3rd hypothesis occurs before the conclusion.
+Abbreviations:
+J_1 = J[h_1 = B[],kbs = Kas[],xB = A[],!1 = @sid]
+Na_1 = Na[bm = bm_2,kas = Kbs[],h = A[],xA = B[],!1 = @sid_1]
+k_4 = k_2[ks2 = Kas[],ks1 = Kbs[],bm_1 = encrypt((B[],J_1),Kas[]),n_1 = Na_1,h2 = A[],h1 = B[],!1 = @sid_2]
+Nb_1 = Nb[m4 = encrypt((k_4,B[],J_1),Kas[]),h_1 = B[],kbs = Kas[],xB = A[],!1 = @sid]
+@occ21_1 = @occ21[m3 = encrypt((c0,Nb_1),k_4),m2 = encrypt((Na_1,A[],k_4,encrypt((k_4,B[],J_1),Kas[])),Kbs[]),bm = bm_2,kas = Kbs[],h = A[],xA = B[],!1 = @sid_1]
+@occ33_1 = @occ33[!1 = @sid]
+@occ30_1 = @occ30[h_1 = B[],kbs = Kas[],xB = A[],!1 = @sid]
+goal reachable: b-event(@p_act(@occ33_1,encrypt((k_4,A[],J_1),Kbs[]))) && b-inj-event(beginAparam(A[],B[]),@occ30_1) && attacker(bm_2) -> inj-event(endAparam(A[],B[]),@occ21_1)
+The 1st, 2nd hypotheses occur strictly before the conclusion.
+The 3rd hypothesis occurs before the conclusion.
+Abbreviations:
+J_1 = J[h_1 = A[],kbs = Kbs[],xB = B[],!1 = @sid]
+Na_1 = Na[bm = bm_2,kas = Kas[],h = B[],xA = A[],!1 = @sid_1]
+k_4 = k_2[ks2 = Kbs[],ks1 = Kas[],bm_1 = encrypt((A[],J_1),Kbs[]),n_1 = Na_1,h2 = B[],h1 = A[],!1 = @sid_2]
+Nb_1 = Nb[m4 = encrypt((k_4,A[],J_1),Kbs[]),h_1 = A[],kbs = Kbs[],xB = B[],!1 = @sid]
+@occ21_1 = @occ21[m3 = encrypt((c0,Nb_1),k_4),m2 = encrypt((Na_1,B[],k_4,encrypt((k_4,A[],J_1),Kbs[])),Kas[]),bm = bm_2,kas = Kas[],h = B[],xA = A[],!1 = @sid_1]
+@occ33_1 = @occ33[!1 = @sid]
+@occ30_1 = @occ30[h_1 = A[],kbs = Kbs[],xB = B[],!1 = @sid]
+goal reachable: b-event(@p_act(@occ33_1,encrypt((k_4,A[],J_1),Kas[]))) && b-inj-event(beginAparam(A[],A[]),@occ30_1) && attacker(bm_2) -> inj-event(endAparam(A[],A[]),@occ21_1)
+The 1st, 2nd hypotheses occur strictly before the conclusion.
+The 3rd hypothesis occurs before the conclusion.
+Abbreviations:
+J_1 = J[h_1 = A[],kbs = Kas[],xB = A[],!1 = @sid]
+Na_1 = Na[bm = bm_2,kas = Kas[],h = A[],xA = A[],!1 = @sid_1]
+k_4 = k_2[ks2 = Kas[],ks1 = Kas[],bm_1 = encrypt((A[],J_1),Kas[]),n_1 = Na_1,h2 = A[],h1 = A[],!1 = @sid_2]
+Nb_1 = Nb[m4 = encrypt((k_4,A[],J_1),Kas[]),h_1 = A[],kbs = Kas[],xB = A[],!1 = @sid]
+@occ21_1 = @occ21[m3 = encrypt((c0,Nb_1),k_4),m2 = encrypt((Na_1,A[],k_4,encrypt((k_4,A[],J_1),Kas[])),Kas[]),bm = bm_2,kas = Kas[],h = A[],xA = A[],!1 = @sid_1]
+@occ33_1 = @occ33[!1 = @sid]
+@occ30_1 = @occ30[h_1 = A[],kbs = Kas[],xB = A[],!1 = @sid]
+RESULT inj-event(endAparam(x,y)) ==> inj-event(beginAparam(x,y)) is true.
+-- Query inj-event(endAkey(x,y,z)) ==> inj-event(beginAkey(x,y,z)) in process 0.
+Translating the process into Horn clauses...
+Completing...
+200 rules inserted. Base: 173 rules (38 with conclusion selected). Queue: 20 rules.
+ok, secrecy assumption verified: fact unreachable attacker(Kas[])
+ok, secrecy assumption verified: fact unreachable attacker(Kbs[])
+Starting query inj-event(endAkey(x,y,z)) ==> inj-event(beginAkey(x,y,z))
+goal reachable: b-inj-event(beginAkey(B[],B[],k_4),@occ35_1) && attacker(bm_2) -> inj-event(endAkey(B[],B[],k_4),@occ22_1)
+The 1st hypothesis occurs strictly before the conclusion.
+The 2nd hypothesis occurs before the conclusion.
+Abbreviations:
+J_1 = J[h_1 = B[],kbs = Kbs[],xB = B[],!1 = @sid]
+Na_1 = Na[bm = bm_2,kas = Kbs[],h = B[],xA = B[],!1 = @sid_1]
+k_4 = k_2[ks2 = Kbs[],ks1 = Kbs[],bm_1 = encrypt((B[],J_1),Kbs[]),n_1 = Na_1,h2 = B[],h1 = B[],!1 = @sid_2]
+Nb_1 = Nb[m4 = encrypt((k_4,B[],J_1),Kbs[]),h_1 = B[],kbs = Kbs[],xB = B[],!1 = @sid]
+@occ22_1 = @occ22[m3 = encrypt((c0,Nb_1),k_4),m2 = encrypt((Na_1,B[],k_4,encrypt((k_4,B[],J_1),Kbs[])),Kbs[]),bm = bm_2,kas = Kbs[],h = B[],xA = B[],!1 = @sid_1]
+@occ35_1 = @occ35[m4 = encrypt((k_4,B[],J_1),Kbs[]),h_1 = B[],kbs = Kbs[],xB = B[],!1 = @sid]
+goal reachable: b-inj-event(beginAkey(B[],A[],k_4),@occ35_1) && attacker(bm_2) -> inj-event(endAkey(B[],A[],k_4),@occ22_1)
+The 1st hypothesis occurs strictly before the conclusion.
+The 2nd hypothesis occurs before the conclusion.
+Abbreviations:
+J_1 = J[h_1 = B[],kbs = Kas[],xB = A[],!1 = @sid]
+Na_1 = Na[bm = bm_2,kas = Kbs[],h = A[],xA = B[],!1 = @sid_1]
+k_4 = k_2[ks2 = Kas[],ks1 = Kbs[],bm_1 = encrypt((B[],J_1),Kas[]),n_1 = Na_1,h2 = A[],h1 = B[],!1 = @sid_2]
+Nb_1 = Nb[m4 = encrypt((k_4,B[],J_1),Kas[]),h_1 = B[],kbs = Kas[],xB = A[],!1 = @sid]
+@occ22_1 = @occ22[m3 = encrypt((c0,Nb_1),k_4),m2 = encrypt((Na_1,A[],k_4,encrypt((k_4,B[],J_1),Kas[])),Kbs[]),bm = bm_2,kas = Kbs[],h = A[],xA = B[],!1 = @sid_1]
+@occ35_1 = @occ35[m4 = encrypt((k_4,B[],J_1),Kas[]),h_1 = B[],kbs = Kas[],xB = A[],!1 = @sid]
+goal reachable: b-inj-event(beginAkey(A[],B[],k_4),@occ35_1) && attacker(bm_2) -> inj-event(endAkey(A[],B[],k_4),@occ22_1)
+The 1st hypothesis occurs strictly before the conclusion.
+The 2nd hypothesis occurs before the conclusion.
+Abbreviations:
+J_1 = J[h_1 = A[],kbs = Kbs[],xB = B[],!1 = @sid]
+Na_1 = Na[bm = bm_2,kas = Kas[],h = B[],xA = A[],!1 = @sid_1]
+k_4 = k_2[ks2 = Kbs[],ks1 = Kas[],bm_1 = encrypt((A[],J_1),Kbs[]),n_1 = Na_1,h2 = B[],h1 = A[],!1 = @sid_2]
+Nb_1 = Nb[m4 = encrypt((k_4,A[],J_1),Kbs[]),h_1 = A[],kbs = Kbs[],xB = B[],!1 = @sid]
+@occ22_1 = @occ22[m3 = encrypt((c0,Nb_1),k_4),m2 = encrypt((Na_1,B[],k_4,encrypt((k_4,A[],J_1),Kbs[])),Kas[]),bm = bm_2,kas = Kas[],h = B[],xA = A[],!1 = @sid_1]
+@occ35_1 = @occ35[m4 = encrypt((k_4,A[],J_1),Kbs[]),h_1 = A[],kbs = Kbs[],xB = B[],!1 = @sid]
+goal reachable: b-inj-event(beginAkey(A[],A[],k_4),@occ35_1) && attacker(bm_2) -> inj-event(endAkey(A[],A[],k_4),@occ22_1)
+The 1st hypothesis occurs strictly before the conclusion.
+The 2nd hypothesis occurs before the conclusion.
+Abbreviations:
+J_1 = J[h_1 = A[],kbs = Kas[],xB = A[],!1 = @sid]
+Na_1 = Na[bm = bm_2,kas = Kas[],h = A[],xA = A[],!1 = @sid_1]
+k_4 = k_2[ks2 = Kas[],ks1 = Kas[],bm_1 = encrypt((A[],J_1),Kas[]),n_1 = Na_1,h2 = A[],h1 = A[],!1 = @sid_2]
+Nb_1 = Nb[m4 = encrypt((k_4,A[],J_1),Kas[]),h_1 = A[],kbs = Kas[],xB = A[],!1 = @sid]
+@occ22_1 = @occ22[m3 = encrypt((c0,Nb_1),k_4),m2 = encrypt((Na_1,A[],k_4,encrypt((k_4,A[],J_1),Kas[])),Kas[]),bm = bm_2,kas = Kas[],h = A[],xA = A[],!1 = @sid_1]
+@occ35_1 = @occ35[m4 = encrypt((k_4,A[],J_1),Kas[]),h_1 = A[],kbs = Kas[],xB = A[],!1 = @sid]
+RESULT inj-event(endAkey(x,y,z)) ==> inj-event(beginAkey(x,y,z)) is true.
+-- Query inj-event(endBparam(x,y)) ==> inj-event(beginBparam(x,y)) in process 0.
+Translating the process into Horn clauses...
+Completing...
+200 rules inserted. Base: 175 rules (46 with conclusion selected). Queue: 34 rules.
+ok, secrecy assumption verified: fact unreachable attacker(Kas[])
+ok, secrecy assumption verified: fact unreachable attacker(Kbs[])
+Starting query inj-event(endBparam(x,y)) ==> inj-event(beginBparam(x,y))
+goal reachable: b-event(@p_act(@occ17_1,encrypt((c0,Nb_1),k_4))) && b-event(@p_act(@occ13_1,encrypt((Na_1,B[],k_4,encrypt((k_4,B[],J_1),Kbs[])),Kbs[]))) && b-inj-event(beginBparam(B[],B[]),@occ10_1) && attacker(bm_2) -> inj-event(endBparam(B[],B[]),@occ41_1)
+The 1st, 2nd, 3rd hypotheses occur strictly before the conclusion.
+The 4th hypothesis occurs before the conclusion.
+Abbreviations:
+J_1 = J[h_1 = B[],kbs = Kbs[],xB = B[],!1 = @sid]
+Na_1 = Na[bm = bm_2,kas = Kbs[],h = B[],xA = B[],!1 = @sid_1]
+k_4 = k_2[ks2 = Kbs[],ks1 = Kbs[],bm_1 = encrypt((B[],J_1),Kbs[]),n_1 = Na_1,h2 = B[],h1 = B[],!1 = @sid_2]
+Nb_1 = Nb[m4 = encrypt((k_4,B[],J_1),Kbs[]),h_1 = B[],kbs = Kbs[],xB = B[],!1 = @sid]
+@occ41_1 = @occ41[m5 = encrypt((c1,Nb_1),k_4),m4 = encrypt((k_4,B[],J_1),Kbs[]),h_1 = B[],kbs = Kbs[],xB = B[],!1 = @sid]
+@occ17_1 = @occ17[!1 = @sid_1]
+@occ13_1 = @occ13[!1 = @sid_1]
+@occ10_1 = @occ10[bm = bm_2,kas = Kbs[],h = B[],xA = B[],!1 = @sid_1]
+goal reachable: b-event(@p_act(@occ17_1,encrypt((c0,Nb_1),k_4))) && b-event(@p_act(@occ13_1,encrypt((Na_1,A[],k_4,encrypt((k_4,B[],J_1),Kas[])),Kbs[]))) && b-inj-event(beginBparam(B[],A[]),@occ10_1) && attacker(bm_2) -> inj-event(endBparam(B[],A[]),@occ41_1)
+The 1st, 2nd, 3rd hypotheses occur strictly before the conclusion.
+The 4th hypothesis occurs before the conclusion.
+Abbreviations:
+J_1 = J[h_1 = B[],kbs = Kas[],xB = A[],!1 = @sid]
+Na_1 = Na[bm = bm_2,kas = Kbs[],h = A[],xA = B[],!1 = @sid_1]
+k_4 = k_2[ks2 = Kas[],ks1 = Kbs[],bm_1 = encrypt((B[],J_1),Kas[]),n_1 = Na_1,h2 = A[],h1 = B[],!1 = @sid_2]
+Nb_1 = Nb[m4 = encrypt((k_4,B[],J_1),Kas[]),h_1 = B[],kbs = Kas[],xB = A[],!1 = @sid]
+@occ41_1 = @occ41[m5 = encrypt((c1,Nb_1),k_4),m4 = encrypt((k_4,B[],J_1),Kas[]),h_1 = B[],kbs = Kas[],xB = A[],!1 = @sid]
+@occ17_1 = @occ17[!1 = @sid_1]
+@occ13_1 = @occ13[!1 = @sid_1]
+@occ10_1 = @occ10[bm = bm_2,kas = Kbs[],h = A[],xA = B[],!1 = @sid_1]
+goal reachable: b-event(@p_act(@occ17_1,encrypt((c0,Nb_1),k_4))) && b-event(@p_act(@occ13_1,encrypt((Na_1,B[],k_4,encrypt((k_4,A[],J_1),Kbs[])),Kas[]))) && b-inj-event(beginBparam(A[],B[]),@occ10_1) && attacker(bm_2) -> inj-event(endBparam(A[],B[]),@occ41_1)
+The 1st, 2nd, 3rd hypotheses occur strictly before the conclusion.
+The 4th hypothesis occurs before the conclusion.
+Abbreviations:
+J_1 = J[h_1 = A[],kbs = Kbs[],xB = B[],!1 = @sid]
+Na_1 = Na[bm = bm_2,kas = Kas[],h = B[],xA = A[],!1 = @sid_1]
+k_4 = k_2[ks2 = Kbs[],ks1 = Kas[],bm_1 = encrypt((A[],J_1),Kbs[]),n_1 = Na_1,h2 = B[],h1 = A[],!1 = @sid_2]
+Nb_1 = Nb[m4 = encrypt((k_4,A[],J_1),Kbs[]),h_1 = A[],kbs = Kbs[],xB = B[],!1 = @sid]
+@occ41_1 = @occ41[m5 = encrypt((c1,Nb_1),k_4),m4 = encrypt((k_4,A[],J_1),Kbs[]),h_1 = A[],kbs = Kbs[],xB = B[],!1 = @sid]
+@occ17_1 = @occ17[!1 = @sid_1]
+@occ13_1 = @occ13[!1 = @sid_1]
+@occ10_1 = @occ10[bm = bm_2,kas = Kas[],h = B[],xA = A[],!1 = @sid_1]
+goal reachable: b-event(@p_act(@occ17_1,encrypt((c0,Nb_1),k_4))) && b-event(@p_act(@occ13_1,encrypt((Na_1,A[],k_4,encrypt((k_4,A[],J_1),Kas[])),Kas[]))) && b-inj-event(beginBparam(A[],A[]),@occ10_1) && attacker(bm_2) -> inj-event(endBparam(A[],A[]),@occ41_1)
+The 1st, 2nd, 3rd hypotheses occur strictly before the conclusion.
+The 4th hypothesis occurs before the conclusion.
+Abbreviations:
+J_1 = J[h_1 = A[],kbs = Kas[],xB = A[],!1 = @sid]
+Na_1 = Na[bm = bm_2,kas = Kas[],h = A[],xA = A[],!1 = @sid_1]
+k_4 = k_2[ks2 = Kas[],ks1 = Kas[],bm_1 = encrypt((A[],J_1),Kas[]),n_1 = Na_1,h2 = A[],h1 = A[],!1 = @sid_2]
+Nb_1 = Nb[m4 = encrypt((k_4,A[],J_1),Kas[]),h_1 = A[],kbs = Kas[],xB = A[],!1 = @sid]
+@occ41_1 = @occ41[m5 = encrypt((c1,Nb_1),k_4),m4 = encrypt((k_4,A[],J_1),Kas[]),h_1 = A[],kbs = Kas[],xB = A[],!1 = @sid]
+@occ17_1 = @occ17[!1 = @sid_1]
+@occ13_1 = @occ13[!1 = @sid_1]
+@occ10_1 = @occ10[bm = bm_2,kas = Kas[],h = A[],xA = A[],!1 = @sid_1]
+RESULT inj-event(endBparam(x,y)) ==> inj-event(beginBparam(x,y)) is true.
+-- Query inj-event(endBkey(x,y,z)) ==> inj-event(beginBkey(x,y,z)) in process 0.
+Translating the process into Horn clauses...
+Completing...
+200 rules inserted. Base: 175 rules (46 with conclusion selected). Queue: 34 rules.
+ok, secrecy assumption verified: fact unreachable attacker(Kas[])
+ok, secrecy assumption verified: fact unreachable attacker(Kbs[])
+Starting query inj-event(endBkey(x,y,z)) ==> inj-event(beginBkey(x,y,z))
+goal reachable: b-event(@p_act(@occ17_2,encrypt((c0,Nb_1),k_4))) && b-inj-event(beginBkey(B[],B[],k_4),@occ15_1) && attacker(bm_2) -> inj-event(endBkey(B[],B[],k_4),@occ42_1)
+The 1st, 2nd hypotheses occur strictly before the conclusion.
+The 3rd hypothesis occurs before the conclusion.
+Abbreviations:
+J_1 = J[h_1 = B[],kbs = Kbs[],xB = B[],!1 = @sid]
+Na_1 = Na[bm = bm_2,kas = Kbs[],h = B[],xA = B[],!1 = @sid_1]
+k_4 = k_2[ks2 = Kbs[],ks1 = Kbs[],bm_1 = encrypt((B[],J_1),Kbs[]),n_1 = Na_1,h2 = B[],h1 = B[],!1 = @sid_2]
+Nb_1 = Nb[m4 = encrypt((k_4,B[],J_1),Kbs[]),h_1 = B[],kbs = Kbs[],xB = B[],!1 = @sid]
+@occ42_1 = @occ42[m5 = encrypt((c1,Nb_1),k_4),m4 = encrypt((k_4,B[],J_1),Kbs[]),h_1 = B[],kbs = Kbs[],xB = B[],!1 = @sid]
+@occ17_2 = @occ17_1[!1 = @sid_1]
+@occ15_1 = @occ15[m2 = encrypt((Na_1,B[],k_4,encrypt((k_4,B[],J_1),Kbs[])),Kbs[]),bm = bm_2,kas = Kbs[],h = B[],xA = B[],!1 = @sid_1]
+goal reachable: b-event(@p_act(@occ17_2,encrypt((c0,Nb_1),k_4))) && b-inj-event(beginBkey(B[],A[],k_4),@occ15_1) && attacker(bm_2) -> inj-event(endBkey(B[],A[],k_4),@occ42_1)
+The 1st, 2nd hypotheses occur strictly before the conclusion.
+The 3rd hypothesis occurs before the conclusion.
+Abbreviations:
+J_1 = J[h_1 = B[],kbs = Kas[],xB = A[],!1 = @sid]
+Na_1 = Na[bm = bm_2,kas = Kbs[],h = A[],xA = B[],!1 = @sid_1]
+k_4 = k_2[ks2 = Kas[],ks1 = Kbs[],bm_1 = encrypt((B[],J_1),Kas[]),n_1 = Na_1,h2 = A[],h1 = B[],!1 = @sid_2]
+Nb_1 = Nb[m4 = encrypt((k_4,B[],J_1),Kas[]),h_1 = B[],kbs = Kas[],xB = A[],!1 = @sid]
+@occ42_1 = @occ42[m5 = encrypt((c1,Nb_1),k_4),m4 = encrypt((k_4,B[],J_1),Kas[]),h_1 = B[],kbs = Kas[],xB = A[],!1 = @sid]
+@occ17_2 = @occ17_1[!1 = @sid_1]
+@occ15_1 = @occ15[m2 = encrypt((Na_1,A[],k_4,encrypt((k_4,B[],J_1),Kas[])),Kbs[]),bm = bm_2,kas = Kbs[],h = A[],xA = B[],!1 = @sid_1]
+goal reachable: b-event(@p_act(@occ17_2,encrypt((c0,Nb_1),k_4))) && b-inj-event(beginBkey(A[],B[],k_4),@occ15_1) && attacker(bm_2) -> inj-event(endBkey(A[],B[],k_4),@occ42_1)
+The 1st, 2nd hypotheses occur strictly before the conclusion.
+The 3rd hypothesis occurs before the conclusion.
+Abbreviations:
+J_1 = J[h_1 = A[],kbs = Kbs[],xB = B[],!1 = @sid]
+Na_1 = Na[bm = bm_2,kas = Kas[],h = B[],xA = A[],!1 = @sid_1]
+k_4 = k_2[ks2 = Kbs[],ks1 = Kas[],bm_1 = encrypt((A[],J_1),Kbs[]),n_1 = Na_1,h2 = B[],h1 = A[],!1 = @sid_2]
+Nb_1 = Nb[m4 = encrypt((k_4,A[],J_1),Kbs[]),h_1 = A[],kbs = Kbs[],xB = B[],!1 = @sid]
+@occ42_1 = @occ42[m5 = encrypt((c1,Nb_1),k_4),m4 = encrypt((k_4,A[],J_1),Kbs[]),h_1 = A[],kbs = Kbs[],xB = B[],!1 = @sid]
+@occ17_2 = @occ17_1[!1 = @sid_1]
+@occ15_1 = @occ15[m2 = encrypt((Na_1,B[],k_4,encrypt((k_4,A[],J_1),Kbs[])),Kas[]),bm = bm_2,kas = Kas[],h = B[],xA = A[],!1 = @sid_1]
+goal reachable: b-event(@p_act(@occ17_2,encrypt((c0,Nb_1),k_4))) && b-inj-event(beginBkey(A[],A[],k_4),@occ15_1) && attacker(bm_2) -> inj-event(endBkey(A[],A[],k_4),@occ42_1)
+The 1st, 2nd hypotheses occur strictly before the conclusion.
+The 3rd hypothesis occurs before the conclusion.
+Abbreviations:
+J_1 = J[h_1 = A[],kbs = Kas[],xB = A[],!1 = @sid]
+Na_1 = Na[bm = bm_2,kas = Kas[],h = A[],xA = A[],!1 = @sid_1]
+k_4 = k_2[ks2 = Kas[],ks1 = Kas[],bm_1 = encrypt((A[],J_1),Kas[]),n_1 = Na_1,h2 = A[],h1 = A[],!1 = @sid_2]
+Nb_1 = Nb[m4 = encrypt((k_4,A[],J_1),Kas[]),h_1 = A[],kbs = Kas[],xB = A[],!1 = @sid]
+@occ42_1 = @occ42[m5 = encrypt((c1,Nb_1),k_4),m4 = encrypt((k_4,A[],J_1),Kas[]),h_1 = A[],kbs = Kas[],xB = A[],!1 = @sid]
+@occ17_2 = @occ17_1[!1 = @sid_1]
+@occ15_1 = @occ15[m2 = encrypt((Na_1,A[],k_4,encrypt((k_4,A[],J_1),Kas[])),Kas[]),bm = bm_2,kas = Kas[],h = A[],xA = A[],!1 = @sid_1]
+RESULT inj-event(endBkey(x,y,z)) ==> inj-event(beginBkey(x,y,z)) is true.
+
+--------------------------------------------------------------
+Verification summary:
+
+Query not attacker(secretA[!1 = v]) is true.
+
+Query not attacker(secretB[!1 = v]) is true.
+
+Query inj-event(endAparam(x,y)) ==> inj-event(beginAparam(x,y)) is true.
+
+Query inj-event(endAkey(x,y,z)) ==> inj-event(beginAkey(x,y,z)) is true.
+
+Query inj-event(endBparam(x,y)) ==> inj-event(beginBparam(x,y)) is true.
+
+Query inj-event(endBkey(x,y,z)) ==> inj-event(beginBkey(x,y,z)) is true.
+
+--------------------------------------------------------------
+

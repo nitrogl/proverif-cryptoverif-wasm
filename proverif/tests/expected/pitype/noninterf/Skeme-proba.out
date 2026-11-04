@@ -1,0 +1,150 @@
+Linear part:
+exp(exp(g,x),y) = exp(exp(g,y),x)
+Completing equations...
+Completed equations:
+exp(exp(g,x),y) = exp(exp(g,y),x)
+Convergent part: No equation.
+Process 0 (that is, the initial process):
+{1}new skA: skey;
+{2}let pkA: pkey = pk(skA) in
+{3}out(c, pkA);
+{4}new skB: skey;
+{5}let pkB: pkey = pk(skB) in
+{6}out(c, pkB);
+(
+    {7}!
+    {8}let skA_1: skey = skA in
+    {9}in(c, pkX: pkey);
+    {10}new x: exponent;
+    {11}let gx: bitstring = exp(g,x) in
+    {12}new Ka: nonce;
+    {13}let x_1: bitstring = (pkA,Ka) in
+    {14}new r: seed;
+    {15}out(c, (internal_encrypt(x_1,pkX,r),gx));
+    {16}in(c, (m1: bitstring,m2: bitstring,m3: bitstring));
+    {17}let Kb: nonce = decrypt(m1,skA_1) in
+    {18}let K0: key = hash((Ka,Kb)) in
+    {19}if (m3 = keyhash((gx,m2,pkX,pkA),K0)) then
+    {20}let sh: key = hash(exp(m2,x)) in
+    {21}out(c, keyhash((m2,gx,pkA,pkX),K0));
+    {22}if (pkX = pkB) then
+    {23}let x_2: bitstring = secretA in
+    {24}new r_1: sseed;
+    {25}out(c, internal_sencrypt(x_2,sh,r_1))
+) | (
+    {26}!
+    {27}let skB_1: skey = skB in
+    {28}in(c, (m1_1: bitstring,m2_1: bitstring));
+    {29}let (pkAr: pkey,Ka_1: nonce) = decrypt(m1_1,skB_1) in
+    {30}new Kb_1: nonce;
+    {31}let K0_1: key = hash((Ka_1,Kb_1)) in
+    {32}new y: exponent;
+    {33}let gy: bitstring = exp(g,y) in
+    {34}let sh_1: key = hash(exp(m2_1,y)) in
+    {35}let x_3: bitstring = Kb_1 in
+    {36}new r_2: seed;
+    {37}out(c, (internal_encrypt(x_3,pkAr,r_2),gy,keyhash((m2_1,gy,pkB,pkAr),K0_1)));
+    {38}in(c, m3_1: bitstring);
+    {39}if (m3_1 = keyhash((gy,m2_1,pkAr,pkB),K0_1)) then
+    {40}if (pkAr = pkA) then
+    {41}let x_4: bitstring = secretB in
+    {42}new r_3: sseed;
+    {43}out(c, internal_sencrypt(x_4,sh_1,r_3))
+)
+
+--  Process 1 (that is, process 0, with let moved downwards):
+{1}new skA: skey;
+{2}let pkA: pkey = pk(skA) in
+{3}out(c, pkA);
+{4}new skB: skey;
+{5}let pkB: pkey = pk(skB) in
+{6}out(c, pkB);
+(
+    {7}!
+    {9}in(c, pkX: pkey);
+    {10}new x: exponent;
+    {12}new Ka: nonce;
+    {14}new r: seed;
+    {13}let x_1: bitstring = (pkA,Ka) in
+    {11}let gx: bitstring = exp(g,x) in
+    {15}out(c, (internal_encrypt(x_1,pkX,r),gx));
+    {16}in(c, (m1: bitstring,m2: bitstring,m3: bitstring));
+    {8}let skA_1: skey = skA in
+    {17}let Kb: nonce = decrypt(m1,skA_1) in
+    {18}let K0: key = hash((Ka,Kb)) in
+    {19}if (m3 = keyhash((gx,m2,pkX,pkA),K0)) then
+    {21}out(c, keyhash((m2,gx,pkA,pkX),K0));
+    {22}if (pkX = pkB) then
+    {24}new r_1: sseed;
+    {23}let x_2: bitstring = secretA in
+    {20}let sh: key = hash(exp(m2,x)) in
+    {25}out(c, internal_sencrypt(x_2,sh,r_1))
+) | (
+    {26}!
+    {28}in(c, (m1_1: bitstring,m2_1: bitstring));
+    {27}let skB_1: skey = skB in
+    {29}let (pkAr: pkey,Ka_1: nonce) = decrypt(m1_1,skB_1) in
+    {30}new Kb_1: nonce;
+    {32}new y: exponent;
+    {36}new r_2: seed;
+    {35}let x_3: bitstring = Kb_1 in
+    {33}let gy: bitstring = exp(g,y) in
+    {31}let K0_1: key = hash((Ka_1,Kb_1)) in
+    {37}out(c, (internal_encrypt(x_3,pkAr,r_2),gy,keyhash((m2_1,gy,pkB,pkAr),K0_1)));
+    {38}in(c, m3_1: bitstring);
+    {39}if (m3_1 = keyhash((gy,m2_1,pkAr,pkB),K0_1)) then
+    {40}if (pkAr = pkA) then
+    {42}new r_3: sseed;
+    {41}let x_4: bitstring = secretB in
+    {34}let sh_1: key = hash(exp(m2_1,y)) in
+    {43}out(c, internal_sencrypt(x_4,sh_1,r_3))
+)
+
+-- Non-interference secretA, secretB in process 1.
+Warning: using "noninterf" in the presence of equations may yield many
+false attacks. If you observe false attacks, try to code the desired
+property using "choice" instead.
+Translating the process into Horn clauses...
+Completing...
+200 rules inserted. Base: 174 rules (38 with conclusion selected). Queue: 21 rules.
+ok, secrecy assumption verified: fact unreachable attacker(skA[])
+ok, secrecy assumption verified: fact unreachable attacker(skB[])
+ok, secrecy assumption verified: fact unreachable attacker(x[pkX = v,!1 = v_1])
+ok, secrecy assumption verified: fact unreachable attacker(y[m2_1 = v,m1_1 = v_1,!1 = v_2])
+RESULT Non-interference secretA, secretB is true.
+-- Non-interference secretA in process 1.
+Warning: using "noninterf" in the presence of equations may yield many
+false attacks. If you observe false attacks, try to code the desired
+property using "choice" instead.
+Translating the process into Horn clauses...
+Completing...
+200 rules inserted. Base: 174 rules (38 with conclusion selected). Queue: 21 rules.
+ok, secrecy assumption verified: fact unreachable attacker(skA[])
+ok, secrecy assumption verified: fact unreachable attacker(skB[])
+ok, secrecy assumption verified: fact unreachable attacker(x[pkX = v,!1 = v_1])
+ok, secrecy assumption verified: fact unreachable attacker(y[m2_1 = v,m1_1 = v_1,!1 = v_2])
+RESULT Non-interference secretA is true.
+-- Non-interference secretB in process 1.
+Warning: using "noninterf" in the presence of equations may yield many
+false attacks. If you observe false attacks, try to code the desired
+property using "choice" instead.
+Translating the process into Horn clauses...
+Completing...
+200 rules inserted. Base: 174 rules (38 with conclusion selected). Queue: 21 rules.
+ok, secrecy assumption verified: fact unreachable attacker(skA[])
+ok, secrecy assumption verified: fact unreachable attacker(skB[])
+ok, secrecy assumption verified: fact unreachable attacker(x[pkX = v,!1 = v_1])
+ok, secrecy assumption verified: fact unreachable attacker(y[m2_1 = v,m1_1 = v_1,!1 = v_2])
+RESULT Non-interference secretB is true.
+
+--------------------------------------------------------------
+Verification summary:
+
+Non-interference secretA, secretB is true.
+
+Non-interference secretA is true.
+
+Non-interference secretB is true.
+
+--------------------------------------------------------------
+

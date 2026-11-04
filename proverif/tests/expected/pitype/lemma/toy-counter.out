@@ -1,0 +1,54 @@
+Process 0 (that is, the initial process):
+{1}!
+{2}new d: channel;
+{3}new k: bitstring;
+(
+    {4}!
+    {5}in(d, i: nat);
+    {6}new st[]: stamp;
+    {7}event Counter(d,id,st,i);
+    {8}out(c, h(i,k));
+    {9}out(d, i + 1)
+) | (
+    {10}!
+    {11}in(d, i_1: nat);
+    {12}new st_1[]: stamp;
+    {13}event Counter(d,id,st_1,i_1);
+    {14}in(c, y: bitstring);
+    {15}if (h(i_1,k) = y) then
+        {16}out(c, s);
+        {17}out(d, i_1 + 1)
+    else
+        {18}out(d, i_1 + 1)
+) | (
+    {19}out(d, 0)
+) | (
+    {20}!
+    {21}in(d, x: nat);
+    {22}out(d, x)
+)
+
+-- Axiom 
+   event(Counter(d_1,st2,st_2,i1)) && event(Counter(d_1,st2,st_2,i_2)) ==> i1 = i_2
+   event(Counter(d_1,st2,st_2,i1)) && event(Counter(d_1,st2,st1,i1)) ==> st_2 = st1
+ in process 0.
+-- Query not attacker(s[]) in process 0.
+Translating the process into Horn clauses...
+select mess(d[!1 = *@sid],i_2)/-5000
+Completing...
+Starting query not attacker(s[])
+RESULT not attacker(s[]) is true.
+
+--------------------------------------------------------------
+Verification summary:
+
+Query(ies):
+ - Query not attacker(s[]) is true.
+Associated axiom(s):
+ - Axiom 
+   event(Counter(d_1,st2,st_2,i1)) && event(Counter(d_1,st2,st_2,i_2)) ==> i1 = i_2
+   event(Counter(d_1,st2,st_2,i1)) && event(Counter(d_1,st2,st1,i1)) ==> st_2 = st1
+ in process 0.
+
+--------------------------------------------------------------
+

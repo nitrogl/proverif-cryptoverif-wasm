@@ -1,0 +1,274 @@
+Process 0 (that is, the initial process):
+{1}new Kas: key;
+{2}new Kbs: key;
+{3}let A: host = fhost(Kas) in
+{4}let B: host = fhost(Kbs) in
+{5}out(c, A);
+{6}out(c, B);
+(
+    {7}!
+    {8}in(c, (xA: host,xB2: host));
+    {9}if ((xA = A) || (xA = B)) then
+    {10}let kas: key = getkey(xA) in
+    {11}event beginBparam(xA,xB2);
+    {12}out(c, xA);
+    {13}in(c, n: nonce);
+    {14}event beginBfull(xA,xB2,n);
+    {15}out(c, encrypt((xA,xB2,n),kas))
+) | (
+    {16}!
+    {17}in(c, xB: host);
+    {18}if ((xB = A) || (xB = B)) then
+    {19}let kbs: key = getkey(xB) in
+    {20}in(c, xA2: host);
+    {21}new N: nonce;
+    {22}out(c, N);
+    {23}in(c, m: bitstring);
+    {24}out(c, encrypt((xA2,xB,m),kbs));
+    {25}in(c, m2: bitstring);
+    {26}let (=xA2,=xB,=N) = decrypt(m2,kbs) in
+    {27}if ((xA2 = A) || (xA2 = B)) then
+    {28}event endBparam(xA2,xB);
+    {29}event endBfull(xA2,xB,N)
+) | (
+    {30}!
+    {31}in(c, xB0: host);
+    {32}let kbs_1: key = getkey(xB0) in
+    {33}in(c, m_1: bitstring);
+    {34}let (xA1: host,=xB0,m2_1: bitstring) = decrypt(m_1,kbs_1) in
+    {35}let kas_1: key = getkey(xA1) in
+    {36}let (=xA1,=xB0,n_1: nonce) = decrypt(m2_1,kas_1) in
+    {37}out(c, encrypt((xA1,xB0,n_1),kbs_1))
+)
+
+--  Process 1 (that is, process 0, with let moved downwards):
+{1}new Kas: key;
+{2}new Kbs: key;
+{3}let A: host = fhost(Kas) in
+{5}out(c, A);
+{4}let B: host = fhost(Kbs) in
+{6}out(c, B);
+(
+    {7}!
+    {8}in(c, (xA: host,xB2: host));
+    {9}if ((xA = A) || (xA = B)) then
+    {10}let kas: key = getkey(xA) in
+    {11}event beginBparam(xA,xB2);
+    {12}out(c, xA);
+    {13}in(c, n: nonce);
+    {14}event beginBfull(xA,xB2,n);
+    {15}out(c, encrypt((xA,xB2,n),kas))
+) | (
+    {16}!
+    {17}in(c, xB: host);
+    {18}if ((xB = A) || (xB = B)) then
+    {19}let kbs: key = getkey(xB) in
+    {20}in(c, xA2: host);
+    {21}new N: nonce;
+    {22}out(c, N);
+    {23}in(c, m: bitstring);
+    {24}out(c, encrypt((xA2,xB,m),kbs));
+    {25}in(c, m2: bitstring);
+    {26}let (=xA2,=xB,=N) = decrypt(m2,kbs) in
+    {27}if ((xA2 = A) || (xA2 = B)) then
+    {28}event endBparam(xA2,xB);
+    {29}event endBfull(xA2,xB,N)
+) | (
+    {30}!
+    {31}in(c, xB0: host);
+    {32}let kbs_1: key = getkey(xB0) in
+    {33}in(c, m_1: bitstring);
+    {34}let (xA1: host,=xB0,m2_1: bitstring) = decrypt(m_1,kbs_1) in
+    {35}let kas_1: key = getkey(xA1) in
+    {36}let (=xA1,=xB0,n_1: nonce) = decrypt(m2_1,kas_1) in
+    {37}out(c, encrypt((xA1,xB0,n_1),kbs_1))
+)
+
+-- Query inj-event(endBparam(x,y)) ==> inj-event(beginBparam(x,y)) in process 1.
+Translating the process into Horn clauses...
+Completing...
+ok, secrecy assumption verified: fact unreachable attacker(Kas[])
+ok, secrecy assumption verified: fact unreachable attacker(Kbs[])
+Starting query inj-event(endBparam(x,y)) ==> inj-event(beginBparam(x,y))
+goal reachable: attacker(m_2) -> inj-event(endBparam(fhost(Kbs[]),fhost(Kbs[])),@occ28_1)
+Abbreviations:
+N_1 = N[xA2 = fhost(Kbs[]),xB = fhost(Kbs[]),!1 = @sid]
+@occ28_1 = @occ28[m2 = encrypt((fhost(Kbs[]),fhost(Kbs[]),N_1),Kbs[]),m = m_2,xA2 = fhost(Kbs[]),xB = fhost(Kbs[]),!1 = @sid]
+
+Derivation:
+Abbreviations:
+N_1 = N[xA2 = fhost(Kbs[]),xB = fhost(Kbs[]),!1 = @sid]
+@occ28_1 = @occ28[m2 = encrypt((fhost(Kbs[]),fhost(Kbs[]),N_1),Kbs[]),m = m_2,xA2 = fhost(Kbs[]),xB = fhost(Kbs[]),!1 = @sid]
+
+1. The message fhost(Kbs[]) may be sent to the attacker at output {6}.
+attacker(fhost(Kbs[])).
+
+2. We assume as hypothesis that
+attacker(m_2).
+
+3. The message fhost(Kbs[]) that the attacker may have by 1 may be received at input {17}.
+The message fhost(Kbs[]) that the attacker may have by 1 may be received at input {20}.
+So the message N_1 may be sent to the attacker at output {22}.
+attacker(N_1).
+
+4. The message fhost(Kbs[]) that the attacker may have by 1 may be received at input {17}.
+The message fhost(Kbs[]) that the attacker may have by 1 may be received at input {20}.
+The message N_1 that the attacker may have by 3 may be received at input {23}.
+So the message encrypt((fhost(Kbs[]),fhost(Kbs[]),N_1),Kbs[]) may be sent to the attacker at output {24}.
+attacker(encrypt((fhost(Kbs[]),fhost(Kbs[]),N_1),Kbs[])).
+
+5. The message fhost(Kbs[]) that the attacker may have by 1 may be received at input {17}.
+The message fhost(Kbs[]) that the attacker may have by 1 may be received at input {20}.
+The message m_2 that the attacker may have by 2 may be received at input {23}.
+The message encrypt((fhost(Kbs[]),fhost(Kbs[]),N_1),Kbs[]) that the attacker may have by 4 may be received at input {25}.
+So event endBparam(fhost(Kbs[]),fhost(Kbs[])) may be executed at {28} in session @sid.
+inj-event(endBparam(fhost(Kbs[]),fhost(Kbs[])),@occ28_1).
+
+6. By 5, inj-event(endBparam(fhost(Kbs[]),fhost(Kbs[])),@occ28_1).
+The goal is reached, represented in the following fact:
+inj-event(endBparam(fhost(Kbs[]),fhost(Kbs[])),@occ28_1).
+
+
+A more detailed output of the traces is available with
+  set traceDisplay = long.
+
+new Kas: key creating Kas_1 at {1}
+
+new Kbs: key creating Kbs_1 at {2}
+
+out(c, ~M) with ~M = fhost(Kas_1) at {5}
+
+out(c, ~M_1) with ~M_1 = fhost(Kbs_1) at {6}
+
+in(c, ~M_1) with ~M_1 = fhost(Kbs_1) at {17} in copy a
+
+in(c, ~M_1) with ~M_1 = fhost(Kbs_1) at {20} in copy a
+
+new N: nonce creating N_2 at {21} in copy a
+
+out(c, ~M_2) with ~M_2 = N_2 at {22} in copy a
+
+in(c, ~M_1) with ~M_1 = fhost(Kbs_1) at {17} in copy a_1
+
+in(c, ~M_1) with ~M_1 = fhost(Kbs_1) at {20} in copy a_1
+
+new N: nonce creating N_3 at {21} in copy a_1
+
+out(c, ~M_3) with ~M_3 = N_3 at {22} in copy a_1
+
+in(c, ~M_3) with ~M_3 = N_3 at {23} in copy a
+
+out(c, ~M_4) with ~M_4 = encrypt((fhost(Kbs_1),fhost(Kbs_1),N_3),Kbs_1) at {24} in copy a
+
+in(c, a_2) at {23} in copy a_1
+
+out(c, ~M_5) with ~M_5 = encrypt((fhost(Kbs_1),fhost(Kbs_1),a_2),Kbs_1) at {24} in copy a_1
+
+in(c, ~M_4) with ~M_4 = encrypt((fhost(Kbs_1),fhost(Kbs_1),N_3),Kbs_1) at {25} in copy a_1
+
+event endBparam(fhost(Kbs_1),fhost(Kbs_1)) at {28} in copy a_1 (goal)
+
+The event endBparam(fhost(Kbs_1),fhost(Kbs_1)) is executed at {28} in copy a_1.
+A trace has been found.
+RESULT inj-event(endBparam(x,y)) ==> inj-event(beginBparam(x,y)) is false.
+RESULT (even event(endBparam(x,y)) ==> event(beginBparam(x,y)) is false.)
+-- Query inj-event(endBfull(x,y,z)) ==> inj-event(beginBfull(x,y,z)) in process 1.
+Translating the process into Horn clauses...
+Completing...
+ok, secrecy assumption verified: fact unreachable attacker(Kas[])
+ok, secrecy assumption verified: fact unreachable attacker(Kbs[])
+Starting query inj-event(endBfull(x,y,z)) ==> inj-event(beginBfull(x,y,z))
+goal reachable: attacker(m_2) -> inj-event(endBfull(fhost(Kbs[]),fhost(Kbs[]),N_1),@occ29_1)
+Abbreviations:
+N_1 = N[xA2 = fhost(Kbs[]),xB = fhost(Kbs[]),!1 = @sid]
+@occ29_1 = @occ29[m2 = encrypt((fhost(Kbs[]),fhost(Kbs[]),N_1),Kbs[]),m = m_2,xA2 = fhost(Kbs[]),xB = fhost(Kbs[]),!1 = @sid]
+
+Derivation:
+Abbreviations:
+N_1 = N[xA2 = fhost(Kbs[]),xB = fhost(Kbs[]),!1 = @sid]
+@occ29_1 = @occ29[m2 = encrypt((fhost(Kbs[]),fhost(Kbs[]),N_1),Kbs[]),m = m_2,xA2 = fhost(Kbs[]),xB = fhost(Kbs[]),!1 = @sid]
+
+1. The message fhost(Kbs[]) may be sent to the attacker at output {6}.
+attacker(fhost(Kbs[])).
+
+2. We assume as hypothesis that
+attacker(m_2).
+
+3. The message fhost(Kbs[]) that the attacker may have by 1 may be received at input {17}.
+The message fhost(Kbs[]) that the attacker may have by 1 may be received at input {20}.
+So the message N_1 may be sent to the attacker at output {22}.
+attacker(N_1).
+
+4. The message fhost(Kbs[]) that the attacker may have by 1 may be received at input {17}.
+The message fhost(Kbs[]) that the attacker may have by 1 may be received at input {20}.
+The message N_1 that the attacker may have by 3 may be received at input {23}.
+So the message encrypt((fhost(Kbs[]),fhost(Kbs[]),N_1),Kbs[]) may be sent to the attacker at output {24}.
+attacker(encrypt((fhost(Kbs[]),fhost(Kbs[]),N_1),Kbs[])).
+
+5. The message fhost(Kbs[]) that the attacker may have by 1 may be received at input {17}.
+The message fhost(Kbs[]) that the attacker may have by 1 may be received at input {20}.
+The message m_2 that the attacker may have by 2 may be received at input {23}.
+The message encrypt((fhost(Kbs[]),fhost(Kbs[]),N_1),Kbs[]) that the attacker may have by 4 may be received at input {25}.
+So event endBfull(fhost(Kbs[]),fhost(Kbs[]),N_1) may be executed at {29} in session @sid.
+inj-event(endBfull(fhost(Kbs[]),fhost(Kbs[]),N_1),@occ29_1).
+
+6. By 5, inj-event(endBfull(fhost(Kbs[]),fhost(Kbs[]),N_1),@occ29_1).
+The goal is reached, represented in the following fact:
+inj-event(endBfull(fhost(Kbs[]),fhost(Kbs[]),N_1),@occ29_1).
+
+
+A more detailed output of the traces is available with
+  set traceDisplay = long.
+
+new Kas: key creating Kas_1 at {1}
+
+new Kbs: key creating Kbs_1 at {2}
+
+out(c, ~M) with ~M = fhost(Kas_1) at {5}
+
+out(c, ~M_1) with ~M_1 = fhost(Kbs_1) at {6}
+
+in(c, ~M_1) with ~M_1 = fhost(Kbs_1) at {17} in copy a
+
+in(c, ~M_1) with ~M_1 = fhost(Kbs_1) at {20} in copy a
+
+new N: nonce creating N_2 at {21} in copy a
+
+out(c, ~M_2) with ~M_2 = N_2 at {22} in copy a
+
+in(c, ~M_1) with ~M_1 = fhost(Kbs_1) at {17} in copy a_1
+
+in(c, ~M_1) with ~M_1 = fhost(Kbs_1) at {20} in copy a_1
+
+new N: nonce creating N_3 at {21} in copy a_1
+
+out(c, ~M_3) with ~M_3 = N_3 at {22} in copy a_1
+
+in(c, ~M_3) with ~M_3 = N_3 at {23} in copy a
+
+out(c, ~M_4) with ~M_4 = encrypt((fhost(Kbs_1),fhost(Kbs_1),N_3),Kbs_1) at {24} in copy a
+
+in(c, a_2) at {23} in copy a_1
+
+out(c, ~M_5) with ~M_5 = encrypt((fhost(Kbs_1),fhost(Kbs_1),a_2),Kbs_1) at {24} in copy a_1
+
+in(c, ~M_4) with ~M_4 = encrypt((fhost(Kbs_1),fhost(Kbs_1),N_3),Kbs_1) at {25} in copy a_1
+
+event endBparam(fhost(Kbs_1),fhost(Kbs_1)) at {28} in copy a_1
+
+event endBfull(fhost(Kbs_1),fhost(Kbs_1),N_3) at {29} in copy a_1 (goal)
+
+The event endBfull(fhost(Kbs_1),fhost(Kbs_1),N_3) is executed at {29} in copy a_1.
+A trace has been found.
+RESULT inj-event(endBfull(x,y,z)) ==> inj-event(beginBfull(x,y,z)) is false.
+RESULT (even event(endBfull(x,y,z)) ==> event(beginBfull(x,y,z)) is false.)
+
+--------------------------------------------------------------
+Verification summary:
+
+Query inj-event(endBparam(x,y)) ==> inj-event(beginBparam(x,y)) is false.
+
+Query inj-event(endBfull(x,y,z)) ==> inj-event(beginBfull(x,y,z)) is false.
+
+--------------------------------------------------------------
+
