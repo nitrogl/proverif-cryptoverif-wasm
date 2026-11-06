@@ -1,0 +1,11 @@
+{
+  "files": [],
+  "references": [
+    { "path": "proverif" },
+    { "path": "proverif/tsconfig.worker.json" },
+    { "path": "proverif/tsconfig.node.json" },
+    { "path": "cryptoverif" },
+    { "path": "cryptoverif/tsconfig.worker.json" },
+    { "path": "cryptoverif/tsconfig.node.json" }
+  ]
+}

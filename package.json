@@ -1,0 +1,58 @@
+{
+  "name": "proverif-cryptoverif-wasm",
+  "version": "2.05_2.13",
+  "description": "ProVerif and CryptoVerif, the verifiers of cryptographic protocols by Bruno Blanchet and their co-authors, compiled to WebAssembly to run in web pages, offline",
+  "author": "Roberto Metere",
+  "license": "Multiple licenses, see LICENSE.md",
+  "type": "module",
+  "homepage": "https://nitrogl.github.io/proverif-cryptoverif-wasm/docs/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nitrogl/proverif-cryptoverif-wasm.git"
+  },
+  "exports": {
+    "./proverif": {
+      "types": "./proverif/node/index.d.cts",
+      "default": "./proverif/node/index.cjs"
+    },
+    "./cryptoverif": {
+      "types": "./cryptoverif/node/index.d.cts",
+      "default": "./cryptoverif/node/index.cjs"
+    },
+    "./package.json": "./package.json"
+  },
+  "bin": {
+    "proverif-wasm": "proverif/node/cli.cjs",
+    "cryptoverif-wasm": "cryptoverif/node/cli.cjs"
+  },
+  "files": [
+    "LICENSE.md",
+    "proverif/dist/",
+    "proverif/node/",
+    "proverif/AUTHORS",
+    "proverif/COPYING",
+    "cryptoverif/dist/",
+    "cryptoverif/node/",
+    "cryptoverif/AUTHORS",
+    "cryptoverif/LICENSE"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "build": "proverif/build.sh && cryptoverif/build.sh && npm run build:ts",
+    "build:proverif": "proverif/build.sh && tsc -b proverif proverif/tsconfig.worker.json proverif/tsconfig.node.json",
+    "build:cryptoverif": "cryptoverif/build.sh && tsc -b cryptoverif cryptoverif/tsconfig.worker.json cryptoverif/tsconfig.node.json",
+    "build:ts": "tsc -b",
+    "watch": "tsc -b --watch",
+    "typecheck": "tsc -b && tsc -p tsconfig.node.json",
+    "test": "npm run typecheck && npx tsx proverif/tests/check-style.ts && npx tsx proverif/tests/check-engine.ts && npx tsx proverif/tests/check-node.ts && npx tsx cryptoverif/tests/check-style.ts && npx tsx cryptoverif/tests/check-engine.ts && npx tsx cryptoverif/tests/check-node.ts",
+    "test:page": "npx tsx proverif/tests/check-page.ts && npx tsx cryptoverif/tests/check-page.ts",
+    "docs": "tools/build-docs.sh"
+  },
+  "devDependencies": {
+    "@types/node": "26.6.6",
+    "playwright": "1.56.0",
+    "typescript": "7.0.2"
+  }
+}

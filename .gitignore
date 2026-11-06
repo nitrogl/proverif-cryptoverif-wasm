@@ -1,0 +1,4 @@
+node_modules/
+build/
+*verif/dist/
+*verif/node/
