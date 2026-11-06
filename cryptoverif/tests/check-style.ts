@@ -1,9 +1,5 @@
 /**
- * @file Checks the conventions of the sources: ASCII only, no separator
- * lines in comments, a JSDoc block before every class, method, field and
- * top-level function, the end marker after every top-level class and
- * function (and nowhere else), and no template literals. The files that
- * build.sh writes, and the licences, are left alone.
+ * @file Checks my conventions of the source style for readability
  *
  * Usage: node tests/check-style.ts
  *
