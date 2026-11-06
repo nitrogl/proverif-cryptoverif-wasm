@@ -1,0 +1,28 @@
+ProVerif for WebAssembly
+
+ProVerif
+  Bruno Blanchet, Vincent Cheval and Marc Sylvestre
+  Copyright INRIA, CNRS 2000-2023
+  GNU General Public License, version 2 or later
+  https://bblanche.gitlabpages.inria.fr/proverif/
+
+OCaml: the bytecode runtime, and the Unix and Str libraries
+  The OCaml developers, copyright INRIA
+  GNU Lesser General Public License 2.1 with the OCaml static linking
+  exception
+  https://ocaml.org/
+
+Emscripten: the compiler, and parts of its runtime and of its C library
+  The Emscripten Authors; the C library is based on musl, by Rich Felker
+  and others
+  MIT licence
+  https://emscripten.org/
+
+The WebAssembly build: build.sh, wasm/, the JavaScript files of dist/, the
+example and the tests
+  Roberto Metere <roberto@metere.it>
+  GNU General Public License, version 2 or later
+
+This is not an official release of ProVerif, and the authors of ProVerif
+are not involved in it: please report problems with this build to its
+maintainer, not to them.

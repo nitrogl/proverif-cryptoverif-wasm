@@ -1,0 +1,429 @@
+{
+  "proverif": "2.05",
+  "examples": {
+    "examples/pitype/arinc823/publickey/arinc823-public-key.m4.pv": {
+      "exit": 2,
+      "ms": 7
+    },
+    "examples/pitype/arinc823/sharedkey/arinc823-secret-key.m4.pv": {
+      "exit": 2,
+      "ms": 8
+    },
+    "examples/pitype/certified-mail-AbadiGlewHornePinkas/journalsas/protocol.m4.pv": {
+      "exit": 2,
+      "ms": 8
+    },
+    "examples/pitype/certified-mail-AbadiGlewHornePinkas/onefile/protocol.m4.pv": {
+      "exit": 2,
+      "ms": 12
+    },
+    "examples/pitype/choice/EKE.pv": {
+      "exit": 0,
+      "ms": 52
+    },
+    "examples/pitype/choice/NeedhamSchroederPK-corr1-host-getkey.pv": {
+      "exit": 0,
+      "ms": 175
+    },
+    "examples/pitype/choice/NeedhamSchroederPK-corr1.pv": {
+      "exit": 0,
+      "ms": 52
+    },
+    "examples/pitype/choice/NeedhamSchroederPK-corr2-host-getkey.pv": {
+      "exit": 0,
+      "ms": 713
+    },
+    "examples/pitype/choice/NeedhamSchroederPK-corr2-proba.pv": {
+      "exit": 0,
+      "ms": 284
+    },
+    "examples/pitype/choice/NeedhamSchroederPK-corr2.pv": {
+      "exit": 0,
+      "ms": 186
+    },
+    "examples/pitype/choice/basic1.pv": {
+      "exit": 0,
+      "ms": 13
+    },
+    "examples/pitype/choice/basic2.pv": {
+      "exit": 0,
+      "ms": 16
+    },
+    "examples/pitype/choice/dh-fs.pv": {
+      "exit": 0,
+      "ms": 20
+    },
+    "examples/pitype/choice/epassportUK_biprocess.pv": {
+      "exit": 0,
+      "ms": 69
+    },
+    "examples/pitype/choice/epassportUK_processes.pv": {
+      "exit": 0,
+      "ms": 313
+    },
+    "examples/pitype/choice/handshake.pv": {
+      "exit": 0,
+      "ms": 15
+    },
+    "examples/pitype/choice/macs.pv": {
+      "exit": 0,
+      "ms": 13
+    },
+    "examples/pitype/choice/private_authentication_bounded_biprocess.pv": {
+      "exit": 0,
+      "ms": 33
+    },
+    "examples/pitype/choice/private_authentication_bounded_processes.pv": {
+      "exit": 0,
+      "ms": 26
+    },
+    "examples/pitype/choice/private_authentication_unbound.pv": {
+      "exit": 0,
+      "ms": 48
+    },
+    "examples/pitype/choice/proba-pk.pv": {
+      "exit": 0,
+      "ms": 15
+    },
+    "examples/pitype/choice/vote.pv": {
+      "exit": 0,
+      "ms": 17
+    },
+    "examples/pitype/choice/wmf-auth.pv": {
+      "exit": 0,
+      "ms": 12
+    },
+    "examples/pitype/choice/wmf-tagged-strongsecrecyKeyA.pv": {
+      "exit": 0,
+      "ms": 27
+    },
+    "examples/pitype/choice/wmf-tagged-strongsecrecyKeyB.pv": {
+      "exit": 0,
+      "ms": 67
+    },
+    "examples/pitype/jfk/JFKi.m4.pv": {
+      "exit": 2,
+      "ms": 10
+    },
+    "examples/pitype/jfk/JFKr-coresec.pv": {
+      "exit": 0,
+      "ms": 744
+    },
+    "examples/pitype/jfk/JFKr.m4.pv": {
+      "exit": 2,
+      "ms": 7
+    },
+    "examples/pitype/jfk/tokenlemma.pv": {
+      "exit": 0,
+      "ms": 11
+    },
+    "examples/pitype/lemma/induction_nat.pv": {
+      "exit": 0,
+      "ms": 8
+    },
+    "examples/pitype/lemma/key-registration-locked.pv": {
+      "exit": 0,
+      "ms": 25
+    },
+    "examples/pitype/lemma/secure-device.pv": {
+      "exit": 0,
+      "ms": 9
+    },
+    "examples/pitype/lemma/toy-counter.pv": {
+      "exit": 0,
+      "ms": 8
+    },
+    "examples/pitype/lemma/toy-one-dec-table-equiv.pv": {
+      "exit": 0,
+      "ms": 15
+    },
+    "examples/pitype/lemma/toy-one-dec.pv": {
+      "exit": 0,
+      "ms": 8
+    },
+    "examples/pitype/lemma/toy-one-dec2.pv": {
+      "exit": 0,
+      "ms": 10
+    },
+    "examples/pitype/lemma/yubikey-less-axioms-time.pv": {
+      "exit": 0,
+      "ms": 44
+    },
+    "examples/pitype/lemma/yubikey-less-axioms.pv": {
+      "exit": 0,
+      "ms": 35
+    },
+    "examples/pitype/lemma/yubikey.pv": {
+      "exit": 0,
+      "ms": 16
+    },
+    "examples/pitype/noninterf/DenningSacco1.pv": {
+      "exit": 0,
+      "ms": 12
+    },
+    "examples/pitype/noninterf/DenningSacco2.pv": {
+      "exit": 0,
+      "ms": 13
+    },
+    "examples/pitype/noninterf/DenningSacco3.pv": {
+      "exit": 0,
+      "ms": 14
+    },
+    "examples/pitype/noninterf/DenningSacco4.pv": {
+      "exit": 0,
+      "ms": 14
+    },
+    "examples/pitype/noninterf/DenningSacco5.pv": {
+      "exit": 0,
+      "ms": 17
+    },
+    "examples/pitype/noninterf/DenningSacco6.pv": {
+      "exit": 0,
+      "ms": 12
+    },
+    "examples/pitype/noninterf/DenningSacco7.pv": {
+      "exit": 0,
+      "ms": 16
+    },
+    "examples/pitype/noninterf/DenningSacco8.pv": {
+      "exit": 0,
+      "ms": 12
+    },
+    "examples/pitype/noninterf/NeedhamSchroederPK-corr.pv": {
+      "exit": 0,
+      "ms": 90
+    },
+    "examples/pitype/noninterf/OtwayRees-key.pv": {
+      "exit": 0,
+      "ms": 55
+    },
+    "examples/pitype/noninterf/OtwayRees-proba.pv": {
+      "exit": 0,
+      "ms": 280
+    },
+    "examples/pitype/noninterf/OtwayRees.pv": {
+      "exit": 0,
+      "ms": 196
+    },
+    "examples/pitype/noninterf/Skeme-proba.pv": {
+      "exit": 0,
+      "ms": 116
+    },
+    "examples/pitype/noninterf/Skeme.pv": {
+      "exit": 0,
+      "ms": 75
+    },
+    "examples/pitype/noninterf/Yahalom-proba.pv": {
+      "exit": 0,
+      "ms": 162
+    },
+    "examples/pitype/noninterf/Yahalom.pv": {
+      "exit": 0,
+      "ms": 78
+    },
+    "examples/pitype/noninterf/basic1.pv": {
+      "exit": 0,
+      "ms": 11
+    },
+    "examples/pitype/noninterf/basic2.pv": {
+      "exit": 0,
+      "ms": 9
+    },
+    "examples/pitype/noninterf/dh-fs.pv": {
+      "exit": 0,
+      "ms": 11
+    },
+    "examples/pitype/noninterf/wmf-tagged.pv": {
+      "exit": 0,
+      "ms": 39
+    },
+    "examples/pitype/secr-auth/DenningSacco-corr.pv": {
+      "exit": 0,
+      "ms": 31
+    },
+    "examples/pitype/secr-auth/DenningSacco-unid-corr.pv": {
+      "exit": 0,
+      "ms": 24
+    },
+    "examples/pitype/secr-auth/DenningSacco-unid-tagged.pv": {
+      "exit": 0,
+      "ms": 22
+    },
+    "examples/pitype/secr-auth/DenningSacco-unid-test.pv": {
+      "exit": 0,
+      "ms": 38
+    },
+    "examples/pitype/secr-auth/DenningSacco-unid.pv": {
+      "exit": 0,
+      "ms": 28
+    },
+    "examples/pitype/secr-auth/DenningSacco.pv": {
+      "exit": 0,
+      "ms": 27
+    },
+    "examples/pitype/secr-auth/DiffieHellman-active.pv": {
+      "exit": 0,
+      "ms": 11
+    },
+    "examples/pitype/secr-auth/DiffieHellman-passive.pv": {
+      "exit": 0,
+      "ms": 8
+    },
+    "examples/pitype/secr-auth/NeedhamSchroederPK-corr.pv": {
+      "exit": 0,
+      "ms": 52
+    },
+    "examples/pitype/secr-auth/NeedhamSchroederPK-tagged.pv": {
+      "exit": 0,
+      "ms": 149
+    },
+    "examples/pitype/secr-auth/NeedhamSchroederPK.pv": {
+      "exit": 0,
+      "ms": 131
+    },
+    "examples/pitype/secr-auth/NeedhamSchroederSK-comp.pv": {
+      "exit": 0,
+      "ms": 837
+    },
+    "examples/pitype/secr-auth/NeedhamSchroederSK-compapprox.pv": {
+      "exit": 0,
+      "ms": 290
+    },
+    "examples/pitype/secr-auth/NeedhamSchroederSK-corr-comp.pv": {
+      "exit": 0,
+      "ms": 1777
+    },
+    "examples/pitype/secr-auth/NeedhamSchroederSK-corr-compapprox.pv": {
+      "exit": 0,
+      "ms": 532
+    },
+    "examples/pitype/secr-auth/NeedhamSchroederSK-corr.pv": {
+      "exit": 0,
+      "ms": 141
+    },
+    "examples/pitype/secr-auth/NeedhamSchroederSK.pv": {
+      "exit": 0,
+      "ms": 133
+    },
+    "examples/pitype/secr-auth/OtwayRees-Abadi.pv": {
+      "exit": 0,
+      "ms": 43
+    },
+    "examples/pitype/secr-auth/OtwayRees-Paulson-err-nonreflex.pv": {
+      "exit": 0,
+      "ms": 111
+    },
+    "examples/pitype/secr-auth/OtwayRees-Paulson-err-unid.pv": {
+      "exit": 0,
+      "ms": 50
+    },
+    "examples/pitype/secr-auth/OtwayRees-Paulson-err.pv": {
+      "exit": 0,
+      "ms": 217
+    },
+    "examples/pitype/secr-auth/OtwayRees-nonreflex.pv": {
+      "exit": 0,
+      "ms": 69
+    },
+    "examples/pitype/secr-auth/OtwayRees.pv": {
+      "exit": 0,
+      "ms": 128
+    },
+    "examples/pitype/secr-auth/SimplerYahalom-unid.pv": {
+      "exit": 0,
+      "ms": 24
+    },
+    "examples/pitype/secr-auth/SimplerYahalom.pv": {
+      "exit": 0,
+      "ms": 256
+    },
+    "examples/pitype/secr-auth/Skeme.pv": {
+      "exit": 0,
+      "ms": 71
+    },
+    "examples/pitype/secr-auth/WooLamPK-corr.pv": {
+      "exit": 0,
+      "ms": 22
+    },
+    "examples/pitype/secr-auth/WooLamPK.pv": {
+      "exit": 0,
+      "ms": 12
+    },
+    "examples/pitype/secr-auth/WooLamSK-GJ01.pv": {
+      "exit": 0,
+      "ms": 15
+    },
+    "examples/pitype/secr-auth/WooLamSK-corr-GJ01.pv": {
+      "exit": 0,
+      "ms": 14
+    },
+    "examples/pitype/secr-auth/WooLamSK-host-getkey.pv": {
+      "exit": 0,
+      "ms": 16
+    },
+    "examples/pitype/secr-auth/WooLamSK.pv": {
+      "exit": 0,
+      "ms": 14
+    },
+    "examples/pitype/secr-auth/Yahalom-Paulson.pv": {
+      "exit": 0,
+      "ms": 543
+    },
+    "examples/pitype/secr-auth/Yahalom-block-cipher.pv": {
+      "exit": 0,
+      "ms": 54
+    },
+    "examples/pitype/secr-auth/Yahalom-proba-enc.pv": {
+      "exit": 0,
+      "ms": 102
+    },
+    "examples/pitype/secr-auth/Yahalom.pv": {
+      "exit": 0,
+      "ms": 54
+    },
+    "examples/pitype/secr-auth/ssh-transport.pv": {
+      "exit": 0,
+      "ms": 15
+    },
+    "examples/pitype/weaksecr/AugmentedEKE1.pv": {
+      "exit": 0,
+      "ms": 700
+    },
+    "examples/pitype/weaksecr/AugmentedEKE2.pv": {
+      "exit": 0,
+      "ms": 1525
+    },
+    "examples/pitype/weaksecr/EKE-DH.pv": {
+      "exit": 0,
+      "ms": 402
+    },
+    "examples/pitype/weaksecr/EKE.pv": {
+      "exit": 0,
+      "ms": 79
+    },
+    "examples/pitype/weaksecr/SignedAugmentedEKE1.pv": {
+      "exit": 0,
+      "ms": 729
+    },
+    "examples/pitype/weaksecr/attack.pv": {
+      "exit": 0,
+      "ms": 14
+    },
+    "examples/pitype/weaksecr/basicweaksecret-attack.pv": {
+      "exit": 0,
+      "ms": 14
+    },
+    "examples/pitype/weaksecr/basicweaksecret.pv": {
+      "exit": 0,
+      "ms": 17
+    },
+    "examples/pitype/weaksecr/handshake.pv": {
+      "exit": 0,
+      "ms": 25
+    },
+    "examples/pitype/weaksecr/vote.pv": {
+      "exit": 0,
+      "ms": 16
+    }
+  }
+}

@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Online demo of ProVerif | Offline and private to you!</title>
+    <meta name="description" content="ProVerif running as a webapp, offline" />
+    <meta name="author" content="Roberto Metere" />
+    <style>
+      :root {
+        --page: #ffffff;
+        --text: #1d2125;
+        --muted: #5f6b76;
+        --line: #d5dbe1;
+        --panel: #f5f7f9;
+        --accent: #1f5fae;
+        --good: #1c7c3a;
+        --bad: #b42318;
+        --title: #dfba49;
+      }
+      
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --page: #15181b;
+          --text: #e3e7eb;
+          --muted: #98a3ad;
+          --line: #343a40;
+          --panel: #1d2125;
+          --accent: #6ea8f0;
+          --good: #59c27a;
+          --bad: #f07167;
+        }
+      }
+      
+      * {
+        box-sizing: border-box;
+      }
+      
+      body {
+        margin: 0;
+        padding: 24px 16px 40px;
+        background: var(--page);
+        color: var(--text);
+        font: 15px/1.5 system-ui, sans-serif;
+      }
+      
+      main {
+        max-width: 960px;
+        margin: 0 auto;
+      }
+      
+      h1 {
+        margin: 0 0 4px;
+        font-size: 22px;
+        color: var(--title);
+      }
+      
+      p {
+        margin: 0 0 16px;
+        color: var(--muted);
+      }
+      
+      .bar {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px 16px;
+        align-items: center;
+        margin-bottom: 8px;
+      }
+      
+      button, select, label.file {
+        font: inherit;
+        padding: 4px 12px;
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        background: var(--panel);
+        color: var(--text);
+        cursor: pointer;
+      }
+      
+      button.primary {
+        background: var(--accent);
+        border-color: var(--accent);
+        color: var(--page);
+      }
+      
+      button:disabled {
+        opacity: 0.5;
+        cursor: default;
+      }
+      
+      button:hover, select:hover, label.file:hover, button:focus, select:focus, label.file:focus {
+        box-shadow: 0px 0px 10px var(--text);
+        border: 1px solid var(--text);
+      }
+      
+      label.file input {
+        display: none;
+      }
+      
+      textarea, pre {
+        width: 100%;
+        margin: 0;
+        padding: 10px 12px;
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        background: var(--panel);
+        color: var(--text);
+        font: 13px/1.45 ui-monospace, monospace;
+      }
+      
+      textarea {
+        height: 300px;
+        resize: vertical;
+      }
+      
+      pre {
+        max-height: 360px;
+        overflow: auto;
+        white-space: pre-wrap;
+        word-break: break-word;
+      }
+      
+      div.well {
+        padding: 10px 20px;
+        margin: 20px auto;
+        width: fit-content;
+        z-index: 1;
+        position: relative;
+        top: 0;
+        left: 0;
+      }
+
+      div.well:before {
+        content: " ";
+        position: absolute;
+        top: -2px;  /* matching the border size */
+        left: -2px; /* matching the border size */
+        width: 100%;
+        height: 100%;
+        opacity: .14;
+        background: var(--good);
+        z-index: -1;
+      }
+      
+      div.well, div.well:before {
+        border-radius: 14px;
+        border: 2px solid var(--good);
+      }
+      
+      div.well svg {
+        vertical-align: center;
+        color: var(--good);
+      }
+      
+      #status {
+        margin: 12px 0 6px;
+        color: var(--muted);
+      }
+      
+      #results {
+        margin: 0 0 12px;
+        padding-left: 20px;
+        font: 13px/1.6 ui-monospace, monospace;
+      }
+      
+      #results .true {
+        color: var(--good);
+      }
+      
+      #results .false {
+        color: var(--bad);
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>ProVerif compiled for WebAssembly</h1>
+      <p>ProVerif 2.05 is by Bruno Blanchet, Vincent Cheval and Marc Sylvestre. WebAssembly interface by Roberto Metere.</p>
+      <div class="well">
+        <svg xmlns="http://www.w3.org/2000/svg"
+            width="24" height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-label="Shield">
+          <path d="M12 22s8-4 8-11V5l-8-3-8 3v6c0 7 8 11 8 11z"/>
+        </svg>
+        The model never leaves your computer.
+      </div>
+      <div class="bar">
+        <label class="file">Open a .pv file<input type="file" id="file" accept=".pv" /></label>
+        <label>Memory
+          <select id="memory">
+            <option value="64">64 MB</option>
+            <option value="256">256 MB</option>
+            <option value="1024" selected>1 GB</option>
+            <option value="0">No limit (up to 4 GB)</option>
+          </select>
+        </label>
+        <label>Timeout
+          <select id="timeout">
+            <option value="10">10 s</option>
+            <option value="60" selected>1 min</option>
+            <option value="600">10 min</option>
+            <option value="0">None</option>
+          </select>
+        </label>
+        <button type="button" class="primary" id="verify">Verify</button>
+        <button type="button" id="stop" disabled>Stop</button>
+      </div>
+      <textarea id="model" spellcheck="false">(* Two secrets, each encrypted under its own key. A process decrypts
+   whatever it receives under the second key, so the attacker learns s2,
+   but not s1. *)
+
+free c: channel.
+type key.
+fun senc(bitstring, key): bitstring.
+reduc forall m: bitstring, k: key; sdec(senc(m, k), k) = m.
+
+free s1, s2: bitstring [private].
+query attacker(s1).
+query attacker(s2).
+
+process
+  new k1: key; new k2: key;
+  ( out(c, senc(s1, k1))
+  | out(c, senc(s2, k2))
+  | in(c, x: bitstring); out(c, sdec(x, k2)) )
+</textarea>
+      <div id="status">Loading the engine...</div>
+      <ul id="results"></ul>
+      <pre id="output"></pre>
+    </main>
+
+    <script src="../dist/ProVerifRunner.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript">
+      "use strict";
+
+      const runner = new ProVerifRunner();
+      const ui = {};
+      ["file", "memory", "timeout", "verify", "stop", "model", "status", "results", "output"].forEach(id => {
+        ui[id] = document.getElementById(id);
+      });
+      let fileName = "model.pv";
+
+      /*
+       * The first run "teaches" the browser the engine, so I wait for it
+       * before the user's own.
+       */
+      const ready = runner.warmUp().then(() => {
+        ui.status.textContent = "Ready (" + runner.getMode() + ").";
+      });
+
+      /**
+       * Lists the RESULT lines of ProVerif, coloured by outcome.
+       *
+       * TODO: "cannot be proven"?
+       * TODO: false is not always "bad"
+       *
+       * @param {string} text The output of ProVerif.
+       */
+      function showResults(text) {
+        ui.results.textContent = "";
+        (text.match(/^RESULT .*$/gm) || []).forEach(line => {
+          const item = document.createElement("li");
+          item.textContent = line.slice(7);
+          item.className = /is true\.$/.test(line) ? "true" : (/is false\.$/.test(line) ? "false" : "");
+          ui.results.appendChild(item);
+        });
+      }
+
+      /**
+       * Verifies the model of the text area.
+       */
+      function verify() {
+        const chunks = [];
+        ui.verify.disabled = true;
+        ui.stop.disabled = false;
+        ui.results.textContent = "";
+        ui.output.textContent = "";
+        ui.status.textContent = "Verifying...";
+        ready
+          .then(() => runner.run(ui.model.value, {
+              fileName: fileName
+            , maxMemory: Number(ui.memory.value)*1048576
+            , timeoutSeconds: Number(ui.timeout.value)
+            , onOutput: (channel, text) => {
+                chunks.push(text);
+                ui.output.append(text);
+              }
+            , onMemory: bytes => {
+                ui.status.textContent = "Verifying, " + Math.round(bytes/1048576) + " MB...";
+              }
+          }))
+          .then(result => {
+            const heap = Math.round(result.bytes/1048576) + " MB";
+            const words = {
+                done: "Done, exit code " + result.exitCode
+              , memory: "Stopped at the memory limit"
+              , timeout: "Stopped by the timeout"
+              , cancelled: "Stopped"
+              , error: "Error: " + result.message
+            };
+            ui.status.textContent = (words[result.status] || result.status) + ", " + (result.ms/1000).toFixed(1) + " s"
+              + (result.bytes ? ", heap " + heap : "") + ".";
+            showResults(chunks.join(""));
+          })
+          .catch(error => {
+            ui.status.textContent = "Error: " + error.message;
+          })
+          .then(() => {
+            ui.verify.disabled = false;
+            ui.stop.disabled = true;
+          });
+      }
+
+
+      /**
+       * Opens the model given in the address, as the buttons under the code
+       * extracts of the manuals give it: #model=<base64url of the UTF-8
+       * text>&file=<name>, and &run=1 to verify it at once.
+       */
+      function openFromAddress() {
+        const params = new URLSearchParams(location.hash.slice(1));
+        const model = params.get("model");
+        if (!model) {
+          return;
+        }
+
+        try {
+          const base64 = model.replace(/-/g, "+").replace(/_/g, "/");
+          const bytes = Uint8Array.from(atob(base64), c => c.charCodeAt(0));
+          ui.model.value = new TextDecoder().decode(bytes);
+        } catch (error) {
+          ui.status.textContent = "The model in the address cannot be read.";
+          return;
+        }
+
+        const name = params.get("file") || "";
+        if (/^[\w.-]+\.(pv)$/.test(name)) {
+          fileName = name;
+        }
+        history.replaceState(null, "", location.pathname + location.search);
+        if (params.get("run") === "1") {
+          verify();
+        }
+      }
+
+      ui.verify.addEventListener("click", verify);
+      ui.stop.addEventListener("click", () => runner.cancel());
+      ui.file.addEventListener("change", () => {
+        const file = ui.file.files[0];
+        if (file) {
+          file.text().then(text => {
+            ui.model.value = text;
+            fileName = file.name;
+          });
+        }
+      });
+      
+      openFromAddress();
+    </script>
+  </body>
+</html>
