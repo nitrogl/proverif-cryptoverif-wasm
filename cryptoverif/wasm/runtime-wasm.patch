@@ -1,0 +1,43 @@
+--- a/unix.c
++++ b/unix.c
+@@ -523,6 +523,10 @@
+ 
+ void* caml_plat_mem_commit(void* mem, uintnat size)
+ {
++#ifdef __EMSCRIPTEN__
++  (void) size;
++  return mem;
++#else
+   void* p = map_fixed(mem, size, PROT_READ | PROT_WRITE);
+   /*
+     FIXME: On Linux, it might be useful to populate page tables with
+@@ -530,11 +534,16 @@
+     a later point.
+   */
+   return p;
++#endif
+ }
+ 
+ void caml_plat_mem_decommit(void* mem, uintnat size)
+ {
++#ifdef __EMSCRIPTEN__
++  (void) mem; (void) size;
++#else
+   map_fixed(mem, size, PROT_NONE);
++#endif
+ }
+ 
+ void caml_plat_mem_unmap(void* mem, uintnat size)
+--- a/caml/domain.h
++++ b/caml/domain.h
+@@ -26,7 +26,9 @@
+ #include "mlvalues.h"
+ #include "domain_state.h"
+ 
+-#ifdef ARCH_SIXTYFOUR
++#if defined(__EMSCRIPTEN__)
++#define Max_domains_def 1
++#elif defined(ARCH_SIXTYFOUR)
+ #define Max_domains_def 128
+ #else
+ #define Max_domains_def 16

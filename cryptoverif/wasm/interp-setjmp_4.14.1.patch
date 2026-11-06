@@ -1,0 +1,92 @@
+--- a/interp.c
++++ b/interp.c
+@@ -209,10 +209,51 @@
+ static intnat caml_bcodcount;
+ #endif
+ 
+-/* The interpreter itself */
++/* The interpreter itself.
++
++   For WebAssembly: the setjmp that catches the exceptions raised by C
++   primitives is in a small wrapper, caml_interprete, and the instructions
++   run in caml_interprete_body. With Emscripten, every call made by a
++   function that calls setjmp goes through JavaScript: keeping setjmp out of
++   the interpreter loop makes the calls to primitives direct wasm calls. */
++
++static value caml_interprete_body(code_t prog, asize_t prog_size,
++                                  intnat initial_sp_offset,
++                                  struct longjmp_buffer * initial_external_raise,
++                                  int raised);
+ 
+ value caml_interprete(code_t prog, asize_t prog_size)
+ {
++  struct longjmp_buffer * initial_external_raise;
++  intnat initial_sp_offset;
++  /* volatile ensures that these keep correct values across longjmp */
++  struct caml__roots_block * volatile initial_local_roots;
++  volatile int raised = 0;
++  struct longjmp_buffer raise_buf;
++
++  if (prog == NULL) {           /* Interpreter is initializing */
++    return caml_interprete_body(NULL, 0, 0, NULL, 0);
++  }
++  initial_local_roots = Caml_state->local_roots;
++  initial_sp_offset =
++    (char *) Caml_state->stack_high - (char *) Caml_state->extern_sp;
++  initial_external_raise = Caml_state->external_raise;
++  caml_callback_depth++;
++
++  if (sigsetjmp(raise_buf.buf, 0)) {
++    Caml_state->local_roots = initial_local_roots;
++    raised = 1;
++  }
++  Caml_state->external_raise = &raise_buf;
++  return caml_interprete_body(prog, prog_size, initial_sp_offset,
++                              initial_external_raise, raised);
++}
++
++static value caml_interprete_body(code_t prog, asize_t prog_size,
++                                  intnat initial_sp_offset,
++                                  struct longjmp_buffer * initial_external_raise,
++                                  int raised)
++{
+ #ifdef PC_REG
+   register code_t pc PC_REG;
+   register value * sp SP_REG;
+@@ -231,12 +272,6 @@
+ #endif
+   value env;
+   intnat extra_args;
+-  struct longjmp_buffer * initial_external_raise;
+-  intnat initial_sp_offset;
+-  /* volatile ensures that initial_local_roots
+-     will keep correct value across longjmp */
+-  struct caml__roots_block * volatile initial_local_roots;
+-  struct longjmp_buffer raise_buf;
+ #ifndef THREADED_CODE
+   opcode_t curr_instr;
+ #endif
+@@ -257,14 +292,7 @@
+ #if defined(THREADED_CODE) && defined(ARCH_SIXTYFOUR) && !defined(ARCH_CODE32)
+   jumptbl_base = Jumptbl_base;
+ #endif
+-  initial_local_roots = Caml_state->local_roots;
+-  initial_sp_offset =
+-    (char *) Caml_state->stack_high - (char *) Caml_state->extern_sp;
+-  initial_external_raise = Caml_state->external_raise;
+-  caml_callback_depth++;
+-
+-  if (sigsetjmp(raise_buf.buf, 0)) {
+-    Caml_state->local_roots = initial_local_roots;
++  if (raised) {
+     sp = Caml_state->extern_sp;
+     accu = Caml_state->exn_bucket;
+ 
+@@ -277,7 +305,6 @@
+     }
+     goto raise_notrace;
+   }
+-  Caml_state->external_raise = &raise_buf;
+ 
+   sp = Caml_state->extern_sp;
+   pc = prog;

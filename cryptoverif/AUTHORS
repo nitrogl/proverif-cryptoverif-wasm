@@ -1,0 +1,29 @@
+CryptoVerif for WebAssembly
+
+CryptoVerif
+  Bruno Blanchet, Pierre Boutry, David Cadé, Christian Doczkal, Aymeric
+  Fromherz, Charlie Jacomme, Benjamin Lipp and Pierre-Yves Strub
+  Copyright ENS, CNRS, INRIA, MPI-SP, Ecole Polytechnique 2005-2026
+  CeCILL-B licence
+  https://bblanche.gitlabpages.inria.fr/CryptoVerif/
+
+OCaml: the bytecode runtime, and the Unix and Str libraries
+  The OCaml developers, copyright INRIA
+  GNU Lesser General Public License 2.1 with the OCaml static linking
+  exception
+  https://ocaml.org/
+
+Emscripten: the compiler, and parts of its runtime and of its C library
+  The Emscripten Authors; the C library is based on musl, by Rich Felker
+  and others
+  MIT licence
+  https://emscripten.org/
+
+The WebAssembly build: build.sh, wasm/, the JavaScript files of dist/, the
+example and the tests
+  Roberto Metere <roberto@metere.it>, 2026
+  CeCILL-B licence
+
+This is not an official release of CryptoVerif, and the authors of
+CryptoVerif are not involved in it: please report problems with this build
+to its maintainer, not to them.

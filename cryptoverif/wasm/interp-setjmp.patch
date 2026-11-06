@@ -1,0 +1,112 @@
+--- a/interp.c
++++ b/interp.c
+@@ -247,13 +247,63 @@
+ 
+ static value raise_unhandled_effect;
+ 
+-/* The interpreter itself */
++/* The interpreter itself.
+ 
+-CAMLno_tsan /* No need to TSan-instrument this (and pay a slowdown) function as
+-               TSan is not supported for bytecode. */
++   For WebAssembly: the setjmp that catches the exceptions raised by C
++   primitives is in a small wrapper, caml_bytecode_interpreter, and the
++   instructions run in caml_bytecode_interpreter_body. With Emscripten, every
++   call made by a function that calls setjmp goes through JavaScript: keeping
++   setjmp out of the interpreter loop makes the calls to primitives direct
++   wasm calls. After a longjmp, the wrapper calls the body again, which takes
++   the exception from the domain state, as the interpreter did after its
++   setjmp. */
++
++static value caml_bytecode_interpreter_body(
++  code_t prog, asize_t prog_size, value initial_env, intnat initial_extra_args,
++  struct caml_exception_context * initial_external_raise,
++  int initial_stack_words, intnat initial_trap_sp_off,
++  volatile value * raise_exn_bucket, int raised);
++
++CAMLno_tsan
+ value caml_bytecode_interpreter(code_t prog, asize_t prog_size,
+                                 value initial_env, intnat initial_extra_args)
+ {
++  struct caml_exception_context * initial_external_raise;
++  int initial_stack_words;
++  intnat initial_trap_sp_off;
++  volatile value raise_exn_bucket = Val_unit;
++  volatile int raised = 0;
++  struct longjmp_buffer raise_buf;
++  caml_domain_state* domain_state = Caml_state;
++  struct caml_exception_context exception_ctx =
++    { &raise_buf, domain_state->local_roots, &raise_exn_bucket};
++
++  if (prog == NULL) {           /* Interpreter is initializing */
++    return caml_bytecode_interpreter_body(NULL, 0, initial_env,
++      initial_extra_args, NULL, 0, 0, NULL, 0);
++  }
++  initial_trap_sp_off = domain_state->trap_sp_off;
++  initial_stack_words =
++    Stack_high(domain_state->current_stack) - domain_state->current_stack->sp;
++  initial_external_raise = domain_state->external_raise;
++
++  if (sigsetjmp(raise_buf.buf, 0)) {
++    raised = 1;
++  }
++  domain_state->external_raise = &exception_ctx;
++  return caml_bytecode_interpreter_body(prog, prog_size, initial_env,
++    initial_extra_args, initial_external_raise, initial_stack_words,
++    initial_trap_sp_off, &raise_exn_bucket, raised);
++}
++
++CAMLno_tsan /* No need to TSan-instrument this (and pay a slowdown) function as
++               TSan is not supported for bytecode. */
++static value caml_bytecode_interpreter_body(
++  code_t prog, asize_t prog_size, value initial_env, intnat initial_extra_args,
++  struct caml_exception_context * initial_external_raise,
++  int initial_stack_words, intnat initial_trap_sp_off,
++  volatile value * raise_exn_bucket, int raised)
++{
+ #ifdef PC_REG
+   register code_t pc PC_REG;
+   register value * sp SP_REG;
+@@ -272,16 +322,9 @@
+ #endif
+   value env;
+   intnat extra_args;
+-  struct caml_exception_context * initial_external_raise;
+-  int initial_stack_words;
+-  intnat initial_trap_sp_off;
+-  volatile value raise_exn_bucket = Val_unit;
+-  struct longjmp_buffer raise_buf;
+   value resume_fn, resume_arg;
+   struct stack_info* resume_tail;
+   caml_domain_state* domain_state = Caml_state;
+-  struct caml_exception_context exception_ctx =
+-    { &raise_buf, domain_state->local_roots, &raise_exn_bucket};
+ #ifndef THREADED_CODE
+   opcode_t curr_instr;
+ #endif
+@@ -320,15 +363,9 @@
+ #if defined(THREADED_CODE) && defined(ARCH_SIXTYFOUR) && !defined(ARCH_CODE32)
+   jumptbl_base = Jumptbl_base;
+ #endif
+-  initial_trap_sp_off = domain_state->trap_sp_off;
+-  initial_stack_words =
+-    Stack_high(domain_state->current_stack) - domain_state->current_stack->sp;
+-  initial_external_raise = domain_state->external_raise;
+-
+-  if (sigsetjmp(raise_buf.buf, 0)) {
+-    /* no non-volatile local variables read here */
++  if (raised) {
+     sp = domain_state->current_stack->sp;
+-    accu = raise_exn_bucket;
++    accu = *raise_exn_bucket;
+ 
+     check_trap_barrier_for_exception (domain_state);
+     if (domain_state->backtrace_active) {
+@@ -339,7 +376,6 @@
+     }
+     goto raise_notrace;
+   }
+-  domain_state->external_raise = &exception_ctx;
+ 
+   domain_state->trap_sp_off = 1;
+ 

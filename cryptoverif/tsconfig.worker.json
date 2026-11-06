@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": ["ES2023", "WebWorker"],
+    "types": [],
+    "rootDir": "src",
+    "outDir": "dist",
+    "composite": true,
+    "declaration": true,
+    "declarationDir": "../build/types",
+    "strict": true,
+    "noImplicitAny": false,
+    "strictNullChecks": false,
+    "newLine": "lf",
+    "tsBuildInfoFile": "../build/cryptoverif-worker.tsbuildinfo"
+  },
+  "references": [{ "path": "." }],
+  "files": ["src/cryptoverif-worker.ts", "src/CryptoVerifEngine.ts"]
+}
