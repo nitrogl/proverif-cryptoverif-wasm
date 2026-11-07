@@ -1,5 +1,5 @@
 /**
- * @file Checks my conventions of the source style for readability
+ * @file Checks my conventions of the source style to keep readability high
  *
  * @author Roberto Metere
  * @license GPL-2.0-or-later

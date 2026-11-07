@@ -1,7 +1,5 @@
 /**
- * @file Checks my conventions of the source style for readability
- *
- * Usage: node tests/check-style.ts
+ * @file Checks my conventions of the source style to keep readability high
  *
  * @author Roberto Metere
  * @license CECILL-B
