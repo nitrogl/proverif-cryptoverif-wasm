@@ -13,7 +13,8 @@ They run in a web browser, on the user's own computer and with no server, under 
 
 They are published so that anyone can use them: in a course, in an editor, in a page that explains a protocol. They are the verifiers of [PieStudio](https://github.com/nitrogl/piestudio) and [CryStudio](https://github.com/nitrogl/crystudio), visual editors of ProVerif and CryptoVerif models.
 
-**[Documentation](https://nitrogl.github.io/proverif-cryptoverif-wasm/docs/)** &middot; [Using the engines](docs/library.md) &middot; [Building them](docs/building.md) &middot; [ProVerif manual](docs/manuals/proverif/index.md) &middot; [CryptoVerif manual](docs/manuals/cryptoverif/index.md) &middot; try [ProVerif](https://nitrogl.github.io/proverif-cryptoverif-wasm/proverif/example/) or [CryptoVerif](https://nitrogl.github.io/proverif-cryptoverif-wasm/cryptoverif/example/) in a page
+Documentation is still under development and review; but demos are available:
+- [ProVerif](https://www-users.york.ac.uk/roberto.metere/proverif-wasm) or [CryptoVerif](https://www-users.york.ac.uk/roberto.metere/cryptoverif-wasm) in a page
 
 > This is not an official release of ProVerif or CryptoVerif, and their authors are not involved in it. Please report problems with this build here, not to them; and if you publish results obtained with it, cite the tools themselves.
 
